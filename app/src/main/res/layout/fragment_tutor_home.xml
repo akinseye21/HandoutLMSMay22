@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/frame_tutor_home"
+    android:background="@drawable/ic19"
+    tools:context=".TutorHome">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/logo"
+            android:id="@+id/logo"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="60dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Virtual. \t Social. \t Learn"
+            android:textSize="12dp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="1dp"/>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal" >
+                        <RelativeLayout
+                            android:layout_width="110dp"
+                            android:layout_height="130dp"
+                            android:layout_margin="5dp"
+                            android:id="@+id/student"
+                            android:background="@drawable/rounded_purple2">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/icon_dots"
+                                android:layout_alignParentRight="true"/>
+
+                            <ImageView
+                                android:id="@+id/img1"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/ic28"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Total Students"
+                                android:textColor="#f7f7f7"
+                                android:textStyle="normal"
+                                android:textSize="13dp"
+                                android:layout_below="@+id/img1"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:id="@+id/name"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="3500"
+                                android:textColor="#f7f7f7"
+                                android:textStyle="bold"
+                                android:textSize="14dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_below="@+id/name"
+                                android:layout_centerHorizontal="true"
+                                android:id="@+id/active"/>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="110dp"
+                            android:layout_height="130dp"
+                            android:layout_margin="5dp"
+                            android:id="@+id/total_groups"
+                            android:background="@drawable/rounded_pink">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/icon_dots"
+                                android:layout_alignParentRight="true"/>
+
+                            <ImageView
+                                android:id="@+id/img2"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/ic78"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Total Groups"
+                                android:textColor="#f7f7f7"
+                                android:textStyle="normal"
+                                android:textSize="13dp"
+                                android:layout_below="@+id/img2"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:id="@+id/lessons"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="35"
+                                android:textColor="#f7f7f7"
+                                android:textStyle="bold"
+                                android:textSize="14dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_below="@+id/lessons"
+                                android:layout_centerHorizontal="true"
+                                android:id="@+id/activenum"/>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="110dp"
+                            android:layout_height="130dp"
+                            android:layout_margin="5dp"
+                            android:id="@+id/income"
+                            android:background="@drawable/rounded_yellow">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/icon_dots"
+                                android:layout_alignParentRight="true"/>
+
+                            <ImageView
+                                android:id="@+id/img3"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/ic25"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Overall Income"
+                                android:textColor="#f7f7f7"
+                                android:textStyle="normal"
+                                android:textSize="13dp"
+                                android:layout_below="@+id/img3"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:id="@+id/incomes"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="N200k"
+                                android:textColor="#f7f7f7"
+                                android:textStyle="bold"
+                                android:textSize="14dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_below="@+id/incomes"
+                                android:layout_centerHorizontal="true"
+                                android:id="@+id/activenum2"/>
+                        </RelativeLayout>
+
+
+                        <RelativeLayout
+                            android:layout_width="110dp"
+                            android:layout_height="130dp"
+                            android:layout_margin="5dp"
+                            android:id="@+id/tut_group"
+                            android:background="@drawable/rounded_light_blue">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/icon_dots"
+                                android:layout_alignParentRight="true"/>
+
+                            <ImageView
+                                android:id="@+id/img4"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/ic83"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Create New Tutorial Group"
+                                android:textColor="#f7f7f7"
+                                android:textStyle="normal"
+                                android:textSize="13dp"
+                                android:gravity="center"
+                                android:layout_below="@+id/img4"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:id="@+id/new_tut"/>
+                        </RelativeLayout>
+
+
+                        <RelativeLayout
+                            android:layout_width="110dp"
+                            android:layout_height="130dp"
+                            android:layout_margin="5dp"
+                            android:id="@+id/new_courses"
+                            android:background="@drawable/rounded_green">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/icon_dots"
+                                android:layout_alignParentRight="true"/>
+
+                            <ImageView
+                                android:id="@+id/img5"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/ic82"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Create New Courses"
+                                android:textColor="#f7f7f7"
+                                android:textStyle="normal"
+                                android:textSize="13dp"
+                                android:gravity="center"
+                                android:layout_below="@+id/img5"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:id="@+id/new_course"/>
+                        </RelativeLayout>
+
+
+                        <RelativeLayout
+                            android:layout_width="110dp"
+                            android:layout_height="130dp"
+                            android:layout_margin="5dp"
+                            android:id="@+id/new_quiz"
+                            android:background="@drawable/rounded_deep_green">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/icon_dots"
+                                android:layout_alignParentRight="true"/>
+
+                            <ImageView
+                                android:id="@+id/img6"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/ic81"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Create Quiz"
+                                android:textColor="#f7f7f7"
+                                android:textStyle="normal"
+                                android:textSize="13dp"
+                                android:gravity="center"
+                                android:layout_below="@+id/img6"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:id="@+id/quiz"/>
+                        </RelativeLayout>
+
+
+                        <RelativeLayout
+                            android:layout_width="110dp"
+                            android:layout_height="130dp"
+                            android:layout_margin="5dp"
+                            android:id="@+id/payment_option"
+                            android:background="@drawable/rounded_purple2">
+
+                            <ImageView
+                                android:id="@+id/img7"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/ic84"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Add Payment Option"
+                                android:textColor="#f7f7f7"
+                                android:textStyle="normal"
+                                android:textSize="13dp"
+                                android:gravity="center"
+                                android:layout_below="@+id/img7"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:id="@+id/pay_option"/>
+                        </RelativeLayout>
+
+
+                        <RelativeLayout
+                            android:layout_width="110dp"
+                            android:layout_height="130dp"
+                            android:layout_margin="5dp"
+                            android:id="@+id/edit_profile"
+                            android:background="@drawable/rounded_pink">
+
+                            <ImageView
+                                android:id="@+id/img8"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/ic46"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Edit Profile"
+                                android:textColor="#f7f7f7"
+                                android:textStyle="normal"
+                                android:textSize="13dp"
+                                android:gravity="center"
+                                android:layout_below="@+id/img8"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:id="@+id/edt_profile"/>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Top Students (Weekly)"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="200dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/rounded_white_little">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_margin="10dp">
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginRight="5dp"
+                                android:src="@drawable/ic12" />
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="John Doe"
+                                    android:textColor="#000000"
+                                    android:textStyle="bold"
+                                    android:textSize="15dp" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Niger state"
+                                    android:textColor="#000000"
+                                    android:textStyle="italic"
+                                    android:textSize="5dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Federal University of tech. Minna"
+                                    android:textColor="#000000"
+                                    android:textStyle="italic"
+                                    android:textSize="5dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Chemical Engineering"
+                                    android:textColor="#000000"
+                                    android:textStyle="italic"
+                                    android:textSize="5dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="200L"
+                                    android:textColor="#000000"
+                                    android:textStyle="italic"
+                                    android:textSize="5dp"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#000000"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tutorial Group"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Learning how to create beautiful images"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Points"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="200"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Group Position"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1/20"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"/>
+
+                    </LinearLayout>
+
+
+
+
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="200dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/rounded_white_little">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_margin="10dp">
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginRight="5dp"
+                                android:src="@drawable/ic12" />
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="John Doe"
+                                    android:textColor="#000000"
+                                    android:textStyle="bold"
+                                    android:textSize="15dp" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Niger state"
+                                    android:textColor="#000000"
+                                    android:textStyle="italic"
+                                    android:textSize="5dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Federal University of tech. Minna"
+                                    android:textColor="#000000"
+                                    android:textStyle="italic"
+                                    android:textSize="5dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Chemical Engineering"
+                                    android:textColor="#000000"
+                                    android:textStyle="italic"
+                                    android:textSize="5dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="200L"
+                                    android:textColor="#000000"
+                                    android:textStyle="italic"
+                                    android:textSize="5dp"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#000000"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tutorial Group"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Learning how to create beautiful images"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Points"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="200"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Group Position"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1/20"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="70dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="200dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/rounded_white_little">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_margin="10dp">
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginRight="5dp"
+                                android:src="@drawable/ic12" />
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="John Doe"
+                                    android:textColor="#000000"
+                                    android:textStyle="bold"
+                                    android:textSize="15dp" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Niger state"
+                                    android:textColor="#000000"
+                                    android:textStyle="italic"
+                                    android:textSize="5dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Federal University of tech. Minna"
+                                    android:textColor="#000000"
+                                    android:textStyle="italic"
+                                    android:textSize="5dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Chemical Engineering"
+                                    android:textColor="#000000"
+                                    android:textStyle="italic"
+                                    android:textSize="5dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="200L"
+                                    android:textColor="#000000"
+                                    android:textStyle="italic"
+                                    android:textSize="5dp"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#000000"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tutorial Group"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Learning how to create beautiful images"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Points"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="200"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Group Position"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1/20"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"/>
+
+                    </LinearLayout>
+
+
+
+
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="200dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/rounded_white_little">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_margin="10dp">
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginRight="5dp"
+                                android:src="@drawable/ic12" />
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="John Doe"
+                                    android:textColor="#000000"
+                                    android:textStyle="bold"
+                                    android:textSize="15dp" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Niger state"
+                                    android:textColor="#000000"
+                                    android:textStyle="italic"
+                                    android:textSize="5dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Federal University of tech. Minna"
+                                    android:textColor="#000000"
+                                    android:textStyle="italic"
+                                    android:textSize="5dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Chemical Engineering"
+                                    android:textColor="#000000"
+                                    android:textStyle="italic"
+                                    android:textSize="5dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="200L"
+                                    android:textColor="#000000"
+                                    android:textStyle="italic"
+                                    android:textSize="5dp"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#000000"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tutorial Group"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Learning how to create beautiful images"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Points"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="200"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Group Position"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1/20"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textSize="8dp"
+                            android:layout_marginLeft="10dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+
+</FrameLayout>
