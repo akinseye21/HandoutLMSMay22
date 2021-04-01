@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
+    android:orientation="horizontal"
+    android:padding="5dp"
+    android:gravity="center_vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <ImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
         android:src="@drawable/ic78"
         android:id="@+id/img"
+        android:layout_marginLeft="5dp"
         android:layout_centerVertical="true"/>
 
     <TextView
@@ -20,15 +21,16 @@
         android:layout_centerVertical="true"
         android:textColor="#000000"
         android:id="@+id/childItem"
-        android:layout_marginLeft="35dp"
+        android:paddingLeft="10dp"
+        android:textSize="12dp"
         android:text="UI/UX Design Tips"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.4dp"
-        android:background="#65dc9a"
-        android:paddingTop="5dp"
-        android:layout_alignParentBottom="true"/>
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0.4dp"-->
+<!--        android:background="#65dc9a"-->
+<!--        android:paddingTop="5dp"-->
+<!--        android:layout_alignParentBottom="true"/>-->
 
 
 
@@ -40,4 +42,4 @@
 <!--        android:layout_alignParentRight="true"/>-->
 
 
-</RelativeLayout>
+</LinearLayout>

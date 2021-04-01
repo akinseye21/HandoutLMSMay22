@@ -11,18 +11,18 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.RelativeLayout;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link CreateQuiz.OnFragmentInteractionListener} interface
+ * {@link TutorHomeView1.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link CreateQuiz#newInstance} factory method to
+ * Use the {@link TutorHomeView1#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CreateQuiz extends Fragment {
+public class TutorHomeView1 extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -32,11 +32,11 @@ public class CreateQuiz extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    TextView bck;
+    RelativeLayout create_tut_group, create_courses, create_quiz, edit_profile;
 
     private OnFragmentInteractionListener mListener;
 
-    public CreateQuiz() {
+    public TutorHomeView1() {
         // Required empty public constructor
     }
 
@@ -46,11 +46,11 @@ public class CreateQuiz extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CreateQuiz.
+     * @return A new instance of fragment TutorHomeView1.
      */
     // TODO: Rename and change types and number of parameters
-    public static CreateQuiz newInstance(String param1, String param2) {
-        CreateQuiz fragment = new CreateQuiz();
+    public static TutorHomeView1 newInstance(String param1, String param2) {
+        TutorHomeView1 fragment = new TutorHomeView1();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -71,17 +71,32 @@ public class CreateQuiz extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_create_quiz, container, false);
+        View v = inflater.inflate(R.layout.fragment_tutor_home_view1, container, false);
+        create_tut_group = v.findViewById(R.id.tut_group);
+        create_courses = v.findViewById(R.id.new_courses);
+        create_quiz = v.findViewById(R.id.new_quiz);
 
-        bck = v.findViewById(R.id.back);
-        bck.setOnClickListener(new View.OnClickListener() {
+        create_tut_group.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //load tutor home fragment
-                loadFragment(new TutorHome());
+                //load total groups page
+                loadFragment(new CreateTutorialGroup());
             }
         });
-
+        create_courses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //load total groups page
+                loadFragment(new CreateCourses());
+            }
+        });
+        create_quiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //load total groups page
+                loadFragment(new CreateQuiz());
+            }
+        });
         return v;
     }
 
@@ -91,8 +106,8 @@ public class CreateQuiz extends Fragment {
         // create a FragmentTransaction to begin the transaction and replace the Fragment
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         // replace the LinearLayout with new Fragment
-        fragmentTransaction.replace(R.id.frame_create_quiz, fragment);
-        fragmentTransaction.addToBackStack("create courses");
+        fragmentTransaction.replace(R.id.frame_tutor_home, fragment);
+        fragmentTransaction.addToBackStack("tutor home");
         fragmentTransaction.commit(); // save the changes
     }
 

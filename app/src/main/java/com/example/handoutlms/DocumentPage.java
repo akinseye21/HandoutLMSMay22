@@ -5,10 +5,13 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
@@ -28,6 +31,8 @@ public class DocumentPage extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    TextView bck;
 
     private OnFragmentInteractionListener mListener;
 
@@ -66,7 +71,29 @@ public class DocumentPage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_document_page, container, false);
+        View v = inflater.inflate(R.layout.fragment_document_page, container, false);
+
+        bck = v.findViewById(R.id.back);
+        bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //load course file page fragment
+                loadFragment(new CourseFilePage());
+            }
+        });
+
+        return v;
+    }
+
+    private void loadFragment(Fragment fragment) {
+        //create fragment manager
+        FragmentManager fm = getFragmentManager();
+        // create a FragmentTransaction to begin the transaction and replace the Fragment
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        // replace the LinearLayout with new Fragment
+        fragmentTransaction.replace(R.id.frame_document_page, fragment);
+        fragmentTransaction.addToBackStack("course file page");
+        fragmentTransaction.commit(); // save the changes
     }
 
     // TODO: Rename method, update argument and hook method into UI event

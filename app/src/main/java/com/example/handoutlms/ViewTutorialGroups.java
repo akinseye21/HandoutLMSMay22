@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 /**
@@ -33,6 +34,7 @@ public class ViewTutorialGroups extends Fragment {
     private String mParam2;
 
     LinearLayout viewGroup;
+    TextView bck;
 
     private OnFragmentInteractionListener mListener;
 
@@ -73,6 +75,14 @@ public class ViewTutorialGroups extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_view_tutorial_groups, container, false);
         viewGroup = v.findViewById(R.id.viewGroup);
+        bck = v.findViewById(R.id.back);
+        bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //load tutor home fragment
+                loadFragment(new TutorHome());
+            }
+        });
         viewGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

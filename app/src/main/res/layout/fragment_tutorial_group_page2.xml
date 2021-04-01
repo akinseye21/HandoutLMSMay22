@@ -200,7 +200,7 @@
 
             <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_margin="10dp"
                 android:id="@+id/spinner_courses"
                 android:background="@drawable/shape_drop_down_light_green"
@@ -208,7 +208,7 @@
 
             <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_margin="10dp"
                 android:id="@+id/spinner_quiz"
                 android:background="@drawable/shape_drop_down_light_green"

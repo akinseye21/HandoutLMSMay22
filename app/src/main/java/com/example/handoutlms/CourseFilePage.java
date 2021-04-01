@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 /**
@@ -33,6 +34,7 @@ public class CourseFilePage extends Fragment {
     private String mParam2;
 
     LinearLayout doc, pdf, multimedia;
+    TextView bck;
 
     private OnFragmentInteractionListener mListener;
 
@@ -75,6 +77,15 @@ public class CourseFilePage extends Fragment {
         doc = v.findViewById(R.id.doc);
         pdf = v.findViewById(R.id.pdf);
         multimedia = v.findViewById(R.id.multimedia);
+
+        bck = v.findViewById(R.id.back);
+        bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //load create course fragment
+                loadFragment(new CreateCourses());
+            }
+        });
 
         doc.setOnClickListener(new View.OnClickListener() {
             @Override

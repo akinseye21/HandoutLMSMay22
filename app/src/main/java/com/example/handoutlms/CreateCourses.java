@@ -12,10 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,6 +45,7 @@ public class CreateCourses extends Fragment {
 
     Spinner select_course;
     LinearLayout save;
+    TextView bck;
 
 //    private SimpleExpandableListAdapter mAdapter;
 //    ExpandableListView expandableListView;
@@ -98,6 +101,14 @@ public class CreateCourses extends Fragment {
         ArrayAdapter<String> coursesAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_select_course, R.id.childItem, courseArray) ;
         select_course.setAdapter(coursesAdapter);
 
+        bck = v.findViewById(R.id.back);
+        bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //load tutor home fragment
+                loadFragment(new TutorHome());
+            }
+        });
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

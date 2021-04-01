@@ -20,8 +20,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import static android.view.WindowInsets.Side.BOTTOM;
+
 public class TutorsDashboard extends AppCompatActivity implements
         TutorHome.OnFragmentInteractionListener,
+        TutorHomeView1.OnFragmentInteractionListener,
+        TutorHomeView2.OnFragmentInteractionListener,
         TutorMessages.OnFragmentInteractionListener,
         TutorProfile.OnFragmentInteractionListener,
         TutorSettings.OnFragmentInteractionListener,
@@ -96,6 +100,7 @@ public class TutorsDashboard extends AppCompatActivity implements
                 });
 
                 generateDialog.show();
+                generateDialog.getWindow().setGravity(BOTTOM);
             }
         });
     }
@@ -141,5 +146,10 @@ public class TutorsDashboard extends AppCompatActivity implements
         }
 
         return loadFragment(fragment);
+    }
+
+    @Override
+    public void onBackPressed() {
+        // do nothing
     }
 }

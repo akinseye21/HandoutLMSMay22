@@ -17,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Create Courses"
+            android:id="@+id/back"
             android:textStyle="bold"
             android:textSize="15dp"
             android:textColor="#ffffff"
@@ -54,9 +55,10 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:background="#d9d9d9"
                 android:padding="5dp"
+                android:textSize="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp"/>
@@ -78,30 +80,30 @@
 
             <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_margin="10dp"
-                android:padding="5dp"
                 android:id="@+id/spinner_select_course"
                 android:background="@drawable/shape_drop_down_light_green"
                 android:spinnerMode="dropdown"/>
 
             <LinearLayout
-                android:layout_width="160dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
+                android:layout_width="120dp"
+                android:layout_height="27dp"
+                android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:id="@+id/save"
                 android:layout_marginTop="30dp"
+                android:id="@+id/save"
                 android:background="@drawable/rounded_orange">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Save"
-                    android:textSize="12dp"
-                    android:textColor="#ffffff"
-                    android:textStyle="bold" />
+                    android:textSize="10dp"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"/>
             </LinearLayout>
+
+
 
         </LinearLayout>
     </ScrollView>

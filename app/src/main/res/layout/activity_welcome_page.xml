@@ -69,11 +69,12 @@
             android:gravity="center"
             android:layout_marginTop="5dp"/>
         <Button
-            android:layout_width="210dp"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="27dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:text="Continue"
+            android:textSize="10dp"
             android:textAllCaps="false"
             android:textColor="#ffffff"
             android:id="@+id/next"

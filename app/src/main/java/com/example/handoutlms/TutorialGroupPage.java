@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 
 /**
@@ -33,6 +34,7 @@ public class TutorialGroupPage extends Fragment {
     private String mParam2;
 
     RelativeLayout new_courses, new_quiz, student;
+    TextView bck;
 
     private OnFragmentInteractionListener mListener;
 
@@ -75,6 +77,14 @@ public class TutorialGroupPage extends Fragment {
          new_courses = v.findViewById(R.id.new_courses);
          new_quiz = v.findViewById(R.id.new_quiz);
          student = v.findViewById(R.id.student);
+        bck = v.findViewById(R.id.back);
+        bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //load create tutorial fragment
+                loadFragment(new CreateTutorialGroup());
+            }
+        });
          new_courses.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {

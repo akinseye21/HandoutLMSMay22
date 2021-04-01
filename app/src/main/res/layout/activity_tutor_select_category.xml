@@ -386,18 +386,17 @@
             </RelativeLayout>
 
             <Button
-                android:layout_width="180dp"
-                android:layout_height="35dp"
-                android:id="@+id/next"
-                android:text="Continue"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:textAllCaps="false"
-                android:background="@drawable/rounded_pink"
-                android:gravity="center"
+                android:layout_width="120dp"
+                android:layout_height="27dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
-                android:layout_gravity="center_horizontal"/>
+                android:text="Continue"
+                android:textSize="10dp"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:id="@+id/next"
+                android:background="@drawable/rounded_orange"/>
 
         </LinearLayout>
     </ScrollView>

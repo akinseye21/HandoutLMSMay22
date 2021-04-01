@@ -62,13 +62,13 @@
                     android:layout_marginLeft="20dp">
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/name_textinput_layout"
-                        android:layout_width="200dp"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content">
                         <EditText
-                            android:layout_width="200dp"
+                            android:layout_width="250dp"
                             android:layout_height="30dp"
-                            android:background="#ffffff"
-                            android:textColor="#000000"
+                            android:background="@drawable/rounded_purple_register1"
+                            android:textColor="#ffffff"
                             android:textStyle="bold"
                             android:textSize="10dp"
                             android:id="@+id/edtname"
@@ -130,13 +130,13 @@
                     android:layout_marginLeft="20dp">
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/email_textinput_layout"
-                        android:layout_width="200dp"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content">
                         <EditText
-                            android:layout_width="200dp"
+                            android:layout_width="250dp"
                             android:layout_height="30dp"
-                            android:background="#ffffff"
-                            android:textColor="#000000"
+                            android:background="@drawable/rounded_purple_register1"
+                            android:textColor="#ffffff"
                             android:textStyle="bold"
                             android:textSize="10dp"
                             android:id="@+id/edtemail"
@@ -199,13 +199,13 @@
                     android:layout_marginLeft="20dp">
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/password_textinput_layout"
-                        android:layout_width="200dp"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content">
                         <EditText
-                            android:layout_width="200dp"
+                            android:layout_width="250dp"
                             android:layout_height="30dp"
-                            android:background="#ffffff"
-                            android:textColor="#000000"
+                            android:background="@drawable/rounded_purple_register1"
+                            android:textColor="#ffffff"
                             android:textStyle="bold"
                             android:textSize="10dp"
                             android:id="@+id/edtpassword"
@@ -267,7 +267,7 @@
                     android:layout_marginLeft="20dp">
                     <RadioGroup
                         android:id="@+id/radioGender"
-                        android:layout_width="200dp"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true">
                         <RadioButton
@@ -342,13 +342,13 @@
                     android:layout_marginLeft="20dp">
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/dob_textinput_layout"
-                        android:layout_width="200dp"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content">
                         <EditText
-                            android:layout_width="200dp"
+                            android:layout_width="250dp"
                             android:layout_height="30dp"
-                            android:background="#ffffff"
-                            android:textColor="#000000"
+                            android:background="@drawable/rounded_purple_register1"
+                            android:textColor="#ffffff"
                             android:textStyle="bold"
                             android:textSize="10dp"
                             android:id="@+id/edtdob"
@@ -408,11 +408,11 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="20dp">
                     <Spinner
-                        android:layout_width="200dp"
+                        android:layout_width="250dp"
                         android:layout_height="30dp"
                         android:id="@+id/spinnercountry"
-                        android:background="@drawable/shape_drop_down_normal"
-                        android:spinnerMode="dialog"/>
+                        android:background="@drawable/rounded_purple_register2_dropdown"
+                        android:spinnerMode="dropdown"/>
                     <ImageView
                         android:layout_width="10dp"
                         android:layout_height="10dp"
@@ -462,7 +462,7 @@
                     android:layout_below="@+id/linmobile">
 
                     <LinearLayout
-                        android:layout_width="200dp"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
@@ -482,7 +482,7 @@
                                 android:text=""
                                 android:textSize="10dp"
                                 android:id="@+id/code"
-                                android:background="@drawable/rounded_purple"
+                                android:background="@drawable/rounded_purple_register1"
                                 android:textColor="#ffffff"
                                 android:textStyle="bold"/>
                             <TextView
@@ -495,18 +495,19 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/phonenum_textinput_layout"
-                            android:layout_width="200dp"
+                            android:layout_width="250dp"
                             android:layout_height="wrap_content">
                             <EditText
-                                android:layout_width="200dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="30dp"
-                                android:background="#ffffff"
-                                android:textColor="#000000"
+                                android:background="@drawable/rounded_purple_register1"
+                                android:textColor="#ffffff"
                                 android:textStyle="bold"
                                 android:textSize="10dp"
                                 android:id="@+id/edtphonenum"
                                 android:inputType="number"
                                 android:padding="10dp"
+                                android:layout_marginRight="50dp"
                                 android:layout_marginBottom="10dp"/>
                         </com.google.android.material.textfield.TextInputLayout>
 

@@ -24,10 +24,10 @@
             android:orientation="horizontal"
             android:layout_marginLeft="10dp">
             <Spinner
-                android:layout_width="280dp"
+                android:layout_width="250dp"
                 android:layout_height="30dp"
                 android:id="@+id/spinnerinstitution"
-                android:background="@drawable/shape_drop_down_normal"
+                android:background="@drawable/rounded_purple_register2_dropdown"
                 android:spinnerMode="dropdown"/>
             <ImageView
                 android:layout_width="10dp"
@@ -57,10 +57,10 @@
             android:orientation="horizontal"
             android:layout_marginLeft="10dp">
             <Spinner
-                android:layout_width="280dp"
+                android:layout_width="250dp"
                 android:layout_height="30dp"
                 android:id="@+id/spinnerdepartment"
-                android:background="@drawable/shape_drop_down_normal"
+                android:background="@drawable/rounded_purple_register2_dropdown"
                 android:spinnerMode="dropdown"/>
             <ImageView
                 android:layout_width="10dp"
@@ -91,10 +91,10 @@
             android:orientation="horizontal"
             android:layout_marginLeft="10dp">
             <Spinner
-                android:layout_width="280dp"
+                android:layout_width="250dp"
                 android:layout_height="30dp"
                 android:id="@+id/spinnerlevel"
-                android:background="@drawable/shape_drop_down_normal"
+                android:background="@drawable/rounded_purple_register2_dropdown"
                 android:spinnerMode="dropdown"/>
             <ImageView
                 android:layout_width="10dp"
@@ -128,10 +128,10 @@
                 android:layout_width="280dp"
                 android:layout_height="wrap_content">
                 <EditText
-                    android:layout_width="280dp"
+                    android:layout_width="250dp"
                     android:layout_height="30dp"
-                    android:background="#ffffff"
-                    android:textColor="#000000"
+                    android:background="@drawable/rounded_purple_register1"
+                    android:textColor="#ffffff"
                     android:textStyle="bold"
                     android:textSize="10dp"
                     android:id="@+id/regnumber"
@@ -144,7 +144,7 @@
                 android:src="@drawable/whitedot"
                 android:layout_gravity="center"
                 android:id="@+id/imgregnumber"
-                android:layout_marginLeft="30dp"/>
+                android:layout_marginLeft="0dp"/>
         </LinearLayout>
 
         <View

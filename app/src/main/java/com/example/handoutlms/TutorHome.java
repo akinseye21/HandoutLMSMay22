@@ -6,12 +6,19 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -33,6 +40,9 @@ public class TutorHome extends Fragment {
     private String mParam2;
 
     RelativeLayout total_groups, create_tut_group, create_courses, create_quiz;
+
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     private OnFragmentInteractionListener mListener;
 
@@ -73,9 +83,17 @@ public class TutorHome extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_tutor_home, container, false);
         total_groups = v.findViewById(R.id.total_groups);
-        create_tut_group = v.findViewById(R.id.tut_group);
-        create_courses = v.findViewById(R.id.new_courses);
-        create_quiz = v.findViewById(R.id.new_quiz);
+//        create_tut_group = v.findViewById(R.id.tut_group);
+//        create_courses = v.findViewById(R.id.new_courses);
+//        create_quiz = v.findViewById(R.id.new_quiz);
+
+        viewPager = v.findViewById(R.id.viewpager);
+        addTabs(viewPager);
+
+        tabLayout = v.findViewById(R.id.tabLayout);
+//        tabLayout.setupWithViewPager(viewPager);
+//        setupTabIcons();
+
         total_groups.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,29 +101,41 @@ public class TutorHome extends Fragment {
                 loadFragment(new ViewTutorialGroups());
             }
         });
-        create_tut_group.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //load total groups page
-                loadFragment(new CreateTutorialGroup());
-            }
-        });
-        create_courses.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //load total groups page
-                loadFragment(new CreateCourses());
-            }
-        });
-        create_quiz.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //load total groups page
-                loadFragment(new CreateQuiz());
-            }
-        });
+//        create_tut_group.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //load total groups page
+//                loadFragment(new CreateTutorialGroup());
+//            }
+//        });
+//        create_courses.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //load total groups page
+//                loadFragment(new CreateCourses());
+//            }
+//        });
+//        create_quiz.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //load total groups page
+//                loadFragment(new CreateQuiz());
+//            }
+//        });
 
         return v;
+    }
+
+//    private void setupTabIcons() {
+//        tabLayout.getTabAt(0).setIcon(R.drawable.ic33);
+//        tabLayout.getTabAt(1).setIcon(R.drawable.ic31);
+//    }
+
+    private void addTabs(ViewPager viewPager) {
+        TutorHome.ViewPagerAdapter adapter = new TutorHome.ViewPagerAdapter(getChildFragmentManager());
+        adapter.addFrag(new TutorHomeView1(), "");
+        adapter.addFrag(new TutorHomeView2(), "");
+        viewPager.setAdapter(adapter);
     }
 
     private void loadFragment(Fragment fragment) {
@@ -156,5 +186,36 @@ public class TutorHome extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFrag(Fragment fragment, String title){
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+
+
     }
 }
