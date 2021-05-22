@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#293241"
+    tools:context=".TaskManager1">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hi, Lisa!"
+                android:textColor="#ffffff"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:textSize="12dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4 task \nfor today"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:paddingLeft="10dp"
+                android:paddingBottom="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Task"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="#8cc63e"
+                android:paddingLeft="10dp"
+                android:paddingBottom="5dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:background="#37c1de"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:layout_alignParentLeft="true"
+                    android:gravity="center_vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12 tasks"
+                        android:textColor="#ffffff"
+                        android:textSize="8dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Exam"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:textSize="15dp"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:background="#fcae18"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:layout_centerInParent="true"
+                    android:gravity="center_vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="16 tasks"
+                        android:textColor="#ffffff"
+                        android:textSize="8dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tests"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:textSize="15dp"/>
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:background="#d3145a"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center_vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="16 tasks"
+                        android:textColor="#ffffff"
+                        android:textSize="8dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Assignments"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:textSize="15dp"/>
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Personal Tasks"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="#8cc63e"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingBottom="5dp"/>
+
+            <com.google.android.material.tabs.TabLayout
+                android:layout_width="150dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/lincat"
+                app:tabTextColor="#ffffff"
+                app:tabTextAppearance="@style/MyCustomTabText"
+                app:tabIndicatorColor="#ffffff"
+                app:tabIndicatorHeight="0.3dp"
+                app:tabSelectedTextColor="#8cc63e"
+                android:id="@+id/tabs"/>
+
+            <androidx.viewpager.widget.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="700dp"
+                android:id="@+id/viewpager2"
+                android:layout_below="@+id/tabs"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

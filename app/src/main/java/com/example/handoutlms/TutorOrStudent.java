@@ -46,12 +46,12 @@ public class TutorOrStudent extends AppCompatActivity {
             public void onClick(View v) {
                 if(student.isChecked()){
                     //go to student dashboard
-                    Intent i = new Intent(TutorOrStudent.this, StudentDashboard.class);
+                    Intent i = new Intent(TutorOrStudent.this, FeedsDashboard.class);
                     startActivity(i);
                 }
                 else if(tutor.isChecked()){
                     //go to tutor dashboard
-                    Intent i = new Intent(TutorOrStudent.this, TutorSelectCategory.class);
+                    Intent i = new Intent(TutorOrStudent.this, FeedsDashboard.class);
                     startActivity(i);
                 }
                 else{

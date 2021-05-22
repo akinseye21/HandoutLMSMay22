@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fl_profile2"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Profile2">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="#293241">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="130dp"
+           android:background="@drawable/ic90"/>
+       <de.hdodenhof.circleimageview.CircleImageView
+           android:layout_width="100dp"
+           android:layout_height="100dp"
+           android:src="@drawable/ic92"
+           android:id="@+id/pp"
+           android:layout_marginTop="60dp"/>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="&amp;@tumideedee"
+           android:textColor="#ffffff"
+           android:textSize="8dp"
+           android:textStyle="normal"
+           android:layout_below="@+id/pp"
+           android:layout_marginLeft="40dp"/>
+
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:id="@+id/prof"
+           android:layout_toRightOf="@+id/pp"
+           android:layout_marginTop="140dp"
+           android:layout_marginLeft="10dp">
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal"
+               android:gravity="center_vertical">
+               <ImageView
+                   android:layout_width="20dp"
+                   android:layout_height="20dp"
+                   android:src="@drawable/ic46"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="John Doe"
+                   android:textColor="#ffffff"
+                   android:textStyle="bold"
+                   android:textSize="12dp"
+                   android:paddingLeft="2dp"/>
+           </LinearLayout>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Media and Communication"
+               android:textColor="#ffffff"
+               android:textSize="10dp"
+               android:textStyle="normal"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="University of Lagos"
+               android:textColor="#ffffff"
+               android:textSize="10dp"
+               android:textStyle="normal"/>
+       </LinearLayout>
+
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_alignParentRight="true"
+           android:gravity="center_vertical"
+           android:layout_marginTop="140dp"
+           android:layout_marginRight="10dp">
+           <ImageView
+               android:layout_width="10dp"
+               android:layout_height="10dp"
+               android:src="@drawable/ic57"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Edit Profile"
+               android:textColor="#ffffff"
+               android:textStyle="bold"
+               android:textSize="6dp"
+               android:paddingLeft="2dp"/>
+       </LinearLayout>
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/prof"
+           android:id="@+id/myrel"
+           android:layout_margin="10dp">
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:gravity="center_vertical"
+               android:layout_centerVertical="true"
+               android:orientation="horizontal">
+               <ImageView
+                   android:layout_width="10dp"
+                   android:layout_height="10dp"
+                   android:src="@drawable/ic91" />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Yaba, Lagos"
+                   android:textColor="#ffffff"
+                   android:textStyle="bold"
+                   android:textSize="10dp"
+                   android:paddingLeft="2dp"/>
+           </LinearLayout>
+
+
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:gravity="center_vertical"
+               android:layout_centerInParent="true"
+               android:layout_centerVertical="true"
+               android:orientation="horizontal">
+               <ImageView
+                   android:layout_width="10dp"
+                   android:layout_height="10dp"
+                   android:src="@drawable/ic93" />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="1st April, 2021"
+                   android:textColor="#ffffff"
+                   android:textStyle="bold"
+                   android:textSize="10dp"
+                   android:paddingLeft="2dp"/>
+           </LinearLayout>
+
+
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:gravity="center_vertical"
+               android:layout_alignParentRight="true"
+               android:layout_centerVertical="true"
+               android:orientation="horizontal">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingRight="5dp"
+                   android:text="Connect"
+                   android:textColor="#ffffff"
+                   android:textStyle="bold|italic"
+                   android:textSize="12dp"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="200"
+                   android:textColor="#ffffff"
+                   android:textStyle="bold"
+                   android:textSize="12dp"
+                   android:background="@drawable/rounded_white_transparent_100"
+                   android:padding="5dp"/>
+           </LinearLayout>
+       </RelativeLayout>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:gravity="center_horizontal"
+           android:id="@+id/lincat"
+           android:layout_below="@+id/myrel">
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:layout_marginLeft="5dp"
+               android:layout_marginRight="5dp">
+               <LinearLayout
+                   android:layout_width="80dp"
+                   android:layout_height="20dp"
+                   android:gravity="center"
+                   android:background="@drawable/rounded_pink2">
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Tutorials"
+                       android:textSize="10dp"
+                       android:paddingRight="5dp"
+                       android:paddingLeft="5dp"
+                       android:textColor="#ffffff"/>
+               </LinearLayout>
+               <LinearLayout
+                   android:layout_width="80dp"
+                   android:layout_height="3dp"
+                   android:id="@+id/lintut"
+                   android:visibility="visible"
+                   android:background="#ff9a96"/>
+           </LinearLayout>
+
+
+
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:layout_marginLeft="5dp"
+               android:layout_marginRight="5dp">
+               <LinearLayout
+                   android:layout_width="80dp"
+                   android:layout_height="20dp"
+                   android:gravity="center"
+                   android:background="@drawable/rounded_blue2">
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Posts"
+                       android:textSize="10dp"
+                       android:paddingRight="5dp"
+                       android:paddingLeft="5dp"
+                       android:textColor="#ffffff"/>
+               </LinearLayout>
+               <LinearLayout
+                   android:layout_width="80dp"
+                   android:layout_height="3dp"
+                   android:id="@+id/linpost"
+                   android:visibility="gone"
+                   android:background="#29aae3"/>
+           </LinearLayout>
+
+
+
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:layout_marginLeft="5dp"
+               android:layout_marginRight="5dp">
+               <LinearLayout
+                   android:layout_width="80dp"
+                   android:layout_height="20dp"
+                   android:gravity="center"
+                   android:background="@drawable/rounded_yellow2">
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Games"
+                       android:textSize="10dp"
+                       android:paddingRight="10dp"
+                       android:paddingLeft="10dp"
+                       android:textColor="#ffffff"/>
+               </LinearLayout>
+               <LinearLayout
+                   android:layout_width="80dp"
+                   android:layout_height="3dp"
+                   android:id="@+id/lingame"
+                   android:visibility="gone"
+                   android:background="#f1ce40"/>
+           </LinearLayout>
+
+
+
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:layout_marginLeft="5dp"
+               android:layout_marginRight="5dp">
+               <LinearLayout
+                   android:layout_width="80dp"
+                   android:layout_height="20dp"
+                   android:gravity="center"
+                   android:background="@drawable/rounded_deep_green2">
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Gigs"
+                       android:textSize="10dp"
+                       android:paddingRight="10dp"
+                       android:paddingLeft="10dp"
+                       android:textColor="#ffffff"/>
+               </LinearLayout>
+               <LinearLayout
+                   android:layout_width="80dp"
+                   android:layout_height="3dp"
+                   android:id="@+id/lingig"
+                   android:visibility="gone"
+                   android:background="#69dccd"/>
+           </LinearLayout>
+
+
+       </LinearLayout>
+
+
+
+
+       <com.google.android.material.tabs.TabLayout
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_below="@+id/lincat"
+           android:id="@+id/tabs"
+           android:visibility="gone"/>
+
+       <androidx.viewpager.widget.ViewPager
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:id="@+id/viewpager2"
+           android:layout_below="@+id/tabs"/>
+
+
+   </RelativeLayout>
+
+</FrameLayout>

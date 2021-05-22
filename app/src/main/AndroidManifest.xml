@@ -2,17 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.handoutlms">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo2"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:requestLegacyExternalStorage="true"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TutorsDashboard"
-            android:theme="@style/BottomNavTheme"></activity>
+        <activity android:name=".FeedsDashboard"></activity>
+        <activity
+            android:name=".TutorsDashboard"
+            android:theme="@style/BottomNavTheme" />
         <activity android:name=".TutorSelectCategory" />
         <activity android:name=".StudentDashboard" />
         <activity android:name=".TutorOrStudent" />
