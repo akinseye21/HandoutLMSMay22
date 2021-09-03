@@ -7,11 +7,13 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -41,6 +43,7 @@ public class FeedsDashboard extends AppCompatActivity implements
     View linev;
     LinearLayout lin1;
     FrameLayout fl;
+    ImageView plus;
 
 
     @Override
@@ -50,6 +53,14 @@ public class FeedsDashboard extends AppCompatActivity implements
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
+        plus = findViewById(R.id.plus);
+        plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(FeedsDashboard.this, CreateTutorialGroup2.class);
+                startActivity(i);
+            }
+        });
 //        linev = findViewById(R.id.lineview);
 //        lin1 = findViewById(R.id.lin1);
 //        fl = findViewById(R.id.framelayout_);
@@ -93,7 +104,7 @@ public class FeedsDashboard extends AppCompatActivity implements
 //                            tabLayout.getTabAt(2).select();
                         }
                         else if(tab.getPosition() == 0){
-//                            viewpager2.setVisibility(View.GONE);
+//                            viewPager.setVisibility(View.GONE);
 //                            fl.setVisibility(View.GONE);
 //                            lin1.setVisibility(View.VISIBLE);
 //                            linev.setVisibility(View.VISIBLE);
