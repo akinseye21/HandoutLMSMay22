@@ -1,6 +1,7 @@
 package com.example.handoutlms;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -18,8 +19,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+
+import static android.content.Context.MODE_APPEND;
 
 
 /**
@@ -46,6 +50,8 @@ public class AcademicFragment extends Fragment {
     EditText edtregnum;
     TextInputLayout labelregnum;
     Button next;
+
+    SharedPreferences preferences;
 
     private OnFragmentInteractionListener mListener;
 
@@ -86,6 +92,17 @@ public class AcademicFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_academic, container, false);
+
+        preferences = getActivity().getSharedPreferences("SignUpDetails", Context.MODE_PRIVATE);
+        final String fullname = preferences.getString("fullname", "not available");
+        final String email = preferences.getString("email", "not available");
+        final String password = preferences.getString("password", "not available");
+        final String gender = preferences.getString("gender", "not available");
+        final String dob = preferences.getString("dob", "not available");
+        final String country = preferences.getString("country", "not available");
+        final String phonenum = preferences.getString("phonenum", "not available");
+
+
         edtregnum = v.findViewById(R.id.regnumber);
         labelregnum = v.findViewById(R.id.regnum_textinput_layout);
 
@@ -127,6 +144,7 @@ public class AcademicFragment extends Fragment {
 
             }
         });
+
         department.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -142,6 +160,7 @@ public class AcademicFragment extends Fragment {
 
             }
         });
+
         level.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -183,9 +202,44 @@ public class AcademicFragment extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewPager.setCurrentItem(2);
+                if(inst.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.tick).getConstantState()) &&
+                        dept.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.tick).getConstantState()) &&
+                        lev.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.tick).getConstantState()) &&
+                        imgregnum.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.tick).getConstantState()))
+                {
+                    SharedPreferences.Editor myEdit = preferences.edit();
+                    myEdit.putString("institution", institution.getSelectedItem().toString());
+                    myEdit.putString("department", department.getSelectedItem().toString());
+                    myEdit.putString("level", level.getSelectedItem().toString());
+                    myEdit.putString("regNum", edtregnum.getText().toString());
+                    myEdit.commit();
+
+                    Toast.makeText(getActivity(), "Fullname: "+fullname+
+                            "\nemail: "+email+
+                            "\nPassword : "+password+
+                            "\nGender: "+gender+
+                            "\nDOB: "+dob+
+                            "\nCountry: "+country+
+                            "\nPhone: "+phonenum+
+                            "\nInstitution: "+institution.getSelectedItem().toString()+
+                            "\nDepartment: "+department.getSelectedItem().toString()+
+                            "\nLevel: "+level.getSelectedItem().toString()+
+                            "\nReg Num: "+edtregnum.getText().toString(), Toast.LENGTH_LONG).show();
+
+                    viewPager.setCurrentItem(2);
+                }
+
+                else{
+                    Toast.makeText(getContext(), "Error in one or more fields", Toast.LENGTH_LONG).show();
+                }
+
+
+
             }
         });
+
+
+
 
 
         return v;

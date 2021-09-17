@@ -2,16 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.handoutlms">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo2"
+        android:usesCleartextTraffic="true"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AlmostDone"></activity>
+        <activity android:name=".CreateOnlineTutPhase1"></activity>
+        <activity android:name=".AlmostDone" />
         <activity android:name=".InviteFriends" />
         <activity android:name=".CreateTutorialGroupOnline" />
         <activity android:name=".CreateTutorialGroup2" />

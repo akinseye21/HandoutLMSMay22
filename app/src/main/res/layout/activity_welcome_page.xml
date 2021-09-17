@@ -54,6 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="DANIEL YOMI"
+            android:id="@+id/fullname"
             android:textSize="25dp"
             android:textColor="#000000"
             android:textStyle="bold"

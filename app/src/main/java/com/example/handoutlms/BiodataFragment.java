@@ -2,6 +2,7 @@ package com.example.handoutlms;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -20,6 +21,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,6 +59,13 @@ public class BiodataFragment extends Fragment {
     TextView code;
     DatePickerDialog datePickerDialog;
     Button next;
+
+    String gender;
+
+    RadioGroup radioGroup;
+    RadioButton male, female;
+
+    SharedPreferences preferences;
 
     private OnFragmentInteractionListener mListener;
 
@@ -96,11 +106,20 @@ public class BiodataFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_biodata, container, false);
+
+        preferences = getActivity().getSharedPreferences("SignUpDetails", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor myEdit = preferences.edit();
+
         edtname = v.findViewById(R.id.edtname);
         edtemail = v.findViewById(R.id.edtemail);
         edtpassword = v.findViewById(R.id.edtpassword);
         edtdob = v.findViewById(R.id.edtdob);
         edtphonenum = v.findViewById(R.id.edtphonenum);
+
+        radioGroup = v.findViewById(R.id.radioGender);
+        male = v.findViewById(R.id.radioMale);
+        female = v.findViewById(R.id.radioFemale);
+
 
         layname = v.findViewById(R.id.imgname);
         layemail = v.findViewById(R.id.imgemail);
@@ -120,9 +139,16 @@ public class BiodataFragment extends Fragment {
         next = v.findViewById(R.id.next);
 
         country = v.findViewById(R.id.spinnercountry);
-        String[] countries = {"Please select a country...","Alabama", "Australia", "Boldoviai", "Chile", "China", "Dolphine", "England", "Finland", "Georgia", "Ireland", "Iceland", "Japan",
-        "Kuwait", "Lepad", "Mauritania", "Nigeria", "Osopadec", "Poland"};
-        final String[] countriescode = {"","123","124","345", "190", "820", "567", "222", "200", "400", "002", "490", "900", "768", "905", "384", "234", "456","211"};
+        String[] countries = {"Please select a country...","Afghanistan", "Albania", "Algeria", "Angola", "Anguilla", "Antarctica", "Argentina", "Armenia", "Australia", "Austria",
+                                            "Azerbaijan", "Bangladesh", "Barbados", "Belarus", "Belgium", "Benin", "Bolivia", "Botswana", "Brazil", "Bulgaria", "Burkina Faso", "Burundi",
+                                            "Cameroon", "Canada", "Cape Verde", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Congo", "Costa Rica", "Cote D'Ivoire",
+                                            "Croatia", "Cuba", "Cyprus", "Czech Rep.", "Denmark", "Ecuador", "Egypt", "Equatorial Guinea", "Eritrea", "Ethiopia", "Faroe Island", "Fiji", "Finland",
+                                            "France", "Gabon", "Gambia", "Germany", "Ghana", "Greece", "Guinea", "Guinea-Bissau", "Haiti", "Hoduras", "Hong Kong", "Hungary"};
+        final String[] countriescode = {"","+93","+355","+213", "+244", "+1-264", "+672", "+54", "+374", "+61", "+43",
+                                            "+994", "+880", "+1-246", "+375", "+32", "+229", "+591", "+267", "+55", "+359", "+226", "+257",
+                                            "+237", "+1", "+238", "+236", "+235", "+56", "+86", "+57", "+243", "+506", "+225",
+                                            "+385", "+53", "+357", "+420", "+45", "+593", "+20", "+240", "+291", "+251", "+298", "+679", "+358",
+                                            "+33", "+241", "+220", "+49", "+233", "+30", "+224", "+245", "+509", "+504", "+852", "+36"};
         ArrayAdapter<String> countryAdapter = new ArrayAdapter<String>(getContext(), R.layout.simple_spinner_small_text, R.id.tx, countries) ;
         country.setAdapter(countryAdapter);
         country.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -267,12 +293,31 @@ public class BiodataFragment extends Fragment {
                 if(layname.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.tick).getConstantState())&&
                         layemail.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.tick).getConstantState()) &&
                         laypassword.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.tick).getConstantState()) &&
-                        laygender.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.tick).getConstantState()) &&
                         laydob.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.tick).getConstantState()) &&
                         laycountry.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.tick).getConstantState()) &&
                         layphonenum.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.tick).getConstantState()))
                 {
+                    // get gender from radioGroup
+                    if(male.isChecked()){
+                        gender = male.getText().toString();
+                    }
+                    else if(female.isChecked()){
+                        gender = female.getText().toString();
+                    }
+
+                    myEdit.putString("fullname", edtname.getText().toString());
+                    myEdit.putString("email", edtemail.getText().toString());
+                    myEdit.putString("password", edtpassword.getText().toString());
+                    myEdit.putString("gender", gender);
+                    myEdit.putString("dob", edtdob.getText().toString());
+                    myEdit.putString("country", country.getSelectedItem().toString());
+                    myEdit.putString("phonenum", code.getText() + edtphonenum.getText().toString());
+                    myEdit.commit();
+
+//                    Toast.makeText(getActivity(), "Fullname: "+edtname.getText().toString()+"\nemail: "+edtemail.getText().toString()+"\nPassword : "+edtpassword.getText().toString()+"\nGender: "+gender+"\nDOB: "+edtdob.getText().toString()+"\nCountry: "+country.getSelectedItem().toString()+"\nPhone: "+code.getText() + edtphonenum.getText().toString(), Toast.LENGTH_LONG).show();
+
                     viewPager.setCurrentItem(1);
+
                 }
 
                 else{
