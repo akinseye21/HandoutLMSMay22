@@ -59,7 +59,6 @@ public class Login extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
 
                                 System.out.println("Response = "+response);
-                                Toast.makeText(Login.this, "Response = "+response, Toast.LENGTH_LONG).show();
 
                                 try{
                                     JSONObject jsonObject = new JSONObject(response);
@@ -67,6 +66,7 @@ public class Login extends AppCompatActivity {
                                     String status = jsonObject.getString("status");
 
                                     if(status.equals("login successful")){
+                                        Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
                                         Intent i = new Intent(Login.this, FeedsDashboard.class);
                                         startActivity(i);
                                     }else{

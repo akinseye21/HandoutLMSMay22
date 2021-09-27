@@ -59,6 +59,8 @@ public class FinishFragment extends Fragment {
     ProgressBar progressBar;
     SharedPreferences preferences;
 
+    SharedPreferences preferences2;
+
     public static final String SIGNUP = "http://35.84.44.203/handouts/handout_registration";
 
     public FinishFragment() {
@@ -98,6 +100,9 @@ public class FinishFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_finish, container, false);
 
+        //user infor sharedpreference
+        preferences2 = getActivity().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor myEdit2 = preferences2.edit();
 
         //get sharedpreference
         preferences = getActivity().getSharedPreferences("SignUpDetails", Context.MODE_PRIVATE);
@@ -130,7 +135,7 @@ public class FinishFragment extends Fragment {
                                     progressBar.setVisibility(View.GONE);
 
                                     System.out.println("Response = "+response);
-                                    Toast.makeText(getActivity(), "Response = "+response, Toast.LENGTH_LONG).show();
+
 
                                     try{
                                         JSONObject jsonObject = new JSONObject(response);
@@ -139,6 +144,21 @@ public class FinishFragment extends Fragment {
                                         String status = jsonObject.getString("status");
 
                                         if(status.equals("register successful")){
+                                            Toast.makeText(getActivity(), "Registration Successful", Toast.LENGTH_LONG).show();
+                                            //put information in sharedpref
+                                            myEdit2.putString("fullname", fullname);
+                                            myEdit2.putString("email", email);
+                                            myEdit2.putString("password", password);
+                                            myEdit2.putString("gender", gender);
+                                            myEdit2.putString("dob", dob);
+                                            myEdit2.putString("country", country);
+                                            myEdit2.putString("phone", phonenum);
+                                            myEdit2.putString("institution", institution);
+                                            myEdit2.putString("department", department);
+                                            myEdit2.putString("level", level);
+                                            myEdit2.putString("regnum", regNum);
+                                            myEdit2.commit();
+
                                             Intent i = new Intent(getActivity(), WelcomePage.class);
                                             i.putExtra("fullname", signed_name);
                                             startActivity(i);

@@ -46,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:id="@+id/groupNAME"
             android:text="MATH 124 Advanced Maths"
             android:textColor="#c7c7c7"/>
         <LinearLayout
@@ -100,6 +101,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="10dp"
+                android:id="@+id/audio"
                 android:orientation="horizontal">
                 <ImageView
                     android:layout_width="50dp"
@@ -128,6 +130,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="10dp"
+                android:id="@+id/video"
                 android:orientation="horizontal">
                 <ImageView
                     android:layout_width="50dp"
@@ -155,6 +158,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
+                android:id="@+id/pdf"
                 android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
                 <ImageView
@@ -183,6 +187,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
+                android:id="@+id/quiz"
                 android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
                 <ImageView
@@ -211,6 +216,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
+                android:id="@+id/location"
                 android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
                 <ImageView

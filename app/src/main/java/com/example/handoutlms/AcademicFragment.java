@@ -117,7 +117,8 @@ public class AcademicFragment extends Fragment {
         lev = v.findViewById(R.id.imglevel);
         imgregnum = v.findViewById(R.id.imgregnumber);
 
-        String[] institutions = {"Select an institution...","Ahmadu Bello University Zaria", "Adekunle Ajasin Unversity Akungba", "Adeleke University", "Babcock University", "Federal University of Tech. Minna", "Federal University of Tech. Akure", "University of Lagos", "University of Abuja", "Obafemi Awolowo University Ife"};
+        String[] institutions = {"Select an institution...","Ahmadu Bello University Zaria", "Adekunle Ajasin Unversity Akungba", "Adeleke University",
+                "Babcock University", "Federal University of Tech. Minna", "Federal University of Tech. Akure", "University of Lagos", "University of Abuja", "Obafemi Awolowo University Ife"};
         String[] departments = {"Select a department...","Computer science", "Mathematics", "Social Studies", "Economics", "Statistics", "Accounting", "Banking and Finance", "Business Administration", "Human Kinetics", "Physics", "Int. Relations"};
         String[] levels = {"Select a level...","Pre-Degree","Diploma","100 Level", "200 Level", "300 Level", "400 Level", "500 Level", "MSc", "PGD"};
 

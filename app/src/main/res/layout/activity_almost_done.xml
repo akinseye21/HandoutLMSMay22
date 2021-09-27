@@ -54,7 +54,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="MATH 124 Advanced Mathematics"
+                    android:text=""
+                    android:id="@+id/tutorial_group_name"
                     android:textColor="#c7c7c7"
                     android:background="@android:color/transparent"/>
 
@@ -68,7 +69,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="Science"
+                    android:text=""
+                    android:id="@+id/category"
                     android:textColor="#c7c7c7"
                     android:background="@android:color/transparent"/>
 
@@ -83,9 +85,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="27/04/2021"
+                    android:text=""
+                    android:id="@+id/date"
                     android:textColor="#c7c7c7"
                     android:background="@android:color/transparent"/>
+
+
 
 
                 <TextView
@@ -98,7 +103,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="8:00am"
+                    android:text=""
+                    android:id="@+id/time"
                     android:textColor="#c7c7c7"
                     android:background="@android:color/transparent"/>
 
@@ -113,7 +119,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="Federal Technology, Minna"
+                    android:id="@+id/university"
+                    android:text=""
                     android:textColor="#c7c7c7"
                     android:background="@android:color/transparent"/>
 
@@ -128,7 +135,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="The description of the group page will be displayed right in this column in full details."
+                    android:id="@+id/description"
+                    android:text=""
                     android:textColor="#c7c7c7"
                     android:background="@android:color/transparent"/>
 
@@ -143,12 +151,20 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/share"
                     android:checked="true"/>
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:src="@drawable/ic126"/>
             </LinearLayout>
+
+            <ProgressBar
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center|center_vertical"
+                android:visibility="gone"
+                android:id="@+id/progressBar"/>
 
 
             <LinearLayout

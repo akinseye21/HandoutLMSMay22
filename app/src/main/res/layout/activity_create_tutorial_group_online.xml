@@ -59,6 +59,8 @@
                 android:layout_height="wrap_content"
                 android:hint="Name your tutorial group"
                 android:layout_marginTop="5dp"
+                android:id="@+id/group_name"
+                android:textColor="#ffffff"
                 android:textColorHint="#c7c7c7"
                 android:background="@android:color/transparent"/>
             <View
@@ -74,13 +76,12 @@
                 android:text="Tutorial category"
                 android:layout_marginTop="20dp"
                 android:textColor="#8cc63e"/>
-            <EditText
+            <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Choose a category"
-                android:layout_marginTop="5dp"
-                android:textColorHint="#c7c7c7"
-                android:background="@android:color/transparent"/>
+                android:layout_height="40dp"
+                android:id="@+id/spinnercategory"
+                android:background="@drawable/rounded_transparent_dropdown"
+                android:spinnerMode="dropdown"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -97,8 +98,14 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/mydate"
                 android:hint="Set date"
+                android:clickable="true"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:cursorVisible="false"
                 android:layout_marginTop="5dp"
+                android:textColor="#ffffff"
                 android:textColorHint="#c7c7c7"
                 android:background="@android:color/transparent"/>
             <View
@@ -117,8 +124,14 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/time"
+                android:clickable="true"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:cursorVisible="false"
                 android:hint="00:00"
                 android:layout_marginTop="5dp"
+                android:textColor="#ffffff"
                 android:textColorHint="#c7c7c7"
                 android:background="@android:color/transparent"/>
             <View
@@ -134,13 +147,13 @@
                 android:text="University"
                 android:layout_marginTop="20dp"
                 android:textColor="#8cc63e"/>
-            <EditText
+            <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Select University"
-                android:layout_marginTop="5dp"
-                android:textColorHint="#c7c7c7"
-                android:background="@android:color/transparent"/>
+                android:layout_height="40dp"
+                android:id="@+id/spinneruni"
+                android:background="@drawable/rounded_transparent_dropdown"
+                android:spinnerMode="dropdown"/>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -158,7 +171,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Write a short description"
+                android:id="@+id/description"
                 android:layout_marginTop="5dp"
+                android:textColor="#ffffff"
                 android:textColorHint="#c7c7c7"
                 android:background="@android:color/transparent"/>
             <View
