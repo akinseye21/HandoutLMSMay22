@@ -19,21 +19,21 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class CreateTutorialGroupOnline extends AppCompatActivity {
+public class CreateTutorialGroupOffline extends AppCompatActivity {
 
     LinearLayout next;
-    EditText dte, grp_name, descrip;
+    EditText dte, grp_name, descrip, location;
     EditText tim;
     DatePickerDialog datePickerDialog;
     TimePickerDialog picker;
     Spinner uni, cat;
-    String group_name, category, date, time, university, description;
+    String group_name, category, date, time, location_st, description;
     ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_tutorial_group_online);
+        setContentView(R.layout.activity_create_tutorial_group_offline);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         String[] institutions = {"Select University..."," ","Ahmadu Bello University Zaria", "Adekunle Ajasin Unversity Akungba", "Adeleke University",
@@ -52,6 +52,7 @@ public class CreateTutorialGroupOnline extends AppCompatActivity {
         dte = findViewById(R.id.mydate);
         tim = findViewById(R.id.time);
         next = findViewById(R.id.next);
+        location = findViewById(R.id.location);
         back = findViewById(R.id.back);
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +75,7 @@ public class CreateTutorialGroupOnline extends AppCompatActivity {
                 int mMonth = c.get(Calendar.MONTH); // current month
                 int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
                 // date picker dialog
-                datePickerDialog = new DatePickerDialog(CreateTutorialGroupOnline.this,
+                datePickerDialog = new DatePickerDialog(CreateTutorialGroupOffline.this,
                         new DatePickerDialog.OnDateSetListener() {
 
                             @Override
@@ -96,7 +97,7 @@ public class CreateTutorialGroupOnline extends AppCompatActivity {
                 int hour = cldr.get(Calendar.HOUR_OF_DAY);
                 int minutes = cldr.get(Calendar.MINUTE);
                 // time picker dialog
-                picker = new TimePickerDialog(CreateTutorialGroupOnline.this,
+                picker = new TimePickerDialog(CreateTutorialGroupOffline.this,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
@@ -115,20 +116,21 @@ public class CreateTutorialGroupOnline extends AppCompatActivity {
                 date = dte.getText().toString();
                 time = tim.getText().toString();
                 description = descrip.getText().toString();
+                location_st = location.getText().toString();
 
                 if(group_name.equals("") || date.equals("") || time.equals("") || description.equals("") || cat.getSelectedItem().toString().equals("") ||
-                uni.getSelectedItem().toString().equals("")){
+                        uni.getSelectedItem().toString().equals("")){
                     Toast.makeText(getApplicationContext(), "One or more field is empty", Toast.LENGTH_LONG).show();
                 }
                 else{
-                    Intent i = new Intent(CreateTutorialGroupOnline.this, InviteFriends.class);
+                    Intent i = new Intent(CreateTutorialGroupOffline.this, InviteFriends.class);
                     i.putExtra("group_name", group_name);
                     i.putExtra("category", cat.getSelectedItem().toString());
                     i.putExtra("date", date);
                     i.putExtra("time", time);
                     i.putExtra("university", uni.getSelectedItem().toString());
                     i.putExtra("description", description);
-                    i.putExtra("location", "");
+                    i.putExtra("location", location_st);
                     startActivity(i);
                 }
 

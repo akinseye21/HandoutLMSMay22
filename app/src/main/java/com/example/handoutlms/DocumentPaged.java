@@ -18,6 +18,8 @@ import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +55,10 @@ public class DocumentPaged extends AppCompatActivity {
     String name, group_name;
     TextView upload_default, upload_btn, file_path;
     SharedPreferences preferences;
+    ImageView ic, back;
+
+    TextView upload_text;
+    ProgressBar progressBar;
 
     private static final String ROOT_URL = "http://35.84.44.203/handouts/handout_update_tutorial_group";
     private RequestQueue rQueue;
@@ -74,14 +80,26 @@ public class DocumentPaged extends AppCompatActivity {
         upload_default = findViewById(R.id.upload_default);
         upload_btn = findViewById(R.id.upload_button);
         file_path = findViewById(R.id.file_path);
+        ic = findViewById(R.id.ic);
+        back = findViewById(R.id.back);
+        upload_text = findViewById(R.id.upload_text);
+        progressBar = findViewById(R.id.progressBar);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         if(name.equals("audio")){
             upload_default.setText("Upload Audio");
             upload_btn.setText("Upload Audio");
+            ic.setImageResource(R.drawable.ic123);
         }
         else if(name.equals("video")){
             upload_default.setText("Upload Video");
             upload_btn.setText("Upload Video");
+            ic.setImageResource(R.drawable.ic124);
         }
         else if(name.equals("pdf")){
             upload_default.setText("Upload PDF");
@@ -112,7 +130,7 @@ public class DocumentPaged extends AppCompatActivity {
                     Intent intent = new Intent();
                     intent.setType("video/*");
                     intent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(intent, 2);
+                    startActivityForResult(intent, 3);
                 }
 
             }
@@ -155,6 +173,9 @@ public class DocumentPaged extends AppCompatActivity {
 
     private void uploadPDF(final String pdfname, Uri pdffile){
 
+        progressBar.setVisibility(View.VISIBLE);
+        upload_text.setVisibility(View.VISIBLE);
+
         InputStream iStream = null;
         try {
 
@@ -174,11 +195,17 @@ public class DocumentPaged extends AppCompatActivity {
                                 if(status.equals("successful")){
                                     Toast.makeText(getApplicationContext(), "File Uploaded successfully ", Toast.LENGTH_LONG).show();
                                     System.out.println("Status = "+status);
+
+                                    progressBar.setVisibility(View.GONE);
+                                    upload_text.setVisibility(View.GONE);
                                 }
 
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
+
+                                progressBar.setVisibility(View.GONE);
+                                upload_text.setVisibility(View.GONE);
                             }
                         }
                     },
@@ -186,6 +213,9 @@ public class DocumentPaged extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                            progressBar.setVisibility(View.GONE);
+                            upload_text.setVisibility(View.GONE);
                         }
                     }) {
 

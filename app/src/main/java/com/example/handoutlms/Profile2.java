@@ -1,6 +1,7 @@
 package com.example.handoutlms;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -13,11 +14,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.tabs.TabLayout;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -41,6 +55,11 @@ public class Profile2 extends Fragment {
     TabLayout tabLayout;
     ViewPager viewPager;
     LinearLayout lintut, linpost, lingame, lingig;
+    TextView email, username, dept, school, location, date, edit;
+    String got_fullname, got_dept, got_institution, got_dob;
+    SharedPreferences preferences;
+
+    public static final String USER_PROFILE = "http://35.84.44.203/handouts/handout_get_user_profile";
 
     private OnFragmentInteractionListener mListener;
 
@@ -89,6 +108,16 @@ public class Profile2 extends Fragment {
         lingame = v.findViewById(R.id.lingame);
         lingig = v.findViewById(R.id.lingig);
 
+        email = v.findViewById(R.id.email);
+        username = v.findViewById(R.id.user_name);
+        dept = v.findViewById(R.id.department);
+        school = v.findViewById(R.id.school);
+        location = v.findViewById(R.id.location);
+        date = v.findViewById(R.id.date);
+        edit = v.findViewById(R.id.edit);
+        preferences = getActivity().getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
+        final String got_email = preferences.getString("email", "not available");
+
         addTabs(viewPager);
 
         tabLayout.setupWithViewPager(viewPager);
@@ -129,6 +158,52 @@ public class Profile2 extends Fragment {
                     }
                 }
         );
+
+        //get user profile
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, USER_PROFILE,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("Profile = "+response);
+
+                        try{
+                                JSONObject profile = new JSONObject(response);
+//                                String got_email = profile.getString("email");
+                            got_fullname = profile.getString("fullname");
+                            got_dob = profile.getString("dob");
+                            got_institution = profile.getString("institution");
+//                            got_faculty = profile.getString("faculty");
+                             got_dept = profile.getString("department");
+
+                            email.setText(got_email);
+                            username.setText(got_fullname);
+                            dept.setText(got_dept);
+                            school.setText(got_institution);
+                            date.setText(got_dob);
+
+                        }
+                        catch (JSONException e){
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        volleyError.printStackTrace();
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<>();
+                params.put("email", got_email);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
 
 
         return v;

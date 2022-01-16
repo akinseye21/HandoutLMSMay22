@@ -40,81 +40,102 @@
             android:layout_centerHorizontal="true"
             android:src="@drawable/ic4"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/img"
-            android:text="Email Address"
-            android:textStyle="bold"
-            android:textSize="12dp"
-            android:textColor="#ffffff"
-            android:id="@+id/txtemail"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"/>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/img"-->
+<!--            android:text="Email Address"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="12dp"-->
+<!--            android:textColor="#ffffff"-->
+<!--            android:id="@+id/txtemail"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginTop="10dp"/>-->
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtemail"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:background="#280c25"
-            android:hint="Email Address"
             android:textColorHint="#978794"
-            android:textStyle="bold"
-            android:textColor="#978794"
-            android:id="@+id/edtemail"/>
+            android:id="@+id/txtil1"
+            android:layout_below="@+id/img"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="#280c25"
+                android:singleLine="true"
+                android:hint="Email Address"
+                android:textColorHint="#978794"
+                android:textStyle="bold"
+                android:textColor="#978794"
+                android:id="@+id/edtemail"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1sp"
             android:background="#ffffff"
-            android:layout_below="@+id/edtemail"
+            android:layout_below="@+id/txtil1"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:id="@+id/view1"/>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/view1"
-            android:text="Password"
-            android:textStyle="bold"
-            android:textSize="12dp"
-            android:textColor="#ffffff"
-            android:id="@+id/txtpassword"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="30dp" />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/view1"-->
+<!--            android:text="Password"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="12dp"-->
+<!--            android:textColor="#ffffff"-->
+<!--            android:id="@+id/txtpassword"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginTop="30dp" />-->
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtpassword"
-            android:layout_marginTop="2dp"
+            android:textColorHint="#978794"
+            android:layout_marginTop="30dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:background="#280c25"
-            android:hint="Password"
-            android:textColorHint="#978794"
-            android:textStyle="bold"
-            android:textColor="#978794"
-            android:id="@+id/edtpassword"/>
+            android:id="@+id/txtil"
+            android:layout_below="@+id/view1"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="#ffffff">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="#280c25"
+                android:hint="Password"
+                android:singleLine="true"
+                android:inputType="textPassword"
+                android:textColorHint="#978794"
+                android:textStyle="bold"
+                android:textColor="#978794"
+                android:id="@+id/edtpassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1sp"
             android:background="#ffffff"
-            android:layout_below="@+id/edtpassword"
+            android:layout_below="@+id/txtil"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:id="@+id/view2"/>

@@ -24,12 +24,13 @@
        <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="&amp;@tumideedee"
+           android:id="@+id/email"
+           android:text="email"
            android:textColor="#ffffff"
            android:textSize="8dp"
            android:textStyle="normal"
            android:layout_below="@+id/pp"
-           android:layout_marginLeft="40dp"/>
+           android:layout_marginLeft="20dp"/>
 
        <LinearLayout
            android:layout_width="wrap_content"
@@ -51,6 +52,7 @@
                <TextView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
+                   android:id="@+id/user_name"
                    android:text="John Doe"
                    android:textColor="#ffffff"
                    android:textStyle="bold"
@@ -60,6 +62,7 @@
            <TextView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
+               android:id="@+id/department"
                android:text="Media and Communication"
                android:textColor="#ffffff"
                android:textSize="10dp"
@@ -67,6 +70,7 @@
            <TextView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
+               android:id="@+id/school"
                android:text="University of Lagos"
                android:textColor="#ffffff"
                android:textSize="10dp"
@@ -88,6 +92,7 @@
            <TextView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
+               android:id="@+id/edit"
                android:text="Edit Profile"
                android:textColor="#ffffff"
                android:textStyle="bold"
@@ -114,6 +119,7 @@
                <TextView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
+                   android:id="@+id/location"
                    android:text="Yaba, Lagos"
                    android:textColor="#ffffff"
                    android:textStyle="bold"
@@ -136,6 +142,7 @@
                <TextView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
+                   android:id="@+id/date"
                    android:text="1st April, 2021"
                    android:textColor="#ffffff"
                    android:textStyle="bold"

@@ -17,7 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DocumentPaged"></activity>
+        <activity android:name=".ViewGroupResources"></activity>
+        <activity android:name=".CreateTutorialGroupOffline" />
+        <activity android:name=".DocumentPaged" />
         <activity android:name=".CreateOnlineTutPhase1" />
         <activity android:name=".AlmostDone" />
         <activity android:name=".InviteFriends" />

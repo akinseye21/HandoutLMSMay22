@@ -5,10 +5,27 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.leanback.widget.HorizontalGridView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 
 /**
@@ -30,6 +47,22 @@ public class Tutor extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+//    HorizontalGridView gridView;
+    //array for tutors
+    final ArrayList<String> Array_tutorName = new ArrayList<>();
+    final ArrayList<String> Array_tutorFaculty = new ArrayList<>();
+    int ArrayLength, ArrayLength2;
+
+    final ArrayList<String> Array_groupName = new ArrayList<>();
+    final ArrayList<String> Array_groupTime = new ArrayList<>();
+    final ArrayList<String> Array_groupTutor = new ArrayList<>();
+
+    GridView gridView, gridView2;
+    ProgressBar progressBar_tutor, progressBar_group;
+
+    public static final String ALL_TUTORS = "http://35.84.44.203/handouts/handout_get_tutors";
+    public static final String ALL_GROUPS = "http://35.84.44.203/handouts/handout_get_all_tutorials";
 
     public Tutor() {
         // Required empty public constructor
@@ -66,7 +99,100 @@ public class Tutor extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tutor, container, false);
+        View v = inflater.inflate(R.layout.fragment_tutor, container, false);
+
+        gridView = v.findViewById(R.id.simpleGridView);
+        gridView2 = v.findViewById(R.id.simpleGridView2);
+
+        progressBar_tutor = v.findViewById(R.id.progressBar_tutor);
+        progressBar_group = v.findViewById(R.id.progressBar_group);
+
+        //get all tutors here
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, ALL_TUTORS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("Response= "+response);
+                        progressBar_tutor.setVisibility(View.GONE);
+//                        Toast.makeText(getContext(), "Response = "+response, Toast.LENGTH_LONG).show();
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            ArrayLength = jsonArray.length();
+
+                            for (int i = 0; i < ArrayLength; i++) {
+                                JSONObject section = jsonArray.getJSONObject(i);
+                                String tutorName = section.getString("fullname");
+                                String tutorFaculty = section.getString("faculty");
+
+                                Array_tutorName.add(tutorName);
+                                Array_tutorFaculty.add(tutorFaculty);
+                            }
+
+                            //populate values on the gridview
+                            TutorListViewAdapter tutorListViewAdapter = new TutorListViewAdapter(getActivity(), Array_tutorName, Array_tutorFaculty);
+                            gridView.setAdapter(tutorListViewAdapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressBar_tutor.setVisibility(View.GONE);
+                error.printStackTrace();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
+
+
+        //get all groups here
+        StringRequest stringRequest_groups = new StringRequest(Request.Method.GET, ALL_GROUPS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("Response= "+response);
+                        progressBar_group.setVisibility(View.GONE);
+//                        Toast.makeText(getContext(), "Response = "+response, Toast.LENGTH_LONG).show();
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            ArrayLength2 = jsonArray.length();
+
+                            for (int i = 0; i < ArrayLength2; i++) {
+                                JSONObject section = jsonArray.getJSONObject(i);
+                                String groupName = section.getString("groupname");
+                                String groupTime = section.getString("_date");
+                                String groupTutor = section.getString("created_by");
+
+                                Array_groupName.add(groupName);
+                                Array_groupTime.add(groupTime);
+                                Array_groupTutor.add(groupTutor);
+                            }
+
+                            //populate values on the gridview
+                            GroupListViewAdapter groupListViewAdapter = new GroupListViewAdapter(getActivity(), Array_groupName, Array_groupTime, Array_groupTutor);
+                            gridView2.setAdapter(groupListViewAdapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressBar_group.setVisibility(View.GONE);
+                error.printStackTrace();
+            }
+        });
+        RequestQueue requestQueue2 = Volley.newRequestQueue(getActivity());
+        requestQueue2.add(stringRequest_groups);
+
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

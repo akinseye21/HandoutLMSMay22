@@ -5,10 +5,6 @@
     android:layout_height="match_parent"
     android:background="#ff9a96"
     tools:context=".Tutor">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
         <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,249 +22,31 @@
                 android:layout_marginTop="10dp"
                 android:paddingBottom="5dp"/>
 
-            <HorizontalScrollView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:scrollbars="none">
-                <LinearLayout
+                android:layout_height="wrap_content">
+                <ProgressBar
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp">
-                    <LinearLayout
-                        android:layout_width="100dp"
+                    android:id="@+id/progressBar_tutor"
+                    android:layout_centerInParent="true"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp">
+
+                    <GridView
+                        android:id="@+id/simpleGridView"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/ic92"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="John Doe"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="15dp"/>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:layout_width="10dp"
-                                android:layout_height="10dp"
-                                android:layout_marginRight="3dp"
-                                android:src="@drawable/ic45"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Science, Technology, Politics"
-                                android:textColor="#ffffff"
-                                android:textStyle="italic"
-                                android:textSize="8dp"/>
-                        </LinearLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="View Profile"
-                            android:textColor="#000000"
-                            android:textStyle="italic"
-                            android:textSize="7dp"/>
-
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/ic92"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="John Doe"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="15dp"/>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:layout_width="10dp"
-                                android:layout_height="10dp"
-                                android:layout_marginRight="3dp"
-                                android:src="@drawable/ic45"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Science, Technology, Politics"
-                                android:textColor="#ffffff"
-                                android:textStyle="italic"
-                                android:textSize="8dp"/>
-                        </LinearLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="View Profile"
-                            android:textColor="#000000"
-                            android:textStyle="italic"
-                            android:textSize="7dp"/>
-
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/ic92"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="John Doe"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="15dp"/>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:layout_width="10dp"
-                                android:layout_height="10dp"
-                                android:layout_marginRight="3dp"
-                                android:src="@drawable/ic45"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Science, Technology, Politics"
-                                android:textColor="#ffffff"
-                                android:textStyle="italic"
-                                android:textSize="8dp"/>
-                        </LinearLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="View Profile"
-                            android:textColor="#000000"
-                            android:textStyle="italic"
-                            android:textSize="7dp"/>
-
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/ic92"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="John Doe"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="15dp"/>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:layout_width="10dp"
-                                android:layout_height="10dp"
-                                android:layout_marginRight="3dp"
-                                android:src="@drawable/ic45"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Science, Technology, Politics"
-                                android:textColor="#ffffff"
-                                android:textStyle="italic"
-                                android:textSize="8dp"/>
-                        </LinearLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="View Profile"
-                            android:textColor="#000000"
-                            android:textStyle="italic"
-                            android:textSize="7dp"/>
-
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/ic92"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="John Doe"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="15dp"/>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:layout_width="10dp"
-                                android:layout_height="10dp"
-                                android:layout_marginRight="3dp"
-                                android:src="@drawable/ic45"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Science, Technology, Politics"
-                                android:textColor="#ffffff"
-                                android:textStyle="italic"
-                                android:textSize="8dp"/>
-                        </LinearLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="View Profile"
-                            android:textColor="#000000"
-                            android:textStyle="italic"
-                            android:textSize="7dp"/>
-
-                    </LinearLayout>
-
+                        android:numColumns="3"
+                        android:verticalSpacing="10dp"
+                        android:scrollbars="vertical"/>
 
                 </LinearLayout>
-            </HorizontalScrollView>
+
+            </RelativeLayout>
+
+
 
 
             <View
@@ -291,245 +69,31 @@
                 android:layout_marginTop="30dp"
                 android:paddingBottom="5dp"/>
 
-            <HorizontalScrollView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:scrollbars="none">
-                <LinearLayout
+                android:layout_height="wrap_content">
+                <ProgressBar
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp">
-
-
-                    <LinearLayout
-                        android:layout_width="150dp"
+                    android:id="@+id/progressBar_group"
+                    android:layout_centerInParent="true"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <GridView
+                        android:id="@+id/simpleGridView2"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="bottom"
-                            android:gravity="bottom"
-                            android:background="@drawable/rounded_white_little"
-                            android:orientation="vertical">
-                            <ImageView
-                                android:layout_width="150dp"
-                                android:layout_height="200dp"
-                                android:layout_gravity="bottom"
-                                android:src="@drawable/ic44"/>
-                        </LinearLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Learning how to create beautiful scenes in Illustrator"
-                            android:textColor="#ffffff"
-                            android:layout_marginTop="3dp"
-                            android:textStyle="bold"
-                            android:textSize="8dp"/>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:layout_width="10dp"
-                                android:layout_height="10dp"
-                                android:layout_marginRight="3dp"
-                                android:src="@drawable/ic43"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="30 minutes"
-                                android:textColor="#ffffff"
-                                android:textStyle="bold"
-                                android:textSize="8dp"/>
-                        </LinearLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Tutor: Jack Grealish"
-                            android:textColor="#ffffff"
-                            android:layout_marginTop="3dp"
-                            android:textStyle="bold"
-                            android:textSize="8dp"/>
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:orientation="vertical">
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="bottom"
-                            android:gravity="bottom"
-                            android:background="@drawable/rounded_white_little"
-                            android:orientation="vertical">
-                            <ImageView
-                                android:layout_width="150dp"
-                                android:layout_height="200dp"
-                                android:layout_gravity="bottom"
-                                android:src="@drawable/ic44"/>
-                        </LinearLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Learning how to create beautiful scenes in Illustrator"
-                            android:textColor="#ffffff"
-                            android:layout_marginTop="3dp"
-                            android:textStyle="bold"
-                            android:textSize="8dp"/>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:layout_width="10dp"
-                                android:layout_height="10dp"
-                                android:layout_marginRight="3dp"
-                                android:src="@drawable/ic43"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="30 minutes"
-                                android:textColor="#ffffff"
-                                android:textStyle="bold"
-                                android:textSize="8dp"/>
-                        </LinearLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Tutor: Jack Grealish"
-                            android:textColor="#ffffff"
-                            android:layout_marginTop="3dp"
-                            android:textStyle="bold"
-                            android:textSize="8dp"/>
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:orientation="vertical">
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="bottom"
-                            android:gravity="bottom"
-                            android:background="@drawable/rounded_white_little"
-                            android:orientation="vertical">
-                            <ImageView
-                                android:layout_width="150dp"
-                                android:layout_height="200dp"
-                                android:layout_gravity="bottom"
-                                android:src="@drawable/ic44"/>
-                        </LinearLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Learning how to create beautiful scenes in Illustrator"
-                            android:textColor="#ffffff"
-                            android:layout_marginTop="3dp"
-                            android:textStyle="bold"
-                            android:textSize="8dp"/>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:layout_width="10dp"
-                                android:layout_height="10dp"
-                                android:layout_marginRight="3dp"
-                                android:src="@drawable/ic43"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="30 minutes"
-                                android:textColor="#ffffff"
-                                android:textStyle="bold"
-                                android:textSize="8dp"/>
-                        </LinearLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Tutor: Jack Grealish"
-                            android:textColor="#ffffff"
-                            android:layout_marginTop="3dp"
-                            android:textStyle="bold"
-                            android:textSize="8dp"/>
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:orientation="vertical">
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="bottom"
-                            android:gravity="bottom"
-                            android:background="@drawable/rounded_white_little"
-                            android:orientation="vertical">
-                            <ImageView
-                                android:layout_width="150dp"
-                                android:layout_height="200dp"
-                                android:layout_gravity="bottom"
-                                android:src="@drawable/ic44"/>
-                        </LinearLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Learning how to create beautiful scenes in Illustrator"
-                            android:textColor="#ffffff"
-                            android:layout_marginTop="3dp"
-                            android:textStyle="bold"
-                            android:textSize="8dp"/>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:layout_width="10dp"
-                                android:layout_height="10dp"
-                                android:layout_marginRight="3dp"
-                                android:src="@drawable/ic43"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="30 minutes"
-                                android:textColor="#ffffff"
-                                android:textStyle="bold"
-                                android:textSize="8dp"/>
-                        </LinearLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Tutor: Jack Grealish"
-                            android:textColor="#ffffff"
-                            android:layout_marginTop="3dp"
-                            android:textStyle="bold"
-                            android:textSize="8dp"/>
-                    </LinearLayout>
-
+                        android:numColumns="2"
+                        android:verticalSpacing="10dp"
+                        android:scrollbars="vertical"/>
 
                 </LinearLayout>
-            </HorizontalScrollView>
+
+            </RelativeLayout>
+
 
         </LinearLayout>
-    </ScrollView>
 
 
 </FrameLayout>

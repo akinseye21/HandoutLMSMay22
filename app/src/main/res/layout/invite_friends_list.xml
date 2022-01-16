@@ -18,14 +18,31 @@
             android:layout_centerVertical="true"
             android:src="@drawable/ic79"
             app:civ_circle_background_color="#e14463"/>
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Akinseye Abayomi"
-            android:textColor="#ffffff"
-            android:textSize="15dp"
+            android:layout_marginLeft="50dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="50dp"/>
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/contact_name"
+                android:text="Akinseye Abayomi"
+                android:textColor="#ffffff"
+                android:textSize="15dp"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="08137439027"
+                android:textColor="#ffffff"
+                android:textStyle="italic"
+                android:id="@+id/phonenum"
+                android:textSize="8dp"
+                android:layout_centerVertical="true"/>
+        </LinearLayout>
+
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

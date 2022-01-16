@@ -16,6 +16,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -150,12 +151,9 @@ public class FeedsDashboard extends AppCompatActivity implements
 
 
 
-
-
-
-//
-
     }
+
+
 
     private void loadFragment(Fragment fragment) {
         // create a FragmentTransaction to begin the transaction and replace the Fragment

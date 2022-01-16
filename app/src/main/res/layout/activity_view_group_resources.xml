@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#293241"
     android:orientation="vertical"
-    tools:context=".AlmostDone">
+    tools:context=".ViewGroupResources">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Almost\nDone!"
+        android:text="Group Information"
         android:textColor="#ffffff"
         android:textStyle="bold"
         android:textSize="30dp"
@@ -34,7 +34,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -91,7 +92,20 @@
                     android:textColor="#c7c7c7"
                     android:background="@android:color/transparent"/>
 
-
+                <ProgressBar
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center|center_vertical"
+                    android:visibility="visible"
+                    android:id="@+id/progressBar"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:id="@+id/loading_text"
+                    android:visibility="visible"
+                    android:text="Loading Group Information"
+                    android:textColor="#ffffff"/>
 
 
                 <TextView
@@ -141,59 +155,89 @@
                     android:textColor="#c7c7c7"
                     android:background="@android:color/transparent"/>
 
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:orientation="horizontal">
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/share"
-                    android:checked="true"/>
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic126"/>
-            </LinearLayout>
-
-            <ProgressBar
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center|center_vertical"
-                android:visibility="gone"
-                android:id="@+id/progressBar"/>
-
-
-            <LinearLayout
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center_horizontal"
-                android:layout_below="@+id/lin_offline_tutorial"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="30dp"
-                android:id="@+id/next"
-                android:background="@drawable/rounded_orange">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Done"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:textColor="#ffffff" />
+                    android:text="Tutorial Type"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#8cc63e"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/tut_type"
+                    android:text=""
+                    android:textColor="#c7c7c7"
+                    android:background="@android:color/transparent"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tutorial Mode"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#8cc63e"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/mode"
+                    android:text=""
+                    android:textColor="#c7c7c7"
+                    android:background="@android:color/transparent"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tutorial Material"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#8cc63e"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:visibility="gone"
+                    android:id="@+id/audio_material"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/idBtnPlay"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/play_btn"/>
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/idBtnPause"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/pause_btn"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:visibility="invisible"
+                    android:id="@+id/video_material"
+                    android:orientation="horizontal">
+                    <VideoView
+                        android:id="@+id/videoView"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_centerInParent="true" />
+                </LinearLayout>
+
             </LinearLayout>
+            
         </LinearLayout>
 
     </ScrollView>
-
-
-
-
 
 </LinearLayout>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#69dccd"
-    tools:context=".Gigs">
+    tools:context=".gig_on_profile">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,6 +38,17 @@
             android:textStyle="normal"
             android:layout_gravity="center"
             android:id="@+id/progressText"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sorry! You have no gig(s) created"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/error"
+            android:id="@+id/notification_text"/>
 
         <LinearLayout
             android:layout_width="match_parent"

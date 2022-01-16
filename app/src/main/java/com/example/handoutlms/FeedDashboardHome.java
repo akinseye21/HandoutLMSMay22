@@ -1,22 +1,39 @@
 package com.example.handoutlms;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.tabs.TabLayout;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +62,16 @@ public class FeedDashboardHome extends Fragment {
     private ViewPager viewpager2;
     LinearLayout ext_yel, ext_pink, ext_green;
     View lineview;
-    ScrollView biglin;
+    ListView my_list;
+    int ArrayLength;
+//    ScrollView biglin;
+
+    ProgressBar progressBar;
+    TextView progressText;
+
+    TabLayout tabLayout;
+
+    public static final String ALL_TUTORIALS = "http://35.84.44.203/handouts/handout_get_all_tutorials";
 
     private OnFragmentInteractionListener mListener;
 
@@ -92,8 +118,14 @@ public class FeedDashboardHome extends Fragment {
         ext_pink = v.findViewById(R.id.extension_red);
         ext_yel = v.findViewById(R.id.extension_yellow);
         ext_green = v.findViewById(R.id.extension_green);
-        biglin = v.findViewById(R.id.biglin);
+//        biglin = v.findViewById(R.id.biglin);
         lineview = v.findViewById(R.id.lineview);
+
+        my_list = v.findViewById(R.id.my_list);
+
+
+        progressBar = v.findViewById(R.id.progressBar);
+        progressText = v.findViewById(R.id.progressText);
 
         viewpager2 = v.findViewById(R.id.viewpager);
         addTabs2(viewpager2);
@@ -108,21 +140,21 @@ public class FeedDashboardHome extends Fragment {
                             ext_pink.setVisibility(View.GONE);
                             ext_yel.setVisibility(View.VISIBLE);
                             ext_green.setVisibility(View.GONE);
-                            biglin.setVisibility(View.GONE);
+//                            biglin.setVisibility(View.GONE);
                             lineview.setVisibility(View.GONE);
                         }
                         else if(tab.getPosition() == 2){
                             ext_pink.setVisibility(View.GONE);
                             ext_yel.setVisibility(View.GONE);
                             ext_green.setVisibility(View.VISIBLE);
-                            biglin.setVisibility(View.GONE);
+//                            biglin.setVisibility(View.GONE);
                             lineview.setVisibility(View.GONE);
                         }
                         else if(tab.getPosition() == 0){
                             ext_pink.setVisibility(View.VISIBLE);
                             ext_yel.setVisibility(View.GONE);
                             ext_green.setVisibility(View.GONE);
-                            biglin.setVisibility(View.GONE);
+//                            biglin.setVisibility(View.GONE);
                             lineview.setVisibility(View.GONE);
                         }
                     }
@@ -130,6 +162,194 @@ public class FeedDashboardHome extends Fragment {
                 }
         );
 
+        //array for all users
+        final ArrayList<String> Array_createdBy = new ArrayList<>();
+        final ArrayList<String> Array_groupName = new ArrayList<>();
+        final ArrayList<String> Array_university = new ArrayList<>();
+        final ArrayList<String> Array_mode = new ArrayList<>();
+        final ArrayList<String> Array_groupNameInside = new ArrayList<>();
+        final ArrayList<String> Array_description = new ArrayList<>();
+        final ArrayList<String> Array_time = new ArrayList<>();
+        final ArrayList<String> Array_category = new ArrayList<>();
+
+
+//        tabLayout = getActivity().findViewById(R.id.tabLayout);
+//        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tabm) {
+//                if(tabm.getPosition() == 0){
+//                    viewpager2.setVisibility(View.GONE);
+//                    tab.setVisibility(View.GONE);
+//                    tab.getTabAt(0).select();
+//                    ext_pink.setVisibility(View.GONE);
+//                    ext_yel.setVisibility(View.GONE);
+//                    ext_green.setVisibility(View.GONE);
+//                    my_list.setVisibility(View.GONE);
+//
+//                    Intent j = new Intent(getContext(), FeedsDashboard.class);
+//                    startActivity(j);
+//                    Toast.makeText(getContext(), "Clicked", Toast.LENGTH_LONG).show();
+//                }
+//                else if (tabm.getPosition() == 1){
+//
+//                }
+//                else if (tabm.getPosition() == 2){
+//
+//                }
+//                else if (tabm.getPosition() == 3){
+//
+//                }
+//                else if (tabm.getPosition() == 4){
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//
+//            }
+//        });
+
+
+
+
+        final SwipeRefreshLayout swipeRefreshLayout = v.findViewById(R.id.refreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+//                StringRequest stringRequest1 = new StringRequest(Request.Method.GET, ALL_TUTORIALS,
+//                        new Response.Listener<String>() {
+//                            @Override
+//                            public void onResponse(String response) {
+////                                System.out.println("Response= "+response);
+//                                try {
+//                                    JSONArray jsonArray = new JSONArray(response);
+//                                    ArrayLength = jsonArray.length();
+//
+//                                    for (int i = ArrayLength - 1; i >= 0; i--) {
+//                                        JSONObject section = jsonArray.getJSONObject(i);
+//                                        String createdBy = section.getString("created_by");
+//                                        String groupName = section.getString("groupname");
+//                                        String university = section.getString("university");
+//                                        String mode = section.getString("mode");
+//                                        String groupNameInside = section.getString("groupname");
+//                                        String description = section.getString("description");
+//                                        String time = section.getString("_time");
+//                                        String category = section.getString("category");
+//
+//                                        Array_createdBy.add(createdBy);
+//                                        Array_groupName.add(groupName);
+//                                        Array_university.add(university);
+//                                        Array_mode.add(mode);
+//                                        Array_groupNameInside.add(groupNameInside);
+//                                        Array_description.add(description);
+//                                        Array_time.add(time);
+//                                        Array_category.add(category);
+//                                    }
+//
+//                                    //populate values on the gridview
+//                                    HomeListViewAdapter homeListViewAdapter = new HomeListViewAdapter(getActivity(), Array_createdBy, Array_groupName, Array_university, Array_mode, Array_groupNameInside, Array_description, Array_time, Array_category);
+//                                    my_list.setAdapter(homeListViewAdapter);
+//                                    //hide progressBar and progressText
+//                                    progressBar.setVisibility(View.GONE);
+//                                    progressText.setVisibility(View.GONE);
+//
+//                                } catch (JSONException e) {
+//                                    e.printStackTrace();
+//                                }
+//                            }
+//                        }, new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        error.printStackTrace();
+//                    }
+//                });
+//                RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+//                requestQueue.add(stringRequest1);
+
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, ALL_TUTORIALS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("Response= "+response);
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            ArrayLength = jsonArray.length();
+
+                            for (int i = ArrayLength - 1; i >= 0; i--) {
+                                JSONObject section = jsonArray.getJSONObject(i);
+                                String createdBy = section.getString("created_by");
+                                String groupName = section.getString("groupname");
+                                String university = section.getString("university");
+                                String mode = section.getString("mode");
+                                String groupNameInside = section.getString("groupname");
+                                String description = section.getString("description");
+                                String time = section.getString("_time");
+                                String category = section.getString("category");
+
+                                Array_createdBy.add(createdBy);
+                                Array_groupName.add(groupName);
+                                Array_university.add(university);
+                                Array_mode.add(mode);
+                                Array_groupNameInside.add(groupNameInside);
+                                Array_description.add(description);
+                                Array_time.add(time);
+                                Array_category.add(category);
+                            }
+
+                            //populate values on the gridview
+                            HomeListViewAdapter homeListViewAdapter = new HomeListViewAdapter(getActivity(), Array_createdBy, Array_groupName, Array_university, Array_mode, Array_groupNameInside, Array_description, Array_time, Array_category);
+                            my_list.setAdapter(homeListViewAdapter);
+                            //hide progressBar and progressText
+                            progressBar.setVisibility(View.GONE);
+                            progressText.setVisibility(View.GONE);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
+
+
+        tabLayout = getActivity().findViewById(R.id.tabLayout);
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                if(tab.getPosition() == 0){
+                    Intent j = new Intent(getContext(), FeedsDashboard.class);
+                    startActivity(j);
+                }
+            }
+        });
 
 
         tutors.setOnClickListener(new View.OnClickListener() {
@@ -149,9 +369,11 @@ public class FeedDashboardHome extends Fragment {
                 ext_pink.setVisibility(View.VISIBLE);
                 ext_yel.setVisibility(View.GONE);
                 ext_green.setVisibility(View.GONE);
-                biglin.setVisibility(View.GONE);
+                my_list.setVisibility(View.GONE);
+//                biglin.setVisibility(View.GONE);
                 lineview.setVisibility(View.GONE);
 //                fl.setVisibility(View.GONE);
+
             }
         });
 
@@ -168,12 +390,12 @@ public class FeedDashboardHome extends Fragment {
 //                viewPager.setVisibility(View.GONE);
                 viewpager2.setVisibility(View.VISIBLE);
                 tab.setVisibility(View.VISIBLE);
-                tab.setupWithViewPager(viewpager2);
                 tab.getTabAt(1).select();
                 ext_pink.setVisibility(View.GONE);
                 ext_yel.setVisibility(View.VISIBLE);
                 ext_green.setVisibility(View.GONE);
-                biglin.setVisibility(View.GONE);
+                my_list.setVisibility(View.GONE);
+//                biglin.setVisibility(View.GONE);
                 lineview.setVisibility(View.GONE);
 //                fl.setVisibility(View.GONE);
             }
@@ -196,7 +418,8 @@ public class FeedDashboardHome extends Fragment {
                 ext_pink.setVisibility(View.GONE);
                 ext_yel.setVisibility(View.GONE);
                 ext_green.setVisibility(View.VISIBLE);
-                biglin.setVisibility(View.GONE);
+                my_list.setVisibility(View.GONE);
+//                biglin.setVisibility(View.GONE);
                 lineview.setVisibility(View.GONE);
 //                fl.setVisibility(View.GONE);
             }

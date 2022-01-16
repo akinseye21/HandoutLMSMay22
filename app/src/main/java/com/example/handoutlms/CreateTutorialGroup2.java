@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 
 public class CreateTutorialGroup2 extends AppCompatActivity {
 
-    LinearLayout online_tut;
+    LinearLayout online_tut, offline_tut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,15 @@ public class CreateTutorialGroup2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(CreateTutorialGroup2.this, CreateTutorialGroupOnline.class);
+                startActivity(i);
+            }
+        });
+
+        offline_tut = findViewById(R.id.lin_offline_tutorial);
+        offline_tut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(CreateTutorialGroup2.this, CreateTutorialGroupOffline.class);
                 startActivity(i);
             }
         });

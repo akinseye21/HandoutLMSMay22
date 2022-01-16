@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -30,11 +31,12 @@ import java.util.Map;
 public class AlmostDone extends AppCompatActivity {
 
     LinearLayout done;
-    String group_name, category, date, time, university, description, tut_type;
+    String group_name, category, date, time, university, description, tut_type, location, tutorial_mode;
     TextView gp_name, cat, dat, tim, uni, desc;
     CheckBox share;
     SharedPreferences preferences;
     ProgressBar progressBar;
+    ImageView back;
 
     public static final String TUTORIAL_GROUP = "http://35.84.44.203/handouts/handout_tutorial_groups";
 
@@ -55,6 +57,14 @@ public class AlmostDone extends AppCompatActivity {
         time = i.getStringExtra("time");
         university = i.getStringExtra("university");
         description = i.getStringExtra("description");
+        location = i.getStringExtra("location");
+
+        if(location.equals("")){
+            tutorial_mode = "online";
+        }
+        else if(!location.equals("")){
+            tutorial_mode = "offline";
+        }
 
         gp_name = findViewById(R.id.tutorial_group_name);
         cat = findViewById(R.id.category);
@@ -64,6 +74,14 @@ public class AlmostDone extends AppCompatActivity {
         desc = findViewById(R.id.description);
         share = findViewById(R.id.share);
         progressBar = findViewById(R.id.progressBar);
+        back = findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         gp_name.setText(group_name);
         cat.setText(category);
@@ -103,14 +121,19 @@ public class AlmostDone extends AppCompatActivity {
 //                                        String signed_name = jsonObject.getString("fullname");
                                         String status = jsonObject.getString("status");
 
-                                        if(status.equals("successful")){
-                                            Toast.makeText(getApplicationContext(), "Group created successfully", Toast.LENGTH_LONG).show();
+                                        if(status.equals("successful") && location.equals("")){
+                                            Toast.makeText(getApplicationContext(), "Online Group created successfully", Toast.LENGTH_LONG).show();
                                             System.out.println(jsonObject);
 
                                             Intent i = new Intent(AlmostDone.this, CreateOnlineTutPhase1.class);
                                             i.putExtra("Group_name", group_name);
                                             startActivity(i);
-                                        }else{
+                                        }
+                                        else if(status.equals("successful") && !location.equals("")){
+                                            Toast.makeText(getApplicationContext(), "Offline Group created successfully", Toast.LENGTH_LONG).show();
+                                            System.out.println(jsonObject);
+                                        }
+                                        else{
                                             Toast.makeText(getApplicationContext(), "Group creation failed. Please try again", Toast.LENGTH_LONG).show();
                                             System.out.println("Error sending group info: "+jsonObject);
                                         }
@@ -145,7 +168,8 @@ public class AlmostDone extends AppCompatActivity {
                             params.put("time", time);
                             params.put("institution", university);
                             params.put("short_description", description);
-                            params.put("tutorial_mode", "offline");
+                            params.put("tutorial_mode", tutorial_mode);
+                            params.put("venue", location);
                             return params;
                         }
                     };

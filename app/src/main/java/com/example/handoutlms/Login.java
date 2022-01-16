@@ -2,7 +2,9 @@ package com.example.handoutlms;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -30,6 +32,8 @@ public class Login extends AppCompatActivity {
     String gotten_email, gotten_pass;
     ProgressBar progressBar;
 
+    SharedPreferences preferences;
+
     public static final String LOGIN = "http://35.84.44.203/handouts/handout_login";
 
     @Override
@@ -41,6 +45,9 @@ public class Login extends AppCompatActivity {
         email = findViewById(R.id.edtemail);
         pass = findViewById(R.id.edtpassword);
         progressBar = findViewById(R.id.progressBar);
+
+        preferences = getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor myEdit = preferences.edit();
 
         login = findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +74,9 @@ public class Login extends AppCompatActivity {
 
                                     if(status.equals("login successful")){
                                         Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
+                                        String login_email = jsonObject.getString("email");
+                                        myEdit.putString("email", login_email);
+                                        myEdit.commit();
                                         Intent i = new Intent(Login.this, FeedsDashboard.class);
                                         startActivity(i);
                                     }else{
