@@ -31,10 +31,10 @@ import java.util.Map;
 public class AlmostDone extends AppCompatActivity {
 
     LinearLayout done;
-    String group_name, category, date, time, university, description, tut_type, location, tutorial_mode;
+    String group_name, category, date, time, university, description, tut_type, location, tutorial_mode, email;
     TextView gp_name, cat, dat, tim, uni, desc;
     CheckBox share;
-    SharedPreferences preferences;
+//    SharedPreferences preferences;
     ProgressBar progressBar;
     ImageView back;
 
@@ -47,8 +47,8 @@ public class AlmostDone extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //get sharedpreference
-        preferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
-        final String email = preferences.getString("email", "not available");
+//        preferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+//        final String email = preferences.getString("email", "not available");
 
         Intent i = getIntent();
         group_name = i.getStringExtra("group_name");
@@ -58,6 +58,7 @@ public class AlmostDone extends AppCompatActivity {
         university = i.getStringExtra("university");
         description = i.getStringExtra("description");
         location = i.getStringExtra("location");
+        email = i.getStringExtra("email");
 
         if(location.equals("")){
             tutorial_mode = "online";
@@ -148,9 +149,9 @@ public class AlmostDone extends AppCompatActivity {
                                 @Override
                                 public void onErrorResponse(VolleyError volleyError) {
 
-                                    if(volleyError == null){
-                                        return;
-                                    }
+//                                    if(volleyError == null){
+//                                        return;
+//                                    }
 
                                     progressBar.setVisibility(View.GONE);
 //                                    Toast.makeText(getContext(),  volleyError.getMessage(), Toast.LENGTH_LONG).show();

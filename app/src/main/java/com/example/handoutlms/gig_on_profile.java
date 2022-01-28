@@ -55,6 +55,10 @@ public class gig_on_profile extends Fragment {
     final ArrayList<String> Array_gigName = new ArrayList<>();
     final ArrayList<String> Array_gigPrice = new ArrayList<>();
     final ArrayList<String> Array_gigTime = new ArrayList<>();
+
+    final ArrayList<String> Array_gigName2 = new ArrayList<>();
+    final ArrayList<String> Array_gigPrice2 = new ArrayList<>();
+    final ArrayList<String> Array_gigTime2 = new ArrayList<>();
     int ArrayLength;
 
     ProgressBar progressBar;
@@ -109,7 +113,6 @@ public class gig_on_profile extends Fragment {
 
         preferences = getActivity().getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
         final String got_email = preferences.getString("email", "not available");
-        Toast.makeText(getActivity(), "Email = "+got_email, Toast.LENGTH_LONG).show();
         System.out.println("Email = "+got_email);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, USER_GIGS,
@@ -122,29 +125,52 @@ public class gig_on_profile extends Fragment {
                             JSONArray jsonArray = new JSONArray(response);
                             ArrayLength = jsonArray.length();
 
-                            for (int i = 0; i < ArrayLength; i++) {
-                                JSONObject section = jsonArray.getJSONObject(i);
-                                String gigName = section.getString("gigname");
-                                String gigPrice = section.getString("_price");
-                                String gigTime = section.getString("_time");
-                                String stat = section.getString("status");
+                            if(ArrayLength > 1){
+                                for(int j = 0; j<ArrayLength; j++){
+                                    JSONObject section1 = jsonArray.getJSONObject(j);
+                                    String gigName = section1.getString("gigname");
+                                    String gigPrice = section1.getString("_price");
+                                    String gigTime = section1.getString("_time");
 
-                                if(stat.equals("0")){
-                                    nogig.setVisibility(View.VISIBLE);
-                                }else{
+
                                     Array_gigName.add(gigName);
                                     Array_gigPrice.add(gigPrice);
                                     Array_gigTime.add(gigTime);
+
                                 }
 
+                                //populate values on the gridview
+                                GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName, Array_gigPrice, Array_gigTime);
+                                gridView.setAdapter(gigProfileListViewAdapter);
+                                //hide progressBar and progressText
+                                progressBar.setVisibility(View.GONE);
+                                progressText.setVisibility(View.GONE);
+                            }else{
+                                JSONObject section2 = jsonArray.getJSONObject(0);
+                                int len = section2.length();
+                                if(len == 1){
+                                    nogig.setVisibility(View.VISIBLE);
+                                    //hide progressBar and progressText
+                                    progressBar.setVisibility(View.GONE);
+                                    progressText.setVisibility(View.GONE);
+                                }else{
+                                    String gigName2 = section2.getString("gigname");
+                                    String gigPrice2 = section2.getString("_price");
+                                    String gigTime2 = section2.getString("_time");
 
+                                    Array_gigName2.add(gigName2);
+                                    Array_gigPrice2.add(gigPrice2);
+                                    Array_gigTime2.add(gigTime2);
+
+                                    //populate values on the gridview
+                                    GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName2, Array_gigPrice2, Array_gigTime2);
+                                    gridView.setAdapter(gigProfileListViewAdapter);
+                                    //hide progressBar and progressText
+                                    progressBar.setVisibility(View.GONE);
+                                    progressText.setVisibility(View.GONE);
+                                }
                             }
-                            //populate values on the gridview
-                            GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName, Array_gigPrice, Array_gigTime);
-                            gridView.setAdapter(gigProfileListViewAdapter);
-                            //hide progressBar and progressText
-                            progressBar.setVisibility(View.GONE);
-                            progressText.setVisibility(View.GONE);
+
                         }
                         catch (JSONException e){
                             e.printStackTrace();

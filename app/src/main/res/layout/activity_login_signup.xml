@@ -24,75 +24,80 @@
         android:layout_gravity="center"
         android:layout_marginTop="1dp"/>
 
-    <LinearLayout
-        android:layout_width="160dp"
-        android:layout_height="27dp"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:padding="5dp"
-        android:gravity="center"
-        android:layout_marginTop="380dp"
-        android:background="@drawable/round_white">
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:layout_marginLeft="20dp"
-            android:src="@drawable/ic_email"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Login with Google"
-            android:textStyle="bold"
-            android:textSize="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="#000000"/>
-    </LinearLayout>
+<!--    <LinearLayout-->
+<!--        android:layout_width="160dp"-->
+<!--        android:layout_height="27dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:padding="5dp"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_marginTop="380dp"-->
+<!--        android:background="@drawable/round_white">-->
+<!--        <ImageView-->
+<!--            android:layout_width="10dp"-->
+<!--            android:layout_height="10dp"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:src="@drawable/ic_email"/>-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Login with Google"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="10dp"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:textColor="#000000"/>-->
+<!--    </LinearLayout>-->
 
-    <LinearLayout
-        android:layout_width="160dp"
-        android:layout_height="27dp"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:padding="5dp"
-        android:gravity="center"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/round_blue">
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:layout_marginLeft="20dp"
-            android:src="@drawable/ic_facebook"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Login with Facebook"
-            android:textStyle="bold"
-            android:textSize="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="#ffffff"/>
-    </LinearLayout>
+<!--    <LinearLayout-->
+<!--        android:layout_width="160dp"-->
+<!--        android:layout_height="27dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:padding="5dp"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:background="@drawable/round_blue">-->
+<!--        <ImageView-->
+<!--            android:layout_width="10dp"-->
+<!--            android:layout_height="10dp"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:src="@drawable/ic_facebook"/>-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Login with Facebook"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="10dp"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:textColor="#ffffff"/>-->
+<!--    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="380dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/signup"
+            android:background="@drawable/round_white"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:text="Sign Up"
             android:textSize="12dp"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textStyle="bold"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="/"
-            android:textSize="12dp"
+            android:textSize="15dp"
             android:textColor="#ffffff"
             android:textStyle="bold"
             android:paddingLeft="20dp"
@@ -101,6 +106,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/login"
+            android:background="@drawable/rounded_orange"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:text="Login"
             android:textSize="12dp"
             android:textColor="#ffffff"
@@ -112,11 +122,11 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="30dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="By logging in, you agree to our "
+            android:text="By signing up, you agree to our "
             android:textColor="#ffffff"
             android:textStyle="normal"
             android:textSize="10dp"/>
@@ -124,6 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/terms"
+            android:id="@+id/tos"
             android:textColor="#ffffff"
             android:textStyle="bold"
             android:textSize="10dp"/>
@@ -138,6 +149,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/privacy"
+            android:id="@+id/pp"
             android:textColor="#ffffff"
             android:textStyle="bold"
             android:textSize="10dp"

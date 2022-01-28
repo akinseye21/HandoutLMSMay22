@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class HomeListViewAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<String> created_by;
+    private ArrayList<String> created_by_name;
     private ArrayList<String> group_name;
     private ArrayList<String> university;
     private ArrayList<String> mode;
@@ -22,10 +23,11 @@ public class HomeListViewAdapter extends BaseAdapter {
     private ArrayList<String> time;
     private ArrayList<String> category;
 
-    public HomeListViewAdapter (Context context, ArrayList<String> created_by, ArrayList<String> group_name, ArrayList<String> university, ArrayList<String> mode, ArrayList<String> group_name_inside, ArrayList<String> description, ArrayList<String> time, ArrayList<String> category){
+    public HomeListViewAdapter (Context context, ArrayList<String> created_by, ArrayList<String> created_by_name, ArrayList<String> group_name, ArrayList<String> university, ArrayList<String> mode, ArrayList<String> group_name_inside, ArrayList<String> description, ArrayList<String> time, ArrayList<String> category){
         //Getting all the values
         this.context = context;
         this.created_by = created_by;
+        this.created_by_name = created_by_name;
         this.group_name = group_name;
         this.university = university;
         this.mode = mode;
@@ -67,7 +69,7 @@ public class HomeListViewAdapter extends BaseAdapter {
         TextView tme = convertView.findViewById(R.id.time);
 //        RelativeLayout rellay_bg = convertView.findViewById(R.id.rellay_bg);
 
-        crt_by.setText(created_by.get(position));
+        crt_by.setText(created_by_name.get(position));
         grp_name.setText(category.get(position));
         univ.setText(university.get(position));
 //        mod.setText(mode.get(position));

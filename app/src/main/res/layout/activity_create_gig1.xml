@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#293241"
+    android:orientation="vertical"
+    tools:context=".CreateGig1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/rel1">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/back"
+            android:src="@drawable/arrow_left"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Tell us what you need done"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textSize="25dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact skilled freelancer within minutes"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textSize="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose a name for your project"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                android:textColor="#65dc9a"
+                android:textSize="12dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:singleLine="true"
+                android:hint="Project name e.g build a website"
+                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
+                android:textSize="12dp"
+                android:background="@null"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="#ffffff"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Project description"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="10dp"
+                android:textColor="#65dc9a"
+                android:textSize="12dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:singleLine="true"
+                android:hint="Write a description"
+                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
+                android:textSize="12dp"
+                android:background="@null"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="#ffffff"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Required skills"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="10dp"
+                android:textColor="#65dc9a"
+                android:textSize="12dp"/>
+
+<!--                <AutoCompleteTextView-->
+<!--                    android:id="@+id/autoCompleteTextView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:hint="Select skills"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:textSize="12dp"-->
+<!--                    android:textColor="#ffffff"-->
+<!--                    android:textColorHint="#ffffff"-->
+<!--                    />-->
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:id="@+id/auto1"
+                android:hint="Select Skills"
+                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
+                android:textSize="12dp"
+                android:background="@null"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="#ffffff"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:id="@+id/skills_layout"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/green_outline"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+            <GridView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numColumns="3"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
+                android:verticalSpacing="10dp"
+                android:id="@+id/mylist"/>
+        </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="40dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/green_outline"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp">
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:tint="#65dc9a"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/home_ic4"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:text="Upload files"
+                    android:textColor="#65dc9a"
+                    android:textSize="12dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Images or files that will be helpful in experiencing your brief"
+                    android:textColor="#ffffff"
+                    android:textSize="8dp"
+                    android:layout_marginLeft="30dp"/>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="27dp"
+                android:layout_gravity="center"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="Next"
+                android:textSize="14dp"
+                android:textColor="#ffffff"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/rounded_orange"
+                android:textAllCaps="false"
+                android:id="@+id/next"/>
+
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

@@ -45,10 +45,6 @@
                android:layout_height="wrap_content"
                android:orientation="horizontal"
                android:gravity="center_vertical">
-               <ImageView
-                   android:layout_width="20dp"
-                   android:layout_height="20dp"
-                   android:src="@drawable/ic46"/>
                <TextView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
@@ -210,7 +206,7 @@
                    android:layout_height="3dp"
                    android:id="@+id/lintut"
                    android:visibility="visible"
-                   android:background="#ff9a96"/>
+                   android:background="#f05d72"/>
            </LinearLayout>
 
 
@@ -270,7 +266,7 @@
                    android:layout_height="3dp"
                    android:id="@+id/lingame"
                    android:visibility="gone"
-                   android:background="#f1ce40"/>
+                   android:background="#8b3894"/>
            </LinearLayout>
 
 
@@ -300,7 +296,7 @@
                    android:layout_height="3dp"
                    android:id="@+id/lingig"
                    android:visibility="gone"
-                   android:background="#69dccd"/>
+                   android:background="#00adee"/>
            </LinearLayout>
 
 

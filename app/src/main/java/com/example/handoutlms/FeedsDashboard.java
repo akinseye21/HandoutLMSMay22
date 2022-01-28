@@ -36,7 +36,9 @@ public class FeedsDashboard extends AppCompatActivity implements
         tutorial_on_profile.OnFragmentInteractionListener,
         post_on_profile.OnFragmentInteractionListener,
         TaskManager1.OnFragmentInteractionListener,
-        TodayTask.OnFragmentInteractionListener{
+        TodayTask.OnFragmentInteractionListener,
+        gig_on_profile.OnFragmentInteractionListener{
+
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -45,6 +47,7 @@ public class FeedsDashboard extends AppCompatActivity implements
     LinearLayout lin1;
     FrameLayout fl;
     ImageView plus;
+    String email;
 
 
     @Override
@@ -53,12 +56,21 @@ public class FeedsDashboard extends AppCompatActivity implements
         setContentView(R.layout.activity_feeds_dashboard);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        Intent j = getIntent();
+        email = j.getStringExtra("email");
+
+        Bundle args = new Bundle();
+        args.putString("email", email);
+        gig_on_profile gop = new gig_on_profile();
+        gop.setArguments(args);
+
 
         plus = findViewById(R.id.plus);
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(FeedsDashboard.this, CreateTutorialGroup2.class);
+                Intent i = new Intent(FeedsDashboard.this, AddOptions.class);
+                i.putExtra("email", email);
                 startActivity(i);
             }
         });
@@ -144,7 +156,12 @@ public class FeedsDashboard extends AppCompatActivity implements
 
                     @Override
                     public void onTabReselected(TabLayout.Tab tab) {
-                        super.onTabReselected(tab);
+//                        super.onTabReselected(tab);
+                        if(tab.getPosition() == 0){
+                            Intent j = new Intent(getApplicationContext(), FeedsDashboard.class);
+                            startActivity(j);
+                            finish();
+                        }
                     }
                 }
         );
@@ -208,6 +225,11 @@ public class FeedsDashboard extends AppCompatActivity implements
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        // do nothing
     }
 
     class ViewPagerAdapter extends FragmentStatePagerAdapter {

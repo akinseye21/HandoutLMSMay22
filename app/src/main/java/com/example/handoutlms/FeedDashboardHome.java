@@ -14,6 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -159,11 +160,16 @@ public class FeedDashboardHome extends Fragment {
                         }
                     }
 
+                    @Override
+                    public void onTabReselected(TabLayout.Tab tab) {
+                        super.onTabReselected(tab);
+                    }
                 }
         );
 
         //array for all users
         final ArrayList<String> Array_createdBy = new ArrayList<>();
+        final ArrayList<String> Array_createdByName = new ArrayList<>();
         final ArrayList<String> Array_groupName = new ArrayList<>();
         final ArrayList<String> Array_university = new ArrayList<>();
         final ArrayList<String> Array_mode = new ArrayList<>();
@@ -218,10 +224,10 @@ public class FeedDashboardHome extends Fragment {
 
 
 
-        final SwipeRefreshLayout swipeRefreshLayout = v.findViewById(R.id.refreshLayout);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
+//        final SwipeRefreshLayout swipeRefreshLayout = v.findViewById(R.id.refreshLayout);
+//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
 //                StringRequest stringRequest1 = new StringRequest(Request.Method.GET, ALL_TUTORIALS,
 //                        new Response.Listener<String>() {
 //                            @Override
@@ -272,9 +278,9 @@ public class FeedDashboardHome extends Fragment {
 //                RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
 //                requestQueue.add(stringRequest1);
 
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        });
+//                swipeRefreshLayout.setRefreshing(false);
+//            }
+//        });
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, ALL_TUTORIALS,
@@ -289,6 +295,7 @@ public class FeedDashboardHome extends Fragment {
                             for (int i = ArrayLength - 1; i >= 0; i--) {
                                 JSONObject section = jsonArray.getJSONObject(i);
                                 String createdBy = section.getString("created_by");
+                                String createdByName = section.getString("created_by_name");
                                 String groupName = section.getString("groupname");
                                 String university = section.getString("university");
                                 String mode = section.getString("mode");
@@ -298,6 +305,7 @@ public class FeedDashboardHome extends Fragment {
                                 String category = section.getString("category");
 
                                 Array_createdBy.add(createdBy);
+                                Array_createdByName.add(createdByName);
                                 Array_groupName.add(groupName);
                                 Array_university.add(university);
                                 Array_mode.add(mode);
@@ -308,7 +316,7 @@ public class FeedDashboardHome extends Fragment {
                             }
 
                             //populate values on the gridview
-                            HomeListViewAdapter homeListViewAdapter = new HomeListViewAdapter(getActivity(), Array_createdBy, Array_groupName, Array_university, Array_mode, Array_groupNameInside, Array_description, Array_time, Array_category);
+                            HomeListViewAdapter homeListViewAdapter = new HomeListViewAdapter(getActivity(), Array_createdBy, Array_createdByName, Array_groupName, Array_university, Array_mode, Array_groupNameInside, Array_description, Array_time, Array_category);
                             my_list.setAdapter(homeListViewAdapter);
                             //hide progressBar and progressText
                             progressBar.setVisibility(View.GONE);
@@ -347,6 +355,7 @@ public class FeedDashboardHome extends Fragment {
                 if(tab.getPosition() == 0){
                     Intent j = new Intent(getContext(), FeedsDashboard.class);
                     startActivity(j);
+                    getActivity().finish();
                 }
             }
         });
@@ -374,6 +383,11 @@ public class FeedDashboardHome extends Fragment {
                 lineview.setVisibility(View.GONE);
 //                fl.setVisibility(View.GONE);
 
+
+//                GridView gridView = root.findViewById(R.id.simpleGridView);
+//                GridView gridView2 = v.findViewById(R.id.simpleGridView2);
+//                gridView.removeAllViews();
+//                gridView2.removeAllViews();
             }
         });
 

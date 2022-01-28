@@ -60,6 +60,8 @@ public class Tutor extends Fragment {
 
     GridView gridView, gridView2;
     ProgressBar progressBar_tutor, progressBar_group;
+    TutorListViewAdapter tutorListViewAdapter;
+    GroupListViewAdapter groupListViewAdapter;
 
     public static final String ALL_TUTORS = "http://35.84.44.203/handouts/handout_get_tutors";
     public static final String ALL_GROUPS = "http://35.84.44.203/handouts/handout_get_all_tutorials";
@@ -95,6 +97,8 @@ public class Tutor extends Fragment {
         }
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -129,8 +133,9 @@ public class Tutor extends Fragment {
                             }
 
                             //populate values on the gridview
-                            TutorListViewAdapter tutorListViewAdapter = new TutorListViewAdapter(getActivity(), Array_tutorName, Array_tutorFaculty);
+                            tutorListViewAdapter = new TutorListViewAdapter(getActivity(), Array_tutorName, Array_tutorFaculty);
                             gridView.setAdapter(tutorListViewAdapter);
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -147,6 +152,10 @@ public class Tutor extends Fragment {
         });
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
+
+        //clear array
+        Array_tutorName.clear();
+        Array_tutorFaculty.clear();
 
 
         //get all groups here
@@ -173,8 +182,9 @@ public class Tutor extends Fragment {
                             }
 
                             //populate values on the gridview
-                            GroupListViewAdapter groupListViewAdapter = new GroupListViewAdapter(getActivity(), Array_groupName, Array_groupTime, Array_groupTutor);
+                            groupListViewAdapter = new GroupListViewAdapter(getActivity(), Array_groupName, Array_groupTime, Array_groupTutor);
                             gridView2.setAdapter(groupListViewAdapter);
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -192,8 +202,14 @@ public class Tutor extends Fragment {
         RequestQueue requestQueue2 = Volley.newRequestQueue(getActivity());
         requestQueue2.add(stringRequest_groups);
 
+        //clear array
+        Array_groupName.clear();
+        Array_groupTime.clear();
+        Array_groupTutor.clear();
+
         return v;
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

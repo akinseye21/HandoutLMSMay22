@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item>
+        <shape>
+            <solid android:color="@android:color/transparent" />
+            <stroke
+                android:color="#65dc9a"
+                android:width="0.1dp"/>
+            <padding
+                android:bottom="2dp"
+                android:left="5dp"
+                android:right="10dp"
+                android:top="2dp" />
+        </shape>
+    </item>
+    <item>
+        <bitmap
+            android:gravity="end|right"
+            android:src="@drawable/ic_down_arrow_whitey" />
+    </item>
+</layer-list>

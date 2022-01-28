@@ -144,6 +144,11 @@ public class Gigs extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
 
+        //clear array
+        Array_gigName.clear();
+        Array_gigPrice.clear();
+        Array_gigTime.clear();
+
         return v;
     }
 

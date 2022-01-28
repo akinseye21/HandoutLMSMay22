@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 public class LoginSignup extends AppCompatActivity {
     TextView signup, login;
+    TextView tos, pp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +21,29 @@ public class LoginSignup extends AppCompatActivity {
         signup = findViewById(R.id.signup);
         login = findViewById(R.id.login);
 
+        tos = findViewById(R.id.tos);
+        pp = findViewById(R.id.pp);
+
+        tos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), TermsOfService.class);
+                startActivity(i);
+            }
+        });
+
+        pp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), TermsOfService.class);
+                startActivity(i);
+            }
+        });
+
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(LoginSignup.this, Signup.class);
+                Intent i = new Intent(LoginSignup.this, NewSignup.class);
                 startActivity(i);
             }
         });

@@ -60,6 +60,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Name your tutorial group"
                 android:layout_marginTop="5dp"
+                android:singleLine="true"
                 android:id="@+id/group_name"
                 android:textColor="#ffffff"
                 android:textColorHint="#c7c7c7"
@@ -80,6 +81,7 @@
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:singleLine="true"
                 android:id="@+id/spinnercategory"
                 android:background="@drawable/rounded_transparent_dropdown"
                 android:spinnerMode="dropdown"/>
@@ -102,6 +104,7 @@
                 android:id="@+id/mydate"
                 android:hint="Set date"
                 android:clickable="true"
+                android:singleLine="true"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:cursorVisible="false"
@@ -127,6 +130,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/time"
                 android:clickable="true"
+                android:singleLine="true"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:cursorVisible="false"
@@ -152,6 +156,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:id="@+id/spinneruni"
+                android:singleLine="true"
                 android:background="@drawable/rounded_transparent_dropdown"
                 android:spinnerMode="dropdown"/>
 
@@ -172,6 +177,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Write a short description"
+                android:singleLine="true"
                 android:id="@+id/description"
                 android:layout_marginTop="5dp"
                 android:textColor="#ffffff"

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f1ce40"
+    android:background="#8b3894"
     tools:context=".Games">
 
     <ScrollView
@@ -14,6 +14,54 @@
         android:layout_height="match_parent"
         android:id="@+id/myLin"
         android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trivia Games"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="5dp"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:elevation="5dp"
+                android:id="@+id/trivia_layout"
+                android:background="@drawable/rounded_new_bg">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/triviaranking"
+                    android:layout_below="@+id/trivia"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Handout Trivia"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:textSize="10dp"
+                    android:id="@+id/trivia"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"/>
+
+            </RelativeLayout>
+
+
 
             <TextView
                 android:layout_width="wrap_content"

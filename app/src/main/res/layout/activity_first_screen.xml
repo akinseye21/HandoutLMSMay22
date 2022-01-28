@@ -64,7 +64,7 @@
         android:layout_width="150dp"
         android:layout_height="27dp"
         android:layout_gravity="center"
-        android:text="Continue"
+        android:text="Get started"
         android:textSize="10dp"
         android:textStyle="bold"
         android:textColor="#ffffff"

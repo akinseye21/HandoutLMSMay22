@@ -30,7 +30,7 @@ public class InviteFriends extends AppCompatActivity {
 
     LinearLayout next;
     ListView listView;
-    String group_name, category, date, time, university, description, location;
+    String group_name, category, date, time, university, description, location, email;
     ProgressBar progressBar;
     ImageView back;
 
@@ -53,6 +53,7 @@ public class InviteFriends extends AppCompatActivity {
         university = i.getStringExtra("university");
         description = i.getStringExtra("description");
         location = i.getStringExtra("location");
+        email = i.getStringExtra("email");
 
         next = findViewById(R.id.next);
         listView = findViewById(R.id.listview);
@@ -80,6 +81,7 @@ public class InviteFriends extends AppCompatActivity {
                 i.putExtra("university", university);
                 i.putExtra("description", description);
                 i.putExtra("location", location);
+                i.putExtra("email", email);
                 startActivity(i);
             }
         });

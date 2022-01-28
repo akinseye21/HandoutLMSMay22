@@ -214,7 +214,7 @@ public class Profile2 extends Fragment {
         adapter.addFrag(new tutorial_on_profile(), "");
         adapter.addFrag(new post_on_profile(), "");
         adapter.addFrag(new Games(), "");
-        adapter.addFrag(new Gigs(), "");
+        adapter.addFrag(new gig_on_profile(), "");
         viewPager.setAdapter(adapter);
     }
 

@@ -41,6 +41,9 @@ dependencies {
     //swipe to refresh
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
+    //multiple spinner selection
+//    implementation 'com.github.pratikbutani:MultiSelectSpinner:1.0.1'
+
 //    implementation 'com.squareup.okhttp3:okhttp:4.2.0'
 //    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
 }

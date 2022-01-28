@@ -27,7 +27,7 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
     DatePickerDialog datePickerDialog;
     TimePickerDialog picker;
     Spinner uni, cat;
-    String group_name, category, date, time, location_st, description;
+    String group_name, category, date, time, location_st, description, email;
     ImageView back;
 
     @Override
@@ -35,6 +35,9 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_tutorial_group_offline);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        Intent j = getIntent();
+        email = j.getStringExtra("email");
 
         String[] institutions = {"Select University..."," ","Ahmadu Bello University Zaria", "Adekunle Ajasin Unversity Akungba", "Adeleke University",
                 "Babcock University", "Federal University of Tech. Minna", "Federal University of Tech. Akure", "University of Lagos", "University of Abuja",
@@ -131,6 +134,7 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
                     i.putExtra("university", uni.getSelectedItem().toString());
                     i.putExtra("description", description);
                     i.putExtra("location", location_st);
+                    i.putExtra("email", email);
                     startActivity(i);
                 }
 

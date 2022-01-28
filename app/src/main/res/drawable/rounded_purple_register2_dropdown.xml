@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
     <item>
         <shape>
-            <solid android:color="#19233e" />
+            <solid android:color="@android:color/transparent" />
             <corners
                 android:radius="10dp"/>
             <padding
@@ -16,5 +16,7 @@
         <bitmap
             android:gravity="end"
             android:src="@drawable/ic_down_arrow_whitey" />
+        <padding
+            android:left="10dp" />
     </item>
 </layer-list>

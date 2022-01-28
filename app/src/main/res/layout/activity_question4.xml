@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#293241"
+    android:orientation="vertical"
+    tools:context=".Question4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:id="@+id/lin1">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/categoryicon"
+            android:src="@drawable/triviasoccer"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Soccer"
+            android:textColor="#ffffff"
+            android:textSize="15dp"
+            android:id="@+id/categori"
+            android:textStyle="bold"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff"
+            android:layout_marginLeft="5dp"/>
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/lin1"
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Which American businessman became owner of AstonVilla in 2006?"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:textSize="15dp"
+            android:id="@+id/question"
+            android:layout_alignParentTop="true"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/options"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_below="@+id/question"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Randy Lerner"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:gravity="center_horizontal"
+                android:background="@drawable/rounded_white_transparent_100"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:id="@+id/option1"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Ndukwe Nwogu"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:gravity="center_horizontal"
+                android:background="@drawable/rounded_white_transparent_100"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:id="@+id/option2"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Daniel Ukpai"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:gravity="center_horizontal"
+                android:background="@drawable/rounded_white_transparent_100"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:id="@+id/option3"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Akinseye Abayomi"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:gravity="center_horizontal"
+                android:background="@drawable/rounded_white_transparent_100"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:id="@+id/option4"
+                android:layout_margin="10dp"/>
+
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/options"
+            android:id="@+id/counterTime"
+            android:layout_margin="20dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/triviatimericon"
+                android:id="@+id/timericon"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5:00"
+                android:layout_gravity="center"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:textColor="#ffd304"
+                android:id="@+id/timecount"
+                android:layout_toRightOf="@+id/timericon"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You are running out of time!!"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:textColor="#ff0000"
+                android:id="@+id/runningout"
+                android:visibility="invisible"
+                android:layout_toRightOf="@+id/timericon"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="04"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="#000000"
+                android:layout_centerInParent="true"
+                android:padding="10dp"
+                android:background="@drawable/playagain"/>
+
+        </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -29,8 +29,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp">
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
 
                         <RelativeLayout
                             android:layout_width="90dp"
@@ -54,7 +54,7 @@
                                 android:text="Tutors"
                                 android:textColor="#f7f7f7"
                                 android:textStyle="bold"
-                                android:textSize="12dp"
+                                android:textSize="15dp"
                                 android:layout_below="@+id/img1"
                                 android:layout_centerHorizontal="true"
                                 android:id="@+id/name"/>
@@ -71,10 +71,11 @@
                         </RelativeLayout>
 
                         <LinearLayout
-                            android:layout_width="80dp"
-                            android:layout_height="5dp"
+                            android:layout_width="90dp"
+                            android:layout_height="10dp"
                             android:orientation="horizontal"
                             android:layout_gravity="center"
+                            android:layout_marginTop="-4dp"
                             android:background="@drawable/rounded_pink3"
                             android:id="@+id/extension_red"
                             android:elevation="5dp"
@@ -88,8 +89,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp">
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
 
                         <RelativeLayout
                             android:layout_width="90dp"
@@ -113,7 +114,7 @@
                                 android:text="Games"
                                 android:textColor="#f7f7f7"
                                 android:textStyle="bold"
-                                android:textSize="12dp"
+                                android:textSize="15dp"
                                 android:layout_below="@+id/img2"
                                 android:layout_centerHorizontal="true"
                                 android:id="@+id/lessons"/>
@@ -130,10 +131,11 @@
                         </RelativeLayout>
 
                         <LinearLayout
-                            android:layout_width="80dp"
-                            android:layout_height="5dp"
+                            android:layout_width="90dp"
+                            android:layout_height="10dp"
                             android:orientation="horizontal"
                             android:layout_gravity="center"
+                            android:layout_marginTop="-4dp"
                             android:background="@drawable/rounded_yellow3"
                             android:id="@+id/extension_yellow"
                             android:elevation="5dp"
@@ -148,8 +150,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp">
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
 
                         <RelativeLayout
                             android:layout_width="90dp"
@@ -172,7 +174,7 @@
                                 android:text="Gigs"
                                 android:textColor="#f7f7f7"
                                 android:textStyle="bold"
-                                android:textSize="12dp"
+                                android:textSize="15dp"
                                 android:layout_below="@+id/img3"
                                 android:layout_centerHorizontal="true"
                                 android:id="@+id/incomes"/>
@@ -190,12 +192,13 @@
 
 
                         <LinearLayout
-                            android:layout_width="80dp"
-                            android:layout_height="5dp"
+                            android:layout_width="90dp"
+                            android:layout_height="10dp"
                             android:orientation="horizontal"
                             android:layout_gravity="center"
                             android:background="@drawable/rounded_deep_green3"
                             android:id="@+id/extension_green"
+                            android:layout_marginTop="-4dp"
                             android:elevation="5dp"
                             android:visibility="gone"/>
 
@@ -251,11 +254,11 @@
                     android:id="@+id/progressText"/>
 
                 <!--Swipe Refresh Layout -->
-                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                    android:id="@+id/refreshLayout"
-                    android:layout_below="@+id/lineview"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+<!--                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
+<!--                    android:id="@+id/refreshLayout"-->
+<!--                    android:layout_below="@+id/lineview"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent">-->
 
                     <ListView
                         android:layout_width="match_parent"
@@ -265,7 +268,7 @@
                         android:dividerHeight="0.1dp"
                         android:id="@+id/my_list"/>
 
-                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+<!--                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
 
 
 
