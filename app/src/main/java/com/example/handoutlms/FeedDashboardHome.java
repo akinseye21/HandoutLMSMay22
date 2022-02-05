@@ -179,109 +179,6 @@ public class FeedDashboardHome extends Fragment {
         final ArrayList<String> Array_category = new ArrayList<>();
 
 
-//        tabLayout = getActivity().findViewById(R.id.tabLayout);
-//        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tabm) {
-//                if(tabm.getPosition() == 0){
-//                    viewpager2.setVisibility(View.GONE);
-//                    tab.setVisibility(View.GONE);
-//                    tab.getTabAt(0).select();
-//                    ext_pink.setVisibility(View.GONE);
-//                    ext_yel.setVisibility(View.GONE);
-//                    ext_green.setVisibility(View.GONE);
-//                    my_list.setVisibility(View.GONE);
-//
-//                    Intent j = new Intent(getContext(), FeedsDashboard.class);
-//                    startActivity(j);
-//                    Toast.makeText(getContext(), "Clicked", Toast.LENGTH_LONG).show();
-//                }
-//                else if (tabm.getPosition() == 1){
-//
-//                }
-//                else if (tabm.getPosition() == 2){
-//
-//                }
-//                else if (tabm.getPosition() == 3){
-//
-//                }
-//                else if (tabm.getPosition() == 4){
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//
-//            }
-//        });
-
-
-
-
-//        final SwipeRefreshLayout swipeRefreshLayout = v.findViewById(R.id.refreshLayout);
-//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                StringRequest stringRequest1 = new StringRequest(Request.Method.GET, ALL_TUTORIALS,
-//                        new Response.Listener<String>() {
-//                            @Override
-//                            public void onResponse(String response) {
-////                                System.out.println("Response= "+response);
-//                                try {
-//                                    JSONArray jsonArray = new JSONArray(response);
-//                                    ArrayLength = jsonArray.length();
-//
-//                                    for (int i = ArrayLength - 1; i >= 0; i--) {
-//                                        JSONObject section = jsonArray.getJSONObject(i);
-//                                        String createdBy = section.getString("created_by");
-//                                        String groupName = section.getString("groupname");
-//                                        String university = section.getString("university");
-//                                        String mode = section.getString("mode");
-//                                        String groupNameInside = section.getString("groupname");
-//                                        String description = section.getString("description");
-//                                        String time = section.getString("_time");
-//                                        String category = section.getString("category");
-//
-//                                        Array_createdBy.add(createdBy);
-//                                        Array_groupName.add(groupName);
-//                                        Array_university.add(university);
-//                                        Array_mode.add(mode);
-//                                        Array_groupNameInside.add(groupNameInside);
-//                                        Array_description.add(description);
-//                                        Array_time.add(time);
-//                                        Array_category.add(category);
-//                                    }
-//
-//                                    //populate values on the gridview
-//                                    HomeListViewAdapter homeListViewAdapter = new HomeListViewAdapter(getActivity(), Array_createdBy, Array_groupName, Array_university, Array_mode, Array_groupNameInside, Array_description, Array_time, Array_category);
-//                                    my_list.setAdapter(homeListViewAdapter);
-//                                    //hide progressBar and progressText
-//                                    progressBar.setVisibility(View.GONE);
-//                                    progressText.setVisibility(View.GONE);
-//
-//                                } catch (JSONException e) {
-//                                    e.printStackTrace();
-//                                }
-//                            }
-//                        }, new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        error.printStackTrace();
-//                    }
-//                });
-//                RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-//                requestQueue.add(stringRequest1);
-
-//                swipeRefreshLayout.setRefreshing(false);
-//            }
-//        });
-
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, ALL_TUTORIALS,
                 new Response.Listener<String>() {
@@ -364,14 +261,6 @@ public class FeedDashboardHome extends Fragment {
         tutors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //hide the view
-                //extend the tutors button further down
-                //show tutors fragment
-//                addTabs2(viewpager2);
-//                linev.setVisibility(View.GONE);
-//                addTutorTab(viewPager);
-//                tabLayout.setVisibility(View.GONE);
-//                viewPager.setVisibility(View.GONE);
                 viewpager2.setVisibility(View.VISIBLE);
                 tab.setVisibility(View.VISIBLE);
                 tab.getTabAt(0).select();
@@ -379,29 +268,13 @@ public class FeedDashboardHome extends Fragment {
                 ext_yel.setVisibility(View.GONE);
                 ext_green.setVisibility(View.GONE);
                 my_list.setVisibility(View.GONE);
-//                biglin.setVisibility(View.GONE);
                 lineview.setVisibility(View.GONE);
-//                fl.setVisibility(View.GONE);
-
-
-//                GridView gridView = root.findViewById(R.id.simpleGridView);
-//                GridView gridView2 = v.findViewById(R.id.simpleGridView2);
-//                gridView.removeAllViews();
-//                gridView2.removeAllViews();
             }
         });
 
         games.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //hide the view
-                //extend the tutors button further down
-                //show tutors fragment
-//                addTabs2(viewpager2);
-//                linev.setVisibility(View.GONE);
-//                addGameTab(viewPager);
-//                tabLayout.setVisibility(View.GONE);
-//                viewPager.setVisibility(View.GONE);
                 viewpager2.setVisibility(View.VISIBLE);
                 tab.setVisibility(View.VISIBLE);
                 tab.getTabAt(1).select();
@@ -409,23 +282,13 @@ public class FeedDashboardHome extends Fragment {
                 ext_yel.setVisibility(View.VISIBLE);
                 ext_green.setVisibility(View.GONE);
                 my_list.setVisibility(View.GONE);
-//                biglin.setVisibility(View.GONE);
                 lineview.setVisibility(View.GONE);
-//                fl.setVisibility(View.GONE);
             }
         });
 
         gigs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //hide the view
-                //extend the tutors button further down
-                //show tutors fragment
-//                addTabs2(viewpager2);
-//                linev.setVisibility(View.GONE);
-//                addGigTab(viewPager);
-//                tabLayout.setVisibility(View.GONE);
-//                viewPager.setVisibility(View.GONE);
                 viewpager2.setVisibility(View.VISIBLE);
                 tab.setVisibility(View.VISIBLE);
                 tab.getTabAt(2).select();
@@ -433,9 +296,7 @@ public class FeedDashboardHome extends Fragment {
                 ext_yel.setVisibility(View.GONE);
                 ext_green.setVisibility(View.VISIBLE);
                 my_list.setVisibility(View.GONE);
-//                biglin.setVisibility(View.GONE);
                 lineview.setVisibility(View.GONE);
-//                fl.setVisibility(View.GONE);
             }
         });
 

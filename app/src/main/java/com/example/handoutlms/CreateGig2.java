@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
+
 public class CreateGig2 extends AppCompatActivity {
 
     String status = "unselected";
@@ -26,17 +28,28 @@ public class CreateGig2 extends AppCompatActivity {
     Button next;
     ImageView back;
 
+    String projectName, projectDescription;
+    ArrayList<String> Array_requiredSkills;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_gig2);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        Intent i = getIntent();
+        projectName = i.getStringExtra("Project name");
+        projectDescription = i.getStringExtra("Project description");
+        Array_requiredSkills  = i.getExtras().getStringArrayList("Required skills");
+
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), CreateGig1.class);
+                i.putExtra("Project name", projectName);
+                i.putExtra("Project description", projectDescription);
+                i.putStringArrayListExtra("Required skills", Array_requiredSkills);
                 startActivity(i);
             }
         });
@@ -61,6 +74,9 @@ public class CreateGig2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), CreateGig3.class);
+                i.putExtra("Project name", projectName);
+                i.putExtra("Project description", projectDescription);
+                i.putStringArrayListExtra("Required skills", Array_requiredSkills);
                 startActivity(i);
             }
         });

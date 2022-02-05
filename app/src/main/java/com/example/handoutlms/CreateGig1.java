@@ -10,12 +10,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,6 +38,9 @@ public class CreateGig1 extends AppCompatActivity {
     LinearLayout skills_layout;
     ImageView back;
 
+    EditText ProjectName, ProjectDescription;
+    String projectName, projectDescription;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +50,10 @@ public class CreateGig1 extends AppCompatActivity {
         mylist = findViewById(R.id.mylist);
         skills_layout = findViewById(R.id.skills_layout);
         back = findViewById(R.id.back);
+        ProjectName = findViewById(R.id.edt_projectname);
+        ProjectDescription = findViewById(R.id.edt_projectdesc);
+
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,9 +94,19 @@ public class CreateGig1 extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(getApplicationContext(), ""+Array_passed, Toast.LENGTH_LONG).show();
-                Intent i = new Intent(getApplicationContext(), CreateGig2.class);
-                startActivity(i);
+                projectName = ProjectName.getText().toString();
+                projectDescription = ProjectDescription.getText().toString();
+
+                if (projectName.isEmpty() || projectDescription.isEmpty()){
+                    Snackbar.make(findViewById(android.R.id.content), "Some fields are empty", Snackbar.LENGTH_LONG).show();
+                }else{
+                    Intent i = new Intent(getApplicationContext(), CreateGig2.class);
+                    i.putExtra("Project name", projectName);
+                    i.putExtra("Project description", projectDescription);
+                    i.putStringArrayListExtra("Required skills", Array_passed);
+                    startActivity(i);
+                }
+
             }
         });
     }

@@ -47,7 +47,7 @@ public class FeedsDashboard extends AppCompatActivity implements
     LinearLayout lin1;
     FrameLayout fl;
     ImageView plus;
-    String email;
+    String email, sent_from;
 
 
     @Override
@@ -56,13 +56,18 @@ public class FeedsDashboard extends AppCompatActivity implements
         setContentView(R.layout.activity_feeds_dashboard);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+
+
         Intent j = getIntent();
         email = j.getStringExtra("email");
+        sent_from = j.getStringExtra("sent from");
 
-        Bundle args = new Bundle();
-        args.putString("email", email);
+
+
+        Bundle args2 = new Bundle();
+        args2.putString("email", email);
         gig_on_profile gop = new gig_on_profile();
-        gop.setArguments(args);
+        gop.setArguments(args2);
 
 
         plus = findViewById(R.id.plus);

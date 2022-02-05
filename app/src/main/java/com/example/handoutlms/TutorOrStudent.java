@@ -31,8 +31,8 @@ public class TutorOrStudent extends AppCompatActivity {
     Button next;
     String email;
     String usertype;
+    String sent_from = "Register";
 
-    SharedPreferences preferences;
 
     public static final String UPDATE = "http://35.84.44.203/handouts/handout_usertype";
 
@@ -42,8 +42,8 @@ public class TutorOrStudent extends AppCompatActivity {
         setContentView(R.layout.activity_tutor_or_student);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        preferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
-        email = preferences.getString("email", "not available");
+        Intent i = getIntent();
+        email = i.getStringExtra("email");
 
         tutor = findViewById(R.id.tutor);
         student = findViewById(R.id.student);
@@ -79,7 +79,7 @@ public class TutorOrStudent extends AppCompatActivity {
                                 public void onResponse(String response) {
 
                                     System.out.println("Response = "+response);
-                                    Toast.makeText(getApplicationContext(), "Response = "+response, Toast.LENGTH_LONG).show();
+//                                    Toast.makeText(getApplicationContext(), "Response = "+response, Toast.LENGTH_LONG).show();
 
 
 
@@ -90,6 +90,8 @@ public class TutorOrStudent extends AppCompatActivity {
                                         if(status.equals("successful")){
                                             //go to dashboard
                                             Intent i = new Intent(TutorOrStudent.this, FeedsDashboard.class);
+                                            i.putExtra("email", email);
+                                            i.putExtra("sent from", sent_from);
                                             startActivity(i);
                                         }
 

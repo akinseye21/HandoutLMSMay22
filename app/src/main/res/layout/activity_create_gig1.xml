@@ -69,6 +69,7 @@
                 android:textColorHint="#ffffff"
                 android:textColor="#ffffff"
                 android:textSize="12dp"
+                android:id="@+id/edt_projectname"
                 android:background="@null"/>
             <View
                 android:layout_width="match_parent"
@@ -96,6 +97,7 @@
                 android:textColorHint="#ffffff"
                 android:textColor="#ffffff"
                 android:textSize="12dp"
+                android:id="@+id/edt_projectdesc"
                 android:background="@null"/>
             <View
                 android:layout_width="match_parent"

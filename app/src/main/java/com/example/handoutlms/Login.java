@@ -39,6 +39,7 @@ public class Login extends AppCompatActivity {
     TextView forgotPassword;
 
     SharedPreferences preferences;
+    String sent_from = "Login";
 
     public static final String LOGIN = "http://35.84.44.203/handouts/handout_login";
 
@@ -113,6 +114,7 @@ public class Login extends AppCompatActivity {
                                         myEdit.commit();
                                         Intent i = new Intent(Login.this, FeedsDashboard.class);
                                         i.putExtra("email", email);
+                                        i.putExtra("sent from", sent_from);
                                         startActivity(i);
                                     }else{
                                         Toast.makeText(getApplicationContext(), "Login failed. Please try again", Toast.LENGTH_LONG).show();

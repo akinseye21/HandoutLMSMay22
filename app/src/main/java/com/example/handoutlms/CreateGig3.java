@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class CreateGig3 extends AppCompatActivity {
 
     CardView fixed, perhour;
@@ -25,11 +27,19 @@ public class CreateGig3 extends AppCompatActivity {
     Spinner budget;
     String selected_budget_category = "nill";
 
+    String projectName, projectDescription, paymentMode;
+    ArrayList<String> Array_requiredSkills;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_gig3);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        Intent i = getIntent();
+        projectName = i.getStringExtra("Project name");
+        projectDescription = i.getStringExtra("Project description");
+        Array_requiredSkills  = i.getExtras().getStringArrayList("Required skills");
 
         String[] budget_category = {"Select a category...",
                 "",
@@ -61,6 +71,10 @@ public class CreateGig3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), CreateGig2.class);
+                i.putExtra("Project name", projectName);
+                i.putExtra("Project description", projectDescription);
+                i.putStringArrayListExtra("Required skills", Array_requiredSkills);
+                i.putExtra("Payment mode", paymentMode);
                 startActivity(i);
             }
         });
@@ -76,12 +90,16 @@ public class CreateGig3 extends AppCompatActivity {
                     perhour.setCardBackgroundColor(Color.TRANSPARENT);
                     fixed_update = "selected";
                     perhour_update = "unselected";
+
+                    paymentMode = "fixed";
                 }
                 else if (fixed_update.equals("selected")){
                     fixed.setCardBackgroundColor(Color.TRANSPARENT);
                     perhour.setCardBackgroundColor(Color.parseColor("#2800ff00"));
                     fixed_update = "unselected";
                     perhour_update = "selected";
+
+                    paymentMode = "hourly";
                 }
             }
         });
@@ -94,12 +112,16 @@ public class CreateGig3 extends AppCompatActivity {
                     fixed.setCardBackgroundColor(Color.TRANSPARENT);
                     perhour_update = "selected";
                     fixed_update = "unselected";
+
+                    paymentMode = "hourly";
                 }
                 else if (perhour_update.equals("selected")){
                     perhour.setCardBackgroundColor(Color.TRANSPARENT);
                     fixed.setCardBackgroundColor(Color.parseColor("#2800ff00"));
                     perhour_update = "unselected";
                     fixed_update = "selected";
+
+                    paymentMode = "fixed";
                 }
             }
         });
@@ -110,7 +132,11 @@ public class CreateGig3 extends AppCompatActivity {
             public void onClick(View v) {
                 if(selected_budget_category != "nill" && fixed_update.equals("selected") || perhour_update.equals("selected")){
                     Intent i = new Intent(getApplicationContext(), CreateGig4.class);
-                    i.putExtra("selected_category", selected_budget_category );
+                    i.putExtra("Project name", projectName);
+                    i.putExtra("Project description", projectDescription);
+                    i.putStringArrayListExtra("Required skills", Array_requiredSkills);
+                    i.putExtra("Payment mode", paymentMode);
+                    i.putExtra("Budget category", selected_budget_category );
                     startActivity(i);
                 } else{
                     Toast.makeText(getApplicationContext(), "Please select a card and a budget category", Toast.LENGTH_LONG).show();

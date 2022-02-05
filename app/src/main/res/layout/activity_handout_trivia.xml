@@ -63,6 +63,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/username"
+                android:maxLength="6"
+                android:ellipsize="end"
                 android:text="User 1"
                 android:textSize="10dp"
                 android:textStyle="bold"

@@ -13,7 +13,7 @@ public class WelcomePage extends AppCompatActivity {
 
     Button next;
     TextView fullname;
-    String name;
+    String name, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,7 @@ public class WelcomePage extends AppCompatActivity {
 
         Intent i = getIntent();
         name = i.getStringExtra("fullname");
+        email = i.getStringExtra("email");
 
         fullname = findViewById(R.id.fullname);
         fullname.setText(name);
@@ -31,6 +32,7 @@ public class WelcomePage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(WelcomePage.this, TutorOrStudent.class);
+                i.putExtra("email", email);
                 startActivity(i);
             }
         });

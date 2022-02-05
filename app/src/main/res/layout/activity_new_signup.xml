@@ -67,9 +67,10 @@
                         android:layout_marginRight="20dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Name"
+                        android:hint="Full Name"
                         android:textColorHint="#ffffff"
                         android:textColor="#ffffff"
+                        android:capitalize="sentences"
                         android:inputType="textPersonName"
                         android:textSize="15dp"
                         android:id="@+id/edtname"
@@ -265,6 +266,14 @@
                     android:background="@drawable/rounded_purple_register2_dropdown"
                     android:spinnerMode="dialog"/>
             </LinearLayout>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:id="@+id/progressBar"
+                android:visibility="gone"/>
 
 
             <Button

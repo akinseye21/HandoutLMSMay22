@@ -129,8 +129,8 @@ public class gig_on_profile extends Fragment {
                                 for(int j = 0; j<ArrayLength; j++){
                                     JSONObject section1 = jsonArray.getJSONObject(j);
                                     String gigName = section1.getString("gigname");
-                                    String gigPrice = section1.getString("_price");
-                                    String gigTime = section1.getString("_time");
+                                    String gigPrice = section1.getString("budget_category");
+                                    String gigTime = section1.getString("payment_mode");
 
 
                                     Array_gigName.add(gigName);
@@ -155,8 +155,8 @@ public class gig_on_profile extends Fragment {
                                     progressText.setVisibility(View.GONE);
                                 }else{
                                     String gigName2 = section2.getString("gigname");
-                                    String gigPrice2 = section2.getString("_price");
-                                    String gigTime2 = section2.getString("_time");
+                                    String gigPrice2 = section2.getString("budget_category");
+                                    String gigTime2 = section2.getString("payment_mode");
 
                                     Array_gigName2.add(gigName2);
                                     Array_gigPrice2.add(gigPrice2);
@@ -194,6 +194,11 @@ public class gig_on_profile extends Fragment {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
+
+
+        Array_gigName.clear();
+        Array_gigPrice.clear();
+        Array_gigTime.clear();
 
         return v;
     }

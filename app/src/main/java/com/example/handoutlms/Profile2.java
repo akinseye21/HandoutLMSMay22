@@ -58,6 +58,7 @@ public class Profile2 extends Fragment {
     TextView email, username, dept, school, location, date, edit;
     String got_fullname, got_dept, got_institution, got_dob;
     SharedPreferences preferences;
+    String got_email;
 
     public static final String USER_PROFILE = "http://35.84.44.203/handouts/handout_get_user_profile";
 
@@ -117,7 +118,6 @@ public class Profile2 extends Fragment {
         edit = v.findViewById(R.id.edit);
         preferences = getActivity().getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
         final String got_email = preferences.getString("email", "not available");
-
         addTabs(viewPager);
 
         tabLayout.setupWithViewPager(viewPager);
