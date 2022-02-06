@@ -180,12 +180,27 @@
                         android:layout_height="40dp"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
+                        android:visibility="gone"
                         android:background="@drawable/rounded_gig_dropdown"
-                        android:id="@+id/spinner_budget"
+                        android:id="@+id/spinner_budget_fixed"
                         android:layout_marginLeft="10dp"
                         android:textStyle="normal"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"/>
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:visibility="gone"
+                        android:background="@drawable/rounded_gig_dropdown"
+                        android:id="@+id/spinner_budget_hour"
+                        android:layout_marginLeft="10dp"
+                        android:textStyle="normal"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"/>
+
 
                 </LinearLayout>
 

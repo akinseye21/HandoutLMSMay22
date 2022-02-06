@@ -126,7 +126,7 @@ public class gig_on_profile extends Fragment {
                             ArrayLength = jsonArray.length();
 
                             if(ArrayLength > 1){
-                                for(int j = 0; j<ArrayLength; j++){
+                                for(int j = ArrayLength - 1; j >= 0; j--){
                                     JSONObject section1 = jsonArray.getJSONObject(j);
                                     String gigName = section1.getString("gigname");
                                     String gigPrice = section1.getString("budget_category");

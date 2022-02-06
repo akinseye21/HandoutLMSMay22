@@ -60,7 +60,7 @@ public class FeedsDashboard extends AppCompatActivity implements
 
         Intent j = getIntent();
         email = j.getStringExtra("email");
-        sent_from = j.getStringExtra("sent from");
+        sent_from = j.getStringExtra("sent from");  //either "Login" or "Register"
 
 
 
@@ -265,5 +265,12 @@ public class FeedsDashboard extends AppCompatActivity implements
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
+    }
+
+    public String getSentFrom(){
+        return sent_from;
+    }
+    public String getSignupEmail(){
+        return email;
     }
 }

@@ -59,6 +59,7 @@ public class Profile2 extends Fragment {
     String got_fullname, got_dept, got_institution, got_dob;
     SharedPreferences preferences;
     String got_email;
+    String signup_email, sent_from;
 
     public static final String USER_PROFILE = "http://35.84.44.203/handouts/handout_get_user_profile";
 
@@ -116,8 +117,15 @@ public class Profile2 extends Fragment {
         location = v.findViewById(R.id.location);
         date = v.findViewById(R.id.date);
         edit = v.findViewById(R.id.edit);
+
+        //to get where the click is from, either login or register
+//        FeedsDashboard feedsDashboard = (FeedsDashboard) getActivity();
+//        sent_from = feedsDashboard.getSentFrom();
+//        signup_email = feedsDashboard.getSignupEmail();
+
+
         preferences = getActivity().getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
-        final String got_email = preferences.getString("email", "not available");
+        got_email = preferences.getString("email", "not available");
         addTabs(viewPager);
 
         tabLayout.setupWithViewPager(viewPager);
@@ -159,6 +167,56 @@ public class Profile2 extends Fragment {
                 }
         );
 
+//        if(sent_from.equals("Register")){
+//            //get user profile
+//            StringRequest stringRequest = new StringRequest(Request.Method.POST, USER_PROFILE,
+//                    new Response.Listener<String>() {
+//                        @Override
+//                        public void onResponse(String response) {
+//                            System.out.println("Profile = "+response);
+//
+//                            try{
+//                                JSONObject profile = new JSONObject(response);
+////                                String got_email = profile.getString("email");
+//                                String got_fullname2 = profile.getString("fullname");
+//                                String got_dob2 = profile.getString("dob");
+//                                String got_institution2 = profile.getString("institution");
+////                            got_faculty = profile.getString("faculty");
+//                                String got_dept2 = profile.getString("department");
+//
+//                                email.setText(signup_email);
+//                                username.setText(got_fullname2);
+//                                dept.setText(got_dept2);
+//                                school.setText(got_institution2);
+//                                date.setText(got_dob2);
+//
+//                            }
+//                            catch (JSONException e){
+//                                e.printStackTrace();
+//                            }
+//
+//                        }
+//                    },
+//                    new Response.ErrorListener() {
+//                        @Override
+//                        public void onErrorResponse(VolleyError volleyError) {
+//                            volleyError.printStackTrace();
+//                        }
+//                    }){
+//                @Override
+//                protected Map<String, String> getParams(){
+//                    Map<String, String> params = new HashMap<>();
+//                    params.put("email", signup_email);
+//                    return params;
+//                }
+//            };
+//
+//            RequestQueue requestQueue2 = Volley.newRequestQueue(getContext());
+//            requestQueue2.add(stringRequest);
+//        }
+//        else if (sent_from.equals("Login")){
+//
+//        }
         //get user profile
         StringRequest stringRequest = new StringRequest(Request.Method.POST, USER_PROFILE,
                 new Response.Listener<String>() {
@@ -167,13 +225,13 @@ public class Profile2 extends Fragment {
                         System.out.println("Profile = "+response);
 
                         try{
-                                JSONObject profile = new JSONObject(response);
+                            JSONObject profile = new JSONObject(response);
 //                                String got_email = profile.getString("email");
                             got_fullname = profile.getString("fullname");
                             got_dob = profile.getString("dob");
                             got_institution = profile.getString("institution");
 //                            got_faculty = profile.getString("faculty");
-                             got_dept = profile.getString("department");
+                            got_dept = profile.getString("department");
 
                             email.setText(got_email);
                             username.setText(got_fullname);
@@ -204,7 +262,6 @@ public class Profile2 extends Fragment {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
-
 
         return v;
     }

@@ -24,7 +24,7 @@ public class CreateGig3 extends AppCompatActivity {
     String fixed_update="unselected";
     String perhour_update = "unselected";
     ImageView back;
-    Spinner budget;
+    Spinner budget_fixed, budget_hour;
     String selected_budget_category = "nill";
 
     String projectName, projectDescription, paymentMode;
@@ -41,29 +41,30 @@ public class CreateGig3 extends AppCompatActivity {
         projectDescription = i.getStringExtra("Project description");
         Array_requiredSkills  = i.getExtras().getStringArrayList("Required skills");
 
-        String[] budget_category = {"Select a category...",
+        final String[] budget_category_fixed = {"Select a category...",
                 "",
-                "Very small project (N1,000 - N9,999)",
-                "Medium cost project (N10,000 - N99,999)",
-                "Large cost project (N100,000 - Above)"};
-        budget = findViewById(R.id.spinner_budget);
-        ArrayAdapter<String> budgetadapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.simple_gig_spinner, R.id.my_tx, budget_category) ;
-        budget.setAdapter(budgetadapter);
-        budget.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0 || position == 1){
-                    selected_budget_category = "nill";
-                }else{
-                    selected_budget_category = budget.getSelectedItem().toString();
-                }
-            }
+                "Micro Project (N5,000 - 16,500 Naira)",
+                "Simple project (N16,500 - 137,500 Naira)",
+                "Very small project (N137,500  - 412,500 Naira)",
+                "Small project (N412,500  - 825,000 Naira)",
+                "Medium project (N825,000 - 1,650,000 Naira)",
+                "Large project (N1,650,000 - 2,750,000 Naira)",
+                "Larger project (N2,750,000 - 5,500,000 Naira)",
+                "Very Large project (N5,500,000 - 11,000,000 Naira)",
+                "Huge project (N11,000,000  - 27,500,000 Naira)",
+                "Major project (N27,500,000)",
+                "Customize budget"
+        };
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+        final String[] budget_category_hour = {"Select a category...",
+                "",
+                "Basic (N1,000  - 4,000 per hour)",
+                "Moderate (N4,000 - 8,000 per hour)",
+                "Standard (N8,000  - 16,000 per hour)",
+                "Skilled (N16,000 - 32,000 per hour)",
+                "Expert (N32,000+ per hour)",
+                "Customize budget"
+        };
 
 
         back = findViewById(R.id.back);
@@ -79,6 +80,9 @@ public class CreateGig3 extends AppCompatActivity {
             }
         });
 
+        budget_hour = findViewById(R.id.spinner_budget_hour);
+        budget_fixed = findViewById(R.id.spinner_budget_fixed);
+
         fixed = findViewById(R.id.fixed);
         perhour = findViewById(R.id.perhour);
 
@@ -92,6 +96,27 @@ public class CreateGig3 extends AppCompatActivity {
                     perhour_update = "unselected";
 
                     paymentMode = "fixed";
+                    budget_fixed.setVisibility(View.VISIBLE);
+                    budget_hour.setVisibility(View.GONE);
+
+                    //set Adapter
+                    ArrayAdapter<String> budgetadapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.simple_gig_spinner, R.id.my_tx, budget_category_fixed) ;
+                    budget_fixed.setAdapter(budgetadapter);
+                    budget_fixed.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            if (position == 0 || position == 1){
+                                selected_budget_category = "nill";
+                            }else{
+                                selected_budget_category = budget_fixed.getSelectedItem().toString();
+                            }
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
                 }
                 else if (fixed_update.equals("selected")){
                     fixed.setCardBackgroundColor(Color.TRANSPARENT);
@@ -100,6 +125,27 @@ public class CreateGig3 extends AppCompatActivity {
                     perhour_update = "selected";
 
                     paymentMode = "hourly";
+                    budget_hour.setVisibility(View.VISIBLE);
+                    budget_fixed.setVisibility(View.GONE);
+
+                    //set Adapter
+                    ArrayAdapter<String> budgetadapter2 = new ArrayAdapter<String>(getApplicationContext(), R.layout.simple_gig_spinner, R.id.my_tx, budget_category_hour) ;
+                    budget_hour.setAdapter(budgetadapter2);
+                    budget_hour.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            if (position == 0 || position == 1){
+                                selected_budget_category = "nill";
+                            }else{
+                                selected_budget_category = budget_hour.getSelectedItem().toString();
+                            }
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
                 }
             }
         });
@@ -114,6 +160,27 @@ public class CreateGig3 extends AppCompatActivity {
                     fixed_update = "unselected";
 
                     paymentMode = "hourly";
+                    budget_hour.setVisibility(View.VISIBLE);
+                    budget_fixed.setVisibility(View.GONE);
+
+                    //set Adapter
+                    ArrayAdapter<String> budgetadapter2 = new ArrayAdapter<String>(getApplicationContext(), R.layout.simple_gig_spinner, R.id.my_tx, budget_category_hour) ;
+                    budget_hour.setAdapter(budgetadapter2);
+                    budget_hour.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            if (position == 0 || position == 1){
+                                selected_budget_category = "nill";
+                            }else{
+                                selected_budget_category = budget_hour.getSelectedItem().toString();
+                            }
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
                 }
                 else if (perhour_update.equals("selected")){
                     perhour.setCardBackgroundColor(Color.TRANSPARENT);
@@ -122,6 +189,27 @@ public class CreateGig3 extends AppCompatActivity {
                     fixed_update = "selected";
 
                     paymentMode = "fixed";
+                    budget_fixed.setVisibility(View.VISIBLE);
+                    budget_hour.setVisibility(View.GONE);
+
+                    //set Adapter
+                    ArrayAdapter<String> budgetadapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.simple_gig_spinner, R.id.my_tx, budget_category_fixed) ;
+                    budget_fixed.setAdapter(budgetadapter);
+                    budget_fixed.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            if (position == 0 || position == 1){
+                                selected_budget_category = "nill";
+                            }else{
+                                selected_budget_category = budget_fixed.getSelectedItem().toString();
+                            }
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
                 }
             }
         });

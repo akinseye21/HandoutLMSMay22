@@ -111,7 +111,7 @@ public class Gigs extends Fragment {
                             JSONArray jsonArray = new JSONArray(response);
                             ArrayLength = jsonArray.length();
 
-                            for (int i = 0; i < ArrayLength; i++) {
+                            for (int i = ArrayLength - 1; i >= 0; i--) {
                                 JSONObject section = jsonArray.getJSONObject(i);
                                 String gigName = section.getString("gigname");
                                 String gigPrice = section.getString("budget_category");

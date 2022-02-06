@@ -12,229 +12,484 @@
         android:layout_below="@+id/viewpager"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:id="@+id/show1"
-            android:orientation="vertical">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="55dp">
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    app:civ_border_overlay="true"
-                    android:padding="5dp"
-                    app:civ_circle_background_color="#ffffff"
-                    android:src="@drawable/ic32"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ada Kayari"
-                    android:id="@+id/created_by"
-                    android:textStyle="bold"
-                    android:textSize="12dp"
-                    android:textColor="#ffffff"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="55dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Civil Engineering"
-                    android:layout_below="@+id/created_by"
-                    android:id="@+id/group_name"
-                    android:textStyle="normal"
-                    android:textSize="8dp"
-                    android:layout_centerVertical="true"
-                    android:textColor="#ffffff"
-                    android:layout_marginLeft="55dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="University of Abuja"
-                    android:layout_below="@+id/group_name"
-                    android:id="@+id/uni"
-                    android:textStyle="normal"
-                    android:textSize="8dp"
-                    android:layout_centerVertical="true"
-                    android:textColor="#ffffff"
-                    android:layout_marginLeft="55dp"/>
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Offline"-->
-<!--                    android:layout_below="@+id/uni"-->
-<!--                    android:id="@+id/mode"-->
-<!--                    android:textStyle="normal"-->
-<!--                    android:textSize="8dp"-->
-<!--                    android:layout_centerVertical="true"-->
-<!--                    android:textColor="#ffffff"-->
-<!--                    android:layout_marginLeft="55dp"/>-->
-
-            </RelativeLayout>
-
+            android:layout_margin="5dp"
+            android:id="@+id/card_gig"
+            app:cardBackgroundColor="@android:color/transparent"
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:background="@drawable/rounded_yellow">
+                android:layout_height="240dp"
+                android:id="@+id/linear_in_card"
+                android:padding="20dp"
+                android:background="@drawable/ic163"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerVertical="true"
-                                    android:layout_gravity="center"
-                                    android:orientation="vertical">
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:gravity="center"
-                                        android:layout_margin="10dp"
-                                        android:id="@+id/writer">
-                                        <ImageView
-                                            android:layout_width="15dp"
-                                            android:layout_height="15dp"
-                                            android:src="@drawable/home_ic2"/>
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:paddingLeft="5dp"
-                                            android:id="@+id/group_name_inside"
-                                            android:text="Copy Writers"
-                                            android:textSize="10dp"
-                                            android:textStyle="bold"
-                                            android:textColor="#000000"/>
-                                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic157"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/group_name_inside_gig"
+                        android:text="Website Design"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"/>
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic161"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="5dp"/>
+                </RelativeLayout>
 
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:gravity="center"
-                                        android:id="@+id/money"
-                                        android:layout_margin="10dp"
-                                        android:layout_below="@+id/writer">
-                                        <ImageView
-                                            android:layout_width="15dp"
-                                            android:layout_height="15dp"
-                                            android:src="@drawable/home_ic1"/>
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:paddingLeft="5dp"
-                                            android:maxLines="3"
-                                            android:ellipsize="end"
-                                            android:id="@+id/description"
-                                            android:text="$500"
-                                            android:textSize="10dp"
-                                            android:textStyle="normal"
-                                            android:textColor="#000000"/>
-                                    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic159"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:maxLines="3"
+                        android:ellipsize="end"
+                        android:id="@+id/description_gig"
+                        android:text="$500"
+                        android:textSize="10dp"
+                        android:textStyle="normal"
+                        android:textColor="#ffffff"/>
+                </LinearLayout>
 
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:gravity="center"
-                                        android:id="@+id/days"
-                                        android:layout_margin="10dp"
-                                        android:layout_below="@+id/money">
-                                        <ImageView
-                                            android:layout_width="15dp"
-                                            android:layout_height="15dp"
-                                            android:src="@drawable/home_ic3"/>
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:paddingLeft="5dp"
-                                            android:id="@+id/time"
-                                            android:text="4 Days"
-                                            android:textSize="10dp"
-                                            android:textStyle="normal"
-                                            android:textColor="#000000"/>
-                                    </LinearLayout>
-                                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic158"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:id="@+id/budget_category_gig"
+                        android:text="4 Days"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/profile_header"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:id="@+id/created_by_gig"
+                            android:paddingBottom="5dp"
+                            android:text="Ada Kayari"
+                            android:textSize="10dp"
+                            android:textStyle="bold"
+                            android:textColor="#ffffff"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:id="@+id/dept_gig"
+                            android:text="Civil Engineering"
+                            android:textSize="10dp"
+                            android:textStyle="normal"
+                            android:textColor="#ffffff"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:id="@+id/uni_gig"
+                            android:text="University of Abuja"
+                            android:textSize="10dp"
+                            android:textStyle="normal"
+                            android:textColor="#ffffff"/>
+                    </LinearLayout>
+                </LinearLayout>
+
 
             </LinearLayout>
 
 
-<!--            <RelativeLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="200dp"-->
-<!--                android:id="@+id/rellay_bg"-->
-<!--                android:background="@drawable/gig_bg">-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_centerVertical="true"-->
-<!--                    android:orientation="vertical">-->
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:orientation="horizontal"-->
-<!--                        android:layout_margin="10dp"-->
-<!--                        android:id="@+id/writer">-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="20dp"-->
-<!--                            android:layout_height="20dp"-->
-<!--                            android:src="@drawable/home_ic2"/>-->
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:paddingLeft="5dp"-->
-<!--                            android:id="@+id/group_name_inside"-->
-<!--                            android:text="Copy Writers"-->
-<!--                            android:textStyle="bold"-->
-<!--                            android:textColor="#000000"/>-->
-<!--                    </LinearLayout>-->
+        </androidx.cardview.widget.CardView>
 
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:orientation="horizontal"-->
-<!--                        android:id="@+id/money"-->
-<!--                        android:layout_margin="10dp"-->
-<!--                        android:layout_below="@+id/writer">-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="20dp"-->
-<!--                            android:layout_height="20dp"-->
-<!--                            android:src="@drawable/home_ic1"/>-->
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:paddingLeft="5dp"-->
-<!--                            android:id="@+id/description"-->
-<!--                            android:text="$500"-->
-<!--                            android:textStyle="normal"-->
-<!--                            android:textColor="#000000"/>-->
-<!--                    </LinearLayout>-->
 
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:orientation="horizontal"-->
-<!--                        android:id="@+id/days"-->
-<!--                        android:layout_margin="10dp"-->
-<!--                        android:layout_below="@+id/money">-->
-<!--                        <ImageView-->
-<!--                            android:layout_width="20dp"-->
-<!--                            android:layout_height="20dp"-->
-<!--                            android:src="@drawable/home_ic3"/>-->
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:paddingLeft="5dp"-->
-<!--                            android:id="@+id/time"-->
-<!--                            android:text="4 Days"-->
-<!--                            android:textStyle="normal"-->
-<!--                            android:textColor="#000000"/>-->
-<!--                    </LinearLayout>-->
-<!--                </LinearLayout>-->
 
-<!--            </RelativeLayout>-->
-        </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:id="@+id/card_tutors"
+            app:cardBackgroundColor="@android:color/transparent"
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:padding="20dp"
+                android:background="@drawable/ic164"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic153"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/group_name_inside_tutor"
+                        android:text="The law of Crypto"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"/>
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic161"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="5dp"/>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic156"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:maxLines="3"
+                        android:ellipsize="end"
+                        android:id="@+id/category_tutor"
+                        android:text="Technology"
+                        android:textSize="10dp"
+                        android:textStyle="normal"
+                        android:textColor="#ffffff"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic159"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:maxLines="3"
+                        android:ellipsize="end"
+                        android:id="@+id/description_tutor"
+                        android:text="$500"
+                        android:textSize="10dp"
+                        android:textStyle="normal"
+                        android:textColor="#ffffff"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic154"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:id="@+id/date_tutor"
+                        android:text="4 Days"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/profile_header"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:id="@+id/created_by_tutor"
+                            android:paddingBottom="5dp"
+                            android:text="Ada Kayari"
+                            android:textSize="10dp"
+                            android:textStyle="bold"
+                            android:textColor="#ffffff"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:id="@+id/dept_tutor"
+                            android:text="Civil Engineering"
+                            android:textSize="10dp"
+                            android:textStyle="normal"
+                            android:textColor="#ffffff"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:id="@+id/uni_tutor"
+                            android:text="University of Abuja"
+                            android:textSize="10dp"
+                            android:textStyle="normal"
+                            android:textColor="#ffffff"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:id="@+id/card_game"
+            app:cardBackgroundColor="@android:color/transparent"
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:padding="20dp"
+                android:background="@drawable/ic162"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic151"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/name_game"
+                        android:text="FIFA PS4 Challenge"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"/>
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic160"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="5dp"/>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic149"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:maxLines="3"
+                        android:ellipsize="end"
+                        android:id="@+id/game_location"
+                        android:text="Block 2, New site, Abuja"
+                        android:textSize="10dp"
+                        android:textStyle="normal"
+                        android:textColor="#000000"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic152"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:maxLines="3"
+                        android:ellipsize="end"
+                        android:id="@+id/game_date"
+                        android:text="05/03/2022"
+                        android:textSize="10dp"
+                        android:textStyle="normal"
+                        android:textColor="#000000"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic150"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:id="@+id/game_time"
+                        android:text="3:00pm"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/profile_header"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:id="@+id/created_by_game"
+                            android:paddingBottom="5dp"
+                            android:text="Ada Kayari"
+                            android:textSize="10dp"
+                            android:textStyle="bold"
+                            android:textColor="#000000"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:id="@+id/dept_game"
+                            android:text="Civil Engineering"
+                            android:textSize="10dp"
+                            android:textStyle="normal"
+                            android:textColor="#000000"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:id="@+id/uni_game"
+                            android:text="University of Abuja"
+                            android:textSize="10dp"
+                            android:textStyle="normal"
+                            android:textColor="#000000"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
 
 
 

@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
+
 import java.util.ArrayList;
 
 public class HomeListViewAdapter extends BaseAdapter {
@@ -60,29 +62,54 @@ public class HomeListViewAdapter extends BaseAdapter {
             convertView = inflaInflater.inflate(R.layout.list_homeview, parent, false);
         }
 
-        TextView crt_by = convertView.findViewById(R.id.created_by);
-        TextView grp_name = convertView.findViewById(R.id.group_name);
-        TextView univ = convertView.findViewById(R.id.uni);
-//        TextView mod = convertView.findViewById(R.id.mode);
-        TextView grp_name_inside = convertView.findViewById(R.id.group_name_inside);
-        TextView desc = convertView.findViewById(R.id.description);
-        TextView tme = convertView.findViewById(R.id.time);
-//        RelativeLayout rellay_bg = convertView.findViewById(R.id.rellay_bg);
+        //get views for gig card
+        CardView card_gig = convertView.findViewById(R.id.card_gig);
+        TextView name_gig = convertView.findViewById(R.id.group_name_inside_gig);
+        TextView desc_gig = convertView.findViewById(R.id.description_gig);
+        TextView budget_gig = convertView.findViewById(R.id.description_gig);
+        TextView crt_by_gig = convertView.findViewById(R.id.created_by_gig);
+        TextView dept_gig = convertView.findViewById(R.id.dept_gig);
+        TextView uni_gig = convertView.findViewById(R.id.uni_gig);
 
-        crt_by.setText(created_by_name.get(position));
-        grp_name.setText(category.get(position));
-        univ.setText(university.get(position));
-//        mod.setText(mode.get(position));
-        grp_name_inside.setText(group_name_inside.get(position));
-        desc.setText(description.get(position));
-        tme.setText(time.get(position));
+
+        //get views for tutorials
+        CardView card_tutorial = convertView.findViewById(R.id.card_tutors);
+        TextView name_tutorial = convertView.findViewById(R.id.group_name_inside_tutor);
+        TextView category_tutorial = convertView.findViewById(R.id.category_tutor);
+        TextView desc_tutorial = convertView.findViewById(R.id.description_tutor);
+        TextView date_tutorial = convertView.findViewById(R.id.date_tutor);
+        TextView crt_by_tutorial = convertView.findViewById(R.id.created_by_tutor);
+        TextView dept_tutorial = convertView.findViewById(R.id.dept_tutor);
+        TextView uni_tutorial = convertView.findViewById(R.id.uni_tutor);
+
+
+        //get views for game
+        CardView card_game = convertView.findViewById(R.id.card_game);
+        TextView name_game = convertView.findViewById(R.id.name_game);
+        TextView location_game = convertView.findViewById(R.id.game_location);
+        TextView date_game = convertView.findViewById(R.id.game_date);
+        TextView time_game = convertView.findViewById(R.id.game_time);
+        TextView crt_by_game = convertView.findViewById(R.id.created_by_game);
+        TextView dept_gamel = convertView.findViewById(R.id.dept_game);
+        TextView uni_game = convertView.findViewById(R.id.uni_game);
+
+
+
+        name_tutorial.setText(group_name_inside.get(position));
+        category_tutorial.setText(group_name.get(position));
+        crt_by_tutorial.setText(created_by_name.get(position));
+        uni_tutorial.setText(university.get(position));
+        desc_tutorial.setText(description.get(position));
+        date_tutorial.setText(time.get(position));
+        dept_tutorial.setText(mode.get(position));
+
+        card_gig.setVisibility(View.GONE);
+        card_tutorial.setVisibility(View.VISIBLE);
+        card_game.setVisibility(View.GONE);
 
         if (category.get(position).equals("")){
             //change the background image
         }
-
-
-
 
 
         return convertView;
