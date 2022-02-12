@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class HomeListViewAdapter extends BaseAdapter {
     private Context context;
+    private ArrayList<String> type;
     private ArrayList<String> created_by;
     private ArrayList<String> created_by_name;
     private ArrayList<String> group_name;
@@ -25,9 +26,10 @@ public class HomeListViewAdapter extends BaseAdapter {
     private ArrayList<String> time;
     private ArrayList<String> category;
 
-    public HomeListViewAdapter (Context context, ArrayList<String> created_by, ArrayList<String> created_by_name, ArrayList<String> group_name, ArrayList<String> university, ArrayList<String> mode, ArrayList<String> group_name_inside, ArrayList<String> description, ArrayList<String> time, ArrayList<String> category){
+    public HomeListViewAdapter (Context context, ArrayList<String> type, ArrayList<String> created_by, ArrayList<String> created_by_name, ArrayList<String> group_name, ArrayList<String> university, ArrayList<String> mode, ArrayList<String> group_name_inside, ArrayList<String> description, ArrayList<String> time, ArrayList<String> category){
         //Getting all the values
         this.context = context;
+        this.type = type;
         this.created_by = created_by;
         this.created_by_name = created_by_name;
         this.group_name = group_name;
@@ -66,7 +68,7 @@ public class HomeListViewAdapter extends BaseAdapter {
         CardView card_gig = convertView.findViewById(R.id.card_gig);
         TextView name_gig = convertView.findViewById(R.id.group_name_inside_gig);
         TextView desc_gig = convertView.findViewById(R.id.description_gig);
-        TextView budget_gig = convertView.findViewById(R.id.description_gig);
+        TextView budget_gig = convertView.findViewById(R.id.budget_category_gig);
         TextView crt_by_gig = convertView.findViewById(R.id.created_by_gig);
         TextView dept_gig = convertView.findViewById(R.id.dept_gig);
         TextView uni_gig = convertView.findViewById(R.id.uni_gig);
@@ -94,22 +96,35 @@ public class HomeListViewAdapter extends BaseAdapter {
         TextView uni_game = convertView.findViewById(R.id.uni_game);
 
 
+        if (type.get(position).equals("group")){
+            //set tutorial cardview visible
+            card_gig.setVisibility(View.GONE);
+            card_tutorial.setVisibility(View.VISIBLE);
+            card_game.setVisibility(View.GONE);
 
-        name_tutorial.setText(group_name_inside.get(position));
-        category_tutorial.setText(group_name.get(position));
-        crt_by_tutorial.setText(created_by_name.get(position));
-        uni_tutorial.setText(university.get(position));
-        desc_tutorial.setText(description.get(position));
-        date_tutorial.setText(time.get(position));
-        dept_tutorial.setText(mode.get(position));
-
-        card_gig.setVisibility(View.GONE);
-        card_tutorial.setVisibility(View.VISIBLE);
-        card_game.setVisibility(View.GONE);
-
-        if (category.get(position).equals("")){
-            //change the background image
+            name_tutorial.setText(group_name_inside.get(position));
+            category_tutorial.setText(group_name.get(position));
+            crt_by_tutorial.setText(created_by_name.get(position));
+            uni_tutorial.setText(university.get(position));
+            desc_tutorial.setText(description.get(position));
+            date_tutorial.setText(time.get(position));
+            dept_tutorial.setText(mode.get(position));
         }
+
+
+        if (type.get(position).equals("gig")){
+            card_gig.setVisibility(View.VISIBLE);
+            card_tutorial.setVisibility(View.GONE);
+            card_game.setVisibility(View.GONE);
+
+            name_gig.setText(group_name.get(position));
+            desc_gig.setText(description.get(position));
+            budget_gig.setText(category.get(position));
+            crt_by_gig.setText(created_by_name.get(position));
+            dept_gig.setText(time.get(position));
+            uni_gig.setText(university.get(position));
+        }
+
 
 
         return convertView;

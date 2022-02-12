@@ -11,12 +11,31 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ForgotPassword2 extends AppCompatActivity {
 
     ImageView back;
     EditText edt1, edt2, edt3, edt4;
     Button verify;
+    String email, code;
+    ProgressBar progressBar;
+
+    public static final String VALIDATE_OTP = "http://35.84.44.203/handouts/handout_validate_otp";
 
 
     @Override
@@ -24,6 +43,11 @@ public class ForgotPassword2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password2);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        Intent i = getIntent();
+        email = i.getStringExtra("email");
+        code = i.getStringExtra("code");
+
 
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -33,6 +57,8 @@ public class ForgotPassword2 extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        progressBar = findViewById(R.id.progressBar);
 
         edt1 = findViewById(R.id.edt1);
         edt2 = findViewById(R.id.edt2);
@@ -101,8 +127,54 @@ public class ForgotPassword2 extends AppCompatActivity {
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ForgotPassword3.class);
-                startActivity(i);
+
+                progressBar.setVisibility(View.VISIBLE);
+                //verify OTP
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, VALIDATE_OTP,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                JSONObject jsonObject;
+                                try {
+                                    jsonObject = new JSONObject(response);
+                                    String status = jsonObject.getString("status");
+
+                                    if(status.equals("reset")){
+                                        progressBar.setVisibility(View.GONE);
+                                        //send to next
+                                        Intent i = new Intent(getApplicationContext(), ForgotPassword3.class);
+                                        i.putExtra("email", email);
+                                        startActivity(i);
+                                    }else{
+                                        progressBar.setVisibility(View.GONE);
+                                        Toast.makeText(getApplicationContext(), "Sorry! Password can not be reset", Toast.LENGTH_LONG).show();
+                                    }
+
+                                } catch (JSONException e) {
+                                    progressBar.setVisibility(View.GONE);
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                progressBar.setVisibility(View.GONE);
+                                Toast.makeText(getApplicationContext(), "Network connectivity problem", Toast.LENGTH_LONG).show();
+                            }
+                        }){
+                    @Override
+                    protected Map<String, String> getParams(){
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("email", email);
+                        params.put("code", code);
+                        return params;
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(ForgotPassword2.this);
+                requestQueue.add(stringRequest);
+
             }
         });
     }
