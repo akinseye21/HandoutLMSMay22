@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#293241"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        tools:context=".CardGigClick2">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/rel1">
+        <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/back"
+                android:src="@drawable/arrow_left"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/profile_header"/>
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:id="@+id/created_by_gig"
+                            android:text="Ada Kayari"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            android:textColor="#ffffff"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:id="@+id/dept_gig"
+                            android:text="Civil Engineering"
+                            android:textSize="10dp"
+                            android:textStyle="normal"
+                            android:textColor="#ffffff"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:id="@+id/uni_gig"
+                            android:text="University of Abuja"
+                            android:textSize="10dp"
+                            android:textStyle="normal"
+                            android:textColor="#ffffff"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/ic163"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Project Name"
+                    android:textSize="8dp"
+                    android:textStyle="bold"
+                    android:textColor="#4bc93c"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic157"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:id="@+id/gig_name"
+                        android:text="Website Design"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"/>
+
+                <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="80dp"
+                        android:src="@drawable/ic178"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Open"
+                        android:textSize="10dp"
+                        android:textStyle="italic"
+                        android:textColor="#ffffff"/>
+
+            </LinearLayout>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="25dp"
+                    android:text="Project Description"
+                    android:textSize="8dp"
+                    android:textStyle="bold"
+                    android:textColor="#4bc93c"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic177"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:id="@+id/gig_description"
+                        android:text="Lorium ipsium, the description of the project will be displayed here. hahi jeie hiy qi hish s   iw eh ihi whoefhi w iwhe he hihwe wiuf wu ei h ueukw"
+                        android:textSize="8dp"
+                        android:textStyle="normal"
+                        android:textColor="#ffffff"/>
+
+            </LinearLayout>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="25dp"
+                    android:text="Payment structure"
+                    android:textSize="8dp"
+                    android:textStyle="bold"
+                    android:textColor="#4bc93c"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic181"/>
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:id="@+id/gig_category"
+                            android:text="$1,000 - $1,500"
+                            android:textSize="10dp"
+                            android:textStyle="bold"
+                            android:textColor="#ffffff"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Fixed Price"
+                            android:textSize="10dp"
+                            android:textStyle="normal"
+                            android:textColor="#91ffffff"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="30dp">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="NGN"
+                        android:textSize="10dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"/>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:orientation="vertical">
+                    <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:hint="Enter Amount"
+                            android:textColorHint="#ffffff"
+                            android:textColor="#ffffff"
+                            android:textSize="8dp"
+                            android:inputType="number"
+                            android:background="@null"
+                            android:layout_marginTop="8dp"
+                            />
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.1dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="#ffffff"/>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/green_outline"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:orientation="horizontal">
+                <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:tint="#65dc9a"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/home_ic4"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Upload CV"
+                        android:textSize="10dp"
+                        android:paddingLeft="5dp"
+                        android:textColor="#65dc9a"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Please kindly upload your curriculum vitae in PDF format ONLY"
+                        android:textSize="8dp"
+                        android:paddingLeft="10dp"
+                        android:textColor="#ffffff"/>
+
+            </LinearLayout>
+
+
+            <Button
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:text="Finish"
+                    android:textSize="10dp"
+                    android:textStyle="bold"
+                    android:textColor="#ffffff"
+                    android:background="@drawable/rounded_orange"
+                    android:textAllCaps="false"
+                    android:layout_marginBottom="30dp"
+                    android:id="@+id/finish"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+</LinearLayout>

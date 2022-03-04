@@ -1,10 +1,15 @@
 package com.example.handoutlms;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -24,9 +29,13 @@ public class HomeListViewAdapter extends BaseAdapter {
     private ArrayList<String> group_name_inside;
     private ArrayList<String> description;
     private ArrayList<String> time;
+    private ArrayList<String> date;
+    private ArrayList<String> card_mode;
     private ArrayList<String> category;
 
-    public HomeListViewAdapter (Context context, ArrayList<String> type, ArrayList<String> created_by, ArrayList<String> created_by_name, ArrayList<String> group_name, ArrayList<String> university, ArrayList<String> mode, ArrayList<String> group_name_inside, ArrayList<String> description, ArrayList<String> time, ArrayList<String> category){
+    Dialog myDialog;
+
+    public HomeListViewAdapter (Context context, ArrayList<String> type, ArrayList<String> created_by, ArrayList<String> created_by_name, ArrayList<String> group_name, ArrayList<String> university, ArrayList<String> mode, ArrayList<String> group_name_inside, ArrayList<String> description, ArrayList<String> time, ArrayList<String> date, ArrayList<String> card_mode, ArrayList<String> category){
         //Getting all the values
         this.context = context;
         this.type = type;
@@ -38,6 +47,8 @@ public class HomeListViewAdapter extends BaseAdapter {
         this.group_name_inside = group_name_inside;
         this.description = description;
         this.time = time;
+        this.date = date;
+        this.card_mode = card_mode;
         this.category = category;
     }
 
@@ -57,7 +68,7 @@ public class HomeListViewAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         LayoutInflater inflaInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if (convertView == null) {
@@ -103,16 +114,16 @@ public class HomeListViewAdapter extends BaseAdapter {
             card_game.setVisibility(View.GONE);
 
             name_tutorial.setText(group_name_inside.get(position));
-            category_tutorial.setText(group_name.get(position));
+            category_tutorial.setText(category.get(position));
             crt_by_tutorial.setText(created_by_name.get(position));
             uni_tutorial.setText(university.get(position));
             desc_tutorial.setText(description.get(position));
-            date_tutorial.setText(time.get(position));
+            date_tutorial.setText(date.get(position));
             dept_tutorial.setText(mode.get(position));
         }
 
 
-        if (type.get(position).equals("gig")){
+        if (type.get(position).equals("gigs")){
             card_gig.setVisibility(View.VISIBLE);
             card_tutorial.setVisibility(View.GONE);
             card_game.setVisibility(View.GONE);
@@ -124,6 +135,83 @@ public class HomeListViewAdapter extends BaseAdapter {
             dept_gig.setText(time.get(position));
             uni_gig.setText(university.get(position));
         }
+
+        card_gig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //load the custom dialog box
+                myDialog = new Dialog(context);
+                myDialog.setContentView(R.layout.card_gig_click_popup);
+                //get views in the popup page
+                TextView pop_name = myDialog.findViewById(R.id.created_by_gig);
+                pop_name.setText(created_by_name.get(position));
+                TextView pop_department = myDialog.findViewById(R.id.dept_gig);
+                pop_department.setText(time.get(position));
+                TextView pop_school = myDialog.findViewById(R.id.uni_gig);
+                pop_school.setText(university.get(position));
+                TextView pop_gigname = myDialog.findViewById(R.id.gig_name);
+                pop_gigname.setText(group_name.get(position));
+                TextView pop_gigdescription = myDialog.findViewById(R.id.gig_description);
+                pop_gigdescription.setText(description.get(position));
+                TextView pop_gigcategory = myDialog.findViewById(R.id.gig_category);
+                pop_gigcategory.setText(category.get(position));
+                Button bid = myDialog.findViewById(R.id.bid);
+                bid.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //move to the next gig page
+                        Intent i = new Intent(context, CardGigClick2.class);
+                        context.startActivity(i);
+                    }
+                });
+
+                myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                myDialog.setCanceledOnTouchOutside(true);
+                myDialog.show();
+            }
+        });
+
+        card_tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //load the custom dialog box
+                myDialog = new Dialog(context);
+                myDialog.setContentView(R.layout.card_tutorial_click_popup);
+                //get views in the popup page
+                TextView pop_name = myDialog.findViewById(R.id.created_by);
+                pop_name.setText(created_by_name.get(position));
+                TextView pop_department = myDialog.findViewById(R.id.dept);
+                pop_department.setText(mode.get(position));
+                TextView pop_university = myDialog.findViewById(R.id.uni_gig);
+                pop_university.setText(university.get(position));
+                TextView pop_gigname = myDialog.findViewById(R.id.gig_name);
+                pop_gigname.setText(group_name.get(position));
+                TextView pop_gigcategory = myDialog.findViewById(R.id.gig_category);
+                pop_gigcategory.setText(category.get(position));
+                TextView pop_gigdescription = myDialog.findViewById(R.id.gig_desc);
+                pop_gigdescription.setText(description.get(position));
+                TextView pop_gigdate = myDialog.findViewById(R.id.tut_date);
+                pop_gigdate.setText(date.get(position));
+                TextView pop_cardmode = myDialog.findViewById(R.id.mode);
+                pop_cardmode.setText(card_mode.get(position));
+                if(card_mode.get(position).equals("Online")){
+                    //set the location of the tutorial
+                }else{
+                    //do not set the location of the tutorial
+                }
+
+                Button join = myDialog.findViewById(R.id.join);
+                join.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //show 'done'
+                    }
+                });
+                myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                myDialog.setCanceledOnTouchOutside(true);
+                myDialog.show();
+            }
+        });
 
 
 

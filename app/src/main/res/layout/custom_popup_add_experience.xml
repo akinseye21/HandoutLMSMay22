@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/round_popup"
+        android:padding="10dp">
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center">
+        <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic191"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Experience"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:paddingLeft="10dp"/>
+    </LinearLayout>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="0.01dp"
+            android:layout_marginBottom="10dp"
+            android:background="#ffffff"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:hint="Position"
+                    android:singleLine="true"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="10dp"
+                    android:inputType="textPersonName"
+                    android:textSize="10dp"
+                    android:textColor="#ffffff"
+                    android:textColorHint="#80ffffff"
+                    android:background="@drawable/new_login2"/>
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:hint="Year"
+                    android:singleLine="true"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="10dp"
+                    android:inputType="textEmailAddress"
+                    android:textSize="10dp"
+                    android:textColor="#ffffff"
+                    android:textColorHint="#80ffffff"
+                    android:background="@drawable/new_login2"/>
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:hint="Job Description"
+                    android:singleLine="true"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="10dp"
+                    android:inputType="textEmailAddress"
+                    android:textSize="10dp"
+                    android:textColor="#ffffff"
+                    android:textColorHint="#80ffffff"
+                    android:background="@drawable/new_login2"/>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+        <Button
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:background="@drawable/round_white"/>
+        <Button
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:text="Cancel"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:background="@drawable/rounded_orange"/>
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

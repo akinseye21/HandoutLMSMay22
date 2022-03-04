@@ -1,6 +1,7 @@
 package com.example.handoutlms;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -54,7 +55,7 @@ public class Profile2 extends Fragment {
 
     TabLayout tabLayout;
     ViewPager viewPager;
-    LinearLayout lintut, linpost, lingame, lingig;
+    LinearLayout lintut, linpost, lingame, lingig, editProfile;
     TextView email, username, dept, school, location, date, edit;
     String got_fullname, got_dept, got_institution, got_dob;
     SharedPreferences preferences;
@@ -117,6 +118,7 @@ public class Profile2 extends Fragment {
         location = v.findViewById(R.id.location);
         date = v.findViewById(R.id.date);
         edit = v.findViewById(R.id.edit);
+        editProfile = v.findViewById(R.id.editProfile);
 
         //to get where the click is from, either login or register
 //        FeedsDashboard feedsDashboard = (FeedsDashboard) getActivity();
@@ -166,6 +168,14 @@ public class Profile2 extends Fragment {
                     }
                 }
         );
+
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), EditProfilePage.class);
+                startActivity(i);
+            }
+        });
 
 //        if(sent_from.equals("Register")){
 //            //get user profile

@@ -73,7 +73,7 @@ public class FeedDashboardHome extends Fragment {
     TabLayout tabLayout;
 
 //    public static final String ALL_TUTORIALS = "http://35.84.44.203/handouts/handout_get_all_tutorials";
-    public static final String ALL_GIGS_AND_TUTORIALS = "http://35.84.44.203/handouts/handout_all_gigs_groups";
+    public static final String ALL_GIGS_AND_TUTORIALS = "http://35.84.44.203/handouts/handout_gigs_groups";
 
     private OnFragmentInteractionListener mListener;
 
@@ -178,6 +178,8 @@ public class FeedDashboardHome extends Fragment {
         final ArrayList<String> Array_groupNameInside = new ArrayList<>();
         final ArrayList<String> Array_description = new ArrayList<>();
         final ArrayList<String> Array_time = new ArrayList<>();
+        final ArrayList<String> Array_date = new ArrayList<>();
+        final ArrayList<String> Array_cardmode = new ArrayList<>();
         final ArrayList<String> Array_category = new ArrayList<>();
 
 
@@ -245,20 +247,22 @@ public class FeedDashboardHome extends Fragment {
                             JSONArray jsonArray = new JSONArray(response);
                             ArrayLength = jsonArray.length();
 
-                            for (int i = ArrayLength - 1; i >= 0; i--) {
+//                            for (int i = ArrayLength - 1; i >= 0; i--) {
+                            for (int i = 0; i < ArrayLength; i++) {
                                 JSONObject section = jsonArray.getJSONObject(i);
                                 String type = section.getString("type");
 
                                 if (type.equals("group")){
                                     String createdBy = section.getString("created_by");
                                     String createdByName = section.getString("fullname");
-                                    String groupName = section.getString("groupname");
+                                    String groupName = section.getString("gig_group_name");
                                     String university = section.getString("university");
-                                    String mode = section.getString("mode");
-                                    String groupNameInside = section.getString("groupname");
+                                    String mode = section.getString("faculty");
+                                    String groupNameInside = section.getString("gig_group_name");
                                     String description = section.getString("description");
                                     String time = section.getString("_time");
                                     String date = section.getString("_date");
+                                    String tut_mode = section.getString("mode");
                                     String category = section.getString("category");
 
                                     Array_type.add(type);
@@ -270,17 +274,20 @@ public class FeedDashboardHome extends Fragment {
                                     Array_groupNameInside.add(groupNameInside);
                                     Array_description.add(description);
                                     Array_time.add(time);
+                                    Array_date.add(date);
+                                    Array_cardmode.add(tut_mode);
                                     Array_category.add(category);
                                 }
-                                else if (type.equals("gig")){
+                                else if (type.equals("gigs")){
                                     String createdBy = section.getString("created_by"); //1
                                     String createdByName = section.getString("fullname"); //2
-                                    String gigName = section.getString("gigname"); //3
-                                    String university = section.getString("institution"); //4
+                                    String gigName = section.getString("gig_group_name"); //3
+                                    String university = section.getString("school"); //4
                                     String description = section.getString("description"); //7
                                     String budgetCategory = section.getString("budget_category"); //9
                                     String faculty = section.getString("faculty"); //6
-                                    String date = section.getString("created_at");
+                                    String date = section.getString("_date");
+                                    String gig_mode = section.getString("mode");
                                     String department = section.getString("department");//8
                                     String skills = section.getString("skills"); //5
 
@@ -293,15 +300,15 @@ public class FeedDashboardHome extends Fragment {
                                     Array_groupNameInside.add(faculty);
                                     Array_description.add(description);
                                     Array_time.add(department);
+                                    Array_date.add(date);
+                                    Array_cardmode.add(gig_mode);
                                     Array_category.add(budgetCategory);
                                 }
 
                             }
 
-
-
                             //populate values on the gridview
-                            HomeListViewAdapter homeListViewAdapter = new HomeListViewAdapter(getActivity(), Array_type, Array_createdBy, Array_createdByName, Array_groupName, Array_university, Array_mode, Array_groupNameInside, Array_description, Array_time, Array_category);
+                            HomeListViewAdapter homeListViewAdapter = new HomeListViewAdapter(getActivity(), Array_type, Array_createdBy, Array_createdByName, Array_groupName, Array_university, Array_mode, Array_groupNameInside, Array_description, Array_time, Array_date, Array_cardmode, Array_category);
                             my_list.setAdapter(homeListViewAdapter);
                             //hide progressBar and progressText
                             progressBar.setVisibility(View.GONE);
