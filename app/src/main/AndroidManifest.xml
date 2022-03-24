@@ -2,8 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         package="com.example.handoutlms">
 
+    <uses-feature
+            android:name="android.software.leanback"
+            android:required="false" />
+    <uses-feature
+            android:name="android.hardware.touchscreen"
+            android:required="false" />
+    <uses-feature
+            android:name="android.hardware.touchscreen"
+            android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
@@ -17,7 +28,12 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true">
-        <activity android:name=".EditProfilePage"></activity>
+        <activity android:name=".ViewCv"></activity>
+        <activity android:name=".SeeBids" />
+        <activity android:name=".ShowBidsPlaced" />
+        <activity android:name=".ShowCreatedGigs" />
+        <activity android:name=".ProfileOthers" />
+        <activity android:name=".EditProfilePage" />
         <activity android:name=".CardGigClick2" />
         <activity android:name=".TermsOfService" />
         <activity android:name=".ForgotPassword3" />

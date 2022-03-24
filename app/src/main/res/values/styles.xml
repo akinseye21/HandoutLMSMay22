@@ -6,11 +6,28 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+<!--        <item name="android:popupBackground">@drawable/round_popup</item>-->
+<!--        <item name="popupMenuStyle">@style/MyCustomTabText</item>-->
+<!--        <item name="android:popupMenuStyle">@style/MyPopUp</item>-->
+<!--        <item name="android:actionBarWidgetTheme">@style/MyPopUpText</item>-->
+        <item name="android:itemTextAppearance">@style/MyPopUpText</item>
+        <item name="android:itemBackground">@drawable/round_popup</item>
+        <item name="listPreferredItemHeightSmall">10dp</item>
     </style>
 
     <style name="MyCustomTabText" parent="TextAppearance.AppCompat.Small">
         <item name="android:textSize">7dp</item>
         <item name="android:textColor">#cccccc</item>
+    </style>
+
+    <style name="MyPopUp" parent="android:Widget.Holo.Light.ListPopupWindow">
+        <item name="android:popupBackground">@drawable/round_popup</item>
+    </style>
+
+    <style name="MyPopUpText" parent="android:Widget.Holo.Light.ListPopupWindow">
+        <item name="android:textSize">8dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">italic</item>
     </style>
 
     <style name="MyCustomTabText2" parent="TextAppearance.AppCompat.Small">

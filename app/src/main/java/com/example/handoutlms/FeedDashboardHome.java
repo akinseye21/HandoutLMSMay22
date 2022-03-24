@@ -181,62 +181,8 @@ public class FeedDashboardHome extends Fragment {
         final ArrayList<String> Array_date = new ArrayList<>();
         final ArrayList<String> Array_cardmode = new ArrayList<>();
         final ArrayList<String> Array_category = new ArrayList<>();
+        final ArrayList<String> Array_id = new ArrayList<>();
 
-
-
-//        StringRequest stringRequest = new StringRequest(Request.Method.GET, ALL_TUTORIALS,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        System.out.println("Response= "+response);
-//                        try {
-//                            JSONArray jsonArray = new JSONArray(response);
-//                            ArrayLength = jsonArray.length();
-//
-//                            for (int i = ArrayLength - 1; i >= 0; i--) {
-//                                JSONObject section = jsonArray.getJSONObject(i);
-//                                String createdBy = section.getString("created_by");
-//                                String createdByName = section.getString("created_by_name");
-//                                String groupName = section.getString("groupname");
-//                                String university = section.getString("university");
-//                                String mode = section.getString("mode");
-//                                String groupNameInside = section.getString("groupname");
-//                                String description = section.getString("description");
-//                                String time = section.getString("_time");
-//                                String category = section.getString("category");
-//
-//                                Array_createdBy.add(createdBy);
-//                                Array_createdByName.add(createdByName);
-//                                Array_groupName.add(groupName);
-//                                Array_university.add(university);
-//                                Array_mode.add(mode);
-//                                Array_groupNameInside.add(groupNameInside);
-//                                Array_description.add(description);
-//                                Array_time.add(time);
-//                                Array_category.add(category);
-//                            }
-//
-//                            //populate values on the gridview
-//                            HomeListViewAdapter homeListViewAdapter = new HomeListViewAdapter(getActivity(), Array_createdBy, Array_createdByName, Array_groupName, Array_university, Array_mode, Array_groupNameInside, Array_description, Array_time, Array_category);
-//                            my_list.setAdapter(homeListViewAdapter);
-//                            //hide progressBar and progressText
-//                            progressBar.setVisibility(View.GONE);
-//                            progressText.setVisibility(View.GONE);
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//
-//
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                error.printStackTrace();
-//            }
-//        });
-//        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-//        requestQueue.add(stringRequest);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, ALL_GIGS_AND_TUTORIALS,
                 new Response.Listener<String>() {
@@ -264,6 +210,7 @@ public class FeedDashboardHome extends Fragment {
                                     String date = section.getString("_date");
                                     String tut_mode = section.getString("mode");
                                     String category = section.getString("category");
+                                    String id = section.getString("tid");
 
                                     Array_type.add(type);
                                     Array_createdBy.add(createdBy);
@@ -277,6 +224,7 @@ public class FeedDashboardHome extends Fragment {
                                     Array_date.add(date);
                                     Array_cardmode.add(tut_mode);
                                     Array_category.add(category);
+                                    Array_id.add(id);
                                 }
                                 else if (type.equals("gigs")){
                                     String createdBy = section.getString("created_by"); //1
@@ -290,6 +238,7 @@ public class FeedDashboardHome extends Fragment {
                                     String gig_mode = section.getString("mode");
                                     String department = section.getString("department");//8
                                     String skills = section.getString("skills"); //5
+                                    String id = section.getString("tid");
 
                                     Array_type.add(type);
                                     Array_createdBy.add(createdBy);
@@ -303,12 +252,13 @@ public class FeedDashboardHome extends Fragment {
                                     Array_date.add(date);
                                     Array_cardmode.add(gig_mode);
                                     Array_category.add(budgetCategory);
+                                    Array_id.add(id);
                                 }
 
                             }
 
                             //populate values on the gridview
-                            HomeListViewAdapter homeListViewAdapter = new HomeListViewAdapter(getActivity(), Array_type, Array_createdBy, Array_createdByName, Array_groupName, Array_university, Array_mode, Array_groupNameInside, Array_description, Array_time, Array_date, Array_cardmode, Array_category);
+                            HomeListViewAdapter homeListViewAdapter = new HomeListViewAdapter(getActivity(), Array_type, Array_createdBy, Array_createdByName, Array_groupName, Array_university, Array_mode, Array_groupNameInside, Array_description, Array_time, Array_date, Array_cardmode, Array_category, Array_id);
                             my_list.setAdapter(homeListViewAdapter);
                             //hide progressBar and progressText
                             progressBar.setVisibility(View.GONE);

@@ -107,7 +107,6 @@ public class Profile2 extends Fragment {
         tabLayout = v.findViewById(R.id.tabs);
 
         lintut = v.findViewById(R.id.lintut);
-        linpost = v.findViewById(R.id.linpost);
         lingame = v.findViewById(R.id.lingame);
         lingig = v.findViewById(R.id.lingig);
 
@@ -138,25 +137,22 @@ public class Profile2 extends Fragment {
                     public void onTabSelected(TabLayout.Tab tab) {
                         if (tab.getPosition() == 0){
                             lintut.setVisibility(View.VISIBLE);
-                            linpost.setVisibility(View.GONE);
                             lingame.setVisibility(View.GONE);
                             lingig.setVisibility(View.GONE);
                         }
+//                        else if(tab.getPosition() == 1){
+//                            lintut.setVisibility(View.GONE);
+//                            linpost.setVisibility(View.VISIBLE);
+//                            lingame.setVisibility(View.GONE);
+//                            lingig.setVisibility(View.GONE);
+//                        }
                         else if(tab.getPosition() == 1){
                             lintut.setVisibility(View.GONE);
-                            linpost.setVisibility(View.VISIBLE);
-                            lingame.setVisibility(View.GONE);
+                            lingame.setVisibility(View.VISIBLE);
                             lingig.setVisibility(View.GONE);
                         }
                         else if(tab.getPosition() == 2){
                             lintut.setVisibility(View.GONE);
-                            linpost.setVisibility(View.GONE);
-                            lingame.setVisibility(View.VISIBLE);
-                            lingig.setVisibility(View.GONE);
-                        }
-                        else if(tab.getPosition() == 3){
-                            lintut.setVisibility(View.GONE);
-                            linpost.setVisibility(View.GONE);
                             lingame.setVisibility(View.GONE);
                             lingig.setVisibility(View.VISIBLE);
                         }
@@ -164,7 +160,11 @@ public class Profile2 extends Fragment {
 
                     @Override
                     public void onTabReselected(TabLayout.Tab tab) {
-                        super.onTabReselected(tab);
+//                        if(tab.getPosition() == 0){
+//                            Intent j = new Intent(getContext(), Profile2.class);
+//                            startActivity(j);
+//                            getActivity().finishActivity(1);
+//                        }
                     }
                 }
         );
@@ -177,56 +177,6 @@ public class Profile2 extends Fragment {
             }
         });
 
-//        if(sent_from.equals("Register")){
-//            //get user profile
-//            StringRequest stringRequest = new StringRequest(Request.Method.POST, USER_PROFILE,
-//                    new Response.Listener<String>() {
-//                        @Override
-//                        public void onResponse(String response) {
-//                            System.out.println("Profile = "+response);
-//
-//                            try{
-//                                JSONObject profile = new JSONObject(response);
-////                                String got_email = profile.getString("email");
-//                                String got_fullname2 = profile.getString("fullname");
-//                                String got_dob2 = profile.getString("dob");
-//                                String got_institution2 = profile.getString("institution");
-////                            got_faculty = profile.getString("faculty");
-//                                String got_dept2 = profile.getString("department");
-//
-//                                email.setText(signup_email);
-//                                username.setText(got_fullname2);
-//                                dept.setText(got_dept2);
-//                                school.setText(got_institution2);
-//                                date.setText(got_dob2);
-//
-//                            }
-//                            catch (JSONException e){
-//                                e.printStackTrace();
-//                            }
-//
-//                        }
-//                    },
-//                    new Response.ErrorListener() {
-//                        @Override
-//                        public void onErrorResponse(VolleyError volleyError) {
-//                            volleyError.printStackTrace();
-//                        }
-//                    }){
-//                @Override
-//                protected Map<String, String> getParams(){
-//                    Map<String, String> params = new HashMap<>();
-//                    params.put("email", signup_email);
-//                    return params;
-//                }
-//            };
-//
-//            RequestQueue requestQueue2 = Volley.newRequestQueue(getContext());
-//            requestQueue2.add(stringRequest);
-//        }
-//        else if (sent_from.equals("Login")){
-//
-//        }
         //get user profile
         StringRequest stringRequest = new StringRequest(Request.Method.POST, USER_PROFILE,
                 new Response.Listener<String>() {
@@ -279,8 +229,8 @@ public class Profile2 extends Fragment {
     private void addTabs(ViewPager viewPager) {
         Profile2.ViewPagerAdapter adapter = new Profile2.ViewPagerAdapter(getChildFragmentManager());
         adapter.addFrag(new tutorial_on_profile(), "");
-        adapter.addFrag(new post_on_profile(), "");
-        adapter.addFrag(new Games(), "");
+//        adapter.addFrag(new post_on_profile(), "");
+        adapter.addFrag(new GamesProfile(), "");
         adapter.addFrag(new gig_on_profile(), "");
         viewPager.setAdapter(adapter);
     }
@@ -324,7 +274,7 @@ public class Profile2 extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
+    static class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 

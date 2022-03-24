@@ -1,0 +1,1881 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#293241"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        tools:context=".SeeBids">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lin1"
+            android:orientation="horizontal">
+        <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/back"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/arrow_left"/>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/profile"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+            <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/profile_header"/>
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:id="@+id/created_by_gig"
+                        android:text="Ada Kayari"
+                        android:textSize="10dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:id="@+id/dept_gig"
+                        android:text="Civil Engineering"
+                        android:textSize="8dp"
+                        android:textStyle="normal"
+                        android:textColor="#ffffff"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:id="@+id/uni_gig"
+                        android:text="University of Abuja"
+                        android:textSize="8dp"
+                        android:textStyle="normal"
+                        android:textColor="#ffffff"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="40dp"
+                android:orientation="vertical">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:text="Project Name"
+                    android:textSize="8dp"
+                    android:textStyle="bold"
+                    android:textColor="#4bc93c"/>
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic157"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:id="@+id/gig_name"
+                        android:text="Website Design"
+                        android:textSize="10dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:id="@+id/bid_count"
+                        android:padding="5dp"
+                        android:textStyle="bold"
+                        android:textSize="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="#ffffff"
+                        android:background="@drawable/new_login"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="#ffffff"
+            android:id="@+id/viewm"
+            android:layout_below="@+id/lin1"
+            android:layout_marginTop="20dp"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You have no bid(s) for this gig"
+            android:textColor="#ffffff"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/viewm"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/error"
+            android:id="@+id/notification_text"/>
+
+    <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewm"
+            android:divider="@null"
+            android:id="@+id/my_list"/>
+
+    <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:id="@+id/progressBar"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/loading_text"
+            android:text="Loading..."
+            android:textColor="#ffffff"
+            android:textSize="10dp"
+            android:layout_below="@+id/progressBar"
+            android:layout_centerHorizontal="true"/>
+
+<!--    <ScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+<!--        <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
+
+
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:checkable="true"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="false"-->
+<!--                    app:cardBackgroundColor="@android:color/transparent"-->
+<!--                    app:cardUseCompatPadding="true"-->
+<!--                    app:cardElevation="2dp"-->
+<!--                    app:contentPadding="10dp"-->
+<!--                    app:cardCornerRadius="5dp" >-->
+
+<!--                <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentLeft="true"-->
+<!--                            android:gravity="center_vertical"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/profile_header"/>-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Ada Kayari"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Civil Engineering"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="University of Abuja"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:layout_centerInParent="true">-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginRight="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic199"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="CV"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginLeft="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic198"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="N30,000"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentRight="true"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:layout_marginRight="20dp"-->
+<!--                                android:src="@drawable/ic196"/>-->
+
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/ic197"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </RelativeLayout>-->
+
+
+
+<!--            </androidx.cardview.widget.CardView>-->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:checkable="true"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="false"-->
+<!--                    app:cardBackgroundColor="@android:color/transparent"-->
+<!--                    app:cardUseCompatPadding="true"-->
+<!--                    app:cardElevation="2dp"-->
+<!--                    app:contentPadding="10dp"-->
+<!--                    app:cardCornerRadius="5dp" >-->
+
+<!--                <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentLeft="true"-->
+<!--                            android:gravity="center_vertical"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/profile_header"/>-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Ada Kayari"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Civil Engineering"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="University of Abuja"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:layout_centerInParent="true">-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginRight="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic199"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="CV"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginLeft="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic198"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="N30,000"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentRight="true"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:layout_marginRight="20dp"-->
+<!--                                android:src="@drawable/ic196"/>-->
+
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/ic197"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </RelativeLayout>-->
+
+
+
+<!--            </androidx.cardview.widget.CardView>-->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:checkable="true"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="false"-->
+<!--                    app:cardBackgroundColor="@android:color/transparent"-->
+<!--                    app:cardUseCompatPadding="true"-->
+<!--                    app:cardElevation="2dp"-->
+<!--                    app:contentPadding="10dp"-->
+<!--                    app:cardCornerRadius="5dp" >-->
+
+<!--                <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentLeft="true"-->
+<!--                            android:gravity="center_vertical"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/profile_header"/>-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Ada Kayari"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Civil Engineering"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="University of Abuja"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:layout_centerInParent="true">-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginRight="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic199"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="CV"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginLeft="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic198"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="N30,000"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentRight="true"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:layout_marginRight="20dp"-->
+<!--                                android:src="@drawable/ic196"/>-->
+
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/ic197"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </RelativeLayout>-->
+
+
+
+<!--            </androidx.cardview.widget.CardView>-->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:checkable="true"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="false"-->
+<!--                    app:cardBackgroundColor="@android:color/transparent"-->
+<!--                    app:cardUseCompatPadding="true"-->
+<!--                    app:cardElevation="2dp"-->
+<!--                    app:contentPadding="10dp"-->
+<!--                    app:cardCornerRadius="5dp" >-->
+
+<!--                <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentLeft="true"-->
+<!--                            android:gravity="center_vertical"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/profile_header"/>-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Ada Kayari"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Civil Engineering"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="University of Abuja"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:layout_centerInParent="true">-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginRight="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic199"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="CV"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginLeft="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic198"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="N30,000"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentRight="true"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:layout_marginRight="20dp"-->
+<!--                                android:src="@drawable/ic196"/>-->
+
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/ic197"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </RelativeLayout>-->
+
+
+
+<!--            </androidx.cardview.widget.CardView>-->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:checkable="true"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="false"-->
+<!--                    app:cardBackgroundColor="@android:color/transparent"-->
+<!--                    app:cardUseCompatPadding="true"-->
+<!--                    app:cardElevation="2dp"-->
+<!--                    app:contentPadding="10dp"-->
+<!--                    app:cardCornerRadius="5dp" >-->
+
+<!--                <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentLeft="true"-->
+<!--                            android:gravity="center_vertical"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/profile_header"/>-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Ada Kayari"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Civil Engineering"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="University of Abuja"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:layout_centerInParent="true">-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginRight="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic199"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="CV"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginLeft="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic198"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="N30,000"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentRight="true"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:layout_marginRight="20dp"-->
+<!--                                android:src="@drawable/ic196"/>-->
+
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/ic197"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </RelativeLayout>-->
+
+
+
+<!--            </androidx.cardview.widget.CardView>-->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:checkable="true"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="false"-->
+<!--                    app:cardBackgroundColor="@android:color/transparent"-->
+<!--                    app:cardUseCompatPadding="true"-->
+<!--                    app:cardElevation="2dp"-->
+<!--                    app:contentPadding="10dp"-->
+<!--                    app:cardCornerRadius="5dp" >-->
+
+<!--                <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentLeft="true"-->
+<!--                            android:gravity="center_vertical"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/profile_header"/>-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Ada Kayari"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Civil Engineering"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="University of Abuja"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:layout_centerInParent="true">-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginRight="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic199"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="CV"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginLeft="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic198"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="N30,000"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentRight="true"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:layout_marginRight="20dp"-->
+<!--                                android:src="@drawable/ic196"/>-->
+
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/ic197"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </RelativeLayout>-->
+
+
+
+<!--            </androidx.cardview.widget.CardView>-->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:checkable="true"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="false"-->
+<!--                    app:cardBackgroundColor="@android:color/transparent"-->
+<!--                    app:cardUseCompatPadding="true"-->
+<!--                    app:cardElevation="2dp"-->
+<!--                    app:contentPadding="10dp"-->
+<!--                    app:cardCornerRadius="5dp" >-->
+
+<!--                <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentLeft="true"-->
+<!--                            android:gravity="center_vertical"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/profile_header"/>-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Ada Kayari"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Civil Engineering"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="University of Abuja"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:layout_centerInParent="true">-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginRight="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic199"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="CV"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginLeft="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic198"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="N30,000"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentRight="true"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:layout_marginRight="20dp"-->
+<!--                                android:src="@drawable/ic196"/>-->
+
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/ic197"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </RelativeLayout>-->
+
+
+
+<!--            </androidx.cardview.widget.CardView>-->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:checkable="true"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="false"-->
+<!--                    app:cardBackgroundColor="@android:color/transparent"-->
+<!--                    app:cardUseCompatPadding="true"-->
+<!--                    app:cardElevation="2dp"-->
+<!--                    app:contentPadding="10dp"-->
+<!--                    app:cardCornerRadius="5dp" >-->
+
+<!--                <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentLeft="true"-->
+<!--                            android:gravity="center_vertical"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/profile_header"/>-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Ada Kayari"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Civil Engineering"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="University of Abuja"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:layout_centerInParent="true">-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginRight="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic199"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="CV"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginLeft="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic198"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="N30,000"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentRight="true"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:layout_marginRight="20dp"-->
+<!--                                android:src="@drawable/ic196"/>-->
+
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/ic197"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </RelativeLayout>-->
+
+
+
+<!--            </androidx.cardview.widget.CardView>-->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:checkable="true"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="false"-->
+<!--                    app:cardBackgroundColor="@android:color/transparent"-->
+<!--                    app:cardUseCompatPadding="true"-->
+<!--                    app:cardElevation="2dp"-->
+<!--                    app:contentPadding="10dp"-->
+<!--                    app:cardCornerRadius="5dp" >-->
+
+<!--                <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentLeft="true"-->
+<!--                            android:gravity="center_vertical"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/profile_header"/>-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Ada Kayari"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Civil Engineering"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="University of Abuja"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:layout_centerInParent="true">-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginRight="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic199"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="CV"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginLeft="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic198"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="N30,000"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentRight="true"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:layout_marginRight="20dp"-->
+<!--                                android:src="@drawable/ic196"/>-->
+
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/ic197"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </RelativeLayout>-->
+
+
+
+<!--            </androidx.cardview.widget.CardView>-->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:checkable="true"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="false"-->
+<!--                    app:cardBackgroundColor="@android:color/transparent"-->
+<!--                    app:cardUseCompatPadding="true"-->
+<!--                    app:cardElevation="2dp"-->
+<!--                    app:contentPadding="10dp"-->
+<!--                    app:cardCornerRadius="5dp" >-->
+
+<!--                <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentLeft="true"-->
+<!--                            android:gravity="center_vertical"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/profile_header"/>-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Ada Kayari"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Civil Engineering"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="University of Abuja"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:layout_centerInParent="true">-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginRight="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic199"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="CV"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginLeft="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic198"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="N30,000"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentRight="true"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:layout_marginRight="20dp"-->
+<!--                                android:src="@drawable/ic196"/>-->
+
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/ic197"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </RelativeLayout>-->
+
+
+
+<!--            </androidx.cardview.widget.CardView>-->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:checkable="true"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="false"-->
+<!--                    app:cardBackgroundColor="@android:color/transparent"-->
+<!--                    app:cardUseCompatPadding="true"-->
+<!--                    app:cardElevation="2dp"-->
+<!--                    app:contentPadding="10dp"-->
+<!--                    app:cardCornerRadius="5dp" >-->
+
+<!--                <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentLeft="true"-->
+<!--                            android:gravity="center_vertical"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/profile_header"/>-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Ada Kayari"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Civil Engineering"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="University of Abuja"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:layout_centerInParent="true">-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginRight="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic199"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="CV"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginLeft="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic198"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="N30,000"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentRight="true"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:layout_marginRight="20dp"-->
+<!--                                android:src="@drawable/ic196"/>-->
+
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/ic197"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </RelativeLayout>-->
+
+
+
+<!--            </androidx.cardview.widget.CardView>-->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:checkable="true"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="false"-->
+<!--                    app:cardBackgroundColor="@android:color/transparent"-->
+<!--                    app:cardUseCompatPadding="true"-->
+<!--                    app:cardElevation="2dp"-->
+<!--                    app:contentPadding="10dp"-->
+<!--                    app:cardCornerRadius="5dp" >-->
+
+<!--                <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentLeft="true"-->
+<!--                            android:gravity="center_vertical"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/profile_header"/>-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Ada Kayari"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Civil Engineering"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="University of Abuja"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:layout_centerInParent="true">-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginRight="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic199"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="CV"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginLeft="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic198"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="N30,000"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentRight="true"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:layout_marginRight="20dp"-->
+<!--                                android:src="@drawable/ic196"/>-->
+
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/ic197"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </RelativeLayout>-->
+
+
+
+<!--            </androidx.cardview.widget.CardView>-->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:checkable="true"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="false"-->
+<!--                    app:cardBackgroundColor="@android:color/transparent"-->
+<!--                    app:cardUseCompatPadding="true"-->
+<!--                    app:cardElevation="2dp"-->
+<!--                    app:contentPadding="10dp"-->
+<!--                    app:cardCornerRadius="5dp" >-->
+
+<!--                <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentLeft="true"-->
+<!--                            android:gravity="center_vertical"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/profile_header"/>-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Ada Kayari"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Civil Engineering"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="University of Abuja"-->
+<!--                                    android:textSize="8dp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:layout_centerInParent="true">-->
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginRight="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic199"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="CV"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_marginLeft="15dp"-->
+<!--                                android:orientation="vertical">-->
+<!--                            <ImageView-->
+<!--                                    android:layout_width="15dp"-->
+<!--                                    android:layout_height="15dp"-->
+<!--                                    android:src="@drawable/ic198"/>-->
+<!--                            <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="N30,000"-->
+<!--                                    android:textSize="10dp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:textColor="#ffffff"/>-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
+
+
+<!--                    <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentRight="true"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:layout_marginRight="20dp"-->
+<!--                                android:src="@drawable/ic196"/>-->
+
+<!--                        <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:src="@drawable/ic197"/>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </RelativeLayout>-->
+
+
+
+<!--            </androidx.cardview.widget.CardView>-->
+
+
+<!--        </LinearLayout>-->
+<!--    </ScrollView>-->
+
+</RelativeLayout>

@@ -2,6 +2,7 @@ package com.example.handoutlms;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -11,9 +12,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 
 import java.util.ArrayList;
@@ -32,10 +35,13 @@ public class HomeListViewAdapter extends BaseAdapter {
     private ArrayList<String> date;
     private ArrayList<String> card_mode;
     private ArrayList<String> category;
+    private ArrayList<String> id;
 
-    Dialog myDialog;
+    Dialog myDialog, myDialog2;
+    AlertDialog.Builder builder;
 
-    public HomeListViewAdapter (Context context, ArrayList<String> type, ArrayList<String> created_by, ArrayList<String> created_by_name, ArrayList<String> group_name, ArrayList<String> university, ArrayList<String> mode, ArrayList<String> group_name_inside, ArrayList<String> description, ArrayList<String> time, ArrayList<String> date, ArrayList<String> card_mode, ArrayList<String> category){
+
+    public HomeListViewAdapter (Context context, ArrayList<String> type, ArrayList<String> created_by, ArrayList<String> created_by_name, ArrayList<String> group_name, ArrayList<String> university, ArrayList<String> mode, ArrayList<String> group_name_inside, ArrayList<String> description, ArrayList<String> time, ArrayList<String> date, ArrayList<String> card_mode, ArrayList<String> category, ArrayList<String> id){
         //Getting all the values
         this.context = context;
         this.type = type;
@@ -50,6 +56,7 @@ public class HomeListViewAdapter extends BaseAdapter {
         this.date = date;
         this.card_mode = card_mode;
         this.category = category;
+        this.id = id;
     }
 
     @Override
@@ -143,6 +150,17 @@ public class HomeListViewAdapter extends BaseAdapter {
                 myDialog = new Dialog(context);
                 myDialog.setContentView(R.layout.card_gig_click_popup);
                 //get views in the popup page
+                LinearLayout profile = myDialog.findViewById(R.id.profile);
+                profile.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //move to the user profile page
+                        Intent i = new Intent(context, ProfileOthers.class);
+                        //pass the email of the selected user
+                        i.putExtra("email", created_by.get(position));
+                        context.startActivity(i);
+                    }
+                });
                 TextView pop_name = myDialog.findViewById(R.id.created_by_gig);
                 pop_name.setText(created_by_name.get(position));
                 TextView pop_department = myDialog.findViewById(R.id.dept_gig);
@@ -161,6 +179,13 @@ public class HomeListViewAdapter extends BaseAdapter {
                     public void onClick(View v) {
                         //move to the next gig page
                         Intent i = new Intent(context, CardGigClick2.class);
+                        i.putExtra("name", created_by_name.get(position));
+                        i.putExtra("department", time.get(position));
+                        i.putExtra("school", university.get(position));
+                        i.putExtra("gig_name", group_name.get(position));
+                        i.putExtra("gig_description", description.get(position));
+                        i.putExtra("payment_structure", category.get(position));
+                        i.putExtra("id", id.get(position));
                         context.startActivity(i);
                     }
                 });
@@ -178,6 +203,19 @@ public class HomeListViewAdapter extends BaseAdapter {
                 myDialog = new Dialog(context);
                 myDialog.setContentView(R.layout.card_tutorial_click_popup);
                 //get views in the popup page
+                LinearLayout profile = myDialog.findViewById(R.id.profile);
+                profile.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //
+
+                        //move to the user profile page
+                        Intent i = new Intent(context, ProfileOthers.class);
+                        //pass the email of the selected user
+                        i.putExtra("email", created_by.get(position));
+                        context.startActivity(i);
+                    }
+                });
                 TextView pop_name = myDialog.findViewById(R.id.created_by);
                 pop_name.setText(created_by_name.get(position));
                 TextView pop_department = myDialog.findViewById(R.id.dept);
@@ -200,11 +238,44 @@ public class HomeListViewAdapter extends BaseAdapter {
                     //do not set the location of the tutorial
                 }
 
+
+                builder = new AlertDialog.Builder(context);
                 Button join = myDialog.findViewById(R.id.join);
                 join.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         //show 'done'
+                        builder.setMessage("Do you want to join '"+group_name.get(position)+"'?")
+                                .setCancelable(false)
+                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        //show popUpWindow
+                                        myDialog2 = new Dialog(context);
+                                        myDialog2.setContentView(R.layout.custom_popup_tutorial_joined);
+                                        TextView popup_tutName = myDialog2.findViewById(R.id.tutName);
+                                        Button close = myDialog2.findViewById(R.id.close);
+                                        popup_tutName.setText(group_name.get(position));
+                                        close.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                myDialog2.dismiss();
+                                            }
+                                        });
+                                        myDialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                        myDialog2.setCanceledOnTouchOutside(false);
+                                        myDialog2.show();
+                                    }
+                                })
+                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        //  Action for 'NO' Button
+                                        dialog.cancel();
+                                    }
+                                });
+                        AlertDialog alert = builder.create();
+                        //Setting the title manually
+                        alert.setTitle("Join Tutorial - "+group_name.get(position));
+                        alert.show();
                     }
                 });
                 myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

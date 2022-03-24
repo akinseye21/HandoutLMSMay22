@@ -4,26 +4,11 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="#293241"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        tools:context=".CardGigClick2">
-
-    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:id="@+id/rel1">
-        <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/back"
-                android:src="@drawable/arrow_left"/>
-
-    </RelativeLayout>
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        tools:context=".ShowBidsPlaced">
 
     <ScrollView
             android:layout_width="match_parent"
@@ -32,10 +17,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/rel1">
+                <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:id="@+id/back"
+                        android:src="@drawable/arrow_left"/>
+
+            </RelativeLayout>
+
+
             <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/profile"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -50,7 +51,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:id="@+id/name"
+                            android:id="@+id/created_by_gig"
                             android:text="Ada Kayari"
                             android:textSize="12dp"
                             android:textStyle="bold"
@@ -59,7 +60,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:id="@+id/department"
+                            android:id="@+id/dept_gig"
                             android:text="Civil Engineering"
                             android:textSize="10dp"
                             android:textStyle="normal"
@@ -68,7 +69,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:id="@+id/uni"
+                            android:id="@+id/uni_gig"
                             android:text="University of Abuja"
                             android:textSize="10dp"
                             android:textStyle="normal"
@@ -77,10 +78,9 @@
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_width="300dp"
-                    android:layout_height="200dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginLeft="20dp"
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/ic163"/>
 
@@ -109,7 +109,7 @@
                         android:layout_marginLeft="5dp"
                         android:id="@+id/gig_name"
                         android:text="Website Design"
-                        android:textSize="12dp"
+                        android:textSize="14dp"
                         android:textStyle="bold"
                         android:textColor="#ffffff"/>
 
@@ -131,7 +131,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="60dp"
                     android:layout_marginLeft="25dp"
                     android:text="Project Description"
                     android:textSize="8dp"
@@ -162,7 +162,69 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginLeft="25dp"
+                    android:text="Required skills"
+                    android:textSize="8dp"
+                    android:textStyle="bold"
+                    android:textColor="#4bc93c"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic179"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:background="#4bc93c"
+                        android:padding="3dp"
+                        android:text="User interface"
+                        android:textSize="8dp"
+                        android:textStyle="normal"
+                        android:textColor="#ffffff"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:background="#4bc93c"
+                        android:padding="3dp"
+                        android:text="User interface"
+                        android:textSize="8dp"
+                        android:textStyle="normal"
+                        android:textColor="#ffffff"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:background="#4bc93c"
+                        android:padding="3dp"
+                        android:text="User interface"
+                        android:textSize="8dp"
+                        android:textStyle="normal"
+                        android:textColor="#ffffff"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:background="#4bc93c"
+                        android:padding="3dp"
+                        android:text="User interface"
+                        android:textSize="8dp"
+                        android:textStyle="normal"
+                        android:textColor="#ffffff"/>
+
+            </LinearLayout>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
                     android:layout_marginLeft="25dp"
                     android:text="Payment structure"
                     android:textSize="8dp"
@@ -204,145 +266,9 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="30dp">
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="NGN"
-                        android:textSize="10dp"
-                        android:textStyle="bold"
-                        android:textColor="#ffffff"/>
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:orientation="vertical">
-                    <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="20dp"
-                            android:layout_marginLeft="10dp"
-                            android:hint="Enter Amount"
-                            android:id="@+id/bidAmount"
-                            android:textColorHint="#ffffff"
-                            android:textColor="#ffffff"
-                            android:textSize="8dp"
-                            android:inputType="number"
-                            android:background="@null"
-                            android:layout_marginTop="8dp"
-                            />
-                    <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.1dp"
-                            android:layout_marginLeft="10dp"
-                            android:background="#ffffff"/>
-
-                </LinearLayout>
-
-
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/green_outline"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:id="@+id/uploadCV"
-                    android:gravity="center"
-                    android:padding="20dp"
-                    android:orientation="horizontal">
-                <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:tint="#65dc9a"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/home_ic4"/>
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Upload CV"
-                        android:textSize="10dp"
-                        android:paddingLeft="5dp"
-                        android:textColor="#65dc9a"/>
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Please kindly upload your curriculum vitae in PDF format ONLY"
-                        android:textSize="8dp"
-                        android:paddingLeft="10dp"
-                        android:textColor="#ffffff"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
-                    android:layout_gravity="center">
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="File: "
-                        android:textStyle="bold"
-                        android:textColor="#ffffff"
-                        android:textSize="10dp"/>
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/file_path"
-                        android:layout_marginLeft="10dp"
-                        android:textColor="#ffffff"
-                        android:textStyle="italic"
-                        android:textSize="10dp"
-                        android:text="......no file selected....."/>
-
-            </LinearLayout>
-
-
-            <ProgressBar
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center|center_vertical"
-                    android:visibility="gone"
-                    android:id="@+id/progressBar"/>
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:id="@+id/upload_text"
-                    android:visibility="gone"
-                    android:text="Biding... Please wait"
-                    android:textColor="#ffffff"/>
-
-
-
-            <Button
-                    android:layout_width="130dp"
-                    android:layout_height="30dp"
-                    android:text="Finish"
-                    android:textSize="10dp"
-                    android:textStyle="bold"
-                    android:textColor="#ffffff"
-                    android:background="@drawable/rounded_orange"
-                    android:textAllCaps="false"
-                    android:layout_marginBottom="30dp"
-                    android:id="@+id/finish"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="30dp" />
         </LinearLayout>
     </ScrollView>
-
-
 
 
 </LinearLayout>

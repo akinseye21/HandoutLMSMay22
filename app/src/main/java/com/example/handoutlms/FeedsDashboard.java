@@ -31,10 +31,10 @@ public class FeedsDashboard extends AppCompatActivity implements
         FeedDashboardProfie.OnFragmentInteractionListener,
         Tutor.OnFragmentInteractionListener,
         Games.OnFragmentInteractionListener,
+        GamesProfile.OnFragmentInteractionListener,
         Gigs.OnFragmentInteractionListener,
         Profile2.OnFragmentInteractionListener,
         tutorial_on_profile.OnFragmentInteractionListener,
-        post_on_profile.OnFragmentInteractionListener,
         TaskManager1.OnFragmentInteractionListener,
         TodayTask.OnFragmentInteractionListener,
         gig_on_profile.OnFragmentInteractionListener{

@@ -14,12 +14,12 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link post_on_profile.OnFragmentInteractionListener} interface
+ * {@link GamesProfile.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link post_on_profile#newInstance} factory method to
+ * Use the {@link GamesProfile#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class post_on_profile extends Fragment {
+public class GamesProfile extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -31,7 +31,7 @@ public class post_on_profile extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public post_on_profile() {
+    public GamesProfile() {
         // Required empty public constructor
     }
 
@@ -41,11 +41,11 @@ public class post_on_profile extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment post_on_profile.
+     * @return A new instance of fragment GamesProfile.
      */
     // TODO: Rename and change types and number of parameters
-    public static post_on_profile newInstance(String param1, String param2) {
-        post_on_profile fragment = new post_on_profile();
+    public static GamesProfile newInstance(String param1, String param2) {
+        GamesProfile fragment = new GamesProfile();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -66,7 +66,7 @@ public class post_on_profile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_post_on_profile, container, false);
+        return inflater.inflate(R.layout.fragment_games_profile, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

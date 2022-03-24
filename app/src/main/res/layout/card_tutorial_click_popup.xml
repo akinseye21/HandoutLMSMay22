@@ -22,6 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                    android:id="@+id/profile"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <de.hdodenhof.circleimageview.CircleImageView

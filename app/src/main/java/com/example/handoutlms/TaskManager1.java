@@ -113,7 +113,7 @@ public class TaskManager1 extends Fragment {
     private void addTabs(ViewPager viewPager) {
         TaskManager1.ViewPagerAdapter adapter = new TaskManager1.ViewPagerAdapter(getChildFragmentManager());
         adapter.addFrag(new TodayTask(), "Today");
-        adapter.addFrag(new post_on_profile(), "Week");
+        adapter.addFrag(new Gigs(), "Week");
         adapter.addFrag(new Games(), "Month");
         viewPager.setAdapter(adapter);
     }

@@ -48,7 +48,7 @@ public class EditProfilePage extends AppCompatActivity {
         myDialog.setContentView(R.layout.custom_popup_add_education);
         // Setting dialogview
         Window window = myDialog.getWindow();
-        window.setGravity(Gravity.BOTTOM);
+        window.setGravity(Gravity.CENTER);
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.setCanceledOnTouchOutside(true);
         myDialog.show();
@@ -59,7 +59,7 @@ public class EditProfilePage extends AppCompatActivity {
         myDialog.setContentView(R.layout.custom_popup_add_experience);
         // Setting dialogview
         Window window = myDialog.getWindow();
-        window.setGravity(Gravity.BOTTOM);
+        window.setGravity(Gravity.CENTER);
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.setCanceledOnTouchOutside(true);
         myDialog.show();

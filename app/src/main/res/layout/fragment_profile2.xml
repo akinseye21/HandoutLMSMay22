@@ -82,8 +82,8 @@
            android:layout_marginTop="140dp"
            android:layout_marginRight="10dp">
            <ImageView
-               android:layout_width="10dp"
-               android:layout_height="10dp"
+               android:layout_width="20dp"
+               android:layout_height="20dp"
                android:src="@drawable/ic57"/>
            <TextView
                android:layout_width="wrap_content"
@@ -92,7 +92,7 @@
                android:text="Edit Profile"
                android:textColor="#ffffff"
                android:textStyle="bold"
-               android:textSize="6dp"
+               android:textSize="10dp"
                android:paddingLeft="2dp"/>
        </LinearLayout>
 
@@ -178,7 +178,7 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:orientation="horizontal"
-           android:gravity="center_horizontal"
+           android:gravity="left"
            android:id="@+id/lincat"
            android:layout_below="@+id/myrel">
            <LinearLayout
@@ -201,43 +201,41 @@
                        android:paddingLeft="5dp"
                        android:textColor="#ffffff"/>
                </LinearLayout>
-               <LinearLayout
-                   android:layout_width="80dp"
-                   android:layout_height="3dp"
-                   android:id="@+id/lintut"
-                   android:visibility="visible"
-                   android:background="#f05d72"/>
+
+
+
+
            </LinearLayout>
 
 
 
-           <LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical"
-               android:layout_marginLeft="5dp"
-               android:layout_marginRight="5dp">
-               <LinearLayout
-                   android:layout_width="80dp"
-                   android:layout_height="20dp"
-                   android:gravity="center"
-                   android:background="@drawable/rounded_blue2">
-                   <TextView
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="Posts"
-                       android:textSize="10dp"
-                       android:paddingRight="5dp"
-                       android:paddingLeft="5dp"
-                       android:textColor="#ffffff"/>
-               </LinearLayout>
-               <LinearLayout
-                   android:layout_width="80dp"
-                   android:layout_height="3dp"
-                   android:id="@+id/linpost"
-                   android:visibility="gone"
-                   android:background="#29aae3"/>
-           </LinearLayout>
+<!--           <LinearLayout-->
+<!--               android:layout_width="wrap_content"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:orientation="vertical"-->
+<!--               android:layout_marginLeft="5dp"-->
+<!--               android:layout_marginRight="5dp">-->
+<!--               <LinearLayout-->
+<!--                   android:layout_width="80dp"-->
+<!--                   android:layout_height="20dp"-->
+<!--                   android:gravity="center"-->
+<!--                   android:background="@drawable/rounded_blue2">-->
+<!--                   <TextView-->
+<!--                       android:layout_width="wrap_content"-->
+<!--                       android:layout_height="wrap_content"-->
+<!--                       android:text="Posts"-->
+<!--                       android:textSize="10dp"-->
+<!--                       android:paddingRight="5dp"-->
+<!--                       android:paddingLeft="5dp"-->
+<!--                       android:textColor="#ffffff"/>-->
+<!--               </LinearLayout>-->
+<!--               <LinearLayout-->
+<!--                   android:layout_width="80dp"-->
+<!--                   android:layout_height="3dp"-->
+<!--                   android:id="@+id/linpost"-->
+<!--                   android:visibility="gone"-->
+<!--                   android:background="#29aae3"/>-->
+<!--           </LinearLayout>-->
 
 
 
@@ -261,12 +259,10 @@
                        android:paddingLeft="10dp"
                        android:textColor="#ffffff"/>
                </LinearLayout>
-               <LinearLayout
-                   android:layout_width="80dp"
-                   android:layout_height="3dp"
-                   android:id="@+id/lingame"
-                   android:visibility="gone"
-                   android:background="#8b3894"/>
+
+
+
+
            </LinearLayout>
 
 
@@ -291,13 +287,52 @@
                        android:paddingLeft="10dp"
                        android:textColor="#ffffff"/>
                </LinearLayout>
-               <LinearLayout
+
+
+
+           </LinearLayout>
+
+
+       </LinearLayout>
+
+
+       <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="2dp"
+               android:layout_below="@+id/lincat"
+               android:background="#59ffffff"
+               android:id="@+id/line"
+               android:layout_marginTop="3dp"
+               android:layout_marginLeft="5dp"
+               android:layout_marginRight="5dp"
+               android:orientation="horizontal">
+
+           <LinearLayout
                    android:layout_width="80dp"
-                   android:layout_height="3dp"
+                   android:layout_height="2dp"
+                   android:id="@+id/lintut"
+                   android:visibility="visible"
+                   android:background="#f05d72"
+                   android:orientation="horizontal" />
+
+           <LinearLayout
+                   android:layout_width="80dp"
+                   android:layout_height="2dp"
+                   android:id="@+id/lingame"
+                   android:visibility="gone"
+                   android:layout_marginLeft="90dp"
+                   android:background="#8b3894"
+                   android:orientation="horizontal" />
+
+           <LinearLayout
+                   android:layout_width="80dp"
+                   android:layout_height="2dp"
                    android:id="@+id/lingig"
                    android:visibility="gone"
-                   android:background="#00adee"/>
-           </LinearLayout>
+                   android:layout_marginLeft="180dp"
+                   android:background="#00adee"
+                   android:orientation="horizontal" />
+
 
 
        </LinearLayout>
@@ -308,7 +343,7 @@
        <com.google.android.material.tabs.TabLayout
            android:layout_width="match_parent"
            android:layout_height="0dp"
-           android:layout_below="@+id/lincat"
+           android:layout_below="@+id/line"
            android:id="@+id/tabs"
            android:visibility="gone"/>
 
