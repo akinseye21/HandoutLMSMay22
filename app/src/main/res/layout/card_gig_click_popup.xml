@@ -158,40 +158,12 @@
             android:layout_marginLeft="5dp"
             android:background="#4bc93c"
             android:padding="3dp"
+                android:id="@+id/skills"
             android:text="User interface"
             android:textSize="8dp"
             android:textStyle="normal"
             android:textColor="#ffffff"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:background="#4bc93c"
-            android:padding="3dp"
-            android:text="User interface"
-            android:textSize="8dp"
-            android:textStyle="normal"
-            android:textColor="#ffffff"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:background="#4bc93c"
-            android:padding="3dp"
-            android:text="User interface"
-            android:textSize="8dp"
-            android:textStyle="normal"
-            android:textColor="#ffffff"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:background="#4bc93c"
-            android:padding="3dp"
-            android:text="User interface"
-            android:textSize="8dp"
-            android:textStyle="normal"
-            android:textColor="#ffffff"/>
+
 
     </LinearLayout>
 

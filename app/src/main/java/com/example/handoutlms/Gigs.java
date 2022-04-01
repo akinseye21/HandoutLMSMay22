@@ -49,7 +49,14 @@ public class Gigs extends Fragment {
 
     final ArrayList<String> Array_gigName = new ArrayList<>();
     final ArrayList<String> Array_gigPrice = new ArrayList<>();
-    final ArrayList<String> Array_gigTime = new ArrayList<>();
+    final ArrayList<String> Array_gigPaymentMode = new ArrayList<>();
+    final ArrayList<String> Array_gigType = new ArrayList<>();
+    final ArrayList<String> Array_gigSkills = new ArrayList<>();
+    final ArrayList<String> Array_gigDescription = new ArrayList<>();
+    final ArrayList<String> Array_gigId = new ArrayList<>();
+    final ArrayList<String> Array_fullname = new ArrayList<>();
+    final ArrayList<String> Array_institution = new ArrayList<>();
+    final ArrayList<String> Array_department = new ArrayList<>();
     int ArrayLength;
 
     ProgressBar progressBar;
@@ -115,15 +122,29 @@ public class Gigs extends Fragment {
                                 JSONObject section = jsonArray.getJSONObject(i);
                                 String gigName = section.getString("gigname");
                                 String gigPrice = section.getString("budget_category");
-                                String gigTime = section.getString("payment_mode");
+                                String gigPaymentMode = section.getString("payment_mode");
+                                String gigType = section.getString("project_type");
+                                String gigSkills = section.getString("skills");
+                                String gigDescription = section.getString("description");
+                                String gigID = section.getString("ID");
+                                String fullname = section.getString("fullname");
+                                String institution = section.getString("institution");
+                                String department = section.getString("department");
 
                                 Array_gigName.add(gigName);
                                 Array_gigPrice.add(gigPrice);
-                                Array_gigTime.add(gigTime);
+                                Array_gigPaymentMode.add(gigPaymentMode);
+                                Array_gigType.add(gigType);
+                                Array_gigSkills.add(gigSkills);
+                                Array_gigDescription.add(gigDescription);
+                                Array_gigId.add("gigs_"+gigID);
+                                Array_fullname.add(fullname);
+                                Array_institution.add(institution);
+                                Array_department.add(department);
                             }
 
                             //populate values on the gridview
-                            GigListViewAdapter gigListViewAdapter = new GigListViewAdapter(getActivity(), Array_gigName, Array_gigPrice, Array_gigTime);
+                            GigListViewAdapter gigListViewAdapter = new GigListViewAdapter(getActivity(), Array_gigName, Array_gigPrice, Array_gigType, Array_gigSkills, Array_gigPaymentMode, Array_gigDescription, Array_gigId, Array_fullname, Array_institution, Array_department);
                             gridView.setAdapter(gigListViewAdapter);
                             //hide progressBar and progressText
                             progressBar.setVisibility(View.GONE);
@@ -147,7 +168,11 @@ public class Gigs extends Fragment {
         //clear array
         Array_gigName.clear();
         Array_gigPrice.clear();
-        Array_gigTime.clear();
+        Array_gigType.clear();
+        Array_gigPaymentMode.clear();
+        Array_gigDescription.clear();
+        Array_gigSkills.clear();
+        Array_gigId.clear();
 
         return v;
     }

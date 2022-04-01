@@ -145,6 +145,44 @@
             android:divider="@null"
             android:id="@+id/my_list"/>
 
+
+    <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/radioGroup"
+            android:visibility="gone"
+            android:layout_marginTop="70dp"
+            android:layout_below="@+id/viewm">
+        <RadioButton
+                android:id="@+id/inprogress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:checked="true"
+                android:buttonTint="#ffffff"
+                android:scaleX="0.6"
+                android:scaleY="0.6"
+                android:text="In progress"
+                android:textColor="#ffffff"
+                android:textSize="12dp"
+                android:textStyle="italic" />
+
+        <RadioButton
+                android:id="@+id/gigcompleted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:checked="false"
+                android:buttonTint="#ffffff"
+                android:scaleX="0.6"
+                android:scaleY="0.6"
+                android:text="Gig Completed"
+                android:textColor="#ffffff"
+                android:textSize="12dp"
+                android:textStyle="italic" />
+    </RadioGroup>
+
     <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

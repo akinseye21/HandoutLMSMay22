@@ -192,14 +192,14 @@
                             android:textSize="10dp"
                             android:textStyle="bold"
                             android:textColor="#ffffff"/>
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:text="Fixed Price"
-                            android:textSize="10dp"
-                            android:textStyle="normal"
-                            android:textColor="#91ffffff"/>
+<!--                    <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginLeft="5dp"-->
+<!--                            android:text="Fixed Price"-->
+<!--                            android:textSize="10dp"-->
+<!--                            android:textStyle="normal"-->
+<!--                            android:textColor="#91ffffff"/>-->
                 </LinearLayout>
 
             </LinearLayout>

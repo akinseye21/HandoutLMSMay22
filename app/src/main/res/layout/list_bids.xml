@@ -12,6 +12,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:checkable="true"
+            android:animateLayoutChanges="true"
             android:id="@+id/card"
             android:clickable="true"
             android:focusable="false"
@@ -144,5 +145,42 @@
 
 
     </androidx.cardview.widget.CardView>
+
+<!--    <RadioGroup-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:id="@+id/radioGroup"-->
+<!--            android:visibility="gone"-->
+<!--            android:layout_below="@+id/my_list">-->
+<!--        <RadioButton-->
+<!--                android:id="@+id/inprogress"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:checked="true"-->
+<!--                android:buttonTint="#ffffff"-->
+<!--                android:scaleX="0.6"-->
+<!--                android:scaleY="0.6"-->
+<!--                android:text="In progress"-->
+<!--                android:textColor="#ffffff"-->
+<!--                android:textSize="12dp"-->
+<!--                android:textStyle="italic" />-->
+
+<!--        <RadioButton-->
+<!--                android:id="@+id/gigcompleted"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:checked="false"-->
+<!--                android:buttonTint="#ffffff"-->
+<!--                android:scaleX="0.6"-->
+<!--                android:scaleY="0.6"-->
+<!--                android:text="Gig Completed"-->
+<!--                android:textColor="#ffffff"-->
+<!--                android:textSize="12dp"-->
+<!--                android:textStyle="italic" />-->
+<!--    </RadioGroup>-->
+
 
 </LinearLayout>

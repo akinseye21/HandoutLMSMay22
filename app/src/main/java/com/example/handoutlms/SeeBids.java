@@ -2,6 +2,7 @@ package com.example.handoutlms;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -44,6 +47,10 @@ public class SeeBids extends AppCompatActivity {
     ArrayList<String> Array_gigid = new ArrayList<>();
     ArrayList<String> Array_cv = new ArrayList<>();
 
+    RadioGroup radioGroup;
+    RadioButton inProgress;
+    RadioButton gigCompleted;
+
     public static final String GET_ALL_BIDS = "http://35.84.44.203/handouts/handout_get_all_bids_for_gig";
 
     @Override
@@ -76,6 +83,9 @@ public class SeeBids extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         loading_text = findViewById(R.id.loading_text);
         bid_count = findViewById(R.id.bid_count);
+        radioGroup = findViewById(R.id.radioGroup);
+        inProgress = findViewById(R.id.inprogress);
+        gigCompleted = findViewById(R.id.gigcompleted);
 
         fullname.setText(username);
         depart.setText(userdept);
@@ -97,6 +107,7 @@ public class SeeBids extends AppCompatActivity {
                             int bid_len = jsonArray.length();
                             bid_count.setText(String.valueOf(bid_len));
 
+
                             for(int j=0; j<bid_len; j++){
                                     JSONObject jsonObject = jsonArray.getJSONObject(j);
                                     String biddername = jsonObject.getString("biddername");
@@ -115,12 +126,19 @@ public class SeeBids extends AppCompatActivity {
                                     Array_gigid.add(gigid);
                                     Array_cv.add(CV);
                             }
-
-
-
                             //populate values on the listview
-                            SeeBidsAdapter seeBidsAdapter = new SeeBidsAdapter(getApplicationContext(), Array_biddername, Array_bidderemail, Array_bidstatus, Array_bidamount, Array_bidid, Array_gigid, Array_cv);
+                            SeeBidsAdapter seeBidsAdapter = new SeeBidsAdapter(SeeBids.this, Array_biddername, Array_bidderemail, Array_bidstatus, Array_bidamount, Array_bidid, Array_gigid, Array_cv);
                             my_list.setAdapter(seeBidsAdapter);
+//                            returnFromAdapter(bid_len);
+                            if(bid_len == 1){
+                                radioGroup.setVisibility(View.VISIBLE);
+//                                seeBidsAdapter.getItem(R.id.radioGroup);
+                            }
+
+
+
+
+
                         }
                         catch (JSONException e){
 //                            e.printStackTrace();
@@ -131,6 +149,7 @@ public class SeeBids extends AppCompatActivity {
                                 if (status.equals("no gig found")){
                                     notification_text.setVisibility(View.VISIBLE);
                                     my_list.setVisibility(View.GONE);
+                                    radioGroup.setVisibility(View.GONE);
                                 }
                             } catch (JSONException ex) {
                                 ex.printStackTrace();
@@ -158,5 +177,22 @@ public class SeeBids extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
+    }
+
+    public void returnFromAdapter(int returnLength) {
+        // do what you want with invoiceId
+        bid_count.setText(String.valueOf(returnLength));
+
+        if(returnLength == 1){
+            radioGroup.setVisibility(View.VISIBLE);
+//            SeeBidsAdapter seeBidsAdapter = new SeeBidsAdapter(SeeBids.this, Array_biddername, Array_bidderemail, Array_bidstatus, Array_bidamount, Array_bidid, Array_gigid, Array_cv);
+//            seeBidsAdapter.radioGroup.setVisibility(View.VISIBLE);
+
+        }else if(returnLength == 0){
+            notification_text.setVisibility(View.VISIBLE);
+            my_list.setVisibility(View.GONE);
+            radioGroup.setVisibility(View.GONE);
+        }
+//        my_list.
     }
 }

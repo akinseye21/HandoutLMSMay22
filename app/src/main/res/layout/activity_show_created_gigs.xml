@@ -130,7 +130,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginLeft="25dp"
                     android:text="Project Description"
                     android:textSize="8dp"
@@ -161,7 +161,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginLeft="25dp"
                     android:text="Required skills"
                     android:textSize="8dp"
@@ -195,7 +195,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginLeft="25dp"
                     android:text="Payment structure"
                     android:textSize="8dp"

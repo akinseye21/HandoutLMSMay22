@@ -270,9 +270,23 @@ public class gig_on_profile extends Fragment {
         requestQueue.add(stringRequest);
 
 
+        //clear array
         Array_gigName.clear();
         Array_gigPrice.clear();
         Array_gigType.clear();
+        Array_gigPaymentMode.clear();
+        Array_gigDescription.clear();
+        Array_gigSkills.clear();
+        Array_gigID.clear();
+
+        //clear array2
+        Array_gigName2.clear();
+        Array_gigPrice2.clear();
+        Array_gigType2.clear();
+        Array_gigPaymentMode2.clear();
+        Array_gigDescription2.clear();
+        Array_gigSkills2.clear();
+        Array_gigID2.clear();
 
         return v;
     }
