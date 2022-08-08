@@ -43,7 +43,7 @@ public class NewSignup extends AppCompatActivity {
     ProgressBar progressBar;
     Button signup;
 
-    public static final String SIGNUP = "http://35.84.44.203/handouts/handout_registration";
+    public static final String SIGNUP = "https://handout.com.ng/handouts/handout_registration";
 
 
     @Override

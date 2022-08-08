@@ -35,7 +35,7 @@ public class ForgotPassword2 extends AppCompatActivity {
     String email, code;
     ProgressBar progressBar;
 
-    public static final String VALIDATE_OTP = "http://35.84.44.203/handouts/handout_validate_otp";
+    public static final String VALIDATE_OTP = "http://handout.com.ng/handouts/handout_validate_otp";
 
 
     @Override

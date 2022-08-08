@@ -31,7 +31,7 @@ public class TriviaInstruction extends AppCompatActivity {
     String Text;
     ImageView back;
 
-    public static final String QUESTION_URL = "http://35.84.44.203/handouts/trivia/questions";
+    public static final String QUESTION_URL = "https://handout.com.ng/handouts/trivia/questions";
     ArrayList<String> question_list = new ArrayList<String>();
     ArrayList<String> optionA_list = new ArrayList<String>();
     ArrayList<String> optionB_list = new ArrayList<String>();

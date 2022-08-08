@@ -61,7 +61,7 @@ public class FinishFragment extends Fragment {
 
     SharedPreferences preferences2;
 
-    public static final String SIGNUP = "http://35.84.44.203/handouts/handout_registration";
+    public static final String SIGNUP = "http://handout.com.ng/handouts/handout_registration";
 
     public FinishFragment() {
         // Required empty public constructor

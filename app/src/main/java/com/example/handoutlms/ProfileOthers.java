@@ -51,8 +51,8 @@ public class ProfileOthers extends AppCompatActivity implements
     String got_email;
     ImageView back;
 
-    public static final String USER_PROFILE = "http://35.84.44.203/handouts/handout_get_other_users";
-    public static final String CONNECT_USER = "http://35.84.44.203/handouts/handout_connect_users";
+    public static final String USER_PROFILE = "http://handout.com.ng/handouts/handout_get_other_users";
+    public static final String CONNECT_USER = "http://handout.com.ng/handouts/handout_connect_users";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

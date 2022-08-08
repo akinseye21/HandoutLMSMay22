@@ -60,7 +60,7 @@ public class DocumentPaged extends AppCompatActivity {
     TextView upload_text;
     ProgressBar progressBar;
 
-    private static final String ROOT_URL = "http://35.84.44.203/handouts/handout_update_tutorial_group";
+    private static final String ROOT_URL = "http://handout.com.ng/handouts/handout_update_tutorial_group";
     private RequestQueue rQueue;
     String email;
 

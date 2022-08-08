@@ -36,7 +36,7 @@ public class ShowCreatedGigs extends AppCompatActivity {
     String got_email;
     String passedName, passedDescription, passedSkills, passedPrice, passedId;
     String got_fullname, got_institution, got_dept;
-    public static final String USER_PROFILE = "http://35.84.44.203/handouts/handout_get_user_profile";
+    public static final String USER_PROFILE = "http://handout.com.ng/handouts/handout_get_user_profile";
 
 
     @Override

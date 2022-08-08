@@ -41,7 +41,7 @@ public class Login extends AppCompatActivity {
     SharedPreferences preferences;
     String sent_from = "Login";
 
-    public static final String LOGIN = "http://35.84.44.203/handouts/handout_login";
+    public static final String LOGIN = "http://handout.com.ng/handouts/handout_login";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -51,7 +51,7 @@ public class SeeBids extends AppCompatActivity {
     RadioButton inProgress;
     RadioButton gigCompleted;
 
-    public static final String GET_ALL_BIDS = "http://35.84.44.203/handouts/handout_get_all_bids_for_gig";
+    public static final String GET_ALL_BIDS = "http://handout.com.ng/handouts/handout_get_all_bids_for_gig";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

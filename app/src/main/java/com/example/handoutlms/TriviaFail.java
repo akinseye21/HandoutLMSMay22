@@ -35,7 +35,7 @@ public class TriviaFail extends AppCompatActivity {
     String[] questio = new String[10];
     String[] score = new String[10];
 
-    public static final String RESULT_URL = "http://54.71.22.155/hitma/trivia/results";
+    public static final String RESULT_URL = "http://handout.com.ng/handouts/trivia/results";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

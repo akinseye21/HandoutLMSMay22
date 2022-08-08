@@ -32,7 +32,7 @@ public class ForgotPassword1 extends AppCompatActivity {
     Button submit;
     ProgressBar progressBar;
 
-    public static final String PASSWORD_RESET = "http://35.84.44.203/handouts/handout_reset_password";
+    public static final String PASSWORD_RESET = "http://handout.com.ng/handouts/handout_reset_password";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

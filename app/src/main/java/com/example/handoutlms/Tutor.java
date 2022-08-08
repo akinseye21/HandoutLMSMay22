@@ -63,8 +63,8 @@ public class Tutor extends Fragment {
     TutorListViewAdapter tutorListViewAdapter;
     GroupListViewAdapter groupListViewAdapter;
 
-    public static final String ALL_TUTORS = "http://35.84.44.203/handouts/handout_get_tutors";
-    public static final String ALL_GROUPS = "http://35.84.44.203/handouts/handout_get_all_tutorials";
+    public static final String ALL_TUTORS = "http://handout.com.ng/handouts/handout_get_tutors";
+    public static final String ALL_GROUPS = "http://handout.com.ng/handouts/handout_get_all_tutorials";
 
     public Tutor() {
         // Required empty public constructor

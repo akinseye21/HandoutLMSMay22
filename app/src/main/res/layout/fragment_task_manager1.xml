@@ -7,9 +7,7 @@
     android:background="#293241"
     tools:context=".TaskManager1">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -148,11 +146,10 @@
 
             <androidx.viewpager.widget.ViewPager
                 android:layout_width="match_parent"
-                android:layout_height="700dp"
+                android:layout_height="match_parent"
                 android:id="@+id/viewpager2"
                 android:layout_below="@+id/tabs"/>
 
         </LinearLayout>
-    </ScrollView>
 
 </FrameLayout>

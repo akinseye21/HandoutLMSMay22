@@ -73,7 +73,7 @@ public class FeedDashboardHome extends Fragment {
     TabLayout tabLayout;
 
 //    public static final String ALL_TUTORIALS = "http://35.84.44.203/handouts/handout_get_all_tutorials";
-    public static final String ALL_GIGS_AND_TUTORIALS = "http://35.84.44.203/handouts/handout_gigs_groups";
+    public static final String ALL_GIGS_AND_TUTORIALS = "http://handout.com.ng/handouts/handout_gigs_groups";
 
     private OnFragmentInteractionListener mListener;
 

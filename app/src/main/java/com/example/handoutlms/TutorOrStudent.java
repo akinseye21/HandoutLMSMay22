@@ -34,7 +34,7 @@ public class TutorOrStudent extends AppCompatActivity {
     String sent_from = "Register";
 
 
-    public static final String UPDATE = "http://35.84.44.203/handouts/handout_usertype";
+    public static final String UPDATE = "http://handout.com.ng/handouts/handout_usertype";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +87,7 @@ public class TutorOrStudent extends AppCompatActivity {
                                         JSONObject jsonObject = new JSONObject(response);
 
                                         String status = jsonObject.getString("status");
-                                        if(status.equals("successful")){
+                                        if(status.equals("login successful")){
                                             //go to dashboard
                                             Intent i = new Intent(TutorOrStudent.this, FeedsDashboard.class);
                                             i.putExtra("email", email);

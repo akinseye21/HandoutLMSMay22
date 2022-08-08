@@ -33,7 +33,7 @@ public class ForgotPassword3 extends AppCompatActivity {
     String email;
     Button submit;
 
-    public static final String UPDATE_PASSWORD = "http://35.84.44.203/handouts/handout_update_password";
+    public static final String UPDATE_PASSWORD = "http://handout.com.ng/handouts/handout_update_password";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

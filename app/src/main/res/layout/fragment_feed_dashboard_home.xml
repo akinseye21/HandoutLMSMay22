@@ -221,7 +221,7 @@
 
                 <androidx.viewpager.widget.ViewPager
                     android:layout_width="match_parent"
-                    android:layout_height="700dp"
+                    android:layout_height="match_parent"
                     android:id="@+id/viewpager"
                     android:visibility="gone"
                     android:layout_below="@+id/lineview">

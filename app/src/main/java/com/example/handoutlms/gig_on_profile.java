@@ -81,7 +81,7 @@ public class gig_on_profile extends Fragment {
     GridView gridView1, gridView2;
     SharedPreferences preferences;
 
-    public static final String USER_GIGS = "http://35.84.44.203/handouts/handout_get_user_gig";
+    public static final String USER_GIGS = "http://handout.com.ng/handouts/handout_get_user_gig";
 
     public gig_on_profile() {
         // Required empty public constructor
@@ -215,7 +215,7 @@ public class gig_on_profile extends Fragment {
                                 JSONObject section2 = jsonArray.getJSONObject(0);
                                 int len = section2.length();
                                 if(len == 1){
-                                    nogig.setVisibility(View.VISIBLE);
+//                                    nogig.setVisibility(View.VISIBLE);
                                     //hide progressBar and progressText
 //                                    progressBar.setVisibility(View.GONE);
 //                                    progressText.setVisibility(View.GONE);

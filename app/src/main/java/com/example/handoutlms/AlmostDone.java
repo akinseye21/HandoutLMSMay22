@@ -38,7 +38,7 @@ public class AlmostDone extends AppCompatActivity {
     ProgressBar progressBar;
     ImageView back;
 
-    public static final String TUTORIAL_GROUP = "http://35.84.44.203/handouts/handout_tutorial_groups";
+    public static final String TUTORIAL_GROUP = "http://handout.com.ng/handouts/handout_tutorial_groups";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -59,8 +59,8 @@ public class SeeBidsAdapter extends BaseAdapter {
 //    public RadioButton inProgress;
 //    public RadioButton gigCompleted;
 
-    public static final String BID_REJECT = "http://35.84.44.203/handouts/handout_bid_reject";
-    public static final String BID_APPROVE = "http://35.84.44.203/handouts/handout_bid_approve";
+    public static final String BID_REJECT = "http://handout.com.ng/handouts/handout_bid_reject";
+    public static final String BID_APPROVE = "http://handout.com.ng/handouts/handout_bid_approve";
 
     public SeeBidsAdapter(SeeBids context, ArrayList<String> biddername, ArrayList<String> bidderemail, ArrayList<String> bidstatus, ArrayList<String> bidamount, ArrayList<String> bidid, ArrayList<String> gigid, ArrayList<String> cv){
         //Getting all the values

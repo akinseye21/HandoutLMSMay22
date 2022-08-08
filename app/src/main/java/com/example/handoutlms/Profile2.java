@@ -62,7 +62,7 @@ public class Profile2 extends Fragment {
     String got_email;
     String signup_email, sent_from;
 
-    public static final String USER_PROFILE = "http://35.84.44.203/handouts/handout_get_user_profile";
+    public static final String USER_PROFILE = "http://handout.com.ng/handout_get_user_profile";
 
     private OnFragmentInteractionListener mListener;
 
