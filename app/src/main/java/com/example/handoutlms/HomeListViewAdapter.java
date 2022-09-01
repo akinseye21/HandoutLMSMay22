@@ -83,17 +83,18 @@ public class HomeListViewAdapter extends BaseAdapter {
         }
 
         //get views for gig card
-        CardView card_gig = convertView.findViewById(R.id.card_gig);
+        RelativeLayout card_gig = convertView.findViewById(R.id.card_gig);
         TextView name_gig = convertView.findViewById(R.id.group_name_inside_gig);
         TextView desc_gig = convertView.findViewById(R.id.description_gig);
         TextView budget_gig = convertView.findViewById(R.id.budget_category_gig);
         TextView crt_by_gig = convertView.findViewById(R.id.created_by_gig);
         TextView dept_gig = convertView.findViewById(R.id.dept_gig);
         TextView uni_gig = convertView.findViewById(R.id.uni_gig);
+        ImageView plus_gig = convertView.findViewById(R.id.plus_gig);
 
 
         //get views for tutorials
-        CardView card_tutorial = convertView.findViewById(R.id.card_tutors);
+        RelativeLayout card_tutorial = convertView.findViewById(R.id.card_tutors);
         TextView name_tutorial = convertView.findViewById(R.id.group_name_inside_tutor);
         TextView category_tutorial = convertView.findViewById(R.id.category_tutor);
         TextView desc_tutorial = convertView.findViewById(R.id.description_tutor);
@@ -101,24 +102,26 @@ public class HomeListViewAdapter extends BaseAdapter {
         TextView crt_by_tutorial = convertView.findViewById(R.id.created_by_tutor);
         TextView dept_tutorial = convertView.findViewById(R.id.dept_tutor);
         TextView uni_tutorial = convertView.findViewById(R.id.uni_tutor);
+        ImageView task_tutorial = convertView.findViewById(R.id.task);
+        ImageView plus_tutorial = convertView.findViewById(R.id.plus_tutorial);
 
 
         //get views for game
-        CardView card_game = convertView.findViewById(R.id.card_game);
-        TextView name_game = convertView.findViewById(R.id.name_game);
-        TextView location_game = convertView.findViewById(R.id.game_location);
-        TextView date_game = convertView.findViewById(R.id.game_date);
-        TextView time_game = convertView.findViewById(R.id.game_time);
-        TextView crt_by_game = convertView.findViewById(R.id.created_by_game);
-        TextView dept_gamel = convertView.findViewById(R.id.dept_game);
-        TextView uni_game = convertView.findViewById(R.id.uni_game);
+//        CardView card_game = convertView.findViewById(R.id.card_game);
+//        TextView name_game = convertView.findViewById(R.id.name_game);
+//        TextView location_game = convertView.findViewById(R.id.game_location);
+//        TextView date_game = convertView.findViewById(R.id.game_date);
+//        TextView time_game = convertView.findViewById(R.id.game_time);
+//        TextView crt_by_game = convertView.findViewById(R.id.created_by_game);
+//        TextView dept_gamel = convertView.findViewById(R.id.dept_game);
+//        TextView uni_game = convertView.findViewById(R.id.uni_game);
 
 
         if (type.get(position).equals("group")){
             //set tutorial cardview visible
             card_gig.setVisibility(View.GONE);
             card_tutorial.setVisibility(View.VISIBLE);
-            card_game.setVisibility(View.GONE);
+//            card_game.setVisibility(View.GONE);
 
             name_tutorial.setText(group_name_inside.get(position));
             category_tutorial.setText(category.get(position));
@@ -129,11 +132,10 @@ public class HomeListViewAdapter extends BaseAdapter {
             dept_tutorial.setText(mode.get(position));
         }
 
-
         if (type.get(position).equals("gigs")){
             card_gig.setVisibility(View.VISIBLE);
             card_tutorial.setVisibility(View.GONE);
-            card_game.setVisibility(View.GONE);
+//            card_game.setVisibility(View.GONE);
 
             name_gig.setText(group_name.get(position));
             desc_gig.setText(description.get(position));
@@ -281,6 +283,14 @@ public class HomeListViewAdapter extends BaseAdapter {
                 myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 myDialog.setCanceledOnTouchOutside(true);
                 myDialog.show();
+            }
+        });
+
+        task_tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //add the tutorial to the taskmanager
+
             }
         });
 

@@ -31,8 +31,7 @@ public class AddOptions extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), FeedsDashboard.class);
-                startActivity(i);
+                onBackPressed();
             }
         });
 
@@ -53,8 +52,4 @@ public class AddOptions extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        // do nothing
-    }
 }

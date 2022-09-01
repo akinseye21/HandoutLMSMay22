@@ -1,7 +1,12 @@
 package com.example.handoutlms;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +18,7 @@ import android.widget.TextView;
 public class CreateOnlineTutPhase1 extends AppCompatActivity {
 
     LinearLayout audio, video, pdf, quiz;
-    String name, group_name;
+    String name, group_name, notification;
     TextView grpNAME;
     TextView view_resources;
     ImageView back;
@@ -36,6 +41,25 @@ public class CreateOnlineTutPhase1 extends AppCompatActivity {
 
         Intent i = getIntent();
         group_name = i.getStringExtra("Group_name");
+        notification = i.getStringExtra("notification");
+
+        Intent intent = new Intent(this, AddOptions.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.logo)
+                .setContentTitle("Handout LMS")
+                .setContentText(notification)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                // Set the intent that will fire when the user taps the notification
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(9, builder.build());
+
+
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

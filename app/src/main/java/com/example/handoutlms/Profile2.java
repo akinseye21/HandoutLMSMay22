@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -62,7 +63,7 @@ public class Profile2 extends Fragment {
     String got_email;
     String signup_email, sent_from;
 
-    public static final String USER_PROFILE = "http://handout.com.ng/handout_get_user_profile";
+    public static final String USER_PROFILE = "https://handout.com.ng/handouts/handout_get_user_profile";
 
     private OnFragmentInteractionListener mListener;
 
@@ -127,6 +128,9 @@ public class Profile2 extends Fragment {
 
         preferences = getActivity().getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
         got_email = preferences.getString("email", "not available");
+
+//        Toast.makeText(getActivity(), "Email = "+got_email, Toast.LENGTH_LONG).show();
+//        email.setText(got_email);
         addTabs(viewPager);
 
         tabLayout.setupWithViewPager(viewPager);

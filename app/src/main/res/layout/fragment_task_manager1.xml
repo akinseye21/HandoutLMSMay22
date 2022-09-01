@@ -17,25 +17,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hi, Lisa!"
+                android:id="@+id/name"
                 android:textColor="#ffffff"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
-                android:textSize="12dp"/>
+                android:textSize="15dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/num_of_task"
                 android:text="4 task \nfor today"
                 android:textColor="#ffffff"
-                android:textSize="20dp"
+                android:textSize="25dp"
                 android:textStyle="bold"
                 android:paddingLeft="10dp"
                 android:paddingBottom="5dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Task"
+                android:text="Tasks"
                 android:textStyle="bold"
-                android:textSize="15dp"
+                android:textSize="25dp"
                 android:textColor="#8cc63e"
                 android:paddingLeft="10dp"
                 android:paddingBottom="5dp"/>
@@ -49,73 +51,84 @@
                 <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="150dp"
-                    android:background="#37c1de"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
+                    android:id="@+id/exam"
                     android:layout_alignParentLeft="true"
-                    android:gravity="center_vertical">
+                    android:background="@drawable/tm13"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/countExam"
                         android:text="12 tasks"
                         android:textColor="#ffffff"
-                        android:textSize="8dp"/>
+                        android:textSize="8dp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Exam"
-                        android:textStyle="bold"
                         android:textColor="#ffffff"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
 
                 <LinearLayout
+                    android:id="@+id/test"
                     android:layout_width="100dp"
                     android:layout_height="150dp"
-                    android:background="#fcae18"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
                     android:layout_centerInParent="true"
-                    android:gravity="center_vertical">
+                    android:background="@drawable/tm15"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/countTest"
                         android:text="16 tasks"
                         android:textColor="#ffffff"
-                        android:textSize="8dp"/>
+                        android:textSize="8dp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Tests"
-                        android:textStyle="bold"
                         android:textColor="#ffffff"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
-
 
 
                 <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="150dp"
-                    android:background="#d3145a"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
+                    android:id="@+id/assignment"
                     android:layout_alignParentRight="true"
-                    android:gravity="center_vertical">
+                    android:background="@drawable/tm14"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/countAssignment"
                         android:text="16 tasks"
                         android:textColor="#ffffff"
-                        android:textSize="8dp"/>
+                        android:textSize="8dp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Assignments"
-                        android:textStyle="bold"
                         android:textColor="#ffffff"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
 
@@ -127,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:text="Personal Tasks"
                 android:textStyle="bold"
-                android:textSize="15dp"
+                android:textSize="25dp"
                 android:textColor="#8cc63e"
                 android:paddingTop="10dp"
                 android:paddingLeft="10dp"

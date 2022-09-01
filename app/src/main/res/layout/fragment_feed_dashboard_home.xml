@@ -45,12 +45,13 @@
                                 android:id="@+id/img1"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:src="@drawable/home_ic11"
-                                android:layout_centerHorizontal="true"/>
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/home_ic11" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="monospace"
                                 android:text="Tutors"
                                 android:textColor="#f7f7f7"
                                 android:textStyle="bold"
@@ -58,16 +59,19 @@
                                 android:layout_below="@+id/img1"
                                 android:layout_centerHorizontal="true"
                                 android:id="@+id/name"/>
+
                             <TextView
+                                android:id="@+id/active"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_below="@+id/name"
+                                android:gravity="center"
+                                android:layout_centerHorizontal="true"
+                                android:fontFamily="monospace"
                                 android:text="Looking for a tutor?"
                                 android:textColor="#f7f7f7"
-                                android:textStyle="italic"
                                 android:textSize="7dp"
-                                android:layout_below="@+id/name"
-                                android:layout_centerHorizontal="true"
-                                android:id="@+id/active"/>
+                                android:textStyle="italic" />
                         </RelativeLayout>
 
                         <LinearLayout
@@ -109,25 +113,29 @@
                                 android:layout_centerHorizontal="true"/>
 
                             <TextView
+                                android:id="@+id/lessons"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Games"
-                                android:textColor="#f7f7f7"
-                                android:textStyle="bold"
-                                android:textSize="15dp"
                                 android:layout_below="@+id/img2"
                                 android:layout_centerHorizontal="true"
-                                android:id="@+id/lessons"/>
+                                android:fontFamily="monospace"
+                                android:text="Games"
+                                android:textColor="#f7f7f7"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
                             <TextView
+                                android:id="@+id/activenum"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Have fun and learn"
-                                android:textColor="#f7f7f7"
-                                android:textStyle="italic"
-                                android:textSize="7dp"
                                 android:layout_below="@+id/lessons"
                                 android:layout_centerHorizontal="true"
-                                android:id="@+id/activenum"/>
+                                android:fontFamily="monospace"
+                                android:gravity="center"
+                                android:text="Have fun and learn"
+                                android:textColor="#f7f7f7"
+                                android:textSize="7dp"
+                                android:textStyle="italic" />
                         </RelativeLayout>
 
                         <LinearLayout
@@ -169,25 +177,29 @@
                                 android:layout_centerHorizontal="true"/>
 
                             <TextView
+                                android:id="@+id/incomes"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Gigs"
-                                android:textColor="#f7f7f7"
-                                android:textStyle="bold"
-                                android:textSize="15dp"
                                 android:layout_below="@+id/img3"
                                 android:layout_centerHorizontal="true"
-                                android:id="@+id/incomes"/>
+                                android:fontFamily="monospace"
+                                android:text="Gigs"
+                                android:textColor="#f7f7f7"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
                             <TextView
+                                android:id="@+id/activenum2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Freelance"
-                                android:textColor="#f7f7f7"
-                                android:textStyle="italic"
-                                android:textSize="7dp"
                                 android:layout_below="@+id/incomes"
                                 android:layout_centerHorizontal="true"
-                                android:id="@+id/activenum2"/>
+                                android:fontFamily="monospace"
+                                android:gravity="center"
+                                android:text="Freelance"
+                                android:textColor="#f7f7f7"
+                                android:textSize="7dp"
+                                android:textStyle="italic" />
                         </RelativeLayout>
 
 

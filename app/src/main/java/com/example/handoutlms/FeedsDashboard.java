@@ -1,13 +1,18 @@
 package com.example.handoutlms;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -49,6 +54,8 @@ public class FeedsDashboard extends AppCompatActivity implements
     ImageView plus;
     String email, sent_from;
 
+    private static final int NOTIFICATION_PERMISSION_CODE = 123;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +63,7 @@ public class FeedsDashboard extends AppCompatActivity implements
         setContentView(R.layout.activity_feeds_dashboard);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-
+//        requestNotificationPermission();
 
         Intent j = getIntent();
         email = j.getStringExtra("email");
@@ -175,14 +182,41 @@ public class FeedsDashboard extends AppCompatActivity implements
 
     }
 
+//    private void requestNotificationPermission() {
+//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NOTIFICATION_POLICY) == PackageManager.PERMISSION_GRANTED)
+//            return;
+//
+//        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_NOTIFICATION_POLICY)) {
+//
+//        }
+//
+//        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_NOTIFICATION_POLICY}, NOTIFICATION_PERMISSION_CODE );
+//    }
+//
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//
+//        // Checking the request code of our request
+//        if (requestCode == NOTIFICATION_PERMISSION_CODE ) {
+//
+//            // If permission is granted
+//            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                // Displaying a toast
+//                Toast.makeText(this, "Permission granted now you can read the storage", Toast.LENGTH_LONG).show();
+//            } else {
+//                // Displaying another toast if permission is not granted
+//                Toast.makeText(this, "Oops you just denied the permission", Toast.LENGTH_LONG).show();
+//            }
+//        }
+//    }
 
 
-    private void loadFragment(Fragment fragment) {
-        // create a FragmentTransaction to begin the transaction and replace the Fragment
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.viewpager, fragment);
-        fragmentTransaction.commit();
-    }
+//    private void loadFragment(Fragment fragment) {
+//        // create a FragmentTransaction to begin the transaction and replace the Fragment
+//        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//        fragmentTransaction.replace(R.id.viewpager, fragment);
+//        fragmentTransaction.commit();
+//    }
 
     private void setupTabIcons() {
         tabLayout.getTabAt(0).setIcon(R.drawable.ic33);
@@ -202,13 +236,13 @@ public class FeedsDashboard extends AppCompatActivity implements
         viewPager.setAdapter(adapter);
     }
 
-    private void addTabs2(ViewPager viewpager2) {
-        FeedsDashboard.ViewPagerAdapter adapter = new FeedsDashboard.ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new Tutor(), "");
-        adapter.addFrag(new Games(), "");
-        adapter.addFrag(new Gigs(), "");
-        viewpager2.setAdapter(adapter);
-    }
+//    private void addTabs2(ViewPager viewpager2) {
+//        FeedsDashboard.ViewPagerAdapter adapter = new FeedsDashboard.ViewPagerAdapter(getSupportFragmentManager());
+//        adapter.addFrag(new Tutor(), "");
+//        adapter.addFrag(new Games(), "");
+//        adapter.addFrag(new Gigs(), "");
+//        viewpager2.setAdapter(adapter);
+//    }
 //    private void addTutorTab(ViewPager viewPager){
 //        FeedsDashboard.ViewPagerAdapter adapter= new FeedsDashboard.ViewPagerAdapter(getSupportFragmentManager());
 //        adapter.addFrag(new Tutor(), "");

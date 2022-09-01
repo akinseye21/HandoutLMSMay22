@@ -141,6 +141,22 @@
                     android:textColor="#c7c7c7"
                     android:background="@android:color/transparent"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Location"
+                    android:id="@+id/domlocation"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#8cc63e"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/location"
+                    android:text=""
+                    android:textColor="#c7c7c7"
+                    android:background="@android:color/transparent"/>
+
             </LinearLayout>
 
             <LinearLayout

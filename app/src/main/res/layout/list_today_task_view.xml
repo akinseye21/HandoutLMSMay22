@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_grey"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:id="@+id/lin_overall"
+        android:visibility="gone"
+        android:padding="10dp">
+        <LinearLayout
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:background="@drawable/circle_dark_green"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:id="@+id/lin_dot"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phy103 Exams"
+            android:textColor="#6e6e70"
+            android:layout_toRightOf="@+id/lin"
+            android:paddingLeft="5dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/notification_name"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exams"
+            android:textColor="#6e6e70"
+            android:layout_toRightOf="@+id/lin"
+            android:paddingLeft="15dp"
+            android:id="@+id/notification_category"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+
+</LinearLayout>

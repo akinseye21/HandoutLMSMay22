@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/rounded_white_green_corner">
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/correct"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:id="@+id/status"
+        android:layout_marginTop="30dp"
+        android:textSize="15dp"
+        android:text=""
+        android:textColor="#f4000000"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Home"
+        android:textSize="8dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="30dp"
+        android:id="@+id/home"
+        android:stateListAnimator="@null"
+        android:textColor="#ffffff"
+        android:background="@drawable/rounded_green"/>
+
+
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        android:gravity="center"-->
+    <!--        android:layout_marginTop="20dp"-->
+    <!--        android:layout_marginBottom="20dp"-->
+    <!--        android:orientation="horizontal">-->
+    <!--&lt;!&ndash;        <Button&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:layout_width="80dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:textAllCaps="false"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:text="Review"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:textSize="8dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:layout_margin="5dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:id="@+id/review"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:stateListAnimator="@null"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:textColor="#ffffff"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:background="@drawable/rounded_green"/>&ndash;&gt;-->
+
+
+    <!--    </LinearLayout>-->
+
+</LinearLayout>

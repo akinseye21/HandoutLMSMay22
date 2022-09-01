@@ -107,10 +107,13 @@ public class Login extends AppCompatActivity {
                                     String status = jsonObject.getString("status");
                                     String email = jsonObject.getString("email");
 
+
                                     if(status.equals("login successful")){
                                         Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
                                         String login_email = jsonObject.getString("email");
+                                        String fullname = jsonObject.getString("fullname");
                                         myEdit.putString("email", login_email);
+                                        myEdit.putString("fullname", fullname);
                                         myEdit.commit();
                                         Intent i = new Intent(Login.this, FeedsDashboard.class);
                                         i.putExtra("email", email);

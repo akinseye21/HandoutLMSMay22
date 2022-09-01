@@ -34,7 +34,7 @@ public class HandoutTrivia extends AppCompatActivity {
     LinearLayout computer, movies, animals, fashion;
 
     String text;
-    TextView correctAnswer, ranking;
+//    TextView correctAnswer, ranking;
 
     public static final String RANK_URL = "http://35.84.44.203/handouts/trivia/user_rank";
 
@@ -58,8 +58,8 @@ public class HandoutTrivia extends AppCompatActivity {
         final String email = sp.getString("email", "");
 
         TextView username = findViewById(R.id.username);
-        correctAnswer = findViewById(R.id.numCorrectAns);
-        ranking = findViewById(R.id.ranking);
+//        correctAnswer = findViewById(R.id.numCorrectAns);
+//        ranking = findViewById(R.id.ranking);
 
         username.setText(email);
 
@@ -198,8 +198,8 @@ public class HandoutTrivia extends AppCompatActivity {
                             String rank = jsonObject.getString("overall_rank");
                             String test_completed = jsonObject.getString("overall_test_completed");
 
-                            ranking.setText(rank);
-                            correctAnswer.setText(test_completed);
+//                            ranking.setText(rank);
+//                            correctAnswer.setText(test_completed);
 
                         } catch (JSONException e) {
                             e.printStackTrace();

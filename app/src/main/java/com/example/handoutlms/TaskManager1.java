@@ -1,6 +1,8 @@
 package com.example.handoutlms;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -9,14 +11,31 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.tabs.TabLayout;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -39,6 +58,30 @@ public class TaskManager1 extends Fragment {
 
     TabLayout tabLayout;
     ViewPager viewPager;
+    TextView name;
+    TextView no_of_task;
+    String day, month, year, today;
+    int count_Exam=0, count_Test=0, count_Assignment=0;
+    TextView countExam, countTest, countAssignment;
+
+    LinearLayout test, exam, assignment;
+
+    ArrayList<String> arr_task_name = new ArrayList<>();
+    ArrayList<String> arr_task_date = new ArrayList<>();
+    ArrayList<String> arr_task_category = new ArrayList<>();
+    ArrayList<String> arr_task_description = new ArrayList<>();
+    ArrayList<String> arr_task_time = new ArrayList<>();
+    ArrayList<String> arr_today = new ArrayList<>();
+
+    ArrayList<String> arr_task_name_gen = new ArrayList<>();
+    ArrayList<String> arr_task_date_gen = new ArrayList<>();
+    ArrayList<String> arr_task_category_gen = new ArrayList<>();
+    ArrayList<String> arr_task_description_gen = new ArrayList<>();
+    ArrayList<String> arr_task_time_gen = new ArrayList<>();
+
+    SharedPreferences preferences;
+    String got_email, got_fullname;
+    public static final String GET_TASKS = "https://handout.com.ng/handouts/handout_get_user_task";
 
     private OnFragmentInteractionListener mListener;
 
@@ -77,10 +120,159 @@ public class TaskManager1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_task_manager1, container, false);;
+        View v = inflater.inflate(R.layout.fragment_task_manager1, container, false);
 
+        Date date=new Date(System.currentTimeMillis());
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+        //today
+        day          = (String) DateFormat.format("dd",   date); // 20
+        month  = (String) DateFormat.format("M",  date); // Jun
+        year         = (String) DateFormat.format("yyyy", date); // 2013
+        today = day+"/"+month+"/"+year;
+
+        countExam = v.findViewById(R.id.countExam);
+        countTest = v.findViewById(R.id.countTest);
+        countAssignment = v.findViewById(R.id.countAssignment);
         viewPager =v.findViewById(R.id.viewpager2);
         tabLayout = v.findViewById(R.id.tabs);
+        name = v.findViewById(R.id.name);
+        no_of_task = v.findViewById(R.id.num_of_task);
+
+        preferences = getActivity().getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
+        got_email = preferences.getString("email", "not available");
+        got_fullname = preferences.getString("fullname", "not available");
+
+        //get user task
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_TASKS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            int ArrayLength = jsonArray.length();
+
+                            if(ArrayLength >= 1){
+                                for(int i=0; i<ArrayLength; i++){
+                                    JSONObject section1 = jsonArray.getJSONObject(i);
+                                    String task_date = section1.getString("ddate");
+                                    String task_name = section1.getString("taskname");
+                                    String task_category = section1.getString("category");
+                                    String task_description = section1.getString("description");
+                                    String task_time = section1.getString("dtime");
+
+                                    arr_task_name_gen.add(task_name);
+                                    arr_task_date_gen.add(task_date);
+                                    arr_task_category_gen.add(task_category);
+                                    arr_task_description_gen.add(task_description);
+                                    arr_task_time_gen.add(task_time);
+
+                                    if(task_date.equals(today)){
+                                        arr_task_name.add(task_name);
+                                        arr_task_date.add(task_date);
+                                        arr_task_category.add(task_category);
+                                        arr_task_description.add(task_description);
+                                        arr_task_time.add(task_time);
+                                        arr_today.add(today);
+                                    }
+
+                                    if(task_category.equals("Exam")){
+                                        count_Exam = count_Exam+1;
+                                    }
+                                    if(task_category.equals("Test")){
+                                        count_Test = count_Test+1;
+                                    }
+                                    if(task_category.equals("Assignment")){
+                                        count_Assignment = count_Assignment+1;
+                                    }
+
+
+                                }
+
+                                no_of_task.setText(arr_task_name.size()+" task \nfor today");
+                                countExam.setText(count_Exam+" tasks");
+                                countTest.setText(count_Test+" tasks");
+                                countAssignment.setText(count_Assignment+" tasks");
+                            }else{
+                                no_of_task.setText("0 task \nfor today");
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<>();
+                params.put("email", got_email);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+
+//        no_of_task.setText(arr_task_name.size()+" task \nfor today");
+        name.setText("Hi, "+got_fullname+"!");
+
+        exam = v.findViewById(R.id.exam);
+        exam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), TaskManagerClick.class);
+                i.putExtra("category", "exam");
+                i.putExtra("email", got_email);
+                //put all the array here also
+                i.putStringArrayListExtra("task name", arr_task_name_gen);
+                i.putStringArrayListExtra("task date", arr_task_date_gen);
+                i.putStringArrayListExtra("task category", arr_task_category_gen);
+                i.putStringArrayListExtra("task description", arr_task_description_gen);
+                i.putStringArrayListExtra("task time", arr_task_time_gen);
+                startActivity(i);
+            }
+        });
+
+        assignment = v.findViewById(R.id.assignment);
+        assignment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), TaskManagerClick.class);
+                i.putExtra("category", "assignment");
+                i.putExtra("email", got_email);
+                //put all the array here also
+                i.putStringArrayListExtra("task name", arr_task_name_gen);
+                i.putStringArrayListExtra("task date", arr_task_date_gen);
+                i.putStringArrayListExtra("task category", arr_task_category_gen);
+                i.putStringArrayListExtra("task description", arr_task_description_gen);
+                i.putStringArrayListExtra("task time", arr_task_time_gen);
+                startActivity(i);
+            }
+        });
+
+        test =  v.findViewById(R.id.test);
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), TaskManagerClick.class);
+                i.putExtra("category", "test");
+                i.putExtra("email", got_email);
+                //put all the array here also
+                i.putStringArrayListExtra("task name", arr_task_name_gen);
+                i.putStringArrayListExtra("task date", arr_task_date_gen);
+                i.putStringArrayListExtra("task category", arr_task_category_gen);
+                i.putStringArrayListExtra("task description", arr_task_description_gen);
+                i.putStringArrayListExtra("task time", arr_task_time_gen);
+                startActivity(i);
+            }
+        });
 
         addTabs(viewPager);
         tabLayout.setupWithViewPager(viewPager);

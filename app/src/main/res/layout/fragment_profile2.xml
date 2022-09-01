@@ -21,16 +21,18 @@
            android:src="@drawable/ic92"
            android:id="@+id/pp"
            android:layout_marginTop="60dp"/>
+
        <TextView
+           android:id="@+id/email"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:id="@+id/email"
+           android:layout_below="@+id/pp"
+           android:layout_marginLeft="20dp"
+           android:ellipsize="end"
            android:text="email"
            android:textColor="#ffffff"
            android:textSize="8dp"
-           android:textStyle="normal"
-           android:layout_below="@+id/pp"
-           android:layout_marginLeft="20dp"/>
+           android:textStyle="normal" />
 
        <LinearLayout
            android:layout_width="wrap_content"

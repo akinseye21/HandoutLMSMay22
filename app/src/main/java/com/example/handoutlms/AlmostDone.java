@@ -1,10 +1,16 @@
 package com.example.handoutlms;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -37,8 +43,10 @@ public class AlmostDone extends AppCompatActivity {
 //    SharedPreferences preferences;
     ProgressBar progressBar;
     ImageView back;
+    TextView domlocation, reallocation;
 
     public static final String TUTORIAL_GROUP = "http://handout.com.ng/handouts/handout_tutorial_groups";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +58,15 @@ public class AlmostDone extends AppCompatActivity {
 //        preferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
 //        final String email = preferences.getString("email", "not available");
 
+        //if the android version is greater than OREO
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("My Notification", "My Notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
+
+
         Intent i = getIntent();
         group_name = i.getStringExtra("group_name");
         category = i.getStringExtra("category");
@@ -60,13 +77,6 @@ public class AlmostDone extends AppCompatActivity {
         location = i.getStringExtra("location");
         email = i.getStringExtra("email");
 
-        if(location.equals("")){
-            tutorial_mode = "online";
-        }
-        else if(!location.equals("")){
-            tutorial_mode = "offline";
-        }
-
         gp_name = findViewById(R.id.tutorial_group_name);
         cat = findViewById(R.id.category);
         dat = findViewById(R.id.date);
@@ -76,6 +86,18 @@ public class AlmostDone extends AppCompatActivity {
         share = findViewById(R.id.share);
         progressBar = findViewById(R.id.progressBar);
         back = findViewById(R.id.back);
+        domlocation = findViewById(R.id.domlocation);
+        reallocation = findViewById(R.id.location);
+
+        if(location.equals("")){
+            tutorial_mode = "online";
+            domlocation.setVisibility(View.GONE);
+            reallocation.setVisibility(View.GONE);
+        }
+        else if(!location.equals("")){
+            tutorial_mode = "offline";
+            reallocation.setText(location);
+        }
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +124,8 @@ public class AlmostDone extends AppCompatActivity {
                 }
 
 
+
+
                 if(!group_name.equals("") && !category.equals("") && !date.equals("") && !time.equals("") && !university.equals("") && !description.equals("")){
                     //send to server
                     progressBar.setVisibility(View.VISIBLE);
@@ -113,26 +137,86 @@ public class AlmostDone extends AppCompatActivity {
                                     progressBar.setVisibility(View.GONE);
 
                                     System.out.println("Response = "+response);
-//                                    Toast.makeText(getApplicationContext(), "Response = "+response, Toast.LENGTH_LONG).show();
-
 
                                     try{
                                         JSONObject jsonObject = new JSONObject(response);
 
 //                                        String signed_name = jsonObject.getString("fullname");
                                         String status = jsonObject.getString("status");
+                                        String notification = jsonObject.getString("notification");
+                                        System.out.println(response);
 
                                         if(status.equals("successful") && location.equals("")){
                                             Toast.makeText(getApplicationContext(), "Online Group created successfully", Toast.LENGTH_LONG).show();
                                             System.out.println(jsonObject);
 
+//                                            NotificationGenerator notificationGenerator = new NotificationGenerator();
+//                                            notificationGenerator.setString(notification);
+//                                            NotificationGenerator.openActivityNotification(getApplicationContext());
+
+                                            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext())
+                                                    .setSmallIcon(R.drawable.logo)
+                                                    .setContentTitle("Handout LMS")
+                                                    .setContentText(notification)
+                                                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                                                    // Set the intent that will fire when the user taps the notification
+                                                    .setAutoCancel(true);
+
+                                            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
+                                            notificationManager.notify(9, builder.build());
+
                                             Intent i = new Intent(AlmostDone.this, CreateOnlineTutPhase1.class);
                                             i.putExtra("Group_name", group_name);
+                                            i.putExtra("notification", notification);
                                             startActivity(i);
+
                                         }
                                         else if(status.equals("successful") && !location.equals("")){
                                             Toast.makeText(getApplicationContext(), "Offline Group created successfully", Toast.LENGTH_LONG).show();
                                             System.out.println(jsonObject);
+
+                                            //show notification and add to notification array
+//                                            NotificationGenerator notificationGenerator = new NotificationGenerator();
+//                                            notificationGenerator.setString(notification);
+//                                            NotificationGenerator.openActivityNotification(getApplicationContext());
+
+                                            Intent intent = new Intent(getApplicationContext(), AddOptions.class);
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
+
+                                            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext())
+                                                    .setSmallIcon(R.drawable.logo)
+                                                    .setContentTitle("Handout LMS")
+                                                    .setContentText(notification)
+                                                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                                                    // Set the intent that will fire when the user taps the notification
+                                                    .setContentIntent(pendingIntent)
+                                                    .setAutoCancel(true);
+
+                                            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
+                                            notificationManager.notify(9, builder.build());
+
+//                                            Intent i = new Intent(AlmostDone.this, AddOptions.class);
+//                                            i.putExtra("email", email);
+////                                            i.putExtra("notification", notification);
+//                                            startActivity(i);
+
+//                                            NotificationCompat.Builder builder = new NotificationCompat.Builder(AlmostDone.this)
+//                                                    .setSmallIcon(R.drawable.notification)
+//                                                    .setContentTitle("Handout LMS")
+//                                                    .setContentText(notification)
+//                                                    .setAutoCancel(true)
+//                                                    .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+//
+//                                            Intent intent = new Intent(AlmostDone.this, Notification.class);
+//                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                            intent.putExtra("notification", notification);
+//
+//                                            PendingIntent pendingIntent = PendingIntent.getActivity(AlmostDone.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+//                                            builder.setContentIntent(pendingIntent);
+//
+//                                            NotificationManager manager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+//                                            manager.notify(0, builder.build());
                                         }
                                         else{
                                             Toast.makeText(getApplicationContext(), "Group creation failed. Please try again", Toast.LENGTH_LONG).show();
