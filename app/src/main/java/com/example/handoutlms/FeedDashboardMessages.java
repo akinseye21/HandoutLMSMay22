@@ -1,6 +1,7 @@
 package com.example.handoutlms;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
@@ -30,6 +32,8 @@ public class FeedDashboardMessages extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    TextView next;
 
     public FeedDashboardMessages() {
         // Required empty public constructor
@@ -66,7 +70,17 @@ public class FeedDashboardMessages extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_feed_dashboard_messages, container, false);
+        View v = inflater.inflate(R.layout.fragment_feed_dashboard_messages, container, false);
+
+        next = v.findViewById(R.id.next);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), ChatPage.class));
+            }
+        });
+
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

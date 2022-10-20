@@ -84,6 +84,9 @@ public class ForgotPassword3 extends AppCompatActivity {
                                         }
 
                                     } catch (JSONException e) {
+                                        Toast.makeText(getApplicationContext(), "Sorry! Reset was unsuccessful, try changing your password", Toast.LENGTH_LONG).show();
+                                        password.setError("change password");
+                                        confrimPassword.setError("change password");
                                         progressBar.setVisibility(View.GONE);
                                         e.printStackTrace();
                                     }

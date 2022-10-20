@@ -46,6 +46,7 @@ public class AlmostDone extends AppCompatActivity {
     TextView domlocation, reallocation;
 
     public static final String TUTORIAL_GROUP = "http://handout.com.ng/handouts/handout_tutorial_groups";
+    public static final String UPDATE = "http://handout.com.ng/handouts/handout_usertype";
 
 
     @Override
@@ -150,20 +151,64 @@ public class AlmostDone extends AppCompatActivity {
                                             Toast.makeText(getApplicationContext(), "Online Group created successfully", Toast.LENGTH_LONG).show();
                                             System.out.println(jsonObject);
 
+                                            //update usertype
+                                            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, UPDATE,
+                                                    new Response.Listener<String>() {
+                                                        @Override
+                                                        public void onResponse(String response) {
+
+                                                            try{
+                                                                JSONObject jsonObject = new JSONObject(response);
+
+                                                                String status2 = jsonObject.getString("status");
+                                                                if(status2.equals("login successful")){
+
+                                                                }
+
+                                                            }
+                                                            catch (JSONException e){
+                                                                e.printStackTrace();
+                                                            }
+
+                                                        }
+                                                    },
+                                                    new Response.ErrorListener() {
+                                                        @Override
+                                                        public void onErrorResponse(VolleyError volleyError) {
+
+                                                            if(volleyError == null){
+                                                                return;
+                                                            }
+//                                                            System.out.println("Error = "+volleyError.getMessage());
+                                                        }
+                                                    }){
+                                                @Override
+                                                protected Map<String, String> getParams(){
+                                                    Map<String, String> params = new HashMap<>();
+                                                    params.put("email", email);
+                                                    params.put("usertype", "tutor");
+                                                    return params;
+                                                }
+                                            };
+
+
+                                            RequestQueue requestQueue2 = Volley.newRequestQueue(getApplicationContext());
+                                            requestQueue2.add(stringRequest2);
+
 //                                            NotificationGenerator notificationGenerator = new NotificationGenerator();
 //                                            notificationGenerator.setString(notification);
 //                                            NotificationGenerator.openActivityNotification(getApplicationContext());
 
-                                            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext())
-                                                    .setSmallIcon(R.drawable.logo)
-                                                    .setContentTitle("Handout LMS")
-                                                    .setContentText(notification)
-                                                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                                                    // Set the intent that will fire when the user taps the notification
-                                                    .setAutoCancel(true);
-
-                                            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
-                                            notificationManager.notify(9, builder.build());
+//                                            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext())
+//                                                    .setSmallIcon(R.drawable.logo)
+//                                                    .setContentTitle("Handout LMS")
+//                                                    .setContentText(notification)
+//                                                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+//                                                    // Set the intent that will fire when the user taps the notification
+//                                                    .setAutoCancel(true);
+//
+//                                            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
+//                                            notificationManager.notify(9, builder.build());
 
                                             Intent i = new Intent(AlmostDone.this, CreateOnlineTutPhase1.class);
                                             i.putExtra("Group_name", group_name);
@@ -175,26 +220,70 @@ public class AlmostDone extends AppCompatActivity {
                                             Toast.makeText(getApplicationContext(), "Offline Group created successfully", Toast.LENGTH_LONG).show();
                                             System.out.println(jsonObject);
 
+                                            //update usertype
+                                            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, UPDATE,
+                                                    new Response.Listener<String>() {
+                                                        @Override
+                                                        public void onResponse(String response) {
+
+                                                            try{
+                                                                JSONObject jsonObject = new JSONObject(response);
+
+                                                                String status2 = jsonObject.getString("status");
+                                                                if(status2.equals("login successful")){
+
+                                                                }
+
+                                                            }
+                                                            catch (JSONException e){
+                                                                e.printStackTrace();
+                                                            }
+
+                                                        }
+                                                    },
+                                                    new Response.ErrorListener() {
+                                                        @Override
+                                                        public void onErrorResponse(VolleyError volleyError) {
+
+                                                            if(volleyError == null){
+                                                                return;
+                                                            }
+//                                                            System.out.println("Error = "+volleyError.getMessage());
+                                                        }
+                                                    }){
+                                                @Override
+                                                protected Map<String, String> getParams(){
+                                                    Map<String, String> params = new HashMap<>();
+                                                    params.put("email", email);
+                                                    params.put("usertype", "tutor");
+                                                    return params;
+                                                }
+                                            };
+
+
+                                            RequestQueue requestQueue2 = Volley.newRequestQueue(getApplicationContext());
+                                            requestQueue2.add(stringRequest2);
+
                                             //show notification and add to notification array
 //                                            NotificationGenerator notificationGenerator = new NotificationGenerator();
 //                                            notificationGenerator.setString(notification);
 //                                            NotificationGenerator.openActivityNotification(getApplicationContext());
 
-                                            Intent intent = new Intent(getApplicationContext(), AddOptions.class);
-                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
-
-                                            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext())
-                                                    .setSmallIcon(R.drawable.logo)
-                                                    .setContentTitle("Handout LMS")
-                                                    .setContentText(notification)
-                                                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                                                    // Set the intent that will fire when the user taps the notification
-                                                    .setContentIntent(pendingIntent)
-                                                    .setAutoCancel(true);
-
-                                            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
-                                            notificationManager.notify(9, builder.build());
+//                                            Intent intent = new Intent(getApplicationContext(), AddOptions.class);
+//                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                                            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
+//
+//                                            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext())
+//                                                    .setSmallIcon(R.drawable.logo)
+//                                                    .setContentTitle("Handout LMS")
+//                                                    .setContentText(notification)
+//                                                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+//                                                    // Set the intent that will fire when the user taps the notification
+//                                                    .setContentIntent(pendingIntent)
+//                                                    .setAutoCancel(true);
+//
+//                                            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
+//                                            notificationManager.notify(9, builder.build());
 
 //                                            Intent i = new Intent(AlmostDone.this, AddOptions.class);
 //                                            i.putExtra("email", email);

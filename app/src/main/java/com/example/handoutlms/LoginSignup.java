@@ -28,6 +28,7 @@ public class LoginSignup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), TermsOfService.class);
+                i.putExtra("from", "tos");
                 startActivity(i);
             }
         });
@@ -36,6 +37,7 @@ public class LoginSignup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), TermsOfService.class);
+                i.putExtra("from", "privacy");
                 startActivity(i);
             }
         });

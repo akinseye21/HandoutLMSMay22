@@ -150,6 +150,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:id="@+id/filter"
+                        android:visibility="invisible"
                             android:layout_alignParentRight="true"
                             android:orientation="horizontal">
                         <ImageView
@@ -174,13 +175,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp">
+
                     <GridView
-                            android:id="@+id/simpleGridView"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:numColumns="3"
-                            android:verticalSpacing="10dp"
-                            android:scrollbars="vertical"/>
+                        android:id="@+id/simpleGridView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:numColumns="3"
+                        android:scrollbars="vertical"
+                        android:verticalSpacing="10dp" />
                     <GridView
                             android:id="@+id/simpleGridView2"
                             android:layout_width="match_parent"

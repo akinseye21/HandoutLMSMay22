@@ -1,6 +1,7 @@
 package com.example.handoutlms;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -9,6 +10,24 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -30,6 +49,21 @@ public class tutorial_on_profile extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    LinearLayout created_tutorial, joined_tutorial;
+    View view1, view2;
+    GridView gridViewCreated, gridViewJoined;
+    SharedPreferences preferences;
+    String got_email;
+    TextView noTutorial;
+    int ArrayLength;
+
+    ArrayList<String> Array_tutName = new ArrayList<>();
+    ArrayList<String> Array_tutCategory = new ArrayList<>();
+    ArrayList<String> Array_tutDescription = new ArrayList<>();
+    ArrayList<String> Array_tutMode = new ArrayList<>();
+
+    public static final String ALL_TUTORIAL = "http://handout.com.ng/handouts/handout_get_all_tutorials";
 
     public tutorial_on_profile() {
         // Required empty public constructor
@@ -66,7 +100,115 @@ public class tutorial_on_profile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tutorial_on_profile, container, false);
+        View v = inflater.inflate(R.layout.fragment_tutorial_on_profile, container, false);
+
+        gridViewCreated = v.findViewById(R.id.simpleGridViewCreated);
+        gridViewJoined = v.findViewById(R.id.simpleGridViewJoined);
+        view1 = v.findViewById(R.id.viewCreated);
+        view2 = v.findViewById(R.id.viewJoin);
+        created_tutorial = v.findViewById(R.id.created_tutorial);
+        joined_tutorial = v.findViewById(R.id.joined_tutorial);
+        noTutorial = v.findViewById(R.id.no_tutorial);
+
+        preferences = getActivity().getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
+        got_email = preferences.getString("email", "not available");
+
+        created_tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gridViewCreated.setVisibility(View.VISIBLE);
+                gridViewJoined.setVisibility(View.GONE);
+                view1.setVisibility(View.VISIBLE);
+                view2.setVisibility(View.GONE);
+            }
+        });
+        joined_tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gridViewCreated.setVisibility(View.GONE);
+                gridViewJoined.setVisibility(View.VISIBLE);
+                view1.setVisibility(View.GONE);
+                view2.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, ALL_TUTORIAL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("Response = "+response);
+
+                        try{
+                            JSONArray jsonArray = new JSONArray(response);
+                            ArrayLength = jsonArray.length();
+
+                            if(ArrayLength > 1){
+                                for(int j = ArrayLength - 1; j >= 0; j--){
+                                    JSONObject section1 = jsonArray.getJSONObject(j);
+                                    String tutName = section1.getString("groupname");
+                                    String tutCategory = section1.getString("category");
+                                    String tutDescription = section1.getString("description");
+                                    String tutCreatedBy = section1.getString("created_by");
+                                    String tutMode = section1.getString("mode");
+
+                                    if(tutCreatedBy.equals(got_email)){
+                                        Array_tutName.add(tutName);
+                                        Array_tutCategory.add(tutCategory);
+                                        Array_tutDescription.add(tutDescription);
+                                        Array_tutMode.add(tutMode);
+                                    }else{
+                                        //do nothing
+                                    }
+
+
+                                }
+
+                                if(Array_tutName.size() < 1){
+                                    noTutorial.setVisibility(View.VISIBLE);
+                                    gridViewCreated.setVisibility(View.GONE);
+                                }else{
+                                    //populate values on the gridview
+                                    TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode);
+                                    gridViewCreated.setAdapter(tutorialProfileAdapter);
+                                }
+
+                            }else{
+                                //show "no tutorials"
+                                noTutorial.setVisibility(View.VISIBLE);
+                                gridViewCreated.setVisibility(View.GONE);
+                            }
+
+                        }
+                        catch (JSONException e){
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        volleyError.printStackTrace();
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<>();
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+
+        //clear array
+        Array_tutName.clear();
+        Array_tutCategory.clear();
+        Array_tutDescription.clear();
+        Array_tutMode.clear();
+
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

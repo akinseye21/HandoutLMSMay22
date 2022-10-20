@@ -19,6 +19,10 @@
         <item name="android:textSize">7dp</item>
         <item name="android:textColor">#cccccc</item>
     </style>
+    <style name="ChatCustomTab" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">#cccccc</item>
+    </style>
 
     <style name="MyPopUp" parent="android:Widget.Holo.Light.ListPopupWindow">
         <item name="android:popupBackground">@drawable/round_popup</item>

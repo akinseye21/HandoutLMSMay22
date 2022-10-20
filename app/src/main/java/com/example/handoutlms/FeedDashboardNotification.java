@@ -1,6 +1,7 @@
 package com.example.handoutlms;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -9,6 +10,22 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -28,6 +45,16 @@ public class FeedDashboardNotification extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    SharedPreferences preferences;
+    String got_email;
+    ListView notification;
+
+    ArrayList<String> arr_title = new ArrayList<>();
+    ArrayList<String> arr_message = new ArrayList<>();
+    ArrayList<String> arr_status = new ArrayList<>();
+
+    public static final String USER_PROFILE = "https://handout.com.ng/handouts/handout_get_user_profile";
 
     private OnFragmentInteractionListener mListener;
 
@@ -66,7 +93,71 @@ public class FeedDashboardNotification extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_feed_dashboard_notification, container, false);
+        View v = inflater.inflate(R.layout.fragment_feed_dashboard_notification, container, false);
+
+        preferences = getActivity().getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
+        got_email = preferences.getString("email", "not available");
+
+        notification = v.findViewById(R.id.listview_notification);
+
+        //get user profile
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, USER_PROFILE,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("Profile = "+response);
+
+                        try{
+                            JSONObject profile = new JSONObject(response);
+                            String sys_notification = profile.getString("sys_notification");
+                            JSONArray arr = new JSONArray(sys_notification);
+
+                            int arr_length = arr.length();
+                            for(int i =0; i<arr_length; i++){
+                                JSONObject section1 = arr.getJSONObject(i);
+                                String title = section1.getString("title");
+                                String message = section1.getString("message");
+                                String status = section1.getString("status");
+
+                                arr_title.add(title);
+                                arr_message.add(message);
+                                arr_status.add(status);
+                            }
+
+                            NotificationAdapter myAdapter=new NotificationAdapter(getContext(),arr_title,arr_message,arr_status);
+                            notification.setAdapter(myAdapter);
+
+                        }
+                        catch (JSONException e){
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        volleyError.printStackTrace();
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<>();
+                params.put("email", got_email);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+
+        //clear array
+        arr_title.clear();
+        arr_message.clear();
+        arr_status.clear();
+
+
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

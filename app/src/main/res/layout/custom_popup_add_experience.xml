@@ -49,6 +49,7 @@
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
+                android:id="@+id/position"
                     android:hint="Position"
                     android:singleLine="true"
                     android:paddingLeft="10dp"
@@ -64,7 +65,8 @@
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:hint="Year"
+                android:id="@+id/year"
+                    android:hint="Year (from - to)"
                     android:singleLine="true"
                     android:layout_marginTop="20dp"
                     android:paddingLeft="10dp"
@@ -80,6 +82,7 @@
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
+                android:id="@+id/description"
                     android:hint="Job Description"
                     android:singleLine="true"
                     android:layout_marginTop="20dp"
@@ -92,6 +95,31 @@
                     android:textColor="#ffffff"
                     android:textColorHint="#80ffffff"
                     android:background="@drawable/new_login2"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:id="@+id/organization"
+                android:hint="Ogranization"
+                android:singleLine="true"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingRight="10dp"
+                android:inputType="textEmailAddress"
+                android:textSize="10dp"
+                android:textColor="#ffffff"
+                android:textColorHint="#80ffffff"
+                android:background="@drawable/new_login2"/>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:id="@+id/progressBar"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"/>
 
 
         </LinearLayout>
@@ -111,6 +139,7 @@
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="10dp"
+            android:id="@+id/save"
                 android:text="Save"
                 android:textAllCaps="false"
                 android:background="@drawable/round_white"/>
@@ -118,6 +147,7 @@
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
+            android:id="@+id/cancel"
                 android:text="Cancel"
                 android:textAllCaps="false"
                 android:textColor="#ffffff"

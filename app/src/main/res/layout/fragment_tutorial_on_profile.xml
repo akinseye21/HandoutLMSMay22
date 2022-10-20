@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,581 +8,774 @@
     android:layout_marginBottom="50dp"
     tools:context=".tutorial_on_profile">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:id="@+id/myLin"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginRight="10dp">
-
-
-                <LinearLayout
-                    android:layout_width="90dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:gravity="bottom"
-                        android:background="@drawable/rounded_white_little"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_gravity="bottom"
-                            android:src="@drawable/ic44"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Learning how to create beautiful scenes in Illustrator"
-                        android:textColor="#ffffff"
-                        android:layout_marginTop="3dp"
-                        android:textStyle="bold"
-                        android:textSize="8dp"/>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:id="@+id/created_tutorial"
                         android:orientation="horizontal">
                         <ImageView
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_marginRight="3dp"
-                            android:src="@drawable/ic43"/>
-                        <TextView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/home_ic11"
+                            app:tint="#f05d72" />
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="30 minutes"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="8dp"/>
+                            android:layout_marginLeft="2dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Created Tutorials"
+                                android:textStyle="bold"
+                                android:textColor="#ffffff"
+                                android:textSize="10dp"/>
+                            <View
+                                android:layout_width="60dp"
+                                android:layout_height="0.1dp"
+                                android:id="@+id/viewCreated"
+                                android:background="#f05d72"/>
+
+                        </LinearLayout>
                     </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tutor: Jack Grealish"
-                        android:textColor="#ffffff"
-                        android:layout_marginTop="3dp"
-                        android:textStyle="bold"
-                        android:textSize="8dp"/>
-                </LinearLayout>
 
-
-
-
-
-                <LinearLayout
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:gravity="bottom"
-                        android:background="@drawable/rounded_white_little"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_gravity="bottom"
-                            android:src="@drawable/ic44"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Learning how to create beautiful scenes in Illustrator"
-                        android:textColor="#ffffff"
-                        android:layout_marginTop="3dp"
-                        android:textStyle="bold"
-                        android:textSize="8dp"/>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:id="@+id/joined_tutorial"
+                        android:layout_marginLeft="120dp"
                         android:orientation="horizontal">
                         <ImageView
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_marginRight="3dp"
-                            android:src="@drawable/ic43"/>
-                        <TextView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/home_ic10"
+                            app:tint="#f05d72" />
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="30 minutes"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="8dp"/>
+                            android:layout_marginLeft="2dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tutorials Joined"
+                                android:textStyle="bold"
+                                android:textColor="#ffffff"
+                                android:textSize="10dp"/>
+                            <View
+                                android:layout_width="50dp"
+                                android:layout_height="0.1dp"
+                                android:visibility="gone"
+                                android:id="@+id/viewJoin"
+                                android:background="#f05d72"/>
+
+                        </LinearLayout>
+
                     </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tutor: Jack Grealish"
-                        android:textColor="#ffffff"
-                        android:layout_marginTop="3dp"
-                        android:textStyle="bold"
-                        android:textSize="8dp"/>
-                </LinearLayout>
 
 
+                </RelativeLayout>
 
-                <LinearLayout
-                    android:layout_width="90dp"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:gravity="bottom"
-                        android:background="@drawable/rounded_white_little"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_gravity="bottom"
-                            android:src="@drawable/ic44"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Learning how to create beautiful scenes in Illustrator"
-                        android:textColor="#ffffff"
-                        android:layout_marginTop="3dp"
-                        android:textStyle="bold"
-                        android:textSize="8dp"/>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:orientation="horizontal">
-                        <ImageView
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_marginRight="3dp"
-                            android:src="@drawable/ic43"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="30 minutes"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="8dp"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tutor: Jack Grealish"
-                        android:textColor="#ffffff"
-                        android:layout_marginTop="3dp"
-                        android:textStyle="bold"
-                        android:textSize="8dp"/>
-                </LinearLayout>
+                    android:visibility="gone"
+                    android:text="You have not created any tutorial"
+                    android:textColor="#fff"
+                    android:id="@+id/no_tutorial"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/notification"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
+
+                    <GridView
+                        android:id="@+id/simpleGridViewCreated"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:numColumns="3"
+                        android:scrollbars="vertical"
+                        android:verticalSpacing="10dp" />
+                    <GridView
+                        android:id="@+id/simpleGridViewJoined"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:numColumns="3"
+                        android:visibility="gone"
+                        android:verticalSpacing="10dp"
+                        android:scrollbars="vertical"/>
+
+                </RelativeLayout>
+
+
 
 
 
             </LinearLayout>
 
+        </RelativeLayout>
+
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Popular Gigs"-->
+        <!--            android:textColor="#ffffff"-->
+        <!--            android:textStyle="bold"-->
+        <!--            android:textSize="15dp"-->
+        <!--            android:paddingLeft="10dp"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:paddingBottom="5dp"/>-->
+
+        <!--        <ProgressBar-->
+        <!--            android:layout_width="50dp"-->
+        <!--            android:layout_height="50dp"-->
+        <!--            android:layout_centerInParent="true"-->
+        <!--            android:visibility="visible"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:id="@+id/progressBar"/>-->
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Loading..."-->
+        <!--            android:textSize="8dp"-->
+        <!--            android:textStyle="normal"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:id="@+id/progressText"/>-->
+
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Sorry! You have no gig(s) created"-->
+        <!--            android:textSize="10dp"-->
+        <!--            android:textStyle="bold"-->
+        <!--            android:visibility="gone"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:drawableTop="@drawable/error"-->
+        <!--            android:id="@+id/notification_text"/>-->
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:layout_marginBottom="10dp">-->
+        <!--            <GridView-->
+        <!--                android:id="@+id/simpleGridView"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:numColumns="3"-->
+        <!--                android:verticalSpacing="10dp"-->
+        <!--                android:scrollbars="vertical"/>-->
+
+        <!--        </LinearLayout>-->
+
+    </LinearLayout>
+
+
+    <!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:gravity="center_horizontal"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:layout_marginRight="10dp">-->
+
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="90dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:orientation="vertical">-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="bottom"-->
+<!--                        android:gravity="bottom"-->
+<!--                        android:background="@drawable/rounded_white_little"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="90dp"-->
+<!--                            android:layout_height="90dp"-->
+<!--                            android:layout_gravity="bottom"-->
+<!--                            android:src="@drawable/ic44"/>-->
+<!--                    </LinearLayout>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Learning how to create beautiful scenes in Illustrator"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="8dp"/>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="10dp"-->
+<!--                            android:layout_height="10dp"-->
+<!--                            android:layout_marginRight="3dp"-->
+<!--                            android:src="@drawable/ic43"/>-->
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="30 minutes"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textSize="8dp"/>-->
+<!--                    </LinearLayout>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Tutor: Jack Grealish"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="8dp"/>-->
+<!--                </LinearLayout>-->
+
+
+
+
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="90dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:orientation="vertical">-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="bottom"-->
+<!--                        android:gravity="bottom"-->
+<!--                        android:background="@drawable/rounded_white_little"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="90dp"-->
+<!--                            android:layout_height="90dp"-->
+<!--                            android:layout_gravity="bottom"-->
+<!--                            android:src="@drawable/ic44"/>-->
+<!--                    </LinearLayout>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Learning how to create beautiful scenes in Illustrator"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="8dp"/>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="10dp"-->
+<!--                            android:layout_height="10dp"-->
+<!--                            android:layout_marginRight="3dp"-->
+<!--                            android:src="@drawable/ic43"/>-->
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="30 minutes"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textSize="8dp"/>-->
+<!--                    </LinearLayout>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Tutor: Jack Grealish"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="8dp"/>-->
+<!--                </LinearLayout>-->
+
+
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="90dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:orientation="vertical">-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="bottom"-->
+<!--                        android:gravity="bottom"-->
+<!--                        android:background="@drawable/rounded_white_little"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="90dp"-->
+<!--                            android:layout_height="90dp"-->
+<!--                            android:layout_gravity="bottom"-->
+<!--                            android:src="@drawable/ic44"/>-->
+<!--                    </LinearLayout>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Learning how to create beautiful scenes in Illustrator"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="8dp"/>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="10dp"-->
+<!--                            android:layout_height="10dp"-->
+<!--                            android:layout_marginRight="3dp"-->
+<!--                            android:src="@drawable/ic43"/>-->
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="30 minutes"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textSize="8dp"/>-->
+<!--                    </LinearLayout>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Tutor: Jack Grealish"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="8dp"/>-->
+<!--                </LinearLayout>-->
+
+
+
+<!--            </LinearLayout>-->
 
 
 
 
 
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginRight="10dp">
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:gravity="center_horizontal"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:layout_marginRight="10dp">-->
 
 
-                <LinearLayout
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:gravity="bottom"
-                        android:background="@drawable/rounded_white_little"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_gravity="bottom"
-                            android:src="@drawable/ic44"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Learning how to create beautiful scenes in Illustrator"
-                        android:textColor="#ffffff"
-                        android:layout_marginTop="3dp"
-                        android:textStyle="bold"
-                        android:textSize="8dp"/>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:orientation="horizontal">
-                        <ImageView
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_marginRight="3dp"
-                            android:src="@drawable/ic43"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="30 minutes"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="8dp"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tutor: Jack Grealish"
-                        android:textColor="#ffffff"
-                        android:layout_marginTop="3dp"
-                        android:textStyle="bold"
-                        android:textSize="8dp"/>
-                </LinearLayout>
-
-
-
-
-
-                <LinearLayout
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:gravity="bottom"
-                        android:background="@drawable/rounded_white_little"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_gravity="bottom"
-                            android:src="@drawable/ic44"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Learning how to create beautiful scenes in Illustrator"
-                        android:textColor="#ffffff"
-                        android:layout_marginTop="3dp"
-                        android:textStyle="bold"
-                        android:textSize="8dp"/>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:orientation="horizontal">
-                        <ImageView
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_marginRight="3dp"
-                            android:src="@drawable/ic43"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="30 minutes"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="8dp"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tutor: Jack Grealish"
-                        android:textColor="#ffffff"
-                        android:layout_marginTop="3dp"
-                        android:textStyle="bold"
-                        android:textSize="8dp"/>
-                </LinearLayout>
-
-
-
-                <LinearLayout
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:gravity="bottom"
-                        android:background="@drawable/rounded_white_little"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_gravity="bottom"
-                            android:src="@drawable/ic44"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Learning how to create beautiful scenes in Illustrator"
-                        android:textColor="#ffffff"
-                        android:layout_marginTop="3dp"
-                        android:textStyle="bold"
-                        android:textSize="8dp"/>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:orientation="horizontal">
-                        <ImageView
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_marginRight="3dp"
-                            android:src="@drawable/ic43"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="30 minutes"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="8dp"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tutor: Jack Grealish"
-                        android:textColor="#ffffff"
-                        android:layout_marginTop="3dp"
-                        android:textStyle="bold"
-                        android:textSize="8dp"/>
-                </LinearLayout>
-
-
-
-            </LinearLayout>
+<!--                <LinearLayout-->
+<!--                    android:layout_width="90dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:orientation="vertical">-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="bottom"-->
+<!--                        android:gravity="bottom"-->
+<!--                        android:background="@drawable/rounded_white_little"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="90dp"-->
+<!--                            android:layout_height="90dp"-->
+<!--                            android:layout_gravity="bottom"-->
+<!--                            android:src="@drawable/ic44"/>-->
+<!--                    </LinearLayout>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Learning how to create beautiful scenes in Illustrator"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="8dp"/>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="10dp"-->
+<!--                            android:layout_height="10dp"-->
+<!--                            android:layout_marginRight="3dp"-->
+<!--                            android:src="@drawable/ic43"/>-->
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="30 minutes"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textSize="8dp"/>-->
+<!--                    </LinearLayout>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Tutor: Jack Grealish"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="8dp"/>-->
+<!--                </LinearLayout>-->
 
 
 
 
 
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginRight="10dp">
-
-
-                <LinearLayout
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:gravity="bottom"
-                        android:background="@drawable/rounded_white_little"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_gravity="bottom"
-                            android:src="@drawable/ic44"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Learning how to create beautiful scenes in Illustrator"
-                        android:textColor="#ffffff"
-                        android:layout_marginTop="3dp"
-                        android:textStyle="bold"
-                        android:textSize="8dp"/>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:orientation="horizontal">
-                        <ImageView
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_marginRight="3dp"
-                            android:src="@drawable/ic43"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="30 minutes"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="8dp"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tutor: Jack Grealish"
-                        android:textColor="#ffffff"
-                        android:layout_marginTop="3dp"
-                        android:textStyle="bold"
-                        android:textSize="8dp"/>
-                </LinearLayout>
+<!--                <LinearLayout-->
+<!--                    android:layout_width="90dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:orientation="vertical">-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="bottom"-->
+<!--                        android:gravity="bottom"-->
+<!--                        android:background="@drawable/rounded_white_little"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="90dp"-->
+<!--                            android:layout_height="90dp"-->
+<!--                            android:layout_gravity="bottom"-->
+<!--                            android:src="@drawable/ic44"/>-->
+<!--                    </LinearLayout>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Learning how to create beautiful scenes in Illustrator"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="8dp"/>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="10dp"-->
+<!--                            android:layout_height="10dp"-->
+<!--                            android:layout_marginRight="3dp"-->
+<!--                            android:src="@drawable/ic43"/>-->
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="30 minutes"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textSize="8dp"/>-->
+<!--                    </LinearLayout>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Tutor: Jack Grealish"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="8dp"/>-->
+<!--                </LinearLayout>-->
 
 
 
-
-
-                <LinearLayout
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:gravity="bottom"
-                        android:background="@drawable/rounded_white_little"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_gravity="bottom"
-                            android:src="@drawable/ic44"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Learning how to create beautiful scenes in Illustrator"
-                        android:textColor="#ffffff"
-                        android:layout_marginTop="3dp"
-                        android:textStyle="bold"
-                        android:textSize="8dp"/>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:orientation="horizontal">
-                        <ImageView
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_marginRight="3dp"
-                            android:src="@drawable/ic43"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="30 minutes"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="8dp"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tutor: Jack Grealish"
-                        android:textColor="#ffffff"
-                        android:layout_marginTop="3dp"
-                        android:textStyle="bold"
-                        android:textSize="8dp"/>
-                </LinearLayout>
-
-
-
-                <LinearLayout
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:gravity="bottom"
-                        android:background="@drawable/rounded_white_little"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_gravity="bottom"
-                            android:src="@drawable/ic44"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Learning how to create beautiful scenes in Illustrator"
-                        android:textColor="#ffffff"
-                        android:layout_marginTop="3dp"
-                        android:textStyle="bold"
-                        android:textSize="8dp"/>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:orientation="horizontal">
-                        <ImageView
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_marginRight="3dp"
-                            android:src="@drawable/ic43"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="30 minutes"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="8dp"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tutor: Jack Grealish"
-                        android:textColor="#ffffff"
-                        android:layout_marginTop="3dp"
-                        android:textStyle="bold"
-                        android:textSize="8dp"/>
-                </LinearLayout>
+<!--                <LinearLayout-->
+<!--                    android:layout_width="90dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:orientation="vertical">-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="bottom"-->
+<!--                        android:gravity="bottom"-->
+<!--                        android:background="@drawable/rounded_white_little"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="90dp"-->
+<!--                            android:layout_height="90dp"-->
+<!--                            android:layout_gravity="bottom"-->
+<!--                            android:src="@drawable/ic44"/>-->
+<!--                    </LinearLayout>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Learning how to create beautiful scenes in Illustrator"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="8dp"/>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="10dp"-->
+<!--                            android:layout_height="10dp"-->
+<!--                            android:layout_marginRight="3dp"-->
+<!--                            android:src="@drawable/ic43"/>-->
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="30 minutes"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textSize="8dp"/>-->
+<!--                    </LinearLayout>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Tutor: Jack Grealish"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="8dp"/>-->
+<!--                </LinearLayout>-->
 
 
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
-        </LinearLayout>
-    </ScrollView>
+
+
+
+
+
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:gravity="center_horizontal"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:layout_marginRight="10dp">-->
+
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="90dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:orientation="vertical">-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="bottom"-->
+<!--                        android:gravity="bottom"-->
+<!--                        android:background="@drawable/rounded_white_little"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="90dp"-->
+<!--                            android:layout_height="90dp"-->
+<!--                            android:layout_gravity="bottom"-->
+<!--                            android:src="@drawable/ic44"/>-->
+<!--                    </LinearLayout>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Learning how to create beautiful scenes in Illustrator"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="8dp"/>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="10dp"-->
+<!--                            android:layout_height="10dp"-->
+<!--                            android:layout_marginRight="3dp"-->
+<!--                            android:src="@drawable/ic43"/>-->
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="30 minutes"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textSize="8dp"/>-->
+<!--                    </LinearLayout>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Tutor: Jack Grealish"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="8dp"/>-->
+<!--                </LinearLayout>-->
+
+
+
+
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="90dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:orientation="vertical">-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="bottom"-->
+<!--                        android:gravity="bottom"-->
+<!--                        android:background="@drawable/rounded_white_little"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="90dp"-->
+<!--                            android:layout_height="90dp"-->
+<!--                            android:layout_gravity="bottom"-->
+<!--                            android:src="@drawable/ic44"/>-->
+<!--                    </LinearLayout>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Learning how to create beautiful scenes in Illustrator"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="8dp"/>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="10dp"-->
+<!--                            android:layout_height="10dp"-->
+<!--                            android:layout_marginRight="3dp"-->
+<!--                            android:src="@drawable/ic43"/>-->
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="30 minutes"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textSize="8dp"/>-->
+<!--                    </LinearLayout>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Tutor: Jack Grealish"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="8dp"/>-->
+<!--                </LinearLayout>-->
+
+
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="90dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:orientation="vertical">-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="bottom"-->
+<!--                        android:gravity="bottom"-->
+<!--                        android:background="@drawable/rounded_white_little"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="90dp"-->
+<!--                            android:layout_height="90dp"-->
+<!--                            android:layout_gravity="bottom"-->
+<!--                            android:src="@drawable/ic44"/>-->
+<!--                    </LinearLayout>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Learning how to create beautiful scenes in Illustrator"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="8dp"/>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:orientation="horizontal">-->
+<!--                        <ImageView-->
+<!--                            android:layout_width="10dp"-->
+<!--                            android:layout_height="10dp"-->
+<!--                            android:layout_marginRight="3dp"-->
+<!--                            android:src="@drawable/ic43"/>-->
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="30 minutes"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:textSize="8dp"/>-->
+<!--                    </LinearLayout>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Tutor: Jack Grealish"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:layout_marginTop="3dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textSize="8dp"/>-->
+<!--                </LinearLayout>-->
+
+
+
+<!--            </LinearLayout>-->
+
+<!--        </LinearLayout>-->
+<!--    </ScrollView>-->
 
 
 

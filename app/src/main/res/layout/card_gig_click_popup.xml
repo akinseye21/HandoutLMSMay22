@@ -36,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:id="@+id/dept_gig"
+                android:visibility="gone"
                 android:text="Civil Engineering"
                 android:textSize="10dp"
                 android:textStyle="normal"

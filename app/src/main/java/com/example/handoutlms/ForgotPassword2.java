@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -34,7 +35,10 @@ public class ForgotPassword2 extends AppCompatActivity {
     Button verify;
     String email, code;
     ProgressBar progressBar;
+    TextView resendCode;
+    TextView userMail;
 
+    public static final String PASSWORD_RESET = "http://handout.com.ng/handouts/handout_reset_password";
     public static final String VALIDATE_OTP = "http://handout.com.ng/handouts/handout_validate_otp";
 
 
@@ -49,6 +53,7 @@ public class ForgotPassword2 extends AppCompatActivity {
         code = i.getStringExtra("code");
 
 
+        userMail.setText(email);
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +70,7 @@ public class ForgotPassword2 extends AppCompatActivity {
         edt3 = findViewById(R.id.edt3);
         edt4 = findViewById(R.id.edt4);
         verify = findViewById(R.id.verify);
+        resendCode = findViewById(R.id.resend_code);
 
         edt1.addTextChangedListener(new TextWatcher() {
             @Override
@@ -175,6 +181,58 @@ public class ForgotPassword2 extends AppCompatActivity {
                 RequestQueue requestQueue = Volley.newRequestQueue(ForgotPassword2.this);
                 requestQueue.add(stringRequest);
 
+            }
+        });
+
+        resendCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //send the code again
+                progressBar.setVisibility(View.VISIBLE);
+                //send inputted email to DB
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, PASSWORD_RESET,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                JSONObject jsonObject;
+                                try {
+                                    jsonObject = new JSONObject(response);
+                                    String status = jsonObject.getString("status");
+                                    String code = jsonObject.getString("code");
+
+                                    if(status.equals("success")){
+                                        progressBar.setVisibility(View.GONE);
+                                        System.out.println("Code = "+code);
+                                        //send to next
+                                        Toast.makeText(ForgotPassword2.this, "Code sent to "+email+" please check your mail box", Toast.LENGTH_SHORT).show();
+                                    }else{
+                                        progressBar.setVisibility(View.GONE);
+                                        Toast.makeText(ForgotPassword2.this, "Problem sending email...", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                } catch (JSONException e) {
+                                    progressBar.setVisibility(View.GONE);
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                progressBar.setVisibility(View.GONE);
+                                Toast.makeText(getApplicationContext(), "Network connectivity problem", Toast.LENGTH_LONG).show();
+                            }
+                        }){
+                    @Override
+                    protected Map<String, String> getParams(){
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("email", email);
+                        return params;
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(ForgotPassword2.this);
+                requestQueue.add(stringRequest);
             }
         });
     }

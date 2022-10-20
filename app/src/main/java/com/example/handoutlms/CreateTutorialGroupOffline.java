@@ -84,9 +84,20 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
                             @Override
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
+                                monthOfYear+=1;
                                 // set day of month , month and year value in the edit text
-                                dte.setText(dayOfMonth + "/"
-                                        + (monthOfYear + 1) + "/" + year);
+                                String mt;
+                                if(monthOfYear<10){
+                                    mt = "0"+monthOfYear;
+                                }
+                                else mt = String.valueOf(monthOfYear);
+                                String dy;
+                                if(dayOfMonth<10)
+                                    dy = "0"+dayOfMonth;
+                                else dy = String.valueOf(dayOfMonth);
+
+                                dte.setText(dy + "/"
+                                        + mt + "/" + year);
 
                             }
                         }, mYear, mMonth, mDay);

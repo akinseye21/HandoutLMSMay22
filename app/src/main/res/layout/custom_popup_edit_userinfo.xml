@@ -55,6 +55,7 @@
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
+                android:id="@+id/fullname"
                     android:hint="Fullname"
                     android:singleLine="true"
                     android:paddingLeft="10dp"
@@ -83,7 +84,9 @@
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:hint="Email address"
+                android:id="@+id/email"
+                android:clickable="false"
+                android:focusableInTouchMode="false"
                     android:singleLine="true"
                     android:paddingLeft="10dp"
                     android:paddingTop="5dp"
@@ -112,6 +115,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:hint="Phone number"
+                android:id="@+id/phonenum"
                     android:singleLine="true"
                     android:paddingLeft="10dp"
                     android:paddingTop="5dp"
@@ -128,6 +132,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+            android:visibility="visible"
                 android:layout_marginTop="20dp"
                 android:gravity="center">
             <ImageView
@@ -135,21 +140,15 @@
                     android:layout_height="15dp"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/ic187"/>
-            <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:hint="Password"
-                    android:singleLine="true"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:paddingRight="10dp"
-                    android:inputType="textPassword"
-                    android:textSize="10dp"
-                    android:textColor="#ffffff"
-                    android:textColorHint="#80ffffff"
-                    android:background="@drawable/new_login2"/>
+                    android:src="@drawable/ic190"/>
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:singleLine="true"
+                android:id="@+id/spinnergender"
+                android:background="@drawable/new_login2"
+                android:spinnerMode="dropdown"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -157,23 +156,28 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="20dp"
+            android:visibility="visible"
                 android:gravity="center">
             <ImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/ic187"/>
+                    android:src="@drawable/calendar"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:hint="Confirm Password"
-                    android:singleLine="true"
+                    android:hint="Date of Birth"
+                android:id="@+id/dob"
+                android:clickable="true"
+                android:singleLine="true"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:cursorVisible="false"
                     android:paddingLeft="10dp"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
                     android:paddingRight="10dp"
-                    android:inputType="textPassword"
                     android:textSize="10dp"
                     android:textColor="#ffffff"
                     android:textColorHint="#80ffffff"
@@ -181,6 +185,13 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
 
 
     <LinearLayout
@@ -194,6 +205,7 @@
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="10dp"
+            android:id="@+id/save"
                 android:text="Save"
                 android:textAllCaps="false"
                 android:background="@drawable/round_white"/>
@@ -201,6 +213,7 @@
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
+            android:id="@+id/cancel"
                 android:text="Cancel"
                 android:textAllCaps="false"
                 android:textColor="#ffffff"

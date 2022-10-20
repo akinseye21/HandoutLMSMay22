@@ -76,6 +76,7 @@ public class CreateTutorialGroupOnline extends AppCompatActivity {
                 int mYear = c.get(Calendar.YEAR); // current year
                 int mMonth = c.get(Calendar.MONTH); // current month
                 int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+
                 // date picker dialog
                 datePickerDialog = new DatePickerDialog(CreateTutorialGroupOnline.this,
                         new DatePickerDialog.OnDateSetListener() {
@@ -83,9 +84,22 @@ public class CreateTutorialGroupOnline extends AppCompatActivity {
                             @Override
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
+                                monthOfYear+=1;
                                 // set day of month , month and year value in the edit text
-                                dte.setText(dayOfMonth + "/"
-                                        + (monthOfYear + 1) + "/" + year);
+                                String mt;
+                                if(monthOfYear<10){
+                                    mt = "0"+monthOfYear;
+                                }
+                                else mt = String.valueOf(monthOfYear);
+                                String dy;
+                                if(dayOfMonth<10)
+                                    dy = "0"+dayOfMonth;
+                                else dy = String.valueOf(dayOfMonth);
+
+                                dte.setText(dy + "/"
+                                        + mt + "/" + year);
+
+
 
                             }
                         }, mYear, mMonth, mDay);

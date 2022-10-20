@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
@@ -13,13 +14,27 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class HomeListViewAdapter extends BaseAdapter {
     private Context context;
@@ -39,6 +54,10 @@ public class HomeListViewAdapter extends BaseAdapter {
 
     Dialog myDialog, myDialog2;
     AlertDialog.Builder builder;
+    SharedPreferences preferences;
+    String got_email;
+
+    public static final String TASK_MANAGER = "https://handout.com.ng/handouts/handout_task_manager";
 
 
     public HomeListViewAdapter (Context context, ArrayList<String> type, ArrayList<String> created_by, ArrayList<String> created_by_name, ArrayList<String> group_name, ArrayList<String> university, ArrayList<String> mode, ArrayList<String> group_name_inside, ArrayList<String> description, ArrayList<String> time, ArrayList<String> date, ArrayList<String> card_mode, ArrayList<String> category, ArrayList<String> id){
@@ -82,6 +101,9 @@ public class HomeListViewAdapter extends BaseAdapter {
             convertView = inflaInflater.inflate(R.layout.list_homeview, parent, false);
         }
 
+        preferences = context.getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
+        got_email = preferences.getString("email", "not available");
+
         //get views for gig card
         RelativeLayout card_gig = convertView.findViewById(R.id.card_gig);
         TextView name_gig = convertView.findViewById(R.id.group_name_inside_gig);
@@ -91,6 +113,7 @@ public class HomeListViewAdapter extends BaseAdapter {
         TextView dept_gig = convertView.findViewById(R.id.dept_gig);
         TextView uni_gig = convertView.findViewById(R.id.uni_gig);
         ImageView plus_gig = convertView.findViewById(R.id.plus_gig);
+        LinearLayout showUserProfile2 = convertView.findViewById(R.id.showUserProfile2);
 
 
         //get views for tutorials
@@ -104,6 +127,9 @@ public class HomeListViewAdapter extends BaseAdapter {
         TextView uni_tutorial = convertView.findViewById(R.id.uni_tutor);
         ImageView task_tutorial = convertView.findViewById(R.id.task);
         ImageView plus_tutorial = convertView.findViewById(R.id.plus_tutorial);
+        LinearLayout showUserProfile = convertView.findViewById(R.id.showUserProfile);
+        ImageView on_off_icon = convertView.findViewById(R.id.on_or_offline);
+        TextView on_off_text = convertView.findViewById(R.id.on_or_offline_text);
 
 
         //get views for game
@@ -116,6 +142,27 @@ public class HomeListViewAdapter extends BaseAdapter {
 //        TextView dept_gamel = convertView.findViewById(R.id.dept_game);
 //        TextView uni_game = convertView.findViewById(R.id.uni_game);
 
+        showUserProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //move to the user profile page
+                Intent i = new Intent(context, ProfileOthers.class);
+                //pass the email of the selected user
+                i.putExtra("email", created_by.get(position));
+                context.startActivity(i);
+            }
+        });
+
+        showUserProfile2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //move to the user profile page
+                Intent i = new Intent(context, ProfileOthers.class);
+                //pass the email of the selected user
+                i.putExtra("email", created_by.get(position));
+                context.startActivity(i);
+            }
+        });
 
         if (type.get(position).equals("group")){
             //set tutorial cardview visible
@@ -130,6 +177,16 @@ public class HomeListViewAdapter extends BaseAdapter {
             desc_tutorial.setText(description.get(position));
             date_tutorial.setText(date.get(position));
             dept_tutorial.setText(mode.get(position));
+            on_off_text.setText(card_mode.get(position));
+
+            if(card_mode.get(position).equals("online")){
+                //set the location of the tutorial
+                on_off_icon.setBackgroundResource(R.drawable.online);
+            }else{
+                //do not set the location of the tutorial
+                on_off_icon.setBackgroundResource(R.drawable.offline);
+
+            }
         }
 
         if (type.get(position).equals("gigs")){
@@ -144,6 +201,9 @@ public class HomeListViewAdapter extends BaseAdapter {
             dept_gig.setText(time.get(position));
             uni_gig.setText(university.get(position));
         }
+
+
+
 
         card_gig.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,16 +239,23 @@ public class HomeListViewAdapter extends BaseAdapter {
                 bid.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //move to the next gig page
-                        Intent i = new Intent(context, CardGigClick2.class);
-                        i.putExtra("name", created_by_name.get(position));
-                        i.putExtra("department", time.get(position));
-                        i.putExtra("school", university.get(position));
-                        i.putExtra("gig_name", group_name.get(position));
-                        i.putExtra("gig_description", description.get(position));
-                        i.putExtra("payment_structure", category.get(position));
-                        i.putExtra("id", id.get(position));
-                        context.startActivity(i);
+                        //compare email of the tutor and user email
+                        if(created_by.get(position).equals(got_email)){
+                            Toast.makeText(context, "Sorry you can not place bid on your own gig", Toast.LENGTH_SHORT).show();
+                            myDialog.dismiss();
+                        }else{
+                            //move to the next gig page
+                            Intent i = new Intent(context, CardGigClick2.class);
+                            i.putExtra("name", created_by_name.get(position));
+                            i.putExtra("department", time.get(position));
+                            i.putExtra("school", university.get(position));
+                            i.putExtra("gig_name", group_name.get(position));
+                            i.putExtra("gig_description", description.get(position));
+                            i.putExtra("payment_structure", category.get(position));
+                            i.putExtra("id", id.get(position));
+                            context.startActivity(i);
+                        }
+
                     }
                 });
 
@@ -246,38 +313,44 @@ public class HomeListViewAdapter extends BaseAdapter {
                 join.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //show 'done'
-                        builder.setMessage("Do you want to join '"+group_name.get(position)+"'?")
-                                .setCancelable(false)
-                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        //show popUpWindow
-                                        myDialog2 = new Dialog(context);
-                                        myDialog2.setContentView(R.layout.custom_popup_tutorial_joined);
-                                        TextView popup_tutName = myDialog2.findViewById(R.id.tutName);
-                                        Button close = myDialog2.findViewById(R.id.close);
-                                        popup_tutName.setText(group_name.get(position));
-                                        close.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                myDialog2.dismiss();
-                                            }
-                                        });
-                                        myDialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                                        myDialog2.setCanceledOnTouchOutside(false);
-                                        myDialog2.show();
-                                    }
-                                })
-                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        //  Action for 'NO' Button
-                                        dialog.cancel();
-                                    }
-                                });
-                        AlertDialog alert = builder.create();
-                        //Setting the title manually
-                        alert.setTitle("Join Tutorial - "+group_name.get(position));
-                        alert.show();
+                        if(created_by.get(position).equals(got_email)){
+                            Toast.makeText(context, "Sorry you can not join tutorial created by yourself", Toast.LENGTH_SHORT).show();
+                            myDialog.dismiss();
+                        }else{
+                            //show 'done'
+                            builder.setMessage("Do you want to join '"+group_name.get(position)+"'?")
+                                    .setCancelable(false)
+                                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            //show popUpWindow
+                                            myDialog2 = new Dialog(context);
+                                            myDialog2.setContentView(R.layout.custom_popup_tutorial_joined);
+                                            TextView popup_tutName = myDialog2.findViewById(R.id.tutName);
+                                            Button close = myDialog2.findViewById(R.id.close);
+                                            popup_tutName.setText(group_name.get(position));
+                                            close.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    myDialog2.dismiss();
+                                                }
+                                            });
+                                            myDialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                            myDialog2.setCanceledOnTouchOutside(false);
+                                            myDialog2.show();
+                                        }
+                                    })
+                                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            //  Action for 'NO' Button
+                                            dialog.cancel();
+                                        }
+                                    });
+                            AlertDialog alert = builder.create();
+                            //Setting the title manually
+                            alert.setTitle("Join Tutorial - "+group_name.get(position));
+                            alert.show();
+                        }
+
                     }
                 });
                 myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -289,7 +362,90 @@ public class HomeListViewAdapter extends BaseAdapter {
         task_tutorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //add the tutorial to the taskmanager
+                //show confirmation dialogue first
+                myDialog = new Dialog(context);
+                myDialog.setContentView(R.layout.card_add_task);
+                Button yes = myDialog.findViewById(R.id.yes);
+                Button no = myDialog.findViewById(R.id.no);
+                ProgressBar progressBar = myDialog.findViewById(R.id.progressBar);
+                yes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //add the tutorial to the taskmanager
+                        StringRequest stringRequest = new StringRequest(Request.Method.POST, TASK_MANAGER,
+                                new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        System.out.println("Response = "+response);
+
+                                        progressBar.setVisibility(View.GONE);
+
+                                        JSONObject jo = null;
+                                        try {
+                                            jo = new JSONObject(response);
+                                            String status = jo.getString("status");
+                                            String notification = jo.getString("notification");
+
+                                            if (status.equals("successful")){
+                                                //load the custom dialog box
+                                                myDialog2 = new Dialog(context);
+                                                myDialog2.setContentView(R.layout.custom_popup_successful_taskmanager);
+                                                Button home = myDialog2.findViewById(R.id.home);
+                                                TextView stat = myDialog2.findViewById(R.id.status);
+                                                stat.setText(notification);
+                                                home.setOnClickListener(new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {
+                                                        Intent i = new Intent(context, FeedsDashboard.class);
+                                                        context.startActivity(i);
+                                                    }
+                                                });
+                                                myDialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                                myDialog2.setCanceledOnTouchOutside(false);
+                                                myDialog2.show();
+                                            }
+                                        } catch (JSONException e) {
+                                            progressBar.setVisibility(View.GONE);
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError volleyError) {
+                                        progressBar.setVisibility(View.GONE);
+                                        Toast.makeText(context, "Error!", Toast.LENGTH_LONG).show();
+                                        volleyError.printStackTrace();
+                                    }
+                                }){
+                            @Override
+                            protected Map<String, String> getParams(){
+                                Map<String, String> params = new HashMap<>();
+                                params.put("email", got_email);
+                                params.put("task_name", group_name.get(position));
+                                params.put("short_description", description.get(position));
+                                params.put("task_category", category.get(position));
+                                params.put("task_date", date.get(position));
+                                params.put("task_time", "All Day");
+                                return params;
+                            }
+                        };
+
+                        RequestQueue requestQueue = Volley.newRequestQueue(context);
+                        requestQueue.add(stringRequest);
+                    }
+                });
+
+                no.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        myDialog.dismiss();
+                    }
+                });
+                myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                myDialog.setCanceledOnTouchOutside(true);
+                myDialog.show();
+
 
             }
         });

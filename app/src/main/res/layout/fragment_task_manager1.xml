@@ -42,97 +42,137 @@
                 android:paddingLeft="10dp"
                 android:paddingBottom="5dp"/>
 
-            <RelativeLayout
+            <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fillViewport="true"
+                android:scrollbars="horizontal"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp">
 
                 <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="150dp"
-                    android:id="@+id/exam"
-                    android:layout_alignParentLeft="true"
-                    android:background="@drawable/tm13"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/countExam"
-                        android:text="12 tasks"
-                        android:textColor="#ffffff"
-                        android:textSize="8dp" />
+                    <LinearLayout
+                        android:layout_width="110dp"
+                        android:layout_height="150dp"
+                        android:id="@+id/exam"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/tm13"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Exam"
-                        android:textColor="#ffffff"
-                        android:textSize="15dp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/countExam"
+                            android:text="0 tasks"
+                            android:textColor="#ffffff"
+                            android:textSize="10dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Exam"
+                            android:textColor="#ffffff"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/test"
+                        android:layout_width="110dp"
+                        android:layout_height="150dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/tm15"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/countTest"
+                            android:text="0 tasks"
+                            android:textColor="#ffffff"
+                            android:textSize="10dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tests"
+                            android:textColor="#ffffff"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="110dp"
+                        android:layout_height="150dp"
+                        android:id="@+id/assignment"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/tm14"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/countAssignment"
+                            android:text="0 tasks"
+                            android:textColor="#ffffff"
+                            android:textSize="10dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Assignments"
+                            android:textColor="#ffffff"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/others"
+                        android:layout_width="110dp"
+                        android:layout_height="150dp"
+                        android:background="@drawable/tm15"
+                        android:backgroundTint="#b2b2b2"
+                        android:backgroundTintMode="src_over"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/countOthers"
+                            android:text="0 tasks"
+                            android:textColor="#ffffff"
+                            android:textSize="10dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Others"
+                            android:textColor="#ffffff"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
 
-                <LinearLayout
-                    android:id="@+id/test"
-                    android:layout_width="100dp"
-                    android:layout_height="150dp"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/tm15"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/countTest"
-                        android:text="16 tasks"
-                        android:textColor="#ffffff"
-                        android:textSize="8dp" />
+            </HorizontalScrollView>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tests"
-                        android:textColor="#ffffff"
-                        android:textSize="15dp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="150dp"
-                    android:id="@+id/assignment"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/tm14"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/countAssignment"
-                        android:text="16 tasks"
-                        android:textColor="#ffffff"
-                        android:textSize="8dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Assignments"
-                        android:textColor="#ffffff"
-                        android:textSize="15dp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-
-            </RelativeLayout>
 
 
             <TextView

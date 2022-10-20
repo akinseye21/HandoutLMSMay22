@@ -182,42 +182,6 @@ public class FeedsDashboard extends AppCompatActivity implements
 
     }
 
-//    private void requestNotificationPermission() {
-//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NOTIFICATION_POLICY) == PackageManager.PERMISSION_GRANTED)
-//            return;
-//
-//        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_NOTIFICATION_POLICY)) {
-//
-//        }
-//
-//        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_NOTIFICATION_POLICY}, NOTIFICATION_PERMISSION_CODE );
-//    }
-//
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//
-//        // Checking the request code of our request
-//        if (requestCode == NOTIFICATION_PERMISSION_CODE ) {
-//
-//            // If permission is granted
-//            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                // Displaying a toast
-//                Toast.makeText(this, "Permission granted now you can read the storage", Toast.LENGTH_LONG).show();
-//            } else {
-//                // Displaying another toast if permission is not granted
-//                Toast.makeText(this, "Oops you just denied the permission", Toast.LENGTH_LONG).show();
-//            }
-//        }
-//    }
-
-
-//    private void loadFragment(Fragment fragment) {
-//        // create a FragmentTransaction to begin the transaction and replace the Fragment
-//        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//        fragmentTransaction.replace(R.id.viewpager, fragment);
-//        fragmentTransaction.commit();
-//    }
-
     private void setupTabIcons() {
         tabLayout.getTabAt(0).setIcon(R.drawable.ic33);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic31);
@@ -236,30 +200,6 @@ public class FeedsDashboard extends AppCompatActivity implements
         viewPager.setAdapter(adapter);
     }
 
-//    private void addTabs2(ViewPager viewpager2) {
-//        FeedsDashboard.ViewPagerAdapter adapter = new FeedsDashboard.ViewPagerAdapter(getSupportFragmentManager());
-//        adapter.addFrag(new Tutor(), "");
-//        adapter.addFrag(new Games(), "");
-//        adapter.addFrag(new Gigs(), "");
-//        viewpager2.setAdapter(adapter);
-//    }
-//    private void addTutorTab(ViewPager viewPager){
-//        FeedsDashboard.ViewPagerAdapter adapter= new FeedsDashboard.ViewPagerAdapter(getSupportFragmentManager());
-//        adapter.addFrag(new Tutor(), "");
-//        viewPager.setAdapter(adapter);
-//    }
-//
-//    private void addGameTab(ViewPager viewPager){
-//        FeedsDashboard.ViewPagerAdapter adapter= new FeedsDashboard.ViewPagerAdapter(getSupportFragmentManager());
-//        adapter.addFrag(new Games(), "");
-//        viewPager.setAdapter(adapter);
-//    }
-//
-//    private void addGigTab(ViewPager viewPager){
-//        FeedsDashboard.ViewPagerAdapter adapter= new FeedsDashboard.ViewPagerAdapter(getSupportFragmentManager());
-//        adapter.addFrag(new Gigs(), "");
-//        viewPager.setAdapter(adapter);
-//    }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
@@ -271,7 +211,7 @@ public class FeedsDashboard extends AppCompatActivity implements
         // do nothing
     }
 
-    class ViewPagerAdapter extends FragmentStatePagerAdapter {
+    static class ViewPagerAdapter extends FragmentStatePagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 

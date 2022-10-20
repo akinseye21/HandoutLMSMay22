@@ -10,7 +10,25 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -26,11 +44,19 @@ public class Games extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    public static final String GET_GAMES = "https://handout.com.ng/handouts/handout_get_games";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
     RelativeLayout trivia_layout;
+    ProgressBar progressBar;
+    ListView listView;
+    ArrayList<String> arr_gamename = new ArrayList<>();
+    ArrayList<String> arr_gametime = new ArrayList<>();
+    ArrayList<String> arr_gamedate = new ArrayList<>();
+    ArrayList<String> arr_gamelocation = new ArrayList<>();
+    ArrayList<String> arr_gamecreatedby = new ArrayList<>();
 
     private OnFragmentInteractionListener mListener;
 
@@ -79,6 +105,59 @@ public class Games extends Fragment {
                 startActivity(i);
             }
         });
+        progressBar = v.findViewById(R.id.progressBar);
+        listView = v.findViewById(R.id.gamelist);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_GAMES,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        int ArrayLength;
+                        progressBar.setVisibility(View.GONE);
+                        System.out.println("Response = "+response);
+
+                        try{
+                            JSONArray jsonArray = new JSONArray(response);
+                            ArrayLength = jsonArray.length();
+
+                            for(int i=ArrayLength-1; i>=0; i--){
+                                JSONObject section1 = jsonArray.getJSONObject(i);
+                                String _gamename = section1.getString("gamename");
+                                String _date = section1.getString("_date");
+                                String _time = section1.getString("_time");
+                                String _location = section1.getString("location");
+                                String _createdby = section1.getString("created_by");
+
+                                arr_gamename.add(_gamename);
+                                arr_gamedate.add(_date);
+                                arr_gametime.add(_time);
+                                arr_gamelocation.add(_location);
+                                arr_gamecreatedby.add(_createdby);
+
+                                GameAdapter myAdapter=new GameAdapter(getActivity(),arr_gamename,arr_gamedate,arr_gametime, arr_gamelocation, arr_gamecreatedby);
+                                listView.setAdapter(myAdapter);
+                            }
+                        }
+                        catch (JSONException e){
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        System.out.println("Error = "+volleyError.getMessage());
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<>();
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
 
         return v;
     }

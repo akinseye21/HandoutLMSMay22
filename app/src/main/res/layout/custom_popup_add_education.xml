@@ -49,6 +49,7 @@
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
+                android:id="@+id/university"
                     android:hint="University"
                     android:singleLine="true"
                     android:paddingLeft="10dp"
@@ -64,6 +65,7 @@
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
+                android:id="@+id/department"
                     android:hint="Department"
                     android:singleLine="true"
                     android:layout_marginTop="20dp"
@@ -80,6 +82,7 @@
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
+                android:id="@+id/qualification"
                     android:hint="Qualification"
                     android:singleLine="true"
                     android:layout_marginTop="20dp"
@@ -96,6 +99,7 @@
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
+                android:id="@+id/year"
                     android:hint="Year"
                     android:singleLine="true"
                     android:layout_marginTop="20dp"
@@ -103,7 +107,7 @@
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
                     android:paddingRight="10dp"
-                    android:inputType="textEmailAddress"
+                    android:inputType="number"
                     android:textSize="10dp"
                     android:textColor="#ffffff"
                     android:textColorHint="#80ffffff"
@@ -116,6 +120,13 @@
 
     </LinearLayout>
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/progressBar"
+        android:visibility="gone"/>
+
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -127,6 +138,7 @@
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="10dp"
+            android:id="@+id/save"
                 android:text="Save"
                 android:textAllCaps="false"
                 android:background="@drawable/round_white"/>
@@ -134,6 +146,7 @@
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
+            android:id="@+id/cancel"
                 android:text="Cancel"
                 android:textAllCaps="false"
                 android:textColor="#ffffff"

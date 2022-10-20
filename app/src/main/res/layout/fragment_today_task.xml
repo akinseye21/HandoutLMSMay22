@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:paddingBottom="30dp">
 
         <LinearLayout
@@ -46,11 +46,6 @@
                 android:divider="@null"
                 android:id="@+id/listview_today_tasks"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="#ffffff"
-                android:layout_marginTop="30dp"/>
 
         </LinearLayout>
 
@@ -58,10 +53,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/add"
-            android:layout_below="@+id/one"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <RelativeLayout

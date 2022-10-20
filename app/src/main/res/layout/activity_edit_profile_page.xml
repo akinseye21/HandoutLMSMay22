@@ -30,6 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
             <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -45,20 +46,30 @@
                             android:layout_marginTop="15dp"
                             android:layout_marginLeft="100dp"
                             android:src="@drawable/ic185"/>
+
                     <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/ic92"/>
+                        android:id="@+id/pp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        app:civ_border_color="#ffffff"
+                        app:civ_border_width="2dp" />
 
                 </RelativeLayout>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Username"
+                    android:id="@+id/username"
+                        android:text="XX"
                         android:textColor="#ffffff"
                         android:textSize="10dp"
                         android:layout_marginTop="5dp"/>
             </LinearLayout>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/progressBar"/>
 
             <View
                     android:layout_width="match_parent"
@@ -92,6 +103,7 @@
                     android:layout_height="wrap_content"
                     android:background="#000000"
                     android:padding="10dp"
+                    android:onClick="EditUserInfo"
                     android:orientation="vertical"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp">
@@ -99,30 +111,34 @@
                 <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
                     <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic190"/>
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic190" />
+
                     <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Daniel Ukpai"
-                            android:textColor="#ffffff"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="25dp"
-                            android:textSize="10dp"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/f_name"
+                        android:layout_marginLeft="25dp"
+                        android:text="Daniel Ukpai"
+                        android:textColor="#ffffff"
+                        android:textSize="10dp" />
+
                     <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Edit"
-                            android:textStyle="italic"
-                            android:textSize="10dp"
-                            android:textColor="#ffffff"
-                            android:layout_marginRight="20dp"
-                            android:onClick="EditUserInfo"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20dp"
+                        android:onClick="EditUserInfo"
+                        android:text="Edit"
+                        android:textColor="#ffffff"
+                        android:textSize="10dp"
+                        android:textStyle="italic" />
                     <ImageView
                             android:layout_width="15dp"
                             android:layout_height="15dp"
@@ -143,14 +159,16 @@
                             android:layout_height="15dp"
                             android:layout_centerVertical="true"
                             android:src="@drawable/ic189"/>
+
                     <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="aakinseye@gmail.com"
-                            android:textColor="#ffffff"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="25dp"
-                            android:textSize="10dp"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/e_mail"
+                        android:layout_marginLeft="25dp"
+                        android:text="aakinseye@gmail.com"
+                        android:textColor="#ffffff"
+                        android:textSize="10dp" />
 
                 </RelativeLayout>
 
@@ -163,14 +181,16 @@
                             android:layout_height="15dp"
                             android:layout_centerVertical="true"
                             android:src="@drawable/ic188"/>
+
                     <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="+2348137439027"
-                            android:textColor="#ffffff"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="25dp"
-                            android:textSize="10dp"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="25dp"
+                        android:id="@+id/p_hone"
+                        android:text="+2348137439027"
+                        android:textColor="#ffffff"
+                        android:textSize="10dp" />
 
                 </RelativeLayout>
 
@@ -191,6 +211,49 @@
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="25dp"
                             android:textSize="10dp"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/calendar"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dob"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="25dp"
+                        android:textSize="10dp"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic190" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/gender"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="25dp"
+                        android:textSize="10dp"/>
 
                 </RelativeLayout>
 
@@ -223,9 +286,10 @@
 
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     android:background="#000000"
                     android:padding="10dp"
+                    android:onClick="AddEducation"
                     android:orientation="vertical"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp">
@@ -263,102 +327,21 @@
                 </RelativeLayout>
 
 
-                <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic186"/>
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Federal University of Technology , Minna"
-                            android:id="@+id/uni"
-                            android:textStyle="bold"
-                            android:textColor="#ffffff"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="25dp"
-                            android:textSize="10dp"/>
-
-                </RelativeLayout>
-
                 <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Physics/Electronics"
-                        android:textColor="#ffffff"
-                        android:textSize="10dp"
-                        android:layout_marginLeft="25dp"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="No Education Added. Click + button to add"
+                    android:textSize="12dp"
+                    android:textColor="@color/lb_grey"
+                    android:id="@+id/noedu"
+                    android:drawableTop="@drawable/notification"/>
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Bachelor of Technology - Btech"
-                        android:textColor="#ffffff"
-                        android:textSize="10dp"
-                        android:layout_marginLeft="25dp"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2005 - 2011"
-                        android:textColor="#ffffff"
-                        android:textSize="10dp"
-                        android:layout_marginLeft="25dp"/>
-
-                <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.1dp"
-                        android:background="#ffffff"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"/>
-
-                <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic186"/>
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Federal University of Technology , Minna"
-                            android:id="@+id/uni"
-                            android:textStyle="bold"
-                            android:textColor="#ffffff"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="25dp"
-                            android:textSize="10dp"/>
-
-                </RelativeLayout>
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Physics/Electronics"
-                        android:textColor="#ffffff"
-                        android:textSize="10dp"
-                        android:layout_marginLeft="25dp"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Bachelor of Technology - Btech"
-                        android:textColor="#ffffff"
-                        android:textSize="10dp"
-                        android:layout_marginLeft="25dp"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2005 - 2011"
-                        android:textColor="#ffffff"
-                        android:textSize="10dp"
-                        android:layout_marginLeft="25dp"/>
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:dividerHeight="0dp"
+                    android:id="@+id/list_education"/>
 
             </LinearLayout>
 
@@ -386,9 +369,10 @@
 
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     android:background="#000000"
                     android:padding="10dp"
+                    android:onClick="AddExperience"
                     android:orientation="vertical"
                     android:layout_marginLeft="20dp"
                     android:layout_marginBottom="20dp"
@@ -398,14 +382,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp">
+
                     <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:src="@drawable/home_ic4"
-                            android:onClick="AddExperience"
-                            android:tint="#ffffff"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginRight="100dp"/>
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="100dp"
+                        android:onClick="AddExperience"
+                        android:src="@drawable/home_ic4"
+                        android:tint="#ffffff" />
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -426,43 +411,22 @@
 
                 </RelativeLayout>
 
-
-                <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic183"/>
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Social Media / IT Officer"
-                            android:id="@+id/uni"
-                            android:textStyle="bold"
-                            android:textColor="#ffffff"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="25dp"
-                            android:textSize="10dp"/>
-
-                </RelativeLayout>
-
                 <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2015 - Present"
-                        android:textColor="#ffffff"
-                        android:textSize="10dp"
-                        android:layout_marginLeft="25dp"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="No Experience Added. Click + button to add"
+                    android:textSize="12dp"
+                    android:textColor="@color/lb_grey"
+                    android:id="@+id/noexperience"
+                    android:drawableTop="@drawable/notification"/>
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Creating definite illustration from election data"
-                        android:textColor="#ffffff"
-                        android:textSize="10dp"
-                        android:layout_marginLeft="25dp"/>
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:dividerHeight="0dp"
+                    android:id="@+id/list_experience"/>
+
 
 
             </LinearLayout>

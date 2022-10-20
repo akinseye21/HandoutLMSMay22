@@ -123,7 +123,7 @@ public class TodayTask extends Fragment {
 
         //today
         day          = (String) DateFormat.format("dd",   date); // 20
-        month  = (String) DateFormat.format("M",  date); // Jun
+        month  = (String) DateFormat.format("MM",  date); // Jun
         year         = (String) DateFormat.format("yyyy", date); // 2013
         today = day+"/"+month+"/"+year;
 

@@ -32,6 +32,15 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ChatMessagingPage"
+            android:exported="false" />
+        <activity
+            android:name=".ChatPage"
+            android:exported="false" />
+        <activity
+            android:name=".CreateGames"
+            android:exported="false" />
+        <activity
             android:name=".CreateNewTask"
             android:exported="false" />
         <activity

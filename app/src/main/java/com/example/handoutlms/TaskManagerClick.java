@@ -3,6 +3,7 @@ package com.example.handoutlms;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -107,6 +108,24 @@ public class TaskManagerClick extends AppCompatActivity {
                 }
             }
             taskCount.setText(new_arr_task_name.size()+" Tasks");
+        }
+
+        if(cat.equals("others")){
+            category.setText("Others");
+            image.setImageResource(R.drawable.tm8);
+            image.setImageTintMode(PorterDuff.Mode.MULTIPLY);
+
+            for(int j=0; j<arr_task_name.size(); j++){
+                if(!arr_task_category.get(j).equals("Assignment") || !arr_task_category.get(j).equals("Test") || !arr_task_category.get(j).equals("Exam")){
+                    new_arr_task_name.add(arr_task_name.get(j));
+                    new_arr_task_date.add(arr_task_date.get(j));
+                    new_arr_task_category.add(arr_task_category.get(j));
+                    new_arr_task_description.add(arr_task_description.get(j));
+                    new_arr_task_time.add(arr_task_time.get(j));
+                }
+            }
+            taskCount.setText(new_arr_task_name.size()+" Tasks");
+
         }
 
         TotalTaskAdapter myAdapter=new TotalTaskAdapter(getApplicationContext(),new_arr_task_name,new_arr_task_date,new_arr_task_category, new_arr_task_description, new_arr_task_time);

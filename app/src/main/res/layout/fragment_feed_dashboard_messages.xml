@@ -3,12 +3,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#293241"
     tools:context=".FeedDashboardMessages">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/logo"
+            android:src="@drawable/logo2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_below="@+id/logo"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="Handout Chat"
+            android:drawableLeft="@android:drawable/sym_action_chat"
+            android:textColor="#fff"
+            android:textSize="15dp"
+            android:padding="10dp"
+            android:layout_marginBottom="30dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/next"
+            android:text="Go to chat"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:background="@drawable/rounded_green"/>
+
+    </RelativeLayout>
+
+
 
 </FrameLayout>

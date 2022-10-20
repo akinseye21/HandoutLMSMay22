@@ -3,544 +3,195 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#293241"
+        android:background="#8b3894"
         tools:context=".GamesProfile">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#8b3894"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:id="@+id/myLin"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Online Games"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="5dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/myLin"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Online Games"
-                    android:textColor="#ffffff"
-                    android:textStyle="bold"
-                    android:textSize="15dp"
-                    android:paddingLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:paddingBottom="5dp"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal">
+                <RelativeLayout
+                    android:layout_width="110dp"
+                    android:layout_height="128dp"
+                    android:elevation="5dp"
+                    android:id="@+id/trivia_layout"
+                    android:background="@drawable/game8">
 
                     <RelativeLayout
-                        android:layout_width="110dp"
-                        android:layout_height="128dp"
-                        android:elevation="5dp"
-                        android:id="@+id/trivia_layout"
-                        android:background="@drawable/game8">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="12dp">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="12dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentLeft="true"
-                                android:layout_centerVertical="true"
-                                android:text="Trivia Game"
-                                android:textColor="#ffffff"
-                                android:textSize="6dp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="...."
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:layout_centerVertical="true"
-                                android:layout_alignParentRight="true"/>
-
-                        </RelativeLayout>
-
-                        <ImageView
-                            android:id="@+id/img1"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/game7"
+                            android:layout_alignParentLeft="true"
                             android:layout_centerVertical="true"
-                            android:layout_centerHorizontal="true"/>
+                            android:text="Trivia Game"
+                            android:textColor="#ffffff"
+                            android:textSize="6dp" />
 
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="110dp"
-                        android:layout_height="128dp"
-                        android:elevation="5dp"
-                        android:background="@drawable/game8">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="12dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentLeft="true"
-                                android:layout_centerVertical="true"
-                                android:text="Ludo Game"
-                                android:textColor="#ffffff"
-                                android:textSize="6dp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="...."
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:layout_centerVertical="true"
-                                android:layout_alignParentRight="true"/>
-
-                        </RelativeLayout>
-
-                        <ImageView
-                            android:id="@+id/img1"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/game6"
+                            android:text="...."
+                            android:textColor="#ffffff"
+                            android:textSize="8dp"
                             android:layout_centerVertical="true"
-                            android:layout_centerHorizontal="true"/>
-
+                            android:layout_alignParentRight="true"/>
 
                     </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/img1"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/game7"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true"/>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="110dp"
+                    android:layout_height="128dp"
+                    android:elevation="5dp"
+                    android:background="@drawable/game8">
 
                     <RelativeLayout
-                        android:layout_width="110dp"
-                        android:layout_height="128dp"
-                        android:elevation="5dp"
-                        android:background="@drawable/game8">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="12dp">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="12dp">
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="Ludo Game"
+                            android:textColor="#ffffff"
+                            android:textSize="6dp" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentLeft="true"
-                                android:layout_centerVertical="true"
-                                android:text="Word Scramble Game"
-                                android:textColor="#ffffff"
-                                android:textSize="6dp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="...."
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:layout_centerVertical="true"
-                                android:layout_alignParentRight="true"/>
-
-                        </RelativeLayout>
-
-                        <ImageView
-                            android:id="@+id/img1"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_centerInParent="true"
-                            android:src="@drawable/game5" />
-
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="...."
+                            android:textColor="#ffffff"
+                            android:textSize="8dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"/>
 
                     </RelativeLayout>
 
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Offline Games"
-                    android:textColor="#ffffff"
-                    android:textStyle="bold"
-                    android:textSize="15dp"
-                    android:paddingLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:paddingBottom="5dp"/>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:background="@drawable/game4"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="70dp"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/game2" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Game Name:"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="normal" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="FIFA 2022 Competition"
-                                android:textColor="#ffffff"
-                                android:textSize="12dp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="2dp"
-                                android:text="Date:"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="normal" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="24/03/2022"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="2dp"
-                                android:text="Time:"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="normal" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="5:00pm"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="bold" />
-
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/game3"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginRight="30dp"/>
+                        android:id="@+id/img1"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/game6"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true"/>
+
 
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp">
+                    android:layout_width="110dp"
+                    android:layout_height="128dp"
+                    android:elevation="5dp"
+                    android:background="@drawable/game8">
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:background="@drawable/game4"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content"
+                        android:layout_margin="12dp">
 
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="70dp"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/game2" />
-
-                        <LinearLayout
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:orientation="vertical">
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="Word Scramble Game"
+                            android:textColor="#ffffff"
+                            android:textSize="6dp" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Game Name:"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="normal" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="...."
+                            android:textColor="#ffffff"
+                            android:textSize="8dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"/>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="FIFA 2022 Competition"
-                                android:textColor="#ffffff"
-                                android:textSize="12dp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="2dp"
-                                android:text="Date:"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="normal" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="24/03/2022"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="2dp"
-                                android:text="Time:"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="normal" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="5:00pm"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="bold" />
-
-
-                        </LinearLayout>
-
-                    </LinearLayout>
+                    </RelativeLayout>
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/game3"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginRight="30dp"/>
+                        android:id="@+id/img1"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/game5" />
+
 
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:background="@drawable/game4"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="70dp"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/game2" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Game Name:"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="normal" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="FIFA 2022 Competition"
-                                android:textColor="#ffffff"
-                                android:textSize="12dp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="2dp"
-                                android:text="Date:"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="normal" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="24/03/2022"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="2dp"
-                                android:text="Time:"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="normal" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="5:00pm"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="bold" />
-
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/game3"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginRight="30dp"/>
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:background="@drawable/game4"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="70dp"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/game2" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Game Name:"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="normal" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="FIFA 2022 Competition"
-                                android:textColor="#ffffff"
-                                android:textSize="12dp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="2dp"
-                                android:text="Date:"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="normal" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="24/03/2022"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="2dp"
-                                android:text="Time:"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="normal" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="5:00pm"
-                                android:textColor="#ffffff"
-                                android:textSize="8dp"
-                                android:textStyle="bold" />
-
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/game3"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginRight="30dp"/>
-
-                </RelativeLayout>
 
             </LinearLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Offline Games"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="5dp"/>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/progressBar"/>
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/gamelist"/>
+
         </LinearLayout>
 
-    </ScrollView>
+    </LinearLayout>
+
 
 
 </FrameLayout>

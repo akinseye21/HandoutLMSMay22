@@ -15,12 +15,15 @@
            android:layout_width="match_parent"
            android:layout_height="130dp"
            android:background="@drawable/ic90"/>
+
        <de.hdodenhof.circleimageview.CircleImageView
+           android:id="@+id/pp"
            android:layout_width="100dp"
            android:layout_height="100dp"
-           android:src="@drawable/ic92"
-           android:id="@+id/pp"
-           android:layout_marginTop="60dp"/>
+           android:layout_marginLeft="10dp"
+           android:layout_marginTop="60dp"
+           app:civ_border_color="#fff"
+           app:civ_border_width="2dp" />
 
        <TextView
            android:id="@+id/email"
@@ -29,7 +32,8 @@
            android:layout_below="@+id/pp"
            android:layout_marginLeft="20dp"
            android:ellipsize="end"
-           android:text="email"
+           android:maxLength="18"
+           android:text=""
            android:textColor="#ffffff"
            android:textSize="8dp"
            android:textStyle="normal" />
@@ -51,7 +55,7 @@
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:id="@+id/user_name"
-                   android:text="John Doe"
+                   android:text=""
                    android:textColor="#ffffff"
                    android:textStyle="bold"
                    android:textSize="12dp"/>
@@ -60,7 +64,8 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:id="@+id/department"
-               android:text="N/A"
+               android:visibility="gone"
+               android:text=""
                android:textColor="#ffffff"
                android:textSize="10dp"
                android:textStyle="normal"/>
@@ -68,34 +73,36 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:id="@+id/school"
-               android:text="University of Lagos"
+               android:text=""
                android:textColor="#ffffff"
                android:textSize="10dp"
                android:textStyle="normal"/>
        </LinearLayout>
 
        <LinearLayout
+           android:id="@+id/editProfile"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:orientation="horizontal"
-           android:id="@+id/editProfile"
            android:layout_alignParentRight="true"
-           android:gravity="center_vertical"
            android:layout_marginTop="140dp"
-           android:layout_marginRight="10dp">
+           android:layout_marginRight="10dp"
+           android:gravity="center_vertical"
+           android:orientation="horizontal">
+
            <ImageView
                android:layout_width="20dp"
                android:layout_height="20dp"
-               android:src="@drawable/ic57"/>
+               android:src="@drawable/ic57" />
+
            <TextView
+               android:id="@+id/edit"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:id="@+id/edit"
+               android:paddingLeft="2dp"
                android:text="Edit Profile"
                android:textColor="#ffffff"
-               android:textStyle="bold"
                android:textSize="10dp"
-               android:paddingLeft="2dp"/>
+               android:textStyle="bold" />
        </LinearLayout>
 
        <RelativeLayout
@@ -130,6 +137,7 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:gravity="center_vertical"
+               android:visibility="invisible"
                    android:layout_alignParentLeft="true"
                android:layout_centerVertical="true"
                android:orientation="horizontal">
@@ -141,7 +149,7 @@
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:id="@+id/date"
-                   android:text="N/A"
+                   android:text=""
                    android:textColor="#ffffff"
                    android:textStyle="bold"
                    android:textSize="10dp"
@@ -167,12 +175,12 @@
                <TextView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="200"
+                   android:text="0"
                    android:textColor="#ffffff"
                    android:textStyle="bold"
                    android:textSize="12dp"
                    android:background="@drawable/rounded_white_transparent_100"
-                   android:padding="5dp"/>
+                   android:padding="2dp"/>
            </LinearLayout>
        </RelativeLayout>
 
@@ -350,10 +358,10 @@
            android:visibility="gone"/>
 
        <androidx.viewpager.widget.ViewPager
+           android:id="@+id/viewpager2"
            android:layout_width="match_parent"
            android:layout_height="match_parent"
-           android:id="@+id/viewpager2"
-           android:layout_below="@+id/tabs"/>
+           android:layout_below="@+id/tabs" />
 
 
    </RelativeLayout>

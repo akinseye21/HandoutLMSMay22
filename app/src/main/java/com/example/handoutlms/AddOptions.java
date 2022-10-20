@@ -43,6 +43,14 @@ public class AddOptions extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        games.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), CreateGames.class);
+                i.putExtra("email", email);
+                startActivity(i);
+            }
+        });
         gigs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
