@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/num_of_task"
-                android:text="4 task \nfor today"
+                android:text="0 task \nfor today"
                 android:textColor="#ffffff"
                 android:textSize="25dp"
                 android:textStyle="bold"

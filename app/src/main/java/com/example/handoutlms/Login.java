@@ -1,5 +1,6 @@
 package com.example.handoutlms;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -22,6 +23,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,11 +50,16 @@ public class Login extends AppCompatActivity {
 
     public static final String LOGIN = "http://handout.com.ng/handouts/handout_login";
 
+    FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        auth = FirebaseAuth.getInstance();
+
 
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -107,21 +119,35 @@ public class Login extends AppCompatActivity {
                                     String status = jsonObject.getString("status");
                                     String email = jsonObject.getString("email");
 
-
-
                                     if(status.equals("login successful")){
                                         Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
                                         String login_email = jsonObject.getString("email");
                                         String fullname = jsonObject.getString("fullname");
                                         String pics = jsonObject.getString("pics");
-                                        myEdit.putString("email", login_email);
+                                        myEdit.putString( "email", login_email);
                                         myEdit.putString("fullname", fullname);
                                         myEdit.putString("pics", pics);
+                                        myEdit.putString("password", gotten_pass);
                                         myEdit.commit();
-                                        Intent i = new Intent(Login.this, FeedsDashboard.class);
-                                        i.putExtra("email", email);
-                                        i.putExtra("sent from", sent_from);
-                                        startActivity(i);
+
+                                        auth.signInWithEmailAndPassword(gotten_email, gotten_pass)
+                                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                                                        if(task.isSuccessful()){
+                                                            Intent i = new Intent(Login.this, FeedsDashboard.class);
+                                                            i.putExtra("email", email);
+                                                            i.putExtra("sent from", sent_from);
+                                                            startActivity(i);
+                                                        }else{
+                                                            Toast.makeText(getApplicationContext(), "Login failed. Please try again", Toast.LENGTH_LONG).show();
+                                                        }
+
+                                                    }
+                                                });
+
+
                                     }else{
                                         Toast.makeText(getApplicationContext(), "Login failed. Please try again", Toast.LENGTH_LONG).show();
                                     }

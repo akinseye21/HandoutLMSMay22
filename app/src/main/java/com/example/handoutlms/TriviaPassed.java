@@ -26,9 +26,9 @@ import java.util.Map;
 
 public class TriviaPassed extends AppCompatActivity {
 
-    TextView point, timer, cate, name;
+    TextView point, cate, name;
     ImageView caticon;
-    LinearLayout playAgain, mainMenu;
+    ImageView play, replay, home;
     int counters;
     String timeCounting, category;
 
@@ -43,13 +43,14 @@ public class TriviaPassed extends AppCompatActivity {
         setContentView(R.layout.activity_trivia_passed);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        timer = findViewById(R.id.time);
+
         cate = findViewById(R.id.cat);
         point = findViewById(R.id.points);
-        playAgain = findViewById(R.id.playagain2);
-        mainMenu = findViewById(R.id.mainmenu);
+        play = findViewById(R.id.play);
+        replay = findViewById(R.id.replay);
         caticon = findViewById(R.id.catico);
         name = findViewById(R.id.username);
+        home = findViewById(R.id.home);
 
         Intent intent = getIntent();
         counters = intent.getIntExtra("counter", 0);
@@ -66,7 +67,6 @@ public class TriviaPassed extends AppCompatActivity {
 
         cate.setText(category);
         point.setText(String.valueOf(counters));
-        timer.setText(timeCounting);
 
         //set the imgicon
         if(category.equals("Soccer")){
@@ -112,7 +112,7 @@ public class TriviaPassed extends AppCompatActivity {
                     "Time Elapsed!!!, you scored "+counters+" points. Scores will not be saved", Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_HORIZONTAL, 0, 0);
             toast.show();
-            timer.setTextColor(Color.RED);
+//            timer.setTextColor(Color.RED);
 
         }else {
             //send info to database
@@ -167,14 +167,22 @@ public class TriviaPassed extends AppCompatActivity {
 
 
 
-        playAgain.setOnClickListener(new View.OnClickListener() {
+        play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(TriviaPassed.this, HandoutTrivia.class);
                 startActivity(i);
             }
         });
-        mainMenu.setOnClickListener(new View.OnClickListener() {
+        replay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(TriviaPassed.this, TriviaInstruction.class);
+                i.putExtra("Text", category);
+                startActivity(i);
+            }
+        });
+        home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent j = new Intent(TriviaPassed.this, FeedsDashboard.class);

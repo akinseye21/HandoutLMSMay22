@@ -62,6 +62,12 @@ public class TaskManagerClick extends AppCompatActivity {
             }
         });
 
+        new_arr_task_name.clear();
+        new_arr_task_date.clear();
+        new_arr_task_description.clear();
+        new_arr_task_category.clear();
+        new_arr_task_time.clear();
+
         if(cat.equals("exam")){
             category.setText("Exam");
             image.setImageResource(R.drawable.tm9);
@@ -130,5 +136,7 @@ public class TaskManagerClick extends AppCompatActivity {
 
         TotalTaskAdapter myAdapter=new TotalTaskAdapter(getApplicationContext(),new_arr_task_name,new_arr_task_date,new_arr_task_category, new_arr_task_description, new_arr_task_time);
         listView.setAdapter(myAdapter);
+
+
     }
 }

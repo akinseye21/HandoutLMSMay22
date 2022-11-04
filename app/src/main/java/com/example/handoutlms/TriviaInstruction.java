@@ -183,14 +183,14 @@ public class TriviaInstruction extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 //                        Toast.makeText(TriviaInstruction.this, "Network Error!! Please try again", Toast.LENGTH_LONG).show();
-                        begin.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                //give a pop up error
-                                Toast.makeText(getApplicationContext(), "Network connection Error!!", Toast.LENGTH_LONG).show();
-                            }
-                        });
-                        System.out.println("Error not going "+error);
+//                        begin.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//                                //give a pop up error
+//                                Toast.makeText(getApplicationContext(), "Network connection Error!!", Toast.LENGTH_LONG).show();
+//                            }
+//                        });
+//                        System.out.println("Error not going "+error);
                     }
                 }){
             @Override

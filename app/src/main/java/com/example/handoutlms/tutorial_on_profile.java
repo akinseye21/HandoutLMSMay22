@@ -55,15 +55,23 @@ public class tutorial_on_profile extends Fragment {
     GridView gridViewCreated, gridViewJoined;
     SharedPreferences preferences;
     String got_email;
-    TextView noTutorial;
+    TextView noTutorial, noTutorialJoined;
     int ArrayLength;
 
     ArrayList<String> Array_tutName = new ArrayList<>();
     ArrayList<String> Array_tutCategory = new ArrayList<>();
     ArrayList<String> Array_tutDescription = new ArrayList<>();
     ArrayList<String> Array_tutMode = new ArrayList<>();
+    ArrayList<String> Array_tutId = new ArrayList<>();
 
-    public static final String ALL_TUTORIAL = "http://handout.com.ng/handouts/handout_get_all_tutorials";
+    ArrayList<String> Array_tutName2 = new ArrayList<>();
+    ArrayList<String> Array_tutCategory2 = new ArrayList<>();
+    ArrayList<String> Array_tutDescription2 = new ArrayList<>();
+    ArrayList<String> Array_tutMode2 = new ArrayList<>();
+    ArrayList<String> Array_tutId2 = new ArrayList<>();
+
+public static final String ALL_TUTORIAL = "https://handout.com.ng/handouts/handout_get_all_tutorials";
+    public static final String TUTORIALS_JOINED = "https://handout.com.ng/handouts/handout_user_joined_groups";
 
     public tutorial_on_profile() {
         // Required empty public constructor
@@ -109,6 +117,7 @@ public class tutorial_on_profile extends Fragment {
         created_tutorial = v.findViewById(R.id.created_tutorial);
         joined_tutorial = v.findViewById(R.id.joined_tutorial);
         noTutorial = v.findViewById(R.id.no_tutorial);
+        noTutorialJoined = v.findViewById(R.id.no_tutorial_joined);
 
         preferences = getActivity().getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
         got_email = preferences.getString("email", "not available");
@@ -120,8 +129,103 @@ public class tutorial_on_profile extends Fragment {
                 gridViewJoined.setVisibility(View.GONE);
                 view1.setVisibility(View.VISIBLE);
                 view2.setVisibility(View.GONE);
+                noTutorialJoined.setVisibility(View.GONE);
+
+                String from = "created";
+
+
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, ALL_TUTORIAL,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                System.out.println("Response = "+response);
+
+                                try{
+                                    JSONArray jsonArray = new JSONArray(response);
+                                    ArrayLength = jsonArray.length();
+
+                                    if(ArrayLength > 1){
+                                        for(int j = ArrayLength - 1; j >= 0; j--){
+                                            JSONObject section1 = jsonArray.getJSONObject(j);
+                                            String tutName = section1.getString("groupname");
+                                            String tutCategory = section1.getString("category");
+                                            String tutDescription = section1.getString("description");
+                                            String tutCreatedBy = section1.getString("created_by");
+                                            String tutMode = section1.getString("mode");
+                                            String id = section1.getString("ID");
+
+                                            if(tutCreatedBy.equals(got_email)){
+                                                Array_tutName.add(tutName);
+                                                Array_tutCategory.add(tutCategory);
+                                                Array_tutDescription.add(tutDescription);
+                                                Array_tutMode.add(tutMode);
+                                                Array_tutId.add(id);
+                                            }else{
+                                                //do nothing
+                                            }
+
+
+                                        }
+
+                                        if(Array_tutName.size() < 1){
+                                            noTutorial.setVisibility(View.VISIBLE);
+                                            noTutorialJoined.setVisibility(View.GONE);
+                                            gridViewCreated.setVisibility(View.GONE);
+                                            gridViewJoined.setVisibility(View.GONE);
+                                        }else{
+                                            //populate values on the gridview
+                                            TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode, Array_tutId, from);
+                                            gridViewCreated.setAdapter(tutorialProfileAdapter);
+                                            noTutorial.setVisibility(View.GONE);
+                                            noTutorialJoined.setVisibility(View.GONE);
+                                            gridViewJoined.setVisibility(View.GONE);
+                                        }
+
+                                    }else{
+                                        //show "no tutorials"
+                                        noTutorial.setVisibility(View.VISIBLE);
+                                        gridViewCreated.setVisibility(View.GONE);
+                                        gridViewJoined.setVisibility(View.GONE);
+                                        noTutorialJoined.setVisibility(View.GONE);
+                                    }
+
+                                }
+                                catch (JSONException e){
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError volleyError) {
+                                volleyError.printStackTrace();
+                            }
+                        }){
+                    @Override
+                    protected Map<String, String> getParams(){
+                        Map<String, String> params = new HashMap<>();
+                        return params;
+                    }
+                };
+
+                RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+                requestQueue.add(stringRequest);
+
+                //clear array
+                Array_tutName.clear();
+                Array_tutCategory.clear();
+                Array_tutDescription.clear();
+                Array_tutMode.clear();
+                Array_tutId.clear();
+
+
+
+
             }
         });
+
+
         joined_tutorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,6 +233,97 @@ public class tutorial_on_profile extends Fragment {
                 gridViewJoined.setVisibility(View.VISIBLE);
                 view1.setVisibility(View.GONE);
                 view2.setVisibility(View.VISIBLE);
+                noTutorial.setVisibility(View.GONE);
+
+                String from = "joined";
+
+                //for joined groups
+                StringRequest stringRequest2 = new StringRequest(Request.Method.POST, TUTORIALS_JOINED,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                System.out.println("Response = "+response);
+
+                                try{
+                                    JSONArray jsonArray = new JSONArray(response);
+                                    ArrayLength = jsonArray.length();
+
+                                    if(ArrayLength > 1){
+                                        for(int j = ArrayLength - 1; j >= 0; j--){
+                                            JSONObject section1 = jsonArray.getJSONObject(j);
+                                            String tutName = section1.getString("groupname");
+                                            String tutCategory = section1.getString("category");
+                                            String tutDescription = section1.getString("description");
+                                            String tutCreatedBy = section1.getString("created_by");
+                                            String tutMode = section1.getString("status");
+                                            String tutId = section1.getString("id");
+
+                                            Array_tutName2.add(tutName);
+                                            Array_tutCategory2.add(tutCategory);
+                                            Array_tutDescription2.add(tutDescription);
+                                            Array_tutMode2.add(tutMode);
+                                            Array_tutId2.add(tutId);
+
+                                        }
+
+                                        //populate values on the gridview
+                                        TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName2, Array_tutCategory2, Array_tutDescription2, Array_tutMode2, Array_tutId2, from);
+                                        gridViewJoined.setAdapter(tutorialProfileAdapter);
+                                        gridViewCreated.setVisibility(View.GONE);
+                                        noTutorial.setVisibility(View.GONE);
+                                        noTutorialJoined.setVisibility(View.GONE);
+
+                                    }else{
+                                        //show "no tutorials"
+                                        noTutorialJoined.setVisibility(View.VISIBLE);
+                                        noTutorial.setVisibility(View.GONE);
+                                        gridViewCreated.setVisibility(View.GONE);
+                                        gridViewJoined.setVisibility(View.GONE);
+                                    }
+
+                                }
+                                catch (JSONException e) {
+                                    try {
+                                        JSONObject jsonObject = new JSONObject(response);
+                                        String stats = jsonObject.getString("status");
+                                        //show "no tutorials"
+                                        noTutorialJoined.setVisibility(View.VISIBLE);
+                                        noTutorial.setVisibility(View.GONE);
+                                        gridViewCreated.setVisibility(View.GONE);
+                                        gridViewJoined.setVisibility(View.GONE);
+                                    } catch (JSONException ee) {
+                                        ee.printStackTrace();
+                                    }
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError volleyError) {
+                                volleyError.printStackTrace();
+                            }
+                        }){
+                    @Override
+                    protected Map<String, String> getParams(){
+                        Map<String, String> params = new HashMap<>();
+                        params.put("email", got_email);
+                        return params;
+                    }
+                };
+
+                RequestQueue requestQueue2 = Volley.newRequestQueue(getContext());
+                requestQueue2.add(stringRequest2);
+
+                //clear array
+                Array_tutName2.clear();
+                Array_tutCategory2.clear();
+                Array_tutDescription2.clear();
+                Array_tutMode2.clear();
+                Array_tutId2.clear();
+
+
             }
         });
 
@@ -143,6 +338,8 @@ public class tutorial_on_profile extends Fragment {
                             JSONArray jsonArray = new JSONArray(response);
                             ArrayLength = jsonArray.length();
 
+                            String from = "created";
+
                             if(ArrayLength > 1){
                                 for(int j = ArrayLength - 1; j >= 0; j--){
                                     JSONObject section1 = jsonArray.getJSONObject(j);
@@ -151,12 +348,14 @@ public class tutorial_on_profile extends Fragment {
                                     String tutDescription = section1.getString("description");
                                     String tutCreatedBy = section1.getString("created_by");
                                     String tutMode = section1.getString("mode");
+                                    String id = section1.getString("ID");
 
                                     if(tutCreatedBy.equals(got_email)){
                                         Array_tutName.add(tutName);
                                         Array_tutCategory.add(tutCategory);
                                         Array_tutDescription.add(tutDescription);
                                         Array_tutMode.add(tutMode);
+                                        Array_tutId.add(id);
                                     }else{
                                         //do nothing
                                     }
@@ -166,17 +365,24 @@ public class tutorial_on_profile extends Fragment {
 
                                 if(Array_tutName.size() < 1){
                                     noTutorial.setVisibility(View.VISIBLE);
+                                    noTutorialJoined.setVisibility(View.GONE);
                                     gridViewCreated.setVisibility(View.GONE);
+                                    gridViewJoined.setVisibility(View.GONE);
                                 }else{
                                     //populate values on the gridview
-                                    TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode);
+                                    TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode, Array_tutId, from);
                                     gridViewCreated.setAdapter(tutorialProfileAdapter);
+                                    noTutorial.setVisibility(View.GONE);
+                                    noTutorialJoined.setVisibility(View.GONE);
+                                    gridViewJoined.setVisibility(View.GONE);
                                 }
 
                             }else{
                                 //show "no tutorials"
                                 noTutorial.setVisibility(View.VISIBLE);
                                 gridViewCreated.setVisibility(View.GONE);
+                                gridViewJoined.setVisibility(View.GONE);
+                                noTutorialJoined.setVisibility(View.GONE);
                             }
 
                         }
@@ -207,6 +413,8 @@ public class tutorial_on_profile extends Fragment {
         Array_tutCategory.clear();
         Array_tutDescription.clear();
         Array_tutMode.clear();
+        Array_tutId.clear();
+
 
         return v;
     }

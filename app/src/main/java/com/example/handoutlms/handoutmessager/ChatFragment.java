@@ -1,5 +1,7 @@
 package com.example.handoutlms.handoutmessager;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,17 +22,24 @@ import android.widget.Toast;
 
 import com.example.handoutlms.Chat;
 import com.example.handoutlms.ChatMessagingPage;
+import com.example.handoutlms.ChatNotification.Token;
 import com.example.handoutlms.MessageAdapter;
 import com.example.handoutlms.R;
 import com.example.handoutlms.Users;
 import com.example.handoutlms.UsersAdapter;
+import com.example.handoutlms.UsersAdapter2;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.FirebaseInstanceIdService;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class ChatFragment extends Fragment {
@@ -61,6 +71,9 @@ public class ChatFragment extends Fragment {
     String senderKey;
     String keys;
 
+    private FirebaseAuth mAuth;
+    FirebaseUser firebaseUser;
+
     ListView listView;
 
     @Override
@@ -69,49 +82,22 @@ public class ChatFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_chat, container, false);
 
+        mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
+
         preferences = getActivity().getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
         got_email = preferences.getString("email", "not available");
 
         listView = v.findViewById(R.id.listview);
-//        recyclerView = v.findViewById(R.id.recycler_view);
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
+        recyclerView = v.findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setStackFromEnd(false);
+        recyclerView.setLayoutManager(linearLayoutManager);
 
         //get the sender ID
-        DatabaseReference reference = FirebaseDatabase.getInstance("https://handout-lms-default-rtdb.firebaseio.com/").getReference("Users");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    System.out.println("Datasnapshot = "+snapshot);
+        senderKey = firebaseUser.getUid();
 
-                    Users users = snapshot.getValue(Users.class);
-                    String keys = snapshot.getKey();
-
-                    String email2 = users.getEmail();
-
-//                    System.out.println("Key "+fullname2+" = "+keys);
-
-                    if(got_email.equals(email2)){
-                        senderKey = keys;
-                    }else{
-//                        arr_key.add(keys);
-//                        arr_id.add(id2);
-//                        arr_name.add(fullname2);
-//                        arr_email.add(email2);
-//                        arr_institution.add(institution2);
-                    }
-
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
         usersList = new ArrayList<>();
 
@@ -144,8 +130,7 @@ public class ChatFragment extends Fragment {
                 }
                 readChats();
 
-//                Toast.makeText(getContext(), "userList = "+usersList, Toast.LENGTH_SHORT).show();
-//                System.out.println("UserList = "+usersList);
+                System.out.println("UserList = "+usersList);
             }
 
             @Override
@@ -154,88 +139,55 @@ public class ChatFragment extends Fragment {
             }
         });
 
+        updateToken(FirebaseInstanceId.getInstance().getToken());
 
 
         return v;
     }
 
+
+    private void updateToken(String token){
+        DatabaseReference reference = FirebaseDatabase.getInstance("https://handout-lms-default-rtdb.firebaseio.com/").getReference("Tokens");
+        Token token1 = new Token(token);
+        reference.child(firebaseUser.getUid()).setValue(token1);
+    }
+
+
+
     private void readChats() {
 
-//        int len = usersList.size();
-//        Toast.makeText(getContext(), "userList Length = "+usersList.size(), Toast.LENGTH_SHORT).show();
-//        System.out.println("UserList Length = "+usersList.size());
-
-
+        mUsers = new ArrayList<>();
 
         DatabaseReference reference = FirebaseDatabase.getInstance("https://handout-lms-default-rtdb.firebaseio.com/").getReference("Users");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+                mUsers.clear();
 
                 //display 1 user from chat
                 for(DataSnapshot snapshot: dataSnapshot.getChildren()){
-
                     Users users = snapshot.getValue(Users.class);
-                    keys = snapshot.getKey();
 
-                    assert users != null;
-//                    assert firebaseUser != null;
-                    String id2 = users.getId();
-                    String fullname2 = users.getFullname();
-                    String email2 = users.getEmail();
-                    String institution2 = users.institution;
+                    for(String id: usersList){
+                        if(users.getId().equals(id) && !users.getId().equals(firebaseUser.getUid())){
+                            mUsers.add(users);
 
-
-
-                    if(keys.equals(senderKey)){
-                        //do not add
-                    }else {
-                        for(int i = 0; i<usersList.size(); i++){
-                            if(usersList.contains(keys)){
-                                //add to array
-                                arr_key.add(keys);
-                                arr_id.add(id2);
-                                arr_name.add(fullname2);
-                                arr_email.add(email2);
-                                arr_institution.add(institution2);
-                            }else{
-                                //do not add to array
-                            }
+//                            if(mUsers.size() != 0 ){
+//                                for(Users user1 : mUsers){
+//                                    if(!users.getId().equals(user1.getId())){
+//                                        mUsers.add(users);
+//                                    }
+//                                }
+//                            }else{
+//                                mUsers.add(users);
+//                            }
                         }
                     }
-
-
                 }
 
-//                for (int i =0; i<usersList.size(); i++){
-//                    for(int j = 0; j<arr_key.size(); j++){
-//                        if(usersList.get(i).equals(arr_key.get(i))){
-//
-//                        }
-//                    }
-//                }
+                UsersAdapter2 usersAdapter2 = new UsersAdapter2(getContext(), mUsers);
+                recyclerView.setAdapter(usersAdapter2);
 
-                for(int i = 0; i<usersList.size(); i++){
-                    if(usersList.contains(arr_key.get(i))){
-                        //add to array2
-                        arr_key2.add(arr_key.get(i));
-                        arr_id2.add(arr_id.get(i));
-                        arr_name2.add(arr_name.get(i));
-                        arr_email2.add(arr_email.get(i));
-                        arr_institution2.add(arr_institution.get(i));
-                    }else{
-                        //do not add to array
-                    }
-
-
-                }
-
-                Toast.makeText(getContext(), "userlist = "+usersList, Toast.LENGTH_SHORT).show();
-                Toast.makeText(getContext(), "passed = "+arr_name2, Toast.LENGTH_SHORT).show();
-
-                UsersAdapter usersAdapter = new UsersAdapter(getActivity(), arr_key2, arr_id2, arr_name2, arr_email2, arr_institution2, senderKey);
-                listView.setAdapter(usersAdapter);
 
             }
 
@@ -255,5 +207,26 @@ public class ChatFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
+    }
+
+
+    private void status(String status){
+        DatabaseReference reference = FirebaseDatabase.getInstance("https://handout-lms-default-rtdb.firebaseio.com/").getReference("Users").child(firebaseUser.getUid());
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("status", status);
+
+        reference.updateChildren(hashMap);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        status("online");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        status("offline");
     }
 }

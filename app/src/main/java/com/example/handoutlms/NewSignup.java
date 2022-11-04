@@ -1,8 +1,11 @@
 package com.example.handoutlms;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +27,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,7 +53,12 @@ public class NewSignup extends AppCompatActivity {
     ProgressBar progressBar;
     Button signup;
 
+    SharedPreferences preferences;
+
     public static final String SIGNUP = "https://handout.com.ng/handouts/handout_registration";
+
+    FirebaseAuth auth;
+    DatabaseReference reference;
 
 
     @Override
@@ -51,6 +66,9 @@ public class NewSignup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_signup);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        preferences = getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor myEdit = preferences.edit();
 
         fullname = findViewById(R.id.edtname);
         emailaddress = findViewById(R.id.edtemail);
@@ -121,65 +139,85 @@ public class NewSignup extends AppCompatActivity {
                                 if(school.equals("Select your university")){
                                     Toast.makeText(getApplicationContext(), "Please select an institution", Toast.LENGTH_LONG).show();
                                 }else{
-                                    progressBar.setVisibility(View.VISIBLE);
+                                    if(pass.length()>=6){
 
-                                    //if fields are not empty and are valid,
-                                    //pass details to DB
-                                    StringRequest stringRequest = new StringRequest(Request.Method.POST, SIGNUP,
-                                            new Response.Listener<String>() {
-                                                @Override
-                                                public void onResponse(String response) {
-                                                    progressBar.setVisibility(View.GONE);
 
-                                                    System.out.println("Response = "+response);
-                                                    try{
-                                                        JSONObject jsonObject = new JSONObject(response);
+                                        progressBar.setVisibility(View.VISIBLE);
 
-                                                        String signed_name = jsonObject.getString("fullname");
-                                                        String status = jsonObject.getString("status");
+                                        //if fields are not empty and are valid,
+                                        //pass details to DB
+                                        StringRequest stringRequest = new StringRequest(Request.Method.POST, SIGNUP,
+                                                new Response.Listener<String>() {
+                                                    @Override
+                                                    public void onResponse(String response) {
+                                                        progressBar.setVisibility(View.GONE);
 
-                                                        if(status.equals("successful")){
-                                                            Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_LONG).show();
+                                                        System.out.println("Response = "+response);
+                                                        try{
+                                                            JSONObject jsonObject = new JSONObject(response);
 
-                                                            Intent i = new Intent(getApplicationContext(), WelcomePage.class);
-                                                            i.putExtra("fullname", signed_name);
-                                                            i.putExtra("email", e_mail);
-                                                            startActivity(i);
-                                                        }else{
-                                                            Toast.makeText(getApplicationContext(), "Signup failed. Please try again", Toast.LENGTH_LONG).show();
+                                                            String signed_name = jsonObject.getString("fullname");
+                                                            String status = jsonObject.getString("status");
+
+                                                            if(status.equals("successful")){
+
+                                                                Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_LONG).show();
+
+                                                                myEdit.putString( "email", e_mail);
+                                                                myEdit.putString("fullname", signed_name);
+//                                                                myEdit.putString("pics", pics);
+                                                                myEdit.putString("password", pass);
+                                                                myEdit.commit();
+
+                                                                Intent i = new Intent(getApplicationContext(), WelcomePage.class);
+                                                                i.putExtra("fullname", signed_name);
+                                                                i.putExtra("email", e_mail);
+                                                                i.putExtra("phone", phone);
+                                                                i.putExtra("password", pass);
+                                                                i.putExtra("school", school);
+                                                                startActivity(i);
+
+                                                            }else{
+                                                                Toast.makeText(getApplicationContext(), "Signup failed. Please try again", Toast.LENGTH_LONG).show();
+                                                            }
                                                         }
-                                                    }
-                                                    catch (JSONException e){
-                                                        e.printStackTrace();
-                                                    }
+                                                        catch (JSONException e){
+                                                            e.printStackTrace();
+                                                        }
 
-                                                }
-                                            },
-                                            new Response.ErrorListener() {
-                                                @Override
-                                                public void onErrorResponse(VolleyError volleyError) {
-
-                                                    if(volleyError == null){
-                                                        return;
                                                     }
+                                                },
+                                                new Response.ErrorListener() {
+                                                    @Override
+                                                    public void onErrorResponse(VolleyError volleyError) {
 
-                                                    progressBar.setVisibility(View.GONE);
-                                                    System.out.println("Error = "+volleyError.getMessage());
-                                                }
-                                            }){
-                                        @Override
-                                        protected Map<String, String> getParams(){
-                                            Map<String, String> params = new HashMap<>();
-                                            params.put("fullname", name);
-                                            params.put("email", e_mail);
-                                            params.put("phone", phone);
-                                            params.put("password", pass);
-                                            params.put("institution", school);
-                                            return params;
-                                        }
-                                    };
-                                    RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext().getApplicationContext());
-                                    requestQueue.add(stringRequest);
+                                                        if(volleyError == null){
+                                                            return;
+                                                        }
+
+                                                        progressBar.setVisibility(View.GONE);
+                                                        System.out.println("Error = "+volleyError.getMessage());
+                                                    }
+                                                }){
+                                            @Override
+                                            protected Map<String, String> getParams(){
+                                                Map<String, String> params = new HashMap<>();
+                                                params.put("fullname", name);
+                                                params.put("email", e_mail);
+                                                params.put("phone", phone);
+                                                params.put("password", pass);
+                                                params.put("institution", school);
+                                                return params;
+                                            }
+                                        };
+                                        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext().getApplicationContext());
+                                        requestQueue.add(stringRequest);
+
+
+
+                                    }else{
+                                        password.setError("Password must be greater than 5 characters");
+                                    }
                                 }
                             }else{
                                 password.setError("Password do not match");

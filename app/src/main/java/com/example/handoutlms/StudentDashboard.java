@@ -18,7 +18,6 @@ import java.util.List;
 public class StudentDashboard extends AppCompatActivity implements
         Home.OnFragmentInteractionListener,
         Message.OnFragmentInteractionListener,
-        Notification.OnFragmentInteractionListener,
         Profile.OnFragmentInteractionListener,
         Settings.OnFragmentInteractionListener,
         FindStudent.OnFragmentInteractionListener,

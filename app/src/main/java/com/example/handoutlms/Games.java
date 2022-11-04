@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -139,6 +140,12 @@ public class Games extends Fragment {
                             }
                         }
                         catch (JSONException e){
+
+                            TextView noGames = v.findViewById(R.id.no_games);
+                            noGames.setVisibility(View.VISIBLE);
+                            progressBar.setVisibility(View.GONE);
+                            listView.setVisibility(View.GONE);
+
                             e.printStackTrace();
                         }
 

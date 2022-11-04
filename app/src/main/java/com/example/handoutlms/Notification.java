@@ -14,9 +14,9 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Notification.OnFragmentInteractionListener} interface
+ * {@link ChatNotification.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Notification#newInstance} factory method to
+ * Use the {@link ChatNotification#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class Notification extends Fragment {

@@ -22,7 +22,6 @@
                     android:layout_marginTop="10dp"
                     android:gravity="center_horizontal"
                     android:orientation="horizontal"
-                    android:layout_below="@+id/view1"
                     android:id="@+id/lin1">
 
                     <LinearLayout
@@ -259,6 +258,17 @@
                     android:layout_below="@+id/progressBar"
                     android:id="@+id/progressText"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="There are no gigs nor tutorials available"
+                    android:textColor="#fff"
+                    android:id="@+id/no_not"
+                    android:layout_centerInParent="true"
+                    android:drawableTop="@drawable/notification"
+                    android:drawableTint="#fff"
+                    android:visibility="gone"/>
+
                 <!--Swipe Refresh Layout -->
 <!--                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
 <!--                    android:id="@+id/refreshLayout"-->
@@ -266,12 +276,12 @@
 <!--                    android:layout_width="match_parent"-->
 <!--                    android:layout_height="match_parent">-->
 
-                    <ListView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/lineview"
-                        android:divider="@null"
-                        android:id="@+id/my_list"/>
+                <ListView
+                    android:id="@+id/my_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lineview"
+                    android:divider="@null" />
 
 <!--                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
 

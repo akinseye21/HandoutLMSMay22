@@ -158,16 +158,6 @@ public class Profile2 extends Fragment {
 
         preferences = getActivity().getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
         got_email = preferences.getString("email", "not available");
-        got_pics = preferences.getString("pics", "not available");
-
-        if(!got_pics.isEmpty()){
-            Glide.with(getActivity()).load(got_pics).into(profilePic);
-        }else{
-            //do nothing
-        }
-
-//        Toast.makeText(getActivity(), "Email = "+got_email, Toast.LENGTH_LONG).show();
-//        email.setText(got_email);
         addTabs(viewPager);
 
         tabLayout.setupWithViewPager(viewPager);
@@ -181,12 +171,6 @@ public class Profile2 extends Fragment {
                             lingame.setVisibility(View.GONE);
                             lingig.setVisibility(View.GONE);
                         }
-//                        else if(tab.getPosition() == 1){
-//                            lintut.setVisibility(View.GONE);
-//                            linpost.setVisibility(View.VISIBLE);
-//                            lingame.setVisibility(View.GONE);
-//                            lingig.setVisibility(View.GONE);
-//                        }
                         else if(tab.getPosition() == 1){
                             lintut.setVisibility(View.GONE);
                             lingame.setVisibility(View.VISIBLE);
@@ -201,11 +185,7 @@ public class Profile2 extends Fragment {
 
                     @Override
                     public void onTabReselected(TabLayout.Tab tab) {
-//                        if(tab.getPosition() == 0){
-//                            Intent j = new Intent(getContext(), Profile2.class);
-//                            startActivity(j);
-//                            getActivity().finishActivity(1);
-//                        }
+
                     }
                 }
         );
@@ -237,12 +217,23 @@ public class Profile2 extends Fragment {
 //                            got_faculty = profile.getString("faculty");
                             got_dept = profile.getString("department");
                             got_usertype = profile.getString("usertype");
+                            got_pics = profile.getString("pics");
 
                             email.setText(got_email);
                             username.setText(got_fullname);
                             dept.setText(got_dept);
                             school.setText(got_institution);
                             date.setText(got_dob);
+
+                            if(got_pics.equals("")){
+                                //do nothing
+                            }else{
+                                if (getActivity() == null) {
+                                    return;
+                                }
+                                Glide.with(getActivity()).load(got_pics).into(profilePic);
+                            }
+
 
                         }
                         catch (JSONException e){

@@ -2,15 +2,26 @@ package com.example.handoutlms;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 
 
 /**
@@ -31,9 +42,12 @@ public class FeedDashboardMessages extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    FirebaseUser firebaseUser;
+    FirebaseAuth mAuth;
+
     private OnFragmentInteractionListener mListener;
 
-    TextView next;
+    Button next;
 
     public FeedDashboardMessages() {
         // Required empty public constructor
@@ -72,11 +86,37 @@ public class FeedDashboardMessages extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_feed_dashboard_messages, container, false);
 
+        mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
+
         next = v.findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(), ChatPage.class));
+                //auth user
+                if(firebaseUser != null){
+                    startActivity(new Intent(getContext(), ChatPage.class));
+                }else{
+                    //get sharedpreference
+                    SharedPreferences sp = getContext().getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
+                    final String email = sp.getString("email", "");
+                    final String password = sp.getString("password", "");
+
+                    mAuth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+
+                                    if(task.isSuccessful()){
+                                        startActivity(new Intent(getContext(), ChatPage.class));
+                                    }else{
+                                        Toast.makeText(getContext(), "Error! You are not logged into Handout Chat. Kindly log in from the Login page again", Toast.LENGTH_LONG).show();
+                                    }
+
+                                }
+                            });
+                }
+
             }
         });
 

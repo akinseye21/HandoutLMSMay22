@@ -177,7 +177,11 @@ public class EditProfilePage extends AppCompatActivity {
                             txt_phone.setText(g_phone);
                             txt_dob.setText(g_dob);
                             txt_gender.setText(g_gender);
-                            Glide.with(getApplicationContext()).load(g_pics).into(pp);
+                            if(g_pics.equals("")){
+                                //do nothing
+                            }else{
+                                Glide.with(getApplicationContext()).load(g_pics).into(pp);
+                            }
 
                             //set text for education
                             //send to adapter class

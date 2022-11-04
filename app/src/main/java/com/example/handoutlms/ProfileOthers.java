@@ -67,6 +67,7 @@ public class ProfileOthers extends AppCompatActivity implements
         myEmail = preferences.getString("email", "not available");
 
 
+        con = findViewById(R.id.con);
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,16 +94,35 @@ public class ProfileOthers extends AppCompatActivity implements
         connect_txt = findViewById(R.id.connect_txt);
 
         addTabs(viewPager);
+        connectUser();
 
-        connect_txt.setOnClickListener(new View.OnClickListener() {
+//        if(connect_txt.getText().equals("Connected")){
+//            connect_txt.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Toast.makeText(getApplicationContext(), "You are already connected to "+got_fullname, Toast.LENGTH_LONG).show();
+//                }
+//            });
+//        }
+//        if(connect_txt.getText().equals("Connect")){
+//            connect_txt.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    connectUser();
+//                }
+//            });
+//        }
+
+
+        con.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if (connect_txt.getText().equals("Connect")){
-                    //connect to the user
+            public void onClick(View view) {
+                String fin = connect_txt.getText().toString();
+                if (fin.equals("Connected")){
+                    Toast.makeText(getApplicationContext(), "You are already connected", Toast.LENGTH_LONG).show();
+                }else{
                     connectUser();
-                }
-                else if (connect_txt.getText().equals("Connected")){
-                    Toast.makeText(getApplicationContext(), "You are already connected to "+got_fullname, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "You are now connected", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -212,7 +232,7 @@ public class ProfileOthers extends AppCompatActivity implements
                                 connect_txt.setText("Connected");
                                 connect_txt.setTextColor(Color.WHITE);
                                 connect_txt.setBackgroundResource(R.drawable.rounded_white_transparent_100);
-                                Toast.makeText(getApplicationContext(), "You are now connected with user - "+got_fullname, Toast.LENGTH_LONG).show();
+//                                Toast.makeText(getApplicationContext(), "You are now connected with user - "+got_fullname, Toast.LENGTH_LONG).show();
                             }
 
                         }
@@ -231,7 +251,7 @@ public class ProfileOthers extends AppCompatActivity implements
             @Override
             protected Map<String, String> getParams(){
                 Map<String, String> params = new HashMap<>();
-                params.put("myemail", "jdoe@me.com");
+                params.put("myemail", myEmail);
                 params.put("email", got_email);
                 return params;
             }

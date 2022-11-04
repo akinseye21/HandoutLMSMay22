@@ -4,82 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ece5dd"
+    android:background="#293241"
     tools:context=".ChatMessagingPage">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/appbar"
-        android:background="@color/colorPrimaryDark">
+        android:layout_height="80dp"
+        android:gravity="center_vertical"
+        android:id="@+id/one"
+        android:paddingLeft="10dp"
+        android:background="#293241">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_back_arrow" />
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/user"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:id="@+id/chat"
-            android:layout_marginLeft="10dp"
-            android:orientation="horizontal">
-            <ImageView
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/fullname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/back"
-                android:src="@drawable/icon_back_arrow"/>
-            <androidx.appcompat.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/toolbar"
-                app:title="Handout"
-                app:titleTextColor="#fff">
+                android:text="Username"
+                android:textColor="#fff"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-            </androidx.appcompat.widget.Toolbar>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/description"
+                android:text="Description..."
+                android:textColor="#fff"
+                android:textStyle="italic"
+                android:textSize="10sp"/>
+
         </LinearLayout>
 
 
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/appbar"
-        android:gravity="center_vertical"
-        android:id="@+id/one"
-        android:paddingLeft="50dp"
-        android:background="@color/colorPrimaryDark">
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic190"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/fullname"
-            android:text="Username"
-            android:textStyle="bold"
-            android:textSize="17dp"
-            android:paddingLeft="10dp"
-            android:textColor="#fff"/>
-
     </LinearLayout>
 
-<!--    <ListView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:id="@+id/myList"-->
-<!--        android:divider="@null"-->
-<!--        android:dividerHeight="0dp"-->
-<!--        android:layout_below="@+id/one"-->
-<!--        android:layout_above="@+id/getMessage"-->
-<!--        />-->
+
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/one"
+        android:layout_marginTop="2dp"
         android:layout_above="@+id/getMessage"
-        android:id="@+id/recycler_view"/>
+        android:layout_below="@+id/one" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#fff"
+        android:id="@+id/view1"
+        android:layout_below="@+id/one"/>
 
 
     <EditText
@@ -94,7 +86,7 @@
         android:paddingLeft="20dp"
         android:paddingRight="10dp"
         android:textAlignment="textStart"
-        android:textColor="#000"
+        android:textColor="#fff"
         android:textColorHint="#a8a7a7"
         android:textSize="18sp" />
     
@@ -109,14 +101,14 @@
         android:layout_alignParentBottom="true">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:layout_gravity="center"
             android:scaleType="centerCrop"
             android:backgroundTint="@android:color/transparent"
             android:background="@android:color/transparent"
             android:id="@+id/sendMessage"
-            android:src="@drawable/ic_arrow_right"/>
+            android:src="@drawable/me1"/>
 
     </androidx.cardview.widget.CardView>
 

@@ -137,7 +137,7 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "One or more field is empty", Toast.LENGTH_LONG).show();
                 }
                 else{
-                    Intent i = new Intent(CreateTutorialGroupOffline.this, InviteFriends.class);
+                    Intent i = new Intent(CreateTutorialGroupOffline.this, AlmostDone.class);
                     i.putExtra("group_name", group_name);
                     i.putExtra("category", cat.getSelectedItem().toString());
                     i.putExtra("date", date);

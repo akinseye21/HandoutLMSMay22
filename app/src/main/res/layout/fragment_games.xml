@@ -181,6 +181,18 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:id="@+id/progressBar"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There are no offline games, please check back"
+                android:textColor="#fff"
+                android:layout_gravity="center"
+                android:id="@+id/no_games"
+                android:layout_centerInParent="true"
+                android:drawableTop="@drawable/notification"
+                android:drawableTint="#fff"
+                android:visibility="gone"/>
+
 
             <ListView
                 android:layout_width="match_parent"

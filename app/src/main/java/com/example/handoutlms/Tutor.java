@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -63,8 +64,8 @@ public class Tutor extends Fragment {
     TutorListViewAdapter tutorListViewAdapter;
     GroupListViewAdapter groupListViewAdapter;
 
-    public static final String ALL_TUTORS = "http://handout.com.ng/handouts/handout_get_tutors";
-    public static final String ALL_GROUPS = "http://handout.com.ng/handouts/handout_get_all_tutorials";
+    public static final String ALL_TUTORS = "https://handout.com.ng/handouts/handout_get_tutors";
+    public static final String ALL_GROUPS = "https://handout.com.ng/handouts/handout_get_all_tutorials";
 
     public Tutor() {
         // Required empty public constructor
@@ -170,15 +171,24 @@ public class Tutor extends Fragment {
                             JSONArray jsonArray = new JSONArray(response);
                             ArrayLength2 = jsonArray.length();
 
-                            for (int i = 0; i < ArrayLength2; i++) {
-                                JSONObject section = jsonArray.getJSONObject(i);
-                                String groupName = section.getString("groupname");
-                                String groupTime = section.getString("_date");
-                                String groupTutor = section.getString("created_by");
+                            if(ArrayLength2<1){
+                                progressBar_group.setVisibility(View.GONE);
+                                gridView2.setVisibility(View.GONE);
 
-                                Array_groupName.add(groupName);
-                                Array_groupTime.add(groupTime);
-                                Array_groupTutor.add(groupTutor);
+                                TextView noGroups = v.findViewById(R.id.no_groups);
+                                noGroups.setVisibility(View.VISIBLE);
+                            }
+                            else {
+                                for (int i = 0; i < ArrayLength2; i++) {
+                                    JSONObject section = jsonArray.getJSONObject(i);
+                                    String groupName = section.getString("groupname");
+                                    String groupTime = section.getString("_date");
+                                    String groupTutor = section.getString("created_by");
+
+                                    Array_groupName.add(groupName);
+                                    Array_groupTime.add(groupTime);
+                                    Array_groupTutor.add(groupTutor);
+                                }
                             }
 
                             //populate values on the gridview

@@ -10,9 +10,8 @@
 <!--        <item name="popupMenuStyle">@style/MyCustomTabText</item>-->
 <!--        <item name="android:popupMenuStyle">@style/MyPopUp</item>-->
 <!--        <item name="android:actionBarWidgetTheme">@style/MyPopUpText</item>-->
-        <item name="android:itemTextAppearance">@style/MyPopUpText</item>
-        <item name="android:itemBackground">@drawable/round_popup</item>
-        <item name="listPreferredItemHeightSmall">10dp</item>
+        <item name="android:itemTextAppearance">@style/ChatPageTab</item>
+        <item name="android:itemBackground">@drawable/rounded_white_little</item>
     </style>
 
     <style name="MyCustomTabText" parent="TextAppearance.AppCompat.Small">
@@ -20,9 +19,17 @@
         <item name="android:textColor">#cccccc</item>
     </style>
     <style name="ChatCustomTab" parent="TextAppearance.AppCompat.Small">
-        <item name="android:textSize">12dp</item>
+        <item name="android:textSize">10dp</item>
+        <item name="android:background">@drawable/rounded_orange</item>
         <item name="android:textColor">#cccccc</item>
     </style>
+
+    <style name="ChatPageTab" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:colorBackground">#ffffff</item>
+    </style>
+
 
     <style name="MyPopUp" parent="android:Widget.Holo.Light.ListPopupWindow">
         <item name="android:popupBackground">@drawable/round_popup</item>

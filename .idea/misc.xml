@@ -17,14 +17,17 @@
         <entry key="app/src/main/res/drawable/circle_red2.xml" value="0.1655" />
         <entry key="app/src/main/res/drawable/circle_yellow.xml" value="0.164" />
         <entry key="app/src/main/res/drawable/corner_gigs.xml" value="0.1655" />
+        <entry key="app/src/main/res/drawable/corner_transparent.xml" value="0.1805" />
         <entry key="app/src/main/res/drawable/corner_tutor.xml" value="0.1195" />
         <entry key="app/src/main/res/drawable/corner_white.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/green_outline.xml" value="0.141" />
+        <entry key="app/src/main/res/drawable/handout_chat.xml" value="0.1805" />
         <entry key="app/src/main/res/drawable/new_login.xml" value="0.141" />
         <entry key="app/src/main/res/drawable/round_ash.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/round_blue.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/round_popup.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/round_red.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/round_white.xml" value="0.1805" />
         <entry key="app/src/main/res/drawable/rounded_color_createtutorial.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/rounded_deep_green.xml" value="0.141" />
         <entry key="app/src/main/res/drawable/rounded_orange.xml" value="0.1" />
@@ -38,7 +41,7 @@
         <entry key="app/src/main/res/layout/activity_add_task.xml" value="0.23007246376811594" />
         <entry key="app/src/main/res/layout/activity_almost_done.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/activity_chat_messaging_page.xml" value="0.24682971014492755" />
-        <entry key="app/src/main/res/layout/activity_chat_page.xml" value="0.18645833333333334" />
+        <entry key="app/src/main/res/layout/activity_chat_page.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_create_games.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_create_gig1.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_create_gig2.xml" value="0.14673913043478262" />
@@ -46,7 +49,7 @@
         <entry key="app/src/main/res/layout/activity_create_gig5.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/activity_create_gig6.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_create_new_task.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_create_online_tut_phase1.xml" value="0.23007246376811594" />
+        <entry key="app/src/main/res/layout/activity_create_online_tut_phase1.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_create_tutorial_group2.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/activity_create_tutorial_group_offline.xml" value="0.23007246376811594" />
         <entry key="app/src/main/res/layout/activity_create_tutorial_group_online.xml" value="0.19655797101449277" />
@@ -54,39 +57,53 @@
         <entry key="app/src/main/res/layout/activity_edit_profile_page.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_feeds_dashboard.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/activity_first_screen.xml" value="0.24427083333333333" />
+        <entry key="app/src/main/res/layout/activity_forgot_password1.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_forgot_password2.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_forgot_password3.xml" value="0.18072916666666666" />
         <entry key="app/src/main/res/layout/activity_handout_trivia.xml" value="0.23007246376811594" />
+        <entry key="app/src/main/res/layout/activity_invite_friends.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login_signup.xml" value="0.18072916666666666" />
         <entry key="app/src/main/res/layout/activity_new_signup.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/activity_profile_others.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_question1.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/activity_student_dashboard.xml" value="0.24427083333333333" />
-        <entry key="app/src/main/res/layout/activity_task_manager_click.xml" value="0.14516129032258066" />
+        <entry key="app/src/main/res/layout/activity_task_manager_click.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_terms_of_service.xml" value="0.24682971014492755" />
+        <entry key="app/src/main/res/layout/activity_trivia_fail.xml" value="0.24682971014492755" />
+        <entry key="app/src/main/res/layout/activity_trivia_passed.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_view_group_resources.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_view_joined_tutorial.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_view_online_joined_tutorial.xml" value="0.24682971014492755" />
+        <entry key="app/src/main/res/layout/activity_view_tutor_created_group.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/card_add_task.xml" value="0.2125" />
         <entry key="app/src/main/res/layout/card_gig_click_popup.xml" value="0.21331521739130435" />
-        <entry key="app/src/main/res/layout/card_tutorial_click_popup.xml" value="0.21331521739130435" />
+        <entry key="app/src/main/res/layout/card_join_tutorial.xml" value="0.24682971014492755" />
+        <entry key="app/src/main/res/layout/card_tutorial_click_popup.xml" value="0.5" />
         <entry key="app/src/main/res/layout/chat_item_left.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/chat_item_right.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/custom_popup1.xml" value="0.17864583333333334" />
         <entry key="app/src/main/res/layout/custom_popup_add_education.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/custom_popup_add_experience.xml" value="0.21979166666666666" />
         <entry key="app/src/main/res/layout/custom_popup_edit_userinfo.xml" value="0.24427083333333333" />
+        <entry key="app/src/main/res/layout/custom_popup_exit_chat.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/custom_popup_successful_taskmanager.xml" value="0.2644927536231884" />
         <entry key="app/src/main/res/layout/custom_popup_tutorial_joined.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/custom_tutor_popup.xml" value="0.21331521739130435" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.24682971014492755" />
+        <entry key="app/src/main/res/layout/fragment_connected_students.xml" value="0.21331521739130435" />
         <entry key="app/src/main/res/layout/fragment_document_page.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/fragment_feed_dashboard_home.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/fragment_feed_dashboard_messages.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_feed_dashboard_notification.xml" value="0.24427083333333333" />
+        <entry key="app/src/main/res/layout/fragment_feed_dashboard_profie.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/fragment_feed_dashboard_task_manager.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/fragment_finish.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/fragment_games.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_games_profile.xml" value="0.16145833333333334" />
         <entry key="app/src/main/res/layout/fragment_gig_on_profile.xml" value="0.24427083333333333" />
+        <entry key="app/src/main/res/layout/fragment_gigs.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/fragment_invite_students.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/fragment_message.xml" value="0.18645833333333334" />
@@ -97,6 +114,7 @@
         <entry key="app/src/main/res/layout/fragment_profile2.xml" value="0.328149300155521" />
         <entry key="app/src/main/res/layout/fragment_task_manager1.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_today_task.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_tutor.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/fragment_tutorial_group_page.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/fragment_tutorial_group_page2.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/fragment_tutorial_on_profile.xml" value="0.21331521739130435" />

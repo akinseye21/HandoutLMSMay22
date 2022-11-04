@@ -73,7 +73,7 @@ public class ForgotPassword1 extends AppCompatActivity {
                                         progressBar.setVisibility(View.GONE);
                                         System.out.println("Code = "+code);
                                         //send to next
-                                        Intent i = new Intent(getApplicationContext(), ForgotPassword2.class);
+                                        Intent i = new Intent(ForgotPassword1.this, ForgotPassword2.class);
                                         i.putExtra("code", code);
                                         i.putExtra("email", email.getText().toString().trim());
                                         startActivity(i);

@@ -24,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,11 +34,12 @@ import java.util.Map;
 
 public class ViewGroupResources extends AppCompatActivity {
 
-    public static final String GROUP_INFO = "http://35.84.44.203/handouts/handout_get_tutorial_details";
+    public static final String GROUP_INFO = "https://handout.com.ng/handouts/handout_get_tutorial_details";
+    public static final String ALL_GIGS_AND_TUTORIALS = "http://handout.com.ng/handouts/handout_gigs_groups";
     String group_name;
     String tutorial_material;
 
-    TextView gp_name, cat, dat, tim, uni, desc, tut_type, mode;
+    TextView gp_name, cat, dat, tim, uni, desc, tut_type, mode1;
 
     ProgressBar progressBar;
     TextView loading_text;
@@ -63,7 +65,7 @@ public class ViewGroupResources extends AppCompatActivity {
         uni = findViewById(R.id.university);
         desc = findViewById(R.id.description);
         tut_type = findViewById(R.id.tut_type);
-        mode = findViewById(R.id.mode);
+        mode1 = findViewById(R.id.mode);
         progressBar = findViewById(R.id.progressBar);
         loading_text = findViewById(R.id.loading_text);
         play = findViewById(R.id.idBtnPlay);
@@ -85,84 +87,181 @@ public class ViewGroupResources extends AppCompatActivity {
             }
         });
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, GROUP_INFO,
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, GROUP_INFO,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//
+//                        System.out.println("Response = "+response);
+//                        Toast.makeText(getApplicationContext(), "Response = "+response, Toast.LENGTH_LONG).show();
+//
+//                        progressBar.setVisibility(View.GONE);
+//                        loading_text.setVisibility(View.GONE);
+//
+//                        try{
+//                            JSONObject jsonObject = new JSONObject(response);
+//
+//                            String gpname = jsonObject.getString("groupname");
+//                            String category = jsonObject.getString("category");
+//                            String date = jsonObject.getString("_date");
+//                            String time = jsonObject.getString("_time");
+//                            String university = jsonObject.getString("university");
+//                            String description = jsonObject.getString("description");
+//                            String tuttype = jsonObject.getString("tutorial_type");
+//                            String tutmode = jsonObject.getString("mode");
+//                            tutorial_material = jsonObject.getString("tutorial_material");
+//
+//                            if (tutorial_material.contains(".mp3")){
+//                                audioMaterial.setVisibility(View.VISIBLE);
+//                            }
+//                            if (tutorial_material.contains(".mp4")){
+//                                videoMaterial.setVisibility(View.VISIBLE);
+//                                //load video url to view
+//                                VideoView videoView = findViewById(R.id.videoView);
+//                                Uri uri = Uri.parse(tutorial_material);
+//                                videoView.setVideoURI(uri);
+//                                MediaController mediaController = new MediaController(ViewGroupResources.this);
+//                                mediaController.setAnchorView(videoView);
+//                                mediaController.setMediaPlayer(videoView);
+//                                videoView.setMediaController(mediaController);
+//                                videoView.start();
+//                                videoView.setZOrderOnTop(true);
+//                            }
+//
+//                            gp_name.setText(gpname);
+//                            cat.setText(category);
+//                            dat.setText(date);
+//                            tim.setText(time);
+//                            uni.setText(university);
+//                            desc.setText(description);
+//                            tut_type.setText(tuttype);
+//                            mode.setText(tutmode);
+//
+//                        }
+//                        catch (JSONException e){
+//                            e.printStackTrace();
+//                        }
+//
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError volleyError) {
+//                        progressBar.setVisibility(View.GONE);
+//                        loading_text.setVisibility(View.GONE);
+//                        if(volleyError == null){
+//                            return;
+//                        }
+//                        System.out.println("Error = "+volleyError.getMessage());
+//                    }
+//                }){
+//            @Override
+//            protected Map<String, String> getParams(){
+//                Map<String, String> params = new HashMap<>();
+//                params.put("groupname", group_name);
+//                return params;
+//            }
+//        };
+//
+//        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+//        requestQueue.add(stringRequest);
+//
+//
+//
+
+
+
+
+
+        StringRequest stringRequest2 = new StringRequest(Request.Method.GET, ALL_GIGS_AND_TUTORIALS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
-                        System.out.println("Response = "+response);
-                        Toast.makeText(getApplicationContext(), "Response = "+response, Toast.LENGTH_LONG).show();
+                        System.out.println("Response= "+response);
 
                         progressBar.setVisibility(View.GONE);
                         loading_text.setVisibility(View.GONE);
 
-                        try{
-                            JSONObject jsonObject = new JSONObject(response);
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            int ArrayLength = jsonArray.length();
 
-                            String gpname = jsonObject.getString("groupname");
-                            String category = jsonObject.getString("category");
-                            String date = jsonObject.getString("_date");
-                            String time = jsonObject.getString("_time");
-                            String university = jsonObject.getString("university");
-                            String description = jsonObject.getString("description");
-                            String tuttype = jsonObject.getString("tutorial_type");
-                            String tutmode = jsonObject.getString("mode");
-                            tutorial_material = jsonObject.getString("tutorial_material");
+//                            for (int i = ArrayLength - 1; i >= 0; i--) {
+                            for (int i = 0; i < ArrayLength; i++) {
+                                JSONObject section = jsonArray.getJSONObject(i);
+                                String type = section.getString("type");
 
-                            if (tutorial_material.contains(".mp3")){
-                                audioMaterial.setVisibility(View.VISIBLE);
+                                if (type.equals("group")){
+                                    String groupName = section.getString("gig_group_name");
+
+                                    if(group_name.equals(groupName)){
+                                        String createdBy = section.getString("created_by");
+                                        String createdByName = section.getString("fullname");
+                                        String university = section.getString("university");
+                                        String mode = section.getString("faculty");
+                                        String groupNameInside = section.getString("gig_group_name");
+                                        String description = section.getString("description");
+                                        String time = section.getString("_time");
+                                        String date = section.getString("_date");
+                                        String tut_mode = section.getString("mode");
+                                        String category = section.getString("category");
+                                        String id = section.getString("tid");
+                                        tutorial_material = section.getString("tutorial_material");
+
+                                        if (tutorial_material.contains(".mp3")){
+                                            audioMaterial.setVisibility(View.VISIBLE);
+                                        }
+                                        if (tutorial_material.contains(".mp4")){
+                                            videoMaterial.setVisibility(View.VISIBLE);
+                                            //load video url to view
+                                            VideoView videoView = findViewById(R.id.videoView);
+                                            Uri uri = Uri.parse(tutorial_material);
+                                            videoView.setVideoURI(uri);
+                                            MediaController mediaController = new MediaController(ViewGroupResources.this);
+                                            mediaController.setAnchorView(videoView);
+                                            mediaController.setMediaPlayer(videoView);
+                                            videoView.setMediaController(mediaController);
+                                            videoView.start();
+                                            videoView.setZOrderOnTop(true);
+                                        }
+
+
+                                        gp_name.setText(groupName);
+                                        cat.setText(category);
+                                        dat.setText(date);
+                                        tim.setText(time);
+                                        uni.setText(university);
+                                        desc.setText(description);
+                                        tut_type.setText(tut_mode);
+                                        mode1.setText(tut_mode);
+                                    }
+
+                                }
+
                             }
-                            if (tutorial_material.contains(".mp4")){
-                                videoMaterial.setVisibility(View.VISIBLE);
-                                //load video url to view
-                                VideoView videoView = findViewById(R.id.videoView);
-                                Uri uri = Uri.parse(tutorial_material);
-                                videoView.setVideoURI(uri);
-                                MediaController mediaController = new MediaController(ViewGroupResources.this);
-                                mediaController.setAnchorView(videoView);
-                                mediaController.setMediaPlayer(videoView);
-                                videoView.setMediaController(mediaController);
-                                videoView.start();
-                                videoView.setZOrderOnTop(true);
-                            }
 
-                            gp_name.setText(gpname);
-                            cat.setText(category);
-                            dat.setText(date);
-                            tim.setText(time);
-                            uni.setText(university);
-                            desc.setText(description);
-                            tut_type.setText(tuttype);
-                            mode.setText(tutmode);
 
-                        }
-                        catch (JSONException e){
+
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                    }
 
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError volleyError) {
-                        progressBar.setVisibility(View.GONE);
-                        loading_text.setVisibility(View.GONE);
-                        if(volleyError == null){
-                            return;
-                        }
-                        System.out.println("Error = "+volleyError.getMessage());
-                    }
-                }){
+
+                }, new Response.ErrorListener() {
             @Override
-            protected Map<String, String> getParams(){
-                Map<String, String> params = new HashMap<>();
-                params.put("groupname", group_name);
-                return params;
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
             }
-        };
+        });
+        RequestQueue requestQueue2 = Volley.newRequestQueue(getApplicationContext());
+        requestQueue2.add(stringRequest2);
 
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        requestQueue.add(stringRequest);
+
+
+
+
+
     }
 
     private void playAudio() {

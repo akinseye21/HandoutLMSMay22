@@ -124,7 +124,7 @@ public class FeedDashboardNotification extends Fragment {
                                 arr_status.add(status);
                             }
 
-                            NotificationAdapter myAdapter=new NotificationAdapter(getContext(),arr_title,arr_message,arr_status);
+                            NotificationAdapter myAdapter=new NotificationAdapter(getActivity(),arr_title,arr_message,arr_status);
                             notification.setAdapter(myAdapter);
 
                         }

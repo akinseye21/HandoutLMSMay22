@@ -64,7 +64,7 @@ public class Gigs extends Fragment {
 
     GridView gridView;
 
-    public static final String ALL_GIGS = "http://handout.com.ng/handouts/handout_get_all_gigs";
+    public static final String ALL_GIGS = "https://handout.com.ng/handouts/handout_get_all_gigs";
 
     public Gigs() {
         // Required empty public constructor
@@ -151,6 +151,22 @@ public class Gigs extends Fragment {
                             progressText.setVisibility(View.GONE);
 
                         } catch (JSONException e) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                String status = jsonObject.getString("status");
+                                if(status.equals("0")){
+                                    //hide progressBar and progressText
+                                    progressBar.setVisibility(View.GONE);
+                                    progressText.setVisibility(View.GONE);
+                                    gridView.setVisibility(View.GONE);
+                                    TextView noGigs = v.findViewById(R.id.no_gigs);
+                                    noGigs.setVisibility(View.VISIBLE);
+                                }
+                            } catch (JSONException ex) {
+                                ex.printStackTrace();
+                            }
+
+
                             e.printStackTrace();
                         }
                     }

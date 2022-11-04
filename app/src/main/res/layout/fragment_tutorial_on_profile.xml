@@ -113,6 +113,16 @@
                     android:layout_gravity="center"
                     android:drawableTop="@drawable/notification"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:text="You have not joined any tutorial"
+                    android:textColor="#fff"
+                    android:id="@+id/no_tutorial_joined"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/notification"/>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

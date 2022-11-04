@@ -65,6 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="35% completed"
+            android:visibility="invisible"
             android:textColor="#ffffff"
             android:textSize="8dp"
             android:paddingBottom="10dp"

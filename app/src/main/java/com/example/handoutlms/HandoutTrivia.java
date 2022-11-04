@@ -210,7 +210,7 @@ public class HandoutTrivia extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Network connectivity problem", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getApplicationContext(), "Network connectivity problem", Toast.LENGTH_LONG).show();
                     }
                 }){
             @Override

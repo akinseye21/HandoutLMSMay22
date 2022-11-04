@@ -3,49 +3,112 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#293241"
+    android:orientation="vertical"
+    android:background="@drawable/ic2"
     tools:context=".FeedDashboardMessages">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerInParent="true"
-            android:id="@+id/logo"
-            android:src="@drawable/logo2"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_below="@+id/logo"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:text="Handout Chat"
-            android:drawableLeft="@android:drawable/sym_action_chat"
-            android:textColor="#fff"
-            android:textSize="15dp"
-            android:padding="10dp"
-            android:layout_marginBottom="30dp"
-            android:textStyle="bold"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/next"
-            android:text="Go to chat"
-            android:drawableRight="@drawable/ic_arrow_right"
-            android:gravity="center"
-            android:padding="10dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="50dp"
-            android:layout_centerHorizontal="true"
-            android:textColor="#fff"
-            android:background="@drawable/rounded_green"/>
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginLeft="40dp"
+                android:background="#fec55e"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome to"
+                android:textSize="20dp"
+                android:textColor="#ffffff"
+                android:textStyle="normal"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="40dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HANDOUT CHAT."
+                android:textSize="25dp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_marginLeft="40dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Virtual. \t Social. \t Learn"
+                android:textSize="12dp"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="1dp"/>
 
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/me6"/>
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/me5"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/me7"/>
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/me4"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="27dp"
+                android:layout_gravity="center"
+                android:text="Get started"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_orange"
+                android:textAllCaps="false"
+                android:id="@+id/next"/>
+
+        </LinearLayout>
+
+
+    </ScrollView>
 
 
 

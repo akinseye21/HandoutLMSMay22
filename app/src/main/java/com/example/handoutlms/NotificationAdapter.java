@@ -15,14 +15,14 @@ public class NotificationAdapter extends BaseAdapter {
     ArrayList<String> notification_title;
     ArrayList<String> notification_message;
     ArrayList<String> notification_status;
-    LayoutInflater inflter;
+//    LayoutInflater inflter;
 
     public NotificationAdapter(Context applicationContext, ArrayList<String> notification_title, ArrayList<String> notification_message, ArrayList<String> notification_status){
         this.context = applicationContext;
         this.notification_title = notification_title;
         this.notification_message = notification_message;
         this.notification_status = notification_status;
-        inflter = (LayoutInflater.from(applicationContext));
+//        inflter = (LayoutInflater.from(applicationContext));
     }
 
 
@@ -44,7 +44,12 @@ public class NotificationAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
-        convertView = inflter.inflate(R.layout.list_notification, null);
+        LayoutInflater inflaInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        if (convertView == null) {
+            convertView = inflaInflater.inflate(R.layout.list_notification, viewGroup, false);
+        }
+//        convertView = inflter.inflate(R.layout.list_notification, null);
 
         TextView title = convertView.findViewById(R.id.notification_title);
         TextView message = convertView.findViewById(R.id.notification_message);

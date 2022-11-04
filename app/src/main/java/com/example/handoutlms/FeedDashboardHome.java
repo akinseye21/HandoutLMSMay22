@@ -64,6 +64,7 @@ public class FeedDashboardHome extends Fragment {
     LinearLayout ext_yel, ext_pink, ext_green;
     View lineview;
     ListView my_list;
+    TextView noNot;
     int ArrayLength;
 //    ScrollView biglin;
 
@@ -116,6 +117,7 @@ public class FeedDashboardHome extends Fragment {
         tutors = v.findViewById(R.id.tutor);
         games = v.findViewById(R.id.games);
         gigs = v.findViewById(R.id.gigs);
+        noNot = v.findViewById(R.id.no_not);
 
         ext_pink = v.findViewById(R.id.extension_red);
         ext_yel = v.findViewById(R.id.extension_yellow);
@@ -144,6 +146,10 @@ public class FeedDashboardHome extends Fragment {
                             ext_green.setVisibility(View.GONE);
 //                            biglin.setVisibility(View.GONE);
                             lineview.setVisibility(View.GONE);
+                            noNot.setVisibility(View.GONE);
+                            progressBar.setVisibility(View.GONE);
+                            progressText.setVisibility(View.GONE);
+                            my_list.setVisibility(View.GONE);
                         }
                         else if(tab.getPosition() == 2){
                             ext_pink.setVisibility(View.GONE);
@@ -151,6 +157,10 @@ public class FeedDashboardHome extends Fragment {
                             ext_green.setVisibility(View.VISIBLE);
 //                            biglin.setVisibility(View.GONE);
                             lineview.setVisibility(View.GONE);
+                            noNot.setVisibility(View.GONE);
+                            progressBar.setVisibility(View.GONE);
+                            progressText.setVisibility(View.GONE);
+                            my_list.setVisibility(View.GONE);
                         }
                         else if(tab.getPosition() == 0){
                             ext_pink.setVisibility(View.VISIBLE);
@@ -158,6 +168,10 @@ public class FeedDashboardHome extends Fragment {
                             ext_green.setVisibility(View.GONE);
 //                            biglin.setVisibility(View.GONE);
                             lineview.setVisibility(View.GONE);
+                            noNot.setVisibility(View.GONE);
+                            progressBar.setVisibility(View.GONE);
+                            progressText.setVisibility(View.GONE);
+                            my_list.setVisibility(View.GONE);
                         }
                     }
 
@@ -188,74 +202,83 @@ public class FeedDashboardHome extends Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        System.out.println("Response= "+response);
                         try {
                             JSONArray jsonArray = new JSONArray(response);
                             ArrayLength = jsonArray.length();
 
+                            if(ArrayLength<1){
+                                noNot.setVisibility(View.VISIBLE);
+                                //hide progressBar and progressText
+                                progressBar.setVisibility(View.GONE);
+                                progressText.setVisibility(View.GONE);
+                                my_list.setVisibility(View.GONE);
+                            }else{
+
 //                            for (int i = ArrayLength - 1; i >= 0; i--) {
-                            for (int i = 0; i < ArrayLength; i++) {
-                                JSONObject section = jsonArray.getJSONObject(i);
-                                String type = section.getString("type");
+                                for (int i = 0; i < ArrayLength; i++) {
+                                    JSONObject section = jsonArray.getJSONObject(i);
+                                    String type = section.getString("type");
 
-                                if (type.equals("group")){
-                                    String createdBy = section.getString("created_by");
-                                    String createdByName = section.getString("fullname");
-                                    String groupName = section.getString("gig_group_name");
-                                    String university = section.getString("university");
-                                    String mode = section.getString("faculty");
-                                    String groupNameInside = section.getString("gig_group_name");
-                                    String description = section.getString("description");
-                                    String time = section.getString("_time");
-                                    String date = section.getString("_date");
-                                    String tut_mode = section.getString("mode");
-                                    String category = section.getString("category");
-                                    String id = section.getString("tid");
+                                    if (type.equals("group")){
+                                        String createdBy = section.getString("created_by");
+                                        String createdByName = section.getString("fullname");
+                                        String groupName = section.getString("gig_group_name");
+                                        String university = section.getString("university");
+                                        String mode = section.getString("faculty");
+                                        String groupNameInside = section.getString("gig_group_name");
+                                        String description = section.getString("description");
+                                        String time = section.getString("_time");
+                                        String date = section.getString("_date");
+                                        String tut_mode = section.getString("mode");
+                                        String category = section.getString("category");
+                                        String id = section.getString("tid");
 
-                                    Array_type.add(type);
-                                    Array_createdBy.add(createdBy);
-                                    Array_createdByName.add(createdByName);
-                                    Array_groupName.add(groupName);
-                                    Array_university.add(university);
-                                    Array_mode.add(mode);
-                                    Array_groupNameInside.add(groupNameInside);
-                                    Array_description.add(description);
-                                    Array_time.add(time);
-                                    Array_date.add(date);
-                                    Array_cardmode.add(tut_mode);
-                                    Array_category.add(category);
-                                    Array_id.add(id);
+                                        Array_type.add(type);
+                                        Array_createdBy.add(createdBy);
+                                        Array_createdByName.add(createdByName);
+                                        Array_groupName.add(groupName);
+                                        Array_university.add(university);
+                                        Array_mode.add(mode);
+                                        Array_groupNameInside.add(groupNameInside);
+                                        Array_description.add(description);
+                                        Array_time.add(time);
+                                        Array_date.add(date);
+                                        Array_cardmode.add(tut_mode);
+                                        Array_category.add(category);
+                                        Array_id.add(id);
+                                    }
+                                    else if (type.equals("gigs")){
+                                        String createdBy = section.getString("created_by"); //1
+                                        String createdByName = section.getString("fullname"); //2
+                                        String gigName = section.getString("gig_group_name"); //3
+                                        String university = section.getString("school"); //4
+                                        String description = section.getString("description"); //7
+                                        String budgetCategory = section.getString("budget_category"); //9
+                                        String faculty = section.getString("faculty"); //6
+                                        String date = section.getString("_date");
+                                        String gig_mode = section.getString("mode");
+                                        String department = section.getString("department");//8
+                                        String skills = section.getString("skills"); //5
+                                        String id = section.getString("tid");
+
+                                        Array_type.add(type);
+                                        Array_createdBy.add(createdBy);
+                                        Array_createdByName.add(createdByName);
+                                        Array_groupName.add(gigName);
+                                        Array_university.add(university);
+                                        Array_mode.add(skills);
+                                        Array_groupNameInside.add(faculty);
+                                        Array_description.add(description);
+                                        Array_time.add(department);
+                                        Array_date.add(date);
+                                        Array_cardmode.add(gig_mode);
+                                        Array_category.add(budgetCategory);
+                                        Array_id.add(id);
+                                    }
+
                                 }
-                                else if (type.equals("gigs")){
-                                    String createdBy = section.getString("created_by"); //1
-                                    String createdByName = section.getString("fullname"); //2
-                                    String gigName = section.getString("gig_group_name"); //3
-                                    String university = section.getString("school"); //4
-                                    String description = section.getString("description"); //7
-                                    String budgetCategory = section.getString("budget_category"); //9
-                                    String faculty = section.getString("faculty"); //6
-                                    String date = section.getString("_date");
-                                    String gig_mode = section.getString("mode");
-                                    String department = section.getString("department");//8
-                                    String skills = section.getString("skills"); //5
-                                    String id = section.getString("tid");
-
-                                    Array_type.add(type);
-                                    Array_createdBy.add(createdBy);
-                                    Array_createdByName.add(createdByName);
-                                    Array_groupName.add(gigName);
-                                    Array_university.add(university);
-                                    Array_mode.add(skills);
-                                    Array_groupNameInside.add(faculty);
-                                    Array_description.add(description);
-                                    Array_time.add(department);
-                                    Array_date.add(date);
-                                    Array_cardmode.add(gig_mode);
-                                    Array_category.add(budgetCategory);
-                                    Array_id.add(id);
-                                }
-
                             }
+
 
                             //populate values on the gridview
                             HomeListViewAdapter homeListViewAdapter = new HomeListViewAdapter(getActivity(), Array_type, Array_createdBy, Array_createdByName, Array_groupName, Array_university, Array_mode, Array_groupNameInside, Array_description, Array_time, Array_date, Array_cardmode, Array_category, Array_id);
@@ -265,6 +288,21 @@ public class FeedDashboardHome extends Fragment {
                             progressText.setVisibility(View.GONE);
 
                         } catch (JSONException e) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                String status = jsonObject.getString("status");
+                                if(status.equals("no group")){
+                                    noNot.setVisibility(View.VISIBLE);
+                                    //hide progressBar and progressText
+                                    progressBar.setVisibility(View.GONE);
+                                    progressText.setVisibility(View.GONE);
+                                    my_list.setVisibility(View.GONE);
+                                }
+                            } catch (JSONException ex) {
+                                ex.printStackTrace();
+                            }
+
+
                             e.printStackTrace();
                         }
                     }
@@ -314,6 +352,11 @@ public class FeedDashboardHome extends Fragment {
                 ext_green.setVisibility(View.GONE);
                 my_list.setVisibility(View.GONE);
                 lineview.setVisibility(View.GONE);
+
+                noNot.setVisibility(View.GONE);
+                progressBar.setVisibility(View.GONE);
+                progressText.setVisibility(View.GONE);
+                my_list.setVisibility(View.GONE);
             }
         });
 
@@ -328,6 +371,11 @@ public class FeedDashboardHome extends Fragment {
                 ext_green.setVisibility(View.GONE);
                 my_list.setVisibility(View.GONE);
                 lineview.setVisibility(View.GONE);
+
+                noNot.setVisibility(View.GONE);
+                progressBar.setVisibility(View.GONE);
+                progressText.setVisibility(View.GONE);
+                my_list.setVisibility(View.GONE);
             }
         });
 
@@ -342,6 +390,11 @@ public class FeedDashboardHome extends Fragment {
                 ext_green.setVisibility(View.VISIBLE);
                 my_list.setVisibility(View.GONE);
                 lineview.setVisibility(View.GONE);
+
+                noNot.setVisibility(View.GONE);
+                progressBar.setVisibility(View.GONE);
+                progressText.setVisibility(View.GONE);
+                my_list.setVisibility(View.GONE);
             }
         });
 

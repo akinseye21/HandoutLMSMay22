@@ -8,28 +8,40 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.handoutlms.ChatNotification.Client;
+import com.example.handoutlms.ChatNotification.Data;
+import com.example.handoutlms.ChatNotification.MyResponse;
+import com.example.handoutlms.ChatNotification.Sender;
+import com.example.handoutlms.ChatNotification.Token;
+import com.example.handoutlms.handoutmessager.APIService;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ChatMessagingPage extends AppCompatActivity {
 
     ImageView back;
-    TextView fullname;
+    TextView fullname, description;
     EditText edtMessage;
     ImageView send;
 //    ListView listView;
@@ -43,12 +55,23 @@ public class ChatMessagingPage extends AppCompatActivity {
     MessageAdapter messageAdapter;
     List<Chat> mChat;
 
+    FirebaseUser firebaseUser;
+    FirebaseAuth mAuth;
+
     RecyclerView recyclerView;
+
+    APIService apiService;
+
+    boolean notify = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_messaging_page);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
 
         Intent i = getIntent();
         key = i.getStringExtra("key");
@@ -56,8 +79,10 @@ public class ChatMessagingPage extends AppCompatActivity {
         email = i.getStringExtra("email");
         name = i.getStringExtra("name");
         institution = i.getStringExtra("institution");
-        senderKey = i.getStringExtra("senderKey");
+//        senderKey = i.getStringExtra("senderKey");
+        senderKey = firebaseUser.getUid();
 
+        apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -69,12 +94,15 @@ public class ChatMessagingPage extends AppCompatActivity {
         back = findViewById(R.id.back);
         fullname = findViewById(R.id.fullname);
         edtMessage = findViewById(R.id.getMessage);
+        description = findViewById(R.id.description);
         send = findViewById(R.id.sendMessage);
 //        listView = findViewById(R.id.myList);
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                notify = true;
+
                 String msg = edtMessage.getText().toString();
                 if(!msg.equals("")){
                     //send to the DB
@@ -87,6 +115,7 @@ public class ChatMessagingPage extends AppCompatActivity {
         });
 
         fullname.setText(name);
+        description.setText(institution);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,48 +126,6 @@ public class ChatMessagingPage extends AppCompatActivity {
 
         readMessages(senderKey, key);
 
-
-        //immediately load the messages into the listview
-//        DatabaseReference reference2 = FirebaseDatabase.getInstance("https://handout-lms-default-rtdb.firebaseio.com/").getReference("Chats");
-//        reference2.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-////                    System.out.println("Datasnapshot = "+snapshot);
-//
-//                    Chat chat = snapshot.getValue(Chat.class);
-//
-//                    assert chat != null;
-//                    String message = chat.getMessage();
-//                    String receiver = chat.getReceiver();
-//                    String sender = chat.getSender();
-//
-//                    if(receiver.equals(key)){
-//                        arr_message.add(message);
-//                        arr_sender.add(sender);
-//                        arr_receiver.add(receiver);
-//                    }
-//
-////                    System.out.println("Message = "+message+" Sender = "+sender+" Receiver = "+receiver);
-//
-//                }
-//
-//                ChatAdapter chatAdapter = new ChatAdapter(getApplicationContext(), arr_message, arr_sender, arr_receiver, key);
-////                listView.setAdapter(chatAdapter);
-////                chatAdapter.notifyDataSetChanged();
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//        //clear array
-//        arr_sender.clear();
-//        arr_message.clear();
-//        arr_receiver.clear();
 
     }
 
@@ -152,49 +139,59 @@ public class ChatMessagingPage extends AppCompatActivity {
         reference.child("Chats").push().setValue(hashMap);
 
 
+        final String msg = message;
+        reference = FirebaseDatabase.getInstance("https://handout-lms-default-rtdb.firebaseio.com/").getReference("Users").child(firebaseUser.getUid());
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Users users = dataSnapshot.getValue(Users.class);
+                if(notify) {
+                    sendNotification(receiver, users.getFullname(), msg);
+                }
+                notify = false;
+            }
 
-        //immediately load the messages into the listview
-//        DatabaseReference reference2 = FirebaseDatabase.getInstance("https://handout-lms-default-rtdb.firebaseio.com/").getReference("Chats");
-//        reference2.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-//
-//                    Chat chat = snapshot.getValue(Chat.class);
-//
-//                    assert chat != null;
-//                    String message = chat.getMessage();
-//                    String receiver = chat.getReceiver();
-//                    String sender = chat.getSender();
-//
-//                    if(receiver.equals(key)){
-//                        arr_message.add(message);
-//                        arr_sender.add(sender);
-//                        arr_receiver.add(receiver);
-//                    }
-//
-//                }
-//
-//                ChatAdapter chatAdapter = new ChatAdapter(getApplicationContext(), arr_message, arr_sender, arr_receiver, key);
-////                listView.setAdapter(chatAdapter);
-////                chatAdapter.notifyDataSetChanged();
-//
-//
-//            }
-//
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        //clear array
-//        arr_sender.clear();
-//        arr_message.clear();
-//        arr_receiver.clear();
+            }
+        });
+    }
 
+    private void sendNotification(String receiver, String username, String message){
+        DatabaseReference tokens = FirebaseDatabase.getInstance("https://handout-lms-default-rtdb.firebaseio.com/").getReference("Tokens");
+        Query query = tokens.orderByKey().equalTo(receiver);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Token token = snapshot.getValue(Token.class);
+                    Data data = new Data(firebaseUser.getUid(), R.drawable.logo, username+": "+message, "New Message", " ");
+                    Sender sender = new Sender(data, token.getToken());
+                    apiService.sendNotification(sender)
+                            .enqueue(new Callback<MyResponse>() {
+                                @Override
+                                public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
+                                    if(response.code() == 200){
+                                        if(response.body().success != 1){
+                                            Toast.makeText(ChatMessagingPage.this, "Failed!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }
 
+                                @Override
+                                public void onFailure(Call<MyResponse> call, Throwable t) {
+
+                                }
+                            });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void readMessages(String myid, String userid){
@@ -223,4 +220,26 @@ public class ChatMessagingPage extends AppCompatActivity {
             }
         });
     }
+
+    private void status(String status){
+        DatabaseReference reference = FirebaseDatabase.getInstance("https://handout-lms-default-rtdb.firebaseio.com/").getReference("Users").child(firebaseUser.getUid());
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("status", status);
+
+        reference.updateChildren(hashMap);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        status("online");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        status("offline");
+    }
+
+
 }

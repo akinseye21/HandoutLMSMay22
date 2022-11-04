@@ -18,7 +18,7 @@ public class GameAdapter extends BaseAdapter {
     ArrayList<String> time;
     ArrayList<String> location;
     ArrayList<String> createdby;
-    LayoutInflater inflter;
+//    LayoutInflater inflter;
 
     public GameAdapter(Context applicationContext, ArrayList<String> name, ArrayList<String> date, ArrayList<String> time, ArrayList<String> location, ArrayList<String> createdby) {
         this.context = applicationContext;
@@ -27,7 +27,7 @@ public class GameAdapter extends BaseAdapter {
         this.time = time;
         this.location = location;
         this.createdby = createdby;
-        inflter = (LayoutInflater.from(applicationContext));
+//        inflter = (LayoutInflater.from(applicationContext));
     }
 
 
@@ -48,7 +48,13 @@ public class GameAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
-        convertView = inflter.inflate(R.layout.list_game, null);
+        LayoutInflater inflaInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        if (convertView == null) {
+            convertView = inflaInflater.inflate(R.layout.list_game, viewGroup, false);
+        }
+
+//        convertView = inflter.inflate(R.layout.list_game, null);
 
         RelativeLayout card = convertView.findViewById(R.id.card);
         TextView gameName = convertView.findViewById(R.id.gameName);

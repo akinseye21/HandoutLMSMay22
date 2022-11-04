@@ -45,8 +45,8 @@ public class AlmostDone extends AppCompatActivity {
     ImageView back;
     TextView domlocation, reallocation;
 
-    public static final String TUTORIAL_GROUP = "http://handout.com.ng/handouts/handout_tutorial_groups";
-    public static final String UPDATE = "http://handout.com.ng/handouts/handout_usertype";
+    public static final String TUTORIAL_GROUP = "https://handout.com.ng/handouts/handout_tutorial_groups";
+    public static final String UPDATE = "https://handout.com.ng/handouts/handout_usertype";
 
 
     @Override
@@ -60,13 +60,11 @@ public class AlmostDone extends AppCompatActivity {
 //        final String email = preferences.getString("email", "not available");
 
         //if the android version is greater than OREO
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            NotificationChannel channel = new NotificationChannel("My Notification", "My Notification", NotificationManager.IMPORTANCE_DEFAULT);
-            NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.createNotificationChannel(channel);
-        }
-
-
+//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+//            NotificationChannel channel = new NotificationChannel("My Notification", "My Notification", NotificationManager.IMPORTANCE_DEFAULT);
+//            NotificationManager manager = getSystemService(NotificationManager.class);
+//            manager.createNotificationChannel(channel);
+//        }
 
         Intent i = getIntent();
         group_name = i.getStringExtra("group_name");
@@ -124,237 +122,144 @@ public class AlmostDone extends AppCompatActivity {
                     tut_type = "private";
                 }
 
-
-
-
                 if(!group_name.equals("") && !category.equals("") && !date.equals("") && !time.equals("") && !university.equals("") && !description.equals("")){
-                    //send to server
-                    progressBar.setVisibility(View.VISIBLE);
-
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, TUTORIAL_GROUP,
-                            new Response.Listener<String>() {
-                                @Override
-                                public void onResponse(String response) {
-                                    progressBar.setVisibility(View.GONE);
-
-                                    System.out.println("Response = "+response);
-
-                                    try{
-                                        JSONObject jsonObject = new JSONObject(response);
-
-//                                        String signed_name = jsonObject.getString("fullname");
-                                        String status = jsonObject.getString("status");
-                                        String notification = jsonObject.getString("notification");
-                                        System.out.println(response);
-
-                                        if(status.equals("successful") && location.equals("")){
-                                            Toast.makeText(getApplicationContext(), "Online Group created successfully", Toast.LENGTH_LONG).show();
-                                            System.out.println(jsonObject);
-
-                                            //update usertype
-                                            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, UPDATE,
-                                                    new Response.Listener<String>() {
-                                                        @Override
-                                                        public void onResponse(String response) {
-
-                                                            try{
-                                                                JSONObject jsonObject = new JSONObject(response);
-
-                                                                String status2 = jsonObject.getString("status");
-                                                                if(status2.equals("login successful")){
-
-                                                                }
-
-                                                            }
-                                                            catch (JSONException e){
-                                                                e.printStackTrace();
-                                                            }
-
-                                                        }
-                                                    },
-                                                    new Response.ErrorListener() {
-                                                        @Override
-                                                        public void onErrorResponse(VolleyError volleyError) {
-
-                                                            if(volleyError == null){
-                                                                return;
-                                                            }
-//                                                            System.out.println("Error = "+volleyError.getMessage());
-                                                        }
-                                                    }){
-                                                @Override
-                                                protected Map<String, String> getParams(){
-                                                    Map<String, String> params = new HashMap<>();
-                                                    params.put("email", email);
-                                                    params.put("usertype", "tutor");
-                                                    return params;
-                                                }
-                                            };
-
-
-                                            RequestQueue requestQueue2 = Volley.newRequestQueue(getApplicationContext());
-                                            requestQueue2.add(stringRequest2);
-
-//                                            NotificationGenerator notificationGenerator = new NotificationGenerator();
-//                                            notificationGenerator.setString(notification);
-//                                            NotificationGenerator.openActivityNotification(getApplicationContext());
-
-//                                            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext())
-//                                                    .setSmallIcon(R.drawable.logo)
-//                                                    .setContentTitle("Handout LMS")
-//                                                    .setContentText(notification)
-//                                                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-//                                                    // Set the intent that will fire when the user taps the notification
-//                                                    .setAutoCancel(true);
-//
-//                                            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
-//                                            notificationManager.notify(9, builder.build());
-
-                                            Intent i = new Intent(AlmostDone.this, CreateOnlineTutPhase1.class);
-                                            i.putExtra("Group_name", group_name);
-                                            i.putExtra("notification", notification);
-                                            startActivity(i);
-
-                                        }
-                                        else if(status.equals("successful") && !location.equals("")){
-                                            Toast.makeText(getApplicationContext(), "Offline Group created successfully", Toast.LENGTH_LONG).show();
-                                            System.out.println(jsonObject);
-
-                                            //update usertype
-                                            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, UPDATE,
-                                                    new Response.Listener<String>() {
-                                                        @Override
-                                                        public void onResponse(String response) {
-
-                                                            try{
-                                                                JSONObject jsonObject = new JSONObject(response);
-
-                                                                String status2 = jsonObject.getString("status");
-                                                                if(status2.equals("login successful")){
-
-                                                                }
-
-                                                            }
-                                                            catch (JSONException e){
-                                                                e.printStackTrace();
-                                                            }
-
-                                                        }
-                                                    },
-                                                    new Response.ErrorListener() {
-                                                        @Override
-                                                        public void onErrorResponse(VolleyError volleyError) {
-
-                                                            if(volleyError == null){
-                                                                return;
-                                                            }
-//                                                            System.out.println("Error = "+volleyError.getMessage());
-                                                        }
-                                                    }){
-                                                @Override
-                                                protected Map<String, String> getParams(){
-                                                    Map<String, String> params = new HashMap<>();
-                                                    params.put("email", email);
-                                                    params.put("usertype", "tutor");
-                                                    return params;
-                                                }
-                                            };
-
-
-                                            RequestQueue requestQueue2 = Volley.newRequestQueue(getApplicationContext());
-                                            requestQueue2.add(stringRequest2);
-
-                                            //show notification and add to notification array
-//                                            NotificationGenerator notificationGenerator = new NotificationGenerator();
-//                                            notificationGenerator.setString(notification);
-//                                            NotificationGenerator.openActivityNotification(getApplicationContext());
-
-//                                            Intent intent = new Intent(getApplicationContext(), AddOptions.class);
-//                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                                            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
-//
-//                                            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext())
-//                                                    .setSmallIcon(R.drawable.logo)
-//                                                    .setContentTitle("Handout LMS")
-//                                                    .setContentText(notification)
-//                                                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-//                                                    // Set the intent that will fire when the user taps the notification
-//                                                    .setContentIntent(pendingIntent)
-//                                                    .setAutoCancel(true);
-//
-//                                            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
-//                                            notificationManager.notify(9, builder.build());
-
-//                                            Intent i = new Intent(AlmostDone.this, AddOptions.class);
-//                                            i.putExtra("email", email);
-////                                            i.putExtra("notification", notification);
-//                                            startActivity(i);
-
-//                                            NotificationCompat.Builder builder = new NotificationCompat.Builder(AlmostDone.this)
-//                                                    .setSmallIcon(R.drawable.notification)
-//                                                    .setContentTitle("Handout LMS")
-//                                                    .setContentText(notification)
-//                                                    .setAutoCancel(true)
-//                                                    .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-//
-//                                            Intent intent = new Intent(AlmostDone.this, Notification.class);
-//                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                                            intent.putExtra("notification", notification);
-//
-//                                            PendingIntent pendingIntent = PendingIntent.getActivity(AlmostDone.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-//                                            builder.setContentIntent(pendingIntent);
-//
-//                                            NotificationManager manager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-//                                            manager.notify(0, builder.build());
-                                        }
-                                        else{
-                                            Toast.makeText(getApplicationContext(), "Group creation failed. Please try again", Toast.LENGTH_LONG).show();
-                                            System.out.println("Error sending group info: "+jsonObject);
-                                        }
-                                    }
-                                    catch (JSONException e){
-                                        e.printStackTrace();
-                                    }
-
-                                }
-                            },
-                            new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError volleyError) {
-
-//                                    if(volleyError == null){
-//                                        return;
-//                                    }
-
-                                    progressBar.setVisibility(View.GONE);
-//                                    Toast.makeText(getContext(),  volleyError.getMessage(), Toast.LENGTH_LONG).show();
-                                    System.out.println("Error = "+volleyError.getMessage());
-                                }
-                            }){
-                        @Override
-                        protected Map<String, String> getParams(){
-                            Map<String, String> params = new HashMap<>();
-                            params.put("email", email);
-                            params.put("tutorial_group_name", group_name);
-                            params.put("category", category);
-                            params.put("tutorial_type", tut_type);
-                            params.put("date", date);
-                            params.put("time", time);
-                            params.put("institution", university);
-                            params.put("short_description", description);
-                            params.put("tutorial_mode", tutorial_mode);
-                            params.put("venue", location);
-                            return params;
-                        }
-                    };
-
-                    RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-                    requestQueue.add(stringRequest);
+                    createTutorial();
                 }else{
                     Toast.makeText(getApplicationContext(), "One or more field is empty.", Toast.LENGTH_LONG).show();
                 }
 
             }
         });
+    }
+
+    public void createTutorial(){
+            //send to server
+            progressBar.setVisibility(View.VISIBLE);
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, TUTORIAL_GROUP,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            progressBar.setVisibility(View.GONE);
+
+                            System.out.println("Response = "+response);
+
+                            try{
+                                JSONObject jsonObject = new JSONObject(response);
+
+//                                        String signed_name = jsonObject.getString("fullname");
+                                String status = jsonObject.getString("status");
+                                String notification = jsonObject.getString("notification");
+                                System.out.println(response);
+
+                                if(status.equals("successful") && tutorial_mode.equals("online")){
+                                    Toast.makeText(getApplicationContext(), "Online Group created successfully", Toast.LENGTH_LONG).show();
+                                    System.out.println(jsonObject);
+
+                                    Intent i = new Intent(AlmostDone.this, CreateOnlineTutPhase1.class);
+                                    i.putExtra("Group_name", group_name);
+                                    i.putExtra("notification", notification);
+                                    startActivity(i);
+
+
+                                    //update usertype
+                                    updateUser();
+
+                                }
+                                else if(status.equals("successful") && tutorial_mode.equals("offline")){
+                                    Toast.makeText(getApplicationContext(), "Offline Group created successfully", Toast.LENGTH_LONG).show();
+                                    System.out.println(jsonObject);
+
+                                    Intent i = new Intent(AlmostDone.this, FeedsDashboard.class);
+                                    i.putExtra("email", email);
+                                    i.putExtra("sent from", "offline tuts");
+                                    startActivity(i);
+
+                                    //update usertype
+                                    updateUser();
+                                }
+                                else{
+                                    Toast.makeText(getApplicationContext(), "Group creation failed. Please try again", Toast.LENGTH_LONG).show();
+                                    System.out.println("Error sending group info: "+jsonObject);
+                                }
+                            }
+                            catch (JSONException e){
+                                e.printStackTrace();
+                            }
+
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError volleyError) {
+
+                            progressBar.setVisibility(View.GONE);
+//                                    Toast.makeText(getContext(),  volleyError.getMessage(), Toast.LENGTH_LONG).show();
+                            System.out.println("Error = "+volleyError.getMessage());
+                        }
+                    }){
+                @Override
+                protected Map<String, String> getParams(){
+                    Map<String, String> params = new HashMap<>();
+                    params.put("email", email);
+                    params.put("tutorial_group_name", group_name);
+                    params.put("category", category);
+                    params.put("tutorial_type", tut_type);
+                    params.put("date", date);
+                    params.put("time", time);
+                    params.put("institution", university);
+                    params.put("short_description", description);
+                    params.put("tutorial_mode", tutorial_mode);
+                    params.put("venue", location);
+                    return params;
+                }
+            };
+
+            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+            requestQueue.add(stringRequest);
+
+    }
+
+    public void updateUser(){
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, UPDATE,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try{
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            String status2 = jsonObject.getString("status");
+                            if(status2.equals("login successful")){
+                                //you are now a tutor on Handout
+                            }
+
+                        }
+                        catch (JSONException e){
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+
+                        if(volleyError == null){
+                            return;
+                        }
+//                                                            System.out.println("Error = "+volleyError.getMessage());
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<>();
+                params.put("email", email);
+                params.put("usertype", "tutor");
+                return params;
+            }
+        };
+        RequestQueue requestQueue2 = Volley.newRequestQueue(getApplicationContext());
+        requestQueue2.add(stringRequest2);
     }
 }
