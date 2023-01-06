@@ -49,97 +49,158 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="50dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Which American businessman became owner of AstonVilla in 2006?"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
-            android:gravity="center_horizontal"
-            android:textSize="15dp"
-            android:id="@+id/question"
-            android:layout_alignParentTop="true"/>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+        <androidx.cardview.widget.CardView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/options"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_centerHorizontal="true"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
-            android:layout_below="@+id/question"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:layout_width="250dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardUseCompatPadding="true"
+            app:cardElevation="5dp"
+            app:contentPadding="10dp"
+            app:cardCornerRadius="5dp" >
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Randy Lerner"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:textSize="15dp"
-                android:gravity="center_horizontal"
-                android:background="@drawable/rounded_white_transparent_100"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:id="@+id/option1"
-                android:layout_margin="10dp"/>
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
 
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:text="Ndukwe Nwogu"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:textSize="15dp"
-                android:gravity="center_horizontal"
-                android:background="@drawable/rounded_white_transparent_100"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:id="@+id/option2"
-                android:layout_margin="10dp"/>
-
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:text="Daniel Ukpai"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:textSize="15dp"
-                android:gravity="center_horizontal"
-                android:background="@drawable/rounded_white_transparent_100"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:id="@+id/option3"
-                android:layout_margin="10dp"/>
-
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:text="Akinseye Abayomi"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:textSize="15dp"
-                android:gravity="center_horizontal"
-                android:background="@drawable/rounded_white_transparent_100"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:id="@+id/option4"
-                android:layout_margin="10dp"/>
+                <TextView
+                    android:id="@+id/question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="Which American businessman became owner of AstonVilla in 2006?"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
 
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/question"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/option1"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded_white_transparent_100"
+                        android:gravity="center_horizontal"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="10dp"
+                        android:text="Randy Lerner"
+                        android:textColor="#ffffff"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/option2"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded_white_transparent_100"
+                        android:gravity="center_horizontal"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="10dp"
+                        android:text="Ndukwe Nwogu"
+                        android:textColor="#ffffff"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/option3"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded_white_transparent_100"
+                        android:gravity="center_horizontal"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="10dp"
+                        android:text="Daniel Ukpai"
+                        android:textColor="#ffffff"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/option4"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded_white_transparent_100"
+                        android:gravity="center_horizontal"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="10dp"
+                        android:text="Akinseye Abayomi"
+                        android:textColor="#ffffff"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/examType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="5dp"
+                        android:text=""
+                        android:textAllCaps="true"
+                        android:textColor="#FFFF00"
+                        android:textSize="10dp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/examYear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="5dp"
+                        android:text=""
+                        android:textColor="#FFFF00"
+                        android:textSize="10dp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
 
         <RelativeLayout

@@ -45,7 +45,7 @@ public class GamesProfile extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    public static final String GET_GAMES = "https://handout.com.ng/handouts/handout_get_games";
+    public static final String GET_GAMES = "https://handoutng.com/handouts/handout_get_games";
 
     // TODO: Rename and change types of parameters
     private String mParam1;

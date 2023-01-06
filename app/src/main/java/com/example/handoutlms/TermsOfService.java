@@ -33,8 +33,8 @@ public class TermsOfService extends AppCompatActivity {
     Button accept, decline;
     TextView lastupdate, tos;
     ProgressBar progressBar;
-    public static final String PRIVACY_POLICY = "https://handout.com.ng/handouts/handout_policy";
-    public static final String TOS = "https://handout.com.ng/handouts/handout_tor";
+    public static final String PRIVACY_POLICY = "https://handoutng.com/handouts/handout_policy";
+    public static final String TOS = "https://handoutng.com/handouts/handout_tor";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

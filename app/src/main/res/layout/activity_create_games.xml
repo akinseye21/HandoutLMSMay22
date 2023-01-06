@@ -56,6 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Game Name"
+                android:textSize="13dp"
                 android:textColor="#8cc63e"/>
             <EditText
                 android:layout_width="match_parent"
@@ -77,6 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Date"
+                android:textSize="13dp"
                 android:layout_marginTop="20dp"
                 android:textColor="#8cc63e"/>
             <EditText
@@ -103,6 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Game time"
+                android:textSize="13dp"
                 android:layout_marginTop="20dp"
                 android:textColor="#8cc63e"/>
             <EditText
@@ -129,6 +132,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:textSize="13dp"
                 android:text="Location"
                 android:textColor="#8cc63e"/>
             <EditText

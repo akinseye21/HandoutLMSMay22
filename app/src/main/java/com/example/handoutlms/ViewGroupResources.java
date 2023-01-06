@@ -34,16 +34,17 @@ import java.util.Map;
 
 public class ViewGroupResources extends AppCompatActivity {
 
-    public static final String GROUP_INFO = "https://handout.com.ng/handouts/handout_get_tutorial_details";
-    public static final String ALL_GIGS_AND_TUTORIALS = "http://handout.com.ng/handouts/handout_gigs_groups";
+    public static final String GROUP_INFO = "https://handoutng.com/handouts/handout_get_tutorial_details";
+    public static final String ALL_GIGS_AND_TUTORIALS = "http://handoutng.com/handouts/handout_gigs_groups";
     String group_name;
     String tutorial_material;
 
     TextView gp_name, cat, dat, tim, uni, desc, tut_type, mode1;
+    TextView noMaterial;
 
     ProgressBar progressBar;
     TextView loading_text;
-    ImageView play, pause;
+    ImageView play, pause, back;
 
     LinearLayout audioMaterial, videoMaterial;
 
@@ -70,6 +71,8 @@ public class ViewGroupResources extends AppCompatActivity {
         loading_text = findViewById(R.id.loading_text);
         play = findViewById(R.id.idBtnPlay);
         pause = findViewById(R.id.idBtnPause);
+        noMaterial = findViewById(R.id.noMaterial);
+        back = findViewById(R.id.back);
 
         audioMaterial = findViewById(R.id.audio_material);
         videoMaterial = findViewById(R.id.video_material);
@@ -86,92 +89,12 @@ public class ViewGroupResources extends AppCompatActivity {
                 pauseAudio();
             }
         });
-
-//        StringRequest stringRequest = new StringRequest(Request.Method.POST, GROUP_INFO,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//
-//                        System.out.println("Response = "+response);
-//                        Toast.makeText(getApplicationContext(), "Response = "+response, Toast.LENGTH_LONG).show();
-//
-//                        progressBar.setVisibility(View.GONE);
-//                        loading_text.setVisibility(View.GONE);
-//
-//                        try{
-//                            JSONObject jsonObject = new JSONObject(response);
-//
-//                            String gpname = jsonObject.getString("groupname");
-//                            String category = jsonObject.getString("category");
-//                            String date = jsonObject.getString("_date");
-//                            String time = jsonObject.getString("_time");
-//                            String university = jsonObject.getString("university");
-//                            String description = jsonObject.getString("description");
-//                            String tuttype = jsonObject.getString("tutorial_type");
-//                            String tutmode = jsonObject.getString("mode");
-//                            tutorial_material = jsonObject.getString("tutorial_material");
-//
-//                            if (tutorial_material.contains(".mp3")){
-//                                audioMaterial.setVisibility(View.VISIBLE);
-//                            }
-//                            if (tutorial_material.contains(".mp4")){
-//                                videoMaterial.setVisibility(View.VISIBLE);
-//                                //load video url to view
-//                                VideoView videoView = findViewById(R.id.videoView);
-//                                Uri uri = Uri.parse(tutorial_material);
-//                                videoView.setVideoURI(uri);
-//                                MediaController mediaController = new MediaController(ViewGroupResources.this);
-//                                mediaController.setAnchorView(videoView);
-//                                mediaController.setMediaPlayer(videoView);
-//                                videoView.setMediaController(mediaController);
-//                                videoView.start();
-//                                videoView.setZOrderOnTop(true);
-//                            }
-//
-//                            gp_name.setText(gpname);
-//                            cat.setText(category);
-//                            dat.setText(date);
-//                            tim.setText(time);
-//                            uni.setText(university);
-//                            desc.setText(description);
-//                            tut_type.setText(tuttype);
-//                            mode.setText(tutmode);
-//
-//                        }
-//                        catch (JSONException e){
-//                            e.printStackTrace();
-//                        }
-//
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError volleyError) {
-//                        progressBar.setVisibility(View.GONE);
-//                        loading_text.setVisibility(View.GONE);
-//                        if(volleyError == null){
-//                            return;
-//                        }
-//                        System.out.println("Error = "+volleyError.getMessage());
-//                    }
-//                }){
-//            @Override
-//            protected Map<String, String> getParams(){
-//                Map<String, String> params = new HashMap<>();
-//                params.put("groupname", group_name);
-//                return params;
-//            }
-//        };
-//
-//        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-//        requestQueue.add(stringRequest);
-//
-//
-//
-
-
-
-
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         StringRequest stringRequest2 = new StringRequest(Request.Method.GET, ALL_GIGS_AND_TUTORIALS,
                 new Response.Listener<String>() {
@@ -224,6 +147,9 @@ public class ViewGroupResources extends AppCompatActivity {
                                             videoView.start();
                                             videoView.setZOrderOnTop(true);
                                         }
+                                        if(tutorial_material.equals("")){
+                                            noMaterial.setVisibility(View.VISIBLE);
+                                        }
 
 
                                         gp_name.setText(groupName);
@@ -256,11 +182,6 @@ public class ViewGroupResources extends AppCompatActivity {
         });
         RequestQueue requestQueue2 = Volley.newRequestQueue(getApplicationContext());
         requestQueue2.add(stringRequest2);
-
-
-
-
-
 
     }
 

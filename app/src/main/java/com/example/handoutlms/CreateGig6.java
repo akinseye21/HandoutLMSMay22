@@ -49,7 +49,7 @@ public class CreateGig6 extends AppCompatActivity {
     Dialog myDialog;
     Button home;
 
-    public static final String CREATE_GIGS = "http://handout.com.ng/handouts/handout_create_user_gig";
+    public static final String CREATE_GIGS = "http://handoutng.com/handouts/handout_create_user_gig";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

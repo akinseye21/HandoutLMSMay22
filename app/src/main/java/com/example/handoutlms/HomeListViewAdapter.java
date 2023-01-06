@@ -57,9 +57,8 @@ public class HomeListViewAdapter extends BaseAdapter {
     SharedPreferences preferences;
     String got_email;
 
-    public static final String TASK_MANAGER = "https://handout.com.ng/handouts/handout_task_manager";
-    public static final String JOIN_TUTORIAL = "https://handout.com.ng/handouts/handout_group_join";
-
+    public static final String TASK_MANAGER = "https://handoutng.com/handouts/handout_task_manager";
+    public static final String JOIN_TUTORIAL = "https://handoutng.com/handouts/handout_group_join";
 
     public HomeListViewAdapter (Context context, ArrayList<String> type, ArrayList<String> created_by, ArrayList<String> created_by_name, ArrayList<String> group_name, ArrayList<String> university, ArrayList<String> mode, ArrayList<String> group_name_inside, ArrayList<String> description, ArrayList<String> time, ArrayList<String> date, ArrayList<String> card_mode, ArrayList<String> category, ArrayList<String> id){
         //Getting all the values
@@ -146,22 +145,32 @@ public class HomeListViewAdapter extends BaseAdapter {
         showUserProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //move to the user profile page
-                Intent i = new Intent(context, ProfileOthers.class);
-                //pass the email of the selected user
-                i.putExtra("email", created_by.get(position));
-                context.startActivity(i);
+                if(got_email.equals(created_by.get(position))){
+                    //show this is your profile
+                    Toast.makeText(context, "To view your profile, click on Profile tab", Toast.LENGTH_SHORT).show();
+                }else{
+                    //move to the user profile page
+                    Intent i = new Intent(context, ProfileOthers.class);
+                    //pass the email of the selected user
+                    i.putExtra("email", created_by.get(position));
+                    context.startActivity(i);
+                }
             }
         });
 
         showUserProfile2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //move to the user profile page
-                Intent i = new Intent(context, ProfileOthers.class);
-                //pass the email of the selected user
-                i.putExtra("email", created_by.get(position));
-                context.startActivity(i);
+                if(got_email.equals(created_by.get(position))){
+                    //show this is your profile
+                    Toast.makeText(context, "To view your profile, click on Profile tab", Toast.LENGTH_SHORT).show();
+                }else{
+                    //move to the user profile page
+                    Intent i = new Intent(context, ProfileOthers.class);
+                    //pass the email of the selected user
+                    i.putExtra("email", created_by.get(position));
+                    context.startActivity(i);
+                }
             }
         });
 
@@ -250,6 +259,8 @@ public class HomeListViewAdapter extends BaseAdapter {
                                                     myDialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                                     myDialog2.setCanceledOnTouchOutside(false);
                                                     myDialog2.show();
+                                                }else if(status.equals("request to join group already sent")){
+                                                    Toast.makeText(context, "You have requested already to join group, Please wait for approval from group admin", Toast.LENGTH_LONG).show();
                                                 }
                                             } catch (JSONException e) {
                                                 progressBar.setVisibility(View.GONE);
@@ -309,11 +320,16 @@ public class HomeListViewAdapter extends BaseAdapter {
                 profile.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //move to the user profile page
-                        Intent i = new Intent(context, ProfileOthers.class);
-                        //pass the email of the selected user
-                        i.putExtra("email", created_by.get(position));
-                        context.startActivity(i);
+                        if(got_email.equals(created_by.get(position))){
+                            //show this is your profile
+                            Toast.makeText(context, "To view your profile, click on Profile tab", Toast.LENGTH_SHORT).show();
+                        }else{
+                            //move to the user profile page
+                            Intent i = new Intent(context, ProfileOthers.class);
+                            //pass the email of the selected user
+                            i.putExtra("email", created_by.get(position));
+                            context.startActivity(i);
+                        }
                     }
                 });
                 TextView pop_name = myDialog.findViewById(R.id.created_by_gig);
@@ -369,13 +385,16 @@ public class HomeListViewAdapter extends BaseAdapter {
                 profile.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //
-
-                        //move to the user profile page
-                        Intent i = new Intent(context, ProfileOthers.class);
-                        //pass the email of the selected user
-                        i.putExtra("email", created_by.get(position));
-                        context.startActivity(i);
+                        if(got_email.equals(created_by.get(position))){
+                            //show this is your profile
+                            Toast.makeText(context, "To view your profile, click on Profile tab", Toast.LENGTH_SHORT).show();
+                        }else{
+                            //move to the user profile page
+                            Intent i = new Intent(context, ProfileOthers.class);
+                            //pass the email of the selected user
+                            i.putExtra("email", created_by.get(position));
+                            context.startActivity(i);
+                        }
                     }
                 });
                 TextView pop_name = myDialog.findViewById(R.id.created_by);
@@ -449,6 +468,8 @@ public class HomeListViewAdapter extends BaseAdapter {
                                                             myDialog3.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                                             myDialog3.setCanceledOnTouchOutside(false);
                                                             myDialog3.show();
+                                                        }else if(status.equals("request to join group already sent")){
+                                                            Toast.makeText(context, "You have requested already to join group, Please wait for approval from group admin", Toast.LENGTH_LONG).show();
                                                         }
                                                     } catch (JSONException e) {
                                                         progressBar.setVisibility(View.GONE);
@@ -488,44 +509,6 @@ public class HomeListViewAdapter extends BaseAdapter {
                             myDialog2.setCanceledOnTouchOutside(true);
                             myDialog2.show();
 
-
-
-
-
-
-
-                            //show 'done'
-//                            builder.setMessage("Do you want to join '"+group_name.get(position)+"'?")
-//                                    .setCancelable(false)
-//                                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                                        public void onClick(DialogInterface dialog, int id) {
-//                                            //show popUpWindow
-//                                            myDialog2 = new Dialog(context);
-//                                            myDialog2.setContentView(R.layout.custom_popup_tutorial_joined);
-//                                            TextView popup_tutName = myDialog2.findViewById(R.id.tutName);
-//                                            Button close = myDialog2.findViewById(R.id.close);
-//                                            popup_tutName.setText(group_name.get(position));
-//                                            close.setOnClickListener(new View.OnClickListener() {
-//                                                @Override
-//                                                public void onClick(View v) {
-//                                                    myDialog2.dismiss();
-//                                                }
-//                                            });
-//                                            myDialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                                            myDialog2.setCanceledOnTouchOutside(false);
-//                                            myDialog2.show();
-//                                        }
-//                                    })
-//                                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                                        public void onClick(DialogInterface dialog, int id) {
-//                                            //  Action for 'NO' Button
-//                                            dialog.cancel();
-//                                        }
-//                                    });
-//                            AlertDialog alert = builder.create();
-//                            //Setting the title manually
-//                            alert.setTitle("Join Tutorial - "+group_name.get(position));
-//                            alert.show();
                         }
 
                     }

@@ -64,7 +64,7 @@ public class Gigs extends Fragment {
 
     GridView gridView;
 
-    public static final String ALL_GIGS = "https://handout.com.ng/handouts/handout_get_all_gigs";
+    public static final String ALL_GIGS = "https://handoutng.com/handouts/handout_get_all_gigs";
 
     public Gigs() {
         // Required empty public constructor

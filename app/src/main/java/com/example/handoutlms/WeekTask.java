@@ -59,7 +59,7 @@ public class WeekTask extends Fragment {
     ArrayList<String> arr_task_time = new ArrayList<>();
     ArrayList<String> arr_today = new ArrayList<>();
 
-    public static final String GET_TASKS = "https://handout.com.ng/handouts/handout_get_user_task";
+    public static final String GET_TASKS = "https://handoutng.com/handouts/handout_get_user_task";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -225,5 +225,8 @@ public class WeekTask extends Fragment {
 
 
         return v;
+    }
+
+    public interface OnFragmentInteractionListener {
     }
 }

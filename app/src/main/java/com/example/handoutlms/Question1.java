@@ -24,7 +24,8 @@ public class Question1 extends AppCompatActivity {
     TextView quest;
     TextView opt1, opt2, opt3, opt4;
     TextView timeCount, runningout;
-    String Text;
+    String Text, From;
+    TextView examType, examYear;
 
     int counter = 0;
 
@@ -39,11 +40,14 @@ public class Question1 extends AppCompatActivity {
 
         //get passed intent values
         Intent intent = getIntent();
+        From = intent.getStringExtra("From");
         final ArrayList<String> question_list = intent.getExtras().getStringArrayList("question_list");
         final ArrayList<String> optionA_list = intent.getStringArrayListExtra("optionA_list");
         final ArrayList<String> optionB_list = intent.getStringArrayListExtra("optionB_list");
         final ArrayList<String> optionC_list = intent.getStringArrayListExtra("optionC_list");
         final ArrayList<String> optionD_list = intent.getStringArrayListExtra("optionD_list");
+        final ArrayList<String> examType_list = intent.getStringArrayListExtra("examType_list");
+        final ArrayList<String> examYear_list = intent.getStringArrayListExtra("examYear_list");
         final ArrayList<String> correct_option_list = intent.getStringArrayListExtra("correct_option_list");
         Text = intent.getStringExtra("category");
 
@@ -52,6 +56,8 @@ public class Question1 extends AppCompatActivity {
 
         timeCount = findViewById(R.id.timecount);
         runningout = findViewById(R.id.runningout);
+        examType = findViewById(R.id.examType);
+        examYear = findViewById(R.id.examYear);
 
         countDownTimer = new CountDownTimer(300000, 1000) {
             @Override
@@ -85,42 +91,48 @@ public class Question1 extends AppCompatActivity {
         caticon = findViewById(R.id.categoryicon);
 
         //set the imgicon
-        if(Text.equals("Soccer")){
-            caticon.setImageResource(R.drawable.triviasoccer);
+        if(From.equals("normal")){
+            if(Text.equals("Soccer")){
+                caticon.setImageResource(R.drawable.triviasoccer);
+            }
+            if(Text.equals("Entertainment")){
+                caticon.setImageResource(R.drawable.triviaentertainment);
+            }
+            if(Text.equals("Politics")){
+                caticon.setImageResource(R.drawable.triviapolitics);
+            }
+            if(Text.equals("History")){
+                caticon.setImageResource(R.drawable.triviahistory);
+            }
+            if(Text.equals("Maths")){
+                caticon.setImageResource(R.drawable.triviamath);
+            }
+            if(Text.equals("English")){
+                caticon.setImageResource(R.drawable.triviaenglish);
+            }
+            if(Text.equals("Logic")){
+                caticon.setImageResource(R.drawable.trivialogic);
+            }
+            if(Text.equals("Physics")){
+                caticon.setImageResource(R.drawable.triviaphysics);
+            }
+            if(Text.equals("Computer")){
+                caticon.setImageResource(R.drawable.triviacomputer);
+            }
+            if(Text.equals("Movies")){
+                caticon.setImageResource(R.drawable.triviamovie);
+            }
+            if(Text.equals("Animals")){
+                caticon.setImageResource(R.drawable.triviaanimals);
+            }
+            if(Text.equals("Fashion")){
+                caticon.setImageResource(R.drawable.triviafashion);
+            }
         }
-        if(Text.equals("Entertainment")){
-            caticon.setImageResource(R.drawable.triviaentertainment);
+        else{
+            caticon.setImageResource(R.drawable.ic63);
         }
-        if(Text.equals("Politics")){
-            caticon.setImageResource(R.drawable.triviapolitics);
-        }
-        if(Text.equals("History")){
-            caticon.setImageResource(R.drawable.triviahistory);
-        }
-        if(Text.equals("Maths")){
-            caticon.setImageResource(R.drawable.triviamath);
-        }
-        if(Text.equals("English")){
-            caticon.setImageResource(R.drawable.triviaenglish);
-        }
-        if(Text.equals("Logic")){
-            caticon.setImageResource(R.drawable.trivialogic);
-        }
-        if(Text.equals("Physics")){
-            caticon.setImageResource(R.drawable.triviaphysics);
-        }
-        if(Text.equals("Computer")){
-            caticon.setImageResource(R.drawable.triviacomputer);
-        }
-        if(Text.equals("Movies")){
-            caticon.setImageResource(R.drawable.triviamovie);
-        }
-        if(Text.equals("Animals")){
-            caticon.setImageResource(R.drawable.triviaanimals);
-        }
-        if(Text.equals("Fashion")){
-            caticon.setImageResource(R.drawable.triviafashion);
-        }
+
 
         quest = findViewById(R.id.question);
         opt1 = findViewById(R.id.option1);
@@ -134,6 +146,8 @@ public class Question1 extends AppCompatActivity {
         opt2.setText(optionB_list.get(0));
         opt3.setText(optionC_list.get(0));
         opt4.setText(optionD_list.get(0));
+        examType.setText(examType_list.get(0));
+        examYear.setText(examYear_list.get(0));
 
         final String ans = correct_option_list.get(0);
 
@@ -158,11 +172,14 @@ public class Question1 extends AppCompatActivity {
                             mv.putStringArrayListExtra("optionB_list", optionB_list);
                             mv.putStringArrayListExtra("optionC_list", optionC_list);
                             mv.putStringArrayListExtra("optionD_list", optionD_list);
+                            mv.putStringArrayListExtra("examType_list", examType_list);
+                            mv.putStringArrayListExtra("examYear_list", examYear_list);
                             mv.putStringArrayListExtra("correct_option_list", correct_option_list);
                             mv.putExtra("counter", counter);
                             mv.putExtra("category", Text);
                             mv.putExtra("question", questio);
                             mv.putExtra("score", score);
+                            mv.putExtra("From", From);
                             mv.putExtra("timer", timeCount.getText().toString());
                             startActivity(mv);
                         }
@@ -196,11 +213,14 @@ public class Question1 extends AppCompatActivity {
                             mv.putStringArrayListExtra("optionB_list", optionB_list);
                             mv.putStringArrayListExtra("optionC_list", optionC_list);
                             mv.putStringArrayListExtra("optionD_list", optionD_list);
+                            mv.putStringArrayListExtra("examType_list", examType_list);
+                            mv.putStringArrayListExtra("examYear_list", examYear_list);
                             mv.putStringArrayListExtra("correct_option_list", correct_option_list);
                             mv.putExtra("counter", counter);
                             mv.putExtra("category", Text);
                             mv.putExtra("question", questio);
                             mv.putExtra("score", score);
+                            mv.putExtra("From", From);
                             mv.putExtra("timer", timeCount.getText().toString());
                             startActivity(mv);
                         }
@@ -234,11 +254,14 @@ public class Question1 extends AppCompatActivity {
                             mv.putStringArrayListExtra("optionB_list", optionB_list);
                             mv.putStringArrayListExtra("optionC_list", optionC_list);
                             mv.putStringArrayListExtra("optionD_list", optionD_list);
+                            mv.putStringArrayListExtra("examType_list", examType_list);
+                            mv.putStringArrayListExtra("examYear_list", examYear_list);
                             mv.putStringArrayListExtra("correct_option_list", correct_option_list);
                             mv.putExtra("counter", counter);
                             mv.putExtra("category", Text);
                             mv.putExtra("question", questio);
                             mv.putExtra("score", score);
+                            mv.putExtra("From", From);
                             mv.putExtra("timer", timeCount.getText().toString());
                             startActivity(mv);
                         }
@@ -272,11 +295,14 @@ public class Question1 extends AppCompatActivity {
                             mv.putStringArrayListExtra("optionB_list", optionB_list);
                             mv.putStringArrayListExtra("optionC_list", optionC_list);
                             mv.putStringArrayListExtra("optionD_list", optionD_list);
+                            mv.putStringArrayListExtra("examType_list", examType_list);
+                            mv.putStringArrayListExtra("examYear_list", examYear_list);
                             mv.putStringArrayListExtra("correct_option_list", correct_option_list);
                             mv.putExtra("counter", counter);
                             mv.putExtra("category", Text);
                             mv.putExtra("question", questio);
                             mv.putExtra("score", score);
+                            mv.putExtra("From", From);
                             mv.putExtra("timer", timeCount.getText().toString());
                             startActivity(mv);
                         }
@@ -310,11 +336,14 @@ public class Question1 extends AppCompatActivity {
                             mv.putStringArrayListExtra("optionB_list", optionB_list);
                             mv.putStringArrayListExtra("optionC_list", optionC_list);
                             mv.putStringArrayListExtra("optionD_list", optionD_list);
+                            mv.putStringArrayListExtra("examType_list", examType_list);
+                            mv.putStringArrayListExtra("examYear_list", examYear_list);
                             mv.putStringArrayListExtra("correct_option_list", correct_option_list);
                             mv.putExtra("counter", counter);
                             mv.putExtra("category", Text);
                             mv.putExtra("question", questio);
                             mv.putExtra("score", score);
+                            mv.putExtra("From", From);
                             mv.putExtra("timer", timeCount.getText().toString());
                             startActivity(mv);
                         }
@@ -348,11 +377,14 @@ public class Question1 extends AppCompatActivity {
                             mv.putStringArrayListExtra("optionB_list", optionB_list);
                             mv.putStringArrayListExtra("optionC_list", optionC_list);
                             mv.putStringArrayListExtra("optionD_list", optionD_list);
+                            mv.putStringArrayListExtra("examType_list", examType_list);
+                            mv.putStringArrayListExtra("examYear_list", examYear_list);
                             mv.putStringArrayListExtra("correct_option_list", correct_option_list);
                             mv.putExtra("counter", counter);
                             mv.putExtra("category", Text);
                             mv.putExtra("question", questio);
                             mv.putExtra("score", score);
+                            mv.putExtra("From", From);
                             mv.putExtra("timer", timeCount.getText().toString());
                             startActivity(mv);
                         }
@@ -386,11 +418,14 @@ public class Question1 extends AppCompatActivity {
                             mv.putStringArrayListExtra("optionB_list", optionB_list);
                             mv.putStringArrayListExtra("optionC_list", optionC_list);
                             mv.putStringArrayListExtra("optionD_list", optionD_list);
+                            mv.putStringArrayListExtra("examType_list", examType_list);
+                            mv.putStringArrayListExtra("examYear_list", examYear_list);
                             mv.putStringArrayListExtra("correct_option_list", correct_option_list);
                             mv.putExtra("counter", counter);
                             mv.putExtra("category", Text);
                             mv.putExtra("question", questio);
                             mv.putExtra("score", score);
+                            mv.putExtra("From", From);
                             mv.putExtra("timer", timeCount.getText().toString());
                             startActivity(mv);
                         }
@@ -424,11 +459,14 @@ public class Question1 extends AppCompatActivity {
                             mv.putStringArrayListExtra("optionB_list", optionB_list);
                             mv.putStringArrayListExtra("optionC_list", optionC_list);
                             mv.putStringArrayListExtra("optionD_list", optionD_list);
+                            mv.putStringArrayListExtra("examType_list", examType_list);
+                            mv.putStringArrayListExtra("examYear_list", examYear_list);
                             mv.putStringArrayListExtra("correct_option_list", correct_option_list);
                             mv.putExtra("counter", counter);
                             mv.putExtra("category", Text);
                             mv.putExtra("question", questio);
                             mv.putExtra("score", score);
+                            mv.putExtra("From", From);
                             mv.putExtra("timer", timeCount.getText().toString());
                             startActivity(mv);
                         }

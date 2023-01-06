@@ -78,10 +78,9 @@
                             android:layout_height="wrap_content"
                             android:text="Exam"
                             android:textColor="#ffffff"
-                            android:textSize="15dp"
+                            android:textSize="13dp"
                             android:textStyle="bold" />
                     </LinearLayout>
-
 
                     <LinearLayout
                         android:id="@+id/test"
@@ -106,10 +105,9 @@
                             android:layout_height="wrap_content"
                             android:text="Tests"
                             android:textColor="#ffffff"
-                            android:textSize="15dp"
+                            android:textSize="13dp"
                             android:textStyle="bold" />
                     </LinearLayout>
-
 
                     <LinearLayout
                         android:layout_width="110dp"
@@ -135,7 +133,7 @@
                             android:layout_height="wrap_content"
                             android:text="Assignments"
                             android:textColor="#ffffff"
-                            android:textSize="15dp"
+                            android:textSize="13dp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -145,7 +143,7 @@
                         android:layout_height="150dp"
                         android:background="@drawable/tm15"
                         android:backgroundTint="#b2b2b2"
-                        android:backgroundTintMode="src_over"
+                        android:backgroundTintMode="multiply"
                         android:gravity="center_vertical"
                         android:orientation="vertical"
                         android:paddingLeft="10dp">
@@ -163,13 +161,70 @@
                             android:layout_height="wrap_content"
                             android:text="Others"
                             android:textColor="#ffffff"
-                            android:textSize="15dp"
+                            android:textSize="13dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tutorials"
+                        android:layout_width="110dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/tm14"
+                        android:backgroundTint="#b2b2b2"
+                        android:backgroundTintMode="multiply"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/countTutorials"
+                            android:text="0 tasks"
+                            android:textColor="#ffffff"
+                            android:textSize="10dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tutorials"
+                            android:textColor="#ffffff"
+                            android:textSize="13dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/gigs"
+                        android:layout_width="110dp"
+                        android:layout_height="150dp"
+                        android:layout_marginRight="20dp"
+                        android:backgroundTint="#b25e"
+                        android:backgroundTintMode="add"
+                        android:background="@drawable/tm13"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/countGig"
+                            android:text="0 tasks"
+                            android:textColor="#ffffff"
+                            android:textSize="10dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Gigs"
+                            android:textColor="#ffffff"
+                            android:textSize="13dp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
                 </LinearLayout>
-
-
 
             </HorizontalScrollView>
 

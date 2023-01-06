@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#293241"
+    android:id="@+id/frame_taskManager"
     android:orientation="vertical"
     tools:context=".TaskManagerClick">
 

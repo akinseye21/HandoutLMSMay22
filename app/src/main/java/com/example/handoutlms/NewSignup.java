@@ -3,10 +3,12 @@ package com.example.handoutlms;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -21,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -34,12 +37,21 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Logger;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
 
 public class NewSignup extends AppCompatActivity {
 
@@ -52,13 +64,16 @@ public class NewSignup extends AppCompatActivity {
 
     ProgressBar progressBar;
     Button signup;
+    Dialog myDialog;
 
     SharedPreferences preferences;
 
-    public static final String SIGNUP = "https://handout.com.ng/handouts/handout_registration";
+    public static final String SIGNUP = "https://handoutng.com/handouts/handout_registration";
 
     FirebaseAuth auth;
     DatabaseReference reference;
+
+//    OkHttpClient client = new OkHttpClient();
 
 
     @Override
@@ -141,48 +156,67 @@ public class NewSignup extends AppCompatActivity {
                                 }else{
                                     if(pass.length()>=6){
 
+                                        myDialog = new Dialog(NewSignup.this);
+                                        myDialog.setContentView(R.layout.custom_popup_signing_up_loading);
+                                        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                        myDialog.setCanceledOnTouchOutside(false);
+                                        myDialog.show();
 
-                                        progressBar.setVisibility(View.VISIBLE);
 
-                                        //if fields are not empty and are valid,
-                                        //pass details to DB
                                         StringRequest stringRequest = new StringRequest(Request.Method.POST, SIGNUP,
                                                 new Response.Listener<String>() {
                                                     @Override
                                                     public void onResponse(String response) {
-                                                        progressBar.setVisibility(View.GONE);
 
-                                                        System.out.println("Response = "+response);
+                                                        System.out.println("Signup Response = "+response);
+
                                                         try{
                                                             JSONObject jsonObject = new JSONObject(response);
 
-                                                            String signed_name = jsonObject.getString("fullname");
                                                             String status = jsonObject.getString("status");
-
                                                             if(status.equals("successful")){
 
                                                                 Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_LONG).show();
-
+//
                                                                 myEdit.putString( "email", e_mail);
-                                                                myEdit.putString("fullname", signed_name);
+                                                                myEdit.putString("fullname", name);
 //                                                                myEdit.putString("pics", pics);
                                                                 myEdit.putString("password", pass);
                                                                 myEdit.commit();
 
+                                                                myDialog.dismiss();
+
                                                                 Intent i = new Intent(getApplicationContext(), WelcomePage.class);
-                                                                i.putExtra("fullname", signed_name);
+                                                                i.putExtra("fullname", name);
                                                                 i.putExtra("email", e_mail);
                                                                 i.putExtra("phone", phone);
                                                                 i.putExtra("password", pass);
                                                                 i.putExtra("school", school);
                                                                 startActivity(i);
 
+
                                                             }else{
-                                                                Toast.makeText(getApplicationContext(), "Signup failed. Please try again", Toast.LENGTH_LONG).show();
+                                                                myDialog.dismiss();
+                                                                Toast.makeText(NewSignup.this, "Signup failed, please try again", Toast.LENGTH_SHORT).show();
                                                             }
+
+
                                                         }
                                                         catch (JSONException e){
                                                             e.printStackTrace();
+                                                            myDialog.dismiss();
+
+                                                            try {
+                                                                JSONArray jsonArray = new JSONArray(response);
+                                                                JSONObject jsonObject = jsonArray.getJSONObject(0);
+                                                                String status = jsonObject.getString("status");
+                                                                if(status.equals("User email exists")){
+                                                                    Toast.makeText(NewSignup.this, "Signup failed. User email already exist", Toast.LENGTH_LONG).show();
+                                                                }
+                                                            } catch (JSONException ex) {
+                                                                ex.printStackTrace();
+                                                            }
+
                                                         }
 
                                                     }
@@ -190,13 +224,11 @@ public class NewSignup extends AppCompatActivity {
                                                 new Response.ErrorListener() {
                                                     @Override
                                                     public void onErrorResponse(VolleyError volleyError) {
-
+                                                        myDialog.dismiss();
                                                         if(volleyError == null){
                                                             return;
                                                         }
-
-                                                        progressBar.setVisibility(View.GONE);
-                                                        System.out.println("Error = "+volleyError.getMessage());
+                                                        System.out.println("Error = "+volleyError.getCause());
                                                     }
                                                 }){
                                             @Override
@@ -210,7 +242,10 @@ public class NewSignup extends AppCompatActivity {
                                                 return params;
                                             }
                                         };
-                                        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext().getApplicationContext());
+
+                                        RequestQueue requestQueue = Volley.newRequestQueue(NewSignup.this);
+                                        DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                                        stringRequest.setRetryPolicy(retryPolicy);
                                         requestQueue.add(stringRequest);
 
 
@@ -229,4 +264,19 @@ public class NewSignup extends AppCompatActivity {
             }
         });
     }
+
+//    private void postElement() {
+//
+//        final RequestBody formBody = new FormBody.Builder()
+//                .add("username", "test")
+//                .add("password", "test").build();
+//
+//        okhttp3.Request.Builder builder = new Request.Builder();
+//                .url(SIGNUP + "/users")
+//                .post(formBody).build();
+//
+//        final Call call = client.newCall(request);
+//        final Response response = call.execute();
+//        System.out.println(response);
+//    }
 }

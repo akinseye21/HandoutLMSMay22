@@ -17,7 +17,7 @@ public class NotificationGenerator {
         NotificationCompat.Builder nc = new NotificationCompat.Builder(context);
         NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        Intent notifyIntent = new Intent(context, AlmostDone.class);
+        Intent notifyIntent = new Intent(context, AlmostDoneOnline.class);
         notifyIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);

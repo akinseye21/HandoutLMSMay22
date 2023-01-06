@@ -52,7 +52,7 @@
                             android:layout_marginLeft="5dp"
                             android:id="@+id/name"
                             android:text="Ada Kayari"
-                            android:textSize="12dp"
+                            android:textSize="13dp"
                             android:textStyle="bold"
                             android:textColor="#ffffff"/>
                     <TextView
@@ -90,7 +90,7 @@
                     android:layout_marginLeft="25dp"
                     android:layout_marginTop="20dp"
                     android:text="Project Name"
-                    android:textSize="8dp"
+                    android:textSize="10dp"
                     android:textStyle="bold"
                     android:textColor="#4bc93c"/>
 
@@ -109,7 +109,7 @@
                         android:layout_marginLeft="5dp"
                         android:id="@+id/gig_name"
                         android:text="Website Design"
-                        android:textSize="12dp"
+                        android:textSize="13dp"
                         android:textStyle="bold"
                         android:textColor="#ffffff"/>
 
@@ -134,7 +134,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="25dp"
                     android:text="Project Description"
-                    android:textSize="8dp"
+                    android:textSize="10dp"
                     android:textStyle="bold"
                     android:textColor="#4bc93c"/>
 
@@ -153,7 +153,7 @@
                         android:layout_marginLeft="5dp"
                         android:id="@+id/gig_description"
                         android:text="Lorium ipsium, the description of the project will be displayed here. hahi jeie hiy qi hish s   iw eh ihi whoefhi w iwhe he hihwe wiuf wu ei h ueukw"
-                        android:textSize="8dp"
+                        android:textSize="13dp"
                         android:textStyle="normal"
                         android:textColor="#ffffff"/>
 
@@ -165,7 +165,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="25dp"
                     android:text="Payment structure"
-                    android:textSize="8dp"
+                    android:textSize="10dp"
                     android:textStyle="bold"
                     android:textColor="#4bc93c"/>
 
@@ -189,7 +189,7 @@
                             android:layout_marginLeft="5dp"
                             android:id="@+id/gig_category"
                             android:text="$1,000 - $1,500"
-                            android:textSize="10dp"
+                            android:textSize="13dp"
                             android:textStyle="bold"
                             android:textColor="#ffffff"/>
 <!--                    <TextView-->
@@ -277,7 +277,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Please kindly upload your curriculum vitae in PDF format ONLY"
-                        android:textSize="8dp"
+                        android:textSize="10dp"
                         android:paddingLeft="10dp"
                         android:textColor="#ffffff"/>
 

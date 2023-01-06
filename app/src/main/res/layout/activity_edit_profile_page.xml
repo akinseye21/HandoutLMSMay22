@@ -63,7 +63,6 @@
                     android:id="@+id/username"
                         android:text="XX"
                         android:textColor="#ffffff"
-                        android:textSize="10dp"
                         android:layout_marginTop="5dp"/>
             </LinearLayout>
 
@@ -127,8 +126,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="25dp"
                         android:text=""
-                        android:textColor="#ffffff"
-                        android:textSize="10dp" />
+                        android:textColor="#ffffff" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -169,8 +167,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="25dp"
                         android:text=""
-                        android:textColor="#ffffff"
-                        android:textSize="10dp" />
+                        android:textColor="#ffffff" />
 
                 </RelativeLayout>
 
@@ -191,8 +188,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="25dp"
                         android:text=""
-                        android:textColor="#ffffff"
-                        android:textSize="10dp" />
+                        android:textColor="#ffffff" />
 
                 </RelativeLayout>
 
@@ -212,8 +208,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="25dp"
                         android:text=""
-                        android:textColor="#ffffff"
-                        android:textSize="10dp" />
+                        android:textColor="#ffffff" />
 
                 </RelativeLayout>
 
@@ -233,8 +228,7 @@
                         android:text=""
                         android:textColor="#ffffff"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="25dp"
-                        android:textSize="10dp"/>
+                        android:layout_marginLeft="25dp"/>
 
                 </RelativeLayout>
 
@@ -255,8 +249,7 @@
                         android:text=""
                         android:textColor="#ffffff"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="25dp"
-                        android:textSize="10dp"/>
+                        android:layout_marginLeft="25dp"/>
 
                 </RelativeLayout>
 
@@ -301,14 +294,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp">
+
                     <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:src="@drawable/home_ic4"
-                            android:onClick="AddEducation"
-                            android:tint="#ffffff"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginRight="100dp"/>
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="100dp"
+                        android:onClick="AddEducation"
+                        android:src="@drawable/home_ic4"
+                        app:tint="#ffffff" />
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

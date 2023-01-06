@@ -24,13 +24,19 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class FeedsDashboard extends AppCompatActivity implements
         FeedDashboardHome.OnFragmentInteractionListener,
         FeedDashboardMessages.OnFragmentInteractionListener,
+        ChatPage2.OnFragmentInteractionListener,
         FeedDashboardTaskManager.OnFragmentInteractionListener,
         FeedDashboardNotification.OnFragmentInteractionListener,
         FeedDashboardProfie.OnFragmentInteractionListener,
@@ -54,6 +60,9 @@ public class FeedsDashboard extends AppCompatActivity implements
     ImageView plus;
     String email, sent_from;
 
+    private FirebaseAuth mAuth;
+    FirebaseUser firebaseUser;
+
     private static final int NOTIFICATION_PERMISSION_CODE = 123;
 
 
@@ -69,7 +78,8 @@ public class FeedsDashboard extends AppCompatActivity implements
         email = j.getStringExtra("email");
         sent_from = j.getStringExtra("sent from");  //either "Login" or "Register"
 
-
+        mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
 
         Bundle args2 = new Bundle();
         args2.putString("email", email);
@@ -193,7 +203,7 @@ public class FeedsDashboard extends AppCompatActivity implements
     private void addTabs(ViewPager viewPager) {
         FeedsDashboard.ViewPagerAdapter adapter = new FeedsDashboard.ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new FeedDashboardHome(), "Home");
-        adapter.addFrag(new FeedDashboardMessages(), "Message");
+        adapter.addFrag(new ChatPage2(), "Message");
         adapter.addFrag(new TaskManager1(), "Task Manager");
         adapter.addFrag(new FeedDashboardNotification(), "Notification");
         adapter.addFrag(new Profile2(), "Profile");
@@ -246,5 +256,25 @@ public class FeedsDashboard extends AppCompatActivity implements
     }
     public String getSignupEmail(){
         return email;
+    }
+
+    private void status(String status){
+        DatabaseReference reference = FirebaseDatabase.getInstance("https://handout-lms-default-rtdb.firebaseio.com/").getReference("Users").child(firebaseUser.getUid());
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("status", status);
+
+        reference.updateChildren(hashMap);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        status("online");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        status("offline");
     }
 }

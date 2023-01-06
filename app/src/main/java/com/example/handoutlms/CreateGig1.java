@@ -57,8 +57,7 @@ public class CreateGig1 extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), AddOptions.class);
-                startActivity(i);
+                onBackPressed();
             }
         });
 
@@ -110,9 +109,5 @@ public class CreateGig1 extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    public void onBackPressed() {
-        // do nothing
-    }
+    
 }

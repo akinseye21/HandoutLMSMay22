@@ -25,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONArray;
@@ -36,6 +37,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ProfileOthers extends AppCompatActivity implements
         tutorial_on_profile.OnFragmentInteractionListener,
         Games.OnFragmentInteractionListener,
@@ -45,14 +48,15 @@ public class ProfileOthers extends AppCompatActivity implements
     ViewPager viewPager;
     LinearLayout lintut, linpost, lingame, lingig, con;
     TextView email, username, dept, school, location, date, connect_txt;
-    String got_fullname, got_dept, got_institution, got_dob, connected;
+    String got_fullname, got_dept, got_institution, got_dob, connected, got_pics;
     String myEmail;
+    CircleImageView pp;
     SharedPreferences preferences;
     String got_email;
     ImageView back;
 
-    public static final String USER_PROFILE = "http://handout.com.ng/handouts/handout_get_other_users";
-    public static final String CONNECT_USER = "http://handout.com.ng/handouts/handout_connect_users";
+    public static final String USER_PROFILE = "http://handoutng.com/handouts/handout_get_other_users";
+    public static final String CONNECT_USER = "http://handoutng.com/handouts/handout_connect_users";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +89,7 @@ public class ProfileOthers extends AppCompatActivity implements
         lingig = findViewById(R.id.lingig);
 
 
+        pp = findViewById(R.id.pp);
         email = findViewById(R.id.email);
         username = findViewById(R.id.user_name);
         dept = findViewById(R.id.department);
@@ -178,6 +183,7 @@ public class ProfileOthers extends AppCompatActivity implements
                             got_institution = profile.getString("institution");
 //                            got_faculty = profile.getString("faculty");
                             got_dept = profile.getString("department");
+                            got_pics = profile.getString("picture");
                             connected = profile.getString("connected");
 
                             email.setText(got_email);
@@ -190,6 +196,13 @@ public class ProfileOthers extends AppCompatActivity implements
                                 connect_txt.setText("Connected");
                                 connect_txt.setTextColor(Color.WHITE);
                                 connect_txt.setBackgroundResource(R.drawable.rounded_white_transparent_100);
+                            }
+
+                            if (got_pics.equals("")){
+                                //do nothing
+                            }else{
+                                System.out.println("Image link = "+got_pics);
+                                Glide.with(getApplicationContext()).load(got_pics).into(pp);
                             }
 
                         }
@@ -263,7 +276,7 @@ public class ProfileOthers extends AppCompatActivity implements
 
     private void addTabs(ViewPager viewPager) {
         Profile2.ViewPagerAdapter adapter = new Profile2.ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new tutorial_on_profile(), "");
+        adapter.addFrag(new tutorial_on_profile_others(), "");
         adapter.addFrag(new Games(), "");
         adapter.addFrag(new gig_on_profile(), "");
         viewPager.setAdapter(adapter);

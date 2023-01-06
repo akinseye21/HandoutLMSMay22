@@ -54,7 +54,7 @@ public class FeedDashboardNotification extends Fragment {
     ArrayList<String> arr_message = new ArrayList<>();
     ArrayList<String> arr_status = new ArrayList<>();
 
-    public static final String USER_PROFILE = "https://handout.com.ng/handouts/handout_get_user_profile";
+    public static final String USER_PROFILE = "https://handoutng.com/handouts/handout_get_user_profile";
 
     private OnFragmentInteractionListener mListener;
 

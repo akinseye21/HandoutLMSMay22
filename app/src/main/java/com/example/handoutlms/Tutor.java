@@ -53,6 +53,7 @@ public class Tutor extends Fragment {
     //array for tutors
     final ArrayList<String> Array_tutorName = new ArrayList<>();
     final ArrayList<String> Array_tutorFaculty = new ArrayList<>();
+    final ArrayList<String> Array_tutorEmail = new ArrayList<>();
     int ArrayLength, ArrayLength2;
 
     final ArrayList<String> Array_groupName = new ArrayList<>();
@@ -64,8 +65,8 @@ public class Tutor extends Fragment {
     TutorListViewAdapter tutorListViewAdapter;
     GroupListViewAdapter groupListViewAdapter;
 
-    public static final String ALL_TUTORS = "https://handout.com.ng/handouts/handout_get_tutors";
-    public static final String ALL_GROUPS = "https://handout.com.ng/handouts/handout_get_all_tutorials";
+    public static final String ALL_TUTORS = "https://handoutng.com/handouts/handout_get_tutors";
+    public static final String ALL_GROUPS = "https://handoutng.com/handouts/handout_get_all_tutorials";
 
     public Tutor() {
         // Required empty public constructor
@@ -127,14 +128,16 @@ public class Tutor extends Fragment {
                             for (int i = 0; i < ArrayLength; i++) {
                                 JSONObject section = jsonArray.getJSONObject(i);
                                 String tutorName = section.getString("fullname");
-                                String tutorFaculty = section.getString("faculty");
+                                String tutorInstitution = section.getString("institution");
+                                String tutorEmail = section.getString("email");
 
                                 Array_tutorName.add(tutorName);
-                                Array_tutorFaculty.add(tutorFaculty);
+                                Array_tutorFaculty.add(tutorInstitution);
+                                Array_tutorEmail.add(tutorEmail);
                             }
 
                             //populate values on the gridview
-                            tutorListViewAdapter = new TutorListViewAdapter(getActivity(), Array_tutorName, Array_tutorFaculty);
+                            tutorListViewAdapter = new TutorListViewAdapter(getActivity(), Array_tutorName, Array_tutorFaculty, Array_tutorEmail);
                             gridView.setAdapter(tutorListViewAdapter);
 
 

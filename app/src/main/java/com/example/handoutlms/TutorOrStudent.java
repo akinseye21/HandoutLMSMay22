@@ -34,7 +34,7 @@ public class TutorOrStudent extends AppCompatActivity {
     String sent_from = "Register";
 
 
-    public static final String UPDATE = "http://handout.com.ng/handouts/handout_usertype";
+    public static final String UPDATE = "http://handoutng.com/handouts/handout_usertype";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

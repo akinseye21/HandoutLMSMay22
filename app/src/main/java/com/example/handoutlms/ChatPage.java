@@ -139,55 +139,6 @@ public class    ChatPage extends AppCompatActivity implements
         }
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.chat_menu, menu);
-//        return true;
-//    }
-
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//
-//        int id = item.getItemId();
-//
-//        switch (id){
-////            case R.id.search:
-//                //open search box
-//            case R.id.logout:
-//                //logout
-//                //show popup to ask to leave chat!
-//                Dialog myDialog;
-//                myDialog = new Dialog(ChatPage.this);
-//                myDialog.setContentView(R.layout.custom_popup_exit_chat);
-//                // Setting dialogview
-//                Window window = myDialog.getWindow();
-//                window.setGravity(Gravity.CENTER);
-//                Button yes = myDialog.findViewById(R.id.yes);
-//                Button no = myDialog.findViewById(R.id.no);
-//                yes.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        FirebaseAuth.getInstance().signOut();
-//                        startActivity(new Intent(ChatPage.this, FeedsDashboard.class));
-//                    }
-//                });
-//                no.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        myDialog.dismiss();
-//                    }
-//                });
-//                myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                myDialog.setCanceledOnTouchOutside(true);
-//                myDialog.show();
-//
-//
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-
-
     private void status(String status){
         DatabaseReference reference = FirebaseDatabase.getInstance("https://handout-lms-default-rtdb.firebaseio.com/").getReference("Users").child(firebaseUser.getUid());
         HashMap<String, Object> hashMap = new HashMap<>();

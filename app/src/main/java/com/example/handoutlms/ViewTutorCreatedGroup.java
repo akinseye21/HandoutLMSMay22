@@ -2,7 +2,9 @@ package com.example.handoutlms;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -30,15 +32,20 @@ public class ViewTutorCreatedGroup extends AppCompatActivity {
     String name, category, description, mode, g_id;
     ImageView img, back;
     LinearLayout audio, video, pdf, quiz, address, task, viewResources;
-    View view1, view2, view3, view4, view5;
+//    View view1, view2, view3, view4, view5;
+SharedPreferences preferences;
+    String got_email;
 
-    public static final String ALL_TUTORIAL = "https://handout.com.ng/handouts/handout_get_all_tutorials";
+    public static final String ALL_TUTORIAL = "https://handoutng.com/handouts/handout_get_all_tutorials";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_tutor_created_group);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        preferences = getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
+        got_email = preferences.getString("email", "not available");
 
         Intent i = getIntent();
         name = i.getStringExtra("name");
@@ -59,11 +66,11 @@ public class ViewTutorCreatedGroup extends AppCompatActivity {
         address = findViewById(R.id.location);
 //        task = findViewById(R.id.addTask);
 
-        view1 = findViewById(R.id.view1);
-        view2 = findViewById(R.id.view2);
-        view3 = findViewById(R.id.view3);
-        view4 = findViewById(R.id.view4);
-        view5 = findViewById(R.id.view5);
+//        view1 = findViewById(R.id.view1);
+//        view2 = findViewById(R.id.view2);
+//        view3 = findViewById(R.id.view3);
+//        view4 = findViewById(R.id.view4);
+//        view5 = findViewById(R.id.view5);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +84,19 @@ public class ViewTutorCreatedGroup extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(ViewTutorCreatedGroup.this, ViewGroupResources.class);
                 i.putExtra("name", name);
+                startActivity(i);
+            }
+        });
+
+        video.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                name = "video";
+
+                Intent i = new Intent(ViewTutorCreatedGroup.this, VideoLinks.class);
+                i.putExtra("name", name);
+                i.putExtra("email", got_email);
+                i.putExtra("group_name", name);
                 startActivity(i);
             }
         });
@@ -111,9 +131,9 @@ public class ViewTutorCreatedGroup extends AppCompatActivity {
                                         else if(mode.equals("offline")){
                                             img.setImageResource(R.drawable.ic127);
                                             audio.setVisibility(View.GONE);
-                                            view1.setVisibility(View.GONE);
+//                                            view1.setVisibility(View.GONE);
                                             address.setVisibility(View.VISIBLE);
-                                            view5.setVisibility(View.VISIBLE);
+//                                            view5.setVisibility(View.VISIBLE);
                                         }
                                     }
 

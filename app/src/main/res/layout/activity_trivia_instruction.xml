@@ -24,105 +24,114 @@
 
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#ffffff"
-        android:text="Trivia\nInstruction"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="20dp"
-        android:textSize="30dp"/>
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center_vertical"
-        android:id="@+id/lin1">
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/imgicon"
-            android:src="@drawable/triviasoccer"/>
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/category"
-            android:text="Soccer"
             android:textColor="#ffffff"
-            android:textSize="15dp"
-            android:textStyle="bold"/>
+            android:text="Trivia\nInstruction"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="30dp"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#ffffff"
-            android:layout_marginLeft="5dp"/>
 
-    </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <RelativeLayout
-                android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:id="@+id/lin1">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/imgicon"
+                android:src="@drawable/ic63"/>
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/lin1"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="50dp">
+                android:id="@+id/category"
+                android:text="Soccer"
+                android:textColor="#ffffff"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
 
-                <ImageView
-                    android:layout_width="300dp"
-                    android:layout_height="300dp"
-                    android:src="@drawable/triviainstructor"
-                    android:layout_centerHorizontal="true"
-                    android:id="@+id/instructor"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Welcome!\nYou will be presented with 10 random questions\nfrom the selected category. You will also\nhave to answer all 10 questions in 5 minutes.\nGood luck!"
-                    android:textColor="#ffffff"
-                    android:layout_below="@+id/instructor"
-                    android:gravity="center"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerInParent="true"
-                    android:layout_centerVertical="true"
-                    android:id="@+id/tv"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:text="LET THE GAME BEGIN"
-                    android:layout_below="@+id/tv"
-                    android:textColor="#ffffff"
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    android:background="@drawable/rounded_yellow"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_centerHorizontal="true"
-                    android:id="@+id/begin"/>
-            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ffffff"
+                android:layout_marginLeft="5dp"/>
 
         </LinearLayout>
-    </ScrollView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lin1"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="50dp">
+
+                    <ImageView
+                        android:layout_width="300dp"
+                        android:layout_height="300dp"
+                        android:src="@drawable/triviainstructor"
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/instructor"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Welcome!\nYou will be presented with 10 random questions\nfrom the selected category. You will also\nhave to answer all 10 questions in 5 minutes.\nGood luck!"
+                        android:textColor="#ffffff"
+                        android:layout_below="@+id/instructor"
+                        android:gravity="center"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/tv"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:text="LET THE GAME BEGIN"
+                        android:layout_below="@+id/tv"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:background="@drawable/rounded_yellow"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/begin"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+
 
 
 

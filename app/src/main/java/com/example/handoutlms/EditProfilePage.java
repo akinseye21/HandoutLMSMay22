@@ -70,10 +70,10 @@ public class EditProfilePage extends AppCompatActivity {
     ArrayList<String> arr_jobyear = new ArrayList<>();
 
     String[] gender = {"Choose Gender...","","Male","Female"};
-    public static final String GET_USER_PROFILE = "https://handout.com.ng/handouts/handout_get_user_profile";
-    public static final String UPDATE_PERSONAL_USER_INFO = "https://handout.com.ng/handouts/handout_update_user_info";
-    public static final String ADD_EDUCATION = "https://handout.com.ng/handouts/handout_add_education";
-    public static final String ADD_EXPERIENCE = "https://handout.com.ng/handouts/handout_add_work_experience";
+    public static final String GET_USER_PROFILE = "https://handoutng.com/handouts/handout_get_user_profile";
+    public static final String UPDATE_PERSONAL_USER_INFO = "https://handoutng.com/handouts/handout_update_user_info";
+    public static final String ADD_EDUCATION = "https://handoutng.com/handouts/handout_add_education";
+    public static final String ADD_EXPERIENCE = "https://handoutng.com/handouts/handout_add_work_experience";
 
 
 

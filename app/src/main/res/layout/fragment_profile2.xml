@@ -36,6 +36,7 @@
            android:layout_marginLeft="20dp"
            android:ellipsize="end"
            android:maxLength="18"
+           android:visibility="gone"
            android:text=""
            android:textColor="#ffffff"
            android:textSize="8dp"
@@ -60,8 +61,7 @@
                    android:id="@+id/user_name"
                    android:text=""
                    android:textColor="#ffffff"
-                   android:textStyle="bold"
-                   android:textSize="12dp"/>
+                   android:textStyle="bold"/>
            </LinearLayout>
            <TextView
                android:layout_width="wrap_content"
@@ -109,199 +109,177 @@
        </LinearLayout>
 
        <RelativeLayout
+           android:id="@+id/myrel"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_below="@+id/prof"
-           android:id="@+id/myrel"
-           android:layout_margin="10dp">
-<!--           <LinearLayout-->
-<!--               android:layout_width="wrap_content"-->
-<!--               android:layout_height="wrap_content"-->
-<!--               android:gravity="center_vertical"-->
-<!--               android:layout_centerVertical="true"-->
-<!--               android:orientation="horizontal">-->
-<!--               <ImageView-->
-<!--                   android:layout_width="10dp"-->
-<!--                   android:layout_height="10dp"-->
-<!--                   android:src="@drawable/ic91" />-->
-<!--               <TextView-->
-<!--                   android:layout_width="wrap_content"-->
-<!--                   android:layout_height="wrap_content"-->
-<!--                   android:id="@+id/location"-->
-<!--                   android:text="N/A"-->
-<!--                   android:textColor="#ffffff"-->
-<!--                   android:textStyle="bold"-->
-<!--                   android:textSize="10dp"-->
-<!--                   android:paddingLeft="2dp"/>-->
-<!--           </LinearLayout>-->
+           android:layout_marginStart="10dp"
+           android:layout_marginTop="10dp"
+           android:layout_marginEnd="10dp"
+           android:layout_marginBottom="10dp">
+           <!--           <LinearLayout-->
+           <!--               android:layout_width="wrap_content"-->
+           <!--               android:layout_height="wrap_content"-->
+           <!--               android:gravity="center_vertical"-->
+           <!--               android:layout_centerVertical="true"-->
+           <!--               android:orientation="horizontal">-->
+           <!--               <ImageView-->
+           <!--                   android:layout_width="10dp"-->
+           <!--                   android:layout_height="10dp"-->
+           <!--                   android:src="@drawable/ic91" />-->
+           <!--               <TextView-->
+           <!--                   android:layout_width="wrap_content"-->
+           <!--                   android:layout_height="wrap_content"-->
+           <!--                   android:id="@+id/location"-->
+           <!--                   android:text="N/A"-->
+           <!--                   android:textColor="#ffffff"-->
+           <!--                   android:textStyle="bold"-->
+           <!--                   android:textSize="10dp"-->
+           <!--                   android:paddingLeft="2dp"/>-->
+           <!--           </LinearLayout>-->
 
 
            <LinearLayout
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:gravity="center_vertical"
-               android:visibility="invisible"
-                   android:layout_alignParentLeft="true"
+               android:layout_alignParentLeft="true"
                android:layout_centerVertical="true"
-               android:orientation="horizontal">
+               android:gravity="center_vertical"
+               android:orientation="horizontal"
+               android:visibility="invisible">
+
                <ImageView
                    android:layout_width="10dp"
                    android:layout_height="10dp"
                    android:src="@drawable/ic93" />
+
                <TextView
+                   android:id="@+id/date"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:id="@+id/date"
+                   android:paddingLeft="2dp"
                    android:text=""
                    android:textColor="#ffffff"
-                   android:textStyle="bold"
                    android:textSize="10dp"
-                   android:paddingLeft="2dp"/>
+                   android:textStyle="bold" />
            </LinearLayout>
 
 
            <LinearLayout
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:gravity="center_vertical"
-               android:visibility="invisible"
                android:layout_centerInParent="true"
                android:layout_centerVertical="true"
-               android:orientation="horizontal">
+               android:gravity="center_vertical"
+               android:orientation="horizontal"
+               android:visibility="invisible">
+
                <TextView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:paddingRight="5dp"
                    android:text="Connect"
                    android:textColor="#ffffff"
-                   android:textStyle="bold|italic"
-                   android:textSize="12dp"/>
+                   android:textSize="12dp"
+                   android:textStyle="bold|italic" />
+
                <TextView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
+                   android:background="@drawable/rounded_white_transparent_100"
+                   android:padding="2dp"
                    android:text="0"
                    android:textColor="#ffffff"
-                   android:textStyle="bold"
                    android:textSize="12dp"
-                   android:background="@drawable/rounded_white_transparent_100"
-                   android:padding="2dp"/>
+                   android:textStyle="bold" />
            </LinearLayout>
        </RelativeLayout>
 
        <LinearLayout
+           android:id="@+id/lincat"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:orientation="horizontal"
+           android:layout_below="@+id/myrel"
            android:gravity="left"
-           android:id="@+id/lincat"
-           android:layout_below="@+id/myrel">
+           android:orientation="horizontal">
+
            <LinearLayout
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:orientation="vertical"
                android:layout_marginLeft="5dp"
-               android:layout_marginRight="5dp">
+               android:layout_marginRight="5dp"
+               android:orientation="vertical">
+
                <LinearLayout
                    android:layout_width="80dp"
                    android:layout_height="20dp"
-                   android:gravity="center"
-                   android:background="@drawable/rounded_pink2">
+                   android:background="@drawable/rounded_pink2"
+                   android:gravity="center">
+
                    <TextView
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:text="Tutorials"
-                       android:textSize="10dp"
-                       android:paddingRight="5dp"
                        android:paddingLeft="5dp"
-                       android:textColor="#ffffff"/>
+                       android:paddingRight="5dp"
+                       android:text="Tutorials"
+                       android:textColor="#ffffff"
+                       android:textSize="10dp" />
                </LinearLayout>
-
-
 
 
            </LinearLayout>
 
 
 
-<!--           <LinearLayout-->
-<!--               android:layout_width="wrap_content"-->
-<!--               android:layout_height="wrap_content"-->
-<!--               android:orientation="vertical"-->
-<!--               android:layout_marginLeft="5dp"-->
-<!--               android:layout_marginRight="5dp">-->
-<!--               <LinearLayout-->
-<!--                   android:layout_width="80dp"-->
-<!--                   android:layout_height="20dp"-->
-<!--                   android:gravity="center"-->
-<!--                   android:background="@drawable/rounded_blue2">-->
-<!--                   <TextView-->
-<!--                       android:layout_width="wrap_content"-->
-<!--                       android:layout_height="wrap_content"-->
-<!--                       android:text="Posts"-->
-<!--                       android:textSize="10dp"-->
-<!--                       android:paddingRight="5dp"-->
-<!--                       android:paddingLeft="5dp"-->
-<!--                       android:textColor="#ffffff"/>-->
-<!--               </LinearLayout>-->
-<!--               <LinearLayout-->
-<!--                   android:layout_width="80dp"-->
-<!--                   android:layout_height="3dp"-->
-<!--                   android:id="@+id/linpost"-->
-<!--                   android:visibility="gone"-->
-<!--                   android:background="#29aae3"/>-->
-<!--           </LinearLayout>-->
-
-
-
            <LinearLayout
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:orientation="vertical"
                android:layout_marginLeft="5dp"
-               android:layout_marginRight="5dp">
+               android:layout_marginRight="5dp"
+               android:orientation="vertical">
+
                <LinearLayout
                    android:layout_width="80dp"
                    android:layout_height="20dp"
-                   android:gravity="center"
-                   android:background="@drawable/rounded_yellow2">
+                   android:background="@drawable/rounded_yellow2"
+                   android:gravity="center">
+
                    <TextView
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
+                       android:paddingLeft="10dp"
+                       android:paddingRight="10dp"
                        android:text="Games"
-                       android:textSize="10dp"
-                       android:paddingRight="10dp"
-                       android:paddingLeft="10dp"
-                       android:textColor="#ffffff"/>
+                       android:textColor="#ffffff"
+                       android:textSize="10dp" />
                </LinearLayout>
-
-
 
 
            </LinearLayout>
 
 
-
            <LinearLayout
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:orientation="vertical"
                android:layout_marginLeft="5dp"
-               android:layout_marginRight="5dp">
+               android:layout_marginRight="5dp"
+               android:orientation="vertical">
+
                <LinearLayout
                    android:layout_width="80dp"
                    android:layout_height="20dp"
-                   android:gravity="center"
-                   android:background="@drawable/rounded_deep_green2">
+                   android:background="@drawable/rounded_deep_green2"
+                   android:gravity="center">
+
                    <TextView
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:text="Gigs"
-                       android:textSize="10dp"
-                       android:paddingRight="10dp"
                        android:paddingLeft="10dp"
-                       android:textColor="#ffffff"/>
+                       android:paddingRight="10dp"
+                       android:text="Gigs"
+                       android:textColor="#ffffff"
+                       android:textSize="10dp" />
                </LinearLayout>
-
 
 
            </LinearLayout>

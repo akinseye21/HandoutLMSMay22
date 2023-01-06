@@ -31,11 +31,12 @@ public class TriviaFail extends AppCompatActivity {
     ImageView play, replay, home;
     int counters;
     String timeCounting, category;
+    String From;
 
     String[] questio = new String[10];
     String[] score = new String[10];
 
-    public static final String RESULT_URL = "http://handout.com.ng/handouts/trivia/results";
+    public static final String RESULT_URL = "http://handoutng.com/handouts/trivia/results";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,7 @@ public class TriviaFail extends AppCompatActivity {
         category = intent.getStringExtra("category");
         questio = intent.getStringArrayExtra("question");
         score = intent.getStringArrayExtra("score");
+        From = intent.getStringExtra("From");
 
         //get sharedpreference
         SharedPreferences sp = getSharedPreferences("LoginDetails", MODE_PRIVATE);
@@ -70,41 +72,46 @@ public class TriviaFail extends AppCompatActivity {
 
 
         //set the imgicon
-        if(category.equals("Soccer")){
-            caticon.setImageResource(R.drawable.triviasoccer);
+        if(From.equals("normal")){
+            if(category.equals("Soccer")){
+                caticon.setImageResource(R.drawable.triviasoccer);
+            }
+            if(category.equals("Entertainment")){
+                caticon.setImageResource(R.drawable.triviaentertainment);
+            }
+            if(category.equals("Politics")){
+                caticon.setImageResource(R.drawable.triviapolitics);
+            }
+            if(category.equals("History")){
+                caticon.setImageResource(R.drawable.triviahistory);
+            }
+            if(category.equals("Maths")){
+                caticon.setImageResource(R.drawable.triviamath);
+            }
+            if(category.equals("English")){
+                caticon.setImageResource(R.drawable.triviaenglish);
+            }
+            if(category.equals("Logic")){
+                caticon.setImageResource(R.drawable.trivialogic);
+            }
+            if(category.equals("Physics")){
+                caticon.setImageResource(R.drawable.triviaphysics);
+            }
+            if(category.equals("Computer")){
+                caticon.setImageResource(R.drawable.triviacomputer);
+            }
+            if(category.equals("Movies")){
+                caticon.setImageResource(R.drawable.triviamovie);
+            }
+            if(category.equals("Animals")){
+                caticon.setImageResource(R.drawable.triviaanimals);
+            }
+            if(category.equals("Fashion")){
+                caticon.setImageResource(R.drawable.triviafashion);
+            }
         }
-        if(category.equals("Entertainment")){
-            caticon.setImageResource(R.drawable.triviaentertainment);
-        }
-        if(category.equals("Politics")){
-            caticon.setImageResource(R.drawable.triviapolitics);
-        }
-        if(category.equals("History")){
-            caticon.setImageResource(R.drawable.triviahistory);
-        }
-        if(category.equals("Maths")){
-            caticon.setImageResource(R.drawable.triviamath);
-        }
-        if(category.equals("English")){
-            caticon.setImageResource(R.drawable.triviaenglish);
-        }
-        if(category.equals("Logic")){
-            caticon.setImageResource(R.drawable.trivialogic);
-        }
-        if(category.equals("Physics")){
-            caticon.setImageResource(R.drawable.triviaphysics);
-        }
-        if(category.equals("Computer")){
-            caticon.setImageResource(R.drawable.triviacomputer);
-        }
-        if(category.equals("Movies")){
-            caticon.setImageResource(R.drawable.triviamovie);
-        }
-        if(category.equals("Animals")){
-            caticon.setImageResource(R.drawable.triviaanimals);
-        }
-        if(category.equals("Fashion")){
-            caticon.setImageResource(R.drawable.triviafashion);
+        else{
+            caticon.setImageResource(R.drawable.ic63);
         }
 
         if(timeCounting.equals("TIME UP!!")){
@@ -178,6 +185,8 @@ public class TriviaFail extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(TriviaFail.this, TriviaInstruction.class);
                 i.putExtra("Text", category);
+                i.putExtra("From", From);
+                i.putExtra("ExamType", category);
                 startActivity(i);
             }
         });

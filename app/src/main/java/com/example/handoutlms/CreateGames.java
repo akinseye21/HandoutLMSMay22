@@ -47,7 +47,7 @@ public class CreateGames extends AppCompatActivity {
     ProgressBar progressBar;
     TextView loadingText;
 
-    public static final String CREATE_GAMES = "https://handout.com.ng/handouts/handout_create_game";
+    public static final String CREATE_GAMES = "https://handoutng.com/handouts/handout_create_game";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +105,7 @@ public class CreateGames extends AppCompatActivity {
                                         + mt + "/" + year);
                             }
                         }, mYear, mMonth, mDay);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
             }
         });

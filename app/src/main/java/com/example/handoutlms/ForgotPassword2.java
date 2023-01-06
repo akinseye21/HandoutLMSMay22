@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -38,8 +39,8 @@ public class ForgotPassword2 extends AppCompatActivity {
     TextView resendCode;
     TextView userMail;
 
-    public static final String PASSWORD_RESET = "http://handout.com.ng/handouts/handout_reset_password";
-    public static final String VALIDATE_OTP = "http://handout.com.ng/handouts/handout_validate_otp";
+    public static final String PASSWORD_RESET = "https://handoutng.com/handouts/handout_reset_password";
+    public static final String VALIDATE_OTP = "https://handoutng.com/handouts/handout_validate_otp";
 
 
     @Override
@@ -52,6 +53,7 @@ public class ForgotPassword2 extends AppCompatActivity {
         email = i.getStringExtra("email");
         code = i.getStringExtra("code");
 
+        userMail = findViewById(R.id.usermail);
 
         userMail.setText(email);
         back = findViewById(R.id.back);
@@ -179,6 +181,8 @@ public class ForgotPassword2 extends AppCompatActivity {
                     }
                 };
                 RequestQueue requestQueue = Volley.newRequestQueue(ForgotPassword2.this);
+                DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                stringRequest.setRetryPolicy(retryPolicy);
                 requestQueue.add(stringRequest);
 
             }
@@ -232,6 +236,8 @@ public class ForgotPassword2 extends AppCompatActivity {
                     }
                 };
                 RequestQueue requestQueue = Volley.newRequestQueue(ForgotPassword2.this);
+                DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                stringRequest.setRetryPolicy(retryPolicy);
                 requestQueue.add(stringRequest);
             }
         });

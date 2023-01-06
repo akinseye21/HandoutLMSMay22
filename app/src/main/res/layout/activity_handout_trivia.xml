@@ -21,23 +21,26 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/arrow_left" />
+
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/game7"
-            android:layout_alignParentRight="true"/>
+            android:id="@+id/fraggame"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/game7" />
 
     </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -49,13 +52,14 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/relavatar"
                     android:layout_marginLeft="10dp">
 
                     <ImageView
+                        android:id="@+id/game1"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:id="@+id/game1"
-                        android:src="@drawable/game1"/>
+                        android:src="@drawable/game1" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -78,6 +82,8 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/relavatar"
                     android:layout_marginLeft="10dp">
                     <TextView
                         android:layout_width="wrap_content"
@@ -115,7 +121,31 @@
 
                 </LinearLayout>
 
-            </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/leaderboards"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/leaderboard" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="5dp"
+                        android:text="Leaderboards"
+                        android:textStyle="bold"
+                        android:textColor="#fff"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+            </RelativeLayout>
 
 
             <RelativeLayout
@@ -133,13 +163,13 @@
                     android:background="@drawable/game15">
 
                     <TextView
+                        android:id="@+id/textinbox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="CATEGORIES"
-                        android:textStyle="bold"
                         android:layout_centerInParent="true"
+                        android:text="CATEGORIES"
                         android:textColor="#ffffff"
-                        />
+                        android:textStyle="bold" />
 
                 </RelativeLayout>
 
@@ -159,328 +189,947 @@
             </RelativeLayout>
 
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/rel2"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="10dp"
-                android:id="@+id/bar1">
+                android:id="@+id/fragcategory"
+                android:visibility="visible"
+                android:orientation="vertical">
 
                 <RelativeLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true">
+                    android:layout_below="@+id/rel2"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/bar1">
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="30dp"
-                        android:id="@+id/soccer">
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@drawable/triviasoccer"/>
-                        <TextView
+                        android:layout_centerInParent="true">
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Soccer"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="12dp"/>
-                    </LinearLayout>
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="30dp"
+                            android:id="@+id/soccer">
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/triviasoccer"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Soccer"
+                                android:textColor="#ffffff"
+                                android:textStyle="bold"
+                                android:textSize="12dp"/>
+                        </LinearLayout>
 
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_marginRight="30dp"
-                        android:id="@+id/entertainment"
-                        android:layout_toRightOf="@+id/soccer">
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@drawable/triviaentertainment"/>
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Entertainment"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="12dp"/>
-                    </LinearLayout>
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginRight="30dp"
+                            android:id="@+id/entertainment"
+                            android:layout_toRightOf="@+id/soccer">
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/triviaentertainment"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Entertainment"
+                                android:textColor="#ffffff"
+                                android:textStyle="bold"
+                                android:textSize="12dp"/>
+                        </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_marginRight="30dp"
-                        android:id="@+id/politics"
-                        android:layout_toRightOf="@+id/entertainment">
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@drawable/triviapolitics"/>
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Politics"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="12dp"/>
-                    </LinearLayout>
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginRight="30dp"
+                            android:id="@+id/politics"
+                            android:layout_toRightOf="@+id/entertainment">
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/triviapolitics"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Politics"
+                                android:textColor="#ffffff"
+                                android:textStyle="bold"
+                                android:textSize="12dp"/>
+                        </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_marginLeft="10dp"
-                        android:id="@+id/history"
-                        android:layout_toRightOf="@+id/politics">
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@drawable/triviahistory"/>
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="History"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="12dp"/>
-                    </LinearLayout>
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:id="@+id/history"
+                            android:layout_toRightOf="@+id/politics">
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/triviahistory"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="History"
+                                android:textColor="#ffffff"
+                                android:textStyle="bold"
+                                android:textSize="12dp"/>
+                        </LinearLayout>
+
+                    </RelativeLayout>
 
                 </RelativeLayout>
 
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:background="#ffffff"
-                android:id="@+id/v3"
-                android:layout_below="@+id/bar1"
-                android:layout_marginTop="10dp"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/v3"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:id="@+id/bar2">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#ffffff"
+                    android:id="@+id/v3"
+                    android:layout_below="@+id/bar1"
+                    android:layout_marginTop="10dp"/>
 
                 <RelativeLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true">
+                    android:layout_below="@+id/v3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/bar2">
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_marginRight="40dp"
-                        android:id="@+id/math">
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@drawable/triviamath"/>
-                        <TextView
+                        android:layout_centerInParent="true">
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Math"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="12dp"/>
-                    </LinearLayout>
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginRight="40dp"
+                            android:id="@+id/math">
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/triviamath"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Math"
+                                android:textColor="#ffffff"
+                                android:textStyle="bold"
+                                android:textSize="12dp"/>
+                        </LinearLayout>
 
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_marginRight="30dp"
-                        android:id="@+id/english"
-                        android:layout_toRightOf="@+id/math">
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@drawable/triviaenglish"/>
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="English"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="12dp"/>
-                    </LinearLayout>
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginRight="30dp"
+                            android:id="@+id/english"
+                            android:layout_toRightOf="@+id/math">
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/triviaenglish"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="English"
+                                android:textColor="#ffffff"
+                                android:textStyle="bold"
+                                android:textSize="12dp"/>
+                        </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_marginRight="30dp"
-                        android:id="@+id/logic"
-                        android:layout_toRightOf="@+id/english">
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@drawable/trivialogic"/>
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Logic"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="12dp"/>
-                    </LinearLayout>
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginRight="30dp"
+                            android:id="@+id/logic"
+                            android:layout_toRightOf="@+id/english">
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/trivialogic"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Logic"
+                                android:textColor="#ffffff"
+                                android:textStyle="bold"
+                                android:textSize="12dp"/>
+                        </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_marginLeft="10dp"
-                        android:id="@+id/physics"
-                        android:layout_toRightOf="@+id/logic">
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@drawable/triviaphysics"/>
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Physics"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="12dp"/>
-                    </LinearLayout>
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:id="@+id/physics"
+                            android:layout_toRightOf="@+id/logic">
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/triviaphysics"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Physics"
+                                android:textColor="#ffffff"
+                                android:textStyle="bold"
+                                android:textSize="12dp"/>
+                        </LinearLayout>
+
+                    </RelativeLayout>
 
                 </RelativeLayout>
 
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:background="#ffffff"
-                android:id="@+id/v4"
-                android:layout_below="@+id/bar2"
-                android:layout_marginTop="10dp"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/v4"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:id="@+id/bar3">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#ffffff"
+                    android:id="@+id/v4"
+                    android:layout_below="@+id/bar2"
+                    android:layout_marginTop="10dp"/>
 
                 <RelativeLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true">
+                    android:layout_below="@+id/v4"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/bar3">
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_marginRight="40dp"
-                        android:id="@+id/computer">
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@drawable/triviacomputer"/>
-                        <TextView
+                        android:layout_centerInParent="true">
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Computer"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="12dp"/>
-                    </LinearLayout>
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginRight="40dp"
+                            android:id="@+id/computer">
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/triviacomputer"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Computer"
+                                android:textColor="#ffffff"
+                                android:textStyle="bold"
+                                android:textSize="12dp"/>
+                        </LinearLayout>
 
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_marginRight="30dp"
-                        android:id="@+id/movies"
-                        android:layout_toRightOf="@+id/computer">
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@drawable/triviamovie"/>
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Movies"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="12dp"/>
-                    </LinearLayout>
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginRight="30dp"
+                            android:id="@+id/movies"
+                            android:layout_toRightOf="@+id/computer">
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/triviamovie"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Movies"
+                                android:textColor="#ffffff"
+                                android:textStyle="bold"
+                                android:textSize="12dp"/>
+                        </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_marginRight="30dp"
-                        android:id="@+id/animals"
-                        android:layout_toRightOf="@+id/movies">
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@drawable/triviaanimals"/>
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Animals"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="12dp"/>
-                    </LinearLayout>
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginRight="30dp"
+                            android:id="@+id/animals"
+                            android:layout_toRightOf="@+id/movies">
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/triviaanimals"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Animals"
+                                android:textColor="#ffffff"
+                                android:textStyle="bold"
+                                android:textSize="12dp"/>
+                        </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_marginLeft="10dp"
-                        android:id="@+id/fashion"
-                        android:layout_toRightOf="@+id/animals">
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@drawable/triviafashion"/>
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Fashion"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
-                            android:textSize="12dp"/>
-                    </LinearLayout>
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:id="@+id/fashion"
+                            android:layout_toRightOf="@+id/animals">
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/triviafashion"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Fashion"
+                                android:textColor="#ffffff"
+                                android:textStyle="bold"
+                                android:textSize="12dp"/>
+                        </LinearLayout>
+
+                    </RelativeLayout>
 
                 </RelativeLayout>
 
-            </RelativeLayout>
+            </LinearLayout>
+
+
 
         </LinearLayout>
     </ScrollView>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nigExams"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nigeria Examinations"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"/>
+        <View
+            android:layout_width="130dp"
+            android:layout_height="0.1dp"
+            android:background="#f05d72"
+            android:layout_marginLeft="20dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel2"
+            android:background="#293241"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:id="@+id/progressBar"/>
+
+
+            <GridView
+                android:id="@+id/simpleGridView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="3"
+                android:scrollbars="none"
+                android:verticalSpacing="5dp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/fragleaderboard"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/lincat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/myrel"
+            android:gravity="left"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="90dp"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/background_transparent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/nigflag"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:text="Country"
+                        android:textColor="#ffffff"
+                        android:textSize="10dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:background="@drawable/background_transparent"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/institution"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="Institution"
+                        android:textColor="#ffffff"
+                        android:textSize="10dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/lincat"
+            android:background="#59ffffff"
+            android:id="@+id/line"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="90dp"
+                android:layout_height="2dp"
+                android:id="@+id/lincountry"
+                android:visibility="visible"
+                android:background="#ffff00"
+                android:orientation="horizontal" />
+
+            <LinearLayout
+                android:layout_width="90dp"
+                android:layout_height="2dp"
+                android:id="@+id/lininstitution"
+                android:visibility="invisible"
+                android:layout_marginLeft="10dp"
+                android:background="#ffff00"
+                android:orientation="horizontal" />
+
+        </LinearLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@+id/line"
+            android:id="@+id/tabs"
+            android:visibility="gone"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tabs" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linprofile"
+        android:visibility="gone"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Player Stats:"
+            android:textStyle="bold"
+            android:textSize="10dp"
+            android:textColor="#fff"/>
+        <View
+            android:layout_width="55dp"
+            android:layout_height="0.1dp"
+            android:background="#fff"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_trivia_card"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/greencheck"/>
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/game1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Points: "
+                        android:textColor="#fbb03b"
+                        android:textSize="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="XXXX"
+                        android:textColor="#fff"
+                        android:textSize="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="2dp"
+                        android:src="@drawable/coin"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total No of correct answers: "
+                        android:textColor="#fbb03b"
+                        android:textSize="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="XXXX"
+                        android:textColor="#fff"
+                        android:textSize="10dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total No of incorrect answers: "
+                        android:textColor="#fbb03b"
+                        android:textSize="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="XXXX"
+                        android:textColor="#fff"
+                        android:textSize="10dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Category with most correct answers: "
+                        android:textColor="#fbb03b"
+                        android:textSize="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="XXXX"
+                        android:textColor="#fff"
+                        android:textSize="10dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Category with most incorrect answers: "
+                        android:textColor="#fbb03b"
+                        android:textSize="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="XXXX"
+                        android:textColor="#fff"
+                        android:textSize="10dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:scrollbars="none">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:id="@+id/relbeginner"
+                        android:layout_alignParentLeft="true"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/game1" />
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/greencheck"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:id="@+id/relamateur"
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/amateur"
+                            android:tintMode="screen"
+                            app:tint="@color/lb_grey" />
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:visibility="invisible"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/greencheck"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:id="@+id/relhustler"
+                        android:layout_alignParentRight="true"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/hustler"
+                            android:tintMode="screen"
+                            app:tint="@color/lb_grey" />
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:visibility="invisible"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/greencheck"/>
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:id="@+id/relpro"
+                        android:layout_alignParentLeft="true"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/pro"
+                            android:tintMode="screen"
+                            app:tint="@color/lb_grey"/>
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:visibility="invisible"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/greencheck"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:id="@+id/relexpert"
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/expert"
+                            android:tintMode="screen"
+                            app:tint="@color/lb_grey"/>
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:visibility="invisible"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/greencheck"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:id="@+id/relveteran"
+                        android:layout_alignParentRight="true"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/veteran"
+                            android:tintMode="screen"
+                            app:tint="@color/lb_grey"/>
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:visibility="invisible"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/greencheck"/>
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:id="@+id/relmaster"
+                        android:layout_alignParentLeft="true"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/master"
+                            android:tintMode="screen"
+                            app:tint="@color/lb_grey" />
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:visibility="invisible"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/greencheck"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:id="@+id/relgrandmaster"
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/grandmaster"
+                            android:tintMode="screen"
+                            app:tint="@color/lb_grey" />
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:visibility="invisible"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/greencheck"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:id="@+id/relking"
+                        android:layout_alignParentRight="true"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/king"
+                            android:tintMode="screen"
+                            app:tint="@color/lb_grey"/>
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:visibility="invisible"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/greencheck"/>
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="20dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:id="@+id/relemperor"
+                        android:layout_alignParentLeft="true"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/emperor"
+                            android:tintMode="screen"
+                            app:tint="@color/lb_grey"/>
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:visibility="invisible"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/greencheck"/>
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+
+
+
+    </LinearLayout>
+
+
 
 
 

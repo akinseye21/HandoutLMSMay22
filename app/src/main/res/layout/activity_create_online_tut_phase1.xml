@@ -9,17 +9,28 @@
     tools:context=".CreateOnlineTutPhase1">
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:id="@+id/rel1">
+
         <ImageView
+            android:id="@+id/back"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/back"
-            android:src="@drawable/arrow_left"/>
+            android:layout_centerVertical="true"
+            android:src="@drawable/arrow_left" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:layout_marginRight="20dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/back"
+            android:textSize="18dp"
+            android:textColor="#fff"/>
 
     </RelativeLayout>
 
@@ -115,8 +126,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Live Training (Audio Only)"
-                    android:textColor="#ffffff"
+                    android:text="Live Training (Coming soon...)"
+                    android:textColor="#f0f0f0"
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center_vertical"
                     android:textSize="15dp"/>

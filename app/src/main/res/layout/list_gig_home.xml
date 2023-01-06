@@ -17,34 +17,33 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp">
         <ImageView
-                android:layout_width="85dp"
-                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:layout_height="115dp"
                 android:src="@drawable/ic192"/>
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/gig_name"
-                android:textSize="8dp"
                 android:text="Logo Design"
                 android:textColor="#ffffff"
                 android:textStyle="bold"/>
 
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/gig_price"
                 android:text="$200 - $400"
-                android:textSize="4dp"
+                android:textSize="10dp"
                 android:textStyle="bold"
                 android:textColor="#ffffff"
                 android:paddingRight="10dp"/>
 
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/gig_type"
                 android:text="4 days"
-                android:textSize="4dp"
+                android:textSize="10dp"
                 android:textStyle="bold"
                 android:textColor="#ffffff"/>
 

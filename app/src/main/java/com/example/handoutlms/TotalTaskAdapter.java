@@ -1,12 +1,14 @@
 package com.example.handoutlms;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -51,6 +53,7 @@ public class TotalTaskAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
         convertView = inflter.inflate(R.layout.list_add_task, null);
+        RelativeLayout total = convertView.findViewById(R.id.myRel);
         ImageView circle = convertView.findViewById(R.id.circle);
         View line = convertView.findViewById(R.id.line);
         TextView name = convertView.findViewById(R.id.taskName);
@@ -86,6 +89,25 @@ public class TotalTaskAdapter extends BaseAdapter {
             description.setText(task_description.get(i));
             time.setText(task_time.get(i));
         }
+
+        total.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //move to view info about the task
+                Intent j = new Intent(context, TaskInfo.class);
+                j.putExtra("task_name", task_name.get(i));
+                j.putExtra("task_date", task_date.get(i));
+                j.putExtra("task_category", task_category.get(i));
+                j.putExtra("task_description", task_description.get(i));
+                j.putExtra("task_time", task_time.get(i));
+                j.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(j);
+            }
+        });
+
+
+
+
         return convertView;
     }
 }

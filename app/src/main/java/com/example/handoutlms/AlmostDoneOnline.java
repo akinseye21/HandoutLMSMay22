@@ -1,16 +1,8 @@
 package com.example.handoutlms;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -21,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -34,25 +27,22 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AlmostDone extends AppCompatActivity {
+public class AlmostDoneOnline extends AppCompatActivity {
 
     LinearLayout done;
-    String group_name, category, date, time, university, description, tut_type, location, tutorial_mode, email;
+    String group_name, category, date, time, university, description, tut_type, tutorial_mode, email;
     TextView gp_name, cat, dat, tim, uni, desc;
-    CheckBox share;
-//    SharedPreferences preferences;
     ProgressBar progressBar;
     ImageView back;
-    TextView domlocation, reallocation;
 
-    public static final String TUTORIAL_GROUP = "https://handout.com.ng/handouts/handout_tutorial_groups";
-    public static final String UPDATE = "https://handout.com.ng/handouts/handout_usertype";
+    public static final String TUTORIAL_GROUP = "https://handoutng.com/handouts/handout_tutorial_groups";
+    public static final String UPDATE = "https://handoutng.com/handouts/handout_usertype";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_almost_done);
+        setContentView(R.layout.activity_almost_done_online);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //get sharedpreference
@@ -73,7 +63,6 @@ public class AlmostDone extends AppCompatActivity {
         time = i.getStringExtra("time");
         university = i.getStringExtra("university");
         description = i.getStringExtra("description");
-        location = i.getStringExtra("location");
         email = i.getStringExtra("email");
 
         gp_name = findViewById(R.id.tutorial_group_name);
@@ -82,21 +71,8 @@ public class AlmostDone extends AppCompatActivity {
         tim = findViewById(R.id.time);
         uni = findViewById(R.id.university);
         desc = findViewById(R.id.description);
-        share = findViewById(R.id.share);
         progressBar = findViewById(R.id.progressBar);
         back = findViewById(R.id.back);
-        domlocation = findViewById(R.id.domlocation);
-        reallocation = findViewById(R.id.location);
-
-        if(location.equals("")){
-            tutorial_mode = "online";
-            domlocation.setVisibility(View.GONE);
-            reallocation.setVisibility(View.GONE);
-        }
-        else if(!location.equals("")){
-            tutorial_mode = "offline";
-            reallocation.setText(location);
-        }
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,11 +92,6 @@ public class AlmostDone extends AppCompatActivity {
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(share.isChecked()){
-                    tut_type = "public";
-                }else{
-                    tut_type = "private";
-                }
 
                 if(!group_name.equals("") && !category.equals("") && !date.equals("") && !time.equals("") && !university.equals("") && !description.equals("")){
                     createTutorial();
@@ -152,35 +123,20 @@ public class AlmostDone extends AppCompatActivity {
                                 String notification = jsonObject.getString("notification");
                                 System.out.println(response);
 
-                                if(status.equals("successful") && tutorial_mode.equals("online")){
+                                if(status.equals("successful")){
                                     Toast.makeText(getApplicationContext(), "Online Group created successfully", Toast.LENGTH_LONG).show();
                                     System.out.println(jsonObject);
 
-                                    Intent i = new Intent(AlmostDone.this, CreateOnlineTutPhase1.class);
+                                    //update usertype
+                                    updateUser();
+
+                                    Intent i = new Intent(AlmostDoneOnline.this, CreateOnlineTutPhase1.class);
                                     i.putExtra("Group_name", group_name);
                                     i.putExtra("notification", notification);
                                     startActivity(i);
 
 
-                                    //update usertype
-                                    updateUser();
 
-                                }
-                                else if(status.equals("successful") && tutorial_mode.equals("offline")){
-                                    Toast.makeText(getApplicationContext(), "Offline Group created successfully", Toast.LENGTH_LONG).show();
-                                    System.out.println(jsonObject);
-
-                                    Intent i = new Intent(AlmostDone.this, FeedsDashboard.class);
-                                    i.putExtra("email", email);
-                                    i.putExtra("sent from", "offline tuts");
-                                    startActivity(i);
-
-                                    //update usertype
-                                    updateUser();
-                                }
-                                else{
-                                    Toast.makeText(getApplicationContext(), "Group creation failed. Please try again", Toast.LENGTH_LONG).show();
-                                    System.out.println("Error sending group info: "+jsonObject);
                                 }
                             }
                             catch (JSONException e){
@@ -204,18 +160,20 @@ public class AlmostDone extends AppCompatActivity {
                     params.put("email", email);
                     params.put("tutorial_group_name", group_name);
                     params.put("category", category);
-                    params.put("tutorial_type", tut_type);
+                    params.put("tutorial_type", "public");
                     params.put("date", date);
                     params.put("time", time);
                     params.put("institution", university);
                     params.put("short_description", description);
-                    params.put("tutorial_mode", tutorial_mode);
-                    params.put("venue", location);
+                    params.put("tutorial_mode", "online");
+                    params.put("venue", "");
                     return params;
                 }
             };
 
             RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+            DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+            stringRequest.setRetryPolicy(retryPolicy);
             requestQueue.add(stringRequest);
 
     }
@@ -248,7 +206,6 @@ public class AlmostDone extends AppCompatActivity {
                         if(volleyError == null){
                             return;
                         }
-//                                                            System.out.println("Error = "+volleyError.getMessage());
                     }
                 }){
             @Override
@@ -260,6 +217,8 @@ public class AlmostDone extends AppCompatActivity {
             }
         };
         RequestQueue requestQueue2 = Volley.newRequestQueue(getApplicationContext());
+        DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest2.setRetryPolicy(retryPolicy);
         requestQueue2.add(stringRequest2);
     }
 }

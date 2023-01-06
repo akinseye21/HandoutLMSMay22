@@ -18,6 +18,7 @@ import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -60,7 +61,7 @@ public class DocumentPaged extends AppCompatActivity {
     TextView upload_text;
     ProgressBar progressBar;
 
-    private static final String ROOT_URL = "http://handout.com.ng/handouts/handout_update_tutorial_group";
+    private static final String ROOT_URL = "http://handoutng.com/handouts/handout_update_tutorial_group";
     private RequestQueue rQueue;
     String email;
 
@@ -68,6 +69,7 @@ public class DocumentPaged extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_document_paged);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //get sharedpreference
         preferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);

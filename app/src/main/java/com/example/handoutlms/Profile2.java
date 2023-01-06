@@ -80,8 +80,8 @@ public class Profile2 extends Fragment {
     String signup_email, sent_from;
     CircleImageView profilePic;
 
-    public static final String USER_PROFILE = "https://handout.com.ng/handouts/handout_get_user_profile";
-    private static final String ROOT_URL = "https://handout.com.ng/handouts/handout_update_user_profile_pic";
+    public static final String USER_PROFILE = "https://handoutng.com/handouts/handout_get_user_profile";
+    private static final String ROOT_URL = "https://handoutng.com/handouts/handout_update_user_profile_pic";
     private RequestQueue rQueue;
 
     private OnFragmentInteractionListener mListener;
@@ -231,7 +231,12 @@ public class Profile2 extends Fragment {
                                 if (getActivity() == null) {
                                     return;
                                 }
-                                Glide.with(getActivity()).load(got_pics).into(profilePic);
+                                Glide
+                                        .with(getActivity())
+                                        .load(got_pics)
+                                        .override(600,200)
+                                        .fitCenter()
+                                        .into(profilePic);
                             }
 
 

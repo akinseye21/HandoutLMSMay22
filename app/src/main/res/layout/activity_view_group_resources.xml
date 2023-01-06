@@ -16,11 +16,12 @@
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp"
         android:id="@+id/rel1">
+
         <ImageView
+            android:id="@+id/back"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/back"
-            android:src="@drawable/arrow_left"/>
+            android:src="@drawable/arrow_left" />
     </RelativeLayout>
 
     <TextView
@@ -210,10 +211,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tutorial Material"
-                    android:textSize="15dp"
                     android:layout_marginTop="20dp"
-                    android:textColor="#8cc63e"/>
+                    android:text="Tutorial Material"
+                    android:textColor="#8cc63e"
+                    android:textSize="15dp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -254,6 +255,16 @@
                         android:focusable="false"
                         android:layout_centerInParent="true" />
                 </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No material uploaded by the Tutor yet. Please check back"
+                    android:textColor="#fff"
+                    android:layout_margin="10dp"
+                    android:id="@+id/noMaterial"
+                    android:visibility="gone"
+                    android:drawableTop="@drawable/notification"/>
 
             </LinearLayout>
             

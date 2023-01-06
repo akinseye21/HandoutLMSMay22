@@ -73,7 +73,7 @@ public class InviteFriends extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(InviteFriends.this, AlmostDone.class);
+                Intent i = new Intent(InviteFriends.this, AlmostDoneOnline.class);
                 i.putExtra("group_name", group_name);
                 i.putExtra("category", category);
                 i.putExtra("date", date);

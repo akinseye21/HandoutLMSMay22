@@ -70,8 +70,8 @@ public class tutorial_on_profile extends Fragment {
     ArrayList<String> Array_tutMode2 = new ArrayList<>();
     ArrayList<String> Array_tutId2 = new ArrayList<>();
 
-public static final String ALL_TUTORIAL = "https://handout.com.ng/handouts/handout_get_all_tutorials";
-    public static final String TUTORIALS_JOINED = "https://handout.com.ng/handouts/handout_user_joined_groups";
+public static final String ALL_TUTORIAL = "https://handoutng.com/handouts/handout_get_all_tutorials";
+    public static final String TUTORIALS_JOINED = "https://handoutng.com/handouts/handout_user_joined_groups";
 
     public tutorial_on_profile() {
         // Required empty public constructor
@@ -133,7 +133,6 @@ public static final String ALL_TUTORIAL = "https://handout.com.ng/handouts/hando
 
                 String from = "created";
 
-
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, ALL_TUTORIAL,
                         new Response.Listener<String>() {
                             @Override
@@ -144,50 +143,52 @@ public static final String ALL_TUTORIAL = "https://handout.com.ng/handouts/hando
                                     JSONArray jsonArray = new JSONArray(response);
                                     ArrayLength = jsonArray.length();
 
-                                    if(ArrayLength > 1){
-                                        for(int j = ArrayLength - 1; j >= 0; j--){
-                                            JSONObject section1 = jsonArray.getJSONObject(j);
-                                            String tutName = section1.getString("groupname");
-                                            String tutCategory = section1.getString("category");
-                                            String tutDescription = section1.getString("description");
-                                            String tutCreatedBy = section1.getString("created_by");
-                                            String tutMode = section1.getString("mode");
-                                            String id = section1.getString("ID");
+                                    for(int j = ArrayLength - 1; j >= 0; j--){
+                                        JSONObject section1 = jsonArray.getJSONObject(j);
+                                        String tutName = section1.getString("groupname");
+                                        String tutCategory = section1.getString("category");
+                                        String tutDescription = section1.getString("description");
+                                        String tutCreatedBy = section1.getString("created_by");
+                                        String tutMode = section1.getString("mode");
+                                        String id = section1.getString("ID");
 
-                                            if(tutCreatedBy.equals(got_email)){
-                                                Array_tutName.add(tutName);
-                                                Array_tutCategory.add(tutCategory);
-                                                Array_tutDescription.add(tutDescription);
-                                                Array_tutMode.add(tutMode);
-                                                Array_tutId.add(id);
-                                            }else{
-                                                //do nothing
-                                            }
-
-
-                                        }
-
-                                        if(Array_tutName.size() < 1){
-                                            noTutorial.setVisibility(View.VISIBLE);
-                                            noTutorialJoined.setVisibility(View.GONE);
-                                            gridViewCreated.setVisibility(View.GONE);
-                                            gridViewJoined.setVisibility(View.GONE);
+                                        if(tutCreatedBy.equals(got_email)){
+                                            Array_tutName.add(tutName);
+                                            Array_tutCategory.add(tutCategory);
+                                            Array_tutDescription.add(tutDescription);
+                                            Array_tutMode.add(tutMode);
+                                            Array_tutId.add(id);
                                         }else{
-                                            //populate values on the gridview
-                                            TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode, Array_tutId, from);
-                                            gridViewCreated.setAdapter(tutorialProfileAdapter);
-                                            noTutorial.setVisibility(View.GONE);
-                                            noTutorialJoined.setVisibility(View.GONE);
-                                            gridViewJoined.setVisibility(View.GONE);
+                                            //do nothing
                                         }
 
-                                    }else{
-                                        //show "no tutorials"
+
+                                    }
+
+                                    if(Array_tutName.size() < 1){
                                         noTutorial.setVisibility(View.VISIBLE);
+                                        noTutorialJoined.setVisibility(View.GONE);
                                         gridViewCreated.setVisibility(View.GONE);
                                         gridViewJoined.setVisibility(View.GONE);
+                                    }else{
+                                        //populate values on the gridview
+                                        TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode, Array_tutId, from);
+                                        gridViewCreated.setAdapter(tutorialProfileAdapter);
+                                        noTutorial.setVisibility(View.GONE);
                                         noTutorialJoined.setVisibility(View.GONE);
+                                        gridViewJoined.setVisibility(View.GONE);
                                     }
+
+//                                    if(ArrayLength > 1){
+//
+//
+//                                    }else{
+//                                        //show "no tutorials"
+//                                        noTutorial.setVisibility(View.VISIBLE);
+//                                        gridViewCreated.setVisibility(View.GONE);
+//                                        gridViewJoined.setVisibility(View.GONE);
+//                                        noTutorialJoined.setVisibility(View.GONE);
+//                                    }
 
                                 }
                                 catch (JSONException e){
@@ -323,7 +324,6 @@ public static final String ALL_TUTORIAL = "https://handout.com.ng/handouts/hando
                 Array_tutMode2.clear();
                 Array_tutId2.clear();
 
-
             }
         });
 
@@ -340,50 +340,53 @@ public static final String ALL_TUTORIAL = "https://handout.com.ng/handouts/hando
 
                             String from = "created";
 
-                            if(ArrayLength > 1){
-                                for(int j = ArrayLength - 1; j >= 0; j--){
-                                    JSONObject section1 = jsonArray.getJSONObject(j);
-                                    String tutName = section1.getString("groupname");
-                                    String tutCategory = section1.getString("category");
-                                    String tutDescription = section1.getString("description");
-                                    String tutCreatedBy = section1.getString("created_by");
-                                    String tutMode = section1.getString("mode");
-                                    String id = section1.getString("ID");
 
-                                    if(tutCreatedBy.equals(got_email)){
-                                        Array_tutName.add(tutName);
-                                        Array_tutCategory.add(tutCategory);
-                                        Array_tutDescription.add(tutDescription);
-                                        Array_tutMode.add(tutMode);
-                                        Array_tutId.add(id);
-                                    }else{
-                                        //do nothing
-                                    }
+                            for(int j = ArrayLength - 1; j >= 0; j--){
+                                JSONObject section1 = jsonArray.getJSONObject(j);
+                                String tutName = section1.getString("groupname");
+                                String tutCategory = section1.getString("category");
+                                String tutDescription = section1.getString("description");
+                                String tutCreatedBy = section1.getString("created_by");
+                                String tutMode = section1.getString("mode");
+                                String id = section1.getString("ID");
 
-
-                                }
-
-                                if(Array_tutName.size() < 1){
-                                    noTutorial.setVisibility(View.VISIBLE);
-                                    noTutorialJoined.setVisibility(View.GONE);
-                                    gridViewCreated.setVisibility(View.GONE);
-                                    gridViewJoined.setVisibility(View.GONE);
+                                if(tutCreatedBy.equals(got_email)){
+                                    Array_tutName.add(tutName);
+                                    Array_tutCategory.add(tutCategory);
+                                    Array_tutDescription.add(tutDescription);
+                                    Array_tutMode.add(tutMode);
+                                    Array_tutId.add(id);
                                 }else{
-                                    //populate values on the gridview
-                                    TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode, Array_tutId, from);
-                                    gridViewCreated.setAdapter(tutorialProfileAdapter);
-                                    noTutorial.setVisibility(View.GONE);
-                                    noTutorialJoined.setVisibility(View.GONE);
-                                    gridViewJoined.setVisibility(View.GONE);
+                                    //do nothing
                                 }
 
-                            }else{
-                                //show "no tutorials"
+
+                            }
+
+                            if(Array_tutName.size() < 1){
                                 noTutorial.setVisibility(View.VISIBLE);
+                                noTutorialJoined.setVisibility(View.GONE);
                                 gridViewCreated.setVisibility(View.GONE);
                                 gridViewJoined.setVisibility(View.GONE);
+                            }else{
+                                //populate values on the gridview
+                                TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode, Array_tutId, from);
+                                gridViewCreated.setAdapter(tutorialProfileAdapter);
+                                noTutorial.setVisibility(View.GONE);
                                 noTutorialJoined.setVisibility(View.GONE);
+                                gridViewJoined.setVisibility(View.GONE);
                             }
+
+//                            if(ArrayLength > 1){
+//
+//
+//                            }else{
+//                                //show "no tutorials"
+//                                noTutorial.setVisibility(View.VISIBLE);
+//                                gridViewCreated.setVisibility(View.GONE);
+//                                gridViewJoined.setVisibility(View.GONE);
+//                                noTutorialJoined.setVisibility(View.GONE);
+//                            }
 
                         }
                         catch (JSONException e){

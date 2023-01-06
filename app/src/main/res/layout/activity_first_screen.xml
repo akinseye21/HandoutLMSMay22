@@ -45,11 +45,11 @@
         android:layout_gravity="center">
 
         <ImageView
+            android:id="@+id/ic1"
             android:layout_width="300dp"
             android:layout_height="300dp"
-            android:src="@drawable/ic1"
-            android:id="@+id/ic1"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:src="@drawable/ic1" />
 
         <ImageView
             android:layout_width="60dp"

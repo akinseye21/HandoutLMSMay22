@@ -8,33 +8,6 @@
     android:background="#fff"
     tools:context=".ChatPage">
 
-<!--    <com.google.android.material.appbar.AppBarLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/appbar"-->
-<!--        android:background="#293241">-->
-<!--        <androidx.appcompat.widget.Toolbar-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:id="@+id/toolbar"-->
-<!--            app:popupTheme="@style/ChatPageTab"-->
-<!--            app:titleTextColor="#fff">-->
-
-<!--            <ImageView-->
-<!--                android:layout_width="20dp"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:src="@drawable/ic33"-->
-<!--                app:tint="#fff" />-->
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Leave Chat"-->
-<!--                android:textColor="#fff"-->
-<!--                android:paddingLeft="10dp"-->
-<!--                android:textStyle="bold"/>-->
-
-<!--        </androidx.appcompat.widget.Toolbar>-->
-<!--    </com.google.android.material.appbar.AppBarLayout>-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

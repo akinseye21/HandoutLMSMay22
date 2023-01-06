@@ -48,7 +48,7 @@
                 android:text="Contact skilled freelancer within minutes"
                 android:textColor="#ffffff"
                 android:textStyle="bold"
-                android:textSize="10dp"/>
+                android:textSize="13dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="10dp"
                 android:textColor="#65dc9a"
-                android:textSize="12dp"/>
+                android:textSize="13dp"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -85,7 +85,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginLeft="10dp"
                 android:textColor="#65dc9a"
-                android:textSize="12dp"/>
+                android:textSize="13dp"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -113,7 +113,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginLeft="10dp"
                 android:textColor="#65dc9a"
-                android:textSize="12dp"/>
+                android:textSize="13dp"/>
 
 <!--                <AutoCompleteTextView-->
 <!--                    android:id="@+id/autoCompleteTextView"-->

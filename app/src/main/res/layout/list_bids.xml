@@ -41,16 +41,17 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
                     <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
+                        android:layout_gravity="left"
                             android:id="@+id/name"
                             android:text="Ada Kayari"
                             android:textSize="10dp"
                             android:textStyle="bold"
                             android:textColor="#ffffff"/>
                     <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:id="@+id/department"
@@ -59,7 +60,7 @@
                             android:textStyle="normal"
                             android:textColor="#ffffff"/>
                     <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:id="@+id/school"

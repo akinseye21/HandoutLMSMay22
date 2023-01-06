@@ -61,10 +61,10 @@ public class TaskManager1 extends Fragment {
     TextView name;
     TextView no_of_task;
     String day, month, year, today;
-    int count_Exam=0, count_Test=0, count_Assignment=0, count_Others=0;
-    TextView countExam, countTest, countAssignment, countOthers;
+    int count_Exam=0, count_Test=0, count_Assignment=0, count_Others=0, count_Tutorials=0, count_Gigs=0;
+    TextView countExam, countTest, countAssignment, countOthers, countTutorials, countGigs;
 
-    LinearLayout test, exam, assignment, others;
+    LinearLayout test, exam, assignment, others, tutorials, gigs;
 
     ArrayList<String> arr_task_name = new ArrayList<>();
     ArrayList<String> arr_task_date = new ArrayList<>();
@@ -81,7 +81,7 @@ public class TaskManager1 extends Fragment {
 
     SharedPreferences preferences;
     String got_email, got_fullname;
-    public static final String GET_TASKS = "https://handout.com.ng/handouts/handout_get_user_task";
+    public static final String GET_TASKS = "https://handoutng.com/handouts/handout_get_user_task";
 
     private OnFragmentInteractionListener mListener;
 
@@ -136,6 +136,8 @@ public class TaskManager1 extends Fragment {
         countTest = v.findViewById(R.id.countTest);
         countAssignment = v.findViewById(R.id.countAssignment);
         countOthers = v.findViewById(R.id.countOthers);
+        countTutorials = v.findViewById(R.id.countTutorials);
+        countGigs = v.findViewById(R.id.countGig);
         viewPager =v.findViewById(R.id.viewpager2);
         tabLayout = v.findViewById(R.id.tabs);
         name = v.findViewById(R.id.name);
@@ -188,6 +190,12 @@ public class TaskManager1 extends Fragment {
                                     if(task_category.equals("Assignment")){
                                         count_Assignment = count_Assignment+1;
                                     }
+                                    if(task_category.equals("Tutorial")){
+                                        count_Tutorials = count_Tutorials+1;
+                                    }
+                                    if(task_category.equals("Gig")){
+                                        count_Gigs = count_Gigs+1;
+                                    }
                                     if (!task_category.equals("Exam") || !task_category.equals("Test") || !task_category.equals("Assignment")){
                                         count_Others = count_Others+1;
                                     }
@@ -200,6 +208,8 @@ public class TaskManager1 extends Fragment {
                                 countTest.setText(count_Test+" tasks");
                                 countAssignment.setText(count_Assignment+" tasks");
                                 countOthers.setText(count_Others+" tasks");
+                                countTutorials.setText(count_Tutorials+" tasks");
+                                countGigs.setText(count_Gigs+" tasks");
                             }else{
                                 no_of_task.setText("0 task \nfor today");
                             }
@@ -230,6 +240,8 @@ public class TaskManager1 extends Fragment {
         count_Test=0;
         count_Assignment=0;
         count_Others=0;
+        count_Tutorials=0;
+        count_Gigs=0;
 
 
 
@@ -249,7 +261,14 @@ public class TaskManager1 extends Fragment {
                 i.putStringArrayListExtra("task category", arr_task_category_gen);
                 i.putStringArrayListExtra("task description", arr_task_description_gen);
                 i.putStringArrayListExtra("task time", arr_task_time_gen);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
+
+                arr_task_name_gen.clear();
+                arr_task_date_gen.clear();
+                arr_task_category_gen.clear();
+                arr_task_description_gen.clear();
+                arr_task_time_gen.clear();
             }
         });
 
@@ -266,7 +285,14 @@ public class TaskManager1 extends Fragment {
                 i.putStringArrayListExtra("task category", arr_task_category_gen);
                 i.putStringArrayListExtra("task description", arr_task_description_gen);
                 i.putStringArrayListExtra("task time", arr_task_time_gen);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
+
+                arr_task_name_gen.clear();
+                arr_task_date_gen.clear();
+                arr_task_category_gen.clear();
+                arr_task_description_gen.clear();
+                arr_task_time_gen.clear();
             }
         });
 
@@ -283,7 +309,14 @@ public class TaskManager1 extends Fragment {
                 i.putStringArrayListExtra("task category", arr_task_category_gen);
                 i.putStringArrayListExtra("task description", arr_task_description_gen);
                 i.putStringArrayListExtra("task time", arr_task_time_gen);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
+
+                arr_task_name_gen.clear();
+                arr_task_date_gen.clear();
+                arr_task_category_gen.clear();
+                arr_task_description_gen.clear();
+                arr_task_time_gen.clear();
             }
         });
 
@@ -300,7 +333,62 @@ public class TaskManager1 extends Fragment {
                 i.putStringArrayListExtra("task category", arr_task_category_gen);
                 i.putStringArrayListExtra("task description", arr_task_description_gen);
                 i.putStringArrayListExtra("task time", arr_task_time_gen);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
+
+                arr_task_name_gen.clear();
+                arr_task_date_gen.clear();
+                arr_task_category_gen.clear();
+                arr_task_description_gen.clear();
+                arr_task_time_gen.clear();
+            }
+        });
+
+        tutorials = v.findViewById(R.id.tutorials);
+        tutorials.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), TaskManagerClick.class);
+                i.putExtra("category", "tutorials");
+                i.putExtra("email", got_email);
+                //put all the array here also
+                i.putStringArrayListExtra("task name", arr_task_name_gen);
+                i.putStringArrayListExtra("task date", arr_task_date_gen);
+                i.putStringArrayListExtra("task category", arr_task_category_gen);
+                i.putStringArrayListExtra("task description", arr_task_description_gen);
+                i.putStringArrayListExtra("task time", arr_task_time_gen);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+
+                arr_task_name_gen.clear();
+                arr_task_date_gen.clear();
+                arr_task_category_gen.clear();
+                arr_task_description_gen.clear();
+                arr_task_time_gen.clear();
+            }
+        });
+
+        gigs = v.findViewById(R.id.gigs);
+        gigs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), TaskManagerClick.class);
+                i.putExtra("category", "gigs");
+                i.putExtra("email", got_email);
+                //put all the array here also
+                i.putStringArrayListExtra("task name", arr_task_name_gen);
+                i.putStringArrayListExtra("task date", arr_task_date_gen);
+                i.putStringArrayListExtra("task category", arr_task_category_gen);
+                i.putStringArrayListExtra("task description", arr_task_description_gen);
+                i.putStringArrayListExtra("task time", arr_task_time_gen);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+
+                arr_task_name_gen.clear();
+                arr_task_date_gen.clear();
+                arr_task_category_gen.clear();
+                arr_task_description_gen.clear();
+                arr_task_time_gen.clear();
             }
         });
 

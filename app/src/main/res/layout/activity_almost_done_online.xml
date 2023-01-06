@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#293241"
     android:orientation="vertical"
-    tools:context=".AlmostDone">
+    tools:context=".AlmostDoneOnline">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -55,6 +55,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:textSize="13dp"
                     android:text=""
                     android:id="@+id/tutorial_group_name"
                     android:textColor="#c7c7c7"
@@ -70,6 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:textSize="13dp"
                     android:text=""
                     android:id="@+id/category"
                     android:textColor="#c7c7c7"
@@ -86,6 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:textSize="13dp"
                     android:text=""
                     android:id="@+id/date"
                     android:textColor="#c7c7c7"
@@ -104,6 +107,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:textSize="13dp"
                     android:text=""
                     android:id="@+id/time"
                     android:textColor="#c7c7c7"
@@ -120,6 +124,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:textSize="13dp"
                     android:id="@+id/university"
                     android:text=""
                     android:textColor="#c7c7c7"
@@ -136,46 +141,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:textSize="13dp"
                     android:id="@+id/description"
                     android:text=""
                     android:textColor="#c7c7c7"
                     android:background="@android:color/transparent"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Location"
-                    android:id="@+id/domlocation"
-                    android:layout_marginTop="20dp"
-                    android:textColor="#8cc63e"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:id="@+id/location"
-                    android:text=""
-                    android:textColor="#c7c7c7"
-                    android:background="@android:color/transparent"/>
+
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:visibility="invisible"
-                android:layout_marginLeft="20dp"
-                android:orientation="horizontal">
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/share"
-                    android:checked="true"/>
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic126"/>
-            </LinearLayout>
 
             <ProgressBar
                 android:layout_width="50dp"
@@ -193,7 +168,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_below="@+id/lin_offline_tutorial"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginBottom="30dp"
                 android:id="@+id/next"
                 android:background="@drawable/rounded_orange">

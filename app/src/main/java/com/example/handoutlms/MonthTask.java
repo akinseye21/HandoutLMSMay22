@@ -61,7 +61,7 @@ public class MonthTask extends Fragment {
     ArrayList<String> arr_task_time = new ArrayList<>();
     ArrayList<String> arr_today = new ArrayList<>();
 
-    public static final String GET_TASKS = "https://handout.com.ng/handouts/handout_get_user_task";
+    public static final String GET_TASKS = "https://handoutng.com/handouts/handout_get_user_task";
 
     public MonthTask() {
         // Required empty public constructor
@@ -203,5 +203,8 @@ public class MonthTask extends Fragment {
         arr_task_time.clear();
 
         return v;
+    }
+
+    public interface OnFragmentInteractionListener {
     }
 }

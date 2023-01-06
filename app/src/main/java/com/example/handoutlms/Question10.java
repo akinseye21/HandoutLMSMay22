@@ -27,7 +27,8 @@ public class Question10 extends AppCompatActivity {
     TextView quest;
     TextView opt1, opt2, opt3, opt4;
     TextView timeCount, runningout;
-    String Text, timeCounting;
+    String Text, timeCounting, From;
+    TextView examType, examYear;
 
     //    int counter;
     int counters;
@@ -46,11 +47,14 @@ public class Question10 extends AppCompatActivity {
 
         //get passed intent values
         Intent intent = getIntent();
+        From = intent.getStringExtra("From");
         final ArrayList<String> question_list = intent.getExtras().getStringArrayList("question_list");
         final ArrayList<String> optionA_list = intent.getStringArrayListExtra("optionA_list");
         final ArrayList<String> optionB_list = intent.getStringArrayListExtra("optionB_list");
         final ArrayList<String> optionC_list = intent.getStringArrayListExtra("optionC_list");
         final ArrayList<String> optionD_list = intent.getStringArrayListExtra("optionD_list");
+        final ArrayList<String> examType_list = intent.getStringArrayListExtra("examType_list");
+        final ArrayList<String> examYear_list = intent.getStringArrayListExtra("examYear_list");
         final ArrayList<String> correct_option_list = intent.getStringArrayListExtra("correct_option_list");
         Text = intent.getStringExtra("category");
         counters = intent.getIntExtra("counter", 0);
@@ -70,6 +74,8 @@ public class Question10 extends AppCompatActivity {
             e.printStackTrace();
         }
         timeCount = findViewById(R.id.timecount);
+        examType = findViewById(R.id.examType);
+        examYear = findViewById(R.id.examYear);
         countDownTimer = new CountDownTimer(mil, 1000) {
             @Override
             public void onTick(long l) {
@@ -104,41 +110,46 @@ public class Question10 extends AppCompatActivity {
 
         caticon = findViewById(R.id.categoryicon);
         //set the imgicon
-        if(Text.equals("Soccer")){
-            caticon.setImageResource(R.drawable.triviasoccer);
+        if(From.equals("normal")){
+            if(Text.equals("Soccer")){
+                caticon.setImageResource(R.drawable.triviasoccer);
+            }
+            if(Text.equals("Entertainment")){
+                caticon.setImageResource(R.drawable.triviaentertainment);
+            }
+            if(Text.equals("Politics")){
+                caticon.setImageResource(R.drawable.triviapolitics);
+            }
+            if(Text.equals("History")){
+                caticon.setImageResource(R.drawable.triviahistory);
+            }
+            if(Text.equals("Maths")){
+                caticon.setImageResource(R.drawable.triviamath);
+            }
+            if(Text.equals("English")){
+                caticon.setImageResource(R.drawable.triviaenglish);
+            }
+            if(Text.equals("Logic")){
+                caticon.setImageResource(R.drawable.trivialogic);
+            }
+            if(Text.equals("Physics")){
+                caticon.setImageResource(R.drawable.triviaphysics);
+            }
+            if(Text.equals("Computer")){
+                caticon.setImageResource(R.drawable.triviacomputer);
+            }
+            if(Text.equals("Movies")){
+                caticon.setImageResource(R.drawable.triviamovie);
+            }
+            if(Text.equals("Animals")){
+                caticon.setImageResource(R.drawable.triviaanimals);
+            }
+            if(Text.equals("Fashion")){
+                caticon.setImageResource(R.drawable.triviafashion);
+            }
         }
-        if(Text.equals("Entertainment")){
-            caticon.setImageResource(R.drawable.triviaentertainment);
-        }
-        if(Text.equals("Politics")){
-            caticon.setImageResource(R.drawable.triviapolitics);
-        }
-        if(Text.equals("History")){
-            caticon.setImageResource(R.drawable.triviahistory);
-        }
-        if(Text.equals("Maths")){
-            caticon.setImageResource(R.drawable.triviamath);
-        }
-        if(Text.equals("English")){
-            caticon.setImageResource(R.drawable.triviaenglish);
-        }
-        if(Text.equals("Logic")){
-            caticon.setImageResource(R.drawable.trivialogic);
-        }
-        if(Text.equals("Physics")){
-            caticon.setImageResource(R.drawable.triviaphysics);
-        }
-        if(Text.equals("Computer")){
-            caticon.setImageResource(R.drawable.triviacomputer);
-        }
-        if(Text.equals("Movies")){
-            caticon.setImageResource(R.drawable.triviamovie);
-        }
-        if(Text.equals("Animals")){
-            caticon.setImageResource(R.drawable.triviaanimals);
-        }
-        if(Text.equals("Fashion")){
-            caticon.setImageResource(R.drawable.triviafashion);
+        else{
+            caticon.setImageResource(R.drawable.ic63);
         }
 
         quest = findViewById(R.id.question);
@@ -153,6 +164,8 @@ public class Question10 extends AppCompatActivity {
         opt2.setText(optionB_list.get(9));
         opt3.setText(optionC_list.get(9));
         opt4.setText(optionD_list.get(9));
+        examType.setText(examType_list.get(9));
+        examYear.setText(examYear_list.get(9));
 
         final String ans = correct_option_list.get(9);
 
@@ -179,6 +192,7 @@ public class Question10 extends AppCompatActivity {
                                 mv.putExtra("category", Text);
                                 mv.putExtra("question", questio);
                                 mv.putExtra("score", score);
+                                mv.putExtra("From", From);
                                 mv.putExtra("timer", timeCount.getText().toString());
                                 startActivity(mv);
                             }else{
@@ -187,6 +201,7 @@ public class Question10 extends AppCompatActivity {
                                 mv.putExtra("category", Text);
                                 mv.putExtra("question", questio);
                                 mv.putExtra("score", score);
+                                mv.putExtra("From", From);
                                 mv.putExtra("timer", timeCount.getText().toString());
                                 startActivity(mv);
                             }
@@ -221,6 +236,7 @@ public class Question10 extends AppCompatActivity {
                                 mv.putExtra("category", Text);
                                 mv.putExtra("question", questio);
                                 mv.putExtra("score", score);
+                                mv.putExtra("From", From);
                                 mv.putExtra("timer", timeCount.getText().toString());
                                 startActivity(mv);
                             }else{
@@ -229,6 +245,7 @@ public class Question10 extends AppCompatActivity {
                                 mv.putExtra("category", Text);
                                 mv.putExtra("question", questio);
                                 mv.putExtra("score", score);
+                                mv.putExtra("From", From);
                                 mv.putExtra("timer", timeCount.getText().toString());
                                 startActivity(mv);
                             }
@@ -262,6 +279,7 @@ public class Question10 extends AppCompatActivity {
                                 mv.putExtra("category", Text);
                                 mv.putExtra("question", questio);
                                 mv.putExtra("score", score);
+                                mv.putExtra("From", From);
                                 mv.putExtra("timer", timeCount.getText().toString());
                                 startActivity(mv);
                             }else{
@@ -270,6 +288,7 @@ public class Question10 extends AppCompatActivity {
                                 mv.putExtra("category", Text);
                                 mv.putExtra("question", questio);
                                 mv.putExtra("score", score);
+                                mv.putExtra("From", From);
                                 mv.putExtra("timer", timeCount.getText().toString());
                                 startActivity(mv);
                             }
@@ -303,6 +322,7 @@ public class Question10 extends AppCompatActivity {
                                 mv.putExtra("category", Text);
                                 mv.putExtra("question", questio);
                                 mv.putExtra("score", score);
+                                mv.putExtra("From", From);
                                 mv.putExtra("timer", timeCount.getText().toString());
                                 startActivity(mv);
                             }else{
@@ -311,6 +331,7 @@ public class Question10 extends AppCompatActivity {
                                 mv.putExtra("category", Text);
                                 mv.putExtra("question", questio);
                                 mv.putExtra("score", score);
+                                mv.putExtra("From", From);
                                 mv.putExtra("timer", timeCount.getText().toString());
                                 startActivity(mv);
                             }
@@ -344,6 +365,7 @@ public class Question10 extends AppCompatActivity {
                                 mv.putExtra("category", Text);
                                 mv.putExtra("question", questio);
                                 mv.putExtra("score", score);
+                                mv.putExtra("From", From);
                                 mv.putExtra("timer", timeCount.getText().toString());
                                 startActivity(mv);
                             }else{
@@ -352,6 +374,7 @@ public class Question10 extends AppCompatActivity {
                                 mv.putExtra("category", Text);
                                 mv.putExtra("question", questio);
                                 mv.putExtra("score", score);
+                                mv.putExtra("From", From);
                                 mv.putExtra("timer", timeCount.getText().toString());
                                 startActivity(mv);
                             }
@@ -385,6 +408,7 @@ public class Question10 extends AppCompatActivity {
                                 mv.putExtra("category", Text);
                                 mv.putExtra("question", questio);
                                 mv.putExtra("score", score);
+                                mv.putExtra("From", From);
                                 mv.putExtra("timer", timeCount.getText().toString());
                                 startActivity(mv);
                             }else{
@@ -393,6 +417,7 @@ public class Question10 extends AppCompatActivity {
                                 mv.putExtra("category", Text);
                                 mv.putExtra("question", questio);
                                 mv.putExtra("score", score);
+                                mv.putExtra("From", From);
                                 mv.putExtra("timer", timeCount.getText().toString());
                                 startActivity(mv);
                             }
@@ -426,6 +451,7 @@ public class Question10 extends AppCompatActivity {
                                 mv.putExtra("category", Text);
                                 mv.putExtra("question", questio);
                                 mv.putExtra("score", score);
+                                mv.putExtra("From", From);
                                 mv.putExtra("timer", timeCount.getText().toString());
                                 startActivity(mv);
                             }else{
@@ -434,6 +460,7 @@ public class Question10 extends AppCompatActivity {
                                 mv.putExtra("category", Text);
                                 mv.putExtra("question", questio);
                                 mv.putExtra("score", score);
+                                mv.putExtra("From", From);
                                 mv.putExtra("timer", timeCount.getText().toString());
                                 startActivity(mv);
                             }
@@ -467,6 +494,7 @@ public class Question10 extends AppCompatActivity {
                                 mv.putExtra("category", Text);
                                 mv.putExtra("question", questio);
                                 mv.putExtra("score", score);
+                                mv.putExtra("From", From);
                                 mv.putExtra("timer", timeCount.getText().toString());
                                 startActivity(mv);
                             }else{
@@ -475,6 +503,7 @@ public class Question10 extends AppCompatActivity {
                                 mv.putExtra("category", Text);
                                 mv.putExtra("question", questio);
                                 mv.putExtra("score", score);
+                                mv.putExtra("From", From);
                                 mv.putExtra("timer", timeCount.getText().toString());
                                 startActivity(mv);
                             }

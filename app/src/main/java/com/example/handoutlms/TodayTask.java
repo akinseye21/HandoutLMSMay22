@@ -70,7 +70,7 @@ public class TodayTask extends Fragment {
     ArrayList<String> arr_task_time = new ArrayList<>();
     ArrayList<String> arr_today = new ArrayList<>();
 
-    public static final String GET_TASKS = "https://handout.com.ng/handouts/handout_get_user_task";
+    public static final String GET_TASKS = "https://handoutng.com/handouts/handout_get_user_task";
 
     private OnFragmentInteractionListener mListener;
 

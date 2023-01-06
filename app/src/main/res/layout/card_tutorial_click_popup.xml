@@ -40,7 +40,6 @@
                         android:layout_marginLeft="5dp"
                         android:id="@+id/created_by"
                         android:text="Ada Kayari"
-                        android:textSize="12dp"
                         android:textStyle="bold"
                         android:textColor="#ffffff"/>
                     <TextView
@@ -86,7 +85,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Tutorial Course Name"
-                            android:textSize="8dp"
                             android:textStyle="bold"
                             android:textColor="#4bc93c"/>
                         <TextView
@@ -94,7 +92,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/gig_name"
                             android:text="The Law of Crypto"
-                            android:textSize="12dp"
+                            android:textSize="13dp"
                             android:textStyle="bold"
                             android:textColor="#ffffff"/>
                     </LinearLayout>
@@ -133,7 +131,6 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="25dp"
                 android:text="Category"
-                android:textSize="8dp"
                 android:textStyle="bold"
                 android:textColor="#4bc93c"/>
 
@@ -152,7 +149,7 @@
                     android:layout_marginLeft="5dp"
                     android:id="@+id/gig_category"
                     android:text="Technology"
-                    android:textSize="8dp"
+                    android:textSize="13dp"
                     android:textStyle="normal"
                     android:textColor="#ffffff"/>
 
@@ -165,7 +162,6 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="25dp"
                 android:text="Project Description"
-                android:textSize="8dp"
                 android:textStyle="bold"
                 android:textColor="#4bc93c"/>
 
@@ -184,7 +180,7 @@
                     android:layout_marginLeft="5dp"
                     android:id="@+id/gig_desc"
                     android:text="Lorium ipsium, the description of the project will be displayed here. hahi jeie hiy qi hish s   iw eh ihi whoefhi w iwhe he hihwe wiuf wu ei h ueukw"
-                    android:textSize="8dp"
+                    android:textSize="13dp"
                     android:textStyle="normal"
                     android:textColor="#ffffff"/>
 
@@ -196,7 +192,6 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="25dp"
                 android:text="Date"
-                android:textSize="8dp"
                 android:textStyle="bold"
                 android:textColor="#4bc93c"/>
 
@@ -215,7 +210,7 @@
                     android:layout_marginLeft="5dp"
                     android:id="@+id/tut_date"
                     android:text="27/01/2022"
-                    android:textSize="10dp"
+                    android:textSize="13dp"
                     android:textStyle="normal"
                     android:textColor="#ffffff"/>
 
@@ -227,7 +222,6 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="25dp"
                 android:text="Time"
-                android:textSize="8dp"
                 android:textStyle="bold"
                 android:textColor="#4bc93c"/>
 
@@ -245,7 +239,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="8:00am"
-                    android:textSize="10dp"
+                    android:textSize="13dp"
                     android:textStyle="normal"
                     android:textColor="#ffffff"/>
 
@@ -258,7 +252,6 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="25dp"
                 android:text="Training Type"
-                android:textSize="8dp"
                 android:textStyle="bold"
                 android:textColor="#4bc93c"/>
 
@@ -277,7 +270,7 @@
                     android:layout_marginLeft="5dp"
                     android:id="@+id/mode"
                     android:text="Online"
-                    android:textSize="10dp"
+                    android:textSize="13dp"
                     android:textStyle="normal"
                     android:textColor="#ffffff"/>
 

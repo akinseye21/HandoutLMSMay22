@@ -93,7 +93,7 @@
                                 android:id="@+id/project_type"
                                 android:text="Standard project"
                                 android:textColor="#ffffff"
-                                android:textSize="12dp" />
+                                android:textSize="13dp" />
 
                         </LinearLayout>
 
@@ -117,7 +117,7 @@
                                 android:id="@+id/project_desc"
                                 android:text="A short description of the project that is posted\nthis shows the default text"
                                 android:textColor="#ffffff"
-                                android:textSize="12dp"/>
+                                android:textSize="13dp"/>
                         </LinearLayout>
                     </LinearLayout>
 

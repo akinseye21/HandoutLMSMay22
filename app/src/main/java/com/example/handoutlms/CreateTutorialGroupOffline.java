@@ -17,6 +17,18 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class CreateTutorialGroupOffline extends AppCompatActivity {
@@ -27,8 +39,16 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
     DatePickerDialog datePickerDialog;
     TimePickerDialog picker;
     Spinner uni, cat;
-    String group_name, category, date, time, location_st, description, email;
+    String group_name, date, time, location_st, description, email;
     ImageView back;
+
+    private ArrayList<String> cat2 = new ArrayList<>();
+    private ArrayList<String> inst2 = new ArrayList<>();
+
+
+    public static final String GET_CATEGORIES = "https://handoutng.com/handouts/handout_get_tutorial_groups_categories";
+    public static final String GET_UNIVERSITY = "https://handoutng.com/handouts/handout_get_universities";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +59,85 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
         Intent j = getIntent();
         email = j.getStringExtra("email");
 
-        String[] institutions = {"Select University..."," ","Ahmadu Bello University Zaria", "Adekunle Ajasin Unversity Akungba", "Adeleke University",
-                "Babcock University", "Federal University of Tech. Minna", "Federal University of Tech. Akure", "University of Lagos", "University of Abuja",
-                "Obafemi Awolowo University Ife"};
-        final String[] category = {"Select Category..."," ","Architecture","Biology","Information Technology","Politics", "Science", "Social Sciences", "Zoology"};
+        //GET CATEGORIES
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_CATEGORIES,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            int ArrayLength = jsonArray.length();
 
-        ArrayAdapter<String> institutionadapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.simple_spinner_small_whitebg, R.id.tx, institutions) ;
-        ArrayAdapter<String> categoryadapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.simple_spinner_small_whitebg, R.id.tx, category) ;
+                            for(int i=0; i<ArrayLength; i++){
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                String mycategory = jsonObject.getString("category");
+
+                                cat2.add(mycategory);
+                            }
+
+
+                            String[] category = new String[cat2.size()];
+                            for (int i = 0; i < cat2.size(); i++) {
+                                category[i] = cat2.get(i);
+                            }
+
+                            ArrayAdapter<String> categoryadapter = new ArrayAdapter<>(getApplicationContext(), R.layout.simple_spinner_small_whitebg, R.id.tx, category);
+                            cat.setAdapter(categoryadapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(stringRequest);
+
+
+        //GET UNIVERSITY
+        StringRequest stringRequest2 = new StringRequest(Request.Method.GET, GET_UNIVERSITY,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            int ArrayLength = jsonArray.length();
+                            for(int i=0; i<ArrayLength; i++){
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                String university = jsonObject.getString("university");
+
+                                inst2.add(university);
+                            }
+
+                            String[] institutions = new String[inst2.size()];
+                            for (int i = 0; i < inst2.size(); i++) {
+                                institutions[i] = inst2.get(i);
+                            }
+
+                            ArrayAdapter<String> institutionadapter = new ArrayAdapter<>(CreateTutorialGroupOffline.this, R.layout.simple_spinner_small_whitebg, R.id.tx, institutions);
+                            uni.setAdapter(institutionadapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        RequestQueue requestQueue2 = Volley.newRequestQueue(getApplicationContext());
+        requestQueue2.add(stringRequest2);
+
 
 
         grp_name = findViewById(R.id.group_name);
@@ -64,9 +156,6 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
-        uni.setAdapter(institutionadapter);
-        cat.setAdapter(categoryadapter);
 
 
         dte.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +190,7 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
 
                             }
                         }, mYear, mMonth, mDay);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
             }
         });
@@ -137,7 +227,7 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "One or more field is empty", Toast.LENGTH_LONG).show();
                 }
                 else{
-                    Intent i = new Intent(CreateTutorialGroupOffline.this, AlmostDone.class);
+                    Intent i = new Intent(CreateTutorialGroupOffline.this, AlmostDoneOffline.class);
                     i.putExtra("group_name", group_name);
                     i.putExtra("category", cat.getSelectedItem().toString());
                     i.putExtra("date", date);

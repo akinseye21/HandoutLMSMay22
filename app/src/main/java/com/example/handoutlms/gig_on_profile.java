@@ -81,8 +81,8 @@ public class gig_on_profile extends Fragment {
     GridView gridView1, gridView2;
     SharedPreferences preferences;
 
-    public static final String USER_GIGS = "http://handout.com.ng/handouts/handout_get_user_gig";
-    public static final String GIGS_BIDDED = "https://handout.com.ng/handouts/handout_get_user_bids_for_gigs";
+    public static final String USER_GIGS = "http://handoutng.com/handouts/handout_get_user_gig";
+    public static final String GIGS_BIDDED = "https://handoutng.com/handouts/handout_get_user_bids_for_gigs";
 
     public gig_on_profile() {
         // Required empty public constructor

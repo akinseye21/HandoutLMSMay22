@@ -32,6 +32,21 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".VideoLinks"
+            android:exported="false" />
+        <activity
+            android:name=".TaskInfo"
+            android:exported="false" />
+        <activity
+            android:name=".Subjects"
+            android:exported="false" />
+        <activity
+            android:name=".ViewOfflineJoinedTutorial"
+            android:exported="false" />
+        <activity
+            android:name=".AlmostDoneOffline"
+            android:exported="false" />
+        <activity
             android:name=".ViewTutorCreatedGroup"
             android:exported="false" />
         <activity
@@ -89,7 +104,7 @@
         <activity android:name=".CreateTutorialGroupOffline" />
         <activity android:name=".DocumentPaged" />
         <activity android:name=".CreateOnlineTutPhase1" />
-        <activity android:name=".AlmostDone" />
+        <activity android:name=".AlmostDoneOnline" />
         <activity android:name=".InviteFriends" />
         <activity android:name=".CreateTutorialGroupOnline" />
         <activity android:name=".CreateTutorialGroup2" />

@@ -34,7 +34,7 @@
             android:src="@drawable/user"
             app:civ_border_color="#fff"
             app:civ_border_overlay="true"
-            app:civ_border_width="2dp"/>
+            app:civ_border_width="2dp" />
 
         <TextView
             android:id="@+id/email"
@@ -42,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/pp"
             android:layout_marginLeft="20dp"
+            android:visibility="gone"
             android:ellipsize="end"
             android:maxLength="18"
             android:text="XXXX"
@@ -70,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:text="John Doe"
                     android:textColor="#ffffff"
-                    android:textSize="12dp"
+                    android:textSize="13dp"
                     android:textStyle="bold" />
             </LinearLayout>
 

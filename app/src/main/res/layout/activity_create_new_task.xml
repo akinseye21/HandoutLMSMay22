@@ -54,7 +54,7 @@
                     android:text="Title"
                     android:layout_marginTop="30dp"
                     android:textColor="#65dc9a"
-                    android:textSize="12dp"/>
+                    android:textSize="13dp"/>
 
                 <EditText
                     android:layout_width="match_parent"
@@ -65,7 +65,7 @@
                     android:hint="Name your task"
                     android:textColorHint="#ffffff"
                     android:textColor="#ffffff"
-                    android:textSize="12dp"
+                    android:textSize="13dp"
                     android:id="@+id/title"
                     android:background="@null"/>
 
@@ -81,7 +81,7 @@
                     android:text="Task"
                     android:layout_marginTop="30dp"
                     android:textColor="#65dc9a"
-                    android:textSize="12dp"/>
+                    android:textSize="13dp"/>
 
 <!--                <EditText-->
 <!--                    android:layout_width="match_parent"-->
@@ -99,12 +99,9 @@
                 <Spinner
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical"
+                    android:singleLine="true"
                     android:id="@+id/spinnertask"
-                    android:background="@drawable/rounded_purple_register2_dropdown"
+                    android:background="@drawable/rounded_transparent_dropdown"
                     android:spinnerMode="dialog"/>
 
                 <View
@@ -119,7 +116,7 @@
                     android:text="Date"
                     android:layout_marginTop="30dp"
                     android:textColor="#65dc9a"
-                    android:textSize="12dp"/>
+                    android:textSize="13dp"/>
 
                 <EditText
                     android:layout_width="match_parent"
@@ -130,7 +127,7 @@
                     android:hint="Set starting and deadline dates"
                     android:textColorHint="#ffffff"
                     android:textColor="#ffffff"
-                    android:textSize="12dp"
+                    android:textSize="13dp"
                     android:id="@+id/date"
                     android:background="@null"/>
 
@@ -146,7 +143,7 @@
                     android:text="Starting Time"
                     android:layout_marginTop="30dp"
                     android:textColor="#65dc9a"
-                    android:textSize="12dp"/>
+                    android:textSize="13dp"/>
 
                 <EditText
                     android:layout_width="match_parent"
@@ -157,7 +154,7 @@
                     android:hint="00:00"
                     android:textColorHint="#ffffff"
                     android:textColor="#ffffff"
-                    android:textSize="12dp"
+                    android:textSize="13dp"
                     android:id="@+id/startTime"
                     android:background="@null"/>
 
@@ -171,19 +168,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Team"
+                    android:visibility="gone"
                     android:layout_marginTop="30dp"
                     android:textColor="#65dc9a"
-                    android:textSize="12dp"/>
+                    android:textSize="13dp"/>
 
                 <Spinner
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:visibility="gone"
                     android:id="@+id/spinnerteam"
-                    android:background="@drawable/rounded_purple_register2_dropdown"
+                    android:background="@drawable/rounded_transparent_dropdown"
                     android:spinnerMode="dialog"/>
 
 
@@ -199,7 +195,7 @@
                     android:text="Description"
                     android:layout_marginTop="30dp"
                     android:textColor="#65dc9a"
-                    android:textSize="12dp"/>
+                    android:textSize="13dp"/>
 
                 <EditText
                     android:layout_width="match_parent"
@@ -210,7 +206,7 @@
                     android:hint="Write a short description"
                     android:textColorHint="#ffffff"
                     android:textColor="#ffffff"
-                    android:textSize="12dp"
+                    android:textSize="13dp"
                     android:id="@+id/description"
                     android:background="@null"/>
 

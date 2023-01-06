@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -55,7 +56,7 @@ public class CreateNewTask extends AppCompatActivity {
     Button home;
     TextView stat;
 
-    public static final String TASK_MANAGER = "https://handout.com.ng/handouts/handout_task_manager";
+    public static final String TASK_MANAGER = "https://handoutng.com/handouts/handout_task_manager";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,12 +82,12 @@ public class CreateNewTask extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
 
         tasks = findViewById(R.id.spinnertask);
-        ArrayAdapter<String> taskAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.simple_spinner_small_text, R.id.tx, myTasks);
+        ArrayAdapter<String> taskAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.simple_spinner_small_whitebg, R.id.tx, myTasks);
         tasks.setAdapter(taskAdapter);
         tasks.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ((TextView)view).setTextColor(Color.WHITE);
+//                ((LinearLayout)view).setTextColor(Color.WHITE);
             }
 
             @Override
@@ -96,12 +97,12 @@ public class CreateNewTask extends AppCompatActivity {
         });
 
         team = findViewById(R.id.spinnerteam);
-        ArrayAdapter<String> teamAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.simple_spinner_small_text, R.id.tx, myTeam);
+        ArrayAdapter<String> teamAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.simple_spinner_small_whitebg, R.id.tx, myTeam);
         team.setAdapter(teamAdapter);
         team.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ((TextView)view).setTextColor(Color.WHITE);
+//                ((TextView)view).setTextColor(Color.WHITE);
             }
 
             @Override

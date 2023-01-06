@@ -72,13 +72,26 @@ public class TutorialProfileAdapter extends BaseAdapter {
             public void onClick(View view) {
                 if(from.equals("joined")) {
                     //send to ViewOnlineJoinedTutorial
-                    Intent intent = new Intent(context, ViewOnlineJoinedTutorial.class);
-                    intent.putExtra("name", arr_tutName.get(i));
-                    intent.putExtra("category", arr_tutCategory.get(i));
-                    intent.putExtra("description", arr_tutDescription.get(i));
-                    intent.putExtra("mode", arr_tutMode.get(i));
-                    intent.putExtra("id", arr_tutId.get(i));
-                    context.startActivity(intent);
+                    if(arr_tutMode.get(i).equals("online")){
+                        //send to online
+                        Intent intent = new Intent(context, ViewOnlineJoinedTutorial.class);
+                        intent.putExtra("name", arr_tutName.get(i));
+                        intent.putExtra("category", arr_tutCategory.get(i));
+                        intent.putExtra("description", arr_tutDescription.get(i));
+                        intent.putExtra("mode", arr_tutMode.get(i));
+                        intent.putExtra("id", arr_tutId.get(i));
+                        context.startActivity(intent);
+                    }else{
+                        //send to offline
+                        Intent intent = new Intent(context, ViewOfflineJoinedTutorial.class);
+                        intent.putExtra("name", arr_tutName.get(i));
+                        intent.putExtra("category", arr_tutCategory.get(i));
+                        intent.putExtra("description", arr_tutDescription.get(i));
+                        intent.putExtra("mode", arr_tutMode.get(i));
+                        intent.putExtra("id", arr_tutId.get(i));
+                        context.startActivity(intent);
+                    }
+
                 }
 
                 if(from.equals("created")){

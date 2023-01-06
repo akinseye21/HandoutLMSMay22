@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -32,7 +33,7 @@ public class ForgotPassword1 extends AppCompatActivity {
     Button submit;
     ProgressBar progressBar;
 
-    public static final String PASSWORD_RESET = "http://handout.com.ng/handouts/handout_reset_password";
+    public static final String PASSWORD_RESET = "https://handoutng.com/handouts/handout_reset_password";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +64,11 @@ public class ForgotPassword1 extends AppCompatActivity {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                JSONObject jsonObject;
+
+                                System.out.println("Login Response = "+response);
+
                                 try {
-                                    jsonObject = new JSONObject(response);
+                                    JSONObject jsonObject = new JSONObject(response);
                                     String status = jsonObject.getString("status");
                                     String code = jsonObject.getString("code");
 
@@ -84,6 +87,7 @@ public class ForgotPassword1 extends AppCompatActivity {
 
                                 } catch (JSONException e) {
                                     progressBar.setVisibility(View.GONE);
+                                    Toast.makeText(ForgotPassword1.this, "User not found", Toast.LENGTH_SHORT).show();
                                     e.printStackTrace();
                                 }
 
@@ -93,6 +97,7 @@ public class ForgotPassword1 extends AppCompatActivity {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 progressBar.setVisibility(View.GONE);
+                                System.out.println("Error = "+error);
                                 Toast.makeText(getApplicationContext(), "Network connectivity problem", Toast.LENGTH_LONG).show();
                             }
                         }){
@@ -104,6 +109,8 @@ public class ForgotPassword1 extends AppCompatActivity {
                     }
                 };
                 RequestQueue requestQueue = Volley.newRequestQueue(ForgotPassword1.this);
+                DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                stringRequest.setRetryPolicy(retryPolicy);
                 requestQueue.add(stringRequest);
 
             }
