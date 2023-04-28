@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -58,12 +59,14 @@ public class tutorial_on_profile_others extends Fragment {
     ArrayList<String> Array_tutDescription = new ArrayList<>();
     ArrayList<String> Array_tutMode = new ArrayList<>();
     ArrayList<String> Array_tutId = new ArrayList<>();
+    ArrayList<String> Array_tutDate = new ArrayList<>();
 
     ArrayList<String> Array_tutName2 = new ArrayList<>();
     ArrayList<String> Array_tutCategory2 = new ArrayList<>();
     ArrayList<String> Array_tutDescription2 = new ArrayList<>();
     ArrayList<String> Array_tutMode2 = new ArrayList<>();
     ArrayList<String> Array_tutId2 = new ArrayList<>();
+    ArrayList<String> Array_tutDate2 = new ArrayList<>();
 
     String user_email;
 
@@ -119,7 +122,7 @@ public class tutorial_on_profile_others extends Fragment {
         Intent i = getActivity().getIntent();
         user_email = i.getStringExtra("email");
 
-        Toast.makeText(getContext(), "userEmail = "+user_email, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), "userEmail = "+user_email, Toast.LENGTH_SHORT).show();
         System.out.println("userEmail = "+user_email);
 
         created_tutorial.setOnClickListener(new View.OnClickListener() {
@@ -151,6 +154,7 @@ public class tutorial_on_profile_others extends Fragment {
                                         String tutCreatedBy = section1.getString("created_by");
                                         String tutMode = section1.getString("mode");
                                         String id = section1.getString("ID");
+                                        String date = section1.getString("_date");
 
                                         if(tutCreatedBy.equals(user_email)){
                                             Array_tutName.add(tutName);
@@ -158,6 +162,7 @@ public class tutorial_on_profile_others extends Fragment {
                                             Array_tutDescription.add(tutDescription);
                                             Array_tutMode.add(tutMode);
                                             Array_tutId.add(id);
+                                            Array_tutDate.add(date);
                                         }else{
                                             //do nothing
                                         }
@@ -172,7 +177,7 @@ public class tutorial_on_profile_others extends Fragment {
                                         gridViewJoined.setVisibility(View.GONE);
                                     }else{
                                         //populate values on the gridview
-                                        TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode, Array_tutId, from);
+                                        TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode, Array_tutId, Array_tutDate, from);
                                         gridViewCreated.setAdapter(tutorialProfileAdapter);
                                         noTutorial.setVisibility(View.GONE);
                                         noTutorialJoined.setVisibility(View.GONE);
@@ -211,6 +216,8 @@ public class tutorial_on_profile_others extends Fragment {
                 };
 
                 RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+                DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                stringRequest.setRetryPolicy(retryPolicy);
                 requestQueue.add(stringRequest);
 
                 //clear array
@@ -219,6 +226,7 @@ public class tutorial_on_profile_others extends Fragment {
                 Array_tutDescription.clear();
                 Array_tutMode.clear();
                 Array_tutId.clear();
+                Array_tutDate.clear();
 
 
 
@@ -258,17 +266,19 @@ public class tutorial_on_profile_others extends Fragment {
                                             String tutCreatedBy = section1.getString("created_by");
                                             String tutMode = section1.getString("status");
                                             String tutId = section1.getString("id");
+                                            String date = section1.getString("_date");
 
                                             Array_tutName2.add(tutName);
                                             Array_tutCategory2.add(tutCategory);
                                             Array_tutDescription2.add(tutDescription);
                                             Array_tutMode2.add(tutMode);
                                             Array_tutId2.add(tutId);
+                                            Array_tutDate2.add(date);
 
                                         }
 
                                         //populate values on the gridview
-                                        TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName2, Array_tutCategory2, Array_tutDescription2, Array_tutMode2, Array_tutId2, from);
+                                        TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName2, Array_tutCategory2, Array_tutDescription2, Array_tutMode2, Array_tutId2, Array_tutDate2, from);
                                         gridViewJoined.setAdapter(tutorialProfileAdapter);
                                         gridViewCreated.setVisibility(View.GONE);
                                         noTutorial.setVisibility(View.GONE);
@@ -315,6 +325,8 @@ public class tutorial_on_profile_others extends Fragment {
                 };
 
                 RequestQueue requestQueue2 = Volley.newRequestQueue(getContext());
+                DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                stringRequest2.setRetryPolicy(retryPolicy);
                 requestQueue2.add(stringRequest2);
 
                 //clear array
@@ -323,6 +335,7 @@ public class tutorial_on_profile_others extends Fragment {
                 Array_tutDescription2.clear();
                 Array_tutMode2.clear();
                 Array_tutId2.clear();
+                Array_tutDate2.clear();
 
             }
         });
@@ -349,6 +362,7 @@ public class tutorial_on_profile_others extends Fragment {
                                 String tutCreatedBy = section1.getString("created_by");
                                 String tutMode = section1.getString("mode");
                                 String id = section1.getString("ID");
+                                String date = section1.getString("_date");
 
                                 if(tutCreatedBy.equals(user_email)){
                                     Array_tutName.add(tutName);
@@ -356,6 +370,7 @@ public class tutorial_on_profile_others extends Fragment {
                                     Array_tutDescription.add(tutDescription);
                                     Array_tutMode.add(tutMode);
                                     Array_tutId.add(id);
+                                    Array_tutDate.add(date);
                                 }else{
                                     //do nothing
                                 }
@@ -370,7 +385,7 @@ public class tutorial_on_profile_others extends Fragment {
                                 gridViewJoined.setVisibility(View.GONE);
                             }else{
                                 //populate values on the gridview
-                                TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode, Array_tutId, from);
+                                TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode, Array_tutId, Array_tutDate, from);
                                 gridViewCreated.setAdapter(tutorialProfileAdapter);
                                 noTutorial.setVisibility(View.GONE);
                                 noTutorialJoined.setVisibility(View.GONE);
@@ -421,5 +436,8 @@ public class tutorial_on_profile_others extends Fragment {
 
 
         return v;
+    }
+
+    public interface OnFragmentInteractionListener {
     }
 }

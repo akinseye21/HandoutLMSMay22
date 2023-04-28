@@ -21,6 +21,7 @@
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:id="@+id/text"
         android:textSize="15dp"
         android:text="Signing up. Please wait..."
         android:textColor="#f4000000"/>

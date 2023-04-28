@@ -51,7 +51,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:id="@+id/created_by_gig"
-                            android:text=""
+                            android:text="xxxxx"
                             android:textSize="12dp"
                             android:textStyle="bold"
                             android:textColor="#ffffff"/>
@@ -60,7 +60,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:id="@+id/dept_gig"
-                            android:text=""
+                        android:visibility="gone"
+                            android:text="xxxxx"
                             android:textSize="10dp"
                             android:textStyle="normal"
                             android:textColor="#ffffff"/>
@@ -69,7 +70,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:id="@+id/uni_gig"
-                            android:text=""
+                            android:text="xxxxx"
                             android:textSize="10dp"
                             android:textStyle="normal"
                             android:textColor="#ffffff"/>
@@ -81,6 +82,7 @@
                     android:layout_height="250dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
+                android:visibility="gone"
                     android:background="@drawable/ic163"/>
 
             <TextView

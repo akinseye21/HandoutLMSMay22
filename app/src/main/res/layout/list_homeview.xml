@@ -238,6 +238,7 @@
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
+                            android:id="@+id/imgtut"
                             android:src="@drawable/profile_header" />
 
                         <LinearLayout
@@ -484,6 +485,7 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:id="@+id/imggig"
                         android:src="@drawable/profile_header" />
 
                     <LinearLayout

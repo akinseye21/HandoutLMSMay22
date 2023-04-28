@@ -46,9 +46,11 @@ public class FeedsDashboard extends AppCompatActivity implements
         Gigs.OnFragmentInteractionListener,
         Profile2.OnFragmentInteractionListener,
         tutorial_on_profile.OnFragmentInteractionListener,
+        tutorial_on_profile_others.OnFragmentInteractionListener,
         TaskManager1.OnFragmentInteractionListener,
         TodayTask.OnFragmentInteractionListener,
-        gig_on_profile.OnFragmentInteractionListener{
+        gig_on_profile.OnFragmentInteractionListener,
+        gig_on_profile_others.OnFragmentInteractionListener{
 
     private TabLayout tabLayout;
     private ViewPager viewPager;

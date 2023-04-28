@@ -1,16 +1,23 @@
 package com.example.handoutlms;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.leanback.widget.HorizontalGridView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,12 +28,17 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 /**
@@ -60,9 +72,14 @@ public class Tutor extends Fragment {
     final ArrayList<String> Array_groupTime = new ArrayList<>();
     final ArrayList<String> Array_groupTutor = new ArrayList<>();
 
-    GridView gridView, gridView2;
+    SharedPreferences preferences;
+    String got_email;
+
+    RecyclerView recyclerView;
+    MyRvAdapter myRvAdapter;
+//    GridView gridView;
+    GridView gridView2;
     ProgressBar progressBar_tutor, progressBar_group;
-    TutorListViewAdapter tutorListViewAdapter;
     GroupListViewAdapter groupListViewAdapter;
 
     public static final String ALL_TUTORS = "https://handoutng.com/handouts/handout_get_tutors";
@@ -107,11 +124,15 @@ public class Tutor extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_tutor, container, false);
 
-        gridView = v.findViewById(R.id.simpleGridView);
+        LinearLayoutManager layoutManager= new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL, false);
+        recyclerView = v.findViewById(R.id.recycler_view);
         gridView2 = v.findViewById(R.id.simpleGridView2);
 
         progressBar_tutor = v.findViewById(R.id.progressBar_tutor);
         progressBar_group = v.findViewById(R.id.progressBar_group);
+
+        preferences = getContext().getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
+        got_email = preferences.getString("email", "not available");
 
         //get all tutors here
         StringRequest stringRequest = new StringRequest(Request.Method.GET, ALL_TUTORS,
@@ -136,10 +157,10 @@ public class Tutor extends Fragment {
                                 Array_tutorEmail.add(tutorEmail);
                             }
 
-                            //populate values on the gridview
-                            tutorListViewAdapter = new TutorListViewAdapter(getActivity(), Array_tutorName, Array_tutorFaculty, Array_tutorEmail);
-                            gridView.setAdapter(tutorListViewAdapter);
-
+                            //populate values on the recyclerview
+                            myRvAdapter = new MyRvAdapter(Array_tutorName, Array_tutorFaculty, Array_tutorEmail);
+                            recyclerView.setLayoutManager(layoutManager);
+                            recyclerView.setAdapter(myRvAdapter);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -261,5 +282,115 @@ public class Tutor extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+
+
+    class MyRvAdapter extends RecyclerView.Adapter<MyRvAdapter.MyHolder> {
+        ArrayList<String> named;
+        ArrayList<String> faculty;
+        ArrayList<String> email;
+
+        public MyRvAdapter(ArrayList<String> named, ArrayList<String> faculty, ArrayList<String> email) {
+            this.named = named;
+            this.faculty = faculty;
+            this.email = email;
+        }
+
+        @NonNull
+        @Override
+        public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(getContext()).inflate(R.layout.list_tutors, parent, false);
+            return new MyHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull MyHolder holder, @SuppressLint("RecyclerView") int position) {
+            holder.name.setText(named.get(position));
+            holder.fac.setText(faculty.get(position));
+
+            String USER_PROFILE = "https://handoutng.com/handouts/handout_get_user_profile";
+
+            //get profile picture
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, USER_PROFILE,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            System.out.println("Profile = "+response);
+
+                            try{
+                                JSONObject profile = new JSONObject(response);
+                                String got_pics = profile.getString("pics");
+
+                                if(got_pics.equals("")){
+                                    //do nothing
+                                }else{
+                                    Glide.with(getContext()).load(got_pics).into(holder.pp);
+                                }
+
+                            }
+                            catch (JSONException e){
+                                e.printStackTrace();
+                            }
+
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError volleyError) {
+                            volleyError.printStackTrace();
+                        }
+                    }){
+                @Override
+                protected Map<String, String> getParams(){
+                    Map<String, String> params = new HashMap<>();
+                    params.put("email", email.get(position));
+                    return params;
+                }
+            };
+
+            RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+            requestQueue.add(stringRequest);
+
+
+            holder.viewProfile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //if the clicked email is the same as the shared preference, do not go
+                    if(email.get(position).equals(got_email)){
+                        Toast.makeText(getContext(), "To view your profile, click on the profile tab", Toast.LENGTH_LONG).show();
+                    }else{
+                        //move to the user profile page
+                        Intent i = new Intent(getContext(), ProfileOthers.class);
+                        //pass the email of the selected user
+                        i.putExtra("email", email.get(position));
+                        getContext().startActivity(i);
+                    }
+                }
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return named.size();
+        }
+
+        class MyHolder extends RecyclerView.ViewHolder {
+            TextView name;
+            TextView fac;
+            LinearLayout viewProfile;
+            CircleImageView pp;
+
+            public MyHolder(@NonNull View itemView) {
+                super(itemView);
+                name = itemView.findViewById(R.id.fullname);
+                fac = itemView.findViewById(R.id.faculty);
+                viewProfile = itemView.findViewById(R.id.viewprofile);
+                pp = itemView.findViewById(R.id.pp);
+
+
+            }
+        }
+
     }
 }

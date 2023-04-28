@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1634963768115942" />
+        <entry key="app/src/main/res/drawable-v24/rounded_orange.xml" value="0.1805" />
         <entry key="app/src/main/res/drawable/background_chat_left.xml" value="0.1805" />
         <entry key="app/src/main/res/drawable/background_chat_right.xml" value="0.1805" />
         <entry key="app/src/main/res/drawable/cal_selected.xml" value="0.175" />
@@ -12,6 +13,7 @@
         <entry key="app/src/main/res/drawable/card_unselected.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/circle_dark_green.xml" value="0.164" />
         <entry key="app/src/main/res/drawable/circle_green.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/circle_grey.xml" value="0.164" />
         <entry key="app/src/main/res/drawable/circle_orange.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/circle_red.xml" value="0.164" />
         <entry key="app/src/main/res/drawable/circle_red2.xml" value="0.1655" />
@@ -20,9 +22,15 @@
         <entry key="app/src/main/res/drawable/corner_transparent.xml" value="0.1805" />
         <entry key="app/src/main/res/drawable/corner_tutor.xml" value="0.1195" />
         <entry key="app/src/main/res/drawable/corner_white.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/corner_white2.xml" value="0.164" />
+        <entry key="app/src/main/res/drawable/dotted_bg.xml" value="0.1805" />
+        <entry key="app/src/main/res/drawable/dotted_line.xml" value="0.164" />
         <entry key="app/src/main/res/drawable/green_outline.xml" value="0.141" />
         <entry key="app/src/main/res/drawable/handout_chat.xml" value="0.1805" />
+        <entry key="app/src/main/res/drawable/new_corner.xml" value="0.164" />
         <entry key="app/src/main/res/drawable/new_login.xml" value="0.141" />
+        <entry key="app/src/main/res/drawable/new_rounded_green.xml" value="0.164" />
+        <entry key="app/src/main/res/drawable/receiver_chat_bg.xml" value="0.1805" />
         <entry key="app/src/main/res/drawable/round_ash.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/round_blue.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/round_popup.xml" value="0.175" />
@@ -31,13 +39,20 @@
         <entry key="app/src/main/res/drawable/round_white.xml" value="0.1805" />
         <entry key="app/src/main/res/drawable/rounded_color_createtutorial.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/rounded_deep_green.xml" value="0.141" />
+        <entry key="app/src/main/res/drawable/rounded_green.xml" value="0.164" />
+        <entry key="app/src/main/res/drawable/rounded_grey.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/rounded_grey2.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/rounded_orange.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/rounded_pink.xml" value="0.1195" />
+        <entry key="app/src/main/res/drawable/rounded_purple.xml" value="0.1145" />
+        <entry key="app/src/main/res/drawable/rounded_purple_register1.xml" value="0.164" />
+        <entry key="app/src/main/res/drawable/rounded_purple_register2_dropdown.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/rounded_red.xml" value="0.1655" />
         <entry key="app/src/main/res/drawable/rounded_white_green_corner.xml" value="0.141" />
         <entry key="app/src/main/res/drawable/rounded_white_little.xml" value="0.141" />
         <entry key="app/src/main/res/drawable/rounded_white_transparent.xml" value="0.141" />
         <entry key="app/src/main/res/drawable/rounded_white_transparent_100.xml" value="0.141" />
+        <entry key="app/src/main/res/drawable/youtube_corner.xml" value="0.1145" />
         <entry key="app/src/main/res/layout/activity_add_options.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/activity_add_task.xml" value="0.23007246376811594" />
         <entry key="app/src/main/res/layout/activity_almost_done.xml" value="0.24427083333333333" />
@@ -46,6 +61,7 @@
         <entry key="app/src/main/res/layout/activity_card_gig_click2.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_chat_messaging_page.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_chat_page.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_click_tut_on_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_create_games.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_create_gig1.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_create_gig2.xml" value="0.335" />
@@ -56,10 +72,11 @@
         <entry key="app/src/main/res/layout/activity_create_new_task.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_create_online_tut_phase1.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_create_tutorial_group2.xml" value="0.24427083333333333" />
-        <entry key="app/src/main/res/layout/activity_create_tutorial_group_offline.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_create_tutorial_group_online.xml" value="0.19655797101449277" />
+        <entry key="app/src/main/res/layout/activity_create_tutorial_group_offline.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_create_tutorial_group_online.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_document_paged.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_edit_profile_page.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_edit_resources.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_feeds_dashboard.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/activity_first_screen.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/activity_forgot_password1.xml" value="0.24682971014492755" />
@@ -70,6 +87,7 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login_signup.xml" value="0.18072916666666666" />
         <entry key="app/src/main/res/layout/activity_new_signup.xml" value="0.24427083333333333" />
+        <entry key="app/src/main/res/layout/activity_pending_list4_tutorial.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/activity_profile_others.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_question1.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_question10.xml" value="0.24682971014492755" />
@@ -81,6 +99,8 @@
         <entry key="app/src/main/res/layout/activity_question7.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_question8.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_question9.xml" value="0.24682971014492755" />
+        <entry key="app/src/main/res/layout/activity_resource_viewer_view.xml" value="0.18385416666666668" />
+        <entry key="app/src/main/res/layout/activity_resource_viewer_view2.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_see_bids.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_show_bids_placed.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_show_created_gigs.xml" value="0.24682971014492755" />
@@ -96,13 +116,15 @@
         <entry key="app/src/main/res/layout/activity_tutor_or_student.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_tutor_select_category.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_tutors_dashboard.xml" value="0.24682971014492755" />
+        <entry key="app/src/main/res/layout/activity_video_creator_view.xml" value="0.1286231884057971" />
         <entry key="app/src/main/res/layout/activity_video_links.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_view_cv.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_view_group_resources.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_view_joined_tutorial.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_view_offline_joined_tutorial.xml" value="0.24682971014492755" />
-        <entry key="app/src/main/res/layout/activity_view_online_joined_tutorial.xml" value="0.24682971014492755" />
+        <entry key="app/src/main/res/layout/activity_view_online_joined_tutorial.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_view_tutor_created_group.xml" value="0.24682971014492755" />
+        <entry key="app/src/main/res/layout/activity_watch_video.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/activity_welcome_page.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/card_add_task.xml" value="0.2125" />
         <entry key="app/src/main/res/layout/card_gig_click_popup.xml" value="0.335" />
@@ -119,10 +141,13 @@
         <entry key="app/src/main/res/layout/custom_popup_exit.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/custom_popup_exit_chat.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/custom_popup_login_loading.xml" value="0.15364583333333334" />
+        <entry key="app/src/main/res/layout/custom_popup_menu.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/custom_popup_question_loading.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/custom_popup_signing_up_loading.xml" value="0.15364583333333334" />
         <entry key="app/src/main/res/layout/custom_popup_successful_taskmanager.xml" value="0.2644927536231884" />
         <entry key="app/src/main/res/layout/custom_popup_tutorial_joined.xml" value="0.24427083333333333" />
+        <entry key="app/src/main/res/layout/custom_popup_upload_successful.xml" value="0.20208333333333334" />
+        <entry key="app/src/main/res/layout/custom_popup_watchvideo.xml" value="0.1" />
         <entry key="app/src/main/res/layout/custom_remove_bid.xml" value="0.1546875" />
         <entry key="app/src/main/res/layout/custom_save_bid.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/custom_tutor_popup.xml" value="0.21331521739130435" />
@@ -146,6 +171,7 @@
         <entry key="app/src/main/res/layout/fragment_games.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_games_profile.xml" value="0.16145833333333334" />
         <entry key="app/src/main/res/layout/fragment_gig_on_profile.xml" value="0.24427083333333333" />
+        <entry key="app/src/main/res/layout/fragment_gig_on_profile_others.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/fragment_gigs.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/fragment_institution_rank.xml" value="0.24682971014492755" />
@@ -181,19 +207,23 @@
         <entry key="app/src/main/res/layout/list_education.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/list_experience.xml" value="0.21875" />
         <entry key="app/src/main/res/layout/list_game.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/list_gig.xml" value="0.21979166666666666" />
+        <entry key="app/src/main/res/layout/list_gig.xml" value="0.25" />
         <entry key="app/src/main/res/layout/list_gig_category.xml" value="0.24682971014492755" />
-        <entry key="app/src/main/res/layout/list_gig_home.xml" value="0.24682971014492755" />
+        <entry key="app/src/main/res/layout/list_gig_home.xml" value="0.55" />
         <entry key="app/src/main/res/layout/list_homeview.xml" value="0.25" />
         <entry key="app/src/main/res/layout/list_nigeriaexam.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/list_notification.xml" value="0.24682971014492755" />
+        <entry key="app/src/main/res/layout/list_request.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/list_skills.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/list_subject.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/list_today_task_view.xml" value="0.2644927536231884" />
         <entry key="app/src/main/res/layout/list_tutorial.xml" value="0.375" />
         <entry key="app/src/main/res/layout/list_tutors.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/list_tutors_group.xml" value="0.21979166666666666" />
+        <entry key="app/src/main/res/layout/list_tutors_group.xml" value="0.25" />
         <entry key="app/src/main/res/layout/list_video_links.xml" value="0.24682971014492755" />
+        <entry key="app/src/main/res/layout/list_videolink_creator.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/list_videolink_user.xml" value="0.24682971014492755" />
+        <entry key="app/src/main/res/layout/network_security_config.xml" value="0.14114583333333333" />
         <entry key="app/src/main/res/layout/simple_gig_spinner.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/simple_spinner_small_text.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/simple_spinner_small_whitebg.xml" value="0.24682971014492755" />
@@ -202,6 +232,7 @@
         <entry key="app/src/main/res/layout/spinner_select_course.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/menu/chat_menu.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/menu/gig_menu.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/xml/network_security_config.xml" value="0.14114583333333333" />
       </map>
     </option>
   </component>

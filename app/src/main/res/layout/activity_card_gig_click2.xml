@@ -80,6 +80,7 @@
                     android:layout_width="300dp"
                     android:layout_height="200dp"
                     android:layout_marginTop="5dp"
+                android:visibility="gone"
                     android:layout_marginLeft="20dp"
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/ic163"/>
@@ -207,6 +208,7 @@
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:orientation="horizontal"
                     android:layout_marginTop="30dp">
 
@@ -214,8 +216,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="NGN"
-                        android:textSize="10dp"
+                    android:layout_marginBottom="3dp"
+                        android:text="NGN:"
+                        android:textSize="13dp"
                         android:textStyle="bold"
                         android:textColor="#ffffff"/>
                 <LinearLayout
@@ -231,7 +234,7 @@
                             android:id="@+id/bidAmount"
                             android:textColorHint="#ffffff"
                             android:textColor="#ffffff"
-                            android:textSize="8dp"
+                            android:textSize="13dp"
                             android:inputType="number"
                             android:background="@null"
                             android:layout_marginTop="8dp"

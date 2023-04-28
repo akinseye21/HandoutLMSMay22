@@ -7,6 +7,8 @@
     android:background="@drawable/round_popup"
     android:padding="10dp">
 
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,6 +31,7 @@
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:id="@+id/image"
                     android:src="@drawable/profile_header"/>
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -115,6 +118,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/total_approved"
                         android:text="0"
                         android:textSize="12dp"
                         android:textStyle="bold"
@@ -238,6 +242,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
+                    android:id="@+id/tut_time"
                     android:text="8:00am"
                     android:textSize="13dp"
                     android:textStyle="normal"
@@ -312,22 +317,41 @@
         </LinearLayout>
     </ScrollView>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:id="@+id/linloader"
+        android:background="@drawable/corner_white2">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/lb_grey"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loading... Please wait"
+            android:textColor="@color/lb_grey"/>
+    </LinearLayout>
 
 
     <Button
+        android:id="@+id/join"
         android:layout_width="130dp"
         android:layout_height="30dp"
-        android:text="Click to join"
-        android:textSize="10dp"
-        android:textStyle="bold"
-        android:textColor="#ffffff"
-        android:background="@drawable/rounded_orange"
-        android:textAllCaps="false"
-        android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/join"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_orange"
+        android:text="Click to join"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="10dp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

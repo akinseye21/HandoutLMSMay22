@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#293241"
-    android:orientation="vertical"
     tools:context=".VideoLinks">
 
     <RelativeLayout
@@ -21,6 +20,12 @@
             android:layout_height="30dp"
             android:id="@+id/back"
             android:src="@drawable/arrow_left"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic128"/>
     </RelativeLayout>
 
 
@@ -79,601 +84,815 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_white_transparent_100"
-                android:id="@+id/lin1"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/save1"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/rel1"
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="right"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/rounded_green"
-                    android:text="Save"
-                    android:textAllCaps="false"
-                    android:textColor="#ffffff"
+                <TextView
+                    android:id="@+id/groupNAME"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:text="MATH 124 Advanced Maths"
+                    android:textAllCaps="true"
+                    android:textColor="#fff"
+                    android:textSize="22dp"
                     android:textStyle="bold" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:layout_marginBottom="20dp"
+                    android:layout_toRightOf="@+id/img"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/ic122"/>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="#ffffff"
+                            android:textSize="25dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Group Name"
+                        android:text="Class size"
                         android:textColor="#ffffff"
-                        android:textStyle="bold" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:orientation="vertical">
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"
-                            android:editable="false"
-                            android:clickable="false"
-                            android:background="@android:color/transparent"
-                            android:id="@+id/edtGroupName1"
-                            android:textColor="#ffffff"
-                            android:textColorHint="#d0d0d000"
-                            android:textSize="15dp"/>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.1dp"
-                            android:background="#ffffff"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"/>
-                    </LinearLayout>
-
+                        android:textSize="10dp" />
 
                 </LinearLayout>
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Email"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:orientation="vertical">
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"
-                            android:editable="false"
-                            android:clickable="false"
-                            android:background="@android:color/transparent"
-                            android:id="@+id/edtEmail1"
-                            android:textColor="#ffffff"
-                            android:textColorHint="#d0d0d000"
-                            android:textSize="15dp"/>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.1dp"
-                            android:background="#ffffff"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"/>
-                    </LinearLayout>
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Description"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"
-                            android:background="@android:color/transparent"
-                            android:id="@+id/edtDescription1"
-                            android:textColor="#ffffff"
-                            android:textColorHint="#d0d0d000"
-                            android:textSize="15dp"/>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.1dp"
-                            android:background="#ffffff"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"/>
-                    </LinearLayout>
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="40dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Video Link"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"
-                            android:background="@android:color/transparent"
-                            android:hint="https://"
-                            android:id="@+id/edtLink1"
-                            android:textColor="#ffffff"
-                            android:textColorHint="#d0d0d000"
-                            android:textSize="15dp"/>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.1dp"
-                            android:background="#ffffff"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"/>
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_white_transparent_100"
-                android:id="@+id/lin2"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/lin1"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/save2"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/rel1"
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="right"
-                    android:layout_alignParentRight="true"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@drawable/dotted_bg"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/rounded_green"
-                    android:text="Save"
-                    android:textAllCaps="false"
-                    android:textColor="#ffffff"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/upload_icon"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Group Name"
+                        android:text="Upload your videos here"
+                        android:textColor="#fff"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="30dp"
+                        android:hint="Video Name"
+                        android:id="@+id/edtVideoName1"
+                        android:inputType="text"
+                        android:textColor="#fff"
+                        android:textColorHint="@color/lb_grey"
+                        android:padding="10dp"
+                        android:background="@android:color/transparent"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:background="#fff"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="30dp"
+                        android:hint="Video Description"
+                        android:id="@+id/edtDescription1"
+                        android:inputType="text"
+                        android:textColor="#fff"
+                        android:textColorHint="@color/lb_grey"
+                        android:padding="10dp"
+                        android:background="@android:color/transparent"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:background="#fff"/>
+                    <EditText
+                        android:id="@+id/edtLink1"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="30dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Video Link"
+                        android:inputType="textUri"
+                        android:padding="10dp"
+                        android:textColor="#fff"
+                        android:textColorHint="@color/lb_grey" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:background="#fff"/>
+
+<!--                    <ProgressBar-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:id="@+id/progressBar"-->
+<!--                        android:visibility="gone"/>-->
+
+<!--                    <ImageView-->
+<!--                        android:layout_width="200dp"-->
+<!--                        android:layout_height="113dp"-->
+<!--                        android:id="@+id/youtubethumbnail"/>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:paddingTop="5dp">-->
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Title: "-->
+<!--                            android:textColor="#ffffff"/>-->
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:paddingLeft="10dp"-->
+<!--                            android:text=""-->
+<!--                            android:id="@+id/title"-->
+<!--                            android:textColor="#ffffff"/>-->
+<!--                    </LinearLayout>-->
+
+
+                    <Button
+                        android:id="@+id/submit"
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="70dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/rounded_orange"
+                        android:text="Submit"
+                        android:textAllCaps="false"
                         android:textColor="#ffffff"
                         android:textStyle="bold" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:orientation="vertical">
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"
-                            android:editable="false"
-                            android:clickable="false"
-                            android:background="@android:color/transparent"
-                            android:id="@+id/edtGroupName2"
-                            android:textColor="#ffffff"
-                            android:textColorHint="#d0d0d000"
-                            android:textSize="15dp"/>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.1dp"
-                            android:background="#ffffff"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"/>
-                    </LinearLayout>
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Email"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:orientation="vertical">
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"
-                            android:editable="false"
-                            android:clickable="false"
-                            android:background="@android:color/transparent"
-                            android:id="@+id/edtEmail2"
-                            android:textColor="#ffffff"
-                            android:textColorHint="#d0d0d000"
-                            android:textSize="15dp"/>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.1dp"
-                            android:background="#ffffff"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"/>
-                    </LinearLayout>
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Description"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"
-                            android:background="@android:color/transparent"
-                            android:id="@+id/edtDescription2"
-                            android:textColor="#ffffff"
-                            android:textColorHint="#d0d0d000"
-                            android:textSize="15dp"/>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.1dp"
-                            android:background="#ffffff"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"/>
-                    </LinearLayout>
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="40dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Video Link"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"
-                            android:background="@android:color/transparent"
-                            android:hint="https://"
-                            android:id="@+id/edtLink2"
-                            android:textColor="#ffffff"
-                            android:textColorHint="#d0d0d000"
-                            android:textSize="15dp"/>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.1dp"
-                            android:background="#ffffff"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"/>
-                    </LinearLayout>
 
 
                 </LinearLayout>
 
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="View Resources"
+                        android:id="@+id/viewResources"
+                        android:textColor="#65dc9a"
+                        android:textSize="12dp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:gravity="end"
+                        android:text="Edit Tutorial"
+                        android:textColor="#65dc9a"
+                        android:textSize="12dp"
+                        android:textStyle="italic" />
+
+                </RelativeLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_white_transparent_100"
-                android:id="@+id/lin3"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/lin1"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/save3"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/rel1"
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="right"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/rounded_green"
-                    android:text="Save"
-                    android:textAllCaps="false"
-                    android:textColor="#ffffff"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Group Name"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:orientation="vertical">
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"
-                            android:editable="false"
-                            android:clickable="false"
-                            android:background="@android:color/transparent"
-                            android:id="@+id/edtGroupName3"
-                            android:textColor="#ffffff"
-                            android:textColorHint="#d0d0d000"
-                            android:textSize="15dp"/>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.1dp"
-                            android:background="#ffffff"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"/>
-                    </LinearLayout>
 
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/rounded_white_transparent_100"-->
+<!--                android:id="@+id/lin1"-->
+<!--                android:orientation="vertical">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Email"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:orientation="vertical">
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"
-                            android:editable="false"
-                            android:clickable="false"
-                            android:background="@android:color/transparent"
-                            android:id="@+id/edtEmail3"
-                            android:textColor="#ffffff"
-                            android:textColorHint="#d0d0d000"
-                            android:textSize="15dp"/>
+<!--                <Button-->
+<!--                    android:id="@+id/save1"-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_below="@+id/rel1"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_gravity="right"-->
+<!--                    android:layout_alignParentRight="true"-->
+<!--                    android:layout_marginRight="20dp"-->
+<!--                    android:background="@drawable/rounded_green"-->
+<!--                    android:text="Save"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textColor="#ffffff"-->
+<!--                    android:textStyle="bold" />-->
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.1dp"
-                            android:background="#ffffff"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"/>
-                    </LinearLayout>
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:orientation="horizontal">-->
 
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Group Name"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:textStyle="bold" />-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <EditText-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"-->
+<!--                            android:editable="false"-->
+<!--                            android:clickable="false"-->
+<!--                            android:background="@android:color/transparent"-->
+<!--                            android:id="@+id/edtGroupName1"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textColorHint="#d0d0d000"-->
+<!--                            android:textSize="15dp"/>-->
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Description"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"
-                            android:background="@android:color/transparent"
-                            android:id="@+id/edtDescription3"
-                            android:textColor="#ffffff"
-                            android:textColorHint="#d0d0d000"
-                            android:textSize="15dp"/>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.1dp"
-                            android:background="#ffffff"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"/>
-                    </LinearLayout>
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="0.1dp"-->
+<!--                            android:background="#ffffff"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"/>-->
+<!--                    </LinearLayout>-->
 
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="40dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Video Link"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"
-                            android:background="@android:color/transparent"
-                            android:hint="https://"
-                            android:id="@+id/edtLink3"
-                            android:textColor="#ffffff"
-                            android:textColorHint="#d0d0d000"
-                            android:textSize="15dp"/>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Email"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:textStyle="bold" />-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <EditText-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"-->
+<!--                            android:editable="false"-->
+<!--                            android:clickable="false"-->
+<!--                            android:background="@android:color/transparent"-->
+<!--                            android:id="@+id/edtEmail1"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textColorHint="#d0d0d000"-->
+<!--                            android:textSize="15dp"/>-->
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.1dp"
-                            android:background="#ffffff"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="20dp"/>
-                    </LinearLayout>
-
-
-                </LinearLayout>
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="0.1dp"-->
+<!--                            android:background="#ffffff"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"/>-->
+<!--                    </LinearLayout>-->
 
 
-            </LinearLayout>
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Description"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:textStyle="bold" />-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <EditText-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"-->
+<!--                            android:background="@android:color/transparent"-->
+<!--                            android:id="@+id/edtDescription1"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textColorHint="#d0d0d000"-->
+<!--                            android:textSize="15dp"/>-->
+
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="0.1dp"-->
+<!--                            android:background="#ffffff"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"/>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:layout_marginBottom="40dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Video Link"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:textStyle="bold" />-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <EditText-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"-->
+<!--                            android:background="@android:color/transparent"-->
+<!--                            android:hint="https://"-->
+<!--                            android:id="@+id/edtLink1"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textColorHint="#d0d0d000"-->
+<!--                            android:textSize="15dp"/>-->
+
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="0.1dp"-->
+<!--                            android:background="#ffffff"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"/>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                </LinearLayout>-->
+
+
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/rounded_white_transparent_100"-->
+<!--                android:id="@+id/lin2"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_below="@+id/lin1"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/save2"-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_below="@+id/rel1"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_gravity="right"-->
+<!--                    android:layout_alignParentRight="true"-->
+<!--                    android:layout_marginRight="20dp"-->
+<!--                    android:background="@drawable/rounded_green"-->
+<!--                    android:text="Save"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textColor="#ffffff"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Group Name"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:textStyle="bold" />-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <EditText-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"-->
+<!--                            android:editable="false"-->
+<!--                            android:clickable="false"-->
+<!--                            android:background="@android:color/transparent"-->
+<!--                            android:id="@+id/edtGroupName2"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textColorHint="#d0d0d000"-->
+<!--                            android:textSize="15dp"/>-->
+
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="0.1dp"-->
+<!--                            android:background="#ffffff"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"/>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Email"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:textStyle="bold" />-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <EditText-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"-->
+<!--                            android:editable="false"-->
+<!--                            android:clickable="false"-->
+<!--                            android:background="@android:color/transparent"-->
+<!--                            android:id="@+id/edtEmail2"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textColorHint="#d0d0d000"-->
+<!--                            android:textSize="15dp"/>-->
+
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="0.1dp"-->
+<!--                            android:background="#ffffff"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"/>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Description"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:textStyle="bold" />-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <EditText-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"-->
+<!--                            android:background="@android:color/transparent"-->
+<!--                            android:id="@+id/edtDescription2"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textColorHint="#d0d0d000"-->
+<!--                            android:textSize="15dp"/>-->
+
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="0.1dp"-->
+<!--                            android:background="#ffffff"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"/>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:layout_marginBottom="40dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Video Link"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:textStyle="bold" />-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <EditText-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"-->
+<!--                            android:background="@android:color/transparent"-->
+<!--                            android:hint="https://"-->
+<!--                            android:id="@+id/edtLink2"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textColorHint="#d0d0d000"-->
+<!--                            android:textSize="15dp"/>-->
+
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="0.1dp"-->
+<!--                            android:background="#ffffff"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"/>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                </LinearLayout>-->
+
+
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/rounded_white_transparent_100"-->
+<!--                android:id="@+id/lin3"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_below="@+id/lin1"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/save3"-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_below="@+id/rel1"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_gravity="right"-->
+<!--                    android:layout_alignParentRight="true"-->
+<!--                    android:layout_marginRight="20dp"-->
+<!--                    android:background="@drawable/rounded_green"-->
+<!--                    android:text="Save"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textColor="#ffffff"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Group Name"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:textStyle="bold" />-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <EditText-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"-->
+<!--                            android:editable="false"-->
+<!--                            android:clickable="false"-->
+<!--                            android:background="@android:color/transparent"-->
+<!--                            android:id="@+id/edtGroupName3"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textColorHint="#d0d0d000"-->
+<!--                            android:textSize="15dp"/>-->
+
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="0.1dp"-->
+<!--                            android:background="#ffffff"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"/>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Email"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:textStyle="bold" />-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <EditText-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"-->
+<!--                            android:editable="false"-->
+<!--                            android:clickable="false"-->
+<!--                            android:background="@android:color/transparent"-->
+<!--                            android:id="@+id/edtEmail3"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textColorHint="#d0d0d000"-->
+<!--                            android:textSize="15dp"/>-->
+
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="0.1dp"-->
+<!--                            android:background="#ffffff"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"/>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Description"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:textStyle="bold" />-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <EditText-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"-->
+<!--                            android:background="@android:color/transparent"-->
+<!--                            android:id="@+id/edtDescription3"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textColorHint="#d0d0d000"-->
+<!--                            android:textSize="15dp"/>-->
+
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="0.1dp"-->
+<!--                            android:background="#ffffff"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"/>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:layout_marginBottom="40dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Video Link"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:textStyle="bold" />-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+<!--                        <EditText-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"-->
+<!--                            android:background="@android:color/transparent"-->
+<!--                            android:hint="https://"-->
+<!--                            android:id="@+id/edtLink3"-->
+<!--                            android:textColor="#ffffff"-->
+<!--                            android:textColorHint="#d0d0d000"-->
+<!--                            android:textSize="15dp"/>-->
+
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="0.1dp"-->
+<!--                            android:background="#ffffff"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="20dp"/>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                </LinearLayout>-->
+
+
+<!--            </LinearLayout>-->
 
 
         </LinearLayout>

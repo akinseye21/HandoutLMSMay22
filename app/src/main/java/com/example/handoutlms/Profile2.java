@@ -262,6 +262,8 @@ public class Profile2 extends Fragment {
         };
 
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(retryPolicy);
         requestQueue.add(stringRequest);
 
         return v;

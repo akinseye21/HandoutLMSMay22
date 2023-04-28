@@ -42,7 +42,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ProfileOthers extends AppCompatActivity implements
         tutorial_on_profile.OnFragmentInteractionListener,
         Games.OnFragmentInteractionListener,
-        gig_on_profile.OnFragmentInteractionListener{
+        gig_on_profile_others.OnFragmentInteractionListener{
 
     TabLayout tabLayout;
     ViewPager viewPager;
@@ -278,7 +278,7 @@ public class ProfileOthers extends AppCompatActivity implements
         Profile2.ViewPagerAdapter adapter = new Profile2.ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new tutorial_on_profile_others(), "");
         adapter.addFrag(new Games(), "");
-        adapter.addFrag(new gig_on_profile(), "");
+        adapter.addFrag(new gig_on_profile_others(), "");
         viewPager.setAdapter(adapter);
     }
 

@@ -58,12 +58,15 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textSize="15dp"
                 android:hint="Name your tutorial group"
                 android:layout_marginTop="5dp"
                 android:singleLine="true"
                 android:id="@+id/group_name"
                 android:textColor="#ffffff"
-                android:textColorHint="#c7c7c7"
+                android:textColorHint="@color/lb_grey"
                 android:background="@android:color/transparent"/>
             <View
                 android:layout_width="match_parent"
@@ -95,7 +98,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date"
+                android:text="Expiration Date"
                 android:layout_marginTop="20dp"
                 android:textColor="#8cc63e"/>
             <EditText
@@ -103,6 +106,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/mydate"
                 android:hint="Set date"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textSize="15dp"
                 android:clickable="true"
                 android:singleLine="true"
                 android:focusable="false"
@@ -110,7 +116,7 @@
                 android:cursorVisible="false"
                 android:layout_marginTop="5dp"
                 android:textColor="#ffffff"
-                android:textColorHint="#c7c7c7"
+                android:textColorHint="@color/lb_grey"
                 android:background="@android:color/transparent"/>
             <View
                 android:layout_width="match_parent"
@@ -122,7 +128,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tutorial time"
+                android:text="Expiration time"
                 android:layout_marginTop="20dp"
                 android:textColor="#8cc63e"/>
             <EditText
@@ -135,9 +141,12 @@
                 android:focusableInTouchMode="false"
                 android:cursorVisible="false"
                 android:hint="00:00"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textSize="15dp"
                 android:layout_marginTop="5dp"
                 android:textColor="#ffffff"
-                android:textColorHint="#c7c7c7"
+                android:textColorHint="@color/lb_grey"
                 android:background="@android:color/transparent"/>
             <View
                 android:layout_width="match_parent"
@@ -177,11 +186,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Write a short description"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textSize="15dp"
                 android:id="@+id/description"
                 android:singleLine="true"
                 android:layout_marginTop="5dp"
                 android:textColor="#ffffff"
-                android:textColorHint="#c7c7c7"
+                android:textColorHint="@color/lb_grey"
                 android:background="@android:color/transparent"/>
             <View
                 android:layout_width="match_parent"
@@ -199,11 +211,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter the location for the offline tutorial"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textSize="15dp"
                 android:id="@+id/location"
                 android:singleLine="true"
                 android:layout_marginTop="5dp"
                 android:textColor="#ffffff"
-                android:textColorHint="#c7c7c7"
+                android:textColorHint="@color/lb_grey"
                 android:background="@android:color/transparent"/>
             <View
                 android:layout_width="match_parent"

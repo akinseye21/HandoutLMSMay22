@@ -208,13 +208,36 @@
                     android:textColor="#c7c7c7" />
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="Tutorial Material"
-                    android:textColor="#8cc63e"
-                    android:textSize="15dp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:text="Tutorial Material"-->
+<!--                    android:textColor="#8cc63e"-->
+<!--                    android:textSize="15dp" />-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_marginBottom="5dp"-->
+<!--                    android:visibility="visible"-->
+<!--                    android:id="@+id/audio_material"-->
+<!--                    android:orientation="horizontal">-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="50dp"-->
+<!--                        android:layout_height="50dp"-->
+<!--                        android:id="@+id/idBtnPlay"-->
+<!--                        android:layout_marginRight="10dp"-->
+<!--                        android:src="@drawable/play_btn"/>-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="50dp"-->
+<!--                        android:layout_height="50dp"-->
+<!--                        android:id="@+id/idBtnPause"-->
+<!--                        android:layout_marginLeft="10dp"-->
+<!--                        android:src="@drawable/pause_btn"/>-->
+<!--                </LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -222,30 +245,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
-                    android:visibility="gone"
-                    android:id="@+id/audio_material"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/idBtnPlay"
-                        android:layout_marginRight="10dp"
-                        android:src="@drawable/play_btn"/>
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/idBtnPause"
-                        android:layout_marginLeft="10dp"
-                        android:src="@drawable/pause_btn"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:id="@+id/video_material"
                     android:orientation="horizontal">
                     <VideoView
@@ -256,15 +256,15 @@
                         android:layout_centerInParent="true" />
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="No material uploaded by the Tutor yet. Please check back"
-                    android:textColor="#fff"
-                    android:layout_margin="10dp"
-                    android:id="@+id/noMaterial"
-                    android:visibility="gone"
-                    android:drawableTop="@drawable/notification"/>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="No material uploaded by the Tutor yet. Please check back"-->
+<!--                    android:textColor="#fff"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:id="@+id/noMaterial"-->
+<!--                    android:visibility="gone"-->
+<!--                    android:drawableTop="@drawable/notification"/>-->
 
             </LinearLayout>
             

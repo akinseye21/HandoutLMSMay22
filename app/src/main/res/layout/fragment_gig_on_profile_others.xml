@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#293241"
+    tools:context=".gig_on_profile_others">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/myLin"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/out"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="70dp"
+                android:layout_marginTop="40dp"
+                android:padding="5dp"
+                android:visibility="gone"
+                android:background="@drawable/round_popup">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="X"
+                    android:id="@+id/closedText"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="15dp"
+                    android:textColor="#ffffff" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Open Gigs"
+                    android:textStyle="italic"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="10dp"
+                    android:textColor="#ffffff" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Closed/In-Progress Gigs"
+                    android:textStyle="italic"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="10dp"
+                    android:textColor="#ffffff" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Completed Gigs"
+                    android:textStyle="italic"
+                    android:textSize="10dp"
+                    android:textColor="#ffffff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:id="@+id/created_gigs"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic201"/>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Created Gigs"
+                                android:textStyle="bold"
+                                android:textColor="#ffffff"
+                                android:textSize="10dp"/>
+                            <View
+                                android:layout_width="50dp"
+                                android:layout_height="0.1dp"
+                                android:id="@+id/viewCreated"
+                                android:background="#00adee"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="invisible"
+                        android:id="@+id/placed_bids"
+                        android:layout_marginLeft="100dp"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic200"/>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Bids Placed"
+                                android:textStyle="bold"
+                                android:textColor="#ffffff"
+                                android:textSize="10dp"/>
+                            <View
+                                android:layout_width="50dp"
+                                android:layout_height="0.1dp"
+                                android:visibility="gone"
+                                android:id="@+id/viewBids"
+                                android:background="#00adee"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:id="@+id/filter"
+                        android:visibility="invisible"
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic202"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:text="Filter"
+                            android:textStyle="bold"
+                            android:textColor="#ffffff"
+                            android:textSize="10dp"/>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:text="You have not created any gig"
+                    android:textColor="#fff"
+                    android:id="@+id/no_gig"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/notification"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:text="You have not bidded for any gig"
+                    android:textColor="#fff"
+                    android:id="@+id/no_gig_bid"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/notification"/>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
+
+                    <GridView
+                        android:id="@+id/simpleGridView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:numColumns="3"
+                        android:scrollbars="vertical"
+                        android:verticalSpacing="10dp" />
+                    <GridView
+                        android:id="@+id/simpleGridView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:numColumns="3"
+                        android:visibility="gone"
+                        android:verticalSpacing="10dp"
+                        android:scrollbars="vertical"/>
+
+                </RelativeLayout>
+
+
+
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</FrameLayout>

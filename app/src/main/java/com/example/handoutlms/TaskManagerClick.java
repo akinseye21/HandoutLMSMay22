@@ -60,15 +60,7 @@ public class TaskManagerClick extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-//                finish();
-
-//                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//                fragmentTransaction.replace(R.id.frame_taskManager, new TaskManager1()).commit();
-
-//                Intent i = new Intent(getApplicationContext(), TaskManager1.class);
-//                startActivity(i);
-                onBackPressed();
+                mineS();
             }
         });
 
@@ -193,4 +185,16 @@ public class TaskManagerClick extends AppCompatActivity {
 //    public void onFragmentInteraction(Uri uri) {
 //
 //    }
+
+    public void mineS(){
+        TaskManager1 taskManager1 = new TaskManager1();
+//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_taskManager, taskManager1);
+        transaction.commit();
+
+    }
+
+    public interface OnFragmentInteractionListener {
+    }
 }

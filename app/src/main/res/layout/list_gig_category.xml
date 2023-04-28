@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/category_name"
-            android:text="User Interface"
+            android:text=""
             android:textStyle="bold"
             android:textColor="#ffffff"
             android:paddingLeft="10dp"

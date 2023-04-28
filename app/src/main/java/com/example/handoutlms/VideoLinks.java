@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,15 +27,29 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.io.IOUtils;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Logger;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,18 +59,15 @@ public class VideoLinks extends AppCompatActivity {
 //    LinearLayout addlink;
 //    ListView listView;
     String group_name, email;
-    Button save1, save2, save3;
-    Dialog myDialog;
-    EditText groupName1, email1, link1;
-    EditText groupName2, email2, link2;
-    EditText groupName3, email3, link3;
-
-    String my_groupName1, my_email1, my_link1;
-    String my_groupName2, my_email2, my_link2;
-    String my_groupName3, my_email3, my_link3;
-
+    Button submit;
+    Dialog myDialog, myDialog2;
+    EditText videoName, description, link;
+    TextView groupName, viewResources, title;
+    String vidName, vidDesc, vidLink;
+    String data = "";
 
 //    int counter = 1;
+
 
     public static final String VIDEO_LINK = "https://handoutng.com/handouts/handout_update_tutorial_group_resource";
 
@@ -63,6 +76,7 @@ public class VideoLinks extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_links);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 
         Intent i = getIntent();
         group_name = i.getStringExtra("group_name");
@@ -76,68 +90,94 @@ public class VideoLinks extends AppCompatActivity {
             }
         });
 
-        groupName1 = findViewById(R.id.edtGroupName1);
-        email1 = findViewById(R.id.edtEmail1);
-        link1 = findViewById(R.id.edtLink1);
-        groupName1.setText(group_name);
-        email1.setText(email);
+        groupName = findViewById(R.id.groupNAME);
+        videoName = findViewById(R.id.edtVideoName1);
+        description = findViewById(R.id.edtDescription1);
+        title = findViewById(R.id.title);
+        link = findViewById(R.id.edtLink1);
+        viewResources = findViewById(R.id.viewResources);
+        submit = findViewById(R.id.submit);
 
-        groupName2 = findViewById(R.id.edtGroupName2);
-        email2 = findViewById(R.id.edtEmail2);
-        link2 = findViewById(R.id.edtLink2);
-        groupName2.setText(group_name);
-        email2.setText(email);
+        groupName.setText(group_name);
 
-        groupName3 = findViewById(R.id.edtGroupName3);
-        email3 = findViewById(R.id.edtEmail3);
-        link3 = findViewById(R.id.edtLink3);
-        groupName3.setText(group_name);
-        email3.setText(email);
-
-        save1 = findViewById(R.id.save1);
-        save2 = findViewById(R.id.save2);
-        save3 = findViewById(R.id.save3);
-
-        save1.setOnClickListener(new View.OnClickListener() {
+        viewResources.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                my_groupName1 = groupName1.getText().toString().trim();
-                my_email1 = email1.getText().toString().trim();
-                my_link1 = link1.getText().toString().trim();
+                Intent i = new Intent(getApplicationContext(), VideoCreatorView.class);
+                i.putExtra("groupName", group_name);
+                startActivity(i);
+            }
+        });
 
-                if (my_link1.equals("")){
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                vidName = videoName.getText().toString().trim();
+                vidDesc = description.getText().toString().trim();
+                vidLink = link.getText().toString().trim();
+
+                if (vidLink.equals("")){
                     Toast.makeText(VideoLinks.this, "You have not included a link", Toast.LENGTH_LONG).show();
-                }else{
+                }else {
                     //send to the database
                     myDialog = new Dialog(VideoLinks.this);
                     myDialog.setContentView(R.layout.custom_popup_login_loading);
                     myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     TextView text = myDialog.findViewById(R.id.text);
-                    text.setText("Updating Video Link 1, please wait");
+                    text.setText("Updating Video Link, please wait");
                     myDialog.setCanceledOnTouchOutside(false);
                     myDialog.show();
+
 
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, VIDEO_LINK,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
-//                                progressBar.setVisibility(View.GONE);
 
-                                    System.out.println("Login Response = "+response);
+                                    System.out.println("Upload Response = "+response);
 
                                     try{
                                         JSONObject jsonObject = new JSONObject(response);
                                         String status = jsonObject.getString("status");
 
                                         if(status.equals("successful")){
-                                            link1.setText("");
+                                            link.setText("");
+                                            description.setText("");
+                                            description.setText("");
                                             myDialog.dismiss();
-                                            Toast.makeText(VideoLinks.this, "Successfully Updated link 1", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(VideoLinks.this, "Successfully Updated", Toast.LENGTH_LONG).show();
+
+                                            // create a new dialog popup to add more files or view tutorial group
+                                            myDialog2 = new Dialog(VideoLinks.this);
+                                            myDialog2.setContentView(R.layout.custom_popup_upload_successful);
+                                            Button addmore = myDialog2.findViewById(R.id.addmore);
+                                            Button viewgroup = myDialog2.findViewById(R.id.viewgroup);
+                                            addmore.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View view) {
+                                                    onBackPressed();
+                                                    myDialog2.dismiss();
+                                                }
+                                            });
+                                            viewgroup.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View view) {
+                                                    // go to the view resources page
+                                                    Intent i = new Intent(VideoLinks.this, VideoCreatorView.class);
+                                                    i.putExtra("groupName", group_name);
+                                                    startActivity(i);
+                                                }
+                                            });
+                                            myDialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                            myDialog2.setCanceledOnTouchOutside(true);
+                                            myDialog2.show();
+
                                         }else{
                                             //something went wrong
-                                            link1.setText("");
                                             myDialog.dismiss();
-                                            Toast.makeText(VideoLinks.this, "Error updating, please try again", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(VideoLinks.this, "Error updating, please try again", Toast.LENGTH_LONG).show();
                                         }
 
                                     }
@@ -162,9 +202,11 @@ public class VideoLinks extends AppCompatActivity {
                         @Override
                         protected Map<String, String> getParams(){
                             Map<String, String> params = new HashMap<>();
-                            params.put("tutorial_group_name", my_groupName1);
-                            params.put("email", my_email1);
-                            params.put("fileurl", my_link1);
+                            params.put("tutorial_group_name", group_name);
+                            params.put("email", email);
+                            params.put("fileurl", vidLink);
+                            params.put("fileDescription", vidDesc);
+                            params.put("fileName", vidName);
                             return params;
                         }
                     };
@@ -173,297 +215,12 @@ public class VideoLinks extends AppCompatActivity {
                     DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
                     stringRequest.setRetryPolicy(retryPolicy);
                     requestQueue.add(stringRequest);
-
                 }
+
             }
         });
 
-        save2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                my_groupName2 = groupName2.getText().toString().trim();
-                my_email2 = email2.getText().toString().trim();
-                my_link2 = link2.getText().toString().trim();
-
-                if (my_link2.equals("")){
-                    Toast.makeText(VideoLinks.this, "You have not included a link", Toast.LENGTH_LONG).show();
-                }else{
-                    //send to the database
-                    myDialog = new Dialog(VideoLinks.this);
-                    myDialog.setContentView(R.layout.custom_popup_login_loading);
-                    myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    TextView text = myDialog.findViewById(R.id.text);
-                    text.setText("Updating Video Link 2, please wait");
-                    myDialog.setCanceledOnTouchOutside(false);
-                    myDialog.show();
-
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, VIDEO_LINK,
-                            new Response.Listener<String>() {
-                                @Override
-                                public void onResponse(String response) {
-//                                progressBar.setVisibility(View.GONE);
-
-                                    System.out.println("Login Response = "+response);
-
-                                    try{
-                                        JSONObject jsonObject = new JSONObject(response);
-                                        String status = jsonObject.getString("status");
-
-                                        if(status.equals("successful")){
-                                            link2.setText("");
-                                            myDialog.dismiss();
-                                            Toast.makeText(VideoLinks.this, "Successfully Updated link 2", Toast.LENGTH_SHORT).show();
-                                        }else{
-                                            //something went wrong
-                                            link2.setText("");
-                                            myDialog.dismiss();
-                                            Toast.makeText(VideoLinks.this, "Error updating, please try again", Toast.LENGTH_SHORT).show();
-                                        }
-
-                                    }
-                                    catch (JSONException e){
-                                        e.printStackTrace();
-                                        myDialog.dismiss();
-                                        Toast.makeText(getApplicationContext(), "Updating failed. Please try again", Toast.LENGTH_LONG).show();
-                                    }
-
-                                }
-                            },
-                            new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError volleyError) {
-
-                                    if(volleyError == null){
-                                        return;
-                                    }
-
-                                }
-                            }){
-                        @Override
-                        protected Map<String, String> getParams(){
-                            Map<String, String> params = new HashMap<>();
-                            params.put("tutorial_group_name", my_groupName2);
-                            params.put("email", my_email2);
-                            params.put("fileurl", my_link2);
-                            return params;
-                        }
-                    };
-
-                    RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-                    DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-                    stringRequest.setRetryPolicy(retryPolicy);
-                    requestQueue.add(stringRequest);
-
-                }
-            }
-        });
-
-        save3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                my_groupName3 = groupName3.getText().toString().trim();
-                my_email3 = email3.getText().toString().trim();
-                my_link3 = link3.getText().toString().trim();
-
-                if (my_link3.equals("")){
-                    Toast.makeText(VideoLinks.this, "You have not included a link", Toast.LENGTH_LONG).show();
-                }else{
-                    //send to the database
-                    myDialog = new Dialog(VideoLinks.this);
-                    myDialog.setContentView(R.layout.custom_popup_login_loading);
-                    myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    TextView text = myDialog.findViewById(R.id.text);
-                    text.setText("Updating Video Link 3, please wait");
-                    myDialog.setCanceledOnTouchOutside(false);
-                    myDialog.show();
-
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, VIDEO_LINK,
-                            new Response.Listener<String>() {
-                                @Override
-                                public void onResponse(String response) {
-//                                progressBar.setVisibility(View.GONE);
-
-                                    System.out.println("Login Response = "+response);
-
-                                    try{
-                                        JSONObject jsonObject = new JSONObject(response);
-                                        String status = jsonObject.getString("status");
-
-                                        if(status.equals("successful")){
-                                            link3.setText("");
-                                            myDialog.dismiss();
-                                            Toast.makeText(VideoLinks.this, "Successfully Updated link 3", Toast.LENGTH_SHORT).show();
-                                        }else{
-                                            //something went wrong
-                                            link3.setText("");
-                                            myDialog.dismiss();
-                                            Toast.makeText(VideoLinks.this, "Error updating, please try again", Toast.LENGTH_SHORT).show();
-                                        }
-
-                                    }
-                                    catch (JSONException e){
-                                        e.printStackTrace();
-                                        myDialog.dismiss();
-                                        Toast.makeText(getApplicationContext(), "Updating failed. Please try again", Toast.LENGTH_LONG).show();
-                                    }
-
-                                }
-                            },
-                            new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError volleyError) {
-
-                                    if(volleyError == null){
-                                        return;
-                                    }
-
-                                }
-                            }){
-                        @Override
-                        protected Map<String, String> getParams(){
-                            Map<String, String> params = new HashMap<>();
-                            params.put("tutorial_group_name", my_groupName3);
-                            params.put("email", my_email3);
-                            params.put("fileurl", my_link3);
-                            return params;
-                        }
-                    };
-
-                    RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-                    DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-                    stringRequest.setRetryPolicy(retryPolicy);
-                    requestQueue.add(stringRequest);
-
-                }
-            }
-        });
-
-//        addlink = findViewById(R.id.addlink);
-//        listView = findViewById(R.id.listview);
-
-//        addlink.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                counter = counter + 1;
-//
-//                VideoLinkAdapter adapter = new VideoLinkAdapter(getApplicationContext(), counter, group_name, email);
-////                listView.setAdapter(adapter);
-//            }
-//        });
-
-//        VideoLinkAdapter adapter = new VideoLinkAdapter(getApplicationContext(), counter, group_name, email);
-//        listView.setAdapter(adapter);
-
-
-//        save.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                my_groupName1 = groupName1.getText().toString().trim();
-//                my_email1 = email1.getText().toString().trim();
-//                my_link1 = link1.getText().toString().trim();
-//
-//                my_groupName2 = groupName2.getText().toString().trim();
-//                my_email2 = email2.getText().toString().trim();
-//                my_link2 = link2.getText().toString().trim();
-//
-//                my_groupName3 = groupName3.getText().toString().trim();
-//                my_email3 = email3.getText().toString().trim();
-//                my_link3 = link3.getText().toString().trim();
-//
-//                if(my_link1.equals("") && my_link2.equals("") && my_link3.equals("")){
-//                    Toast.makeText(VideoLinks.this, "You have not added any video link", Toast.LENGTH_SHORT).show();
-//                }else if(!my_link1.equals("") || !my_link2.equals("") || !my_link3.equals("")){
-//                    //send the one's available to the database
-//
-//                }
-//
-//                myDialog = new Dialog(VideoLinks.this);
-//                myDialog.setContentView(R.layout.custom_popup_login_loading);
-//                myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                TextView text = myDialog.findViewById(R.id.text);
-//                text.setText("Updating Video Links, please wait");
-//                myDialog.setCanceledOnTouchOutside(false);
-//                myDialog.show();
-
-//                Toast.makeText(getApplicationContext(), "Array = "+listView.getAdapter().getCount(), Toast.LENGTH_LONG).show();
-//                View v = null;
-//                for(int i=0; i<listView.getAdapter().getCount(); i++){
-//                    v = adapter.getView(i, v, listView);
-//
-//                    EditText groupName1 = v.findViewById(R.id.edtGroupName);
-//                    EditText email = v.findViewById(R.id.edtEmail);
-//                    EditText description = v.findViewById(R.id.edtDescription);
-//                    EditText link = v.findViewById(R.id.edtLink);
-//
-//                    String groupname = groupName1.getText().toString().trim();
-//                    String email_ = email.getText().toString().trim();
-//                    String description_ = description.getText().toString().trim();
-//                    String link_ = link.getText().toString().trim();
-//
-//                    Toast.makeText(VideoLinks.this, "link = "+link_+"\nEmail = "+email_, Toast.LENGTH_SHORT).show();
-//                    System.out.println("link = "+link_+"\nEmail = "+email_);
-
-//                    if (link_.isEmpty()){
-//                        Toast.makeText(VideoLinks.this, "No URL provided, please check and try again", Toast.LENGTH_SHORT).show();
-//                    }else{
-//                        //send the strings to the API
-//                        StringRequest stringRequest = new StringRequest(Request.Method.POST, VIDEO_LINK,
-//                                new Response.Listener<String>() {
-//                                    @Override
-//                                    public void onResponse(String response) {
-////                                progressBar.setVisibility(View.GONE);
-//
-//                                        System.out.println("Login Response = "+response);
-//
-//                                        try{
-//                                            JSONObject jsonObject = new JSONObject(response);
-//                                            String status = jsonObject.getString("status");
-//
-//                                            if(status.equals("successful")){
-//
-//                                            }else{
-//                                                //something went wrong
-//                                            }
-//
-//                                        }
-//                                        catch (JSONException e){
-//                                            e.printStackTrace();
-//                                            Toast.makeText(getApplicationContext(), "Updating failed. Please try again", Toast.LENGTH_LONG).show();
-//                                        }
-//
-//                                    }
-//                                },
-//                                new Response.ErrorListener() {
-//                                    @Override
-//                                    public void onErrorResponse(VolleyError volleyError) {
-//
-//                                        if(volleyError == null){
-//                                            return;
-//                                        }
-//
-//                                    }
-//                                }){
-//                            @Override
-//                            protected Map<String, String> getParams(){
-//                                Map<String, String> params = new HashMap<>();
-//                                params.put("tutorial_group_name", groupname);
-//                                params.put("email", email_);
-//                                params.put("fileurl", link_);
-//                                return params;
-//                            }
-//                        };
-//
-//                        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-//                        DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-//                        stringRequest.setRetryPolicy(retryPolicy);
-//                        requestQueue.add(stringRequest);
-//                    }
-//                }
-
-//                myDialog.dismiss();
-//            }
-//        });
 
     }
+
 }

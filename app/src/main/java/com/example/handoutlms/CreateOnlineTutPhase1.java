@@ -38,10 +38,10 @@ import java.util.Map;
 
 public class CreateOnlineTutPhase1 extends AppCompatActivity {
 
-    LinearLayout audio, video, pdf, quiz;
+    LinearLayout video, pdf;
     String name, group_name, notification;
     TextView grpNAME;
-    TextView view_resources;
+    LinearLayout view_resources;
     RelativeLayout relBack;
     Dialog myDialog;
     SharedPreferences preferences;
@@ -58,10 +58,10 @@ public class CreateOnlineTutPhase1 extends AppCompatActivity {
         preferences = getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
         got_email = preferences.getString("email", "not available");
 
-        audio = findViewById(R.id.audio);
+//        audio = findViewById(R.id.audio);
         video = findViewById(R.id.video);
         pdf = findViewById(R.id.pdf);
-        quiz = findViewById(R.id.quiz);
+//        quiz = findViewById(R.id.quiz);
         grpNAME = findViewById(R.id.groupNAME);
         view_resources = findViewById(R.id.view_resources);
         relBack = findViewById(R.id.rel1);
@@ -70,21 +70,21 @@ public class CreateOnlineTutPhase1 extends AppCompatActivity {
         group_name = i.getStringExtra("Group_name");
 //        notification = i.getStringExtra("notification");
 
-        Intent intent = new Intent(this, AddOptions.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.logo)
-                .setContentTitle("Handout LMS")
-                .setContentText(notification)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                // Set the intent that will fire when the user taps the notification
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true);
-
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify(9, builder.build());
+//        Intent intent = new Intent(this, AddOptions.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+//
+//        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+//                .setSmallIcon(R.drawable.logo)
+//                .setContentTitle("Handout LMS")
+//                .setContentText(notification)
+//                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+//                // Set the intent that will fire when the user taps the notification
+//                .setContentIntent(pendingIntent)
+//                .setAutoCancel(true);
+//
+//        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+//        notificationManager.notify(9, builder.build());
 
 
 
@@ -92,8 +92,12 @@ public class CreateOnlineTutPhase1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                //show popUp to exit
-                myDialog = new Dialog(getApplicationContext());
+                myDialog = new Dialog(CreateOnlineTutPhase1.this);
                 myDialog.setContentView(R.layout.custom_popup_exit);
+                TextView text1 = myDialog.findViewById(R.id.text1);
+                TextView text2 = myDialog.findViewById(R.id.text2);
+                text1.setText("");
+                text2.setText("Are you sure you want to go back home?");
                 Button yes = myDialog.findViewById(R.id.yes);
                 Button no = myDialog.findViewById(R.id.no);
                 yes.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +105,7 @@ public class CreateOnlineTutPhase1 extends AppCompatActivity {
                     public void onClick(View view) {
                         Intent i = new Intent(CreateOnlineTutPhase1.this, FeedsDashboard.class);
                         i.putExtra("email", got_email);
-                        i.putExtra("sent_from", "online_tutorial");
+                        i.putExtra("sent from", "online_tutorial");
                         startActivity(i);
                     }
                 });
@@ -129,17 +133,6 @@ public class CreateOnlineTutPhase1 extends AppCompatActivity {
 
         grpNAME.setText(group_name);
 
-        audio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                name = "audio";
-
-                Intent i = new Intent(CreateOnlineTutPhase1.this, DocumentPaged.class);
-                i.putExtra("name", name);
-                i.putExtra("group_name", group_name);
-                startActivity(i);
-            }
-        });
         video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,12 +156,12 @@ public class CreateOnlineTutPhase1 extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        quiz.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                name = "quiz";
-            }
-        });
+//        quiz.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                name = "quiz";
+//            }
+//        });
     }
 
     @Override

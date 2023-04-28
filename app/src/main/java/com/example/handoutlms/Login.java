@@ -2,13 +2,20 @@ package com.example.handoutlms;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -56,6 +63,8 @@ public class Login extends AppCompatActivity {
     String sent_from = "Login";
 
     public static final String LOGIN = "https://handoutng.com/handouts/handout_login";
+
+    String CHANNEL_ID = "channelID";
 
     FirebaseAuth auth;
 
@@ -152,6 +161,8 @@ public class Login extends AppCompatActivity {
 
                                                         if(task.isSuccessful()){
 
+                                                            createNotificationCahnnel();
+
                                                             Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
                                                             Intent i = new Intent(Login.this, FeedsDashboard.class);
                                                             i.putExtra("email", email);
@@ -211,5 +222,36 @@ public class Login extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void createNotificationCahnnel() {
+        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = manager.getNotificationChannel(CHANNEL_ID);
+            if(channel == null){
+                channel = new NotificationChannel(CHANNEL_ID, "Handout Login", NotificationManager.IMPORTANCE_DEFAULT);
+                //config notification channel
+                channel.setDescription("[Channel Description]");
+                channel.enableVibration(true);
+                channel.enableLights(true);
+                channel.setVibrationPattern(new long[]{100, 1000, 200, 340});
+                channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+                manager.createNotificationChannel(channel);
+            }
+        }
+        Intent notificationIntent = new Intent(this, FeedsDashboard.class);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent penIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.logo)
+                .setStyle(new NotificationCompat.BigTextStyle())
+                .setContentTitle("Handout Login")
+                .setContentText("You have successfully logged into your account")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(false)
+                .setTicker("Notification");
+        builder.setContentIntent(penIntent);
+        NotificationManagerCompat m = NotificationManagerCompat.from(getApplicationContext());
+        m.notify(1, builder.build());
     }
 }

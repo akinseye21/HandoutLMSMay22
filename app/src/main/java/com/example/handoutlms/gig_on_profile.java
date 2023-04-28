@@ -184,7 +184,7 @@ public class gig_on_profile extends Fragment {
                                         }
 
                                         //populate values on the gridview
-                                        GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName, Array_gigPrice, Array_gigType, Array_gigSkills, Array_gigPaymentMode, Array_gigDescription, Array_gigID);
+                                        GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName, Array_gigPrice, Array_gigType, Array_gigSkills, Array_gigPaymentMode, Array_gigDescription, Array_gigID, "myProfile");
                                         gridView1.setAdapter(gigProfileListViewAdapter);
                                         //hide progressBar and progressText
 //                                progressBar.setVisibility(View.GONE);
@@ -216,7 +216,7 @@ public class gig_on_profile extends Fragment {
                                             Array_gigID2.add("gigs_"+gigId);
 
                                             //populate values on the gridview
-                                            GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName2, Array_gigPrice2, Array_gigType2, Array_gigSkills2, Array_gigPaymentMode2, Array_gigDescription2, Array_gigID2);
+                                            GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName2, Array_gigPrice2, Array_gigType2, Array_gigSkills2, Array_gigPaymentMode2, Array_gigDescription2, Array_gigID2, "myProfile");
                                             gridView1.setAdapter(gigProfileListViewAdapter);
                                             //hide progressBar and progressText
 //                                    progressBar.setVisibility(View.GONE);
@@ -316,7 +316,7 @@ public class gig_on_profile extends Fragment {
                                         }
 
                                         //populate values on the gridview
-                                        GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName, Array_gigPrice, Array_gigType, Array_gigSkills, Array_gigPaymentMode, Array_gigDescription, Array_gigID);
+                                        GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName, Array_gigPrice, Array_gigType, Array_gigSkills, Array_gigPaymentMode, Array_gigDescription, Array_gigID, "myBid");
                                         gridView2.setAdapter(gigProfileListViewAdapter);
 
                                     }else{
@@ -417,7 +417,7 @@ public class gig_on_profile extends Fragment {
                                 }
 
                                 //populate values on the gridview
-                                GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName, Array_gigPrice, Array_gigType, Array_gigSkills, Array_gigPaymentMode, Array_gigDescription, Array_gigID);
+                                GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName, Array_gigPrice, Array_gigType, Array_gigSkills, Array_gigPaymentMode, Array_gigDescription, Array_gigID, "myProfile");
                                 gridView1.setAdapter(gigProfileListViewAdapter);
                                 //hide progressBar and progressText
 //                                progressBar.setVisibility(View.GONE);
@@ -449,7 +449,7 @@ public class gig_on_profile extends Fragment {
                                     Array_gigID2.add("gigs_"+gigId);
 
                                     //populate values on the gridview
-                                    GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName2, Array_gigPrice2, Array_gigType2, Array_gigSkills2, Array_gigPaymentMode2, Array_gigDescription2, Array_gigID2);
+                                    GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName2, Array_gigPrice2, Array_gigType2, Array_gigSkills2, Array_gigPaymentMode2, Array_gigDescription2, Array_gigID2, "myProfile");
                                     gridView1.setAdapter(gigProfileListViewAdapter);
                                     //hide progressBar and progressText
 //                                    progressBar.setVisibility(View.GONE);

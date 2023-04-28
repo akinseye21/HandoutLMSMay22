@@ -123,13 +123,17 @@
                     android:layout_height="40dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
+                    android:clickable="true"
                     android:singleLine="true"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:cursorVisible="false"
                     android:hint="Set starting and deadline dates"
                     android:textColorHint="#ffffff"
                     android:textColor="#ffffff"
                     android:textSize="13dp"
                     android:id="@+id/date"
-                    android:background="@null"/>
+                    android:background="@android:color/transparent"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -150,13 +154,17 @@
                     android:layout_height="40dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
+                    android:clickable="true"
                     android:singleLine="true"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:cursorVisible="false"
                     android:hint="00:00"
                     android:textColorHint="#ffffff"
                     android:textColor="#ffffff"
                     android:textSize="13dp"
                     android:id="@+id/startTime"
-                    android:background="@null"/>
+                    android:background="@android:color/transparent"/>
 
                 <View
                     android:layout_width="match_parent"

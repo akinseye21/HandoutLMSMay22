@@ -69,6 +69,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:visibility="gone"
                         android:id="@+id/joined_tutorial"
                         android:layout_marginLeft="120dp"
                         android:orientation="horizontal">

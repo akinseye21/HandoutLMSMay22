@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
         android:background="#293241"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
+        android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
@@ -29,6 +29,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
+                android:id="@+id/one"
                     android:gravity="center_vertical"
                     android:layout_centerVertical="true"
                     android:orientation="horizontal">
@@ -73,71 +74,80 @@
 
 
             <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@+id/one"
+                android:layout_toLeftOf="@+id/two"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/cv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_centerInParent="true">
-                <LinearLayout
+                    android:layout_marginRight="15dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/ic199" />
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:id="@+id/cv"
-                        android:layout_marginRight="15dp"
-                        android:orientation="vertical">
-                    <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:src="@drawable/ic199"/>
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="CV"
-                            android:textSize="10dp"
-                            android:textStyle="bold"
-                            android:textColor="#ffffff"/>
+                        android:text="CV"
+                        android:textColor="#ffffff"
+                        android:textSize="10dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_marginLeft="15dp"
-                        android:orientation="vertical">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:src="@drawable/ic198"/>
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/ic198" />
+
                     <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/amount"
-                            android:text="N30,000"
-                            android:textSize="10dp"
-                            android:textStyle="bold"
-                            android:textColor="#ffffff"/>
+                        android:id="@+id/amount"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="N30,000"
+                        android:textColor="#ffffff"
+                        android:textSize="10dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
             </LinearLayout>
 
 
             <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:orientation="horizontal">
-                <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:id="@+id/accept"
-                        android:layout_marginRight="20dp"
-                        android:src="@drawable/ic196"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/two"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
 
                 <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:id="@+id/reject"
-                        android:src="@drawable/ic197"/>
+                    android:id="@+id/accept"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/ic196" />
+
+                <ImageView
+                    android:id="@+id/reject"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic197" />
 
             </LinearLayout>
 

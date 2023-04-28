@@ -5,12 +5,16 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -19,7 +23,10 @@ import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,12 +61,16 @@ import java.util.Map;
 public class DocumentPaged extends AppCompatActivity {
 
     String name, group_name;
-    TextView upload_default, upload_btn, file_path;
+    TextView upload_default, upload_btn;
     SharedPreferences preferences;
-    ImageView ic, back;
+    ImageView back;
+    Dialog myDialog, myDialog2;
 
-    TextView upload_text;
-    ProgressBar progressBar;
+    TextView groupName;
+//    TextView upload_text;
+//    ProgressBar progressBar;
+    LinearLayout loading;
+    EditText pdfName, pdfDesc;
 
     private static final String ROOT_URL = "http://handoutng.com/handouts/handout_update_tutorial_group";
     private RequestQueue rQueue;
@@ -72,7 +83,7 @@ public class DocumentPaged extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //get sharedpreference
-        preferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+        preferences = getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
         email = preferences.getString("email", "not available");
 
         Intent i = getIntent();
@@ -81,11 +92,17 @@ public class DocumentPaged extends AppCompatActivity {
 
         upload_default = findViewById(R.id.upload_default);
         upload_btn = findViewById(R.id.upload_button);
-        file_path = findViewById(R.id.file_path);
-        ic = findViewById(R.id.ic);
+//        file_path = findViewById(R.id.file_path);
         back = findViewById(R.id.back);
-        upload_text = findViewById(R.id.upload_text);
-        progressBar = findViewById(R.id.progressBar);
+        loading = findViewById(R.id.loading);
+        groupName = findViewById(R.id.groupNAME);
+//        upload_text = findViewById(R.id.upload_text);
+//        progressBar = findViewById(R.id.progressBar);
+        pdfName = findViewById(R.id.edtPdfName);
+        pdfDesc = findViewById(R.id.edtPdfDesc);
+
+        groupName.setText(group_name);
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,53 +110,23 @@ public class DocumentPaged extends AppCompatActivity {
             }
         });
 
-        if(name.equals("audio")){
-            upload_default.setText("Upload Audio");
-            upload_btn.setText("Upload Audio");
-            ic.setImageResource(R.drawable.ic123);
-        }
-        else if(name.equals("video")){
-            upload_default.setText("Upload Video");
-            upload_btn.setText("Upload Video");
-            ic.setImageResource(R.drawable.ic124);
-        }
-        else if(name.equals("pdf")){
-            upload_default.setText("Upload PDF");
-            upload_btn.setText("Upload PDF");
-        }
-        else {
-            //do nothing
-        }
+
 
         upload_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (name.equals("pdf")){
-                    Intent intent = new Intent();
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    intent.setType("application/pdf");
-                    startActivityForResult(intent,1);
-                }
-
-                if(name.equals("audio")){
-                    Intent intent = new Intent();
-                    intent.setType("audio/*");
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(intent, 2);
-                }
-
-                if(name.equals("video")){
-                    Intent intent = new Intent();
-                    intent.setType("video/*");
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(intent, 3);
-                }
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("application/pdf");
+                startActivityForResult(intent,1);
 
             }
         });
 
     }
 
+
+    @SuppressLint("Range")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
@@ -156,7 +143,7 @@ public class DocumentPaged extends AppCompatActivity {
                     if (cursor != null && cursor.moveToFirst()) {
                         displayName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
                         Log.d("nameeeee>>>>  ",displayName);
-                        file_path.setText(displayName);
+//                        file_path.setText(displayName);
                         uploadPDF(displayName,uri);
                     }
                 } finally {
@@ -165,7 +152,7 @@ public class DocumentPaged extends AppCompatActivity {
             } else if (uriString.startsWith("file://")) {
                 displayName = myFile.getName();
                 Log.d("nameeeee>>>>  ",displayName);
-                file_path.setText(displayName);
+//                file_path.setText(displayName);
             }
         }
 
@@ -175,8 +162,16 @@ public class DocumentPaged extends AppCompatActivity {
 
     private void uploadPDF(final String pdfname, Uri pdffile){
 
-        progressBar.setVisibility(View.VISIBLE);
-        upload_text.setVisibility(View.VISIBLE);
+        myDialog = new Dialog(DocumentPaged.this);
+        myDialog.setContentView(R.layout.custom_popup_login_loading);
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        TextView text = myDialog.findViewById(R.id.text);
+        text.setText("Uploading file, please wait");
+        myDialog.setCanceledOnTouchOutside(false);
+        myDialog.show();
+
+//        loading.setVisibility(View.VISIBLE);
+//        upload_text.setVisibility(View.VISIBLE);
 
         InputStream iStream = null;
         try {
@@ -195,29 +190,58 @@ public class DocumentPaged extends AppCompatActivity {
                                 String status = jsonObject.getString("status");
 
                                 if(status.equals("successful")){
-                                    Toast.makeText(getApplicationContext(), "File Uploaded successfully ", Toast.LENGTH_LONG).show();
+//                                    Toast.makeText(getApplicationContext(), "File Uploaded successfully", Toast.LENGTH_LONG).show();
                                     System.out.println("Status = "+status);
 
-                                    progressBar.setVisibility(View.GONE);
-                                    upload_text.setVisibility(View.GONE);
+                                    myDialog.dismiss();
+
+                                    myDialog2 = new Dialog(DocumentPaged.this);
+                                    myDialog2.setContentView(R.layout.custom_popup_upload_successful);
+                                    Button addmore = myDialog2.findViewById(R.id.addmore);
+                                    Button viewgroup = myDialog2.findViewById(R.id.viewgroup);
+                                    addmore.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            onBackPressed();
+                                            myDialog2.dismiss();
+                                        }
+                                    });
+                                    viewgroup.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            // go to the view resources page
+                                            Intent i = new Intent(DocumentPaged.this, VideoCreatorView.class);
+                                            i.putExtra("groupName", group_name);
+                                            startActivity(i);
+                                        }
+                                    });
+                                    myDialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                    myDialog2.setCanceledOnTouchOutside(true);
+                                    myDialog2.show();
+//                                    loading.setVisibility(View.GONE);
+//                                    upload_text.setVisibility(View.GONE);
                                 }
 
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
+                                Toast.makeText(getApplicationContext(), "Uploading failed", Toast.LENGTH_LONG).show();
 
-                                progressBar.setVisibility(View.GONE);
-                                upload_text.setVisibility(View.GONE);
+                                myDialog.dismiss();
+//                                loading.setVisibility(View.GONE);
+//                                upload_text.setVisibility(View.GONE);
                             }
                         }
                     },
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Error, check network connectivity", Toast.LENGTH_SHORT).show();
+                            System.out.println("Error message = "+error.getMessage());
 
-                            progressBar.setVisibility(View.GONE);
-                            upload_text.setVisibility(View.GONE);
+                            myDialog.dismiss();
+//                            loading.setVisibility(View.GONE);
+//                            upload_text.setVisibility(View.GONE);
                         }
                     }) {
 
@@ -232,6 +256,8 @@ public class DocumentPaged extends AppCompatActivity {
                     Map<String, String> params = new HashMap<>();
                     params.put("email", email);
                     params.put("tutorial_group_name", group_name);
+                    params.put("fileDescription", pdfDesc.getText().toString());
+                    params.put("fileName", pdfName.getText().toString());
                     return params;
                 }
 

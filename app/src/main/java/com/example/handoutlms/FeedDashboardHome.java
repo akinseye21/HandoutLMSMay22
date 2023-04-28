@@ -23,6 +23,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -72,6 +73,25 @@ public class FeedDashboardHome extends Fragment {
     TextView progressText;
 
     TabLayout tabLayout;
+    SwipeRefreshLayout swipeRefreshLayout;
+
+
+    //array for all users
+    final ArrayList<String> Array_type = new ArrayList<>();
+    final ArrayList<String> Array_createdBy = new ArrayList<>();
+    final ArrayList<String> Array_createdByName = new ArrayList<>();
+    final ArrayList<String> Array_groupName = new ArrayList<>();
+    final ArrayList<String> Array_university = new ArrayList<>();
+    final ArrayList<String> Array_mode = new ArrayList<>();
+    final ArrayList<String> Array_groupNameInside = new ArrayList<>();
+    final ArrayList<String> Array_description = new ArrayList<>();
+    final ArrayList<String> Array_time = new ArrayList<>();
+    final ArrayList<String> Array_date = new ArrayList<>();
+    final ArrayList<String> Array_cardmode = new ArrayList<>();
+    final ArrayList<String> Array_category = new ArrayList<>();
+    final ArrayList<String> Array_id = new ArrayList<>();
+    final ArrayList<String> Array_pic = new ArrayList<>();
+    final ArrayList<String> Array_total_approved = new ArrayList<>();
 
 //    public static final String ALL_TUTORIALS = "http://35.84.44.203/handouts/handout_get_all_tutorials";
     public static final String ALL_GIGS_AND_TUTORIALS = "http://handoutng.com/handouts/handout_gigs_groups";
@@ -126,6 +146,7 @@ public class FeedDashboardHome extends Fragment {
         lineview = v.findViewById(R.id.lineview);
 
         my_list = v.findViewById(R.id.my_list);
+        swipeRefreshLayout = v.findViewById(R.id.swiperefresh);
 
 
         progressBar = v.findViewById(R.id.progressBar);
@@ -182,20 +203,7 @@ public class FeedDashboardHome extends Fragment {
                 }
         );
 
-        //array for all users
-        final ArrayList<String> Array_type = new ArrayList<>();
-        final ArrayList<String> Array_createdBy = new ArrayList<>();
-        final ArrayList<String> Array_createdByName = new ArrayList<>();
-        final ArrayList<String> Array_groupName = new ArrayList<>();
-        final ArrayList<String> Array_university = new ArrayList<>();
-        final ArrayList<String> Array_mode = new ArrayList<>();
-        final ArrayList<String> Array_groupNameInside = new ArrayList<>();
-        final ArrayList<String> Array_description = new ArrayList<>();
-        final ArrayList<String> Array_time = new ArrayList<>();
-        final ArrayList<String> Array_date = new ArrayList<>();
-        final ArrayList<String> Array_cardmode = new ArrayList<>();
-        final ArrayList<String> Array_category = new ArrayList<>();
-        final ArrayList<String> Array_id = new ArrayList<>();
+
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, ALL_GIGS_AND_TUTORIALS,
@@ -211,7 +219,7 @@ public class FeedDashboardHome extends Fragment {
                                 //hide progressBar and progressText
                                 progressBar.setVisibility(View.GONE);
                                 progressText.setVisibility(View.GONE);
-                                my_list.setVisibility(View.GONE);
+                                swipeRefreshLayout.setVisibility(View.GONE);
                             }else{
 
 //                            for (int i = ArrayLength - 1; i >= 0; i--) {
@@ -223,7 +231,7 @@ public class FeedDashboardHome extends Fragment {
                                         String createdBy = section.getString("created_by");
                                         String createdByName = section.getString("fullname");
                                         String groupName = section.getString("gig_group_name");
-                                        String university = section.getString("university");
+                                        String university = section.getString("school");
                                         String mode = section.getString("faculty");
                                         String groupNameInside = section.getString("gig_group_name");
                                         String description = section.getString("description");
@@ -232,6 +240,8 @@ public class FeedDashboardHome extends Fragment {
                                         String tut_mode = section.getString("mode");
                                         String category = section.getString("category");
                                         String id = section.getString("tid");
+                                        String pic = section.getString("creator_pic");
+                                        String total_approved = section.getString("total_approved");
 
                                         Array_type.add(type);
                                         Array_createdBy.add(createdBy);
@@ -246,6 +256,8 @@ public class FeedDashboardHome extends Fragment {
                                         Array_cardmode.add(tut_mode);
                                         Array_category.add(category);
                                         Array_id.add(id);
+                                        Array_pic.add(pic);
+                                        Array_total_approved.add(total_approved);
                                     }
                                     else if (type.equals("gigs")){
                                         String createdBy = section.getString("created_by"); //1
@@ -260,6 +272,8 @@ public class FeedDashboardHome extends Fragment {
                                         String department = section.getString("department");//8
                                         String skills = section.getString("skills"); //5
                                         String id = section.getString("tid");
+                                        String pic = section.getString("creator_pic");
+                                        String total_approved = section.getString("total_approved");
 
                                         Array_type.add(type);
                                         Array_createdBy.add(createdBy);
@@ -274,6 +288,8 @@ public class FeedDashboardHome extends Fragment {
                                         Array_cardmode.add(gig_mode);
                                         Array_category.add(budgetCategory);
                                         Array_id.add(id);
+                                        Array_pic.add(pic);
+                                        Array_total_approved.add(total_approved);
                                     }
 
                                 }
@@ -281,7 +297,7 @@ public class FeedDashboardHome extends Fragment {
 
 
                             //populate values on the gridview
-                            HomeListViewAdapter homeListViewAdapter = new HomeListViewAdapter(getActivity(), Array_type, Array_createdBy, Array_createdByName, Array_groupName, Array_university, Array_mode, Array_groupNameInside, Array_description, Array_time, Array_date, Array_cardmode, Array_category, Array_id);
+                            HomeListViewAdapter homeListViewAdapter = new HomeListViewAdapter(getActivity(), Array_type, Array_createdBy, Array_createdByName, Array_groupName, Array_university, Array_mode, Array_groupNameInside, Array_description, Array_time, Array_date, Array_cardmode, Array_category, Array_id, Array_pic, Array_total_approved);
                             my_list.setAdapter(homeListViewAdapter);
                             //hide progressBar and progressText
                             progressBar.setVisibility(View.GONE);
@@ -296,7 +312,7 @@ public class FeedDashboardHome extends Fragment {
                                     //hide progressBar and progressText
                                     progressBar.setVisibility(View.GONE);
                                     progressText.setVisibility(View.GONE);
-                                    my_list.setVisibility(View.GONE);
+                                    swipeRefreshLayout.setVisibility(View.GONE);
                                 }
                             } catch (JSONException ex) {
                                 ex.printStackTrace();
@@ -315,7 +331,177 @@ public class FeedDashboardHome extends Fragment {
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(retryPolicy);
         requestQueue.add(stringRequest);
+
+        Array_type.clear();
+        Array_createdBy.clear();
+        Array_createdByName.clear();
+        Array_groupName.clear();
+        Array_university.clear();
+        Array_mode.clear();
+        Array_groupNameInside.clear();
+        Array_description.clear();
+        Array_time.clear();
+        Array_date.clear();
+        Array_cardmode.clear();
+        Array_category.clear();
+        Array_id.clear();
+        Array_pic.clear();
+        Array_total_approved.clear();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, ALL_GIGS_AND_TUTORIALS,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+                                    JSONArray jsonArray = new JSONArray(response);
+                                    ArrayLength = jsonArray.length();
+
+                                    if(ArrayLength<1){
+                                        noNot.setVisibility(View.VISIBLE);
+                                        //hide progressBar and progressText
+                                        progressBar.setVisibility(View.GONE);
+                                        progressText.setVisibility(View.GONE);
+                                        my_list.setVisibility(View.GONE);
+                                    }else{
+
+//                            for (int i = ArrayLength - 1; i >= 0; i--) {
+                                        for (int i = 0; i < ArrayLength; i++) {
+                                            JSONObject section = jsonArray.getJSONObject(i);
+                                            String type = section.getString("type");
+
+                                            if (type.equals("group")){
+                                                String createdBy = section.getString("created_by");
+                                                String createdByName = section.getString("fullname");
+                                                String groupName = section.getString("gig_group_name");
+                                                String university = section.getString("school");
+                                                String mode = section.getString("faculty");
+                                                String groupNameInside = section.getString("gig_group_name");
+                                                String description = section.getString("description");
+                                                String time = section.getString("_time");
+                                                String date = section.getString("_date");
+                                                String tut_mode = section.getString("mode");
+                                                String category = section.getString("category");
+                                                String id = section.getString("tid");
+                                                String pic = section.getString("creator_pic");
+                                                String total_approved = section.getString("total_approved");
+
+                                                Array_type.add(type);
+                                                Array_createdBy.add(createdBy);
+                                                Array_createdByName.add(createdByName);
+                                                Array_groupName.add(groupName);
+                                                Array_university.add(university);
+                                                Array_mode.add(mode);
+                                                Array_groupNameInside.add(groupNameInside);
+                                                Array_description.add(description);
+                                                Array_time.add(time);
+                                                Array_date.add(date);
+                                                Array_cardmode.add(tut_mode);
+                                                Array_category.add(category);
+                                                Array_id.add(id);
+                                                Array_pic.add(pic);
+                                                Array_total_approved.add(total_approved);
+                                            }
+                                            else if (type.equals("gigs")){
+                                                String createdBy = section.getString("created_by"); //1
+                                                String createdByName = section.getString("fullname"); //2
+                                                String gigName = section.getString("gig_group_name"); //3
+                                                String university = section.getString("school"); //4
+                                                String description = section.getString("description"); //7
+                                                String budgetCategory = section.getString("budget_category"); //9
+                                                String faculty = section.getString("faculty"); //6
+                                                String date = section.getString("_date");
+                                                String gig_mode = section.getString("mode");
+                                                String department = section.getString("department");//8
+                                                String skills = section.getString("skills"); //5
+                                                String id = section.getString("tid");
+                                                String pic = section.getString("creator_pic");
+                                                String total_approved = section.getString("total_approved");
+
+                                                Array_type.add(type);
+                                                Array_createdBy.add(createdBy);
+                                                Array_createdByName.add(createdByName);
+                                                Array_groupName.add(gigName);
+                                                Array_university.add(university);
+                                                Array_mode.add(skills);
+                                                Array_groupNameInside.add(faculty);
+                                                Array_description.add(description);
+                                                Array_time.add(department);
+                                                Array_date.add(date);
+                                                Array_cardmode.add(gig_mode);
+                                                Array_category.add(budgetCategory);
+                                                Array_id.add(id);
+                                                Array_pic.add(pic);
+                                                Array_total_approved.add(total_approved);
+                                            }
+
+                                        }
+                                    }
+
+
+                                    //populate values on the gridview
+                                    HomeListViewAdapter homeListViewAdapter = new HomeListViewAdapter(getActivity(), Array_type, Array_createdBy, Array_createdByName, Array_groupName, Array_university, Array_mode, Array_groupNameInside, Array_description, Array_time, Array_date, Array_cardmode, Array_category, Array_id, Array_pic, Array_total_approved);
+                                    my_list.setAdapter(homeListViewAdapter);
+                                    //hide progressBar and progressText
+                                    progressBar.setVisibility(View.GONE);
+                                    progressText.setVisibility(View.GONE);
+
+                                } catch (JSONException e) {
+                                    try {
+                                        JSONObject jsonObject = new JSONObject(response);
+                                        String status = jsonObject.getString("status");
+                                        if(status.equals("no group")){
+                                            noNot.setVisibility(View.VISIBLE);
+                                            //hide progressBar and progressText
+                                            progressBar.setVisibility(View.GONE);
+                                            progressText.setVisibility(View.GONE);
+                                            swipeRefreshLayout.setVisibility(View.GONE);
+                                        }
+                                    } catch (JSONException ex) {
+                                        ex.printStackTrace();
+                                    }
+
+
+                                    e.printStackTrace();
+                                }
+                            }
+
+
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                });
+                RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+                DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                stringRequest.setRetryPolicy(retryPolicy);
+                requestQueue.add(stringRequest);
+
+
+                Array_type.clear();
+                Array_createdBy.clear();
+                Array_createdByName.clear();
+                Array_groupName.clear();
+                Array_university.clear();
+                Array_mode.clear();
+                Array_groupNameInside.clear();
+                Array_description.clear();
+                Array_time.clear();
+                Array_date.clear();
+                Array_cardmode.clear();
+                Array_category.clear();
+                Array_id.clear();
+                Array_pic.clear();
+                Array_total_approved.clear();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
 
         tabLayout = getActivity().findViewById(R.id.tabLayout);
@@ -350,13 +536,13 @@ public class FeedDashboardHome extends Fragment {
                 ext_pink.setVisibility(View.VISIBLE);
                 ext_yel.setVisibility(View.GONE);
                 ext_green.setVisibility(View.GONE);
-                my_list.setVisibility(View.GONE);
+                swipeRefreshLayout.setVisibility(View.GONE);
                 lineview.setVisibility(View.GONE);
 
                 noNot.setVisibility(View.GONE);
                 progressBar.setVisibility(View.GONE);
                 progressText.setVisibility(View.GONE);
-                my_list.setVisibility(View.GONE);
+                swipeRefreshLayout.setVisibility(View.GONE);
             }
         });
 
@@ -369,13 +555,13 @@ public class FeedDashboardHome extends Fragment {
                 ext_pink.setVisibility(View.GONE);
                 ext_yel.setVisibility(View.VISIBLE);
                 ext_green.setVisibility(View.GONE);
-                my_list.setVisibility(View.GONE);
+                swipeRefreshLayout.setVisibility(View.GONE);
                 lineview.setVisibility(View.GONE);
 
                 noNot.setVisibility(View.GONE);
                 progressBar.setVisibility(View.GONE);
                 progressText.setVisibility(View.GONE);
-                my_list.setVisibility(View.GONE);
+                swipeRefreshLayout.setVisibility(View.GONE);
             }
         });
 
@@ -388,13 +574,13 @@ public class FeedDashboardHome extends Fragment {
                 ext_pink.setVisibility(View.GONE);
                 ext_yel.setVisibility(View.GONE);
                 ext_green.setVisibility(View.VISIBLE);
-                my_list.setVisibility(View.GONE);
+                swipeRefreshLayout.setVisibility(View.GONE);
                 lineview.setVisibility(View.GONE);
 
                 noNot.setVisibility(View.GONE);
                 progressBar.setVisibility(View.GONE);
                 progressText.setVisibility(View.GONE);
-                my_list.setVisibility(View.GONE);
+                swipeRefreshLayout.setVisibility(View.GONE);
             }
         });
 

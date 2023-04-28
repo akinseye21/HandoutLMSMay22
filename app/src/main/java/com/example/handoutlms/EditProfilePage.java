@@ -25,6 +25,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -213,6 +214,8 @@ public class EditProfilePage extends AppCompatActivity {
         };
 
         RequestQueue requestQueue = Volley.newRequestQueue(EditProfilePage.this);
+        DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(retryPolicy);
         requestQueue.add(stringRequest);
 
 
@@ -353,6 +356,8 @@ public class EditProfilePage extends AppCompatActivity {
                                     };
 
                                     RequestQueue requestQueue = Volley.newRequestQueue(EditProfilePage.this);
+                                    DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                                    stringRequest.setRetryPolicy(retryPolicy);
                                     requestQueue.add(stringRequest);
                                 }
                             }
@@ -464,6 +469,8 @@ public class EditProfilePage extends AppCompatActivity {
                                 };
 
                                 RequestQueue requestQueue = Volley.newRequestQueue(EditProfilePage.this);
+                                DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                                stringRequest.setRetryPolicy(retryPolicy);
                                 requestQueue.add(stringRequest);
 
                             }
@@ -567,6 +574,8 @@ public class EditProfilePage extends AppCompatActivity {
                                 };
 
                                 RequestQueue requestQueue = Volley.newRequestQueue(EditProfilePage.this);
+                                DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                                stringRequest.setRetryPolicy(retryPolicy);
                                 requestQueue.add(stringRequest);
 
                             }

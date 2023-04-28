@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -41,6 +42,7 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
     Spinner uni, cat;
     String group_name, date, time, location_st, description, email;
     ImageView back;
+    String hour_d, minute_d;
 
     private ArrayList<String> cat2 = new ArrayList<>();
     private ArrayList<String> inst2 = new ArrayList<>();
@@ -64,6 +66,9 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        cat2.add("Select Subject");
+                        cat2.add("");
+
                         try {
                             JSONArray jsonArray = new JSONArray(response);
                             int ArrayLength = jsonArray.length();
@@ -97,6 +102,8 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(retryPolicy);
         requestQueue.add(stringRequest);
 
 
@@ -105,6 +112,9 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        inst2.add("Select University");
+                        inst2.add("");
+
                         try {
                             JSONArray jsonArray = new JSONArray(response);
                             int ArrayLength = jsonArray.length();
@@ -136,6 +146,8 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
             }
         });
         RequestQueue requestQueue2 = Volley.newRequestQueue(getApplicationContext());
+        DefaultRetryPolicy retryPolicy2 = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest2.setRetryPolicy(retryPolicy2);
         requestQueue2.add(stringRequest2);
 
 
@@ -166,6 +178,7 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
                 int mYear = c.get(Calendar.YEAR); // current year
                 int mMonth = c.get(Calendar.MONTH); // current month
                 int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+
                 // date picker dialog
                 datePickerDialog = new DatePickerDialog(CreateTutorialGroupOffline.this,
                         new DatePickerDialog.OnDateSetListener() {
@@ -185,9 +198,8 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
                                     dy = "0"+dayOfMonth;
                                 else dy = String.valueOf(dayOfMonth);
 
-                                dte.setText(dy + "/"
-                                        + mt + "/" + year);
-
+//                                dte.setText(dy + "/" + mt + "/" + year);
+                                dte.setText(year + "-" + mt + "-" + dy);
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
@@ -200,12 +212,25 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
                 final Calendar cldr = Calendar.getInstance();
                 int hour = cldr.get(Calendar.HOUR_OF_DAY);
                 int minutes = cldr.get(Calendar.MINUTE);
+
                 // time picker dialog
                 picker = new TimePickerDialog(CreateTutorialGroupOffline.this,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                tim.setText(sHour + ":" + sMinute);
+                                if(sHour<10){
+                                    hour_d = "0"+String.valueOf(sHour);
+                                }else{
+                                    hour_d = String.valueOf(sHour);
+                                }
+                                if(sMinute<10){
+                                    minute_d = "0"+String.valueOf(sMinute);
+                                }else{
+                                    minute_d = String.valueOf(sMinute);
+                                }
+
+//                                tim.setText(sHour + ":" + sMinute);
+                                tim.setText(hour_d+":"+minute_d);
                             }
                         }, hour, minutes, true);
                 picker.show();
@@ -222,10 +247,19 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
                 description = descrip.getText().toString();
                 location_st = location.getText().toString();
 
-                if(group_name.equals("") || date.equals("") || time.equals("") || description.equals("") || cat.getSelectedItem().toString().equals("") ||
-                        uni.getSelectedItem().toString().equals("")){
-                    Toast.makeText(getApplicationContext(), "One or more field is empty", Toast.LENGTH_LONG).show();
+                if(group_name.equals("")){
+                    grp_name.setError("Field is empty");
+                } else if(date.equals("")){
+                    dte.setError("Date is empty");
+                } else if(time.equals("")){
+                    tim.setError("Time is empty");
+                } else if(location_st.equals("")){
+                    location.setError("Location is empty");
                 }
+//                if(group_name.equals("") || date.equals("") || time.equals("") || description.equals("") || cat.getSelectedItem().toString().equals("") ||
+//                        uni.getSelectedItem().toString().equals("")){
+//                    Toast.makeText(getApplicationContext(), "One or more field is empty", Toast.LENGTH_LONG).show();
+//                }
                 else{
                     Intent i = new Intent(CreateTutorialGroupOffline.this, AlmostDoneOffline.class);
                     i.putExtra("group_name", group_name);

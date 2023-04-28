@@ -26,22 +26,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ProgressBar
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:id="@+id/progressBar_tutor"
+                    android:indeterminateTint="#fff"
                     android:layout_centerInParent="true"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="180dp">
+                    android:layout_height="wrap_content">
 
-                    <GridView
-                        android:id="@+id/simpleGridView"
+<!--                    <GridView-->
+<!--                        android:id="@+id/simpleGridView"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:scrollbars="horizontal"/>-->
+
+                    <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:numColumns="3"
-                        android:verticalSpacing="10dp"
-                        android:scrollbars="vertical"/>
+                        android:id="@+id/recycler_view"
+                        android:scrollbars="horizontal"/>
 
                 </LinearLayout>
 
@@ -67,16 +72,16 @@
                 android:textStyle="bold"
                 android:textSize="15dp"
                 android:paddingLeft="10dp"
-                android:layout_marginTop="30dp"
                 android:paddingBottom="5dp"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ProgressBar
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:id="@+id/progressBar_group"
+                    android:indeterminateTint="#fff"
                     android:layout_centerInParent="true"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -96,7 +101,7 @@
                         android:id="@+id/simpleGridView2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:numColumns="2"
+                        android:numColumns="3"
                         android:verticalSpacing="10dp"
                         android:scrollbars="vertical"/>
 

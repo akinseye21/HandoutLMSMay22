@@ -24,6 +24,8 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/gig_name"
+            android:paddingLeft="8dp"
+                android:textSize="10dp"
                 android:text="Logo Design"
                 android:textColor="#ffffff"
                 android:textStyle="bold"/>
@@ -32,8 +34,9 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/gig_price"
+            android:paddingLeft="8dp"
                 android:text="$200 - $400"
-                android:textSize="10dp"
+                android:textSize="8dp"
                 android:textStyle="bold"
                 android:textColor="#ffffff"
                 android:paddingRight="10dp"/>
@@ -42,8 +45,9 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/gig_type"
+            android:paddingLeft="8dp"
                 android:text="4 days"
-                android:textSize="10dp"
+                android:textSize="8dp"
                 android:textStyle="bold"
                 android:textColor="#ffffff"/>
 

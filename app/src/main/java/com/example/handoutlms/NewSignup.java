@@ -44,6 +44,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -66,9 +67,12 @@ public class NewSignup extends AppCompatActivity {
     Button signup;
     Dialog myDialog;
 
+    private ArrayList<String> inst2 = new ArrayList<>();
+
     SharedPreferences preferences;
 
     public static final String SIGNUP = "https://handoutng.com/handouts/handout_registration";
+    public static final String GET_UNIVERSITY = "https://handoutng.com/handouts/handout_get_universities";
 
     FirebaseAuth auth;
     DatabaseReference reference;
@@ -85,6 +89,7 @@ public class NewSignup extends AppCompatActivity {
         preferences = getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
         final SharedPreferences.Editor myEdit = preferences.edit();
 
+        institution = findViewById(R.id.spinnerinstitution);
         fullname = findViewById(R.id.edtname);
         emailaddress = findViewById(R.id.edtemail);
         phonenum = findViewById(R.id.edtphonenumber);
@@ -102,30 +107,55 @@ public class NewSignup extends AppCompatActivity {
             }
         });
 
+        //GET UNIVERSITY
+        StringRequest stringRequest2 = new StringRequest(Request.Method.GET, GET_UNIVERSITY,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            int ArrayLength = jsonArray.length();
+                            for(int i=0; i<ArrayLength; i++){
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                String university = jsonObject.getString("university");
+
+                                inst2.add(university);
+                            }
+
+                            String[] institutions = new String[inst2.size()];
+                            for (int i = 0; i < inst2.size(); i++) {
+                                institutions[i] = inst2.get(i);
+                            }
+
+                            ArrayAdapter<String> institutionadapter = new ArrayAdapter<>(NewSignup.this, R.layout.simple_spinner_small_whitebg, R.id.tx, institutions);
+                            institution.setAdapter(institutionadapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        RequestQueue requestQueue2 = Volley.newRequestQueue(getApplicationContext());
+        DefaultRetryPolicy retryPolicy2 = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest2.setRetryPolicy(retryPolicy2);
+        requestQueue2.add(stringRequest2);
+
+
+
+
         login = findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), Login.class);
                 startActivity(i);
-            }
-        });
-
-        String[] institutions = {"Select your university", "","Ahmadu Bello University Zaria", "Adekunle Ajasin Unversity Akungba", "Adeleke University",
-                "Babcock University", "Federal University of Tech. Minna", "Federal University of Tech. Akure", "University of Lagos", "University of Abuja", "Obafemi Awolowo University Ife"};
-        ArrayAdapter<String> institutionadapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.simple_spinner_small_text, R.id.tx, institutions) ;
-
-        institution = findViewById(R.id.spinnerinstitution);
-        institution.setAdapter(institutionadapter);
-        institution.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ((TextView)view).setTextColor(Color.WHITE);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 

@@ -40,15 +40,15 @@ public class ViewGroupResources extends AppCompatActivity {
     String tutorial_material;
 
     TextView gp_name, cat, dat, tim, uni, desc, tut_type, mode1;
-    TextView noMaterial;
+//    TextView noMaterial;
 
     ProgressBar progressBar;
     TextView loading_text;
     ImageView play, pause, back;
 
-    LinearLayout audioMaterial, videoMaterial;
+//    LinearLayout audioMaterial, videoMaterial;
 
-    MediaPlayer mediaPlayer;
+//    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,26 +69,26 @@ public class ViewGroupResources extends AppCompatActivity {
         mode1 = findViewById(R.id.mode);
         progressBar = findViewById(R.id.progressBar);
         loading_text = findViewById(R.id.loading_text);
-        play = findViewById(R.id.idBtnPlay);
-        pause = findViewById(R.id.idBtnPause);
-        noMaterial = findViewById(R.id.noMaterial);
+//        play = findViewById(R.id.idBtnPlay);
+//        pause = findViewById(R.id.idBtnPause);
+//        noMaterial = findViewById(R.id.noMaterial);
         back = findViewById(R.id.back);
 
-        audioMaterial = findViewById(R.id.audio_material);
-        videoMaterial = findViewById(R.id.video_material);
+//        audioMaterial = findViewById(R.id.audio_material);
+//        videoMaterial = findViewById(R.id.video_material);
 
-        play.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                playAudio();
-            }
-        });
-        pause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pauseAudio();
-            }
-        });
+//        play.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                playAudio();
+//            }
+//        });
+//        pause.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                pauseAudio();
+//            }
+//        });
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -131,25 +131,25 @@ public class ViewGroupResources extends AppCompatActivity {
                                         String id = section.getString("tid");
                                         tutorial_material = section.getString("tutorial_material");
 
-                                        if (tutorial_material.contains(".mp3")){
-                                            audioMaterial.setVisibility(View.VISIBLE);
-                                        }
-                                        if (tutorial_material.contains(".mp4")){
-                                            videoMaterial.setVisibility(View.VISIBLE);
-                                            //load video url to view
-                                            VideoView videoView = findViewById(R.id.videoView);
-                                            Uri uri = Uri.parse(tutorial_material);
-                                            videoView.setVideoURI(uri);
-                                            MediaController mediaController = new MediaController(ViewGroupResources.this);
-                                            mediaController.setAnchorView(videoView);
-                                            mediaController.setMediaPlayer(videoView);
-                                            videoView.setMediaController(mediaController);
-                                            videoView.start();
-                                            videoView.setZOrderOnTop(true);
-                                        }
-                                        if(tutorial_material.equals("")){
-                                            noMaterial.setVisibility(View.VISIBLE);
-                                        }
+//                                        if (tutorial_material.contains(".mp3")){
+//                                            audioMaterial.setVisibility(View.VISIBLE);
+//                                        }
+//                                        if (tutorial_material.contains(".mp4")){
+//                                            videoMaterial.setVisibility(View.VISIBLE);
+//                                            //load video url to view
+//                                            VideoView videoView = findViewById(R.id.videoView);
+//                                            Uri uri = Uri.parse(tutorial_material);
+//                                            videoView.setVideoURI(uri);
+//                                            MediaController mediaController = new MediaController(ViewGroupResources.this);
+//                                            mediaController.setAnchorView(videoView);
+//                                            mediaController.setMediaPlayer(videoView);
+//                                            videoView.setMediaController(mediaController);
+//                                            videoView.start();
+//                                            videoView.setZOrderOnTop(true);
+//                                        }
+//                                        if(tutorial_material.equals("")){
+//                                            noMaterial.setVisibility(View.VISIBLE);
+//                                        }
 
 
                                         gp_name.setText(groupName);
@@ -185,29 +185,29 @@ public class ViewGroupResources extends AppCompatActivity {
 
     }
 
-    private void playAudio() {
-        mediaPlayer = new MediaPlayer();
-        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        try {
-            mediaPlayer.setDataSource(tutorial_material);
-            mediaPlayer.prepare();
-            mediaPlayer.start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Toast.makeText(this, "Audio started playing..", Toast.LENGTH_SHORT).show();
-    }
-
-    private void pauseAudio() {
-        if (mediaPlayer.isPlaying()) {
-            mediaPlayer.stop();
-            mediaPlayer.reset();
-            mediaPlayer.release();
-            Toast.makeText(this, "Audio has been paused", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Toast.makeText(this, "Audio has not played", Toast.LENGTH_SHORT).show();
-        }
-
-    }
+//    private void playAudio() {
+//        mediaPlayer = new MediaPlayer();
+//        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+//        try {
+//            mediaPlayer.setDataSource(tutorial_material);
+//            mediaPlayer.prepare();
+//            mediaPlayer.start();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        Toast.makeText(this, "Audio started playing..", Toast.LENGTH_SHORT).show();
+//    }
+//
+//    private void pauseAudio() {
+//        if (mediaPlayer.isPlaying()) {
+//            mediaPlayer.stop();
+//            mediaPlayer.reset();
+//            mediaPlayer.release();
+//            Toast.makeText(this, "Audio has been paused", Toast.LENGTH_SHORT).show();
+//        }
+//        else{
+//            Toast.makeText(this, "Audio has not played", Toast.LENGTH_SHORT).show();
+//        }
+//
+//    }
 }
