@@ -35,22 +35,28 @@
             android:layout_height="100dp"
             android:layout_marginLeft="25dp"
             android:orientation="vertical">
+
             <TextView
+                android:id="@+id/taskName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/taskName"
+                android:fontFamily="@font/poppins_bold"
                 android:text="Phy 123 test"
                 android:textColor="#e69b12"
-                android:textStyle="bold"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
             <TextView
+                android:id="@+id/taskDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/taskDescription"
+                android:fontFamily="@font/poppins_light"
                 android:text="Description"
                 android:textColor="#ffffff"
+                android:textSize="13dp"
                 android:textStyle="bold"
-                android:textSize="13dp"/>
+                android:ellipsize="end"
+                android:maxLines="2" />
         </LinearLayout>
 
         <TextView
@@ -59,6 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
+            android:fontFamily="@font/poppins_bold"
             android:text="9AM"
             android:textColor="#2FB052"
             android:textSize="12dp"

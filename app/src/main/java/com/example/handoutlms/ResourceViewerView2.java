@@ -56,6 +56,7 @@ public class ResourceViewerView2 extends AppCompatActivity {
     private static final String TOP_4 = "https://handoutng.com/handouts/handout_get_top_resource_hits";
     public static final String ALL_RESOURCE_FOR_A_GROUP = "https://handoutng.com/handouts/handout_get_all_tutorials";
     public static final String GET_RESOURCE_VIEWED = "https://handoutng.com/handouts/handout_get_recent_resource_viewed";
+    private static final String GET_APPROVED = "https://handoutng.com/handouts/handout_group_join_all_approved";
 
 
     //array for recently watched
@@ -181,9 +182,9 @@ public class ResourceViewerView2 extends AppCompatActivity {
         noRecentlyAdded = findViewById(R.id.recentlyadded);
 
 
-        getRecentlyWatched();
-        getMostViewed();
-        getRecentlyAdded();
+//        getRecentlyWatched();
+//        getMostViewed();
+//        getRecentlyAdded();
 
     }
 
@@ -597,4 +598,57 @@ public class ResourceViewerView2 extends AppCompatActivity {
         Array_resID3.clear();
     }
 
+    private void getApprovedUsers() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_APPROVED,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try{
+                            JSONArray jsonArray = new JSONArray(response);
+                            int len = jsonArray.length();
+                            joinedUsers.setText(String.valueOf(len));
+                        }
+                        catch (JSONException e){
+                            joinedUsers.setText("0");
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        volleyError.printStackTrace();
+
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<>();
+                params.put("tid", "group_"+id);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(ResourceViewerView2.this);
+        DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(retryPolicy);
+        requestQueue.add(stringRequest);
+        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+            @Override
+            public void onRequestFinished(Request<Object> request) {
+                requestQueue.getCache().clear();
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getRecentlyWatched();
+        getMostViewed();
+        getRecentlyAdded();
+        getApprovedUsers();
+    }
 }

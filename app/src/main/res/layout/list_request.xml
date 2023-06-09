@@ -54,22 +54,26 @@
                 android:orientation="vertical"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/img">
+
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/name"
-                    android:text="UserName"
-                    android:textSize="10dp"
-                    android:textColor="#fff"
-                    android:textStyle="bold"/>
-                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/email"
-                    android:text="Email@email.com"
-                    android:textSize="8dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="UserName"
                     android:textColor="#fff"
-                    android:textStyle="normal"/>
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="Email@email.com"
+                    android:textColor="#fff"
+                    android:textSize="8dp"
+                    android:textStyle="normal" />
             </LinearLayout>
 
             <ProgressBar
@@ -88,25 +92,27 @@
                 android:layout_alignParentEnd="true">
 
                 <Button
+                    android:id="@+id/accept"
                     android:layout_width="60dp"
                     android:layout_height="30dp"
-                    android:text="Accept"
-                    android:textSize="10dp"
-                    android:textAllCaps="false"
+                    android:layout_marginRight="10dp"
                     android:background="@drawable/new_rounded_green"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Accept"
+                    android:textAllCaps="false"
                     android:textColor="#fff"
-                    android:id="@+id/accept"
-                    android:layout_marginRight="10dp"/>
+                    android:textSize="10dp" />
 
                 <Button
+                    android:id="@+id/ignore"
                     android:layout_width="60dp"
                     android:layout_height="30dp"
-                    android:text="Ignore"
-                    android:textSize="10dp"
-                    android:textAllCaps="false"
                     android:background="@drawable/rounded_orange"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Ignore"
+                    android:textAllCaps="false"
                     android:textColor="#fff"
-                    android:id="@+id/ignore"/>
+                    android:textSize="10dp" />
 
             </LinearLayout>
         </RelativeLayout>

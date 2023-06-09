@@ -25,7 +25,7 @@ public class CreateGig2 extends AppCompatActivity {
     String status = "unselected";
 
     CardView mcv;
-    Button next;
+    LinearLayout next;
     ImageView back;
 
     String projectName, projectDescription;
@@ -46,11 +46,7 @@ public class CreateGig2 extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), CreateGig1.class);
-                i.putExtra("Project name", projectName);
-                i.putExtra("Project description", projectDescription);
-                i.putStringArrayListExtra("Required skills", Array_requiredSkills);
-                startActivity(i);
+                onBackPressed();
             }
         });
 
@@ -73,7 +69,7 @@ public class CreateGig2 extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), CreateGig3.class);
+                Intent i = new Intent(CreateGig2.this, CreateGig3.class);
                 i.putExtra("Project name", projectName);
                 i.putExtra("Project description", projectDescription);
                 i.putStringArrayListExtra("Required skills", Array_requiredSkills);
@@ -83,8 +79,8 @@ public class CreateGig2 extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        // do nothing
-    }
+//    @Override
+//    public void onBackPressed() {
+//        // do nothing
+//    }
 }

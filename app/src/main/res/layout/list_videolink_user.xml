@@ -22,27 +22,33 @@
             android:layout_marginLeft="20dp"
             android:layout_gravity="center"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
                 android:text="How to create a food"
                 android:textColor="#fff"
                 android:textSize="20dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppins_light"
                 android:paddingTop="10dp"
-                android:textSize="10dp"
                 android:text="This is the description of the video that we intend to watch and see. This will give and highlight the video description"
                 android:textColor="#65dc9a"
-                android:layout_gravity="center"/>
+                android:textSize="10dp" />
+
             <Button
                 android:id="@+id/login"
                 android:layout_width="130dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/rounded_orange"
+                android:fontFamily="@font/poppins_bold"
                 android:text="Watch Video"
                 android:textAllCaps="false"
                 android:textColor="#ffffff"

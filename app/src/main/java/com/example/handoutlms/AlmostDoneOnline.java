@@ -45,7 +45,7 @@ public class AlmostDoneOnline extends AppCompatActivity {
     TextView gp_name, cat, dat, tim, uni, desc;
     ProgressBar progressBar;
     ImageView back;
-    String CHANNEL_ID = "channelID";
+    String CHANNEL_ID = "channelID2";
     String notification;
     Dialog myDialog;
     String usertype;
@@ -236,6 +236,7 @@ public class AlmostDoneOnline extends AppCompatActivity {
                     params.put("short_description", description);
                     params.put("tutorial_mode", "online");
                     params.put("venue", university);
+                    params.put("class_size", "0");
                     return params;
                 }
             };
@@ -274,6 +275,8 @@ public class AlmostDoneOnline extends AppCompatActivity {
                                 if(status.equals("successful")){
                                     Toast.makeText(getApplicationContext(), "Online Group created successfully", Toast.LENGTH_LONG).show();
                                     System.out.println(jsonObject);
+
+                                    createNotificationChannel();
 
                                     //show popup window
                                     myDialog = new Dialog(AlmostDoneOnline.this);
@@ -334,6 +337,7 @@ public class AlmostDoneOnline extends AppCompatActivity {
                     params.put("short_description", description);
                     params.put("tutorial_mode", "online");
                     params.put("venue", university);
+                    params.put("class_size", "0");
                     return params;
                 }
             };
@@ -366,8 +370,7 @@ public class AlmostDoneOnline extends AppCompatActivity {
                             String status2 = jsonObject.getString("status");
                             if(status2.equals("success")){
                                 //you are now a tutor on Handout
-
-
+                                createNotificationChannel();
                             }
 
                         }
@@ -398,6 +401,43 @@ public class AlmostDoneOnline extends AppCompatActivity {
         DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         stringRequest2.setRetryPolicy(retryPolicy);
         requestQueue2.add(stringRequest2);
+        requestQueue2.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+            @Override
+            public void onRequestFinished(Request<Object> request) {
+                requestQueue2.getCache().clear();
+            }
+        });
+    }
+
+    private void createNotificationChannel() {
+        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = manager.getNotificationChannel(CHANNEL_ID);
+            if(channel == null){
+                channel = new NotificationChannel(CHANNEL_ID, "Group Creation", NotificationManager.IMPORTANCE_DEFAULT);
+                //config notification channel
+                channel.setDescription("[Channel Description]");
+                channel.enableVibration(true);
+                channel.enableLights(true);
+                channel.setVibrationPattern(new long[]{100, 1000, 200, 340});
+                channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+                manager.createNotificationChannel(channel);
+            }
+        }
+        Intent notificationIntent = new Intent(AlmostDoneOnline.this, CreateOnlineTutPhase1.class);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent penIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.logo)
+                .setStyle(new NotificationCompat.BigTextStyle())
+                .setContentTitle("Online Group Created")
+                .setContentText("You have successfully created a new online tutorial - \""+group_name+"\"")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(false)
+                .setTicker("Notification");
+        builder.setContentIntent(penIntent);
+        NotificationManagerCompat m = NotificationManagerCompat.from(AlmostDoneOnline.this);
+        m.notify(2, builder.build());
     }
 
 }

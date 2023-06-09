@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#293241"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp">
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:text="X"
+        android:layout_gravity="end"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textSize="20dp"
+        android:layout_marginRight="10dp"
+        android:fontFamily="@font/poppins_bold"
+        android:background="@drawable/circle_red2"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp">
+        <TextView
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:text="M"
+            android:textColor="#000"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:padding="4dp"
+            android:layout_marginRight="2dp"
+            android:fontFamily="@font/poppins_bold"
+            android:background="#4fc2f8"/>
+        <TextView
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:text="E"
+            android:textColor="#000"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:padding="4dp"
+            android:layout_marginRight="2dp"
+            android:fontFamily="@font/poppins_bold"
+            android:background="#fec107"/>
+        <TextView
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:text="N"
+            android:textColor="#000"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:padding="4dp"
+            android:layout_marginRight="2dp"
+            android:fontFamily="@font/poppins_bold"
+            android:background="#ea80fc"/>
+        <TextView
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:text="U"
+            android:textColor="#000"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:padding="4dp"
+            android:fontFamily="@font/poppins_bold"
+            android:background="#00e777"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/user"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Akinseye Abayomi"
+                android:textSize="15dp"
+                android:textColor="#fff"
+                android:fontFamily="@font/poppins_bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="abayomi.akinseye@gmail.com"
+                android:textSize="10dp"
+                android:textColor="#fff"
+                android:fontFamily="@font/poppins_regular"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#fff"/>
+
+
+
+</LinearLayout>

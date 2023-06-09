@@ -6,19 +6,19 @@
     android:orientation="vertical">
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:background="@drawable/rounded_grey"
         android:layout_margin="10dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:id="@+id/lin_overall"
-        android:visibility="gone"
+        android:visibility="visible"
         android:padding="10dp">
         <LinearLayout
-            android:layout_width="15dp"
-            android:layout_height="15dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
             android:background="@drawable/circle_dark_green"
             android:layout_centerVertical="true"
             android:orientation="vertical"
@@ -27,23 +27,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Phy103 Exams"
+            android:textSize="13dp"
             android:textColor="#6e6e70"
-            android:layout_toRightOf="@+id/lin"
+            android:layout_toRightOf="@+id/lin_dot"
             android:paddingLeft="5dp"
             android:layout_centerVertical="true"
             android:id="@+id/notification_name"
+            android:fontFamily="@font/poppins_bold"
             android:textStyle="bold"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Exams"
-            android:textColor="#6e6e70"
-            android:layout_toRightOf="@+id/lin"
+            android:textColor="#5c5c5d"
+            android:textSize="13dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
             android:paddingLeft="15dp"
             android:id="@+id/notification_category"
             android:layout_centerVertical="true"
+            android:fontFamily="@font/poppins_regular"
             android:textStyle="bold"/>
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </LinearLayout>

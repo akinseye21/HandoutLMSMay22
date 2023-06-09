@@ -5,4 +5,5 @@
     <color name="colorAccent">#009345</color>
     <color name="tabSelectedIconColor">#0Dcccccc</color>
     <color name="tabUnSelectedIconColor">#00ffffff</color>
+    <color name="cardcolor">#344863</color>
 </resources>

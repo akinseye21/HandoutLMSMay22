@@ -10,11 +10,10 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginBottom="10dp"
         android:id="@+id/rel1">
         <ImageView
             android:layout_width="30dp"
@@ -35,18 +34,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/poppins_extrabold"
                 android:text="Create\nAccount"
                 android:textColor="#ffffff"
-                android:textStyle="bold"
                 android:textSize="30dp"
-                android:layout_marginLeft="20dp" />
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
                 android:background="@drawable/new_login"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:gravity="center_vertical">
@@ -61,21 +61,23 @@
                     android:textColorHint="#ffffff"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp">
+
                     <EditText
+                        android:id="@+id/edtname"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="20dp"
                         android:layout_marginLeft="15dp"
+                        android:layout_marginRight="20dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Full Name"
-                        android:textColorHint="#ffffff"
-                        android:textColor="#ffffff"
+                        android:background="@android:color/transparent"
                         android:capitalize="sentences"
+                        android:fontFamily="@font/poppins_light"
+                        android:hint="Full Name"
                         android:inputType="textPersonName"
-                        android:textSize="15dp"
-                        android:id="@+id/edtname"
                         android:singleLine="true"
-                        android:background="@android:color/transparent"/>
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+                        android:textSize="15dp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,20 +103,22 @@
                     android:textColorHint="#ffffff"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp">
+
                     <EditText
+                        android:id="@+id/edtemail"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="20dp"
                         android:layout_marginLeft="15dp"
+                        android:layout_marginRight="20dp"
                         android:layout_marginBottom="10dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/poppins_light"
                         android:hint="Email address"
-                        android:textColorHint="#ffffff"
-                        android:textColor="#ffffff"
                         android:inputType="textWebEmailAddress"
-                        android:textSize="15dp"
-                        android:id="@+id/edtemail"
                         android:singleLine="true"
-                        android:background="@android:color/transparent"/>
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+                        android:textSize="15dp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -140,20 +144,22 @@
                     android:textColorHint="#ffffff"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp">
+
                     <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginBottom="10dp"
-                        android:hint="Phone Number"
-                        android:textColorHint="#ffffff"
-                        android:textColor="#ffffff"
-                        android:inputType="number"
-                        android:textSize="15dp"
                         android:id="@+id/edtphonenumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/poppins_light"
+                        android:hint="Phone Number"
+                        android:inputType="number"
                         android:singleLine="true"
-                        android:background="@android:color/transparent"/>
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+                        android:textSize="15dp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -181,20 +187,22 @@
                     android:layout_marginLeft="10dp"
                     app:passwordToggleEnabled="true"
                     app:passwordToggleTint="#ffffff">
+
                     <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginBottom="10dp"
-                        android:hint="Password"
-                        android:textColorHint="#ffffff"
-                        android:textColor="#ffffff"
-                        android:inputType="textPassword"
-                        android:textSize="15dp"
                         android:id="@+id/edtpassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/poppins_light"
+                        android:hint="Password"
+                        android:inputType="textPassword"
                         android:singleLine="true"
-                        android:background="@android:color/transparent"/>
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+                        android:textSize="15dp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -222,20 +230,22 @@
                     android:layout_marginLeft="10dp"
                     app:passwordToggleEnabled="true"
                     app:passwordToggleTint="#ffffff">
+
                     <EditText
+                        android:id="@+id/edtconfirmpassword"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="20dp"
                         android:layout_marginLeft="15dp"
+                        android:layout_marginRight="20dp"
                         android:layout_marginBottom="10dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/poppins_light"
                         android:hint="Confirm password"
-                        android:textColorHint="#ffffff"
-                        android:textColor="#ffffff"
                         android:inputType="textPassword"
-                        android:textSize="15dp"
-                        android:id="@+id/edtconfirmpassword"
                         android:singleLine="true"
-                        android:background="@android:color/transparent"/>
+                        android:textColor="#ffffff"
+                        android:textColorHint="#ffffff"
+                        android:textSize="15dp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -277,45 +287,50 @@
 
 
             <Button
+                android:id="@+id/signup"
                 android:layout_width="150dp"
                 android:layout_height="30dp"
-                android:text="Sign up"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:background="@drawable/rounded_orange"
-                android:textAllCaps="false"
-                android:id="@+id/signup"
                 android:layout_gravity="center"
-                android:layout_marginTop="30dp"/>
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_orange"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Sign up"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="0dp"
                 android:id="@+id/login"
                 android:gravity="center">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/poppins_italic"
                     android:text="Already have an account?"
                     android:textColor="#ffffff"
-                    android:textStyle="italic"
                     android:textSize="10dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"/>
+                    android:textStyle="italic" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="  Login"
-                    android:textColor="#ff6678"
-                    android:textStyle="italic"
-                    android:textSize="10dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/poppins_italic"
+                    android:text="  Login"
+                    android:textColor="#ff6678"
+                    android:textSize="10dp"
+                    android:textStyle="italic" />
 
 
             </LinearLayout>

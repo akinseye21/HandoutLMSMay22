@@ -39,7 +39,7 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
     EditText tim;
     DatePickerDialog datePickerDialog;
     TimePickerDialog picker;
-    Spinner uni, cat;
+    Spinner uni, cat, classsize;
     String group_name, date, time, location_st, description, email;
     ImageView back;
     String hour_d, minute_d;
@@ -86,7 +86,7 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
                                 category[i] = cat2.get(i);
                             }
 
-                            ArrayAdapter<String> categoryadapter = new ArrayAdapter<>(getApplicationContext(), R.layout.simple_spinner_small_whitebg, R.id.tx, category);
+                            ArrayAdapter<String> categoryadapter = new ArrayAdapter<>(getApplicationContext(), R.layout.simple_spinner_small_whitebg2, R.id.tx, category);
                             cat.setAdapter(categoryadapter);
 
                         } catch (JSONException e) {
@@ -130,7 +130,7 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
                                 institutions[i] = inst2.get(i);
                             }
 
-                            ArrayAdapter<String> institutionadapter = new ArrayAdapter<>(CreateTutorialGroupOffline.this, R.layout.simple_spinner_small_whitebg, R.id.tx, institutions);
+                            ArrayAdapter<String> institutionadapter = new ArrayAdapter<>(CreateTutorialGroupOffline.this, R.layout.simple_spinner_small_whitebg2, R.id.tx, institutions);
                             uni.setAdapter(institutionadapter);
 
                         } catch (JSONException e) {
@@ -150,12 +150,29 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
         stringRequest2.setRetryPolicy(retryPolicy2);
         requestQueue2.add(stringRequest2);
 
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("Select class size");
+        arrayList.add("");
+        arrayList.add("10");
+        arrayList.add("20");
+        arrayList.add("30");
+        arrayList.add("40");
+        arrayList.add("50");
+        arrayList.add("60");
+        arrayList.add("70");
+        arrayList.add("80");
+        arrayList.add("90");
+        arrayList.add("100");
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.simple_spinner_small_whitebg2, R.id.tx, arrayList);
+
 
 
         grp_name = findViewById(R.id.group_name);
         descrip = findViewById(R.id.description);
         uni = findViewById(R.id.spinneruni);
         cat = findViewById(R.id.spinnercategory);
+        classsize = findViewById(R.id.spinnerclasssize);
+        classsize.setAdapter(arrayAdapter);
         dte = findViewById(R.id.mydate);
         tim = findViewById(R.id.time);
         next = findViewById(R.id.next);
@@ -255,6 +272,8 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
                     tim.setError("Time is empty");
                 } else if(location_st.equals("")){
                     location.setError("Location is empty");
+                } else if (classsize.getSelectedItem().toString().equals("Select class size") || classsize.getSelectedItem().toString().equals("")){
+                    Toast.makeText(CreateTutorialGroupOffline.this, "Select class size", Toast.LENGTH_SHORT).show();
                 }
 //                if(group_name.equals("") || date.equals("") || time.equals("") || description.equals("") || cat.getSelectedItem().toString().equals("") ||
 //                        uni.getSelectedItem().toString().equals("")){
@@ -270,6 +289,7 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
                     i.putExtra("description", description);
                     i.putExtra("location", location_st);
                     i.putExtra("email", email);
+                    i.putExtra("class_size", classsize.getSelectedItem().toString());
                     startActivity(i);
                 }
 
@@ -277,4 +297,5 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
             }
         });
     }
+
 }

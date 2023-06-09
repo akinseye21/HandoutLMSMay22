@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:padding="10dp"
+    android:background="@drawable/round_popup">
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:id="@+id/img"
+            android:background="@drawable/corner_white2"
+            android:src="@drawable/logo2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:id="@+id/txt"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="15dp"
+            android:text="Please input the new timeline"
+            android:textColor="#fff"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:gravity="left">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gig Name: "
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="#fff"
+                android:textSize="15dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="xx"
+                android:id="@+id/gigN"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="#a1a1aa"
+                android:textSize="15dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:gravity="left">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start Date: "
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="#fff"
+                android:textSize="15dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/corner_white2"
+                android:padding="10dp"
+                android:editable="false"
+                android:clickable="true"
+                android:textColor="#a1a1aa"
+                android:textSize="15dp"
+                android:fontFamily="@font/poppins_regular"
+                android:cursorVisible="false"
+                android:id="@+id/startD"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="End   Date: "
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="#fff"
+                android:textSize="15dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/corner_white2"
+                android:padding="10dp"
+                android:editable="false"
+                android:clickable="true"
+                android:textColor="#a1a1aa"
+                android:textSize="15dp"
+                android:fontFamily="@font/poppins_regular"
+                android:cursorVisible="false"
+                android:id="@+id/endD"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
+
+        </LinearLayout>
+
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:textAllCaps="false"
+            android:text="Ok"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="15dp"
+            android:id="@+id/ok"
+            android:stateListAnimator="@null"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/new_rounded_green"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:background="@drawable/corner_white2"
+        android:padding="20dp"
+        android:visibility="gone"
+        android:id="@+id/loading"
+        android:gravity="center">
+        <ProgressBar
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:indeterminateTint="@color/lb_grey"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loading"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/lb_grey"/>
+    </LinearLayout>
+
+</RelativeLayout>

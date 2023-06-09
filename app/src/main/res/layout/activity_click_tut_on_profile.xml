@@ -41,6 +41,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_light"
                     android:text="Welcome Back!"
                     android:textColor="#ffffff"
                     android:textSize="10dp"
@@ -50,6 +51,7 @@
                     android:id="@+id/fullname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="Username"
                     android:textColor="#ffffff"
                     android:textSize="20dp"
@@ -63,6 +65,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="3dp"
+                android:fontFamily="@font/poppins_regular"
                 android:text="Group Name"
                 android:textColor="#ffffff"
                 android:textSize="10dp"
@@ -91,49 +94,134 @@
                 android:layout_marginTop="20dp">
 
                 <LinearLayout
-                    android:id="@+id/lin1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:id="@+id/lin11">
+                    <LinearLayout
+                        android:id="@+id/lin1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/rounded_purple"
-                        android:padding="20dp"
-                        android:src="@drawable/new1" />
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/rounded_purple"
+                            android:padding="20dp"
+                            android:src="@drawable/new1" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="20dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/joinedUsers"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="0"
+                                android:textColor="#fff"
+                                android:textSize="20dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_light"
+                                android:text="Joined users"
+                                android:textColor="#fff"
+                                android:textSize="10dp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:id="@+id/viewdem"
+                            android:visibility="gone"
+                            android:background="#51C8F2"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:id="@+id/linClassSize"
+                            android:visibility="gone"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/classSize"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="50"
+                                android:textColor="#fff"
+                                android:textSize="20dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_light"
+                                android:text="Class Size"
+                                android:textColor="#fff"
+                                android:textSize="10dp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:id="@+id/editClassSize"
                         android:layout_marginLeft="20dp"
-                        android:orientation="vertical">
+                        android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/joinedUsers"
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/class_size_asset"
+                            android:padding="4dp"
+                            android:background="@drawable/rounded_red2"/>
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0"
-                            android:textColor="#fff"
-                            android:textSize="20dp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Joined users"
-                            android:textColor="#fff"
-                            android:textSize="10dp"
-                            android:textStyle="normal" />
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="Edit Class Size"
+                                android:textColor="#fff"
+                                android:textSize="8dp"
+                                android:textStyle="normal" />
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:background="#fff"/>
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/lin2"
                     android:layout_width="2dp"
                     android:layout_height="30dp"
-                    android:layout_below="@+id/lin1"
+                    android:layout_below="@+id/lin11"
                     android:layout_marginLeft="30dp"
                     android:background="@drawable/dotted_line"
                     android:orientation="horizontal" />
@@ -163,6 +251,7 @@
                             android:id="@+id/pendingRequest"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
                             android:text="0"
                             android:textColor="#fff"
                             android:textSize="20dp"
@@ -171,6 +260,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_light"
                             android:text="Pending Request"
                             android:textColor="#fff"
                             android:textSize="10dp"
@@ -212,6 +302,7 @@
                             android:id="@+id/date"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
                             android:text="14 April, 2023"
                             android:textColor="#fff"
                             android:textSize="20dp"
@@ -220,6 +311,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_light"
                             android:text="Expiration Date"
                             android:textColor="#fff"
                             android:textSize="10dp"
@@ -251,22 +343,26 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:indeterminateTint="#fff"/>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
                         android:text="Loading"
-                        android:textSize="8dp"
-                        android:textColor="#fff"/>
+                        android:textColor="#fff"
+                        android:textSize="8dp" />
                 </LinearLayout>
+
                 <TextView
+                    android:id="@+id/txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/txt"
+                    android:fontFamily="@font/poppins_light"
+                    android:paddingBottom="10dp"
                     android:text="Most Viewed Resources"
                     android:textColor="#fff"
                     android:textSize="8dp"
-                    android:textStyle="normal"
-                    android:paddingBottom="10dp"/>
+                    android:textStyle="normal" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -563,6 +659,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="20dp"
         android:background="@drawable/rounded_orange"
+        android:fontFamily="@font/poppins_bold"
         android:text="View/Edit Resources"
         android:textAllCaps="false"
         android:textColor="#ffffff"

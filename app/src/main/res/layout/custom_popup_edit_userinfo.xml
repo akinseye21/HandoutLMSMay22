@@ -20,13 +20,15 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic191"/>
+
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="User Information"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:paddingLeft="10dp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:paddingLeft="10dp"
+            android:text="User Information"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <View
@@ -52,21 +54,23 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
                     android:src="@drawable/ic190"/>
+
             <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
                 android:id="@+id/fullname"
-                    android:hint="Fullname"
-                    android:singleLine="true"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:paddingRight="10dp"
-                    android:inputType="textPersonName"
-                    android:textSize="10dp"
-                    android:textColor="#ffffff"
-                    android:textColorHint="#80ffffff"
-                    android:background="@drawable/new_login2"/>
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/new_login2"
+                android:fontFamily="@font/poppins_light"
+                android:hint="Fullname"
+                android:inputType="textPersonName"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:singleLine="true"
+                android:textColor="#ffffff"
+                android:textColorHint="#80ffffff"
+                android:textSize="10dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -81,22 +85,24 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
                     android:src="@drawable/ic189"/>
+
             <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
                 android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/new_login2"
                 android:clickable="false"
                 android:focusableInTouchMode="false"
-                    android:singleLine="true"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:paddingRight="10dp"
-                    android:inputType="textEmailAddress"
-                    android:textSize="10dp"
-                    android:textColor="#ffffff"
-                    android:textColorHint="#80ffffff"
-                    android:background="@drawable/new_login2"/>
+                android:fontFamily="@font/poppins_light"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:singleLine="true"
+                android:textColor="#ffffff"
+                android:textColorHint="#80ffffff"
+                android:textSize="10dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -111,21 +117,23 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
                     android:src="@drawable/ic188"/>
+
             <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:hint="Phone number"
                 android:id="@+id/phonenum"
-                    android:singleLine="true"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:paddingRight="10dp"
-                    android:inputType="number"
-                    android:textSize="10dp"
-                    android:textColor="#ffffff"
-                    android:textColorHint="#80ffffff"
-                    android:background="@drawable/new_login2"/>
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/new_login2"
+                android:fontFamily="@font/poppins_light"
+                android:hint="Phone number"
+                android:inputType="number"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:singleLine="true"
+                android:textColor="#ffffff"
+                android:textColorHint="#80ffffff"
+                android:textSize="10dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -164,24 +172,26 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
                     android:src="@drawable/calendar"/>
+
             <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:hint="Date of Birth"
                 android:id="@+id/dob"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/new_login2"
                 android:clickable="true"
-                android:singleLine="true"
+                android:cursorVisible="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:cursorVisible="false"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:paddingRight="10dp"
-                    android:textSize="10dp"
-                    android:textColor="#ffffff"
-                    android:textColorHint="#80ffffff"
-                    android:background="@drawable/new_login2"/>
+                android:fontFamily="@font/poppins_light"
+                android:hint="Date of Birth"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:singleLine="true"
+                android:textColor="#ffffff"
+                android:textColorHint="#80ffffff"
+                android:textSize="10dp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -201,23 +211,27 @@
             android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
+
         <Button
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="10dp"
             android:id="@+id/save"
-                android:text="Save"
-                android:textAllCaps="false"
-                android:background="@drawable/round_white"/>
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/round_white"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Save"
+            android:textAllCaps="false" />
+
         <Button
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
             android:id="@+id/cancel"
-                android:text="Cancel"
-                android:textAllCaps="false"
-                android:textColor="#ffffff"
-                android:background="@drawable/rounded_orange"/>
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/rounded_orange"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textColor="#ffffff" />
 
     </LinearLayout>
 

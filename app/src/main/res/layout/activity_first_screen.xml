@@ -14,31 +14,38 @@
         android:layout_marginTop="100dp"
         android:layout_marginLeft="40dp"
         android:background="#fec55e"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to"
-        android:textSize="20dp"
-        android:textColor="#ffffff"
-        android:textStyle="normal"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="40dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HANDOUT."
-        android:textSize="25dp"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
-        android:layout_marginLeft="40dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Virtual. \t Social. \t Learn"
-        android:textSize="12dp"
-        android:textColor="#ffffff"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="1dp"/>
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Welcome to"
+        android:textColor="#ffffff"
+        android:textSize="20dp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:fontFamily="@font/poppins_black"
+        android:text="HANDOUT."
+        android:textColor="#ffffff"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:layout_marginTop="-15dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="-10dp"
+        android:fontFamily="@font/poppins_light"
+        android:text="Virtual. \t Social. \t Learn"
+        android:textColor="#ffffff"
+        android:textSize="12dp" />
     <RelativeLayout
         android:layout_width="350dp"
         android:layout_height="350dp"
@@ -60,18 +67,20 @@
             android:src="@drawable/logo" />
 
     </RelativeLayout>
+
     <Button
+        android:id="@+id/continu"
         android:layout_width="150dp"
         android:layout_height="27dp"
         android:layout_gravity="center"
-        android:text="Get started"
-        android:textSize="10dp"
-        android:textStyle="bold"
-        android:textColor="#ffffff"
         android:layout_marginTop="50dp"
         android:background="@drawable/rounded_orange"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Get started"
         android:textAllCaps="false"
-        android:id="@+id/continu"/>
+        android:textColor="#ffffff"
+        android:textSize="10dp"
+        android:textStyle="bold" />
 
 
 

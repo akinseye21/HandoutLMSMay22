@@ -76,7 +76,7 @@ public class VideoLinkAdapter extends BaseAdapter {
     ArrayList<String> arr_resID;
     String from;
     LayoutInflater inflter;
-    Dialog myDialog;
+    Dialog myDialog, myDialog2;
 
     String videoId = "";
 
@@ -143,18 +143,34 @@ public class VideoLinkAdapter extends BaseAdapter {
         dots.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                myDialog2 = new Dialog(viewGroup.getContext());
+//                myDialog2.setContentView(R.layout.custom_popup_edit_delete);
+//                // Setting dialogview
+//                Window window = myDialog2.getWindow();
+//                window.setGravity(Gravity.RIGHT|Gravity.TOP);
+//
+//                TextView close = myDialog2.findViewById(R.id.close);
+//                Button edit = myDialog2.findViewById(R.id.edit);
+//                Button delete = myDialog2.findViewById(R.id.delete);
+//
+//                myDialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                myDialog2.setCanceledOnTouchOutside(true);
+//                myDialog2.show();
+
+
                 popup.setVisibility(View.VISIBLE);
                 close.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+//                        myDialog2.dismiss();
                         popup.setVisibility(View.GONE);
                     }
                 });
-
                 edit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         popup.setVisibility(View.GONE);
+//                        myDialog2.dismiss();
 
                         Intent intent = new Intent(context, EditResources.class);
                         intent.putExtra("groupName", groupName);
@@ -166,11 +182,11 @@ public class VideoLinkAdapter extends BaseAdapter {
                         context.startActivity(intent);
                     }
                 });
-
                 delete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         popup.setVisibility(View.GONE);
+//                        myDialog2.dismiss();
 
                         myDialog = new Dialog(context);
                         myDialog.setContentView(R.layout.custom_popup_exit);
@@ -291,12 +307,13 @@ public class VideoLinkAdapter extends BaseAdapter {
                     }
                 });
 
-
             }
         });
         card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                popup.setVisibility(View.GONE);
+
                 //send to the watch video activity
                 Intent intent = new Intent(context, WatchVideo.class);
                 intent.putExtra("name", arr_fileName.get(i));

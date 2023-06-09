@@ -61,7 +61,10 @@ public class gig_on_profile extends Fragment {
     final ArrayList<String> Array_gigSkills = new ArrayList<>();
     final ArrayList<String> Array_gigPaymentMode = new ArrayList<>();
     final ArrayList<String> Array_gigDescription = new ArrayList<>();
+    final ArrayList<String> Array_startDate = new ArrayList<>();
+    final ArrayList<String> Array_endDate = new ArrayList<>();
     final ArrayList<String> Array_gigID = new ArrayList<>();
+    final ArrayList<String> Array_gigStatus = new ArrayList<>();
 
     final ArrayList<String> Array_gigName2 = new ArrayList<>();
     final ArrayList<String> Array_gigPrice2 = new ArrayList<>();
@@ -69,10 +72,14 @@ public class gig_on_profile extends Fragment {
     final ArrayList<String> Array_gigSkills2 = new ArrayList<>();
     final ArrayList<String> Array_gigPaymentMode2 = new ArrayList<>();
     final ArrayList<String> Array_gigDescription2 = new ArrayList<>();
+    final ArrayList<String> Array_startDate2 = new ArrayList<>();
+    final ArrayList<String> Array_endDate2 = new ArrayList<>();
     final ArrayList<String> Array_gigID2 = new ArrayList<>();
+    final ArrayList<String> Array_gigStatus2 = new ArrayList<>();
     int ArrayLength;
 
     LinearLayout created_gigs, placed_bids, filter, out;
+    LinearLayout loading;
 
     ProgressBar progressBar;
     TextView progressText, nogig, nogigbid, closedText;
@@ -81,7 +88,7 @@ public class gig_on_profile extends Fragment {
     GridView gridView1, gridView2;
     SharedPreferences preferences;
 
-    public static final String USER_GIGS = "http://handoutng.com/handouts/handout_get_user_gig";
+    public static final String USER_GIGS = "https://handoutng.com/handouts/handout_get_user_gig";
     public static final String GIGS_BIDDED = "https://handoutng.com/handouts/handout_get_user_bids_for_gigs";
 
     public gig_on_profile() {
@@ -121,6 +128,7 @@ public class gig_on_profile extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_gig_on_profile, container, false);
 
+        loading = v.findViewById(R.id.loading);
         gridView1 = v.findViewById(R.id.simpleGridView);
         gridView2 = v.findViewById(R.id.simpleGridView2);
         view1 = v.findViewById(R.id.viewCreated);
@@ -145,6 +153,7 @@ public class gig_on_profile extends Fragment {
         created_gigs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loading.setVisibility(View.VISIBLE);
                 gridView1.setVisibility(View.VISIBLE);
                 gridView2.setVisibility(View.GONE);
                 view1.setVisibility(View.VISIBLE);
@@ -156,7 +165,7 @@ public class gig_on_profile extends Fragment {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                System.out.println("Response = "+response);
+                                System.out.println("User Created Gigs Response = "+response);
 
                                 try{
                                     JSONArray jsonArray = new JSONArray(response);
@@ -171,6 +180,8 @@ public class gig_on_profile extends Fragment {
                                             String gigSkills = section1.getString("skills");
                                             String gigPaymentMode = section1.getString("payment_mode");
                                             String gigDescription = section1.getString("description");
+                                            String start_date = section1.getString("start_date");
+                                            String end_date = section1.getString("end_date");
                                             String gigId = section1.getString("ID");
 
                                             Array_gigName.add(gigName);
@@ -179,13 +190,17 @@ public class gig_on_profile extends Fragment {
                                             Array_gigSkills.add(gigSkills);
                                             Array_gigPaymentMode.add(gigPaymentMode);
                                             Array_gigDescription.add(gigDescription);
+                                            Array_startDate.add(start_date);
+                                            Array_endDate.add(end_date);
                                             Array_gigID.add("gigs_"+gigId);
+                                            Array_gigStatus.add("");
 
                                         }
 
                                         //populate values on the gridview
-                                        GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName, Array_gigPrice, Array_gigType, Array_gigSkills, Array_gigPaymentMode, Array_gigDescription, Array_gigID, "myProfile");
+                                        GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName, Array_gigPrice, Array_gigType, Array_gigSkills, Array_gigPaymentMode, Array_gigDescription, Array_startDate, Array_endDate, Array_gigID, Array_gigStatus, "myProfile");
                                         gridView1.setAdapter(gigProfileListViewAdapter);
+                                        loading.setVisibility(View.GONE);
                                         //hide progressBar and progressText
 //                                progressBar.setVisibility(View.GONE);
 //                                progressText.setVisibility(View.GONE);
@@ -205,6 +220,8 @@ public class gig_on_profile extends Fragment {
                                             String gigSkills = section2.getString("skills");
                                             String gigPaymentMode = section2.getString("payment_mode");
                                             String gigDescription = section2.getString("description");
+                                            String start_date = section2.getString("start_date");
+                                            String end_date = section2.getString("end_date");
                                             String gigId = section2.getString("ID");
 
                                             Array_gigName2.add(gigName);
@@ -213,11 +230,15 @@ public class gig_on_profile extends Fragment {
                                             Array_gigSkills2.add(gigSkills);
                                             Array_gigPaymentMode2.add(gigPaymentMode);
                                             Array_gigDescription2.add(gigDescription);
+                                            Array_startDate2.add(start_date);
+                                            Array_endDate2.add(end_date);
                                             Array_gigID2.add("gigs_"+gigId);
+                                            Array_gigStatus2.add("");
 
                                             //populate values on the gridview
-                                            GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName2, Array_gigPrice2, Array_gigType2, Array_gigSkills2, Array_gigPaymentMode2, Array_gigDescription2, Array_gigID2, "myProfile");
+                                            GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName2, Array_gigPrice2, Array_gigType2, Array_gigSkills2, Array_gigPaymentMode2, Array_gigDescription2, Array_startDate2, Array_endDate2, Array_gigID2, Array_gigStatus2, "myProfile");
                                             gridView1.setAdapter(gigProfileListViewAdapter);
+                                            loading.setVisibility(View.GONE);
                                             //hide progressBar and progressText
 //                                    progressBar.setVisibility(View.GONE);
 //                                    progressText.setVisibility(View.GONE);
@@ -256,7 +277,10 @@ public class gig_on_profile extends Fragment {
                 Array_gigPaymentMode.clear();
                 Array_gigDescription.clear();
                 Array_gigSkills.clear();
+                Array_startDate.clear();
+                Array_endDate.clear();
                 Array_gigID.clear();
+                Array_gigStatus.clear();
 
                 //clear array2
                 Array_gigName2.clear();
@@ -265,14 +289,17 @@ public class gig_on_profile extends Fragment {
                 Array_gigPaymentMode2.clear();
                 Array_gigDescription2.clear();
                 Array_gigSkills2.clear();
+                Array_startDate2.clear();
+                Array_endDate2.clear();
                 Array_gigID2.clear();
-
+                Array_gigStatus2.clear();
 
             }
         });
         placed_bids.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loading.setVisibility(View.VISIBLE);
                 gridView1.setVisibility(View.GONE);
                 gridView2.setVisibility(View.VISIBLE);
                 view1.setVisibility(View.GONE);
@@ -300,6 +327,8 @@ public class gig_on_profile extends Fragment {
                                             String gigProjectType = section1.getString("project_type");
                                             String gigSkills = section1.getString("skills");
                                             String gigPaymentMode = section1.getString("payment_mode");
+                                            String startDate = section1.getString("start_date");
+                                            String endDate = section1.getString("end_date");
                                             String gigBidAmount = section1.getString("bid_amount");
                                             String gigCV = section1.getString("cv");
                                             String gigCreatedBy = section1.getString("created_by");
@@ -311,13 +340,16 @@ public class gig_on_profile extends Fragment {
                                             Array_gigSkills.add(gigSkills);
                                             Array_gigPaymentMode.add(gigPaymentMode);
                                             Array_gigDescription.add(gigDescription);
+                                            Array_startDate.add(startDate);
+                                            Array_endDate.add(endDate);
                                             Array_gigID.add("gigs_"+gigID);
-
+                                            Array_gigStatus.add(gigStatus);
                                         }
 
                                         //populate values on the gridview
-                                        GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName, Array_gigPrice, Array_gigType, Array_gigSkills, Array_gigPaymentMode, Array_gigDescription, Array_gigID, "myBid");
+                                        GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName, Array_gigPrice, Array_gigType, Array_gigSkills, Array_gigPaymentMode, Array_gigDescription, Array_startDate, Array_endDate, Array_gigID,  Array_gigStatus, "myBid");
                                         gridView2.setAdapter(gigProfileListViewAdapter);
+                                        loading.setVisibility(View.GONE);
 
                                     }else{
                                         //show "no gig bidded"
@@ -325,6 +357,7 @@ public class gig_on_profile extends Fragment {
                                         gridView2.setVisibility(View.GONE);
                                         nogigbid.setVisibility(View.VISIBLE);
                                         nogig.setVisibility(View.GONE);
+                                        loading.setVisibility(View.GONE);
                                     }
 
                                 }
@@ -338,6 +371,7 @@ public class gig_on_profile extends Fragment {
                                             gridView2.setVisibility(View.GONE);
                                             nogigbid.setVisibility(View.VISIBLE);
                                             nogig.setVisibility(View.GONE);
+                                            loading.setVisibility(View.GONE);
                                         }
 
                                     } catch (JSONException ee) {
@@ -364,24 +398,32 @@ public class gig_on_profile extends Fragment {
 
                 RequestQueue requestQueue2 = Volley.newRequestQueue(getContext());
                 requestQueue2.add(stringRequest2);
+
+                //clear array
+                Array_gigName.clear();
+                Array_gigPrice.clear();
+                Array_gigType.clear();
+                Array_gigPaymentMode.clear();
+                Array_gigDescription.clear();
+                Array_gigSkills.clear();
+                Array_startDate.clear();
+                Array_endDate.clear();
+                Array_gigID.clear();
+                Array_gigStatus.clear();
+
+                //clear array2
+                Array_gigName2.clear();
+                Array_gigPrice2.clear();
+                Array_gigType2.clear();
+                Array_gigPaymentMode2.clear();
+                Array_gigDescription2.clear();
+                Array_gigSkills2.clear();
+                Array_startDate2.clear();
+                Array_endDate2.clear();
+                Array_gigID2.clear();
+                Array_gigStatus2.clear();
             }
         });
-//        filter.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                PopupMenu popup = new PopupMenu(getContext(), v);
-////                MenuInflater inflater = popup.getMenuInflater();
-////                inflater.inflate(R.menu.gig_menu, popup.getMenu());
-////                popup.show();
-//                out.setVisibility(View.VISIBLE);
-//            }
-//        });
-//        closedText.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                out.setVisibility(View.GONE);
-//            }
-//        });
 
 
 
@@ -404,6 +446,8 @@ public class gig_on_profile extends Fragment {
                                     String gigSkills = section1.getString("skills");
                                     String gigPaymentMode = section1.getString("payment_mode");
                                     String gigDescription = section1.getString("description");
+                                    String start_date = section1.getString("start_date");
+                                    String end_date = section1.getString("end_date");
                                     String gigId = section1.getString("ID");
 
                                     Array_gigName.add(gigName);
@@ -412,13 +456,17 @@ public class gig_on_profile extends Fragment {
                                     Array_gigSkills.add(gigSkills);
                                     Array_gigPaymentMode.add(gigPaymentMode);
                                     Array_gigDescription.add(gigDescription);
+                                    Array_startDate.add(start_date);
+                                    Array_endDate.add(end_date);
                                     Array_gigID.add("gigs_"+gigId);
+                                    Array_gigStatus.add("");
 
                                 }
 
                                 //populate values on the gridview
-                                GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName, Array_gigPrice, Array_gigType, Array_gigSkills, Array_gigPaymentMode, Array_gigDescription, Array_gigID, "myProfile");
+                                GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName, Array_gigPrice, Array_gigType, Array_gigSkills, Array_gigPaymentMode, Array_gigDescription, Array_startDate, Array_endDate, Array_gigID, Array_gigStatus, "myProfile");
                                 gridView1.setAdapter(gigProfileListViewAdapter);
+                                loading.setVisibility(View.GONE);
                                 //hide progressBar and progressText
 //                                progressBar.setVisibility(View.GONE);
 //                                progressText.setVisibility(View.GONE);
@@ -438,6 +486,8 @@ public class gig_on_profile extends Fragment {
                                     String gigSkills = section2.getString("skills");
                                     String gigPaymentMode = section2.getString("payment_mode");
                                     String gigDescription = section2.getString("description");
+                                    String start_date = section2.getString("start_date");
+                                    String end_date = section2.getString("end_date");
                                     String gigId = section2.getString("ID");
 
                                     Array_gigName2.add(gigName);
@@ -446,11 +496,15 @@ public class gig_on_profile extends Fragment {
                                     Array_gigSkills2.add(gigSkills);
                                     Array_gigPaymentMode2.add(gigPaymentMode);
                                     Array_gigDescription2.add(gigDescription);
+                                    Array_startDate2.add(start_date);
+                                    Array_endDate2.add(end_date);
                                     Array_gigID2.add("gigs_"+gigId);
+                                    Array_gigStatus2.add("");
 
                                     //populate values on the gridview
-                                    GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName2, Array_gigPrice2, Array_gigType2, Array_gigSkills2, Array_gigPaymentMode2, Array_gigDescription2, Array_gigID2, "myProfile");
+                                    GigProfileListViewAdapter gigProfileListViewAdapter = new GigProfileListViewAdapter(getContext(), Array_gigName2, Array_gigPrice2, Array_gigType2, Array_gigSkills2, Array_gigPaymentMode2, Array_gigDescription2, Array_startDate2, Array_endDate2, Array_gigID2, Array_gigStatus2, "myProfile");
                                     gridView1.setAdapter(gigProfileListViewAdapter);
+                                    loading.setVisibility(View.GONE);
                                     //hide progressBar and progressText
 //                                    progressBar.setVisibility(View.GONE);
 //                                    progressText.setVisibility(View.GONE);
@@ -489,7 +543,10 @@ public class gig_on_profile extends Fragment {
         Array_gigPaymentMode.clear();
         Array_gigDescription.clear();
         Array_gigSkills.clear();
+        Array_startDate.clear();
+        Array_endDate.clear();
         Array_gigID.clear();
+        Array_gigStatus.clear();
 
         //clear array2
         Array_gigName2.clear();
@@ -498,7 +555,10 @@ public class gig_on_profile extends Fragment {
         Array_gigPaymentMode2.clear();
         Array_gigDescription2.clear();
         Array_gigSkills2.clear();
+        Array_startDate2.clear();
+        Array_endDate2.clear();
         Array_gigID2.clear();
+        Array_gigStatus2.clear();
 
         return v;
     }

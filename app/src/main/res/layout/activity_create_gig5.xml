@@ -25,16 +25,19 @@
 
             </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Confirm your project\nbefore posting."
-                android:textColor="#ffffff"
-                android:layout_below="@+id/rel1"
-                android:id="@+id/txt"
-                android:textStyle="bold"
-                android:textSize="30dp"
-                android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:id="@+id/txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel1"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/poppins_black"
+        android:text="Confirm your project\nbefore posting."
+        android:textColor="#ffffff"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
 
             <View
                 android:layout_width="match_parent"
@@ -55,7 +58,7 @@
 
         <androidx.cardview.widget.CardView
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
@@ -71,7 +74,7 @@
             app:cardCornerRadius="5dp" >
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <LinearLayout
@@ -84,9 +87,9 @@
                         android:gravity="center"
                         android:orientation="vertical">
                         <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_margin="10dp"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_margin="20dp"
                             android:src="@drawable/ic133"/>
                         <TextView
                             android:layout_width="wrap_content"
@@ -94,7 +97,8 @@
                             android:id="@+id/project_type"
                             android:text="Standard project"
                             android:textColor="#ffffff"
-                            android:textSize="13dp" />
+                            android:textSize="10dp"
+                            android:fontFamily="@font/poppins_light"/>
 
                     </LinearLayout>
 
@@ -111,14 +115,16 @@
                             android:text="Website Design"
                             android:textColor="#ffffff"
                             android:textSize="15dp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_bold"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/project_desc"
-                            android:text="A short description of the project that is posted\nthis shows the default text"
+                            android:text="A short description of the project that is posted this shows the default text"
                             android:textColor="#ffffff"
-                            android:textSize="13dp"/>
+                            android:textSize="13dp"
+                            android:fontFamily="@font/poppins_regular"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -130,32 +136,33 @@
                     android:background="#ffffff"/>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/green_outline"
+                    android:visibility="visible"
+                    android:layout_margin="10dp"
+                    android:id="@+id/skills_layout">
 
-                    <GridView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        android:padding="10dp"
-                        android:id="@+id/mygrid"
-                        android:numColumns="4"/>
-
+                        android:layout_height="wrap_content"
+                        android:id="@+id/recycler_view"
+                        android:scrollbars="horizontal"/>
 
                 </LinearLayout>
+
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.1dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="#ffffff"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:gravity="center_vertical"
                     android:layout_marginBottom="20dp"
                     android:orientation="horizontal">
                     <ImageView
@@ -169,7 +176,9 @@
                         android:textColor="#ffffff"
                         android:text="$1,000 - $7,500"
                         android:textStyle="bold"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp"
+                        android:paddingLeft="10dp"
+                        android:fontFamily="@font/poppins_bold"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -188,19 +197,29 @@
         android:layout_gravity="center"
         android:id="@+id/progressBar"/>
 
-    <Button
+
+    <LinearLayout
+        android:id="@+id/next"
         android:layout_width="150dp"
-        android:layout_height="27dp"
-        android:layout_gravity="center"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Post my project"
-        android:textSize="14dp"
-        android:textColor="#ffffff"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/rounded_orange"
-        android:textAllCaps="false"
-        android:id="@+id/next"/>
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Post my project"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
 
 </RelativeLayout>

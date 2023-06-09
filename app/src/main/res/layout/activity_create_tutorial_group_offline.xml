@@ -34,11 +34,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/poppins_black"
         android:text="Create\nnew tutorial"
         android:textColor="#ffffff"
-        android:textStyle="bold"
         android:textSize="30dp"
-        android:layout_marginLeft="20dp" />
+        android:textStyle="bold" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -50,24 +51,28 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
                 android:text="Tutorial group name"
-                android:textColor="#8cc63e"/>
+                android:textColor="#8cc63e" />
+
             <EditText
+                android:id="@+id/group_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Name your tutorial group"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:textSize="15dp"
-                android:hint="Name your tutorial group"
-                android:layout_marginTop="5dp"
                 android:singleLine="true"
-                android:id="@+id/group_name"
                 android:textColor="#ffffff"
                 android:textColorHint="@color/lb_grey"
-                android:background="@android:color/transparent"/>
+                android:textSize="15dp" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -78,9 +83,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tutorial Subject"
                 android:layout_marginTop="20dp"
-                android:textColor="#8cc63e"/>
+                android:fontFamily="@font/poppins_bold"
+                android:text="Tutorial Subject"
+                android:textColor="#8cc63e" />
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -98,26 +104,29 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Expiration Date"
                 android:layout_marginTop="20dp"
-                android:textColor="#8cc63e"/>
+                android:fontFamily="@font/poppins_bold"
+                android:text="Date"
+                android:textColor="#8cc63e" />
+
             <EditText
+                android:id="@+id/mydate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/mydate"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:fontFamily="@font/poppins_regular"
                 android:hint="Set date"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:textSize="15dp"
-                android:clickable="true"
                 android:singleLine="true"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:cursorVisible="false"
-                android:layout_marginTop="5dp"
                 android:textColor="#ffffff"
                 android:textColorHint="@color/lb_grey"
-                android:background="@android:color/transparent"/>
+                android:textSize="15dp" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -128,26 +137,29 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Expiration time"
                 android:layout_marginTop="20dp"
-                android:textColor="#8cc63e"/>
+                android:fontFamily="@font/poppins_bold"
+                android:text="Time"
+                android:textColor="#8cc63e" />
+
             <EditText
+                android:id="@+id/time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/time"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/transparent"
                 android:clickable="true"
-                android:singleLine="true"
+                android:cursorVisible="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:cursorVisible="false"
+                android:fontFamily="@font/poppins_regular"
                 android:hint="00:00"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:textSize="15dp"
-                android:layout_marginTop="5dp"
+                android:singleLine="true"
                 android:textColor="#ffffff"
                 android:textColorHint="@color/lb_grey"
-                android:background="@android:color/transparent"/>
+                android:textSize="15dp" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -158,9 +170,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="University"
                 android:layout_marginTop="20dp"
-                android:textColor="#8cc63e"/>
+                android:fontFamily="@font/poppins_bold"
+                android:text="University"
+                android:textColor="#8cc63e" />
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -179,22 +192,25 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Description"
                 android:layout_marginTop="20dp"
-                android:textColor="#8cc63e"/>
+                android:fontFamily="@font/poppins_bold"
+                android:text="Description"
+                android:textColor="#8cc63e" />
+
             <EditText
+                android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
                 android:hint="Write a short description"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:textSize="15dp"
-                android:id="@+id/description"
                 android:singleLine="true"
-                android:layout_marginTop="5dp"
                 android:textColor="#ffffff"
                 android:textColorHint="@color/lb_grey"
-                android:background="@android:color/transparent"/>
+                android:textSize="15dp" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -204,22 +220,45 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Location"
                 android:layout_marginTop="20dp"
-                android:textColor="#8cc63e"/>
+                android:fontFamily="@font/poppins_bold"
+                android:text="Location"
+                android:textColor="#8cc63e" />
+
             <EditText
+                android:id="@+id/location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
                 android:hint="Enter the location for the offline tutorial"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:textSize="15dp"
-                android:id="@+id/location"
                 android:singleLine="true"
-                android:layout_marginTop="5dp"
                 android:textColor="#ffffff"
                 android:textColorHint="@color/lb_grey"
-                android:background="@android:color/transparent"/>
+                android:textSize="15dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#ffffff"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Class Size"
+                android:textColor="#8cc63e" />
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/spinnerclasssize"
+                android:singleLine="true"
+                android:background="@drawable/rounded_transparent_dropdown"
+                android:spinnerMode="dropdown"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -239,12 +278,14 @@
                 android:layout_marginBottom="30dp"
                 android:id="@+id/next"
                 android:background="@drawable/rounded_orange">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Next"
+                    android:fontFamily="@font/poppins_bold"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
+                    android:text="Next"
                     android:textColor="#ffffff" />
             </LinearLayout>
         </LinearLayout>

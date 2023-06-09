@@ -27,11 +27,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_black"
         android:text="How will you\nlike it done?"
         android:textColor="#ffffff"
-        android:textStyle="bold"
         android:textSize="30dp"
-        android:layout_marginLeft="20dp" />
+        android:textStyle="bold"
+        android:layout_marginLeft="20dp"/>
 
     <View
         android:layout_width="match_parent"
@@ -48,10 +49,12 @@
             <androidx.cardview.widget.CardView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="wrap_content"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:id="@+id/mcv"
                 android:checkable="true"
                 android:clickable="true"
@@ -62,9 +65,9 @@
                 app:contentPadding="10dp"
                 app:cardCornerRadius="5dp" >
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="10dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="20dp"
                     android:src="@drawable/ic136"
                     android:id="@+id/img"/>
                 <LinearLayout
@@ -72,6 +75,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="120dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_gravity="center_vertical"
                     android:orientation="vertical">
                     <TextView
@@ -80,93 +85,46 @@
                         android:text="Post project"
                         android:textColor="#ffffff"
                         android:textSize="15dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_bold"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Receive free quotes, best for when you\nhave a specific idea, the project is\nnot visual in nature or is complex"
+                        android:text="Receive free quotes, best for when you have a specific idea, the project is not visual in nature or is complex"
                         android:textColor="#ffffff"
-                        android:textSize="13dp"/>
+                        android:textSize="12dp"
+                        android:fontFamily="@font/poppins_regular"/>
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="27dp"
-            android:layout_gravity="center"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:text="Next"
-            android:textSize="14dp"
-            android:textColor="#ffffff"
+        <LinearLayout
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="50dp"
             android:layout_marginBottom="50dp"
-            android:background="@drawable/rounded_orange"
-            android:textAllCaps="false"
-            android:id="@+id/next"/>
+            android:id="@+id/next"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rounded_orange">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="Next"
+                android:textColor="#ffffff" />
+        </LinearLayout>
 
 
     </RelativeLayout>
-
-
-
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:clipToPadding="false"-->
-<!--        android:clipChildren="false"-->
-<!--        android:outlineProvider="paddedBounds"-->
-<!--        android:hardwareAccelerated="true">-->
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="150dp"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:gravity="center_vertical"-->
-<!--            android:paddingLeft="10dp"-->
-<!--            android:paddingRight="10dp"-->
-<!--            android:elevation="20dp"-->
-<!--            android:id="@+id/cmv"-->
-<!--            android:background="@drawable/card_unselected"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:layout_marginBottom="20dp"-->
-<!--            android:layout_marginLeft="30dp"-->
-<!--            android:layout_marginRight="30dp">-->
-<!--            <ImageView-->
-<!--                android:layout_width="100dp"-->
-<!--                android:layout_height="100dp"-->
-<!--                android:layout_margin="10dp"-->
-<!--                android:elevation="10dp"-->
-<!--                android:src="@drawable/ic136"/>-->
-<!--            <LinearLayout-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginRight="10dp"-->
-<!--                android:orientation="vertical">-->
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Post project"-->
-<!--                    android:elevation="10dp"-->
-<!--                    android:textColor="#ffffff"-->
-<!--                    android:textSize="15dp"-->
-<!--                    android:textStyle="bold" />-->
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Receive free quotes, best for when you\nhave a specific idea, the project is\nnot visual in nature or is complex"-->
-<!--                    android:textColor="#ffffff"-->
-<!--                    android:elevation="10dp"-->
-<!--                    android:textSize="10dp"/>-->
-<!--            </LinearLayout>-->
-<!--        </LinearLayout>-->
-
-
-<!--    </RelativeLayout>-->
 
 
 

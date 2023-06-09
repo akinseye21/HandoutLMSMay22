@@ -130,6 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/poppins_black"
                     android:text="MATH 124 Advanced Maths"
                     android:textAllCaps="true"
                     android:textColor="#fff"
@@ -162,6 +163,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
                             android:text="0"
                             android:textColor="#ffffff"
                             android:textSize="25dp"
@@ -171,6 +173,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
                         android:text="Class size"
                         android:textColor="#ffffff"
                         android:textSize="10dp" />
@@ -194,39 +197,43 @@
                         android:layout_marginTop="20dp"
                         android:layout_alignParentRight="true"
                         android:src="@drawable/ic62"/>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_light"
                         android:text="Upload your PDF file"
-                        android:textColor="#fff"/>
+                        android:textColor="#fff" />
 
                     <EditText
+                        android:id="@+id/edtPdfName"
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:layout_marginTop="30dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/poppins_regular"
                         android:hint="PDF Name"
-                        android:id="@+id/edtPdfName"
                         android:inputType="text"
-                        android:textColor="#fff"
-                        android:textColorHint="@color/lb_grey"
                         android:padding="10dp"
-                        android:background="@android:color/transparent"/>
+                        android:textColor="#fff"
+                        android:textColorHint="@color/lb_grey" />
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.1dp"
                         android:background="#fff"/>
 
                     <EditText
+                        android:id="@+id/edtPdfDesc"
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:layout_marginTop="30dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/poppins_regular"
                         android:hint="PDF Description"
-                        android:id="@+id/edtPdfDesc"
                         android:inputType="text"
-                        android:textColor="#fff"
-                        android:textColorHint="@color/lb_grey"
                         android:padding="10dp"
-                        android:background="@android:color/transparent"/>
+                        android:textColor="#fff"
+                        android:textColorHint="@color/lb_grey" />
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.1dp"
@@ -294,18 +301,19 @@
 <!--                        android:textStyle="bold" />-->
 
                     <TextView
+                        android:id="@+id/upload_button"
                         android:layout_width="150dp"
                         android:layout_height="50dp"
                         android:layout_marginLeft="10dp"
-                        android:background="@drawable/rounded_orange"
                         android:layout_marginTop="70dp"
                         android:layout_marginBottom="20dp"
-                        android:id="@+id/upload_button"
+                        android:background="@drawable/rounded_orange"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center"
                         android:text="Upload PDF"
                         android:textColor="#ffffff"
                         android:textSize="15dp"
-                        android:textStyle="bold"
-                        android:gravity="center"/>
+                        android:textStyle="bold" />
 
 
                 </LinearLayout>
@@ -322,11 +330,12 @@
                     android:layout_marginRight="20dp">
 
                     <TextView
+                        android:id="@+id/viewResources"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/poppins_lightitalic"
                         android:text="View Resources"
-                        android:id="@+id/viewResources"
                         android:textColor="#65dc9a"
                         android:textSize="12dp"
                         android:textStyle="italic" />
@@ -335,6 +344,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
+                        android:fontFamily="@font/poppins_lightitalic"
                         android:gravity="end"
                         android:text="Edit Tutorial"
                         android:textColor="#65dc9a"

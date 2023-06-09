@@ -60,6 +60,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.google.firebase:firebase-messaging:17.3.1'
 
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+    //badger
+    implementation "me.leolin:ShortcutBadger:1.1.22@aar"
+
+//    implementation 'com.github.afreakyelf:Pdf-Viewer:v1.0.7'
 //    implementation files('libs/YouTubeAndroidPlayerApi.jar')
 
 //    implementation 'com.squareup.okhttp3:okhttp:3.12.12'

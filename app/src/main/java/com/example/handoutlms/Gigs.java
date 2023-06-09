@@ -13,6 +13,7 @@ import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -57,6 +58,8 @@ public class Gigs extends Fragment {
     final ArrayList<String> Array_fullname = new ArrayList<>();
     final ArrayList<String> Array_institution = new ArrayList<>();
     final ArrayList<String> Array_department = new ArrayList<>();
+    final ArrayList<String> Array_pp = new ArrayList<>();
+    final ArrayList<String> Array_created_by = new ArrayList<>();
     int ArrayLength;
 
     ProgressBar progressBar;
@@ -128,8 +131,10 @@ public class Gigs extends Fragment {
                                 String gigDescription = section.getString("description");
                                 String gigID = section.getString("ID");
                                 String fullname = section.getString("fullname");
-                                String institution = section.getString("institution");
+                                String institution = section.getString("school");
                                 String department = section.getString("department");
+                                String pp = section.getString("picture");
+                                String created_by = section.getString("created_by");
 
                                 Array_gigName.add(gigName);
                                 Array_gigPrice.add(gigPrice);
@@ -141,10 +146,12 @@ public class Gigs extends Fragment {
                                 Array_fullname.add(fullname);
                                 Array_institution.add(institution);
                                 Array_department.add(department);
+                                Array_pp.add(pp);
+                                Array_created_by.add(created_by);
                             }
 
                             //populate values on the gridview
-                            GigListViewAdapter gigListViewAdapter = new GigListViewAdapter(getActivity(), Array_gigName, Array_gigPrice, Array_gigType, Array_gigSkills, Array_gigPaymentMode, Array_gigDescription, Array_gigId, Array_fullname, Array_institution, Array_department);
+                            GigListViewAdapter gigListViewAdapter = new GigListViewAdapter(getActivity(), Array_gigName, Array_gigPrice, Array_gigType, Array_gigSkills, Array_gigPaymentMode, Array_gigDescription, Array_gigId, Array_fullname, Array_institution, Array_department, Array_pp, Array_created_by);
                             gridView.setAdapter(gigListViewAdapter);
                             //hide progressBar and progressText
                             progressBar.setVisibility(View.GONE);
@@ -179,7 +186,15 @@ public class Gigs extends Fragment {
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(retryPolicy);
         requestQueue.add(stringRequest);
+        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+            @Override
+            public void onRequestFinished(Request<Object> request) {
+                requestQueue.getCache().clear();
+            }
+        });
 
         //clear array
         Array_gigName.clear();

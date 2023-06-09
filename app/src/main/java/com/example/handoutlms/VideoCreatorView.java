@@ -42,9 +42,12 @@ public class VideoCreatorView extends AppCompatActivity {
     LinearLayout noResources;
     SwipeRefreshLayout swipeRefreshLayout;
 
-    String group_name;
+    String group_name, from;
+    String classSize, type;
     String fullnamed;
     int ArrayLength, len2;
+    String got_name, got_category, got_description, got_mode, got_id, got_date;
+
 
     SharedPreferences preferences;
 
@@ -64,6 +67,13 @@ public class VideoCreatorView extends AppCompatActivity {
 
         Intent i = getIntent();
         group_name = i.getStringExtra("groupName");
+        got_name = i.getStringExtra("name");
+        got_category = i.getStringExtra("category");
+        got_description = i.getStringExtra("description");
+        got_mode = i.getStringExtra("mode");
+        got_id = i.getStringExtra("id");
+        got_date = i.getStringExtra("date");
+        from = i.getStringExtra("from");
 
         preferences = getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
         fullnamed = preferences.getString("fullname", "");
@@ -86,7 +96,23 @@ public class VideoCreatorView extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                if (from.equals("justCreatedResources")){
+                    Intent i = new Intent(VideoCreatorView.this, ClickTutOnProfile.class);
+                    i.putExtra("groupName", group_name);
+                    i.putExtra("name", fullnamed);
+                    i.putExtra("category", got_category);
+                    i.putExtra("description", got_description);
+                    i.putExtra("mode", got_mode);
+                    i.putExtra("id", got_id);
+                    i.putExtra("date", got_date);
+                    i.putExtra("classsize", classSize);
+                    i.putExtra("type", type);
+                    i.putExtra("from", "justCreatedResources");
+                    startActivity(i);
+                }else{
+                    onBackPressed();
+                }
+
             }
         });
 
@@ -105,6 +131,8 @@ public class VideoCreatorView extends AppCompatActivity {
                                 JSONObject section1 = jsonArray.getJSONObject(j);
                                 String tutName = section1.getString("groupname");
                                 String tutResources = section1.getString("tutorial_resource");
+                                classSize = section1.getString("class_size");
+                                type = section1.getString("tutorial_type");
 
                                 if(group_name.equals(tutName)){
                                     JSONArray jsonArray1 = new JSONArray(tutResources);
@@ -183,6 +211,12 @@ public class VideoCreatorView extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(VideoCreatorView.this, CreateOnlineTutPhase1.class);
                 i.putExtra("Group_name", group_name);
+                i.putExtra("name", fullnamed);
+                i.putExtra("category", got_category);
+                i.putExtra("description", got_description);
+                i.putExtra("mode", got_mode);
+                i.putExtra("id", got_id);
+                i.putExtra("date", got_date);
                 startActivity(i);
             }
         });
@@ -204,6 +238,8 @@ public class VideoCreatorView extends AppCompatActivity {
                                         JSONObject section1 = jsonArray.getJSONObject(j);
                                         String tutName = section1.getString("groupname");
                                         String tutResources = section1.getString("tutorial_resource");
+                                        classSize = section1.getString("class_size");
+                                        type = section1.getString("tutorial_type");
 
                                         if(group_name.equals(tutName)){
                                             JSONArray jsonArray1 = new JSONArray(tutResources);

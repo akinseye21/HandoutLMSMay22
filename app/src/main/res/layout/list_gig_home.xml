@@ -20,36 +20,46 @@
                 android:layout_width="100dp"
                 android:layout_height="115dp"
                 android:src="@drawable/ic192"/>
-        <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/gig_name"
-            android:paddingLeft="8dp"
-                android:textSize="10dp"
-                android:text="Logo Design"
-                android:textColor="#ffffff"
-                android:textStyle="bold"/>
 
         <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/gig_price"
+            android:id="@+id/gig_name"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
             android:paddingLeft="8dp"
-                android:text="$200 - $400"
-                android:textSize="8dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:paddingRight="10dp"/>
+            android:text="Logo Design"
+            android:textColor="#ffffff"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1" />
 
         <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/gig_type"
+            android:id="@+id/gig_price"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_light"
             android:paddingLeft="8dp"
-                android:text="4 days"
-                android:textSize="8dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"/>
+            android:paddingRight="10dp"
+            android:text="$200 - $400"
+            android:textColor="#ffffff"
+            android:textSize="8dp"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/gig_type"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_light"
+            android:paddingLeft="8dp"
+            android:text="4 days"
+            android:textColor="#ffffff"
+            android:textSize="8dp"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1" />
 
 
 

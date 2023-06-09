@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
+                android:fontFamily="@font/poppins_bold"
                 android:text="Social Media / IT Officer"
                 android:textColor="#ffffff"
                 android:textSize="10dp"
@@ -33,31 +34,34 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/year"
+            android:layout_marginLeft="25dp"
+            android:fontFamily="@font/poppins_thin"
             android:text="2015 - Present"
             android:textColor="#ffffff"
-            android:textSize="10dp"
-            android:layout_marginLeft="25dp"/>
+            android:textSize="10dp" />
 
         <TextView
+            android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/description"
+            android:layout_marginLeft="25dp"
+            android:fontFamily="@font/poppins_thin"
             android:text="Creating definite illustration from election data"
             android:textColor="#ffffff"
-            android:textSize="10dp"
-            android:layout_marginLeft="25dp"/>
+            android:textSize="10dp" />
 
         <TextView
+            android:id="@+id/organization"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/organization"
+            android:layout_marginLeft="25dp"
+            android:fontFamily="@font/poppins_thin"
             android:text="XX"
             android:textColor="#ffffff"
-            android:textSize="10dp"
-            android:layout_marginLeft="25dp"/>
+            android:textSize="10dp" />
 
 
         <View

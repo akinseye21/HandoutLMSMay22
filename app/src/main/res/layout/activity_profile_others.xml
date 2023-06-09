@@ -69,6 +69,7 @@
                     android:id="@+id/user_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="John Doe"
                     android:textColor="#ffffff"
                     android:textSize="13dp"
@@ -88,6 +89,7 @@
                 android:id="@+id/school"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
                 android:text="University of Lagos"
                 android:textColor="#ffffff"
                 android:textSize="10dp"
@@ -204,6 +206,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/connect_txt"
                     android:background="@drawable/round_white"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="Connect"
                     android:textColor="#000000"
                     android:textStyle="bold"
@@ -238,6 +241,7 @@
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
                             android:text="Tutorials"
                             android:textSize="10dp"
                             android:paddingRight="5dp"
@@ -296,6 +300,7 @@
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
                             android:text="Games"
                             android:textSize="10dp"
                             android:paddingRight="10dp"
@@ -324,6 +329,7 @@
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
                             android:text="Gigs"
                             android:textSize="10dp"
                             android:paddingRight="10dp"

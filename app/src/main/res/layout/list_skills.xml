@@ -5,15 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="User interface"
-                            android:layout_margin="5dp"
-                            android:padding="5dp"
-                            android:textColor="#ffffff"
-                            android:id="@+id/mytext"
-                            android:layout_marginRight="10dp"
-                            android:background="#65dc9a"/>
+    <TextView
+        android:id="@+id/mytext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/corner_green"
+        android:fontFamily="@font/poppins_regular"
+        android:padding="5dp"
+        android:text="User interface"
+        android:textSize="10dp"
+        android:textColor="#ffffff"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:maxLength="9"/>
 
 </LinearLayout>

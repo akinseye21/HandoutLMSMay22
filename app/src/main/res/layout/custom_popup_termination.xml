@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:padding="10dp"
+    android:background="@drawable/round_popup">
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:id="@+id/img"
+            android:background="@drawable/corner_white2"
+            android:src="@drawable/logo2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:id="@+id/txt"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="15dp"
+            android:text="Plese select a reason for termination"
+            android:textColor="#fff"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/radioGroup"
+            android:padding="30dp">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Project completed"
+                android:textColor="#fff"
+                android:textSize="15dp"
+                android:layout_margin="10dp"
+                android:id="@+id/completed"
+                android:fontFamily="@font/poppins_light"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Unsatisfied deliverable"
+                android:textColor="#fff"
+                android:textSize="15dp"
+                android:layout_margin="10dp"
+                android:id="@+id/unsatisfied"
+                android:fontFamily="@font/poppins_light"/>
+        </RadioGroup>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:textAllCaps="false"
+            android:layout_marginRight="10dp"
+            android:text="Ok"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="15dp"
+            android:id="@+id/ok"
+            android:stateListAnimator="@null"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/new_rounded_green"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:background="@drawable/corner_white2"
+        android:padding="20dp"
+        android:visibility="gone"
+        android:id="@+id/loading"
+        android:gravity="center">
+        <ProgressBar
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:indeterminateTint="@color/lb_grey"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loading"
+            android:textColor="@color/lb_grey"/>
+    </LinearLayout>
+
+</RelativeLayout>

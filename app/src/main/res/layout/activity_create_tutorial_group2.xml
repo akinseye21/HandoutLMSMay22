@@ -32,6 +32,7 @@
         android:layout_below="@+id/rel1"
         android:layout_centerInParent="true"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_black"
         android:gravity="center"
         android:text="What tutorial group\ndo you want to create?"
         android:textColor="#ffffff"
@@ -41,7 +42,7 @@
     <LinearLayout
         android:id="@+id/lin_online_tutorial"
         android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/txt_what"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
@@ -67,6 +68,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
                 android:text="Online Tutorial"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
@@ -75,6 +77,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
                 android:text="Create and schedule your online \ntutorial groups and training sessions"
                 android:textColor="#ffffff"
                 android:textSize="13dp" />
@@ -89,40 +92,47 @@
         android:layout_below="@+id/lin_online_tutorial"/>
 
     <LinearLayout
+        android:id="@+id/lin_offline_tutorial"
         android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/view_create"
         android:layout_centerHorizontal="true"
-        android:orientation="horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/rounded_color_createtutorial"
-        android:id="@+id/lin_offline_tutorial"
-        android:layout_margin="20dp">
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_margin="10dp"
-            android:src="@drawable/ic127"/>
+            android:src="@drawable/ic127" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:layout_gravity="center_vertical"
+            android:layout_margin="10dp"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
                 android:text="Offline Tutorial"
                 android:textColor="#ffffff"
-                android:textStyle="bold"
                 android:textSize="20dp"
-                />
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
                 android:text="Create and schedule your online \ntutorial groups and training sessions"
                 android:textColor="#ffffff"
-                android:textSize="13dp"
-                />
+                android:textSize="13dp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -135,12 +145,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@drawable/rounded_orange">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Next"
+            android:fontFamily="@font/poppins_bold"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
+            android:text="Next"
             android:textColor="#ffffff" />
     </LinearLayout>
 

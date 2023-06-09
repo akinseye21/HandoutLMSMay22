@@ -194,6 +194,8 @@ public class TriviaFail extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent j = new Intent(TriviaFail.this, FeedsDashboard.class);
+                j.putExtra("email", email);
+                j.putExtra("sent from", "trivia");
                 startActivity(j);
             }
         });

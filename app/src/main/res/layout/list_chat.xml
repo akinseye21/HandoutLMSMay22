@@ -68,16 +68,18 @@
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="Username"
                     android:textColor="#fff"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/txtonoff"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:id="@+id/txtonoff"
+                    android:fontFamily="@font/montserrat_bold"
                     android:text="XX"
                     android:textColor="#fff"
                     android:textSize="10sp"
@@ -86,13 +88,14 @@
             </RelativeLayout>
 
             <TextView
+                android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/description"
+                android:fontFamily="@font/poppins_lightitalic"
                 android:text="Description..."
                 android:textColor="#fff"
-                android:textStyle="italic"
-                android:textSize="10sp"/>
+                android:textSize="10sp"
+                android:textStyle="italic" />
 
         </LinearLayout>
 

@@ -15,13 +15,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_bold"
+            android:paddingLeft="10dp"
+            android:paddingBottom="5dp"
             android:text="Popular Gigs"
             android:textColor="#ffffff"
-            android:textStyle="bold"
             android:textSize="15dp"
-            android:paddingLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="5dp"/>
+            android:textStyle="bold" />
 
         <ProgressBar
             android:layout_width="50dp"
@@ -30,15 +31,17 @@
             android:visibility="visible"
             android:layout_gravity="center"
             android:id="@+id/progressBar"/>
+
         <TextView
+            android:id="@+id/progressText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Loading..."
-                android:textColor="#ffffff"
-            android:textSize="8dp"
-            android:textStyle="normal"
             android:layout_gravity="center"
-            android:id="@+id/progressText"/>
+            android:fontFamily="@font/poppins_light"
+            android:text="Loading..."
+            android:textColor="#ffffff"
+            android:textSize="8dp"
+            android:textStyle="normal" />
 
         <TextView
             android:layout_width="wrap_content"

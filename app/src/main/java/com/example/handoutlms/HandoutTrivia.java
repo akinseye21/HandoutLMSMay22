@@ -43,9 +43,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class HandoutTrivia extends AppCompatActivity implements
-CountryRank.OnFragmentInteractionListener,
-InstitutionRank.OnFragmentInteractionListener{
+public class HandoutTrivia extends AppCompatActivity {
 
     ImageView back;
     ImageView fraggame;
@@ -85,18 +83,20 @@ InstitutionRank.OnFragmentInteractionListener{
         setContentView(R.layout.activity_handout_trivia);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        //get sharedpreference
+        SharedPreferences sp = getSharedPreferences("LoginDetails", MODE_PRIVATE);
+        final String email = sp.getString("email", "");
+
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), FeedsDashboard.class);
+                Intent i = new Intent(HandoutTrivia.this, FeedsDashboard.class);
+                i.putExtra("email", email);
+                i.putExtra("sent from", "trivia");
                 startActivity(i);
             }
         });
-
-        //get sharedpreference
-        SharedPreferences sp = getSharedPreferences("LoginDetails", MODE_PRIVATE);
-        final String email = sp.getString("email", "");
 
         relbeginner = findViewById(R.id.relbeginner);
         relamateur = findViewById(R.id.relamateur);
@@ -620,8 +620,8 @@ InstitutionRank.OnFragmentInteractionListener{
 
     private void addTabs(ViewPager viewPager) {
         HandoutTrivia.ViewPagerAdapter adapter = new HandoutTrivia.ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new CountryRank(), "");
-        adapter.addFrag(new InstitutionRank(), "");
+//        adapter.addFrag(new CountryRank(), "");
+//        adapter.addFrag(new InstitutionRank(), "");
         viewPager.setAdapter(adapter);
     }
 
@@ -656,8 +656,8 @@ InstitutionRank.OnFragmentInteractionListener{
 
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
+//    @Override
+//    public void onFragmentInteraction(Uri uri) {
+//
+//    }
 }

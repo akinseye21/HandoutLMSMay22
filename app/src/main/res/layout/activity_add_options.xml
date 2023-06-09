@@ -29,11 +29,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/poppins_black"
         android:text="Create a\nnew event"
         android:textColor="#ffffff"
-        android:textStyle="bold"
-        android:textSize="30dp"
-        android:layout_marginLeft="20dp" />
+        android:textSize="30dp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -67,17 +67,19 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif"
+                        android:fontFamily="@font/poppins_extrabold"
                         android:text="Tutorials"
                         android:textColor="#f7f7f7"
                         android:textSize="30dp"
                         android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
                         android:text="Looking for a tutor?"
                         android:textColor="#f7f7f7"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -102,19 +104,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_extrabold"
                         android:text="Games"
                         android:textColor="#f7f7f7"
-                        android:textStyle="bold"
-                        android:textSize="30dp"/>
+                        android:textSize="30dp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
                         android:text="Have fun and learn"
                         android:textColor="#f7f7f7"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -141,19 +147,23 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="80dp"
                     android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_extrabold"
                         android:text="Gigs"
                         android:textColor="#f7f7f7"
-                        android:textStyle="bold"
-                        android:textSize="30dp"/>
+                        android:textSize="30dp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
                         android:text="Freelance"
                         android:textColor="#f7f7f7"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
                 </LinearLayout>
 
             </LinearLayout>

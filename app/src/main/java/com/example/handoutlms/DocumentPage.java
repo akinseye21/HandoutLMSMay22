@@ -78,7 +78,7 @@ public class DocumentPage extends Fragment {
             @Override
             public void onClick(View v) {
                 //load course file page fragment
-                loadFragment(new CourseFilePage());
+//                loadFragment(new CourseFilePage());
             }
         });
 

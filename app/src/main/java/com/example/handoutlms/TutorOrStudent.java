@@ -2,17 +2,22 @@ package com.example.handoutlms;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -32,6 +37,8 @@ public class TutorOrStudent extends AppCompatActivity {
     String email;
     String usertype;
     String sent_from = "Register";
+
+    Dialog myDialog;
 
 
     public static final String UPDATE = "http://handoutng.com/handouts/handout_usertype";
@@ -72,6 +79,14 @@ public class TutorOrStudent extends AppCompatActivity {
             public void onClick(View v) {
                 if(student.isChecked() || tutor.isChecked()){
 
+                    myDialog = new Dialog(TutorOrStudent.this);
+                    myDialog.setContentView(R.layout.custom_popup_login_loading);
+                    TextView text = myDialog.findViewById(R.id.text);
+                    text.setText("Updating user, please wait");
+                    myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    myDialog.setCanceledOnTouchOutside(false);
+                    myDialog.show();
+
                     //update profile
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, UPDATE,
                             new Response.Listener<String>() {
@@ -87,16 +102,22 @@ public class TutorOrStudent extends AppCompatActivity {
                                         JSONObject jsonObject = new JSONObject(response);
 
                                         String status = jsonObject.getString("status");
-                                        if(status.equals("login successful")){
+                                        if(status.equals("success")){
+                                            myDialog.dismiss();
                                             //go to dashboard
                                             Intent i = new Intent(TutorOrStudent.this, FeedsDashboard.class);
                                             i.putExtra("email", email);
                                             i.putExtra("sent from", sent_from);
                                             startActivity(i);
+                                        }else{
+                                            myDialog.dismiss();
+                                            Toast.makeText(TutorOrStudent.this, "Updating failed", Toast.LENGTH_SHORT).show();
                                         }
 
                                     }
                                     catch (JSONException e){
+                                        myDialog.dismiss();
+                                        Toast.makeText(TutorOrStudent.this, "Error", Toast.LENGTH_SHORT).show();
                                         e.printStackTrace();
                                     }
 
@@ -110,6 +131,7 @@ public class TutorOrStudent extends AppCompatActivity {
                                         return;
                                     }
                                     System.out.println("Error = "+volleyError.getMessage());
+                                    myDialog.dismiss();
                                 }
                             }){
                         @Override
@@ -122,8 +144,16 @@ public class TutorOrStudent extends AppCompatActivity {
                     };
 
 
-                    RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                    RequestQueue requestQueue = Volley.newRequestQueue(TutorOrStudent.this);
+                    DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                    stringRequest.setRetryPolicy(retryPolicy);
                     requestQueue.add(stringRequest);
+                    requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+                        @Override
+                        public void onRequestFinished(Request<Object> request) {
+                            requestQueue.getCache().clear();
+                        }
+                    });
                 }
                 else{
                     //prompt user to check a box

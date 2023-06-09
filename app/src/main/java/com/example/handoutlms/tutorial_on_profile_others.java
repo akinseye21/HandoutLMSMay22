@@ -60,6 +60,8 @@ public class tutorial_on_profile_others extends Fragment {
     ArrayList<String> Array_tutMode = new ArrayList<>();
     ArrayList<String> Array_tutId = new ArrayList<>();
     ArrayList<String> Array_tutDate = new ArrayList<>();
+    ArrayList<String> Array_tutType = new ArrayList<>();
+    ArrayList<String> Array_classSize = new ArrayList<>();
 
     ArrayList<String> Array_tutName2 = new ArrayList<>();
     ArrayList<String> Array_tutCategory2 = new ArrayList<>();
@@ -67,6 +69,8 @@ public class tutorial_on_profile_others extends Fragment {
     ArrayList<String> Array_tutMode2 = new ArrayList<>();
     ArrayList<String> Array_tutId2 = new ArrayList<>();
     ArrayList<String> Array_tutDate2 = new ArrayList<>();
+    ArrayList<String> Array_tutType2 = new ArrayList<>();
+    ArrayList<String> Array_classSize2 = new ArrayList<>();
 
     String user_email;
 
@@ -134,7 +138,7 @@ public class tutorial_on_profile_others extends Fragment {
                 view2.setVisibility(View.GONE);
                 noTutorialJoined.setVisibility(View.GONE);
 
-                String from = "created";
+                String from = "tut_others";
 
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, ALL_TUTORIAL,
                         new Response.Listener<String>() {
@@ -155,6 +159,7 @@ public class tutorial_on_profile_others extends Fragment {
                                         String tutMode = section1.getString("mode");
                                         String id = section1.getString("ID");
                                         String date = section1.getString("_date");
+                                        String classsize = section1.getString("class_size");
 
                                         if(tutCreatedBy.equals(user_email)){
                                             Array_tutName.add(tutName);
@@ -163,6 +168,8 @@ public class tutorial_on_profile_others extends Fragment {
                                             Array_tutMode.add(tutMode);
                                             Array_tutId.add(id);
                                             Array_tutDate.add(date);
+                                            Array_tutType.add("");
+                                            Array_classSize.add(classsize);
                                         }else{
                                             //do nothing
                                         }
@@ -177,7 +184,7 @@ public class tutorial_on_profile_others extends Fragment {
                                         gridViewJoined.setVisibility(View.GONE);
                                     }else{
                                         //populate values on the gridview
-                                        TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode, Array_tutId, Array_tutDate, from);
+                                        TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode, Array_tutId, Array_tutDate, Array_tutType, Array_classSize, from);
                                         gridViewCreated.setAdapter(tutorialProfileAdapter);
                                         noTutorial.setVisibility(View.GONE);
                                         noTutorialJoined.setVisibility(View.GONE);
@@ -227,9 +234,8 @@ public class tutorial_on_profile_others extends Fragment {
                 Array_tutMode.clear();
                 Array_tutId.clear();
                 Array_tutDate.clear();
-
-
-
+                Array_tutType.clear();
+                Array_classSize.clear();
 
             }
         });
@@ -244,7 +250,7 @@ public class tutorial_on_profile_others extends Fragment {
                 view2.setVisibility(View.VISIBLE);
                 noTutorial.setVisibility(View.GONE);
 
-                String from = "joined";
+                String from = "tut_others";
 
                 //for joined groups
                 StringRequest stringRequest2 = new StringRequest(Request.Method.POST, TUTORIALS_JOINED,
@@ -263,10 +269,11 @@ public class tutorial_on_profile_others extends Fragment {
                                             String tutName = section1.getString("groupname");
                                             String tutCategory = section1.getString("category");
                                             String tutDescription = section1.getString("description");
-                                            String tutCreatedBy = section1.getString("created_by");
+                                            String tutType = section1.getString("type");
                                             String tutMode = section1.getString("status");
                                             String tutId = section1.getString("id");
                                             String date = section1.getString("_date");
+                                            String classsize = section1.getString("class_size");
 
                                             Array_tutName2.add(tutName);
                                             Array_tutCategory2.add(tutCategory);
@@ -274,11 +281,13 @@ public class tutorial_on_profile_others extends Fragment {
                                             Array_tutMode2.add(tutMode);
                                             Array_tutId2.add(tutId);
                                             Array_tutDate2.add(date);
+                                            Array_tutType2.add(tutType);
+                                            Array_classSize2.add("");
 
                                         }
 
                                         //populate values on the gridview
-                                        TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName2, Array_tutCategory2, Array_tutDescription2, Array_tutMode2, Array_tutId2, Array_tutDate2, from);
+                                        TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName2, Array_tutCategory2, Array_tutDescription2, Array_tutMode2, Array_tutId2, Array_tutDate2, Array_tutType2, Array_classSize2, from);
                                         gridViewJoined.setAdapter(tutorialProfileAdapter);
                                         gridViewCreated.setVisibility(View.GONE);
                                         noTutorial.setVisibility(View.GONE);
@@ -336,7 +345,7 @@ public class tutorial_on_profile_others extends Fragment {
                 Array_tutMode2.clear();
                 Array_tutId2.clear();
                 Array_tutDate2.clear();
-
+                Array_classSize2.clear();
             }
         });
 
@@ -351,7 +360,7 @@ public class tutorial_on_profile_others extends Fragment {
                             JSONArray jsonArray = new JSONArray(response);
                             ArrayLength = jsonArray.length();
 
-                            String from = "created";
+                            String from = "tut_others";
 
 
                             for(int j = ArrayLength - 1; j >= 0; j--){
@@ -363,6 +372,7 @@ public class tutorial_on_profile_others extends Fragment {
                                 String tutMode = section1.getString("mode");
                                 String id = section1.getString("ID");
                                 String date = section1.getString("_date");
+                                String classsize = section1.getString("class_size");
 
                                 if(tutCreatedBy.equals(user_email)){
                                     Array_tutName.add(tutName);
@@ -371,6 +381,8 @@ public class tutorial_on_profile_others extends Fragment {
                                     Array_tutMode.add(tutMode);
                                     Array_tutId.add(id);
                                     Array_tutDate.add(date);
+                                    Array_tutType.add("");
+                                    Array_classSize.add(classsize);
                                 }else{
                                     //do nothing
                                 }
@@ -385,7 +397,7 @@ public class tutorial_on_profile_others extends Fragment {
                                 gridViewJoined.setVisibility(View.GONE);
                             }else{
                                 //populate values on the gridview
-                                TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode, Array_tutId, Array_tutDate, from);
+                                TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode, Array_tutId, Array_tutDate, Array_tutType, Array_classSize, from);
                                 gridViewCreated.setAdapter(tutorialProfileAdapter);
                                 noTutorial.setVisibility(View.GONE);
                                 noTutorialJoined.setVisibility(View.GONE);
@@ -432,7 +444,7 @@ public class tutorial_on_profile_others extends Fragment {
         Array_tutDescription.clear();
         Array_tutMode.clear();
         Array_tutId.clear();
-
+        Array_classSize.clear();
 
 
         return v;

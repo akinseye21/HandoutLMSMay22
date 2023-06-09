@@ -42,6 +42,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Welcome Back!"
                     android:textColor="#ffffff"
                     android:textSize="10dp"
@@ -50,6 +51,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="Username"
                     android:textColor="#ffffff"
                     android:textSize="20dp"
@@ -61,6 +63,7 @@
                 android:id="@+id/groupName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
                 android:paddingBottom="6dp"
@@ -103,6 +106,7 @@
                     android:id="@+id/joinedUsers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="0"
                     android:textColor="#fff"
                     android:textSize="20dp"
@@ -111,6 +115,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_light"
                     android:text="Joined users"
                     android:textColor="#fff"
                     android:textSize="10dp"
@@ -143,6 +148,7 @@
                     android:id="@+id/date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="14 April, 2023"
                     android:textColor="#fff"
                     android:textSize="20dp"
@@ -151,6 +157,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_light"
                     android:text="Expiration Date"
                     android:textColor="#fff"
                     android:textSize="10dp"
@@ -194,6 +201,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
                         android:text="Loading"
                         android:textSize="8dp"
                         android:textColor="#fff"/>
@@ -208,6 +216,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/txt"
+                        android:fontFamily="@font/poppins_light"
                         android:text="Recently Watched"
                         android:textColor="#fff"
                         android:textSize="8dp"
@@ -453,6 +462,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
                         android:text="Loading"
                         android:textSize="8dp"
                         android:textColor="#fff"/>
@@ -466,6 +476,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_light"
                         android:text="Most Viewed Resources"
                         android:textColor="#fff"
                         android:textSize="8dp"
@@ -711,6 +722,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
                         android:text="Loading"
                         android:textSize="8dp"
                         android:textColor="#fff"/>
@@ -724,6 +736,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_light"
                         android:text="Recently Added Resources"
                         android:textColor="#fff"
                         android:textSize="8dp"
@@ -953,6 +966,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="30dp"
+                android:fontFamily="@font/poppins_bold"
                 android:background="@drawable/rounded_orange"
                 android:text="View Resources"
                 android:textAllCaps="false"

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,7 +54,7 @@ public class TodayTaskAdapter extends BaseAdapter {
 
 //        TextView no_notification = convertView.findViewById(R.id.no_notification);
         LinearLayout dot = convertView.findViewById(R.id.lin_dot);
-        LinearLayout overall = convertView.findViewById(R.id.lin_overall);
+        RelativeLayout overall = convertView.findViewById(R.id.lin_overall);
         TextView notification_name = convertView.findViewById(R.id.notification_name);
         TextView notification_category = convertView.findViewById(R.id.notification_category);
 

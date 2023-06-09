@@ -50,6 +50,7 @@ public class PendingAdapterClass extends BaseAdapter {
 
 
     public static final String APPROVE = "https://handoutng.com/handouts/handout_group_join_approve";
+    public static final String DELETE = "https://handoutng.com/handouts/handout_group_join_reject";
     private static final String USERS_TO_JOIN = "https://handoutng.com/handouts/handout_group_join_all";
 
     public PendingAdapterClass(Context context, ArrayList<String> email, ArrayList<String> name, ArrayList<String> picture, String from, String id){
@@ -123,8 +124,94 @@ public class PendingAdapterClass extends BaseAdapter {
 
             }
         });
+        ignore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // show the loader
+                progressBar.setVisibility(View.VISIBLE);
+                //delete the email for the tutorial group
+                deleteEmail(i, progressBar, card);
+            }
+        });
 
         return convertView;
+    }
+
+    private void deleteEmail(int i, ProgressBar progressBar, CardView card) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, DELETE,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("Response approval = "+response);
+                        System.out.println("email = "+arr_email.get(i));
+                        System.out.println("tid = group_"+id);
+
+                        try{
+                            JSONObject jsonObject = new JSONObject(response);
+                            String status = jsonObject.getString("status");
+
+                            if (status.equals("rejected")){
+//                                checkListFromAPI();
+                                progressBar.setVisibility(View.GONE);
+                                card.setVisibility(View.GONE);
+
+                                //show a popup
+                                myDialog = new Dialog(context);
+                                myDialog.setContentView(R.layout.custom_popup_successful_taskmanager);
+                                TextView text = myDialog.findViewById(R.id.status);
+                                Button ok = myDialog.findViewById(R.id.home);
+                                text.setText("Successfully rejected\n"+arr_email.get(i));
+                                ok.setText("Ok");
+                                ok.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        myDialog.dismiss();
+                                    }
+                                });
+                                myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                myDialog.setCanceledOnTouchOutside(false);
+                                myDialog.show();
+
+                            }else if (status.equals("failed")){
+                                progressBar.setVisibility(View.GONE);
+                                Toast.makeText(context, "Rejection failed", Toast.LENGTH_SHORT).show();
+                                //show a popup
+                            }
+
+                        }
+                        catch (JSONException e){
+                            e.printStackTrace();
+                            progressBar.setVisibility(View.GONE);
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        volleyError.printStackTrace();
+                        progressBar.setVisibility(View.GONE);
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<>();
+                params.put("email", arr_email.get(i));
+                params.put("tid", "group_"+id);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(retryPolicy);
+        requestQueue.add(stringRequest);
+        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+            @Override
+            public void onRequestFinished(Request<Object> request) {
+                requestQueue.getCache().clear();
+            }
+        });
     }
 
     private void approveEmail(int i, ProgressBar progressBar, CardView card) {

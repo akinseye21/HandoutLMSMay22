@@ -2,11 +2,17 @@ package com.example.handoutlms;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +22,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -71,6 +78,9 @@ public class DocumentPaged extends AppCompatActivity {
 //    ProgressBar progressBar;
     LinearLayout loading;
     EditText pdfName, pdfDesc;
+    String got_email, got_category, got_description, got_mode, got_id, got_date;
+    String CHANNEL_ID = "channelID4";
+
 
     private static final String ROOT_URL = "http://handoutng.com/handouts/handout_update_tutorial_group";
     private RequestQueue rQueue;
@@ -89,6 +99,12 @@ public class DocumentPaged extends AppCompatActivity {
         Intent i = getIntent();
         name = i.getStringExtra("name");
         group_name = i.getStringExtra("group_name");
+        got_category = i.getStringExtra("category");
+        got_description = i.getStringExtra("description");
+        got_mode = i.getStringExtra("mode");
+        got_id = i.getStringExtra("id");
+        got_date = i.getStringExtra("date");
+        got_email = i.getStringExtra("email");
 
         upload_default = findViewById(R.id.upload_default);
         upload_btn = findViewById(R.id.upload_button);
@@ -192,9 +208,8 @@ public class DocumentPaged extends AppCompatActivity {
                                 if(status.equals("successful")){
 //                                    Toast.makeText(getApplicationContext(), "File Uploaded successfully", Toast.LENGTH_LONG).show();
                                     System.out.println("Status = "+status);
-
                                     myDialog.dismiss();
-
+                                    createNotificationChannel();
                                     myDialog2 = new Dialog(DocumentPaged.this);
                                     myDialog2.setContentView(R.layout.custom_popup_upload_successful);
                                     Button addmore = myDialog2.findViewById(R.id.addmore);
@@ -209,9 +224,16 @@ public class DocumentPaged extends AppCompatActivity {
                                     viewgroup.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {
+                                            myDialog2.dismiss();
                                             // go to the view resources page
                                             Intent i = new Intent(DocumentPaged.this, VideoCreatorView.class);
                                             i.putExtra("groupName", group_name);
+                                            i.putExtra("from", "justCreatedResources");
+                                            i.putExtra("category", got_category);
+                                            i.putExtra("description", got_description);
+                                            i.putExtra("mode", got_mode);
+                                            i.putExtra("id", got_id);
+                                            i.putExtra("date", got_date);
                                             startActivity(i);
                                         }
                                     });
@@ -301,6 +323,37 @@ public class DocumentPaged extends AppCompatActivity {
             byteBuffer.write(buffer, 0, len);
         }
         return byteBuffer.toByteArray();
+    }
+
+    private void createNotificationChannel() {
+        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = manager.getNotificationChannel(CHANNEL_ID);
+            if(channel == null){
+                channel = new NotificationChannel(CHANNEL_ID, "Resources Added", NotificationManager.IMPORTANCE_DEFAULT);
+                //config notification channel
+                channel.setDescription("[Channel Description]");
+                channel.enableVibration(true);
+                channel.enableLights(true);
+                channel.setVibrationPattern(new long[]{100, 1000, 200, 340});
+                channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+                manager.createNotificationChannel(channel);
+            }
+        }
+        Intent notificationIntent = new Intent(DocumentPaged.this, VideoCreatorView.class);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent penIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.logo)
+                .setStyle(new NotificationCompat.BigTextStyle())
+                .setContentTitle("Resources Added")
+                .setContentText("You have successfully added a PDF resource to your group - \""+group_name+"\"")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(false)
+                .setTicker("Notification");
+        builder.setContentIntent(penIntent);
+        NotificationManagerCompat m = NotificationManagerCompat.from(DocumentPaged.this);
+        m.notify(5, builder.build());
     }
 
 }

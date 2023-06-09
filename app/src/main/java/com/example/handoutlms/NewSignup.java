@@ -107,6 +107,9 @@ public class NewSignup extends AppCompatActivity {
             }
         });
 
+        inst2.add("Select an institution");
+        inst2.add("");
+
         //GET UNIVERSITY
         StringRequest stringRequest2 = new StringRequest(Request.Method.GET, GET_UNIVERSITY,
                 new Response.Listener<String>() {
@@ -181,7 +184,7 @@ public class NewSignup extends AppCompatActivity {
                             phonenum.setError("Phone number required");
                         }else{
                             if(pass.equals(confirmpass)){
-                                if(school.equals("Select your university")){
+                                if(school.equals("Select an institution") || school.equals("")){
                                     Toast.makeText(getApplicationContext(), "Please select an institution", Toast.LENGTH_LONG).show();
                                 }else{
                                     if(pass.length()>=6){
@@ -294,19 +297,4 @@ public class NewSignup extends AppCompatActivity {
             }
         });
     }
-
-//    private void postElement() {
-//
-//        final RequestBody formBody = new FormBody.Builder()
-//                .add("username", "test")
-//                .add("password", "test").build();
-//
-//        okhttp3.Request.Builder builder = new Request.Builder();
-//                .url(SIGNUP + "/users")
-//                .post(formBody).build();
-//
-//        final Call call = client.newCall(request);
-//        final Response response = call.execute();
-//        System.out.println(response);
-//    }
 }

@@ -25,15 +25,16 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/rel1"
+        android:fontFamily="@font/poppins_black"
+        android:layout_marginLeft="20dp"
         android:text="Group Information"
         android:textColor="#ffffff"
-        android:textStyle="bold"
         android:textSize="30dp"
-        android:layout_below="@+id/rel1"
-        android:id="@+id/me"
-        android:layout_marginLeft="20dp" />
+        android:textStyle="bold" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -53,6 +54,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="Tutorial group name"
                     android:textSize="15dp"
                     android:textColor="#8cc63e"/>
@@ -60,6 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:text=""
                     android:textSize="15dp"
                     android:id="@+id/tutorial_group_name"
@@ -71,6 +74,7 @@
                     android:layout_height="wrap_content"
                     android:text="Category"
                     android:textSize="15dp"
+                    android:fontFamily="@font/poppins_bold"
                     android:layout_marginTop="20dp"
                     android:textColor="#8cc63e"/>
                 <TextView
@@ -79,6 +83,7 @@
                     android:layout_marginTop="5dp"
                     android:text=""
                     android:textSize="15dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:id="@+id/category"
                     android:textColor="#c7c7c7"
                     android:background="@android:color/transparent"/>
@@ -89,6 +94,7 @@
                     android:layout_height="wrap_content"
                     android:text="Date"
                     android:textSize="15dp"
+                    android:fontFamily="@font/poppins_bold"
                     android:layout_marginTop="20dp"
                     android:textColor="#8cc63e"/>
                 <TextView
@@ -97,6 +103,7 @@
                     android:layout_marginTop="5dp"
                     android:text=""
                     android:textSize="15dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:id="@+id/date"
                     android:textColor="#c7c7c7"
                     android:background="@android:color/transparent"/>
@@ -122,6 +129,7 @@
                     android:layout_height="wrap_content"
                     android:text="Time"
                     android:textSize="15dp"
+                    android:fontFamily="@font/poppins_bold"
                     android:layout_marginTop="20dp"
                     android:textColor="#8cc63e"/>
                 <TextView
@@ -131,6 +139,7 @@
                     android:text=""
                     android:textSize="15dp"
                     android:id="@+id/time"
+                    android:fontFamily="@font/poppins_regular"
                     android:textColor="#c7c7c7"
                     android:background="@android:color/transparent"/>
 
@@ -140,6 +149,7 @@
                     android:layout_height="wrap_content"
                     android:text="University"
                     android:textSize="15dp"
+                    android:fontFamily="@font/poppins_bold"
                     android:layout_marginTop="20dp"
                     android:textColor="#8cc63e"/>
                 <TextView
@@ -149,6 +159,7 @@
                     android:id="@+id/university"
                     android:text=""
                     android:textSize="15dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:textColor="#c7c7c7"
                     android:background="@android:color/transparent"/>
 
@@ -158,6 +169,7 @@
                     android:layout_height="wrap_content"
                     android:text="Description"
                     android:textSize="15dp"
+                    android:fontFamily="@font/poppins_bold"
                     android:layout_marginTop="20dp"
                     android:textColor="#8cc63e"/>
                 <TextView
@@ -165,6 +177,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:id="@+id/description"
+                    android:fontFamily="@font/poppins_regular"
                     android:text=""
                     android:textSize="15dp"
                     android:textColor="#c7c7c7"
@@ -176,6 +189,7 @@
                     android:layout_height="wrap_content"
                     android:text="Tutorial Type"
                     android:textSize="15dp"
+                    android:fontFamily="@font/poppins_bold"
                     android:layout_marginTop="20dp"
                     android:textColor="#8cc63e"/>
                 <TextView
@@ -185,6 +199,7 @@
                     android:id="@+id/tut_type"
                     android:text=""
                     android:textSize="15dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:textColor="#c7c7c7"
                     android:background="@android:color/transparent"/>
 
@@ -194,6 +209,7 @@
                     android:layout_height="wrap_content"
                     android:text="Tutorial Mode"
                     android:textSize="15dp"
+                    android:fontFamily="@font/poppins_bold"
                     android:layout_marginTop="20dp"
                     android:textColor="#8cc63e"/>
 
@@ -203,6 +219,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:textSize="15dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:background="@android:color/transparent"
                     android:text=""
                     android:textColor="#c7c7c7" />
@@ -239,22 +256,22 @@
 <!--                        android:src="@drawable/pause_btn"/>-->
 <!--                </LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:visibility="visible"
-                    android:id="@+id/video_material"
-                    android:orientation="horizontal">
-                    <VideoView
-                        android:id="@+id/videoView"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:focusable="false"
-                        android:layout_centerInParent="true" />
-                </LinearLayout>
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_marginBottom="5dp"-->
+<!--                    android:visibility="visible"-->
+<!--                    android:id="@+id/video_material"-->
+<!--                    android:orientation="horizontal">-->
+<!--                    <VideoView-->
+<!--                        android:id="@+id/videoView"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="200dp"-->
+<!--                        android:focusable="false"-->
+<!--                        android:layout_centerInParent="true" />-->
+<!--                </LinearLayout>-->
 
 <!--                <TextView-->
 <!--                    android:layout_width="wrap_content"-->

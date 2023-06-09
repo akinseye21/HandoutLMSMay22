@@ -6,11 +6,13 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/my_tx"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_light"
         android:padding="10dp"
-        android:textColor="#ffffff"
         android:text="Text1"
-        android:id="@+id/my_tx"/>
+        android:textSize="10dp"
+        android:textColor="#ffffff" />
 
 </LinearLayout>

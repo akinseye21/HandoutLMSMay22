@@ -66,6 +66,8 @@ public class tutorial_on_profile extends Fragment {
     ArrayList<String> Array_tutMode = new ArrayList<>();
     ArrayList<String> Array_tutId = new ArrayList<>();
     ArrayList<String> Array_tutDate = new ArrayList<>();
+    ArrayList<String> Array_tutType = new ArrayList<>();
+    ArrayList<String> Array_classSize = new ArrayList<>();
 
     ArrayList<String> Array_tutName2 = new ArrayList<>();
     ArrayList<String> Array_tutCategory2 = new ArrayList<>();
@@ -73,6 +75,8 @@ public class tutorial_on_profile extends Fragment {
     ArrayList<String> Array_tutMode2 = new ArrayList<>();
     ArrayList<String> Array_tutId2 = new ArrayList<>();
     ArrayList<String> Array_tutDate2 = new ArrayList<>();
+    ArrayList<String> Array_tutType2 = new ArrayList<>();
+    ArrayList<String> Array_classSize2 = new ArrayList<>();
 
 public static final String ALL_TUTORIAL = "https://handoutng.com/handouts/handout_get_all_tutorials";
     public static final String TUTORIALS_JOINED = "https://handoutng.com/handouts/handout_user_joined_groups";
@@ -158,6 +162,7 @@ public static final String ALL_TUTORIAL = "https://handoutng.com/handouts/handou
                                         String tutMode = section1.getString("mode");
                                         String date = section1.getString("_date");
                                         String id = section1.getString("ID");
+                                        String classsize = section1.getString("class_size");
 
                                         if(tutCreatedBy.equals(got_email)){
                                             Array_tutName.add(tutName);
@@ -166,6 +171,8 @@ public static final String ALL_TUTORIAL = "https://handoutng.com/handouts/handou
                                             Array_tutMode.add(tutMode);
                                             Array_tutId.add(id);
                                             Array_tutDate.add(date);
+                                            Array_tutType.add("");
+                                            Array_classSize.add(classsize);
                                         }else{
                                             //do nothing
                                         }
@@ -181,7 +188,7 @@ public static final String ALL_TUTORIAL = "https://handoutng.com/handouts/handou
                                         loading.setVisibility(View.GONE);
                                     }else{
                                         //populate values on the gridview
-                                        TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode, Array_tutId, Array_tutDate, from);
+                                        TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode, Array_tutId, Array_tutDate, Array_tutType, Array_classSize, from);
                                         gridViewCreated.setAdapter(tutorialProfileAdapter);
                                         noTutorial.setVisibility(View.GONE);
                                         noTutorialJoined.setVisibility(View.GONE);
@@ -232,6 +239,8 @@ public static final String ALL_TUTORIAL = "https://handoutng.com/handouts/handou
                 Array_tutMode.clear();
                 Array_tutId.clear();
                 Array_tutDate.clear();
+                Array_tutType.clear();
+                Array_classSize.clear();
 
 
 
@@ -269,7 +278,7 @@ public static final String ALL_TUTORIAL = "https://handoutng.com/handouts/handou
                                             String tutName = section1.getString("groupname");
                                             String tutCategory = section1.getString("category");
                                             String tutDescription = section1.getString("description");
-                                            String tutCreatedBy = section1.getString("created_by");
+                                            String tutType = section1.getString("type");
                                             String tutMode = section1.getString("status");
                                             String tutId = section1.getString("id");
                                             String date = section1.getString("_date");
@@ -280,11 +289,13 @@ public static final String ALL_TUTORIAL = "https://handoutng.com/handouts/handou
                                             Array_tutMode2.add(tutMode);
                                             Array_tutId2.add(tutId);
                                             Array_tutDate2.add(date);
+                                            Array_tutType2.add(tutType);
+                                            Array_classSize2.add("");
 
                                         }
 
                                         //populate values on the gridview
-                                        TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName2, Array_tutCategory2, Array_tutDescription2, Array_tutMode2, Array_tutId2, Array_tutDate2, from);
+                                        TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName2, Array_tutCategory2, Array_tutDescription2, Array_tutMode2, Array_tutId2, Array_tutDate2, Array_tutType2, Array_classSize2, from);
                                         gridViewJoined.setAdapter(tutorialProfileAdapter);
                                         gridViewCreated.setVisibility(View.GONE);
                                         noTutorial.setVisibility(View.GONE);
@@ -345,6 +356,8 @@ public static final String ALL_TUTORIAL = "https://handoutng.com/handouts/handou
                 Array_tutMode2.clear();
                 Array_tutId2.clear();
                 Array_tutDate2.clear();
+                Array_tutType2.clear();
+                Array_classSize2.clear();
 
             }
         });
@@ -372,6 +385,7 @@ public static final String ALL_TUTORIAL = "https://handoutng.com/handouts/handou
                                 String tutMode = section1.getString("mode");
                                 String date = section1.getString("_date");
                                 String id = section1.getString("ID");
+                                String classsize = section1.getString("class_size");
 
                                 if(tutCreatedBy.equals(got_email)){
                                     Array_tutName.add(tutName);
@@ -380,6 +394,8 @@ public static final String ALL_TUTORIAL = "https://handoutng.com/handouts/handou
                                     Array_tutMode.add(tutMode);
                                     Array_tutId.add(id);
                                     Array_tutDate.add(date);
+                                    Array_tutType.add("");
+                                    Array_classSize.add(classsize);
                                 }else{
                                     //do nothing
                                 }
@@ -395,7 +411,7 @@ public static final String ALL_TUTORIAL = "https://handoutng.com/handouts/handou
                                 loading.setVisibility(View.GONE);
                             }else{
                                 //populate values on the gridview
-                                TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode, Array_tutId, Array_tutDate, from);
+                                TutorialProfileAdapter tutorialProfileAdapter = new TutorialProfileAdapter(getContext(), Array_tutName, Array_tutCategory, Array_tutDescription, Array_tutMode, Array_tutId, Array_tutDate, Array_tutType, Array_classSize, from);
                                 gridViewCreated.setAdapter(tutorialProfileAdapter);
                                 noTutorial.setVisibility(View.GONE);
                                 noTutorialJoined.setVisibility(View.GONE);
@@ -446,7 +462,7 @@ public static final String ALL_TUTORIAL = "https://handoutng.com/handouts/handou
         Array_tutMode.clear();
         Array_tutId.clear();
         Array_tutDate.clear();
-
+        Array_classSize.clear();
 
         return v;
     }

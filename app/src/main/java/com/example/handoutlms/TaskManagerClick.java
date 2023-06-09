@@ -11,8 +11,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -23,6 +25,7 @@ public class TaskManagerClick extends AppCompatActivity {
     String cat, email;
     ListView listView;
     TextView taskCount;
+    LinearLayout noTask;
 
     ArrayList<String> arr_task_name = new ArrayList<>();
     ArrayList<String> arr_task_date = new ArrayList<>();
@@ -63,6 +66,7 @@ public class TaskManagerClick extends AppCompatActivity {
                 mineS();
             }
         });
+        noTask = findViewById(R.id.no_task);
 
         new_arr_task_name.clear();
         new_arr_task_date.clear();
@@ -118,13 +122,13 @@ public class TaskManagerClick extends AppCompatActivity {
             taskCount.setText(new_arr_task_name.size()+" Tasks");
         }
 
-        if(cat.equals("others")){
-            category.setText("Others");
+        if(cat.equals("games")){
+            category.setText("Games");
             image.setImageResource(R.drawable.tm6);
             image.setImageTintMode(PorterDuff.Mode.MULTIPLY);
 
             for(int j=0; j<arr_task_name.size(); j++){
-                if(!arr_task_category.get(j).equals("Assignment") || !arr_task_category.get(j).equals("Test") || !arr_task_category.get(j).equals("Exam")){
+                if(arr_task_category.get(j).equals("Games")){
                     new_arr_task_name.add(arr_task_name.get(j));
                     new_arr_task_date.add(arr_task_date.get(j));
                     new_arr_task_category.add(arr_task_category.get(j));
@@ -141,7 +145,7 @@ public class TaskManagerClick extends AppCompatActivity {
             image.setImageResource(R.drawable.tm8);
 
             for(int j=0; j<arr_task_name.size(); j++){
-                if(arr_task_category.get(j).equals("Tutorials")){
+                if(arr_task_category.get(j).equals("Tutorial")){
                     new_arr_task_name.add(arr_task_name.get(j));
                     new_arr_task_date.add(arr_task_date.get(j));
                     new_arr_task_category.add(arr_task_category.get(j));
@@ -157,7 +161,7 @@ public class TaskManagerClick extends AppCompatActivity {
             image.setImageResource(R.drawable.tm9);
 
             for(int j=0; j<arr_task_name.size(); j++){
-                if(arr_task_category.get(j).equals("Gigs")){
+                if(arr_task_category.get(j).equals("Gig")){
                     new_arr_task_name.add(arr_task_name.get(j));
                     new_arr_task_date.add(arr_task_date.get(j));
                     new_arr_task_category.add(arr_task_category.get(j));
@@ -168,8 +172,17 @@ public class TaskManagerClick extends AppCompatActivity {
             taskCount.setText(new_arr_task_name.size()+" Tasks");
         }
 
-        TotalTaskAdapter myAdapter=new TotalTaskAdapter(getApplicationContext(),new_arr_task_name,new_arr_task_date,new_arr_task_category, new_arr_task_description, new_arr_task_time);
-        listView.setAdapter(myAdapter);
+//        Toast.makeText(this, "Length = "+new_arr_task_name.size(), Toast.LENGTH_SHORT).show();
+
+        if (new_arr_task_name.size() < 1){
+            noTask.setVisibility(View.VISIBLE);
+            listView.setVisibility(View.GONE);
+        }else{
+            TotalTaskAdapter myAdapter=new TotalTaskAdapter(getApplicationContext(),new_arr_task_name,new_arr_task_date,new_arr_task_category, new_arr_task_description, new_arr_task_time);
+            listView.setAdapter(myAdapter);
+        }
+
+
 
 
         arr_task_name.clear();
@@ -181,17 +194,16 @@ public class TaskManagerClick extends AppCompatActivity {
 
     }
 
-//    @Override
-//    public void onFragmentInteraction(Uri uri) {
-//
-//    }
-
     public void mineS(){
-        TaskManager1 taskManager1 = new TaskManager1();
-//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_taskManager, taskManager1);
-        transaction.commit();
+        Intent i = new Intent(TaskManagerClick.this, FeedsDashboard.class);
+        i.putExtra("email", email);
+        i.putExtra("sent from", "task manager click");
+        startActivity(i);
+//        TaskManager1 taskManager1 = new TaskManager1();
+////        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//        transaction.replace(R.id.frame_taskManager, taskManager1);
+//        transaction.commit();
 
     }
 

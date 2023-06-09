@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -61,10 +62,10 @@ public class TaskManager1 extends Fragment {
     TextView name;
     TextView no_of_task;
     String day, month, year, today;
-    int count_Exam=0, count_Test=0, count_Assignment=0, count_Others=0, count_Tutorials=0, count_Gigs=0;
-    TextView countExam, countTest, countAssignment, countOthers, countTutorials, countGigs;
+    int count_Exam=0, count_Test=0, count_Assignment=0, count_Others=0, count_Tutorials=0, count_Gigs=0, count_Games=0;
+    TextView countExam, countTest, countAssignment, countGames, countTutorials, countGigs;
 
-    LinearLayout test, exam, assignment, others, tutorials, gigs;
+    LinearLayout test, exam, assignment, games, tutorials, gigs;
 
     ArrayList<String> arr_task_name = new ArrayList<>();
     ArrayList<String> arr_task_date = new ArrayList<>();
@@ -130,12 +131,12 @@ public class TaskManager1 extends Fragment {
         day          = (String) DateFormat.format("dd",   date); // 20
         month  = (String) DateFormat.format("MM",  date); // Jun
         year         = (String) DateFormat.format("yyyy", date); // 2013
-        today = day+"/"+month+"/"+year;
+        today = year+"-"+month+"-"+day;
 
         countExam = v.findViewById(R.id.countExam);
         countTest = v.findViewById(R.id.countTest);
         countAssignment = v.findViewById(R.id.countAssignment);
-        countOthers = v.findViewById(R.id.countOthers);
+        countGames = v.findViewById(R.id.countGames);
         countTutorials = v.findViewById(R.id.countTutorials);
         countGigs = v.findViewById(R.id.countGig);
         viewPager =v.findViewById(R.id.viewpager2);
@@ -196,18 +197,16 @@ public class TaskManager1 extends Fragment {
                                     if(task_category.equals("Gig")){
                                         count_Gigs = count_Gigs+1;
                                     }
-                                    if (!task_category.equals("Exam") || !task_category.equals("Test") || !task_category.equals("Assignment")){
-                                        count_Others = count_Others+1;
+                                    if(task_category.equals("Games")){
+                                        count_Games = count_Games+1;
                                     }
-
-
                                 }
 
                                 no_of_task.setText(arr_task_name.size()+" task \nfor today");
                                 countExam.setText(count_Exam+" tasks");
                                 countTest.setText(count_Test+" tasks");
                                 countAssignment.setText(count_Assignment+" tasks");
-                                countOthers.setText(count_Others+" tasks");
+                                countGames.setText(count_Games+" tasks");
                                 countTutorials.setText(count_Tutorials+" tasks");
                                 countGigs.setText(count_Gigs+" tasks");
                             }else{
@@ -233,15 +232,17 @@ public class TaskManager1 extends Fragment {
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(retryPolicy);
         requestQueue.add(stringRequest);
+        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+            @Override
+            public void onRequestFinished(Request<Object> request) {
+                requestQueue.getCache().clear();
+            }
+        });
 
-        //clear array and count
-        count_Exam=0;
-        count_Test=0;
-        count_Assignment=0;
-        count_Others=0;
-        count_Tutorials=0;
-        count_Gigs=0;
+
 
 
 
@@ -320,12 +321,12 @@ public class TaskManager1 extends Fragment {
             }
         });
 
-        others =  v.findViewById(R.id.others);
-        others.setOnClickListener(new View.OnClickListener() {
+        games =  v.findViewById(R.id.games);
+        games.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), TaskManagerClick.class);
-                i.putExtra("category", "others");
+                i.putExtra("category", "games");
                 i.putExtra("email", got_email);
                 //put all the array here also
                 i.putStringArrayListExtra("task name", arr_task_name_gen);
@@ -464,5 +465,31 @@ public class TaskManager1 extends Fragment {
         }
 
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        //clear array and count
+        count_Exam=0;
+        count_Test=0;
+        count_Assignment=0;
+        count_Others=0;
+        count_Tutorials=0;
+        count_Gigs=0;
+
+        arr_task_name.clear();
+        arr_task_date.clear();
+        arr_task_category.clear();
+        arr_task_description.clear();
+        arr_task_time.clear();
+        arr_today.clear();
+
+        arr_task_name_gen.clear();
+        arr_task_date_gen.clear();
+        arr_task_category_gen.clear();
+        arr_task_description_gen.clear();
+        arr_task_time_gen.clear();
     }
 }

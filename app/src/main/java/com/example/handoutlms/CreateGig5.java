@@ -1,19 +1,32 @@
 package com.example.handoutlms;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,9 +38,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.snackbar.Snackbar;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -39,20 +50,23 @@ public class CreateGig5 extends AppCompatActivity {
 
     ImageView back;
 
-    String projectName, projectDescription, paymentMode, budgetCategory, projectType;
+    String projectName, projectDescription, paymentMode, budgetCategory, projectType, startDate, endDate;
     ArrayList<String> Array_requiredSkills;
     int len_skill;
     String all_skills = "";
 
     TextView txt_prjname, txt_prjdesc, txt_projecttyp, txt_budgetcat;
-    GridView mygrid;
     ProgressBar progressBar;
-    Button next;
+    LinearLayout next;
     SharedPreferences preferences;
     Dialog myDialog;
     Button home;
 
-    public static final String CREATE_GIGS = "http://handoutng.com/handouts/handout_create_user_gig";
+    RecyclerView recyclerView;
+    Adapter madapter;
+    String CHANNEL_ID = "channelID6";
+
+    public static final String CREATE_GIGS = "http://handoutng.com/handouts/handout_create_gig";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,17 +81,21 @@ public class CreateGig5 extends AppCompatActivity {
         paymentMode = i.getStringExtra("Payment mode");
         budgetCategory = i.getStringExtra("Budget category");
         projectType = i.getStringExtra("Project type");
+        startDate = i.getStringExtra("Start date");
+        endDate = i.getStringExtra("End date");
 
         preferences = getApplicationContext().getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
         final String got_email = preferences.getString("email", "not available");
 
         len_skill = Array_requiredSkills.size();
 
+        LinearLayoutManager layoutManager= new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false);
+        recyclerView = findViewById(R.id.recycler_view);
+
         txt_prjname = findViewById(R.id.project_name);
         txt_prjdesc = findViewById(R.id.project_desc);
         txt_projecttyp = findViewById(R.id.project_type);
         txt_budgetcat = findViewById(R.id.budget_category);
-        mygrid = findViewById(R.id.mygrid);
         next = findViewById(R.id.next);
         progressBar = findViewById(R.id.progressBar);
 
@@ -95,8 +113,9 @@ public class CreateGig5 extends AppCompatActivity {
 //        Snackbar.make(findViewById(android.R.id.content), "Skills = "+sb, Snackbar.LENGTH_LONG).show();
 
         //populate values  of skill on the gridview
-        SimpleGigSetAdapter simpleGigSetAdapter = new SimpleGigSetAdapter(getApplicationContext(), Array_requiredSkills);
-        mygrid.setAdapter(simpleGigSetAdapter);
+        madapter = new Adapter(Array_requiredSkills);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(madapter);
 
         txt_prjname.setText(projectName);
         txt_prjdesc.setText(projectDescription);
@@ -107,14 +126,7 @@ public class CreateGig5 extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), CreateGig4.class);
-                i.putExtra("Project name", projectName);
-                i.putExtra("Project description", projectDescription);
-                i.putStringArrayListExtra("Required skills", Array_requiredSkills);
-                i.putExtra("Payment mode", paymentMode);
-                i.putExtra("Budget category", budgetCategory );
-                i.putExtra("Project type", projectType );
-                startActivity(i);
+                onBackPressed();
             }
         });
 
@@ -127,7 +139,7 @@ public class CreateGig5 extends AppCompatActivity {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                System.out.println("Response = "+response);
+                                System.out.println("Create Gig Response = "+response);
 
                                 progressBar.setVisibility(View.GONE);
 
@@ -137,6 +149,7 @@ public class CreateGig5 extends AppCompatActivity {
                                     String status = jo.getString("status");
 
                                     if (status.equals("successful")){
+                                        createNotificationChannel();
                                         //load the custom dialog box
                                         myDialog = new Dialog(CreateGig5.this);
                                         myDialog.setContentView(R.layout.custom_popup1);
@@ -145,6 +158,8 @@ public class CreateGig5 extends AppCompatActivity {
                                             @Override
                                             public void onClick(View v) {
                                                 Intent i = new Intent(getApplicationContext(), FeedsDashboard.class);
+                                                i.putExtra("email", got_email);
+                                                i.putExtra("sent from", "gig created");
                                                 startActivity(i);
                                             }
                                         });
@@ -175,6 +190,8 @@ public class CreateGig5 extends AppCompatActivity {
                         params.put("payment_mode", paymentMode);
                         params.put("budget_category", budgetCategory);
                         params.put("project_type", projectType);
+                        params.put("starts", startDate);
+                        params.put("ends", endDate);
                         params.put("email", got_email);
                         return params;
                     }
@@ -188,8 +205,72 @@ public class CreateGig5 extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        // do nothing
+    class Adapter extends RecyclerView.Adapter<Adapter.MyHolder> {
+        ArrayList<String> named;
+
+        public Adapter(ArrayList<String> named) {
+            this.named = named;
+        }
+
+        @NonNull
+        @Override
+        public Adapter.MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(CreateGig5.this).inflate(R.layout.list_gig_category, parent, false);
+            return new Adapter.MyHolder(view);
+        }
+
+
+
+        @Override
+        public void onBindViewHolder(@NonNull Adapter.MyHolder holder, @SuppressLint("RecyclerView") int position) {
+            holder.name.setText(named.get(position));
+        }
+
+        @Override
+        public int getItemCount() {
+            return named.size();
+        }
+
+        class MyHolder extends RecyclerView.ViewHolder {
+            TextView name;
+
+            public MyHolder(@NonNull View itemView) {
+                super(itemView);
+                name = itemView.findViewById(R.id.category_name);
+            }
+        }
+
     }
+
+    private void createNotificationChannel() {
+        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = manager.getNotificationChannel(CHANNEL_ID);
+            if(channel == null){
+                channel = new NotificationChannel(CHANNEL_ID, "Gig Created", NotificationManager.IMPORTANCE_DEFAULT);
+                //config notification channel
+                channel.setDescription("[Channel Description]");
+                channel.enableVibration(true);
+                channel.enableLights(true);
+                channel.setVibrationPattern(new long[]{100, 1000, 200, 340});
+                channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+                manager.createNotificationChannel(channel);
+            }
+        }
+        Intent notificationIntent = new Intent(CreateGig5.this, VideoCreatorView.class);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent penIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.logo)
+                .setStyle(new NotificationCompat.BigTextStyle())
+                .setContentTitle("Gig Created")
+                .setContentText("You have successfully created a gig - \""+projectName+"\"")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(false)
+                .setTicker("Notification");
+        builder.setContentIntent(penIntent);
+        NotificationManagerCompat m = NotificationManagerCompat.from(CreateGig5.this);
+        m.notify(7, builder.build());
+    }
+
 }

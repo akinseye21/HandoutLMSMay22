@@ -10,31 +10,27 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/card">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="bottom"
-            android:gravity="bottom"
-            android:background="@drawable/rounded_white_little"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="bottom"
-                android:src="@drawable/ic44"/>
-        </LinearLayout>
+            android:src="@drawable/ic44"/>
+
+
         <TextView
+            android:id="@+id/groupName"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:id="@+id/groupName"
-            android:textSize="10dp"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/poppins_bold"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="Learning how to create beautiful scenes in Illustrator"
             android:textColor="#ffffff"
-            android:layout_marginTop="3dp"
-            android:textStyle="bold"
-            android:ellipsize="end"
-            android:maxLines="1"/>
+            android:textSize="10dp"
+            android:textStyle="bold" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,22 +46,25 @@
                 android:id="@+id/groupTime"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_light"
                 android:text="30 minutes"
                 android:textColor="#ffffff"
                 android:textSize="8dp"
                 android:textStyle="bold" />
         </LinearLayout>
+
         <TextView
+            android:id="@+id/groupTutor"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:id="@+id/groupTutor"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/poppins_light"
+            android:maxLines="1"
             android:text="Tutor: Jack Grealish"
             android:textColor="#ffffff"
-            android:layout_marginTop="3dp"
-            android:textStyle="bold"
             android:textSize="8dp"
-            android:ellipsize="end"
-            android:maxLines="1"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
 

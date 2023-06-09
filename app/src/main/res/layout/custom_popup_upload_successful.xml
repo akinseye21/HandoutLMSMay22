@@ -16,40 +16,43 @@
         android:src="@drawable/correct"/>
 
     <TextView
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppins_light"
         android:gravity="center"
-        android:layout_marginTop="30dp"
-        android:id="@+id/text"
-        android:textSize="15dp"
         android:text="Successfully uploaded"
-        android:textColor="#f4000000"/>
+        android:textColor="#f4000000"
+        android:textSize="15dp" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="Add more files"
-        android:textSize="12dp"
-        android:layout_marginTop="30dp"
         android:id="@+id/addmore"
-        android:stateListAnimator="@null"
-        android:textColor="#ffffff"
-        android:background="@drawable/rounded_green"/>
-
-    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_green"
+        android:fontFamily="@font/poppins_bold"
+        android:stateListAnimator="@null"
+        android:text="Add more files"
         android:textAllCaps="false"
-        android:text="View tutorial group"
-        android:textSize="12dp"
+        android:textColor="#ffffff"
+        android:textSize="12dp" />
+
+    <Button
+        android:id="@+id/viewgroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="30dp"
-        android:id="@+id/viewgroup"
+        android:background="@drawable/rounded_green"
+        android:fontFamily="@font/poppins_bold"
         android:stateListAnimator="@null"
+        android:text="View tutorial group"
+        android:textAllCaps="false"
         android:textColor="#ffffff"
-        android:background="@drawable/rounded_green"/>
+        android:textSize="12dp" />
 
 
 

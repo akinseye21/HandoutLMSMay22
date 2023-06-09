@@ -22,136 +22,190 @@
             app:contentPadding="10dp"
             app:cardCornerRadius="5dp" >
 
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            <LinearLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                android:id="@+id/one"
+                    android:id="@+id/one"
                     android:gravity="center_vertical"
                     android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
                     android:orientation="horizontal">
+
                 <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/profile_header"/>
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/pp"
+                    android:src="@drawable/profile_header" />
+
                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="25dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                    <TextView
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
                         android:layout_gravity="left"
-                            android:id="@+id/name"
-                            android:text="Ada Kayari"
-                            android:textSize="10dp"
-                            android:textStyle="bold"
-                            android:textColor="#ffffff"/>
-                    <TextView
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:id="@+id/department"
-                            android:text="Civil Engineering"
-                            android:textSize="8dp"
-                            android:textStyle="normal"
-                            android:textColor="#ffffff"/>
-                    <TextView
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:id="@+id/school"
-                            android:text="University of Abuja"
-                            android:textSize="8dp"
-                            android:textStyle="normal"
-                            android:textColor="#ffffff"/>
-                </LinearLayout>
-            </LinearLayout>
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Ada Kayari"
+                        android:textColor="#ffffff"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
 
+                    <TextView
+                        android:id="@+id/email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="abayomi.akinseye@gmail.com"
+                        android:textColor="#ffffff"
+                        android:textSize="8dp"
+                        android:textStyle="normal" />
+
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/school"-->
+                    <!--                        android:layout_width="100dp"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginLeft="5dp"-->
+                    <!--                        android:fontFamily="@font/poppins_light"-->
+                    <!--                        android:text="University of Abuja"-->
+                    <!--                        android:textColor="#ffffff"-->
+                    <!--                        android:textSize="8dp"-->
+                    <!--                        android:textStyle="normal" />-->
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/circle_save"
+                    android:src="@drawable/circle_transparent" />
+            </RelativeLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/cv"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_toRightOf="@+id/one"
-                android:layout_toLeftOf="@+id/two"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:layout_gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:id="@+id/cv"
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/new11" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:src="@drawable/ic199" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="CV"
-                        android:textColor="#ffffff"
-                        android:textSize="10dp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:src="@drawable/ic198" />
-
-                    <TextView
-                        android:id="@+id/amount"
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:text="N30,000"
-                        android:textColor="#ffffff"
-                        android:textSize="10dp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Bidder's CV/Portfolio"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp"
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp"/>
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/home_ic1"
+                    app:tint="#00C8F5" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="$20,000"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp"
+                    android:textStyle="bold"
+                    android:id="@+id/txtamount"
+                    android:paddingLeft="10dp"/>
+            </LinearLayout>
+
 
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/two"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <ImageView
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:padding="10dp"
                     android:id="@+id/accept"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginRight="20dp"
-                    android:src="@drawable/ic196" />
+                    android:layout_marginRight="30dp">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic196" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Accept"
+                        android:textSize="12dp"
+                        android:textColor="#00FF00"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_regular"/>
+                </LinearLayout>
 
-                <ImageView
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:padding="10dp"
                     android:id="@+id/reject"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic197" />
+                    android:layout_marginLeft="30dp">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic197" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Reject"
+                        android:textSize="12dp"
+                        android:textColor="#FF0000"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_regular"/>
+                </LinearLayout>
+
+
 
             </LinearLayout>
 
-        </RelativeLayout>
+        </LinearLayout>
 
 
 

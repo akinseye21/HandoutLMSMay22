@@ -31,14 +31,15 @@
         android:layout_margin="10dp">
 
         <TextView
+            android:id="@+id/monthYear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:id="@+id/monthYear"
             android:text="October 2020"
             android:textColor="#ffffff"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_black"/>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -86,6 +87,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:id="@+id/date2daysback"
+                    android:fontFamily="@font/poppins_black"
                     android:text="0"
                     android:textSize="25dp"
                     android:textStyle="bold"
@@ -95,6 +97,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:id="@+id/day2daysback"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Mon"
                     android:textSize="12dp"
                     android:textStyle="normal"
@@ -113,6 +116,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:id="@+id/dateYesterday"
+                    android:fontFamily="@font/poppins_black"
                     android:text="0"
                     android:textSize="25dp"
                     android:textStyle="bold"
@@ -122,6 +126,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:id="@+id/dayYesterday"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Tue"
                     android:textSize="12dp"
                     android:textStyle="normal"
@@ -140,6 +145,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:id="@+id/dateToday"
+                    android:fontFamily="@font/poppins_black"
                     android:text="0"
                     android:textSize="25dp"
                     android:textStyle="bold"
@@ -149,6 +155,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:id="@+id/dayToday"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Wed"
                     android:textSize="12dp"
                     android:textStyle="normal"
@@ -167,6 +174,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:id="@+id/dateTomorrow"
+                    android:fontFamily="@font/poppins_black"
                     android:text="0"
                     android:textSize="25dp"
                     android:textStyle="bold"
@@ -176,6 +184,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:id="@+id/dayTomorrow"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Thu"
                     android:textSize="12dp"
                     android:textStyle="normal"
@@ -194,6 +203,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:id="@+id/dateNextTomorrow"
+                    android:fontFamily="@font/poppins_black"
                     android:text="0"
                     android:textSize="25dp"
                     android:textStyle="bold"
@@ -203,6 +213,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:id="@+id/dayNextTomorrow"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Fri"
                     android:textSize="12dp"
                     android:textStyle="normal"
@@ -219,58 +230,67 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_black"
         android:text="Tasks"
         android:textSize="20dp"
         android:textStyle="bold"
         android:textColor="@color/colorAccent"/>
 
-    <ListView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@null"
-        android:dividerHeight="0dp"
-        android:id="@+id/listview"/>
+        android:layout_height="match_parent">
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:layout_marginBottom="40dp"
+            android:id="@+id/listview"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/add"
-        android:layout_gravity="center"
-        android:layout_below="@+id/one"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="10dp"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/add"
+            android:layout_gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
 
-        <RelativeLayout
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/circle_green"
-            android:gravity="center">
+            <RelativeLayout
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/circle_green"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="+"
+                    android:textColor="#ffffff"
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="+"
+                android:layout_gravity="center_vertical"
+                android:text="Add a new task"
                 android:textColor="#ffffff"
-                android:textSize="8dp"
+                android:textSize="15dp"
+                android:fontFamily="@font/poppins_light"
                 android:textStyle="bold" />
-        </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="Add a new task"
-            android:textColor="#ffffff"
-            android:textSize="15dp"
-            android:textStyle="bold" />
-    </LinearLayout>
+
 
 
 

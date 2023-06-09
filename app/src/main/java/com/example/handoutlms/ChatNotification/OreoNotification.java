@@ -9,10 +9,6 @@ import android.content.ContextWrapper;
 import android.net.Uri;
 import android.os.Build;
 
-import com.example.handoutlms.Notification;
-
-import java.lang.annotation.Target;
-
 public class OreoNotification extends ContextWrapper {
 
     public static final String CHANNEL_ID = "com.example.handoutlms";

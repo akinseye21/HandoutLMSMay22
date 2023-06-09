@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -33,11 +35,10 @@ public class SeeBids extends AppCompatActivity {
 
     ImageView back;
 
-    String username, userdept, userinstitution, gigname, gigid;
-    TextView fullname, depart, school, gigName, notification_text, bid_count;
+    String username, userdept, userinstitution, gigname, gigid, gigdescription, gigskills, gigprice, startdate, enddate;
+    TextView fullname, depart, school, gigName, notification_text;
     ListView my_list;
-    ProgressBar progressBar;
-    TextView loading_text;
+    LinearLayout loading;
 
     ArrayList<String> Array_biddername = new ArrayList<>();
     ArrayList<String> Array_bidderemail = new ArrayList<>();
@@ -46,12 +47,10 @@ public class SeeBids extends AppCompatActivity {
     ArrayList<String> Array_bidid = new ArrayList<>();
     ArrayList<String> Array_gigid = new ArrayList<>();
     ArrayList<String> Array_cv = new ArrayList<>();
+    ArrayList<String> Array_pp = new ArrayList<>();
 
-    RadioGroup radioGroup;
-    RadioButton inProgress;
-    RadioButton gigCompleted;
 
-    public static final String GET_ALL_BIDS = "http://handoutng.com/handouts/handout_get_all_bids_for_gig";
+    public static final String GET_ALL_BIDS = "https://handoutng.com/handouts/handout_get_all_bids_for_gig";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,75 +72,118 @@ public class SeeBids extends AppCompatActivity {
         userinstitution = i.getStringExtra("userSchool");
         gigname = i.getStringExtra("gigName");
         gigid = i.getStringExtra("gigId");
+        gigdescription = i.getStringExtra("gigDescription");
+        gigskills = i.getStringExtra("gigSkills");
+        gigprice = i.getStringExtra("gigPrice");
+        startdate = i.getStringExtra("startDate");
+        enddate = i.getStringExtra("endDate");
 
         fullname = findViewById(R.id.created_by_gig);
-        depart = findViewById(R.id.dept_gig);
-        school = findViewById(R.id.uni_gig);
+//        depart = findViewById(R.id.dept_gig);
+//        school = findViewById(R.id.uni_gig);
         gigName = findViewById(R.id.gig_name);
         my_list = findViewById(R.id.my_list);
         notification_text = findViewById(R.id.notification_text);
-        progressBar = findViewById(R.id.progressBar);
-        loading_text = findViewById(R.id.loading_text);
-        bid_count = findViewById(R.id.bid_count);
-        radioGroup = findViewById(R.id.radioGroup);
-        inProgress = findViewById(R.id.inprogress);
-        gigCompleted = findViewById(R.id.gigcompleted);
+        loading = findViewById(R.id.loading);
+//        bid_count = findViewById(R.id.bid_count);
+//        radioGroup = findViewById(R.id.radioGroup);
+//        inProgress = findViewById(R.id.inprogress);
+//        gigCompleted = findViewById(R.id.gigcompleted);
 
         fullname.setText(username);
-        depart.setText(userdept);
-        school.setText(userinstitution);
+//        depart.setText(userdept);
+//        school.setText(userinstitution);
         gigName.setText(gigname);
+    }
 
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        proceed();
+
+    }
+
+    public void proceed(){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_ALL_BIDS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         System.out.println("All Bids = "+response);
 
-                        progressBar.setVisibility(View.GONE);
-                        loading_text.setVisibility(View.GONE);
+                        String biddername = "";
+                        String bidderemail ="";
+                        String bidstatus="";
+                        String bidamount="";
+                        String bidid="";
+                        String got_gigid="";
+                        String CV="";
+                        String profile_pic="";
 
                         try{
                             JSONArray jsonArray = new JSONArray(response);
                             int bid_len = jsonArray.length();
-                            bid_count.setText(String.valueOf(bid_len));
-
-
                             for(int j=0; j<bid_len; j++){
-                                    JSONObject jsonObject = jsonArray.getJSONObject(j);
-                                    String biddername = jsonObject.getString("biddername");
-                                    String bidderemail = jsonObject.getString("biddermail");
-                                    String bidstatus = jsonObject.getString("bidstatus");
-                                    String bidamount = jsonObject.getString("bidamount");
-                                    String bidid = jsonObject.getString("bidid");
-                                    String got_gigid = jsonObject.getString("gigid");
-                                    String CV = jsonObject.getString("cv");
+                                JSONObject jsonObject = jsonArray.getJSONObject(j);
+                                biddername = jsonObject.getString("biddername");
+                                bidderemail = jsonObject.getString("biddermail");
+                                bidstatus = jsonObject.getString("bidstatus");
+                                bidamount = jsonObject.getString("bidamount");
+                                bidid = jsonObject.getString("bidid");
+                                got_gigid = jsonObject.getString("gigid");
+                                CV = jsonObject.getString("cv");
+                                profile_pic = jsonObject.getString("profile_pic");
 
-                                    Array_biddername.add(biddername);
-                                    Array_bidderemail.add(bidderemail);
-                                    Array_bidstatus.add(bidstatus);
-                                    Array_bidamount.add(bidamount);
-                                    Array_bidid.add(bidid);
-                                    Array_gigid.add(gigid);
-                                    Array_cv.add(CV);
+                                Array_biddername.add(biddername);
+                                Array_bidderemail.add(bidderemail);
+                                Array_bidstatus.add(bidstatus);
+                                Array_bidamount.add(bidamount);
+                                Array_bidid.add(bidid);
+                                Array_gigid.add(gigid);
+                                Array_cv.add(CV);
+                                Array_pp.add(profile_pic);
                             }
-                            //populate values on the listview
-                            SeeBidsAdapter seeBidsAdapter = new SeeBidsAdapter(SeeBids.this, Array_biddername, Array_bidderemail, Array_bidstatus, Array_bidamount, Array_bidid, Array_gigid, Array_cv);
-                            my_list.setAdapter(seeBidsAdapter);
-//                            returnFromAdapter(bid_len);
-                            if(bid_len == 1){
-                                radioGroup.setVisibility(View.VISIBLE);
-//                                seeBidsAdapter.getItem(R.id.radioGroup);
+                            int checker = 0;
+                            for(int w=0; w<bid_len; w++){
+
+                                if (Array_bidstatus.get(w).contains("approved")){
+                                    //increase checker
+                                    checker = checker + 1;
+                                }else{
+                                    //do nothing
+                                }
                             }
 
-
-
+                            if (checker>=1){
+                                //go to next screen
+                                Intent intent = new Intent(SeeBids.this, ApprovedGigUserView.class);
+                                intent.putExtra("biddername", biddername);
+                                intent.putExtra("bidderemail", bidderemail);
+                                intent.putExtra("bidamount", bidamount);
+                                intent.putExtra("cv", CV);
+                                intent.putExtra("pp", profile_pic);
+                                intent.putExtra("gigname", gigname);
+                                intent.putExtra("gigdescription", gigdescription);
+                                intent.putExtra("gigskills", gigskills);
+                                intent.putExtra("gigprice", gigprice);
+                                intent.putExtra("gigid", gigid);
+                                intent.putExtra("startdate", startdate);
+                                intent.putExtra("enddate", enddate);
+                                startActivity(intent);
+                            }else{
+                                //send to adapter
+                                loading.setVisibility(View.GONE);
+                                //populate values on the listview
+                                SeeBidsAdapter seeBidsAdapter = new SeeBidsAdapter(SeeBids.this, Array_biddername, Array_bidderemail, Array_bidstatus, Array_bidamount, Array_bidid, Array_gigid, Array_cv, Array_pp, gigname);
+                                my_list.setAdapter(seeBidsAdapter);
+                            }
 
 
                         }
                         catch (JSONException e){
 //                            e.printStackTrace();
+                            loading.setVisibility(View.GONE);
                             try {
                                 JSONObject jsonObject = new JSONObject(response);
                                 String status = jsonObject.getString("status");
@@ -149,7 +191,7 @@ public class SeeBids extends AppCompatActivity {
                                 if (status.equals("no gig found")){
                                     notification_text.setVisibility(View.VISIBLE);
                                     my_list.setVisibility(View.GONE);
-                                    radioGroup.setVisibility(View.GONE);
+//                                    radioGroup.setVisibility(View.GONE);
                                 }
                             } catch (JSONException ex) {
                                 ex.printStackTrace();
@@ -162,9 +204,7 @@ public class SeeBids extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
                         volleyError.printStackTrace();
-
-                        progressBar.setVisibility(View.GONE);
-                        loading_text.setVisibility(View.GONE);
+                        loading.setVisibility(View.GONE);
                     }
                 }){
             @Override
@@ -177,22 +217,23 @@ public class SeeBids extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
-    }
+        DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(retryPolicy);
+        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+            @Override
+            public void onRequestFinished(Request<Object> request) {
+                requestQueue.getCache().clear();
+            }
+        });
 
-    public void returnFromAdapter(int returnLength) {
-        // do what you want with invoiceId
-        bid_count.setText(String.valueOf(returnLength));
+        Array_biddername.clear();
+        Array_bidderemail.clear();
+        Array_bidstatus.clear();
+        Array_bidamount.clear();
+        Array_bidid.clear();
+        Array_gigid.clear();
+        Array_cv.clear();
+        Array_pp.clear();
 
-        if(returnLength == 1){
-            radioGroup.setVisibility(View.VISIBLE);
-//            SeeBidsAdapter seeBidsAdapter = new SeeBidsAdapter(SeeBids.this, Array_biddername, Array_bidderemail, Array_bidstatus, Array_bidamount, Array_bidid, Array_gigid, Array_cv);
-//            seeBidsAdapter.radioGroup.setVisibility(View.VISIBLE);
-
-        }else if(returnLength == 0){
-            notification_text.setVisibility(View.VISIBLE);
-            my_list.setVisibility(View.GONE);
-            radioGroup.setVisibility(View.GONE);
-        }
-//        my_list.
     }
 }

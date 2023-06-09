@@ -42,19 +42,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_light"
                     android:text="Welcome Back!"
                     android:textColor="#ffffff"
                     android:textSize="10dp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/fullname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="Username"
                     android:textColor="#ffffff"
                     android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:id="@+id/fullname"/>
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <TextView
@@ -63,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
+                android:fontFamily="@font/poppins_regular"
                 android:paddingBottom="6dp"
                 android:text="Group Name"
                 android:textColor="#ffffff"
@@ -104,6 +107,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="60dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:hint="Tutorial Resource Name"
                     android:singleLine="true"
                     android:textColor="#ffffff"
@@ -114,6 +118,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_light"
                     android:text="Name"
                     android:textColor="@color/lb_grey"
                     android:textSize="8dp" />
@@ -123,6 +128,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:hint="Tutorial Description"
                     android:singleLine="true"
                     android:textColor="#ffffff"
@@ -133,6 +139,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_light"
                     android:text="Description"
                     android:textColor="@color/lb_grey"
                     android:textSize="8dp" />
@@ -191,6 +198,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="30dp"
+                        android:fontFamily="@font/poppins_light"
                         android:paddingBottom="5dp"
                         android:text="Media File"
                         android:textColor="@color/lb_grey"
@@ -246,6 +254,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="20dp"
         android:background="@drawable/rounded_orange"
+        android:fontFamily="@font/poppins_bold"
         android:text="Save"
         android:textAllCaps="false"
         android:textColor="#ffffff"

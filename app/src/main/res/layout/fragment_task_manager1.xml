@@ -14,33 +14,38 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hi, Lisa!"
-                android:id="@+id/name"
-                android:textColor="#ffffff"
+                android:fontFamily="@font/poppins_light"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
-                android:textSize="15dp"/>
+                android:text="Hi, Lisa!"
+                android:textColor="#ffffff"
+                android:textSize="15dp" />
+
             <TextView
+                android:id="@+id/num_of_task"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/num_of_task"
+                android:fontFamily="@font/poppins_black"
+                android:paddingLeft="10dp"
+                android:paddingBottom="5dp"
                 android:text="0 task \nfor today"
                 android:textColor="#ffffff"
                 android:textSize="25dp"
-                android:textStyle="bold"
-                android:paddingLeft="10dp"
-                android:paddingBottom="5dp"/>
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tasks"
-                android:textStyle="bold"
-                android:textSize="25dp"
-                android:textColor="#8cc63e"
+                android:fontFamily="@font/poppins_bold"
                 android:paddingLeft="10dp"
-                android:paddingBottom="5dp"/>
+                android:paddingBottom="5dp"
+                android:text="Tasks"
+                android:textColor="#8cc63e"
+                android:textSize="25dp"
+                android:textStyle="bold" />
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -66,9 +71,10 @@
                         android:paddingLeft="10dp">
 
                         <TextView
+                            android:id="@+id/countExam"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/countExam"
+                            android:fontFamily="@font/poppins_light"
                             android:text="0 tasks"
                             android:textColor="#ffffff"
                             android:textSize="10dp" />
@@ -76,6 +82,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
                             android:text="Exam"
                             android:textColor="#ffffff"
                             android:textSize="13dp"
@@ -93,9 +100,10 @@
                         android:paddingLeft="10dp">
 
                         <TextView
+                            android:id="@+id/countTest"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/countTest"
+                            android:fontFamily="@font/poppins_light"
                             android:text="0 tasks"
                             android:textColor="#ffffff"
                             android:textSize="10dp" />
@@ -103,6 +111,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
                             android:text="Tests"
                             android:textColor="#ffffff"
                             android:textSize="13dp"
@@ -121,9 +130,10 @@
                         android:paddingRight="10dp">
 
                         <TextView
+                            android:id="@+id/countAssignment"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/countAssignment"
+                            android:fontFamily="@font/poppins_light"
                             android:text="0 tasks"
                             android:textColor="#ffffff"
                             android:textSize="10dp" />
@@ -131,6 +141,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
                             android:text="Assignments"
                             android:textColor="#ffffff"
                             android:textSize="13dp"
@@ -138,7 +149,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/others"
+                        android:id="@+id/games"
                         android:layout_width="110dp"
                         android:layout_height="150dp"
                         android:background="@drawable/tm15"
@@ -151,7 +162,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/countOthers"
+                            android:id="@+id/countGames"
                             android:text="0 tasks"
                             android:textColor="#ffffff"
                             android:textSize="10dp" />
@@ -159,7 +170,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Others"
+                            android:text="Games"
                             android:textColor="#ffffff"
                             android:textSize="13dp"
                             android:textStyle="bold" />
@@ -229,17 +240,17 @@
             </HorizontalScrollView>
 
 
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Personal Tasks"
-                android:textStyle="bold"
-                android:textSize="25dp"
-                android:textColor="#8cc63e"
-                android:paddingTop="10dp"
+                android:fontFamily="@font/poppins_bold"
                 android:paddingLeft="10dp"
-                android:paddingBottom="5dp"/>
+                android:paddingTop="10dp"
+                android:paddingBottom="5dp"
+                android:text="Personal Tasks"
+                android:textColor="#8cc63e"
+                android:textSize="25dp"
+                android:textStyle="bold" />
 
             <com.google.android.material.tabs.TabLayout
                 android:layout_width="150dp"

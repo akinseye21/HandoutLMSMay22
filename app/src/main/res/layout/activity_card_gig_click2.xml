@@ -6,8 +6,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#293241"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         android:paddingBottom="10dp"
         tools:context=".CardGigClick2">
 
@@ -16,6 +14,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
             android:id="@+id/rel1">
         <ImageView
                 android:layout_width="30dp"
@@ -31,16 +30,18 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
             <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
                 <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
+                    android:id="@+id/image"
                         android:src="@drawable/profile_header"/>
                 <LinearLayout
                         android:layout_width="wrap_content"
@@ -52,9 +53,9 @@
                             android:layout_marginLeft="5dp"
                             android:id="@+id/name"
                             android:text="Ada Kayari"
-                            android:textSize="13dp"
                             android:textStyle="bold"
-                            android:textColor="#ffffff"/>
+                            android:textColor="#ffffff"
+                        android:fontFamily="@font/poppins_bold"/>
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -63,7 +64,8 @@
                             android:text="Civil Engineering"
                             android:textSize="10dp"
                             android:textStyle="normal"
-                            android:textColor="#ffffff"/>
+                            android:textColor="#ffffff"
+                        android:fontFamily="@font/poppins_regular"/>
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -72,7 +74,8 @@
                             android:text="University of Abuja"
                             android:textSize="10dp"
                             android:textStyle="normal"
-                            android:textColor="#ffffff"/>
+                            android:textColor="#ffffff"
+                        android:fontFamily="@font/poppins_regular"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -91,20 +94,27 @@
                     android:layout_marginLeft="25dp"
                     android:layout_marginTop="20dp"
                     android:text="Project Name"
-                    android:textSize="10dp"
                     android:textStyle="bold"
-                    android:textColor="#4bc93c"/>
+                    android:textColor="#8cc63e"
+                android:fontFamily="@font/poppins_bold"/>
 
-            <LinearLayout
+            <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
-                <ImageView
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true">
+                    <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic157"/>
-                <TextView
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -112,22 +122,33 @@
                         android:text="Website Design"
                         android:textSize="13dp"
                         android:textStyle="bold"
-                        android:textColor="#ffffff"/>
+                        android:textColor="#ffffff"
+                        android:fontFamily="@font/poppins_regular"/>
+                </LinearLayout>
 
-                <ImageView
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true">
+                    <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:layout_marginLeft="80dp"
                         android:src="@drawable/ic178"/>
-                <TextView
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Open"
                         android:textSize="10dp"
                         android:textStyle="italic"
                         android:textColor="#ffffff"/>
+                </LinearLayout>
 
-            </LinearLayout>
+
+            </RelativeLayout>
 
             <TextView
                     android:layout_width="wrap_content"
@@ -135,9 +156,9 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="25dp"
                     android:text="Project Description"
-                    android:textSize="10dp"
                     android:textStyle="bold"
-                    android:textColor="#4bc93c"/>
+                android:textColor="#8cc63e"
+                android:fontFamily="@font/poppins_bold"/>
 
             <LinearLayout
                     android:layout_width="match_parent"
@@ -154,9 +175,9 @@
                         android:layout_marginLeft="5dp"
                         android:id="@+id/gig_description"
                         android:text="Lorium ipsium, the description of the project will be displayed here. hahi jeie hiy qi hish s   iw eh ihi whoefhi w iwhe he hihwe wiuf wu ei h ueukw"
-                        android:textSize="13dp"
                         android:textStyle="normal"
-                        android:textColor="#ffffff"/>
+                        android:textColor="#ffffff"
+                    android:fontFamily="@font/poppins_regular"/>
 
             </LinearLayout>
 
@@ -166,9 +187,9 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="25dp"
                     android:text="Payment structure"
-                    android:textSize="10dp"
                     android:textStyle="bold"
-                    android:textColor="#4bc93c"/>
+                android:textColor="#8cc63e"
+                android:fontFamily="@font/poppins_bold"/>
 
             <LinearLayout
                     android:layout_width="match_parent"
@@ -192,7 +213,8 @@
                             android:text="$1,000 - $1,500"
                             android:textSize="13dp"
                             android:textStyle="bold"
-                            android:textColor="#ffffff"/>
+                            android:textColor="#ffffff"
+                        android:fontFamily="@font/poppins_regular"/>
 <!--                    <TextView-->
 <!--                            android:layout_width="wrap_content"-->
 <!--                            android:layout_height="wrap_content"-->
@@ -215,33 +237,36 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                     android:layout_marginBottom="3dp"
                         android:text="NGN:"
                         android:textSize="13dp"
                         android:textStyle="bold"
-                        android:textColor="#ffffff"/>
+                        android:textColor="#ffffff"
+                    android:fontFamily="@font/poppins_bold"/>
                 <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_marginTop="3dp"
                         android:orientation="vertical">
                     <EditText
                             android:layout_width="match_parent"
-                            android:layout_height="20dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:hint="Enter Amount"
                             android:id="@+id/bidAmount"
-                            android:textColorHint="#ffffff"
-                            android:textColor="#ffffff"
                             android:textSize="13dp"
                             android:inputType="number"
                             android:background="@null"
                             android:layout_marginTop="8dp"
-                            />
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:textColor="#ffffff"
+                        android:textColorHint="@color/lb_grey"
+                        android:fontFamily="@font/poppins_regular"/>
                     <View
                             android:layout_width="match_parent"
-                            android:layout_height="0.1dp"
+                            android:layout_height="1dp"
                             android:layout_marginLeft="10dp"
                             android:background="#ffffff"/>
 
@@ -257,8 +282,6 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/green_outline"
                     android:layout_marginTop="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     android:id="@+id/uploadCV"
                     android:gravity="center"
                     android:padding="20dp"
@@ -266,23 +289,25 @@
                 <ImageView
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:tint="#65dc9a"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/home_ic4"/>
+                    android:layout_centerVertical="true"
+                        android:src="@drawable/home_ic4"
+                    app:tint="#8cc63e" />
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Upload CV"
                         android:textSize="10dp"
                         android:paddingLeft="5dp"
-                        android:textColor="#65dc9a"/>
+                        android:textColor="#8cc63e"
+                    android:fontFamily="@font/poppins_light"/>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Please kindly upload your curriculum vitae in PDF format ONLY"
                         android:textSize="10dp"
                         android:paddingLeft="10dp"
-                        android:textColor="#ffffff"/>
+                        android:textColor="#ffffff"
+                    android:fontFamily="@font/poppins_light"/>
 
             </LinearLayout>
 
@@ -298,7 +323,8 @@
                         android:text="File: "
                         android:textStyle="bold"
                         android:textColor="#ffffff"
-                        android:textSize="10dp"/>
+                        android:textSize="10dp"
+                    android:fontFamily="@font/poppins_bold"/>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -307,7 +333,8 @@
                         android:textColor="#ffffff"
                         android:textStyle="italic"
                         android:textSize="10dp"
-                        android:text="......no file selected....."/>
+                        android:text="......no file selected....."
+                    android:fontFamily="@font/poppins_italic"/>
 
             </LinearLayout>
 
@@ -325,6 +352,7 @@
                     android:id="@+id/upload_text"
                     android:visibility="gone"
                     android:text="Biding... Please wait"
+                android:fontFamily="@font/poppins_regular"
                     android:textColor="#ffffff"/>
 
 
@@ -341,7 +369,8 @@
                     android:layout_marginBottom="30dp"
                     android:id="@+id/finish"
                     android:layout_gravity="center"
-                    android:layout_marginTop="30dp" />
+                    android:layout_marginTop="30dp"
+                android:fontFamily="@font/poppins_bold"/>
         </LinearLayout>
     </ScrollView>
 

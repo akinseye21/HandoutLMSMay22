@@ -12,99 +12,108 @@
         android:paddingBottom="30dp">
 
         <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:id="@+id/progressBar"
+            android:layout_centerInParent="true">
+            <ProgressBar
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:indeterminateTint="#fff"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loading..."
+                android:textSize="12dp"
+                android:textColor="#fff"
+                android:fontFamily="@font/poppins_regular"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical"
             android:id="@+id/one">
 
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:id="@+id/progressBar"/>
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="You have no notification for today"
-                android:textColor="#ffffff"
+                android:textColor="@color/lb_grey"
+                android:textSize="10dp"
                 android:layout_toRightOf="@+id/lin"
-                android:paddingLeft="5dp"
+                android:gravity="center"
                 android:drawableTop="@drawable/notification"
+                android:drawableTint="@color/lb_grey"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_centerVertical="true"
                 android:id="@+id/no_notification"
                 android:visibility="gone"
+                android:fontFamily="@font/poppins_regular"
                 android:textStyle="bold" />
 
 
             <ListView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:dividerHeight="0dp"
                 android:divider="@null"
                 android:id="@+id/listview_today_tasks"/>
 
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/add"
-                android:layout_gravity="center_horizontal"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
 
-                <RelativeLayout
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@drawable/circle_green"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="+"
-                        android:textColor="#ffffff"
-                        android:textSize="8dp"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="Add a new task"
-                    android:textColor="#ffffff"
-                    android:textSize="15dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
 
 
         </LinearLayout>
 
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/add"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
+            <RelativeLayout
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/circle_green"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="+"
+                    android:textColor="#ffffff"
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/poppins_light"
+                android:text="Add a new task"
+                android:textColor="#ffffff"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </RelativeLayout>
-
-
-    <!--    <ScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent">-->
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="vertical">-->
-
-
-
-
-
-<!--        </LinearLayout>-->
-<!--    </ScrollView>-->
 
 </FrameLayout>

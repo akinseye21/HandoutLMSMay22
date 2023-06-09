@@ -2,9 +2,11 @@ package com.example.handoutlms;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -59,9 +61,10 @@ public class FeedDashboardHome extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private OnFragmentViewCreatedListener callback;
     RelativeLayout tutors, games, gigs;
-    private TabLayout tab;
-    private ViewPager viewpager2;
+    TabLayout tab;
+    ViewPager viewpager2;
     LinearLayout ext_yel, ext_pink, ext_green;
     View lineview;
     ListView my_list;
@@ -74,6 +77,8 @@ public class FeedDashboardHome extends Fragment {
 
     TabLayout tabLayout;
     SwipeRefreshLayout swipeRefreshLayout;
+    SharedPreferences preferences;
+    String got_email;
 
 
     //array for all users
@@ -134,6 +139,15 @@ public class FeedDashboardHome extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v =inflater.inflate(R.layout.fragment_feed_dashboard_home, container, false);
+
+        // Call the callback method to notify the Activity
+        if (callback != null) {
+            callback.onFragmentViewCreated(v);
+        }
+
+        preferences = getContext().getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
+        got_email = preferences.getString("email", "not available");
+
         tutors = v.findViewById(R.id.tutor);
         games = v.findViewById(R.id.games);
         gigs = v.findViewById(R.id.gigs);
@@ -154,7 +168,7 @@ public class FeedDashboardHome extends Fragment {
 
         viewpager2 = v.findViewById(R.id.viewpager);
         addTabs2(viewpager2);
-        tab = v.findViewById(R.id.tabLayout);
+        tab = v.findViewById(R.id.tablayout);
         tab.setupWithViewPager(viewpager2);
         tab.setOnTabSelectedListener(
                 new TabLayout.ViewPagerOnTabSelectedListener(viewpager2) {
@@ -202,6 +216,7 @@ public class FeedDashboardHome extends Fragment {
                     }
                 }
         );
+
 
 
 
@@ -504,27 +519,90 @@ public class FeedDashboardHome extends Fragment {
         });
 
 
-        tabLayout = getActivity().findViewById(R.id.tabLayout);
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
+//        ViewPager viewPager = getActivity().findViewById(R.id.viewpager);
+//        tabLayout = getActivity().findViewById(R.id.tablayout);
+////        tabLayout.setupWithViewPager(viewPager);
+//        tabLayout.setOnTabSelectedListener(
+//                new TabLayout.OnTabSelectedListener() {
+//
+//                    @Override
+//                    public void onTabSelected(TabLayout.Tab tab) {
+//                        if (tab.getPosition() == 1){
+//
+//                        }
+//                        else if(tab.getPosition() == 2){
+//
+//                        }
+//                        else if(tab.getPosition() == 0){
+//                            viewpager2.setVisibility(View.GONE);
+//                            ext_pink.setVisibility(View.GONE);
+//                            ext_yel.setVisibility(View.GONE);
+//                            ext_green.setVisibility(View.GONE);
+//                            swipeRefreshLayout.setVisibility(View.GONE);
+//                            lineview.setVisibility(View.GONE);
+////                            navigateFragment(0);
+//                            noNot.setVisibility(View.GONE);
+//                            progressBar.setVisibility(View.GONE);
+//                            progressText.setVisibility(View.GONE);
+//                            swipeRefreshLayout.setVisibility(View.GONE);
+//
+//                        }
+//                        else if(tab.getPosition() == 3){
+//
+//                        }
+//                        else if(tab.getPosition() == 4){
+//
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onTabUnselected(TabLayout.Tab tab) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onTabReselected(TabLayout.Tab tab) {
+////                        super.onTabReselected(tab);
+//                        if(tab.getPosition() == 0){
+//                            viewpager2.setVisibility(View.GONE);
+//                            ext_pink.setVisibility(View.GONE);
+//                            ext_yel.setVisibility(View.GONE);
+//                            ext_green.setVisibility(View.GONE);
+//                            swipeRefreshLayout.setVisibility(View.GONE);
+//                            lineview.setVisibility(View.GONE);
+////                            navigateFragment(0);
+//                            noNot.setVisibility(View.GONE);
+//                            progressBar.setVisibility(View.GONE);
+//                            progressText.setVisibility(View.GONE);
+//                            swipeRefreshLayout.setVisibility(View.GONE);
+//
+//                        }
+//                    }
+//                }
+//        );
 
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-                if(tab.getPosition() == 0){
-                    Intent j = new Intent(getContext(), FeedsDashboard.class);
-                    startActivity(j);
-                    getActivity().finish();
-                }
-            }
-        });
+//        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//                if(tab.getPosition() == 0){
+//                    Intent j = new Intent(getContext(), FeedsDashboard.class);
+//                    j.putExtra("email", got_email);
+//                    j.putExtra("sent from", "");
+//                    startActivity(j);
+//                    getActivity().finish();
+//                }
+//            }
+//        });
 
 
         tutors.setOnClickListener(new View.OnClickListener() {
@@ -603,21 +681,19 @@ public class FeedDashboardHome extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+        if (context instanceof OnFragmentViewCreatedListener) {
+            callback = (OnFragmentViewCreatedListener) context;
         }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        callback = null;
     }
+
 
     /**
      * This interface must be implemented by activities that contain this
@@ -664,4 +740,9 @@ public class FeedDashboardHome extends Fragment {
 
 
     }
+
+    public interface OnFragmentViewCreatedListener {
+        void onFragmentViewCreated(View view);
+    }
+
 }

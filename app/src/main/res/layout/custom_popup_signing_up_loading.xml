@@ -15,16 +15,17 @@
         android:layout_marginTop="20dp"/>
 
     <TextView
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:id="@+id/text"
-        android:textSize="15dp"
+        android:fontFamily="@font/poppins_light"
+        android:gravity="center"
         android:text="Signing up. Please wait..."
-        android:textColor="#f4000000"/>
+        android:textColor="#f4000000"
+        android:textSize="15dp" />
 
 
 

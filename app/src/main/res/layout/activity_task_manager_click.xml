@@ -83,6 +83,27 @@
 
 
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:id="@+id/no_task"
+            android:visibility="gone"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/notification"
+                app:tint="#fff" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You have no task in this category\nYou can add task to your category\nfrom the dashboard"
+                android:gravity="center"
+                android:textColor="@color/lb_grey"
+                android:textSize="12dp"/>
+        </LinearLayout>
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

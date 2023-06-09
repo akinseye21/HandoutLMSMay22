@@ -23,7 +23,7 @@ public class PendingList4Tutorial extends AppCompatActivity {
     ArrayList<String> arr_email = new ArrayList<>();
     ArrayList<String> arr_name = new ArrayList<>();
     ArrayList<String> arr_picture = new ArrayList<>();
-    String from, id;
+    String from, id, groupName, category, description, mode, date, name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +35,15 @@ public class PendingList4Tutorial extends AppCompatActivity {
         arr_email = i.getStringArrayListExtra("email");
         arr_name = i.getStringArrayListExtra("name");
         arr_picture = i.getStringArrayListExtra("picture");
+        //send from here back
         from = i.getStringExtra("from");
         id = i.getStringExtra("id");
+        groupName = i.getStringExtra("groupName");
+        category = i.getStringExtra("category");
+        description = i.getStringExtra("description");
+        mode = i.getStringExtra("mode");
+        date = i.getStringExtra("date");
+        name = i.getStringExtra("named");
 
         text = findViewById(R.id.text);
         icon = findViewById(R.id.icon);
@@ -47,6 +54,16 @@ public class PendingList4Tutorial extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 onBackPressed();
+//                Intent i = new Intent(PendingList4Tutorial.this, ClickTutOnProfile.class);
+//                i.putExtra("groupName", groupName);
+//                i.putExtra("name", name);
+//                i.putExtra("category", category);
+//                i.putExtra("description", description);
+//                i.putExtra("mode", mode);
+//                i.putExtra("id", id);
+//                i.putExtra("date", date);
+//                startActivity(i);
+
             }
         });
 
@@ -66,7 +83,11 @@ public class PendingList4Tutorial extends AppCompatActivity {
             listview.setVisibility(View.VISIBLE);
             PendingAdapterClass pendingAdapterClass = new PendingAdapterClass(PendingList4Tutorial.this, arr_email, arr_name, arr_picture, from, id);
             listview.setAdapter(pendingAdapterClass);
+
         }
+
+
+
 
 
     }

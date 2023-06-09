@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
+                android:fontFamily="@font/poppins_bold"
                 android:text="Federal University of Technology , Minna"
                 android:textColor="#ffffff"
                 android:textSize="10dp"
@@ -33,31 +34,34 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/department"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/department"
+            android:layout_marginLeft="25dp"
+            android:fontFamily="@font/montserrat_thin"
             android:text="Physics/Electronics"
             android:textColor="#ffffff"
-            android:textSize="10dp"
-            android:layout_marginLeft="25dp"/>
+            android:textSize="10dp" />
 
         <TextView
+            android:id="@+id/qualification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/qualification"
+            android:layout_marginLeft="25dp"
+            android:fontFamily="@font/poppins_thin"
             android:text="Bachelor of Technology - Btech"
             android:textColor="#ffffff"
-            android:textSize="10dp"
-            android:layout_marginLeft="25dp"/>
+            android:textSize="10dp" />
 
         <TextView
+            android:id="@+id/year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/year"
+            android:layout_marginLeft="25dp"
+            android:fontFamily="@font/poppins_thin"
             android:text="2005 - 2011"
             android:textColor="#ffffff"
-            android:textSize="10dp"
-            android:layout_marginLeft="25dp"/>
+            android:textSize="10dp" />
 
         <View
             android:layout_width="match_parent"

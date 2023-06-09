@@ -42,6 +42,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Welcome Back!"
                     android:textColor="#ffffff"
                     android:textSize="10dp"
@@ -50,6 +51,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="Username"
                     android:textColor="#ffffff"
                     android:textSize="20dp"
@@ -64,6 +66,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
                 android:paddingBottom="6dp"
+                android:fontFamily="@font/poppins_regular"
                 android:text="Group Name"
                 android:textColor="#ffffff"
                 android:textSize="10dp"
@@ -78,6 +81,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:id="@+id/lin_loading"
+        android:gravity="center"
         android:layout_centerInParent="true">
         <ProgressBar
             android:layout_width="20dp"
@@ -86,6 +90,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
             android:text="Loading"
             android:textSize="8dp"
             android:textColor="#ffffff"/>

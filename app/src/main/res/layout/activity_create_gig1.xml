@@ -16,11 +16,12 @@
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp"
         android:id="@+id/rel1">
+
         <ImageView
+            android:id="@+id/back"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/back"
-            android:src="@drawable/arrow_left"/>
+            android:src="@drawable/arrow_left" />
 
     </RelativeLayout>
 
@@ -28,200 +29,226 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="10dp">
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="Tell us what you need done"
+                android:fontFamily="@font/poppins_black"
+                android:text="Tell us what\nyou need done"
                 android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:textSize="25dp"/>
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
                 android:text="Contact skilled freelancer within minutes"
                 android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:textSize="13dp"/>
+                android:textSize="13dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Choose a name for your project"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="10dp"
-                android:textColor="#65dc9a"
-                android:textSize="13dp"/>
-
-            <EditText
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:singleLine="true"
-                android:hint="Project name e.g build a website"
-                android:textColorHint="#ffffff"
-                android:textColor="#ffffff"
-                android:textSize="12dp"
-                android:id="@+id/edt_projectname"
-                android:background="@null"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:background="#ffffff"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Project description"
-                android:layout_marginTop="40dp"
-                android:layout_marginLeft="10dp"
-                android:textColor="#65dc9a"
-                android:textSize="13dp"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:singleLine="true"
-                android:hint="Write a description"
-                android:textColorHint="#ffffff"
-                android:textColor="#ffffff"
-                android:textSize="12dp"
-                android:id="@+id/edt_projectdesc"
-                android:background="@null"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:background="#ffffff"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Required skills"
-                android:layout_marginTop="40dp"
-                android:layout_marginLeft="10dp"
-                android:textColor="#65dc9a"
-                android:textSize="13dp"/>
-
-<!--                <AutoCompleteTextView-->
-<!--                    android:id="@+id/autoCompleteTextView"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="40dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:hint="Select skills"-->
-<!--                    android:layout_marginLeft="10dp"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:textSize="12dp"-->
-<!--                    android:textColor="#ffffff"-->
-<!--                    android:textColorHint="#ffffff"-->
-<!--                    />-->
-
-            <AutoCompleteTextView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:id="@+id/auto1"
-                android:hint="Select Skills"
-                android:textColorHint="#ffffff"
-                android:textColor="#ffffff"
-                android:textSize="12dp"
-                android:background="@null"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:background="#ffffff"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="horizontal"
-            android:visibility="gone"
-            android:id="@+id/skills_layout"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical"
-            android:background="@drawable/green_outline"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
-            <GridView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:numColumns="3"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center_horizontal"
-                android:verticalSpacing="10dp"
-                android:id="@+id/mylist"/>
-        </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="40dp"
-                android:visibility="gone"
-                android:gravity="center_vertical"
-                android:background="@drawable/green_outline"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp">
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:tint="#65dc9a"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/home_ic4"/>
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="5dp"
-                    android:text="Upload files"
-                    android:textColor="#65dc9a"
-                    android:textSize="12dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add Images or files that will be helpful in experiencing your brief"
-                    android:textColor="#ffffff"
-                    android:textSize="8dp"
-                    android:layout_marginLeft="30dp"/>
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Choose a name for your project"
+                        android:textColor="#8cc63e" />
 
-            <Button
-                android:layout_width="150dp"
-                android:layout_height="27dp"
-                android:layout_gravity="center"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:text="Next"
-                android:textSize="14dp"
-                android:textColor="#ffffff"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="50dp"
-                android:background="@drawable/rounded_orange"
-                android:textAllCaps="false"
-                android:id="@+id/next"/>
+                    <EditText
+                        android:id="@+id/edt_projectname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="Project name e.g build a website"
+                        android:inputType="textCapSentences"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:singleLine="true"
+                        android:textColor="#ffffff"
+                        android:textColorHint="@color/lb_grey"
+                        android:textSize="15dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#ffffff" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Project description"
+                        android:textColor="#8cc63e" />
+
+                    <EditText
+                        android:id="@+id/edt_projectdesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="Write a description"
+                        android:inputType="textCapSentences"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:singleLine="true"
+                        android:textColor="#ffffff"
+                        android:textColorHint="@color/lb_grey"
+                        android:textSize="15dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#ffffff" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Required skills"
+                        android:textColor="#8cc63e" />
+
+                    <MultiAutoCompleteTextView
+                        android:id="@+id/auto2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@null"
+                        android:completionThreshold="1"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="Select Skills"
+                        android:textColor="#ffffff"
+                        android:textColorHint="@color/lb_grey"
+                        android:textSize="15dp" />
+
+                    <!--                    <AutoCompleteTextView-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="40dp"-->
+                    <!--                        android:layout_marginRight="10dp"-->
+                    <!--                        android:id="@+id/auto1"-->
+                    <!--                        android:hint="Select Skills"-->
+                    <!--                        android:completionHint="Select Skills"-->
+                    <!--                        android:textColorHint="@color/lb_grey"-->
+                    <!--                        android:textColor="#ffffff"-->
+                    <!--                        android:textSize="15dp"-->
+                    <!--                        android:fontFamily="@font/poppins_regular"-->
+                    <!--                        android:background="@null"-->
+                    <!--                        android:completionThreshold="1"/>-->
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#ffffff" />
+
+                    <LinearLayout
+                        android:id="@+id/skills_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/green_outline"
+                        android:visibility="gone">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="horizontal" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/green_outline"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="20dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="20dp"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/home_ic4"
+                            app:tint="#65dc9a" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="5dp"
+                            android:text="Upload files"
+                            android:textColor="#65dc9a"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:text="Add Images or files that will be helpful in experiencing your brief"
+                            android:textColor="#ffffff"
+                            android:textSize="8dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/next"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lin_offline_tutorial"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginBottom="30dp"
+                        android:background="@drawable/rounded_orange"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:text="Next"
+                            android:textColor="#ffffff" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
 
 
         </LinearLayout>

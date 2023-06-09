@@ -128,9 +128,6 @@ public class Login extends AppCompatActivity {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-//                                progressBar.setVisibility(View.GONE);
-
-                                System.out.println("Login Response = "+response);
 
                                 try{
                                     JSONObject jsonObject = new JSONObject(response);
@@ -161,7 +158,7 @@ public class Login extends AppCompatActivity {
 
                                                         if(task.isSuccessful()){
 
-                                                            createNotificationCahnnel();
+                                                            createNotificationChannel();
 
                                                             Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
                                                             Intent i = new Intent(Login.this, FeedsDashboard.class);
@@ -224,7 +221,7 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    private void createNotificationCahnnel() {
+    private void createNotificationChannel() {
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             NotificationChannel channel = manager.getNotificationChannel(CHANNEL_ID);
@@ -251,7 +248,7 @@ public class Login extends AppCompatActivity {
                 .setAutoCancel(false)
                 .setTicker("Notification");
         builder.setContentIntent(penIntent);
-        NotificationManagerCompat m = NotificationManagerCompat.from(getApplicationContext());
+        NotificationManagerCompat m = NotificationManagerCompat.from(Login.this);
         m.notify(1, builder.build());
     }
 }

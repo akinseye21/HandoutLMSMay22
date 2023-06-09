@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -17,12 +18,13 @@ import java.util.ArrayList;
 public class CreateGig4 extends AppCompatActivity {
 
     CardView standard, agent;
-    Button next;
+    LinearLayout next;
     String standard_update="unselected";
     String agent_update = "unselected";
     ImageView back;
 
-    String projectName, projectDescription, paymentMode, budgetCategory, projectType;
+    String startDate, endDate;
+    String projectName, projectDescription, paymentMode, budgetCategory, projectType = "";
     ArrayList<String> Array_requiredSkills;
 
     @Override
@@ -37,19 +39,22 @@ public class CreateGig4 extends AppCompatActivity {
         Array_requiredSkills  = i.getExtras().getStringArrayList("Required skills");
         paymentMode = i.getStringExtra("Payment mode");
         budgetCategory = i.getStringExtra("Budget category");
+        startDate = i.getStringExtra("Start date");
+        endDate = i.getStringExtra("End date");
 
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), CreateGig3.class);
-                i.putExtra("Project name", projectName);
-                i.putExtra("Project description", projectDescription);
-                i.putStringArrayListExtra("Required skills", Array_requiredSkills);
-                i.putExtra("Payment mode", paymentMode);
-                i.putExtra("Budget category", budgetCategory );
-                i.putExtra("Project type", projectType );
-                startActivity(i);
+                onBackPressed();
+//                Intent i = new Intent(getApplicationContext(), CreateGig3.class);
+//                i.putExtra("Project name", projectName);
+//                i.putExtra("Project description", projectDescription);
+//                i.putStringArrayListExtra("Required skills", Array_requiredSkills);
+//                i.putExtra("Payment mode", paymentMode);
+//                i.putExtra("Budget category", budgetCategory );
+//                i.putExtra("Project type", projectType );
+//                startActivity(i);
             }
         });
 
@@ -112,6 +117,8 @@ public class CreateGig4 extends AppCompatActivity {
                     i.putExtra("Payment mode", paymentMode);
                     i.putExtra("Budget category", budgetCategory );
                     i.putExtra("Project type", projectType );
+                    i.putExtra("Start date", startDate );
+                    i.putExtra("End date", endDate );
                     startActivity(i);
                 } else if(projectType.equals("standard")){
                     Intent i = new Intent(getApplicationContext(), CreateGig5.class);
@@ -121,6 +128,8 @@ public class CreateGig4 extends AppCompatActivity {
                     i.putExtra("Payment mode", paymentMode);
                     i.putExtra("Budget category", budgetCategory );
                     i.putExtra("Project type", projectType );
+                    i.putExtra("Start date", startDate );
+                    i.putExtra("End date", endDate );
                     startActivity(i);
                 } else{
                     Toast.makeText(getApplicationContext(), "Kindly select one card", Toast.LENGTH_LONG).show();
@@ -130,8 +139,8 @@ public class CreateGig4 extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        // do nothing
-    }
+//    @Override
+//    public void onBackPressed() {
+//        // do nothing
+//    }
 }

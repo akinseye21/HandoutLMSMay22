@@ -1,9 +1,15 @@
 package com.example.handoutlms;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +17,7 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.util.Log;
@@ -61,6 +68,7 @@ public class EditResources extends AppCompatActivity {
     String resname, resdesc, reslink;
 
     Dialog myDialog, myDialog2;
+    String CHANNEL_ID = "channelID5";
 
     SharedPreferences preferences;
 
@@ -177,6 +185,25 @@ public class EditResources extends AppCompatActivity {
 
             }
         });
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //get the file name
+                resname = edtTutorialName.getText().toString().trim();
+                //get the file description
+                resdesc = edtTutorialDesc.getText().toString().trim();
+
+                //check for empty field
+                if (resname.equals("") || resdesc.equals("")){
+                    Toast.makeText(EditResources.this, "Value(s) empty", Toast.LENGTH_SHORT).show();
+                    edtTutorialName.setError("Error");
+                    edtTutorialDesc.setError("Error");
+                }else {
+                    //send to DB
+                    updateVideo2();
+                }
+            }
+        });
 
 
     }
@@ -202,6 +229,7 @@ public class EditResources extends AppCompatActivity {
                             if (status.equals("success")){
                                 //show popup of successful
                                 myDialog.dismiss();
+                                createNotificationChannel("Video");
 
                                 myDialog2 = new Dialog(EditResources.this);
                                 myDialog2.setContentView(R.layout.custom_popup_successful_taskmanager);
@@ -215,6 +243,7 @@ public class EditResources extends AppCompatActivity {
                                         myDialog2.dismiss();
                                         Intent intent = new Intent(EditResources.this, VideoCreatorView.class);
                                         intent.putExtra("groupName", groupName);
+                                        intent.putExtra("from", "EditResources");
                                         startActivity(intent);
                                     }
                                 });
@@ -264,6 +293,90 @@ public class EditResources extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
+    private void updateVideo2() {
+        myDialog = new Dialog(EditResources.this);
+        myDialog.setContentView(R.layout.custom_popup_login_loading);
+        TextView text = myDialog.findViewById(R.id.text);
+        text.setText("Uploading, please wait");
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.setCanceledOnTouchOutside(false);
+        myDialog.show();
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, VIDEO_UPDATE,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try{
+                            JSONObject update = new JSONObject(response);
+                            String status = update.getString("status");
+                            if (status.equals("success")){
+                                //show popup of successful
+                                myDialog.dismiss();
+                                createNotificationChannel("Video");
+
+                                myDialog2 = new Dialog(EditResources.this);
+                                myDialog2.setContentView(R.layout.custom_popup_successful_taskmanager);
+                                TextView text = myDialog2.findViewById(R.id.status);
+                                Button home = myDialog2.findViewById(R.id.home);
+                                home.setText("OK");
+                                text.setText("Edit was successful!!");
+                                home.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        myDialog2.dismiss();
+                                        Intent intent = new Intent(EditResources.this, VideoCreatorView.class);
+                                        intent.putExtra("groupName", groupName);
+                                        intent.putExtra("from", "EditResources");
+                                        startActivity(intent);
+                                    }
+                                });
+                                myDialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                myDialog2.setCanceledOnTouchOutside(false);
+                                myDialog2.show();
+
+                            }else{
+                                //toast error deleting
+                                myDialog.dismiss();
+                                Toast.makeText(EditResources.this, "Edit failed. Please try again", Toast.LENGTH_SHORT).show();
+
+                            }
+
+                        }
+                        catch (JSONException e){
+                            myDialog.dismiss();
+                            Toast.makeText(EditResources.this, "Edit failed. Please try again", Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        myDialog.dismiss();
+                        Toast.makeText(EditResources.this, "Edit failed. Please try again", Toast.LENGTH_SHORT).show();
+                        volleyError.printStackTrace();
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<>();
+                params.put("email", myEmail);
+                params.put("resid", resID);
+                params.put("fileDescription", resdesc);
+                params.put("fileName", resname);
+                params.put("fileurl", fileURL);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(EditResources.this);
+        DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(retryPolicy);
+        requestQueue.add(stringRequest);
+    }
 
     @SuppressLint("Range")
     @Override
@@ -330,8 +443,8 @@ public class EditResources extends AppCompatActivity {
                                 if(status.equals("success")){
                                     Toast.makeText(getApplicationContext(), "File Uploaded successfully", Toast.LENGTH_LONG).show();
                                     System.out.println("Status = "+status);
-
                                     myDialog.dismiss();
+                                    createNotificationChannel("PDF");
 
                                     myDialog2 = new Dialog(EditResources.this);
                                     myDialog2.setContentView(R.layout.custom_popup_successful_taskmanager);
@@ -345,6 +458,7 @@ public class EditResources extends AppCompatActivity {
                                             myDialog2.dismiss();
                                             Intent intent = new Intent(EditResources.this, VideoCreatorView.class);
                                             intent.putExtra("groupName", groupName);
+                                            intent.putExtra("from", "EditResources");
                                             startActivity(intent);
                                         }
                                     });
@@ -429,5 +543,36 @@ public class EditResources extends AppCompatActivity {
             byteBuffer.write(buffer, 0, len);
         }
         return byteBuffer.toByteArray();
+    }
+
+    private void createNotificationChannel(String type) {
+        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = manager.getNotificationChannel(CHANNEL_ID);
+            if(channel == null){
+                channel = new NotificationChannel(CHANNEL_ID, "Resource Edited", NotificationManager.IMPORTANCE_DEFAULT);
+                //config notification channel
+                channel.setDescription("[Channel Description]");
+                channel.enableVibration(true);
+                channel.enableLights(true);
+                channel.setVibrationPattern(new long[]{100, 1000, 200, 340});
+                channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+                manager.createNotificationChannel(channel);
+            }
+        }
+        Intent notificationIntent = new Intent(EditResources.this, VideoCreatorView.class);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent penIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.logo)
+                .setStyle(new NotificationCompat.BigTextStyle())
+                .setContentTitle("Resource Edited")
+                .setContentText("You have successfully edited a "+type+" resource in your group - \""+groupName+"\"")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(false)
+                .setTicker("Notification");
+        builder.setContentIntent(penIntent);
+        NotificationManagerCompat m = NotificationManagerCompat.from(EditResources.this);
+        m.notify(6, builder.build());
     }
 }

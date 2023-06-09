@@ -1,6 +1,7 @@
 package com.example.handoutlms;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -16,6 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -45,11 +47,12 @@ public class WeekTask extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    LinearLayout add;
     SharedPreferences preferences;
     String got_email;
     ListView week_task;
     String day, month, year, today;
-    ProgressBar progressBar;
+    LinearLayout progressBar;
     TextView no_notification;
 
     ArrayList<String> arr_task_name = new ArrayList<>();
@@ -102,27 +105,41 @@ public class WeekTask extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_week_task, container, false);
 
-        preferences = getActivity().getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
-        got_email = preferences.getString("email", "not available");
 
         progressBar = v.findViewById(R.id.progressBar);
         no_notification = v.findViewById(R.id.no_notification);
         week_task = v.findViewById(R.id.listview_week_tasks);
+        add = v.findViewById(R.id.add);
+
+
+        preferences = getActivity().getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
+        got_email = preferences.getString("email", "not available");
+
+        return v;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        //clear the array
+        arr_task_name.clear();
+        arr_task_date.clear();
+        arr_task_category.clear();
+        arr_today.clear();
+        arr_task_description.clear();
+        arr_task_time.clear();
 
         Date date=new Date(System.currentTimeMillis());
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-//        int week_year = calendar.get(Calendar.WEEK_OF_YEAR);
-
-//        Toast.makeText(getContext(), "Week of the year "+week+"\nWeek of the month "+week2, Toast.LENGTH_LONG).show();
-//        System.out.println("Week of the year "+week+"\nWeek of the month "+week2);
 
         //today
         day          = (String) DateFormat.format("dd",   date); // 20
         int dayInt = Integer.parseInt(day);
         month  = (String) DateFormat.format("MM",  date); // Jun
         year         = (String) DateFormat.format("yyyy", date); // 2013
-        today = day+"/"+month+"/"+year;
+        today = year+"-"+month+"-"+day;
 
         //get user task
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_TASKS,
@@ -147,11 +164,10 @@ public class WeekTask extends Fragment {
                                     String task_time = section1.getString("dtime");
 
                                     char[] arr = task_date.toCharArray();
-                                    String task_month = String.valueOf(arr[3]) + String.valueOf(arr[4]);
-                                    String task_day = String.valueOf(arr[0]) + String.valueOf(arr[1]);
+                                    String task_month = String.valueOf(arr[5]) + String.valueOf(arr[6]);
+                                    String task_day = String.valueOf(arr[8]) + String.valueOf(arr[9]);
 
                                     //6 days less than today
-
                                     int sixLessToday = dayInt - 6;
 
                                     //6 days greater than today
@@ -161,7 +177,8 @@ public class WeekTask extends Fragment {
                                     //if the task day is 6 less than or 6 greater than today's date
                                     // show on the weeks page
 //                                    System.out.println("Integer Day = "+dayInt);
-                                    System.out.println("task day = "+task_day+", six days less = "+sixLessToday+", six days greater ="+sixGreaterToday);
+//                                    System.out.println("task day = "+task_date+", six days less = "+sixLessToday+", six days greater ="+sixGreaterToday);
+                                    System.out.println("This month = "+month+"\nTask month = "+task_month);
 //                                    Toast.makeText(getContext(), "month = "+month+"\ntask month = "+task_month, Toast.LENGTH_LONG).show();
 
                                     if(month.equals(task_month)){
@@ -172,8 +189,6 @@ public class WeekTask extends Fragment {
                                             arr_task_description.add(task_description);
                                             arr_task_time.add(task_time);
                                             arr_today.add(today);
-
-
                                         }
                                     }
 
@@ -212,19 +227,31 @@ public class WeekTask extends Fragment {
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(retryPolicy);
         requestQueue.add(stringRequest);
+        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+            @Override
+            public void onRequestFinished(Request<Object> request) {
+                requestQueue.getCache().clear();
+            }
+        });
 
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), AddTask.class);
+                i.putExtra("email", got_email);
+                //put the arrays inside the intent also
+                i.putStringArrayListExtra("task name", arr_task_name);
+                i.putStringArrayListExtra("task date", arr_task_date);
+                i.putStringArrayListExtra("task category", arr_task_category);
+                i.putStringArrayListExtra("task description", arr_task_description);
+                i.putStringArrayListExtra("task time", arr_task_time);
+                startActivity(i);
+            }
+        });
 
-        //clear the array
-        arr_task_name.clear();
-        arr_task_date.clear();
-        arr_task_category.clear();
-        arr_today.clear();
-        arr_task_description.clear();
-        arr_task_time.clear();
-
-
-        return v;
     }
 
     public interface OnFragmentInteractionListener {

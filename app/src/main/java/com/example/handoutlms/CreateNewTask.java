@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -52,6 +53,8 @@ public class CreateNewTask extends AppCompatActivity {
     ProgressBar progressBar;
     Dialog myDialog;
     String email;
+    String hour_d, minute_d;
+
 
     Button home;
     TextView stat;
@@ -138,11 +141,12 @@ public class CreateNewTask extends AppCompatActivity {
                                     dy = "0"+dayOfMonth;
                                 else dy = String.valueOf(dayOfMonth);
 
-                                dte.setText(dy + "/"
-                                        + mt + "/" + year);
+//                                dte.setText(dy + "/" + mt + "/" + year);
+                                dte.setText(year + "-" + mt + "-" + dy);
 
                             }
                         }, mYear, mMonth, mDay);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
             }
         });
@@ -152,12 +156,25 @@ public class CreateNewTask extends AppCompatActivity {
                 final Calendar cldr = Calendar.getInstance();
                 int hour = cldr.get(Calendar.HOUR_OF_DAY);
                 int minutes = cldr.get(Calendar.MINUTE);
+
                 // time picker dialog
                 picker = new TimePickerDialog(CreateNewTask.this,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                tme.setText(sHour + ":" + sMinute);
+                                if(sHour<10){
+                                    hour_d = "0"+String.valueOf(sHour);
+                                }else{
+                                    hour_d = String.valueOf(sHour);
+                                }
+                                if(sMinute<10){
+                                    minute_d = "0"+String.valueOf(sMinute);
+                                }else{
+                                    minute_d = String.valueOf(sMinute);
+                                }
+
+//                                tim.setText(sHour + ":" + sMinute);
+                                tme.setText(hour_d+":"+minute_d);
                             }
                         }, hour, minutes, true);
                 picker.show();
@@ -189,7 +206,7 @@ public class CreateNewTask extends AppCompatActivity {
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
-                                    System.out.println("Response = "+response);
+                                    System.out.println("Response Create Task = "+response);
 
                                     progressBar.setVisibility(View.GONE);
 
@@ -205,11 +222,13 @@ public class CreateNewTask extends AppCompatActivity {
                                             myDialog.setContentView(R.layout.custom_popup_successful_taskmanager);
                                             home = myDialog.findViewById(R.id.home);
                                             stat = myDialog.findViewById(R.id.status);
-                                            stat.setText(notification);
+                                            stat.setText("Successfully created task "+task_title);
                                             home.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
-                                                    Intent i = new Intent(getApplicationContext(), FeedsDashboard.class);
+                                                    Intent i = new Intent(CreateNewTask.this, FeedsDashboard.class);
+                                                    i.putExtra("email", email);
+                                                    i.putExtra("sent from", "task");
                                                     startActivity(i);
                                                 }
                                             });
@@ -245,7 +264,15 @@ public class CreateNewTask extends AppCompatActivity {
                     };
 
                     RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                    DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                    stringRequest.setRetryPolicy(retryPolicy);
                     requestQueue.add(stringRequest);
+                    requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+                        @Override
+                        public void onRequestFinished(Request<Object> request) {
+                            requestQueue.getCache().clear();
+                        }
+                    });
                 }
 
             }

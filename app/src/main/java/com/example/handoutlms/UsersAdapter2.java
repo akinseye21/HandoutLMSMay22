@@ -46,7 +46,7 @@ public class UsersAdapter2 extends RecyclerView.Adapter<UsersAdapter2.ViewHolder
             holder.onoff.setText("online");
             holder.onoff.setTextColor(Color.parseColor("#05df29"));
         }
-        if(users.getStatus().equals("offline")){
+        else if(users.getStatus().equals("offline")){
             holder.img_on.setVisibility(View.GONE);
             holder.img_off.setVisibility(View.VISIBLE);
             holder.onoff.setText("offline");

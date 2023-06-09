@@ -33,6 +33,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Game Name:"
                     android:textColor="#ffffff"
                     android:textSize="8dp"
@@ -42,6 +43,7 @@
                     android:id="@+id/gameName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="FIFA 2022 Competition"
                     android:textColor="#ffffff"
                     android:textSize="12dp"
@@ -50,6 +52,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_light"
                     android:paddingTop="2dp"
                     android:text="Date:"
                     android:textColor="#ffffff"
@@ -60,6 +63,7 @@
                     android:id="@+id/gameDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="24/03/2022"
                     android:textColor="#ffffff"
                     android:textSize="8dp"
@@ -68,6 +72,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_light"
                     android:paddingTop="2dp"
                     android:text="Time:"
                     android:textColor="#ffffff"
@@ -78,6 +83,7 @@
                     android:id="@+id/gameTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="5:00pm"
                     android:textColor="#ffffff"
                     android:textSize="8dp"

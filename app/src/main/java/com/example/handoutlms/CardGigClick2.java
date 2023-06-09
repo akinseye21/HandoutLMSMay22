@@ -3,6 +3,7 @@ package com.example.handoutlms;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -33,7 +34,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -45,11 +48,14 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class CardGigClick2 extends AppCompatActivity {
 
     ImageView back;
-    String name, department, school, gigName, gigDescription, paymentStructure, id;
+    String name, department, school, gigName, gigDescription, paymentStructure, id, picture;
     TextView name1, department1, school1, gig_name, gig_description, gig_category, popup_gigName, file_path;
+    CircleImageView pp;
     EditText bidAmount;
     Button finish, close;
     Dialog myDialog;
@@ -87,6 +93,7 @@ public class CardGigClick2 extends AppCompatActivity {
         gigDescription = i.getStringExtra("gig_description");
         paymentStructure = i.getStringExtra("payment_structure");
         id = i.getStringExtra("id");
+        picture = i.getStringExtra("picture");
 
         preferences = getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
         myEmail = preferences.getString("email", "not available");
@@ -104,6 +111,8 @@ public class CardGigClick2 extends AppCompatActivity {
         file_path = findViewById(R.id.file_path);
         upload_text = findViewById(R.id.upload_text);
         progressBar = findViewById(R.id.progressBar);
+        pp = findViewById(R.id.image);
+        Glide.with(CardGigClick2.this).load(picture).into(pp);
 
         name1.setText(name);
         department1.setText(department);
@@ -125,6 +134,7 @@ public class CardGigClick2 extends AppCompatActivity {
 
     }
 
+    @SuppressLint("Range")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (resultCode == RESULT_OK) {
@@ -186,34 +196,45 @@ public class CardGigClick2 extends AppCompatActivity {
                             Log.d("ressssssoo",new String(response.data));
                             rQueue.getCache().clear();
                             try {
-                                JSONObject jsonObject = new JSONObject(new String(response.data));
-                                String status = jsonObject.getString("status");
+                                JSONArray jsonArray = new JSONArray(new String(response.data));
+                                int ArrayLength = jsonArray.length();
 
-                                progressBar.setVisibility(View.GONE);
-                                upload_text.setVisibility(View.GONE);
+//                                JSONObject jsonObject = new JSONObject(new String(response.data));
 
-                                if(status.equals("success")){
-                                    myDialog = new Dialog(CardGigClick2.this);
-                                    myDialog.setContentView(R.layout.custom_popup_bidplaced);
-                                    close = myDialog.findViewById(R.id.close);
-                                    popup_gigName = myDialog.findViewById(R.id.gigName);
-                                    popup_gigName.setText(gigName);
-                                    close.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            Intent i = new Intent(getApplicationContext(), FeedsDashboard.class);
-                                            startActivity(i);
+                                for(int j = 0; j < ArrayLength; j++){
+                                    JSONObject jsonObject = jsonArray.getJSONObject(j);
+                                    String status = jsonObject.getString("status");
+
+                                    progressBar.setVisibility(View.GONE);
+                                    upload_text.setVisibility(View.GONE);
+
+                                    if(status.equals("success")){
+                                        myDialog = new Dialog(CardGigClick2.this);
+                                        myDialog.setContentView(R.layout.custom_popup_bidplaced);
+                                        close = myDialog.findViewById(R.id.close);
+                                        popup_gigName = myDialog.findViewById(R.id.gigName);
+                                        popup_gigName.setText(gigName);
+                                        close.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Intent i = new Intent(getApplicationContext(), FeedsDashboard.class);
+                                                startActivity(i);
 //                                            finish();
-                                        }
-                                    });
-                                    myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                                    myDialog.setCanceledOnTouchOutside(false);
-                                    myDialog.show();
+                                            }
+                                        });
+                                        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                        myDialog.setCanceledOnTouchOutside(false);
+                                        myDialog.show();
 
+                                    }
+                                    else{
+                                        Toast.makeText(getApplicationContext(), "Bid Failed!!", Toast.LENGTH_LONG).show();
+                                    }
                                 }
-                                else{
-                                    Toast.makeText(getApplicationContext(), "Bid Failed!!", Toast.LENGTH_LONG).show();
-                                }
+
+
+
+
 
 
                             } catch (JSONException e) {

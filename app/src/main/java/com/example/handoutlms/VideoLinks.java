@@ -2,11 +2,18 @@ package com.example.handoutlms;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -65,6 +72,8 @@ public class VideoLinks extends AppCompatActivity {
     TextView groupName, viewResources, title;
     String vidName, vidDesc, vidLink;
     String data = "";
+    String got_name, got_category, got_description, got_mode, got_id, got_date;
+    String CHANNEL_ID = "channelID4";
 
 //    int counter = 1;
 
@@ -81,6 +90,12 @@ public class VideoLinks extends AppCompatActivity {
         Intent i = getIntent();
         group_name = i.getStringExtra("group_name");
         email = i.getStringExtra("email");
+        got_name = i.getStringExtra("name");
+        got_category = i.getStringExtra("category");
+        got_description = i.getStringExtra("description");
+        got_mode = i.getStringExtra("mode");
+        got_id = i.getStringExtra("id");
+        got_date = i.getStringExtra("date");
 
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +120,12 @@ public class VideoLinks extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), VideoCreatorView.class);
                 i.putExtra("groupName", group_name);
+                i.putExtra("from", "VideoLinks");
+                i.putExtra("category", got_category);
+                i.putExtra("description", got_description);
+                i.putExtra("mode", got_mode);
+                i.putExtra("id", got_id);
+                i.putExtra("date", got_date);
                 startActivity(i);
             }
         });
@@ -126,7 +147,7 @@ public class VideoLinks extends AppCompatActivity {
                     myDialog.setContentView(R.layout.custom_popup_login_loading);
                     myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     TextView text = myDialog.findViewById(R.id.text);
-                    text.setText("Updating Video Link, please wait");
+                    text.setText("Uploading Video, please wait");
                     myDialog.setCanceledOnTouchOutside(false);
                     myDialog.show();
 
@@ -145,10 +166,9 @@ public class VideoLinks extends AppCompatActivity {
                                         if(status.equals("successful")){
                                             link.setText("");
                                             description.setText("");
-                                            description.setText("");
+                                            videoName.setText("");
                                             myDialog.dismiss();
-                                            Toast.makeText(VideoLinks.this, "Successfully Updated", Toast.LENGTH_LONG).show();
-
+                                            createNotificationChannel();
                                             // create a new dialog popup to add more files or view tutorial group
                                             myDialog2 = new Dialog(VideoLinks.this);
                                             myDialog2.setContentView(R.layout.custom_popup_upload_successful);
@@ -164,9 +184,16 @@ public class VideoLinks extends AppCompatActivity {
                                             viewgroup.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View view) {
+                                                    myDialog2.dismiss();
                                                     // go to the view resources page
                                                     Intent i = new Intent(VideoLinks.this, VideoCreatorView.class);
                                                     i.putExtra("groupName", group_name);
+                                                    i.putExtra("from", "justCreatedResources");
+                                                    i.putExtra("category", got_category);
+                                                    i.putExtra("description", got_description);
+                                                    i.putExtra("mode", got_mode);
+                                                    i.putExtra("id", got_id);
+                                                    i.putExtra("date", got_date);
                                                     startActivity(i);
                                                 }
                                             });
@@ -221,6 +248,37 @@ public class VideoLinks extends AppCompatActivity {
         });
 
 
+    }
+
+    private void createNotificationChannel() {
+        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = manager.getNotificationChannel(CHANNEL_ID);
+            if(channel == null){
+                channel = new NotificationChannel(CHANNEL_ID, "Resources Added", NotificationManager.IMPORTANCE_DEFAULT);
+                //config notification channel
+                channel.setDescription("[Channel Description]");
+                channel.enableVibration(true);
+                channel.enableLights(true);
+                channel.setVibrationPattern(new long[]{100, 1000, 200, 340});
+                channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+                manager.createNotificationChannel(channel);
+            }
+        }
+        Intent notificationIntent = new Intent(VideoLinks.this, VideoCreatorView.class);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent penIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.logo)
+                .setStyle(new NotificationCompat.BigTextStyle())
+                .setContentTitle("Resources Added")
+                .setContentText("You have successfully added a video resource to your group - \""+group_name+"\"")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(false)
+                .setTicker("Notification");
+        builder.setContentIntent(penIntent);
+        NotificationManagerCompat m = NotificationManagerCompat.from(VideoLinks.this);
+        m.notify(5, builder.build());
     }
 
 }

@@ -95,7 +95,7 @@ public class CreateTutorialGroupOnline extends AppCompatActivity {
                                 category[i] = cat2.get(i);
                             }
 
-                            ArrayAdapter<String> categoryadapter = new ArrayAdapter<>(getApplicationContext(), R.layout.simple_spinner_small_whitebg, R.id.tx, category);
+                            ArrayAdapter<String> categoryadapter = new ArrayAdapter<>(getApplicationContext(), R.layout.simple_spinner_small_whitebg2, R.id.tx, category);
                             cat.setAdapter(categoryadapter);
 
                         } catch (JSONException e) {
@@ -139,7 +139,7 @@ public class CreateTutorialGroupOnline extends AppCompatActivity {
                                 institutions[i] = inst2.get(i);
                             }
 
-                            ArrayAdapter<String> institutionadapter = new ArrayAdapter<>(CreateTutorialGroupOnline.this, R.layout.simple_spinner_small_whitebg, R.id.tx, institutions);
+                            ArrayAdapter<String> institutionadapter = new ArrayAdapter<>(CreateTutorialGroupOnline.this, R.layout.simple_spinner_small_whitebg2, R.id.tx, institutions);
                             uni.setAdapter(institutionadapter);
 
                         } catch (JSONException e) {

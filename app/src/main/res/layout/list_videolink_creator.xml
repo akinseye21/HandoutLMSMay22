@@ -74,25 +74,29 @@
                 android:layout_gravity="left"
                 android:layout_below="@+id/rel"
                 android:orientation="vertical">
+
                 <TextView
+                    android:id="@+id/groupName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
+                    android:fontFamily="@font/poppins_bold"
                     android:maxLines="1"
                     android:text="How to create a food"
                     android:textColor="#fff"
                     android:textSize="15dp"
-                    android:id="@+id/groupName"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
+
                 <TextView
+                    android:id="@+id/description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/description"
-                    android:textSize="10dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/poppins_light"
+                    android:maxLines="1"
                     android:text="This is the description of the video that we intend to watch and "
                     android:textColor="#65dc9a"
-                    android:ellipsize="end"
-                    android:maxLines="1"/>
+                    android:textSize="10dp" />
 
 
             </LinearLayout>

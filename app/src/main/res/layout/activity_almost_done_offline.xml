@@ -26,11 +26,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/poppins_black"
         android:text="Almost\nDone!"
         android:textColor="#ffffff"
-        android:textStyle="bold"
         android:textSize="30dp"
-        android:layout_marginLeft="20dp" />
+        android:textStyle="bold" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -46,123 +47,143 @@
                 android:layout_margin="10dp"
                 android:orientation="vertical"
                 android:padding="10dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="Tutorial group name"
-                    android:textColor="#8cc63e"/>
+                    android:textColor="#8cc63e" />
+
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:textSize="13dp"
-                    android:text=""
                     android:id="@+id/tutorial_group_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text=""
                     android:textColor="#c7c7c7"
-                    android:background="@android:color/transparent"/>
+                    android:textSize="13dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="Category"
-                    android:layout_marginTop="20dp"
-                    android:textColor="#8cc63e"/>
+                    android:textColor="#8cc63e" />
+
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:textSize="13dp"
-                    android:text=""
                     android:id="@+id/category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text=""
                     android:textColor="#c7c7c7"
-                    android:background="@android:color/transparent"/>
+                    android:textSize="13dp" />
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="Date"
-                    android:layout_marginTop="20dp"
-                    android:textColor="#8cc63e"/>
+                    android:textColor="#8cc63e" />
+
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:textSize="13dp"
-                    android:text=""
                     android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text=""
                     android:textColor="#c7c7c7"
-                    android:background="@android:color/transparent"/>
-
-
+                    android:textSize="13dp" />
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="Time"
-                    android:layout_marginTop="20dp"
-                    android:textColor="#8cc63e"/>
+                    android:textColor="#8cc63e" />
+
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:textSize="13dp"
-                    android:text=""
                     android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text=""
                     android:textColor="#c7c7c7"
-                    android:background="@android:color/transparent"/>
+                    android:textSize="13dp" />
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="University"
-                    android:layout_marginTop="20dp"
-                    android:textColor="#8cc63e"/>
+                    android:textColor="#8cc63e" />
+
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:textSize="13dp"
                     android:id="@+id/university"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppins_regular"
                     android:text=""
                     android:textColor="#c7c7c7"
-                    android:background="@android:color/transparent"/>
+                    android:textSize="13dp" />
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="Description"
-                    android:layout_marginTop="20dp"
-                    android:textColor="#8cc63e"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:textSize="13dp"
-                    android:id="@+id/description"
-                    android:text=""
-                    android:textColor="#c7c7c7"
-                    android:background="@android:color/transparent"/>
+                    android:textColor="#8cc63e" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Location"
-                    android:id="@+id/domlocation"
-                    android:layout_marginTop="20dp"
-                    android:textColor="#8cc63e"/>
-                <TextView
+                    android:id="@+id/description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:textSize="13dp"
-                    android:id="@+id/location"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppins_regular"
                     android:text=""
                     android:textColor="#c7c7c7"
-                    android:background="@android:color/transparent"/>
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/domlocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Location"
+                    android:textColor="#8cc63e" />
+
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text=""
+                    android:textColor="#c7c7c7"
+                    android:textSize="13dp" />
 
             </LinearLayout>
 
@@ -186,12 +207,14 @@
                 android:layout_marginBottom="30dp"
                 android:id="@+id/next"
                 android:background="@drawable/rounded_orange">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Done"
+                    android:fontFamily="@font/poppins_bold"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
+                    android:text="Done"
                     android:textColor="#ffffff" />
             </LinearLayout>
         </LinearLayout>

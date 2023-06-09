@@ -19,40 +19,45 @@
         <ImageView
             android:layout_width="85dp"
             android:layout_height="100dp"
+            android:id="@+id/img"
             android:src="@drawable/ic44"/>
+
         <TextView
+            android:id="@+id/tut_name"
             android:layout_width="85dp"
             android:layout_height="wrap_content"
-            android:id="@+id/tut_name"
-            android:textSize="10dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/poppins_bold"
+            android:maxLines="1"
             android:text="Logo Design"
             android:textColor="#ffffff"
-            android:textStyle="bold"
-            android:ellipsize="end"
-            android:maxLines="1"/>
+            android:textSize="10dp"
+            android:textStyle="bold" />
 
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
             android:id="@+id/tut_description"
-            android:text="XX"
-            android:textSize="8dp"
-            android:textStyle="bold"
-            android:textColor="#ffffff"
-            android:paddingRight="10dp"
-            android:ellipsize="end"
-            android:maxLines="1"/>
-
-        <TextView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:id="@+id/tut_category"
-            android:text="XX"
-            android:textSize="8dp"
-            android:textStyle="bold"
-            android:textColor="#ffffff"
             android:ellipsize="end"
-            android:maxLines="1"/>
+            android:fontFamily="@font/poppins_light"
+            android:maxLines="1"
+            android:paddingRight="10dp"
+            android:text="XX"
+            android:textColor="#ffffff"
+            android:textSize="8dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tut_category"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/poppins_light"
+            android:maxLines="1"
+            android:text="XX"
+            android:textColor="#ffffff"
+            android:textSize="8dp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -70,20 +75,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/tut_mode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Online"
                     android:textColor="#fff"
                     android:textSize="8dp" />
+
                 <TextView
+                    android:id="@+id/tutorial"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_light"
                     android:paddingLeft="2dp"
                     android:text="Tutorial"
                     android:textColor="#fff"
-                    android:textSize="8dp"/>
+                    android:textSize="8dp" />
             </LinearLayout>
 
         </LinearLayout>

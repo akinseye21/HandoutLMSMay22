@@ -48,13 +48,15 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="2dp"
                             android:orientation="vertical">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_bold"
                                 android:text="Created Tutorials"
-                                android:textStyle="bold"
                                 android:textColor="#ffffff"
-                                android:textSize="10dp"/>
+                                android:textSize="10dp"
+                                android:textStyle="bold" />
                             <View
                                 android:layout_width="60dp"
                                 android:layout_height="0.1dp"
@@ -82,13 +84,15 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="2dp"
                             android:orientation="vertical">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_bold"
                                 android:text="Tutorials Joined"
-                                android:textStyle="bold"
                                 android:textColor="#ffffff"
-                                android:textSize="10dp"/>
+                                android:textSize="10dp"
+                                android:textStyle="bold" />
                             <View
                                 android:layout_width="50dp"
                                 android:layout_height="0.1dp"
@@ -143,12 +147,14 @@
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:indeterminateTint="#fff"/>
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_light"
                             android:text="Loading"
-                            android:textSize="8dp"
-                            android:textColor="#fff"/>
+                            android:textColor="#fff"
+                            android:textSize="8dp" />
                     </LinearLayout>
 
 

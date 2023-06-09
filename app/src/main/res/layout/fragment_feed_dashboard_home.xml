@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/feeddasshboardhome"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#293241"
     tools:context=".FeedDashboardHome">
@@ -53,6 +54,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/img1"
                                 android:layout_centerHorizontal="true"
+                                android:fontFamily="@font/poppins_extrabold"
                                 android:text="Tutors"
                                 android:textColor="#f7f7f7"
                                 android:textSize="15dp"
@@ -64,6 +66,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/name"
                                 android:layout_centerHorizontal="true"
+                                android:fontFamily="@font/poppins_regular"
                                 android:gravity="center"
                                 android:text="Looking for a tutor?"
                                 android:textColor="#f7f7f7"
@@ -115,6 +118,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/img2"
                                 android:layout_centerHorizontal="true"
+                                android:fontFamily="@font/poppins_extrabold"
                                 android:text="Games"
                                 android:textColor="#f7f7f7"
                                 android:textSize="15dp"
@@ -126,6 +130,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/lessons"
                                 android:layout_centerHorizontal="true"
+                                android:fontFamily="@font/poppins_regular"
                                 android:gravity="center"
                                 android:text="Have fun and learn"
                                 android:textColor="#f7f7f7"
@@ -168,8 +173,8 @@
                                 android:id="@+id/img3"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:src="@drawable/home_ic9"
-                                android:layout_centerHorizontal="true"/>
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/home_ic9" />
 
                             <TextView
                                 android:id="@+id/incomes"
@@ -177,6 +182,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/img3"
                                 android:layout_centerHorizontal="true"
+                                android:fontFamily="@font/poppins_extrabold"
                                 android:text="Gigs"
                                 android:textColor="#f7f7f7"
                                 android:textSize="15dp"
@@ -188,6 +194,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/incomes"
                                 android:layout_centerHorizontal="true"
+                                android:fontFamily="@font/poppins_regular"
                                 android:gravity="center"
                                 android:text="Freelance"
                                 android:textColor="#f7f7f7"
@@ -234,7 +241,7 @@
                 </androidx.viewpager.widget.ViewPager>
 
                 <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tabLayout"
+                    android:id="@+id/tablayout"
                     android:layout_width="match_parent"
                     android:visibility="gone"
                     android:layout_height="0dp"/>
@@ -251,6 +258,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Loading..."
                     android:textColor="#ffffff"
                     android:textSize="8dp"
@@ -262,6 +270,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="There are no gigs nor tutorials available"
                     android:textColor="#fff"
                     android:id="@+id/no_not"

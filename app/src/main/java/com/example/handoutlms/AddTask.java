@@ -148,7 +148,22 @@ public class AddTask extends AppCompatActivity {
         listView.setAdapter(myAdapter);
 
 
-//        CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView);
-//        calendarView.setEvents(events);
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+//        arr_task_name.clear();
+//        arr_task_date.clear();
+//        arr_task_category.clear();
+//        arr_task_description.clear();
+//        arr_task_time.clear();
+
+
+
+
     }
 }

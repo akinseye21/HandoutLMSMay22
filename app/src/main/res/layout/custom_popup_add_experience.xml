@@ -20,13 +20,15 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic191"/>
+
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add Experience"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:paddingLeft="10dp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:paddingLeft="10dp"
+            android:text="Add Experience"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <View
@@ -46,72 +48,77 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center">
+
             <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
                 android:id="@+id/position"
-                    android:hint="Position"
-                    android:singleLine="true"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:paddingRight="10dp"
-                    android:inputType="textPersonName"
-                    android:textSize="10dp"
-                    android:textColor="#ffffff"
-                    android:textColorHint="#80ffffff"
-                    android:background="@drawable/new_login2"/>
-
-            <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                android:id="@+id/year"
-                    android:hint="Year (from - to)"
-                    android:singleLine="true"
-                    android:layout_marginTop="20dp"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:paddingRight="10dp"
-                    android:inputType="textEmailAddress"
-                    android:textSize="10dp"
-                    android:textColor="#ffffff"
-                    android:textColorHint="#80ffffff"
-                    android:background="@drawable/new_login2"/>
-
-            <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                android:id="@+id/description"
-                    android:hint="Job Description"
-                    android:singleLine="true"
-                    android:layout_marginTop="20dp"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:paddingRight="10dp"
-                    android:inputType="textEmailAddress"
-                    android:textSize="10dp"
-                    android:textColor="#ffffff"
-                    android:textColorHint="#80ffffff"
-                    android:background="@drawable/new_login2"/>
-
-            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:id="@+id/organization"
-                android:hint="Ogranization"
-                android:singleLine="true"
-                android:layout_marginTop="20dp"
+                android:background="@drawable/new_login2"
+                android:fontFamily="@font/poppins_light"
+                android:hint="Position"
+                android:inputType="textPersonName"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
-                android:paddingBottom="5dp"
                 android:paddingRight="10dp"
-                android:inputType="textEmailAddress"
-                android:textSize="10dp"
+                android:paddingBottom="5dp"
+                android:singleLine="true"
                 android:textColor="#ffffff"
                 android:textColorHint="#80ffffff"
-                android:background="@drawable/new_login2"/>
+                android:textSize="10dp" />
+
+            <EditText
+                android:id="@+id/year"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/new_login2"
+                android:fontFamily="@font/poppins_light"
+                android:hint="Year (from - to)"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:singleLine="true"
+                android:textColor="#ffffff"
+                android:textColorHint="#80ffffff"
+                android:textSize="10dp" />
+
+            <EditText
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/new_login2"
+                android:fontFamily="@font/poppins_light"
+                android:hint="Job Description"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:singleLine="true"
+                android:textColor="#ffffff"
+                android:textColorHint="#80ffffff"
+                android:textSize="10dp" />
+
+            <EditText
+                android:id="@+id/organization"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/new_login2"
+                android:fontFamily="@font/poppins_light"
+                android:hint="Ogranization"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:singleLine="true"
+                android:textColor="#ffffff"
+                android:textColorHint="#80ffffff"
+                android:textSize="10dp" />
 
             <ProgressBar
                 android:layout_width="wrap_content"
@@ -135,23 +142,27 @@
             android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
+
         <Button
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="10dp"
             android:id="@+id/save"
-                android:text="Save"
-                android:textAllCaps="false"
-                android:background="@drawable/round_white"/>
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/round_white"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Save"
+            android:textAllCaps="false" />
+
         <Button
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
             android:id="@+id/cancel"
-                android:text="Cancel"
-                android:textAllCaps="false"
-                android:textColor="#ffffff"
-                android:background="@drawable/rounded_orange"/>
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/rounded_orange"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textColor="#ffffff" />
 
     </LinearLayout>
 

@@ -19,6 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -60,7 +61,7 @@ public class TodayTask extends Fragment {
     String got_email;
     ListView today_task;
     String day, month, year, today;
-    ProgressBar progressBar;
+    LinearLayout progressBar;
     TextView no_notification;
 
     ArrayList<String> arr_task_name = new ArrayList<>();
@@ -111,11 +112,109 @@ public class TodayTask extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_today_task, container, false);
 
-        preferences = getActivity().getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
-        got_email = preferences.getString("email", "not available");
-
         progressBar = v.findViewById(R.id.progressBar);
         no_notification = v.findViewById(R.id.no_notification);
+
+
+        //get user task
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_TASKS,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//
+//                        progressBar.setVisibility(View.GONE);
+//                        try {
+//                            JSONArray jsonArray = new JSONArray(response);
+//                            int ArrayLength = jsonArray.length();
+//
+//                            System.out.println("Length = "+ArrayLength);
+//
+//                            if(ArrayLength >= 1){
+//                                for(int i=0; i<ArrayLength; i++){
+//                                    JSONObject section1 = jsonArray.getJSONObject(i);
+//                                    String task_date = section1.getString("ddate");
+//                                    String task_name = section1.getString("taskname");
+//                                    String task_category = section1.getString("category");
+//                                    String task_description = section1.getString("description");
+//                                    String task_time = section1.getString("dtime");
+//
+//                                    System.out.println("Task Date = "+task_date+"\nToday = "+today);
+//
+//                                    if(task_date.equals(today)){
+//                                        arr_task_name.add(task_name);
+//                                        arr_task_date.add(task_date);
+//                                        arr_task_category.add(task_category);
+//                                        arr_task_description.add(task_description);
+//                                        arr_task_time.add(task_time);
+//                                        arr_today.add(today);
+//                                    }
+//
+//
+//                                }
+//                            }else{
+//
+//                            }
+//
+//                            if(arr_task_name.size() == 0){
+//                                no_notification.setVisibility(View.VISIBLE);
+//                                today_task.setVisibility(View.GONE);
+//                            }else{
+//                                no_notification.setVisibility(View.GONE);
+//                                TodayTaskAdapter myAdapter=new TodayTaskAdapter(getContext(),arr_task_name,arr_task_date,arr_task_category, arr_today);
+//                                today_task.setAdapter(myAdapter);
+//                            }
+//
+//
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//
+//                    }
+//                }){
+//            @Override
+//            protected Map<String, String> getParams(){
+//                Map<String, String> params = new HashMap<>();
+//                params.put("email", got_email);
+//                return params;
+//            }
+//        };
+//        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+//        requestQueue.add(stringRequest);
+
+
+        today_task = v.findViewById(R.id.listview_today_tasks);
+
+
+        add = v.findViewById(R.id.add);
+
+
+        return v;
+    }
+
+
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        arr_task_name.clear();
+        arr_task_date.clear();
+        arr_task_category.clear();
+        arr_task_description.clear();
+        arr_task_time.clear();
+        arr_today.clear();
+
+        preferences = getActivity().getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
+        got_email = preferences.getString("email", "not available");
 
         Date date=new Date(System.currentTimeMillis());
         Calendar calendar = Calendar.getInstance();
@@ -125,8 +224,7 @@ public class TodayTask extends Fragment {
         day          = (String) DateFormat.format("dd",   date); // 20
         month  = (String) DateFormat.format("MM",  date); // Jun
         year         = (String) DateFormat.format("yyyy", date); // 2013
-        today = day+"/"+month+"/"+year;
-
+        today = year+"-"+month+"-"+day;
 
         //get user task
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_TASKS,
@@ -197,13 +295,17 @@ public class TodayTask extends Fragment {
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(retryPolicy);
         requestQueue.add(stringRequest);
+        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+            @Override
+            public void onRequestFinished(Request<Object> request) {
+                requestQueue.getCache().clear();
+            }
+        });
 
 
-        today_task = v.findViewById(R.id.listview_today_tasks);
-
-
-        add = v.findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -219,11 +321,6 @@ public class TodayTask extends Fragment {
             }
         });
 
-        return v;
-    }
 
-
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
     }
 }

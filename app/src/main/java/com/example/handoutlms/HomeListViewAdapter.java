@@ -1,12 +1,19 @@
 package com.example.handoutlms;
 
+import static android.content.Context.NOTIFICATION_SERVICE;
+
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +28,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -59,15 +68,20 @@ public class HomeListViewAdapter extends BaseAdapter {
     private ArrayList<String> pic;
     private ArrayList<String> total_approved;
 
+    ArrayList<String> gig_id_bid = new ArrayList<>();
+    ArrayList<String> gig_creator = new ArrayList<>();
+
     Dialog myDialog, myDialog2, myDialog3, myDialog4;
     AlertDialog.Builder builder;
     SharedPreferences preferences;
     String got_email;
     String tutname, status;
+    String CHANNEL_ID = "channelID3";
 
     public static final String TASK_MANAGER = "https://handoutng.com/handouts/handout_task_manager";
     public static final String JOIN_TUTORIAL = "https://handoutng.com/handouts/handout_group_join";
     public static final String CHECK_STATUS = "https://handoutng.com/handouts/handout_user_joined_groups";
+    public static final String GIGS_BIDDED = "https://handoutng.com/handouts/handout_get_user_bids_for_gigs";
 
     public HomeListViewAdapter (Context context, ArrayList<String> type, ArrayList<String> created_by, ArrayList<String> created_by_name, ArrayList<String> group_name, ArrayList<String> university, ArrayList<String> mode, ArrayList<String> group_name_inside, ArrayList<String> description, ArrayList<String> time, ArrayList<String> date, ArrayList<String> card_mode, ArrayList<String> category, ArrayList<String> id, ArrayList<String> pic, ArrayList<String> total_approved){
         //Getting all the values
@@ -145,15 +159,6 @@ public class HomeListViewAdapter extends BaseAdapter {
         TextView on_off_text = convertView.findViewById(R.id.on_or_offline_text);
 
 
-        //get views for game
-//        CardView card_game = convertView.findViewById(R.id.card_game);
-//        TextView name_game = convertView.findViewById(R.id.name_game);
-//        TextView location_game = convertView.findViewById(R.id.game_location);
-//        TextView date_game = convertView.findViewById(R.id.game_date);
-//        TextView time_game = convertView.findViewById(R.id.game_time);
-//        TextView crt_by_game = convertView.findViewById(R.id.created_by_game);
-//        TextView dept_gamel = convertView.findViewById(R.id.dept_game);
-//        TextView uni_game = convertView.findViewById(R.id.uni_game);
 
         showUserProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -268,6 +273,8 @@ public class HomeListViewAdapter extends BaseAdapter {
                                                         @Override
                                                         public void onClick(View v) {
                                                             Intent i = new Intent(context, FeedsDashboard.class);
+                                                            i.putExtra("email", got_email);
+                                                            i.putExtra("sent from", "");
                                                             context.startActivity(i);
                                                         }
                                                     });
@@ -360,29 +367,180 @@ public class HomeListViewAdapter extends BaseAdapter {
                 pop_gigdescription.setText(description.get(position));
                 TextView pop_gigcategory = myDialog.findViewById(R.id.gig_category);
                 pop_gigcategory.setText(category.get(position));
+                LinearLayout loader = myDialog.findViewById(R.id.linloader);
                 Button bid = myDialog.findViewById(R.id.bid);
-                bid.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //compare email of the tutor and user email
-                        if(created_by.get(position).equals(got_email)){
-                            Toast.makeText(context, "Sorry you can not place bid on your own gig", Toast.LENGTH_SHORT).show();
-                            myDialog.dismiss();
-                        }else{
-                            //move to the next gig page
-                            Intent i = new Intent(context, CardGigClick2.class);
-                            i.putExtra("name", created_by_name.get(position));
-                            i.putExtra("department", time.get(position));
-                            i.putExtra("school", university.get(position));
-                            i.putExtra("gig_name", group_name.get(position));
-                            i.putExtra("gig_description", description.get(position));
-                            i.putExtra("payment_structure", category.get(position));
-                            i.putExtra("id", id.get(position));
-                            context.startActivity(i);
-                        }
 
+                // check API to see if Gig is approved, pending or rejected
+                StringRequest stringRequest2 = new StringRequest(Request.Method.POST, GIGS_BIDDED,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                System.out.println("Response = "+response);
+
+                                try{
+                                    JSONArray jsonArray = new JSONArray(response);
+                                    int ArrayLength = jsonArray.length();
+
+                                    int count = 0;
+
+                                    if(ArrayLength >= 1){
+                                        for(int j = ArrayLength - 1; j >= 0; j--){
+                                            JSONObject section1 = jsonArray.getJSONObject(j);
+                                            String gigname = section1.getString("gigname");
+                                            String picture = section1.getString("picture");
+
+
+                                            if (gigname.equals(group_name.get(position))){
+                                                status = section1.getString("status");
+
+                                                count = count+1;
+
+                                                System.out.println("Status - "+status);
+
+                                                if (status.equals("approved")){
+                                                    loader.setVisibility(View.GONE);
+                                                    bid.setText("Bid Approved");
+                                                    bid.setEnabled(false);
+                                                    bid.setBackgroundResource(R.drawable.rounded_grey);
+                                                }else if (status.equals("pending")){
+                                                    loader.setVisibility(View.GONE);
+                                                    bid.setText("Bid Pending");
+                                                    bid.setEnabled(false);
+                                                    bid.setBackgroundResource(R.drawable.rounded_grey);
+                                                }else if (status.equals("rejected")){
+                                                    loader.setVisibility(View.GONE);
+                                                    bid.setText("Bid rejected");
+                                                    bid.setEnabled(false);
+                                                    bid.setBackgroundResource(R.drawable.rounded_grey);
+                                                }else if (status.equals("")){
+                                                    loader.setVisibility(View.GONE);
+                                                    bid.setEnabled(true);
+                                                    bid.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            myDialog.dismiss();
+                                                            //move to the next gig page
+                                                            Intent i = new Intent(context, CardGigClick2.class);
+                                                            i.putExtra("name", created_by_name.get(position));
+                                                            i.putExtra("department", time.get(position));
+                                                            i.putExtra("school", university.get(position));
+                                                            i.putExtra("gig_name", group_name.get(position));
+                                                            i.putExtra("picture", pic.get(position));
+                                                            i.putExtra("gig_description", description.get(position));
+                                                            i.putExtra("payment_structure", category.get(position));
+                                                            i.putExtra("id", id.get(position));
+                                                            context.startActivity(i);
+                                                        }
+                                                    });
+                                                }
+
+                                            }
+
+                                        }
+                                    }else{
+                                        loader.setVisibility(View.GONE);
+                                        bid.setText("Place Bid");
+                                        bid.setEnabled(true);
+                                        bid.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                myDialog.dismiss();
+                                                //move to the next gig page
+                                                Intent i = new Intent(context, CardGigClick2.class);
+                                                i.putExtra("name", created_by_name.get(position));
+                                                i.putExtra("department", time.get(position));
+                                                i.putExtra("school", university.get(position));
+                                                i.putExtra("gig_name", group_name.get(position));
+                                                i.putExtra("picture", pic.get(position));
+                                                i.putExtra("gig_description", description.get(position));
+                                                i.putExtra("payment_structure", category.get(position));
+                                                i.putExtra("id", id.get(position));
+                                                context.startActivity(i);
+                                            }
+                                        });
+                                    }
+
+                                    if (count<1){
+                                        if (created_by.get(position).equals(got_email)){
+                                            loader.setVisibility(View.GONE);
+                                            bid.setEnabled(true);
+                                            bid.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    myDialog.dismiss();
+                                                    // you created the gig
+                                                    Toast.makeText(context, "Sorry you created this Gig", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                        }else{
+                                            loader.setVisibility(View.GONE);
+                                            bid.setEnabled(true);
+                                            bid.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    myDialog.dismiss();
+                                                    //move to the next gig page
+                                                    Intent i = new Intent(context, CardGigClick2.class);
+                                                    i.putExtra("name", created_by_name.get(position));
+                                                    i.putExtra("department", time.get(position));
+                                                    i.putExtra("school", university.get(position));
+                                                    i.putExtra("gig_name", group_name.get(position));
+                                                    i.putExtra("picture", pic.get(position));
+                                                    i.putExtra("gig_description", description.get(position));
+                                                    i.putExtra("payment_structure", category.get(position));
+                                                    i.putExtra("id", id.get(position));
+                                                    context.startActivity(i);
+                                                }
+                                            });
+                                        }
+                                        
+                                        
+                                        
+                                    }
+
+                                }
+                                catch (JSONException e) {
+                                    try {
+                                        JSONObject jsonObject = new JSONObject(response);
+                                        String stats = jsonObject.getString("status");
+                                        if(stats.equals("no gig bids")){
+                                            //show "no gig bidded"
+                                        }
+
+                                    } catch (JSONException ee) {
+                                        ee.printStackTrace();
+                                    }
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError volleyError) {
+                                volleyError.printStackTrace();
+                            }
+                        }){
+                    @Override
+                    protected Map<String, String> getParams(){
+                        Map<String, String> params = new HashMap<>();
+                        params.put("email", got_email);
+                        return params;
+                    }
+                };
+
+                RequestQueue requestQueue2 = Volley.newRequestQueue(context);
+                requestQueue2.add(stringRequest2);
+                DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                stringRequest2.setRetryPolicy(retryPolicy);
+                requestQueue2.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+                    @Override
+                    public void onRequestFinished(Request<Object> request) {
+                        requestQueue2.getCache().clear();
                     }
                 });
+
+
 
                 myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 myDialog.setCanceledOnTouchOutside(true);
@@ -482,10 +640,15 @@ public class HomeListViewAdapter extends BaseAdapter {
                                                                                                 Button home = myDialog3.findViewById(R.id.home);
                                                                                                 TextView stat = myDialog3.findViewById(R.id.status);
                                                                                                 stat.setText("You have successfully requested to join "+group_name.get(position));
+
+                                                                                                createNotificationChannel(group_name.get(position));
+
                                                                                                 home.setOnClickListener(new View.OnClickListener() {
                                                                                                     @Override
                                                                                                     public void onClick(View v) {
                                                                                                         Intent i = new Intent(context, FeedsDashboard.class);
+                                                                                                        i.putExtra("email", got_email);
+                                                                                                        i.putExtra("sent from", "");
                                                                                                         context.startActivity(i);
                                                                                                     }
                                                                                                 });
@@ -525,6 +688,12 @@ public class HomeListViewAdapter extends BaseAdapter {
                                                                         DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
                                                                         stringRequest.setRetryPolicy(retryPolicy);
                                                                         requestQueue.add(stringRequest);
+                                                                        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+                                                                            @Override
+                                                                            public void onRequestFinished(Request<Object> request) {
+                                                                                requestQueue.getCache().clear();
+                                                                            }
+                                                                        });
                                                                     }
                                                                 });
 
@@ -551,7 +720,7 @@ public class HomeListViewAdapter extends BaseAdapter {
                                     }
                                 }
                                 catch (JSONException e) {
-
+                                    linloader.setVisibility(View.GONE);
                                 }
 
                             }
@@ -574,6 +743,12 @@ public class HomeListViewAdapter extends BaseAdapter {
                 DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
                 stringRequest2.setRetryPolicy(retryPolicy);
                 requestQueue2.add(stringRequest2);
+                requestQueue2.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+                    @Override
+                    public void onRequestFinished(Request<Object> request) {
+                        requestQueue2.getCache().clear();
+                    }
+                });
 
                 join.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -623,6 +798,8 @@ public class HomeListViewAdapter extends BaseAdapter {
                                                                 @Override
                                                                 public void onClick(View v) {
                                                                     Intent i = new Intent(context, FeedsDashboard.class);
+                                                                    i.putExtra("email", got_email);
+                                                                    i.putExtra("sent from", "");
                                                                     context.startActivity(i);
                                                                 }
                                                             });
@@ -662,6 +839,12 @@ public class HomeListViewAdapter extends BaseAdapter {
                                     DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
                                     stringRequest.setRetryPolicy(retryPolicy);
                                     requestQueue.add(stringRequest);
+                                    requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+                                        @Override
+                                        public void onRequestFinished(Request<Object> request) {
+                                            requestQueue.getCache().clear();
+                                        }
+                                    });
                                 }
                             });
 
@@ -744,10 +927,11 @@ public class HomeListViewAdapter extends BaseAdapter {
                 myDialog.setContentView(R.layout.card_add_task);
                 Button yes = myDialog.findViewById(R.id.yes);
                 Button no = myDialog.findViewById(R.id.no);
-                ProgressBar progressBar = myDialog.findViewById(R.id.progressBar);
+                LinearLayout progressBar = myDialog.findViewById(R.id.progressBar);
                 yes.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        progressBar.setVisibility(View.VISIBLE);
                         //add the tutorial to the taskmanager
                         StringRequest stringRequest = new StringRequest(Request.Method.POST, TASK_MANAGER,
                                 new Response.Listener<String>() {
@@ -755,31 +939,36 @@ public class HomeListViewAdapter extends BaseAdapter {
                                     public void onResponse(String response) {
                                         System.out.println("Response = "+response);
 
-                                        progressBar.setVisibility(View.GONE);
-
                                         JSONObject jo = null;
                                         try {
                                             jo = new JSONObject(response);
                                             String status = jo.getString("status");
-                                            String notification = jo.getString("notification");
 
                                             if (status.equals("successful")){
+                                                myDialog.dismiss();
+                                                progressBar.setVisibility(View.GONE);
                                                 //load the custom dialog box
                                                 myDialog2 = new Dialog(context);
                                                 myDialog2.setContentView(R.layout.custom_popup_successful_taskmanager);
                                                 Button home = myDialog2.findViewById(R.id.home);
                                                 TextView stat = myDialog2.findViewById(R.id.status);
-                                                stat.setText(notification);
+                                                stat.setText("Successfully added task");
                                                 home.setOnClickListener(new View.OnClickListener() {
                                                     @Override
                                                     public void onClick(View v) {
                                                         Intent i = new Intent(context, FeedsDashboard.class);
+                                                        i.putExtra("email", got_email);
+                                                        i.putExtra("sent from", "");
                                                         context.startActivity(i);
                                                     }
                                                 });
                                                 myDialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                                 myDialog2.setCanceledOnTouchOutside(false);
                                                 myDialog2.show();
+                                            }else if (status.equals("task already exists")){
+                                                progressBar.setVisibility(View.GONE);
+                                                Toast.makeText(context, "Error adding to task", Toast.LENGTH_SHORT).show();
+                                                myDialog.dismiss();
                                             }
                                         } catch (JSONException e) {
                                             progressBar.setVisibility(View.GONE);
@@ -801,7 +990,7 @@ public class HomeListViewAdapter extends BaseAdapter {
                                 params.put("email", got_email);
                                 params.put("task_name", group_name.get(position));
                                 params.put("short_description", description.get(position));
-                                params.put("task_category", category.get(position));
+                                params.put("task_category", "Tutorial");
                                 params.put("task_date", date.get(position));
                                 params.put("task_time", time.get(position));
                                 return params;
@@ -831,5 +1020,36 @@ public class HomeListViewAdapter extends BaseAdapter {
 
 
         return convertView;
+    }
+
+    private void createNotificationChannel(String name) {
+        NotificationManager manager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = manager.getNotificationChannel(CHANNEL_ID);
+            if(channel == null){
+                channel = new NotificationChannel(CHANNEL_ID, "Join Group Request", NotificationManager.IMPORTANCE_DEFAULT);
+                //config notification channel
+                channel.setDescription("[Channel Description]");
+                channel.enableVibration(true);
+                channel.enableLights(true);
+                channel.setVibrationPattern(new long[]{100, 1000, 200, 340});
+                channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+                manager.createNotificationChannel(channel);
+            }
+        }
+        Intent notificationIntent = new Intent(context, FeedsDashboard.class);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent penIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                .setSmallIcon(R.drawable.logo)
+                .setStyle(new NotificationCompat.BigTextStyle())
+                .setContentTitle("Join Group Request")
+                .setContentText("Your request to join group \""+name+"\" is successful")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(false)
+                .setTicker("Notification");
+        builder.setContentIntent(penIntent);
+        NotificationManagerCompat m = NotificationManagerCompat.from(context);
+        m.notify(4, builder.build());
     }
 }

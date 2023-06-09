@@ -71,6 +71,15 @@ public class Tutor extends Fragment {
     final ArrayList<String> Array_groupName = new ArrayList<>();
     final ArrayList<String> Array_groupTime = new ArrayList<>();
     final ArrayList<String> Array_groupTutor = new ArrayList<>();
+    final ArrayList<String> Array_groupID = new ArrayList<>();
+    final ArrayList<String> Array_groupCategory = new ArrayList<>();
+    final ArrayList<String> Array_groupDate = new ArrayList<>();
+    final ArrayList<String> Array_groupUniversity = new ArrayList<>();
+    final ArrayList<String> Array_groupDescription = new ArrayList<>();
+    final ArrayList<String> Array_groupTutorEmail = new ArrayList<>();
+    final ArrayList<String> Array_groupSize = new ArrayList<>();
+    final ArrayList<String> Array_groupMode = new ArrayList<>();
+    final ArrayList<String> Array_pp = new ArrayList<>();
 
     SharedPreferences preferences;
     String got_email;
@@ -203,20 +212,40 @@ public class Tutor extends Fragment {
                                 noGroups.setVisibility(View.VISIBLE);
                             }
                             else {
-                                for (int i = 0; i < ArrayLength2; i++) {
+                                for (int i = ArrayLength2-1; i >= 0; i--) {
                                     JSONObject section = jsonArray.getJSONObject(i);
+                                    String ID = section.getString("ID");
+                                    String groupCategory = section.getString("category");
                                     String groupName = section.getString("groupname");
-                                    String groupTime = section.getString("_date");
-                                    String groupTutor = section.getString("created_by");
+                                    String groupDate = section.getString("_date");
+                                    String groupUniversity = section.getString("university");
+                                    String groupDescription = section.getString("description");
+                                    String groupTime = section.getString("_time");
+                                    String groupTutorEmail = section.getString("created_by");
+                                    String groupTutorName = section.getString("created_by_name");
+                                    String groupSize = section.getString("class_size");
+                                    String groupMode = section.getString("mode");
+                                    String pp = section.getString("picture");
 
                                     Array_groupName.add(groupName);
                                     Array_groupTime.add(groupTime);
-                                    Array_groupTutor.add(groupTutor);
+                                    Array_groupTutor.add(groupTutorName);
+                                    Array_groupID.add(ID);
+                                    Array_groupCategory.add(groupCategory);
+                                    Array_groupDate.add(groupDate);
+                                    Array_groupUniversity.add(groupUniversity);
+                                    Array_groupDescription.add(groupDescription);
+                                    Array_groupTutorEmail.add(groupTutorEmail);
+                                    Array_groupSize.add(groupSize);
+                                    Array_groupMode.add(groupMode);
+                                    Array_pp.add(pp);
                                 }
                             }
 
                             //populate values on the gridview
-                            groupListViewAdapter = new GroupListViewAdapter(getActivity(), Array_groupName, Array_groupTime, Array_groupTutor);
+                            groupListViewAdapter = new GroupListViewAdapter(getContext(), Array_groupName, Array_groupTime, Array_groupTutor,
+                                    Array_groupID, Array_groupCategory, Array_groupDate, Array_groupUniversity, Array_groupDescription, Array_groupTutorEmail,
+                                    Array_groupSize, Array_groupMode, Array_pp);
                             gridView2.setAdapter(groupListViewAdapter);
 
 

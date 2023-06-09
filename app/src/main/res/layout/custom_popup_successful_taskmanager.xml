@@ -15,28 +15,30 @@
         android:src="@drawable/correct"/>
 
     <TextView
+        android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:id="@+id/status"
         android:layout_marginTop="30dp"
-        android:textSize="15dp"
+        android:fontFamily="@font/poppins_light"
+        android:gravity="center"
         android:text=""
-        android:textColor="#f4000000"/>
+        android:textColor="#f4000000"
+        android:textSize="15dp" />
 
     <Button
+        android:id="@+id/home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="Home"
-        android:textSize="8dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="30dp"
-        android:id="@+id/home"
+        android:background="@drawable/rounded_green"
+        android:fontFamily="@font/poppins_bold"
         android:stateListAnimator="@null"
+        android:text="Home"
+        android:textAllCaps="false"
         android:textColor="#ffffff"
-        android:background="@drawable/rounded_green"/>
+        android:textSize="8dp" />
 
 
 

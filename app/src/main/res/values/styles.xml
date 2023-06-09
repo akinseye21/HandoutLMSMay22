@@ -1,17 +1,17 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+<!--    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-<!--        <item name="android:popupBackground">@drawable/round_popup</item>-->
-<!--        <item name="popupMenuStyle">@style/MyCustomTabText</item>-->
-<!--        <item name="android:popupMenuStyle">@style/MyPopUp</item>-->
-<!--        <item name="android:actionBarWidgetTheme">@style/MyPopUpText</item>-->
         <item name="android:itemTextAppearance">@style/ChatPageTab</item>
         <item name="android:itemBackground">@drawable/rounded_white_little</item>
+
+        <item name="android:allowBackup">false</item>
+        <item name="android:icon">@drawable/handout_icon</item>
     </style>
 
     <style name="MyCustomTabText" parent="TextAppearance.AppCompat.Small">
@@ -67,6 +67,12 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="AppNavigationViewStyle" parent="Widget.Design.NavigationView">
+        <item name="itemIconTint">@null</item>
+    </style>
+
+
 
 
 </resources>

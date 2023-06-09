@@ -24,11 +24,31 @@
         android:textColor="#ffffff"
         android:padding="10dp"/>
 
-    <ProgressBar
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="30dp"
+        android:paddingLeft="30dp"
         android:id="@+id/progressBar"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        android:background="@drawable/corner_white2">
+        <ProgressBar
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:indeterminateTint="@color/lb_grey" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loading..."
+            android:textSize="12dp"
+            android:textColor="@color/lb_grey"
+            android:fontFamily="@font/poppins_regular"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,7 +65,7 @@
             android:textSize="10dp"
             android:textStyle="bold"
             android:textColor="#ffffff"
-            android:background="@drawable/rounded_green"
+            android:background="@drawable/new_rounded_green"
             android:textAllCaps="false"
             android:layout_marginBottom="10dp"
             android:id="@+id/yes"

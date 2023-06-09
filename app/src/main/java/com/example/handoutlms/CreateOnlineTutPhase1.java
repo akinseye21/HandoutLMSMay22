@@ -46,6 +46,8 @@ public class CreateOnlineTutPhase1 extends AppCompatActivity {
     Dialog myDialog;
     SharedPreferences preferences;
     String got_email;
+    String got_name, got_category, got_description, got_mode, got_id, got_date;
+
 
 
 
@@ -68,6 +70,12 @@ public class CreateOnlineTutPhase1 extends AppCompatActivity {
 
         Intent i = getIntent();
         group_name = i.getStringExtra("Group_name");
+        got_name = i.getStringExtra("name");
+        got_category = i.getStringExtra("category");
+        got_description = i.getStringExtra("description");
+        got_mode = i.getStringExtra("mode");
+        got_id = i.getStringExtra("id");
+        got_date = i.getStringExtra("date");
 //        notification = i.getStringExtra("notification");
 
 //        Intent intent = new Intent(this, AddOptions.class);
@@ -142,6 +150,11 @@ public class CreateOnlineTutPhase1 extends AppCompatActivity {
                 i.putExtra("name", name);
                 i.putExtra("email", got_email);
                 i.putExtra("group_name", group_name);
+                i.putExtra("category", got_category);
+                i.putExtra("description", got_description);
+                i.putExtra("mode", got_mode);
+                i.putExtra("id", got_id);
+                i.putExtra("date", got_date);
                 startActivity(i);
             }
         });
@@ -152,7 +165,13 @@ public class CreateOnlineTutPhase1 extends AppCompatActivity {
 
                 Intent i = new Intent(CreateOnlineTutPhase1.this, DocumentPaged.class);
                 i.putExtra("name", name);
+                i.putExtra("email", got_email);
                 i.putExtra("group_name", group_name);
+                i.putExtra("category", got_category);
+                i.putExtra("description", got_description);
+                i.putExtra("mode", got_mode);
+                i.putExtra("id", got_id);
+                i.putExtra("date", got_date);
                 startActivity(i);
             }
         });
