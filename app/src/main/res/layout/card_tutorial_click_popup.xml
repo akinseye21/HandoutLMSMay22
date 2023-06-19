@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/join"
         android:layout_alignParentTop="true"
+        android:scrollbars="none"
         android:scrollIndicators="right"
         android:scrollbarThumbVertical="@android:color/white">
         <LinearLayout
@@ -372,19 +373,19 @@
 
     <Button
         android:id="@+id/join"
-        android:layout_width="130dp"
-        android:layout_height="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/rounded_orange"
+        android:fontFamily="@font/poppins_bold"
         android:text="Click to join"
         android:textAllCaps="false"
         android:textColor="#ffffff"
-        android:textSize="10dp"
-        android:textStyle="bold"
-        android:fontFamily="@font/poppins_bold"/>
+        android:textSize="15dp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

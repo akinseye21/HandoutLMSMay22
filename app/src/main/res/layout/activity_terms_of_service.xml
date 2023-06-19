@@ -121,26 +121,28 @@
         android:orientation="horizontal">
 
         <Button
-            android:layout_width="130dp"
-            android:layout_height="30dp"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
             android:text="Accept"
             android:textStyle="bold"
             android:textColor="#ffffff"
             android:layout_margin="20dp"
             android:background="@drawable/rounded_orange"
             android:textAllCaps="false"
+            android:textSize="17dp"
             android:id="@+id/accept"
             android:layout_gravity="center"/>
 
         <Button
-            android:layout_width="130dp"
-            android:layout_height="30dp"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
             android:text="Decline"
             android:textStyle="bold"
             android:textColor="#ffffff"
             android:layout_margin="20dp"
             android:background="@drawable/new_login"
             android:textAllCaps="false"
+            android:textSize="17dp"
             android:id="@+id/decline"
             android:layout_gravity="center"/>
 

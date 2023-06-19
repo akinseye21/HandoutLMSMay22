@@ -71,17 +71,19 @@
 
     <Button
         android:id="@+id/close"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="30dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:background="@drawable/corner_white2"
         android:fontFamily="@font/poppins_bold"
         android:stateListAnimator="@null"
         android:text="Close"
         android:textAllCaps="false"
         android:textColor="#c2272d"
-        android:textSize="14dp" />
+        android:textSize="17dp" />
 
 
 

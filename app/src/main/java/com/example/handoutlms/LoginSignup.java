@@ -57,4 +57,9 @@ public class LoginSignup extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        // do nothing
+    }
 }

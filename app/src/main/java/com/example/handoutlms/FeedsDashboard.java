@@ -35,6 +35,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -43,9 +50,14 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -80,7 +92,11 @@ public class FeedsDashboard extends AppCompatActivity implements
 
     SharedPreferences preferences;
     String got_email, fullname, pics;
+    private View overlayView;
 
+
+
+    public static final String USER_PROFILE = "https://handoutng.com/handouts/handout_get_my_notifications";
 
 
     @Override
@@ -88,8 +104,6 @@ public class FeedsDashboard extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feeds_dashboard);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-//        requestNotificationPermission();
 
         preferences = getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
         got_email = preferences.getString("email", "not available");
@@ -118,15 +132,12 @@ public class FeedsDashboard extends AppCompatActivity implements
                 startActivity(i);
             }
         });
-
-
-
         viewPager = findViewById(R.id.viewpager);
         addTabs(viewPager);
-
         tabLayout = findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(viewPager);
-        setupTabIcons();
+        checkNotificationCount();
+//        setupTabIcons();
 
 
         if (sent_from.equals("justCreatedResources") || sent_from.equals("checking gigs")){
@@ -181,6 +192,7 @@ public class FeedsDashboard extends AppCompatActivity implements
         );
 
         //navigation drawer
+        overlayView = findViewById(R.id.overlayView);
         drawerLayout = findViewById(R.id.drawer_layout);
         drawerItemsLayout = findViewById(R.id.drawer_items_layout);
         createDrawerItem();
@@ -189,6 +201,26 @@ public class FeedsDashboard extends AppCompatActivity implements
         toggle.setDrawerIndicatorEnabled(true);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+        overlayView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Close the drawer when the overlay is clicked
+                drawerLayout.closeDrawers();
+            }
+        });
+        drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                overlayView.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                overlayView.setVisibility(View.GONE);
+            }
+        });
+
+
         menu = findViewById(R.id.menu);
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,15 +229,79 @@ public class FeedsDashboard extends AppCompatActivity implements
             }
         });
 
-
-
     }
 
-    private void setupTabIcons() {
+    private void checkNotificationCount() {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, USER_PROFILE,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try{
+                            JSONObject profile = new JSONObject(response);
+                            String sys_notification = profile.getString("sys_notification");
+                            System.out.println("My Notification = "+sys_notification);
+                            JSONArray arr = new JSONArray(sys_notification);
+
+                            int arr_length = arr.length();
+                            int unreadCount = 0;
+
+                            for(int i =0; i<arr_length; i++){
+                                JSONObject section1 = arr.getJSONObject(i);
+                                String status = section1.getString("status");
+
+                                if (status.equals("unread")){
+                                    unreadCount = unreadCount + 1;
+                                }
+                            }
+
+                            setupTabIcons(unreadCount);
+
+                        }
+                        catch (JSONException e){
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        volleyError.printStackTrace();
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<>();
+                params.put("email", got_email);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(FeedsDashboard.this);
+        DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(retryPolicy);
+        requestQueue.add(stringRequest);
+        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+            @Override
+            public void onRequestFinished(Request<Object> request) {
+                requestQueue.getCache().clear();
+            }
+        });
+    }
+
+    private void setupTabIcons(int unreadCount) {
+//        checkNotificationCount();
+
         tabLayout.getTabAt(0).setIcon(R.drawable.ic33);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic31);
         tabLayout.getTabAt(2).setIcon(R.drawable.ic99);
-        tabLayout.getTabAt(3).setIcon(R.drawable.bell).getOrCreateBadge().setNumber(3);
+        if (unreadCount == 0){
+            tabLayout.getTabAt(3).setIcon(R.drawable.bell);
+        }else{
+            tabLayout.getTabAt(3).setIcon(R.drawable.bell).getOrCreateBadge().setNumber(unreadCount);
+        }
         tabLayout.getTabAt(4).setIcon(R.drawable.ic32);
     }
 
@@ -240,6 +336,14 @@ public class FeedsDashboard extends AppCompatActivity implements
         LinearLayout createTask = drawerItem.findViewById(R.id.createTask);
         LinearLayout viewTask = drawerItem.findViewById(R.id.viewTask);
         LinearLayout logout = drawerItem.findViewById(R.id.logout);
+        LinearLayout profile = drawerItem.findViewById(R.id.profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+                navigateFragment(4);
+            }
+        });
         ImageView close = drawerItem.findViewById(R.id.close);
         CircleImageView pp = drawerItem.findViewById(R.id.userPP);
         Glide.with(FeedsDashboard.this).load(pics).into(pp);
@@ -431,4 +535,6 @@ public class FeedsDashboard extends AppCompatActivity implements
         super.onPause();
         status("offline");
     }
+
+
 }

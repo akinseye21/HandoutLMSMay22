@@ -74,7 +74,7 @@
         <entry key="app/src/main/res/drawable/rounded_white_transparent.xml" value="0.141" />
         <entry key="app/src/main/res/drawable/rounded_white_transparent_100.xml" value="0.141" />
         <entry key="app/src/main/res/drawable/youtube_corner.xml" value="0.1145" />
-        <entry key="app/src/main/res/layout/activity_add_options.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_add_options.xml" value="0.25376434326171876" />
         <entry key="app/src/main/res/layout/activity_add_task.xml" value="0.23007246376811594" />
         <entry key="app/src/main/res/layout/activity_almost_done.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/activity_almost_done_offline.xml" value="0.24682971014492755" />
@@ -95,20 +95,20 @@
         <entry key="app/src/main/res/layout/activity_create_new_task.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_create_online_tut_phase1.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_create_tutorial_group2.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/activity_create_tutorial_group_offline.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/activity_create_tutorial_group_offline.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_create_tutorial_group_online.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_document_paged.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_edit_profile_page.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_edit_resources.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_feeds_dashboard.xml" value="0.24427083333333333" />
-        <entry key="app/src/main/res/layout/activity_first_screen.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_forgot_password1.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/activity_first_screen.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_forgot_password1.xml" value="0.20215148925781248" />
         <entry key="app/src/main/res/layout/activity_forgot_password2.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_forgot_password3.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_handout_trivia.xml" value="0.23007246376811594" />
         <entry key="app/src/main/res/layout/activity_invite_friends.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_login_signup.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_login_signup.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_new_signup.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_pending_list4_tutorial.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/activity_profile_others.xml" value="0.335" />

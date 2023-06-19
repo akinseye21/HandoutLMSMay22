@@ -247,10 +247,10 @@
             android:fontFamily="@font/poppins_light"/>
 
         <Button
-            android:layout_width="130dp"
-            android:layout_height="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Place your bid"
-            android:textSize="10dp"
+            android:textSize="15dp"
             android:textStyle="bold"
             android:textColor="#ffffff"
             android:background="@drawable/rounded_orange"

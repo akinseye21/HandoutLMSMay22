@@ -48,6 +48,7 @@
             android:textSize="17dp"
             android:textColor="#000000"
             android:textStyle="normal"
+            android:fontFamily="@font/poppins_regular"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="40dp"/>
         <TextView
@@ -58,6 +59,7 @@
             android:textSize="25dp"
             android:textColor="#000000"
             android:textStyle="bold"
+            android:fontFamily="@font/poppins_black"
             android:layout_marginLeft="40dp"/>
         <TextView
             android:layout_width="wrap_content"
@@ -66,23 +68,27 @@
             android:textSize="12dp"
             android:textColor="#000000"
             android:textStyle="normal"
+            android:fontFamily="@font/poppins_regular"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="5dp"/>
         <Button
-            android:layout_width="120dp"
-            android:layout_height="27dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="10dp"
             android:text="Continue"
-            android:textSize="10dp"
+            android:textSize="17dp"
             android:textAllCaps="false"
             android:textColor="#ffffff"
             android:id="@+id/next"
             android:background="@drawable/rounded_orange"/>
 
     </LinearLayout>
-
-
 
 </ScrollView>

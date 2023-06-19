@@ -76,24 +76,6 @@ public class CreateOnlineTutPhase1 extends AppCompatActivity {
         got_mode = i.getStringExtra("mode");
         got_id = i.getStringExtra("id");
         got_date = i.getStringExtra("date");
-//        notification = i.getStringExtra("notification");
-
-//        Intent intent = new Intent(this, AddOptions.class);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-//
-//        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-//                .setSmallIcon(R.drawable.logo)
-//                .setContentTitle("Handout LMS")
-//                .setContentText(notification)
-//                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-//                // Set the intent that will fire when the user taps the notification
-//                .setContentIntent(pendingIntent)
-//                .setAutoCancel(true);
-//
-//        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-//        notificationManager.notify(9, builder.build());
-
 
 
         relBack.setOnClickListener(new View.OnClickListener() {

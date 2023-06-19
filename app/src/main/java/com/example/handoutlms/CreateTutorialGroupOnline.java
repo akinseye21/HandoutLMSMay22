@@ -114,6 +114,12 @@ public class CreateTutorialGroupOnline extends AppCompatActivity {
         DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         stringRequest.setRetryPolicy(retryPolicy);
         requestQueue.add(stringRequest);
+        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+            @Override
+            public void onRequestFinished(Request<Object> request) {
+                requestQueue.getCache().clear();
+            }
+        });
 
 
         //GET UNIVERSITY
@@ -158,6 +164,12 @@ public class CreateTutorialGroupOnline extends AppCompatActivity {
         DefaultRetryPolicy retryPolicy2 = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         stringRequest2.setRetryPolicy(retryPolicy2);
         requestQueue2.add(stringRequest2);
+        requestQueue2.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+            @Override
+            public void onRequestFinished(Request<Object> request) {
+                requestQueue2.getCache().clear();
+            }
+        });
 
         grp_name = findViewById(R.id.group_name);
         descrip = findViewById(R.id.description);

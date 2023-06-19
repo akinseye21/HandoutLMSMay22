@@ -154,8 +154,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingLeft="20dp"
                 android:fontFamily="@font/poppins_bolditalic"
                 android:text="Forgot password?"
                 android:textColor="#ff6678"
@@ -173,86 +175,25 @@
 
             <Button
                 android:id="@+id/login"
-                android:layout_width="130dp"
-                android:layout_height="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/rounded_orange"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Login"
+                android:textSize="17dp"
                 android:textAllCaps="false"
                 android:textColor="#ffffff"
                 android:textStyle="bold" />
 
-            <!--            <TextView-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="Or continue with"-->
-            <!--                android:textColor="#ffffff"-->
-            <!--                android:textStyle="italic"-->
-            <!--                android:textSize="10dp"-->
-            <!--                android:layout_gravity="center"-->
-            <!--                android:layout_marginTop="20dp"-->
-            <!--                android:layout_marginBottom="10dp"/>-->
-
-            <!--            <LinearLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="50dp"-->
-            <!--                android:layout_marginLeft="20dp"-->
-            <!--                android:layout_marginRight="20dp"-->
-            <!--                android:orientation="horizontal"-->
-            <!--                android:layout_gravity="center"-->
-            <!--                android:padding="5dp"-->
-            <!--                android:gravity="center"-->
-            <!--                android:background="@drawable/round_white">-->
-            <!--                <ImageView-->
-            <!--                    android:layout_width="20dp"-->
-            <!--                    android:layout_height="20dp"-->
-            <!--                    android:layout_marginLeft="20dp"-->
-            <!--                    android:src="@drawable/ic_email"/>-->
-            <!--                <TextView-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:text="Login with Google"-->
-            <!--                    android:textStyle="normal"-->
-            <!--                    android:textSize="15dp"-->
-            <!--                    android:layout_marginRight="10dp"-->
-            <!--                    android:layout_marginLeft="10dp"-->
-            <!--                    android:textColor="#000000"/>-->
-            <!--            </LinearLayout>-->
-
-            <!--            <LinearLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="50dp"-->
-            <!--                android:orientation="horizontal"-->
-            <!--                android:layout_gravity="center"-->
-            <!--                android:padding="5dp"-->
-            <!--                android:layout_marginLeft="20dp"-->
-            <!--                android:layout_marginRight="20dp"-->
-            <!--                android:gravity="center"-->
-            <!--                android:layout_marginTop="20dp"-->
-            <!--                android:background="@drawable/round_blue">-->
-            <!--                <ImageView-->
-            <!--                    android:layout_width="20dp"-->
-            <!--                    android:layout_height="20dp"-->
-            <!--                    android:layout_marginLeft="20dp"-->
-            <!--                    android:src="@drawable/ic_facebook"/>-->
-            <!--                <TextView-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:text="Login with Facebook"-->
-            <!--                    android:textStyle="normal"-->
-            <!--                    android:textSize="15dp"-->
-            <!--                    android:layout_marginRight="10dp"-->
-            <!--                    android:layout_marginLeft="10dp"-->
-            <!--                    android:textColor="#ffffff"/>-->
-            <!--            </LinearLayout>-->
 
             <LinearLayout
                 android:id="@+id/signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 

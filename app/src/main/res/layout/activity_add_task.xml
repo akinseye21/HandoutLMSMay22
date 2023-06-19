@@ -250,15 +250,15 @@
             android:id="@+id/listview"/>
 
         <LinearLayout
+            android:id="@+id/add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:id="@+id/add"
-            android:layout_gravity="center"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="20dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -282,10 +282,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:fontFamily="@font/poppins_light"
                 android:text="Add a new task"
                 android:textColor="#ffffff"
                 android:textSize="15dp"
-                android:fontFamily="@font/poppins_light"
                 android:textStyle="bold" />
         </LinearLayout>
     </RelativeLayout>

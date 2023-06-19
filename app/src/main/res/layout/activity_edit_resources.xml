@@ -247,17 +247,20 @@
 
     <Button
         android:id="@+id/save"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:background="@drawable/rounded_orange"
         android:fontFamily="@font/poppins_bold"
         android:text="Save"
         android:textAllCaps="false"
         android:textColor="#ffffff"
+        android:textSize="17dp"
         android:textStyle="bold" />
 
 

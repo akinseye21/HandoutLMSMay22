@@ -25,6 +25,7 @@ import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -34,6 +35,7 @@ import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.google.android.material.snackbar.Snackbar;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -54,6 +56,8 @@ public class CreateGig1 extends AppCompatActivity {
     "COBOL","Dart","CMS","Fortran","Go","Google App Script","Haskel","Javascript","JavaFX","Kotlin","Kojo","Lua","MATLAB","Django","Flask","Node JS","Objective-C","Pascal",
     "Prolog","PHP","Swift","SwiftUI","AWS","Rust","Spark","TypeScript","Unity","XQuery"};
 
+    String[] emptySkillsArray = new String[0];
+
     MultiAutoCompleteTextView multiAutoCompleteTextView;
     LinearLayout next;
     ArrayList<String> Array_category = new ArrayList<>();
@@ -66,6 +70,8 @@ public class CreateGig1 extends AppCompatActivity {
 
     RecyclerView recyclerView;
     Adapter madapter;
+
+    public static final String GET_SKILLS = "https://handoutng.com/handouts/handout_get_skills";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +86,54 @@ public class CreateGig1 extends AppCompatActivity {
         back = findViewById(R.id.back);
         ProjectName = findViewById(R.id.edt_projectname);
         ProjectDescription = findViewById(R.id.edt_projectdesc);
+        multiAutoCompleteTextView = findViewById(R.id.auto2);
+
+        //GET SKILLS
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_SKILLS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            int ArrayLength = jsonArray.length();
+
+                            // Append the length of array  items to the array
+                            String[] newArray = new String[emptySkillsArray.length + ArrayLength];
+
+                            for(int i=0; i<ArrayLength; i++){
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                String myskill = jsonObject.getString("skills");
+
+                                newArray[i] = myskill;
+                            }
+
+                            ArrayAdapter adapter = new ArrayAdapter(CreateGig1.this,R.layout.simple_spinner_small_whitebg2, R.id.tx, newArray);
+                            multiAutoCompleteTextView.setAdapter(adapter);
+                            multiAutoCompleteTextView.setThreshold(0);
+                            multiAutoCompleteTextView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(retryPolicy);
+        requestQueue.add(stringRequest);
+        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+            @Override
+            public void onRequestFinished(Request<Object> request) {
+                requestQueue.getCache().clear();
+            }
+        });
 
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -89,16 +143,6 @@ public class CreateGig1 extends AppCompatActivity {
             }
         });
 
-        for (int i=0; i<my_gig_list.length; i++){
-            Array_category.add(my_gig_list[i]);
-        }
-
-
-        multiAutoCompleteTextView = findViewById(R.id.auto2);
-        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,my_gig_list);
-        multiAutoCompleteTextView.setAdapter(adapter);
-        multiAutoCompleteTextView.setThreshold(0);
-        multiAutoCompleteTextView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
 
         multiAutoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -132,22 +176,6 @@ public class CreateGig1 extends AppCompatActivity {
 
             }
         });
-
-//        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                String adon = String.valueOf(autoCompleteTextView.getText());
-//                autoCompleteTextView.setText("");
-//                if (skills_layout.getVisibility()==View.GONE || skills_layout.getVisibility()==View.INVISIBLE){
-//                    skills_layout.setVisibility(View.VISIBLE);
-//                }
-//
-//                Array_passed.add(adon);
-//                //populate values on the listview
-//                GigCategoryAdapter gigCategoryAdapter = new GigCategoryAdapter(CreateGig1.this, Array_passed);
-//                mylist.setAdapter(gigCategoryAdapter);
-//            }
-//        });
         next = findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
             @Override

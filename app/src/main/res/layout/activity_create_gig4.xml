@@ -183,13 +183,15 @@
 
     <LinearLayout
         android:id="@+id/next"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:background="@drawable/rounded_orange"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -200,6 +202,7 @@
             android:fontFamily="@font/poppins_bold"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
+            android:textSize="17dp"
             android:text="Next"
             android:textColor="#ffffff" />
     </LinearLayout>

@@ -352,16 +352,16 @@
                     android:id="@+id/upload_text"
                     android:visibility="gone"
                     android:text="Biding... Please wait"
-                android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/poppins_regular"
                     android:textColor="#ffffff"/>
 
 
 
             <Button
-                    android:layout_width="130dp"
-                    android:layout_height="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="Finish"
-                    android:textSize="10dp"
+                    android:textSize="17dp"
                     android:textStyle="bold"
                     android:textColor="#ffffff"
                     android:background="@drawable/rounded_orange"
@@ -370,7 +370,7 @@
                     android:id="@+id/finish"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
-                android:fontFamily="@font/poppins_bold"/>
+                    android:fontFamily="@font/poppins_bold"/>
         </LinearLayout>
     </ScrollView>
 
