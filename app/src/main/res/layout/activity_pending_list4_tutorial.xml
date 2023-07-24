@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#293241"
     android:orientation="vertical"
-    tools:context=".PendingList4Tutorial">
+    tools:context=".activities.PendingList4Tutorial">
 
     <RelativeLayout
         android:id="@+id/rel0"

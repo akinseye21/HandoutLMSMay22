@@ -8,7 +8,7 @@
         android:orientation="vertical"
         android:layout_gravity="center"
         android:padding="10dp"
-        tools:context=".ShowCreatedGigs">
+        tools:context=".activities.ShowCreatedGigs">
 
     <RelativeLayout
         android:id="@+id/rel0"

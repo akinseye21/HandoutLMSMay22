@@ -12,7 +12,7 @@ import android.os.Bundle;
 
 import androidx.core.app.NotificationCompat;
 
-import com.example.handoutlms.ChatMessagingPage;
+import com.example.handoutlms.activities.ChatMessagingPage;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.messaging.FirebaseMessagingService;

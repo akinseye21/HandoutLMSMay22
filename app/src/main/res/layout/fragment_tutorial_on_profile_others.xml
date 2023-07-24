@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#293241"
     android:layout_marginBottom="50dp"
-    tools:context=".tutorial_on_profile_others">
+    tools:context=".fragments.tutorial_on_profile_others">
 
     <LinearLayout
         android:layout_width="match_parent"

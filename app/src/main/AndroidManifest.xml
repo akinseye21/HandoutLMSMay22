@@ -33,98 +33,110 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".RemotePage2"
+            android:name=".activities.PointsOverview"
             android:exported="false" />
         <activity
-            android:name=".RemotePage"
+            android:name=".activities.PastQuestion"
             android:exported="false" />
         <activity
-            android:name=".ApprovedGigView"
+            android:name=".activities.OpenStax"
             android:exported="false" />
         <activity
-            android:name=".ApprovedGigUserView"
+            android:name=".activities.VirtualLibrary"
+            android:exported="false" />
+        <activity
+            android:name=".activities.RemotePage2"
+            android:exported="false" />
+        <activity
+            android:name=".activities.RemotePage"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ApprovedGigView"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ApprovedGigUserView"
             android:exported="false"
             android:noHistory="true"
-            android:parentActivityName=".ShowCreatedGigs" />
+            android:parentActivityName=".activities.ShowCreatedGigs" />
         <activity
-            android:name=".ResourceViewerView2"
+            android:name=".activities.ResourceViewerView2"
             android:exported="false" />
         <activity
-            android:name=".ResourceViewerView"
+            android:name=".activities.ResourceViewerView"
             android:exported="false" />
         <activity
-            android:name=".PendingList4Tutorial"
+            android:name=".activities.PendingList4Tutorial"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".WatchVideo"
+            android:name=".activities.WatchVideo"
             android:exported="false" />
         <activity
-            android:name=".EditResources"
+            android:name=".activities.EditResources"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ClickTutOnProfile"
+            android:name=".activities.ClickTutOnProfile"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".VideoCreatorView"
+            android:name=".activities.VideoCreatorView"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".VideoLinks"
+            android:name=".activities.VideoLinks"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TaskInfo"
+            android:name=".activities.TaskInfo"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Subjects"
+            android:name=".activities.Subjects"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ViewOfflineJoinedTutorial"
+            android:name=".activities.ViewOfflineJoinedTutorial"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AlmostDoneOffline"
+            android:name=".activities.AlmostDoneOffline"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ViewTutorCreatedGroup"
+            android:name=".activities.ViewTutorCreatedGroup"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ChatMessagingPage"
+            android:name=".activities.ChatMessagingPage"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ChatPage"
+            android:name=".activities.ChatPage"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateGames"
+            android:name=".activities.CreateGames"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateNewTask"
+            android:name=".activities.CreateNewTask"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AddTask"
+            android:name=".activities.AddTask"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TaskManagerClick"
+            android:name=".activities.TaskManagerClick"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ViewCv"
+            android:name=".activities.ViewCv"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SeeBids"
+            android:name=".activities.SeeBids"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
@@ -132,179 +144,179 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ShowCreatedGigs"
+            android:name=".activities.ShowCreatedGigs"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ProfileOthers"
+            android:name=".activities.ProfileOthers"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".EditProfilePage"
+            android:name=".activities.EditProfilePage"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CardGigClick2"
+            android:name=".activities.CardGigClick2"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TermsOfService"
+            android:name=".activities.TermsOfService"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ForgotPassword3"
+            android:name=".activities.ForgotPassword3"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ForgotPassword2"
+            android:name=".activities.ForgotPassword2"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ForgotPassword1"
+            android:name=".activities.ForgotPassword1"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TriviaFail"
+            android:name=".activities.TriviaFail"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TriviaPassed"
+            android:name=".activities.TriviaPassed"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Question10"
+            android:name=".activities.Question10"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Question9"
+            android:name=".activities.Question9"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Question8"
+            android:name=".activities.Question8"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Question7"
+            android:name=".activities.Question7"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Question6"
+            android:name=".activities.Question6"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Question5"
+            android:name=".activities.Question5"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Question4"
+            android:name=".activities.Question4"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Question3"
+            android:name=".activities.Question3"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Question2"
+            android:name=".activities.Question2"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Question1"
+            android:name=".activities.Question1"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TriviaInstruction"
+            android:name=".activities.TriviaInstruction"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".HandoutTrivia"
+            android:name=".activities.HandoutTrivia"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".NewSignup"
+            android:name=".activities.NewSignup"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateGig6"
+            android:name=".activities.CreateGig6"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateGig5"
+            android:name=".activities.CreateGig5"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateGig4"
+            android:name=".activities.CreateGig4"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateGig3"
+            android:name=".activities.CreateGig3"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateGig2"
+            android:name=".activities.CreateGig2"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateGig1"
+            android:name=".activities.CreateGig1"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AddOptions"
+            android:name=".activities.AddOptions"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ViewGroupResources"
+            android:name=".activities.ViewGroupResources"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateTutorialGroupOffline"
+            android:name=".activities.CreateTutorialGroupOffline"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".DocumentPaged"
+            android:name=".activities.DocumentPaged"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateOnlineTutPhase1"
+            android:name=".activities.CreateOnlineTutPhase1"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AlmostDoneOnline"
+            android:name=".activities.AlmostDoneOnline"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateTutorialGroupOnline"
+            android:name=".activities.CreateTutorialGroupOnline"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateTutorialGroup2"
+            android:name=".activities.CreateTutorialGroup2"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".FeedsDashboard"
+            android:name=".activities.FeedsDashboard"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ViewOnlineJoinedTutorial"
+            android:name=".activities.ViewOnlineJoinedTutorial"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TutorOrStudent"
+            android:name=".activities.TutorOrStudent"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".WelcomePage"
+            android:name=".activities.WelcomePage"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Login"
+            android:name=".activities.Login"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".LoginSignup"
+            android:name=".activities.LoginSignup"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".FirstScreen"
+            android:name=".activities.FirstScreen"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

@@ -6,7 +6,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#293241"
-        tools:context=".EditProfilePage">
+        tools:context=".activities.EditProfilePage">
 
     <RelativeLayout
             android:layout_width="match_parent"

@@ -4,7 +4,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#8b3894"
-        tools:context=".GamesProfile">
+        tools:context=".fragments.GamesProfile">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -7,7 +7,7 @@
         android:background="#293241"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ViewCv">
+        tools:context=".activities.ViewCv">
 
     <ImageView
             android:layout_width="30dp"

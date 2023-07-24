@@ -7,7 +7,7 @@
     android:background="#293241"
     android:layout_gravity="center"
     android:padding="10dp"
-    tools:context=".ApprovedGigView">
+    tools:context=".activities.ApprovedGigView">
 
     <RelativeLayout
         android:id="@+id/rel0"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#293241"
     android:padding="10dp"
-    tools:context=".ResourceViewerView">
+    tools:context=".activities.ResourceViewerView">
 
     <RelativeLayout
         android:id="@+id/rel0"

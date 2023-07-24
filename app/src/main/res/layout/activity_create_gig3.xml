@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#293241"
     android:orientation="vertical"
-    tools:context=".CreateGig3">
+    tools:context=".activities.CreateGig3">
 
             <RelativeLayout
                 android:layout_width="match_parent"

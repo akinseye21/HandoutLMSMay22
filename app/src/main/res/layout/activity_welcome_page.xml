@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic17"
-    tools:context=".WelcomePage">
+    tools:context=".activities.WelcomePage">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -64,7 +64,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Here we will help you experience exciting digital learning, \n personalize your learning experience and adapt to new standards.\n You will also be able to communicate with other users who like \n learning as much as you do."
+            android:text="Here we will help you experience exciting digital learning, personalize your learning experience and adapt to new standards. You will also be able to communicate with other users who like learning as much as you do."
             android:textSize="12dp"
             android:textColor="#000000"
             android:textStyle="normal"

@@ -27,12 +27,15 @@
         <entry key="app/src/main/res/drawable/closed.xml" value="0.1535" />
         <entry key="app/src/main/res/drawable/corner_gigs.xml" value="0.1655" />
         <entry key="app/src/main/res/drawable/corner_green.xml" value="0.128" />
+        <entry key="app/src/main/res/drawable/corner_income.xml" value="0.129" />
         <entry key="app/src/main/res/drawable/corner_notification.xml" value="0.1625" />
         <entry key="app/src/main/res/drawable/corner_search.xml" value="0.1365" />
         <entry key="app/src/main/res/drawable/corner_transparent.xml" value="0.1805" />
         <entry key="app/src/main/res/drawable/corner_tutor.xml" value="0.1195" />
+        <entry key="app/src/main/res/drawable/corner_voucher.xml" value="0.129" />
         <entry key="app/src/main/res/drawable/corner_white.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/corner_white2.xml" value="0.164" />
+        <entry key="app/src/main/res/drawable/divider.xml" value="0.1215" />
         <entry key="app/src/main/res/drawable/dotted_bg.xml" value="0.1805" />
         <entry key="app/src/main/res/drawable/dotted_line.xml" value="0.164" />
         <entry key="app/src/main/res/drawable/error.xml" value="0.171" />
@@ -48,6 +51,7 @@
         <entry key="app/src/main/res/drawable/new_rounded_green.xml" value="0.164" />
         <entry key="app/src/main/res/drawable/noti_me.xml" value="0.1075" />
         <entry key="app/src/main/res/drawable/notification.xml" value="0.1565" />
+        <entry key="app/src/main/res/drawable/popup_gift.xml" value="0.129" />
         <entry key="app/src/main/res/drawable/receiver_chat_bg.xml" value="0.1805" />
         <entry key="app/src/main/res/drawable/round_ash.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/round_blue.xml" value="0.175" />
@@ -110,7 +114,10 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_login_signup.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_new_signup.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_open_stax.xml" value="0.22780797101449277" />
+        <entry key="app/src/main/res/layout/activity_past_question.xml" value="0.22780797101449277" />
         <entry key="app/src/main/res/layout/activity_pending_list4_tutorial.xml" value="0.22146739130434784" />
+        <entry key="app/src/main/res/layout/activity_points_overview.xml" value="0.23988342285156253" />
         <entry key="app/src/main/res/layout/activity_profile_others.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_question1.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_question10.xml" value="0.24682971014492755" />
@@ -149,6 +156,7 @@
         <entry key="app/src/main/res/layout/activity_view_offline_joined_tutorial.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_view_online_joined_tutorial.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_view_tutor_created_group.xml" value="0.24682971014492755" />
+        <entry key="app/src/main/res/layout/activity_virtual_library.xml" value="0.22780797101449277" />
         <entry key="app/src/main/res/layout/activity_watch_video.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/activity_welcome_page.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/card_add_task.xml" value="0.2125" />
@@ -162,12 +170,14 @@
         <entry key="app/src/main/res/layout/custom_popup_add_experience.xml" value="0.21979166666666666" />
         <entry key="app/src/main/res/layout/custom_popup_avatar_click.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/custom_popup_bidplaced.xml" value="0.24682971014492755" />
+        <entry key="app/src/main/res/layout/custom_popup_comingsoon.xml" value="0.22780797101449277" />
         <entry key="app/src/main/res/layout/custom_popup_edit_class_size.xml" value="0.28125" />
         <entry key="app/src/main/res/layout/custom_popup_edit_delete.xml" value="0.2758152173913043" />
         <entry key="app/src/main/res/layout/custom_popup_edit_userinfo.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/custom_popup_exit.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/custom_popup_exit_chat.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/custom_popup_extend_timeline.xml" value="0.19114583333333332" />
+        <entry key="app/src/main/res/layout/custom_popup_giftupdate.xml" value="0.25" />
         <entry key="app/src/main/res/layout/custom_popup_login_loading.xml" value="0.15364583333333334" />
         <entry key="app/src/main/res/layout/custom_popup_logout.xml" value="0.20052083333333334" />
         <entry key="app/src/main/res/layout/custom_popup_menu.xml" value="0.22146739130434784" />
@@ -248,6 +258,7 @@
         <entry key="app/src/main/res/layout/list_homeview.xml" value="0.2625570776255708" />
         <entry key="app/src/main/res/layout/list_nigeriaexam.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/list_notification.xml" value="0.24682971014492755" />
+        <entry key="app/src/main/res/layout/list_openstax_lib.xml" value="0.22780797101449277" />
         <entry key="app/src/main/res/layout/list_remote_job.xml" value="0.25" />
         <entry key="app/src/main/res/layout/list_request.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/list_skills.xml" value="0.24682971014492755" />
@@ -259,6 +270,7 @@
         <entry key="app/src/main/res/layout/list_video_links.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/list_videolink_creator.xml" value="0.2111111111111111" />
         <entry key="app/src/main/res/layout/list_videolink_user.xml" value="0.24682971014492755" />
+        <entry key="app/src/main/res/layout/list_voucher.xml" value="0.45052631578947366" />
         <entry key="app/src/main/res/layout/navigation_header.xml" value="0.12315521240234373" />
         <entry key="app/src/main/res/layout/network_security_config.xml" value="0.14114583333333333" />
         <entry key="app/src/main/res/layout/simple_gig_spinner.xml" value="0.24682971014492755" />

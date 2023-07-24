@@ -7,7 +7,7 @@
         android:orientation="vertical"
         android:background="#293241"
         android:paddingBottom="10dp"
-        tools:context=".CardGigClick2">
+        tools:context=".activities.CardGigClick2">
 
     <RelativeLayout
             android:layout_width="match_parent"

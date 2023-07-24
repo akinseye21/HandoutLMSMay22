@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
         android:background="#293241"
     android:layout_marginBottom="50dp"
-    tools:context=".tutorial_on_profile">
+    tools:context=".fragments.tutorial_on_profile">
 
     <LinearLayout
         android:layout_width="match_parent"

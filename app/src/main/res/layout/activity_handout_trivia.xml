@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#293241"
     android:orientation="vertical"
-    tools:context=".HandoutTrivia">
+    tools:context=".activities.HandoutTrivia">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -525,52 +525,52 @@
 
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/nigExams"
-        android:orientation="vertical">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/nigExams"-->
+<!--        android:orientation="vertical">-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nigeria Examinations"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="20dp"/>
-        <View
-            android:layout_width="130dp"
-            android:layout_height="0.1dp"
-            android:background="#f05d72"
-            android:layout_marginLeft="20dp"/>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Nigeria Examinations"-->
+<!--            android:textColor="#fff"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:layout_marginLeft="20dp"/>-->
+<!--        <View-->
+<!--            android:layout_width="130dp"-->
+<!--            android:layout_height="0.1dp"-->
+<!--            android:background="#f05d72"-->
+<!--            android:layout_marginLeft="20dp"/>-->
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rel2"
-            android:background="#293241"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/rel2"-->
+<!--            android:background="#293241"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginBottom="10dp">-->
 
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:id="@+id/progressBar"/>
+<!--            <ProgressBar-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:id="@+id/progressBar"/>-->
 
 
-            <GridView
-                android:id="@+id/simpleGridView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:numColumns="3"
-                android:scrollbars="none"
-                android:verticalSpacing="5dp" />
+<!--            <GridView-->
+<!--                android:id="@+id/simpleGridView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:numColumns="3"-->
+<!--                android:scrollbars="none"-->
+<!--                android:verticalSpacing="5dp" />-->
 
-        </RelativeLayout>
+<!--        </RelativeLayout>-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
 
 

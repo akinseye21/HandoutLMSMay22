@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#293241"
-    tools:context=".TaskManager1">
+    tools:context=".fragments.TaskManager1">
 
 
         <LinearLayout

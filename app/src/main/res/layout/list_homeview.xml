@@ -489,22 +489,22 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/showUserProfile2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="10dp"
                     android:gravity="end"
-                    android:id="@+id/showUserProfile2"
                     android:orientation="horizontal">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imggig"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:id="@+id/imggig"
                         android:src="@drawable/profile_header"
-                        app:civ_border_width="0.5dp"
-                        app:civ_border_color="#fff"/>
+                        app:civ_border_color="#fff"
+                        app:civ_border_width="0.5dp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -527,11 +527,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:visibility="gone"
                             android:text="Civil Engineering"
                             android:textColor="#ffffff"
                             android:textSize="8dp"
-                            android:textStyle="normal" />
+                            android:textStyle="normal"
+                            android:visibility="gone" />
 
                         <TextView
                             android:id="@+id/uni_gig"

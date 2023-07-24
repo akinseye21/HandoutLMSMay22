@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#293241"
     android:padding="10dp"
-    tools:context=".ClickTutOnProfile">
+    tools:context=".activities.ClickTutOnProfile">
 
     <RelativeLayout
         android:id="@+id/rel0"

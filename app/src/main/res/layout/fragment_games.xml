@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#8b3894"
-    tools:context=".Games">
+    tools:context=".fragments.Games">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -128,6 +128,7 @@
                     android:layout_width="110dp"
                     android:layout_height="128dp"
                     android:elevation="5dp"
+                    android:id="@+id/pastQuestions"
                     android:background="@drawable/game8">
 
                     <RelativeLayout
@@ -141,7 +142,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_centerVertical="true"
                             android:fontFamily="@font/poppins_light"
-                            android:text="Word Scramble Game"
+                            android:text="Past Questions"
                             android:textColor="#ffffff"
                             android:textSize="6dp" />
 
@@ -161,7 +162,7 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/game5" />
+                        android:src="@drawable/jamb" />
 
 
                 </RelativeLayout>

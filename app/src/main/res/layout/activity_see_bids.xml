@@ -7,7 +7,7 @@
         android:background="#293241"
         android:orientation="vertical"
         android:layout_gravity="center"
-        tools:context=".SeeBids">
+        tools:context=".activities.SeeBids">
 
     <RelativeLayout
         android:id="@+id/rel0"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#293241"
     android:padding="10dp"
-    tools:context=".ResourceViewerView2">
+    tools:context=".activities.ResourceViewerView2">
 
     <RelativeLayout
         android:id="@+id/rel0"
@@ -49,14 +49,14 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/fullname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_bold"
                     android:text="Username"
                     android:textColor="#ffffff"
                     android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:id="@+id/fullname"/>
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <TextView

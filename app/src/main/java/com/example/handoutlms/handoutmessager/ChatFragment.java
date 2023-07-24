@@ -1,7 +1,5 @@
 package com.example.handoutlms.handoutmessager;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,23 +9,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.handoutlms.Chat;
-import com.example.handoutlms.ChatMessagingPage;
+import com.example.handoutlms.models.Chat;
 import com.example.handoutlms.ChatNotification.Token;
-import com.example.handoutlms.MessageAdapter;
 import com.example.handoutlms.R;
-import com.example.handoutlms.Users;
-import com.example.handoutlms.UsersAdapter;
-import com.example.handoutlms.UsersAdapter2;
+import com.example.handoutlms.models.Users;
+import com.example.handoutlms.adapters.UsersAdapter;
+import com.example.handoutlms.adapters.UsersAdapter2;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -36,7 +28,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.FirebaseInstanceIdService;
 
 import java.util.ArrayList;
 import java.util.HashMap;

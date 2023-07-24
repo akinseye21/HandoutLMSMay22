@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:id="@+id/fl_profile2"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Profile2">
+    tools:context=".fragments.Profile2">
 
    <RelativeLayout
        android:layout_width="match_parent"

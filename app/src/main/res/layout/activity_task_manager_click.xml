@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/frame_taskManager"
     android:background="#293241"
-    tools:context=".TaskManagerClick">
+    tools:context=".activities.TaskManagerClick">
 
     <LinearLayout
         android:layout_width="match_parent"
