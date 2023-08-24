@@ -20,16 +20,16 @@ import com.example.handoutlms.R;
 import com.example.handoutlms.handoutmessager.ChatFragment;
 import com.example.handoutlms.handoutmessager.UsersFragment;
 import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+//import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.FirebaseUser;
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class    ChatPage extends AppCompatActivity implements
+public class ChatPage extends AppCompatActivity implements
         ChatFragment.OnFragmentInteractionListener,
         UsersFragment.OnFragmentInteractionListener {
 
@@ -40,8 +40,8 @@ public class    ChatPage extends AppCompatActivity implements
     String got_email;
     LinearLayout leave;
 
-    private FirebaseAuth mAuth;
-    FirebaseUser firebaseUser;
+//    private FirebaseAuth mAuth;
+//    FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,8 @@ public class    ChatPage extends AppCompatActivity implements
         setContentView(R.layout.activity_chat_page);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        mAuth = FirebaseAuth.getInstance();
-        firebaseUser = mAuth.getCurrentUser();
+//        mAuth = FirebaseAuth.getInstance();
+//        firebaseUser = mAuth.getCurrentUser();
 
         preferences = getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
         got_email = preferences.getString("email", "not available");
@@ -64,7 +64,7 @@ public class    ChatPage extends AppCompatActivity implements
         leave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
+//                FirebaseAuth.getInstance().signOut();
                 Intent i = new Intent(ChatPage.this, FeedsDashboard.class);
                 i.putExtra("email", got_email);
                 i.putExtra("sent from", "ChatPage");
@@ -81,8 +81,8 @@ public class    ChatPage extends AppCompatActivity implements
 
     private void addTab(ViewPager viewPager){
         FeedsDashboard.ViewPagerAdapter adapter = new FeedsDashboard.ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new UsersFragment(), "Users");
-        adapter.addFrag(new ChatFragment(), "Chats");
+        adapter.addFrag(new UsersFragment(), "Users", "user_fragment_tag");
+        adapter.addFrag(new ChatFragment(), "Chats", "chats_fragment_tag");
         viewPager.setAdapter(adapter);
 
     }
@@ -91,55 +91,55 @@ public class    ChatPage extends AppCompatActivity implements
 
     }
 
-    class ViewPagerAdapter extends FragmentStatePagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
+//    class ViewPagerAdapter extends FragmentStatePagerAdapter {
+//        private final List<Fragment> mFragmentList = new ArrayList<>();
+//        private final List<String> mFragmentTitleList = new ArrayList<>();
+//
+//
+//        public ViewPagerAdapter(FragmentManager fm) {
+//            super(fm);
+//        }
+//
+//        @Override
+//        public Fragment getItem(int position) {
+//            return mFragmentList.get(position);
+//        }
+//
+//        @Override
+//        public int getCount() {
+//            return mFragmentList.size();
+//        }
+//
+//        public void addFrag(Fragment fragment, String title){
+//            mFragmentList.add(fragment);
+//            mFragmentTitleList.add(title);
+//        }
+//
+//        @Override
+//        public CharSequence getPageTitle(int position) {
+//            return mFragmentTitleList.get(position);
+//        }
+//    }
 
+//    private void status(String status){
+//        DatabaseReference reference = FirebaseDatabase.getInstance("https://handout-lms-default-rtdb.firebaseio.com/").getReference("Users").child(firebaseUser.getUid());
+//        HashMap<String, Object> hashMap = new HashMap<>();
+//        hashMap.put("status", status);
+//
+//        reference.updateChildren(hashMap);
+//    }
 
-        public ViewPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        public void addFrag(Fragment fragment, String title){
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
-    }
-
-    private void status(String status){
-        DatabaseReference reference = FirebaseDatabase.getInstance("https://handout-lms-default-rtdb.firebaseio.com/").getReference("Users").child(firebaseUser.getUid());
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("status", status);
-
-        reference.updateChildren(hashMap);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        status("online");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        status("offline");
-    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        status("online");
+//    }
+//
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        status("offline");
+//    }
 
     @Override
     public void onBackPressed() {

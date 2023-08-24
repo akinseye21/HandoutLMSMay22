@@ -174,9 +174,6 @@ public class AlmostDoneOffline extends AppCompatActivity {
 
                                 if(status.equals("successful")){
 
-                                    //Add user point
-
-
                                     Toast.makeText(getApplicationContext(), "Offline Group created successfully", Toast.LENGTH_LONG).show();
                                     System.out.println(jsonObject);
 
@@ -206,7 +203,6 @@ public class AlmostDoneOffline extends AppCompatActivity {
                                     myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                     myDialog.setCanceledOnTouchOutside(false);
                                     myDialog.show();
-
 
                                 }
                                 else{
@@ -271,8 +267,6 @@ public class AlmostDoneOffline extends AppCompatActivity {
 
                             try{
                                 JSONObject jsonObject = new JSONObject(response);
-
-//                                        String signed_name = jsonObject.getString("fullname");
                                 String status = jsonObject.getString("status");
                                 notification = jsonObject.getString("notification");
                                 System.out.println(response);
@@ -306,9 +300,6 @@ public class AlmostDoneOffline extends AppCompatActivity {
                                     myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                     myDialog.setCanceledOnTouchOutside(false);
                                     myDialog.show();
-
-
-
                                 }
                                 else{
                                     Toast.makeText(getApplicationContext(), "Group Creation failed.", Toast.LENGTH_LONG).show();
@@ -323,9 +314,7 @@ public class AlmostDoneOffline extends AppCompatActivity {
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError volleyError) {
-
                             progressBar.setVisibility(View.GONE);
-//                                    Toast.makeText(getContext(),  volleyError.getMessage(), Toast.LENGTH_LONG).show();
                             System.out.println("Error = "+volleyError.getMessage());
                         }
                     }){
@@ -358,8 +347,6 @@ public class AlmostDoneOffline extends AppCompatActivity {
                 }
             });
         }
-
-
     }
 
     public void updateUser(){

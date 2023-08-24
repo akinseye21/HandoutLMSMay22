@@ -71,8 +71,8 @@
 
     <Button
         android:id="@+id/close"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
         android:layout_gravity="center"
         android:layout_marginBottom="30dp"
         android:layout_marginRight="20dp"
@@ -83,7 +83,7 @@
         android:text="Close"
         android:textAllCaps="false"
         android:textColor="#c2272d"
-        android:textSize="17dp" />
+        android:textSize="13dp" />
 
 
 

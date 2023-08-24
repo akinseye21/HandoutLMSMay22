@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -56,8 +57,8 @@ public class ProfileOthers extends AppCompatActivity implements
     String got_email;
     ImageView back;
 
-    public static final String USER_PROFILE = "http://handoutng.com/handouts/handout_get_other_users";
-    public static final String CONNECT_USER = "http://handoutng.com/handouts/handout_connect_users";
+    public static final String USER_PROFILE = "https://handoutng.com/handouts/handout_get_other_users";
+    public static final String CONNECT_USER = "https://handoutng.com/handouts/handout_connect_users";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -229,7 +230,15 @@ public class ProfileOthers extends AppCompatActivity implements
         };
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        DefaultRetryPolicy retryPolicy2 = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(retryPolicy2);
         requestQueue.add(stringRequest);
+        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+            @Override
+            public void onRequestFinished(Request<Object> request) {
+                requestQueue.getCache().clear();
+            }
+        });
     }
 
     private void connectUser() {
@@ -247,6 +256,8 @@ public class ProfileOthers extends AppCompatActivity implements
                                 connect_txt.setTextColor(Color.WHITE);
                                 connect_txt.setBackgroundResource(R.drawable.rounded_white_transparent_100);
 //                                Toast.makeText(getApplicationContext(), "You are now connected with user - "+got_fullname, Toast.LENGTH_LONG).show();
+                            }else{
+                                //do nothing
                             }
 
                         }
@@ -272,7 +283,15 @@ public class ProfileOthers extends AppCompatActivity implements
         };
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        DefaultRetryPolicy retryPolicy2 = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(retryPolicy2);
         requestQueue.add(stringRequest);
+        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+            @Override
+            public void onRequestFinished(Request<Object> request) {
+                requestQueue.getCache().clear();
+            }
+        });
     }
 
     private void addTabs(ViewPager viewPager) {

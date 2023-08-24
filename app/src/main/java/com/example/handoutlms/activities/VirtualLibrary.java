@@ -47,9 +47,6 @@ public class VirtualLibrary extends AppCompatActivity {
         openStax.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent i = new Intent(VirtualLibrary.this, OpenStax.class);
-//                i.putExtra("email", email);
-//                startActivity(i);
 
                 Dialog myDialog = new Dialog(VirtualLibrary.this);
                 myDialog.setContentView(R.layout.custom_popup_comingsoon);

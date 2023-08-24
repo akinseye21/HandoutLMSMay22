@@ -48,14 +48,6 @@ public class CreateGig4 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
-//                Intent i = new Intent(getApplicationContext(), CreateGig3.class);
-//                i.putExtra("Project name", projectName);
-//                i.putExtra("Project description", projectDescription);
-//                i.putStringArrayListExtra("Required skills", Array_requiredSkills);
-//                i.putExtra("Payment mode", paymentMode);
-//                i.putExtra("Budget category", budgetCategory );
-//                i.putExtra("Project type", projectType );
-//                startActivity(i);
             }
         });
 
@@ -139,9 +131,4 @@ public class CreateGig4 extends AppCompatActivity {
             }
         });
     }
-
-//    @Override
-//    public void onBackPressed() {
-//        // do nothing
-//    }
 }

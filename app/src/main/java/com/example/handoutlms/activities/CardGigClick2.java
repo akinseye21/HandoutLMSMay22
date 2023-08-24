@@ -69,7 +69,7 @@ public class CardGigClick2 extends AppCompatActivity {
 
     String displayName = null;
 
-    public static final String BID_GIG = "http://handoutng.com/handouts/handout_bid_for_gig";
+    public static final String BID_GIG = "https://handoutng.com/handouts/handout_bid_for_gig";
     private RequestQueue rQueue;
 
     @Override

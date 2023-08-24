@@ -56,16 +56,6 @@ public class PendingList4Tutorial extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 onBackPressed();
-//                Intent i = new Intent(PendingList4Tutorial.this, ClickTutOnProfile.class);
-//                i.putExtra("groupName", groupName);
-//                i.putExtra("name", name);
-//                i.putExtra("category", category);
-//                i.putExtra("description", description);
-//                i.putExtra("mode", mode);
-//                i.putExtra("id", id);
-//                i.putExtra("date", date);
-//                startActivity(i);
-
             }
         });
 
@@ -85,12 +75,6 @@ public class PendingList4Tutorial extends AppCompatActivity {
             listview.setVisibility(View.VISIBLE);
             PendingAdapterClass pendingAdapterClass = new PendingAdapterClass(PendingList4Tutorial.this, arr_email, arr_name, arr_picture, from, id);
             listview.setAdapter(pendingAdapterClass);
-
         }
-
-
-
-
-
     }
 }

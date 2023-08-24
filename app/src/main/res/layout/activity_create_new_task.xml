@@ -231,13 +231,13 @@
                     android:visibility="gone"/>
 
                 <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:text="Create Task"
-                    android:textSize="17dp"
+                    android:textSize="15dp"
                     android:textColor="#ffffff"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="20dp"

@@ -37,7 +37,6 @@ public class PastQuestion extends AppCompatActivity {
     ProgressBar progressBar;
     ImageView back;
 
-
     public static final String NIGERIA_EXAMS = "https://handoutng.com/handouts/handout_examtype";
 
     @Override

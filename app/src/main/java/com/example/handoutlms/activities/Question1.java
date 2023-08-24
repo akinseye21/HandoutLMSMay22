@@ -77,13 +77,6 @@ public class Question1 extends AppCompatActivity {
             @Override
             public void onFinish() {
                 timeCount.setText("TIME UP!!");
-//                Intent i = new Intent(Question1.this, TriviaFail.class);
-//                i.putExtra("counter", counter);
-//                i.putExtra("timer", "TIME UP!!");
-//                i.putExtra("category", Text);
-//                i.putExtra("question", questio);
-//                i.putExtra("score", score);
-//                startActivity(i);
             }
         }.start();
 
@@ -473,7 +466,6 @@ public class Question1 extends AppCompatActivity {
                             startActivity(mv);
                         }
                     }, 2000);
-
 
                 }
 

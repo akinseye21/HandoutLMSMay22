@@ -169,7 +169,7 @@ public class gig_on_profile extends Fragment {
                                     JSONArray jsonArray = new JSONArray(response);
                                     ArrayLength = jsonArray.length();
 
-                                    if(ArrayLength > 1){
+                                    if(ArrayLength >= 1){
                                         for(int j = ArrayLength - 1; j >= 0; j--){
                                             JSONObject section1 = jsonArray.getJSONObject(j);
                                             String gigName = section1.getString("gigname");
@@ -309,13 +309,13 @@ public class gig_on_profile extends Fragment {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                System.out.println("Response = "+response);
+                                System.out.println("Gigs Bidded Response = "+response);
 
                                 try{
                                     JSONArray jsonArray = new JSONArray(response);
                                     ArrayLength = jsonArray.length();
 
-                                    if(ArrayLength > 1){
+                                    if(ArrayLength >= 1){
                                         for(int j = ArrayLength - 1; j >= 0; j--){
                                             JSONObject section1 = jsonArray.getJSONObject(j);
                                             String gigName = section1.getString("gigname");
@@ -435,7 +435,7 @@ public class gig_on_profile extends Fragment {
                             JSONArray jsonArray = new JSONArray(response);
                             ArrayLength = jsonArray.length();
 
-                            if(ArrayLength > 1){
+                            if(ArrayLength >= 1){
                                 for(int j = ArrayLength - 1; j >= 0; j--){
                                     JSONObject section1 = jsonArray.getJSONObject(j);
                                     String gigName = section1.getString("gigname");

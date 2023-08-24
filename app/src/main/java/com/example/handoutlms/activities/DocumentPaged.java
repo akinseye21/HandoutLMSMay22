@@ -61,8 +61,6 @@ public class DocumentPaged extends AppCompatActivity {
     Dialog myDialog, myDialog2;
 
     TextView groupName;
-//    TextView upload_text;
-//    ProgressBar progressBar;
     LinearLayout loading;
     EditText pdfName, pdfDesc;
     String got_email, got_category, got_description, got_mode, got_id, got_date;
@@ -95,12 +93,9 @@ public class DocumentPaged extends AppCompatActivity {
 
         upload_default = findViewById(R.id.upload_default);
         upload_btn = findViewById(R.id.upload_button);
-//        file_path = findViewById(R.id.file_path);
         back = findViewById(R.id.back);
         loading = findViewById(R.id.loading);
         groupName = findViewById(R.id.groupNAME);
-//        upload_text = findViewById(R.id.upload_text);
-//        progressBar = findViewById(R.id.progressBar);
         pdfName = findViewById(R.id.edtPdfName);
         pdfDesc = findViewById(R.id.edtPdfDesc);
 
@@ -173,9 +168,6 @@ public class DocumentPaged extends AppCompatActivity {
         myDialog.setCanceledOnTouchOutside(false);
         myDialog.show();
 
-//        loading.setVisibility(View.VISIBLE);
-//        upload_text.setVisibility(View.VISIBLE);
-
         InputStream iStream = null;
         try {
 
@@ -227,8 +219,6 @@ public class DocumentPaged extends AppCompatActivity {
                                     myDialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                     myDialog2.setCanceledOnTouchOutside(true);
                                     myDialog2.show();
-//                                    loading.setVisibility(View.GONE);
-//                                    upload_text.setVisibility(View.GONE);
                                 }
 
 
@@ -237,8 +227,6 @@ public class DocumentPaged extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Uploading failed", Toast.LENGTH_LONG).show();
 
                                 myDialog.dismiss();
-//                                loading.setVisibility(View.GONE);
-//                                upload_text.setVisibility(View.GONE);
                             }
                         }
                     },
@@ -249,8 +237,6 @@ public class DocumentPaged extends AppCompatActivity {
                             System.out.println("Error message = "+error.getMessage());
 
                             myDialog.dismiss();
-//                            loading.setVisibility(View.GONE);
-//                            upload_text.setVisibility(View.GONE);
                         }
                     }) {
 
@@ -280,8 +266,6 @@ public class DocumentPaged extends AppCompatActivity {
                     return params;
                 }
             };
-
-
             volleyMultipartRequest.setRetryPolicy(new DefaultRetryPolicy(
                     0,
                     DefaultRetryPolicy.DEFAULT_MAX_RETRIES,

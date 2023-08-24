@@ -73,9 +73,4 @@ public class CreateGig2 extends AppCompatActivity {
         });
 
     }
-
-//    @Override
-//    public void onBackPressed() {
-//        // do nothing
-//    }
 }

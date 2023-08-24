@@ -111,8 +111,6 @@ public class CreateGig5 extends AppCompatActivity {
             }
         }
 
-//        Snackbar.make(findViewById(android.R.id.content), "Skills = "+sb, Snackbar.LENGTH_LONG).show();
-
         //populate values  of skill on the gridview
         madapter = new Adapter(Array_requiredSkills);
         recyclerView.setLayoutManager(layoutManager);

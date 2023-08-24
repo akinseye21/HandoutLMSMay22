@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
-            android:fontFamily="@font/montserrat_thin"
+            android:fontFamily="@font/poppins_thin"
             android:text="Physics/Electronics"
             android:textColor="#ffffff"
             android:textSize="10dp" />

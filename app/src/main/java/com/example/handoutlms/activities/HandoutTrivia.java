@@ -58,20 +58,13 @@ public class HandoutTrivia extends AppCompatActivity {
     RelativeLayout relbeginner, relamateur, relhustler, relpro, relexpert;
     RelativeLayout relveteran, relmaster, relgrandmaster, relking, relemperor;
 
-//    LinearLayout nigExam;
-
     TextView textinbox;
-//    GridView gridView;
-
     ViewPager viewPager;
     TabLayout tabLayout;
-
     Dialog myDialog;
     ArrayList<String> Array_examType = new ArrayList<>();
     ProgressBar progressBar;
-
     String text;
-//    TextView correctAnswer, ranking;
 
     public static final String RANK_URL = "http://35.84.44.203/handouts/trivia/user_rank";
     public static final String NIGERIA_EXAMS = "https://handoutng.com/handouts/handout_examtype";
@@ -124,58 +117,6 @@ public class HandoutTrivia extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         addTabs(viewPager);
 
-
-        //get Nigerian Exams
-//        StringRequest stringRequest = new StringRequest(Request.Method.GET, NIGERIA_EXAMS,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        try {
-//                            JSONArray jsonArray = new JSONArray(response);
-//                            int len = jsonArray.length();
-//
-//                            for(int i =0; i<len; i++){
-//                                JSONObject myResp = jsonArray.getJSONObject(i);
-//                                String examType = myResp.getString("examType");
-//
-//                                Array_examType.add(examType);
-//                            }
-//
-//
-//                            //populate values on the gridview
-//                            NigeriaExamAdapter nigeriaExamAdapter = new NigeriaExamAdapter(getApplicationContext(), Array_examType);
-//                            gridView.setAdapter(nigeriaExamAdapter);
-//
-//                            progressBar.setVisibility(View.GONE);
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                            progressBar.setVisibility(View.GONE);
-//                        }
-//
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError volleyError) {
-//                        progressBar.setVisibility(View.GONE);
-//                    }
-//                }){
-//            @Override
-//            protected Map<String, String> getParams(){
-//                Map<String, String> params = new HashMap<>();
-//                return params;
-//            }
-//        };
-//        RequestQueue requestQueue = Volley.newRequestQueue(HandoutTrivia.this);
-//        DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-//        stringRequest.setRetryPolicy(retryPolicy);
-//        requestQueue.add(stringRequest);
-
-
-
-
-
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setOnTabSelectedListener(
                 new TabLayout.ViewPagerOnTabSelectedListener(viewPager) {
@@ -201,8 +142,6 @@ public class HandoutTrivia extends AppCompatActivity {
 
 
         TextView username = findViewById(R.id.username);
-//        correctAnswer = findViewById(R.id.numCorrectAns);
-//        ranking = findViewById(R.id.ranking);
 
         username.setText(email);
 
@@ -218,9 +157,6 @@ public class HandoutTrivia extends AppCompatActivity {
         movies = findViewById(R.id.movies);
         animals = findViewById(R.id.animals);
         fashion = findViewById(R.id.fashion);
-
-
-
 
         soccer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -578,49 +514,10 @@ public class HandoutTrivia extends AppCompatActivity {
             }
         });
 
-
-//        //send info to database to get ranks
-//        StringRequest stringRequest = new StringRequest(Request.Method.POST, RANK_URL,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        System.out.println("User ranking array = "+response);
-//                        JSONObject jsonObject;
-//                        try {
-//                            jsonObject = new JSONObject(response);
-//                            String rank = jsonObject.getString("overall_rank");
-//                            String test_completed = jsonObject.getString("overall_test_completed");
-//
-////                            ranking.setText(rank);
-////                            correctAnswer.setText(test_completed);
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-////                        Toast.makeText(getApplicationContext(), "Network connectivity problem", Toast.LENGTH_LONG).show();
-//                    }
-//                }){
-//            @Override
-//            protected Map<String, String> getParams(){
-//                Map<String, String> params = new HashMap<String, String>();
-//                params.put("email", email);
-//                return params;
-//            }
-//        };
-//        RequestQueue requestQueue = Volley.newRequestQueue(HandoutTrivia.this);
-//        requestQueue.add(stringRequest);
     }
 
     private void addTabs(ViewPager viewPager) {
         HandoutTrivia.ViewPagerAdapter adapter = new HandoutTrivia.ViewPagerAdapter(getSupportFragmentManager());
-//        adapter.addFrag(new CountryRank(), "");
-//        adapter.addFrag(new InstitutionRank(), "");
         viewPager.setAdapter(adapter);
     }
 
@@ -651,12 +548,5 @@ public class HandoutTrivia extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
-
-
     }
-
-//    @Override
-//    public void onFragmentInteraction(Uri uri) {
-//
-//    }
 }

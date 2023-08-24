@@ -3,12 +3,16 @@ package com.example.handoutlms.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -45,10 +49,10 @@ public class VideoCreatorView extends AppCompatActivity {
 
     String group_name, from;
     String classSize, type;
-    String fullnamed;
+    String fullnamed, email;
     int ArrayLength, len2;
     String got_name, got_category, got_description, got_mode, got_id, got_date;
-
+    Dialog myDialog;
 
     SharedPreferences preferences;
 
@@ -78,6 +82,7 @@ public class VideoCreatorView extends AppCompatActivity {
 
         preferences = getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
         fullnamed = preferences.getString("fullname", "");
+        email = preferences.getString("email", "");
 
         System.out.println("The group name = "+group_name);
 
@@ -98,18 +103,36 @@ public class VideoCreatorView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (from.equals("justCreatedResources")){
-                    Intent i = new Intent(VideoCreatorView.this, ClickTutOnProfile.class);
-                    i.putExtra("groupName", group_name);
-                    i.putExtra("name", fullnamed);
-                    i.putExtra("category", got_category);
-                    i.putExtra("description", got_description);
-                    i.putExtra("mode", got_mode);
-                    i.putExtra("id", got_id);
-                    i.putExtra("date", got_date);
-                    i.putExtra("classsize", classSize);
-                    i.putExtra("type", type);
-                    i.putExtra("from", "justCreatedResources");
-                    startActivity(i);
+
+                    //ask if you want to go back home
+                    //show popUp to exit
+                    myDialog = new Dialog(VideoCreatorView.this);
+                    myDialog.setContentView(R.layout.custom_popup_exit);
+                    TextView text1 = myDialog.findViewById(R.id.text1);
+                    TextView text2 = myDialog.findViewById(R.id.text2);
+                    text1.setText("");
+                    text2.setText("Are you sure you want to go back home?");
+                    Button yes = myDialog.findViewById(R.id.yes);
+                    Button no = myDialog.findViewById(R.id.no);
+                    yes.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent i = new Intent(VideoCreatorView.this, FeedsDashboard.class);
+                            i.putExtra("email", email);
+                            i.putExtra("sent from", "online_tutorial");
+                            startActivity(i);
+                        }
+                    });
+
+                    no.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            myDialog.dismiss();
+                        }
+                    });
+                    myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    myDialog.setCanceledOnTouchOutside(true);
+                    myDialog.show();
                 }else{
                     onBackPressed();
                 }
@@ -161,8 +184,6 @@ public class VideoCreatorView extends AppCompatActivity {
                                     else {
                                         noResources.setVisibility(View.VISIBLE);
                                     }
-
-
                                 }
                             }
                         }
@@ -181,8 +202,6 @@ public class VideoCreatorView extends AppCompatActivity {
                             VideoLinkAdapter videoLinkAdapter = new VideoLinkAdapter(VideoCreatorView.this, group_name, Array_fileURL, Array_fileDescription, Array_thumbnail, Array_fileName, Array_resID, "creator", got_mode);
                             gridView.setAdapter(videoLinkAdapter);
                         }
-
-
                     }
                 },
                 new Response.ErrorListener() {
@@ -280,8 +299,6 @@ public class VideoCreatorView extends AppCompatActivity {
                                     VideoLinkAdapter videoLinkAdapter = new VideoLinkAdapter(VideoCreatorView.this, group_name, Array_fileURL, Array_fileDescription, Array_thumbnail, Array_fileName, Array_resID, "creator", got_mode);
                                     gridView.setAdapter(videoLinkAdapter);
                                 }
-
-
                             }
                         },
                         new Response.ErrorListener() {

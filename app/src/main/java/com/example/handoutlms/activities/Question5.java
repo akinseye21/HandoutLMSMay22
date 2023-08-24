@@ -94,56 +94,6 @@ public class Question5 extends AppCompatActivity {
             @Override
             public void onFinish() {
                 timeCount.setText("TIME UP!!");
-//                Intent i = new Intent(Question5.this, TriviaFail.class);
-//                i.putExtra("counter", counters);
-//                i.putExtra("timer", "TIME UP!!");
-//                i.putExtra("category", Text);
-//                i.putExtra("question", questio);
-//                i.putExtra("score", score);
-//                startActivity(i);
-
-
-//                for(int h = 0; h<10; h++){
-//                    if(score[h] == null){
-//                        score[h] = "fail";
-//                    }else{
-//                        //leave it the way it is
-//                    }
-//                }
-//
-//                //check counter
-//                if(counters >= 7){
-////                    score[4] = "fail";
-////                    score[5] = "fail";
-////                    score[6] = "fail";
-////                    score[7] = "fail";
-////                    score[8] = "fail";
-////                    score[9] = "fail";
-//
-//                    //show qualified page
-//                    Intent mv = new Intent(Question5.this, TriviaPassed.class);
-//                    mv.putExtra("counter", counters);
-//                    mv.putExtra("category", Text);
-//                    mv.putExtra("question", questio);
-//                    mv.putExtra("score", score);
-//                    mv.putExtra("timer", timeCount.getText().toString());
-//                    startActivity(mv);
-//                }else{
-////                    score[4] = "fail";
-////                    score[5] = "fail";
-////                    score[6] = "fail";
-////                    score[7] = "fail";
-////                    score[8] = "fail";
-////                    score[9] = "fail";
-//
-//                    Intent mv = new Intent(Question5.this, TriviaFail.class);
-//                    mv.putExtra("counter", counters);
-//                    mv.putExtra("category", Text);
-//                    mv.putExtra("question", questio);
-//                    mv.putExtra("score", score);
-//                    mv.putExtra("timer", timeCount.getText().toString());
-//                    startActivity(mv);
-//                }
             }
         }.start();
 

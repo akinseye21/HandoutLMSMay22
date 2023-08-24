@@ -68,30 +68,6 @@ public class WatchVideo extends AppCompatActivity {
             webView.setVisibility(View.GONE);
             new RetrievePDFfromUrl().execute(link);
 
-            //pdf file
-//            String pdfViewerURL = "http://docs.google.com/gview?embedded=true&url=";
-//            webView.getSettings().setJavaScriptEnabled(false);
-//            webView.getSettings().setSupportZoom(true);
-//            webView.getSettings().setBuiltInZoomControls(true);
-//            webView.setWebViewClient(new WebViewClient());
-//            webView.loadUrl(pdfViewerURL+link);
-
-//            Uri uri = Uri.parse(link);
-//
-//            webView.setVisibility(View.GONE);
-//            pdfView.setVisibility(View.VISIBLE);
-//            pdfView.fromUri(uri)
-//                    .enableSwipe(true)
-//                    .swipeHorizontal(true)
-//                    .enableDoubletap(true)
-//                    .defaultPage(0)
-//                    .enableAnnotationRendering(false)
-//                    .password(null)
-//                    .scrollHandle(null)
-//                    .enableAntialiasing(true)
-//                    .spacing(0)
-//                    .load();
-
 
         }else{
             //video file

@@ -113,6 +113,12 @@ public class ForgotPassword1 extends AppCompatActivity {
                 DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
                 stringRequest.setRetryPolicy(retryPolicy);
                 requestQueue.add(stringRequest);
+                requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+                    @Override
+                    public void onRequestFinished(Request<Object> request) {
+                        requestQueue.getCache().clear();
+                    }
+                });
 
             }
         });

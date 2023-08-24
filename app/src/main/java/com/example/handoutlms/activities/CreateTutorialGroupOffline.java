@@ -246,8 +246,6 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
                                 }else{
                                     minute_d = String.valueOf(sMinute);
                                 }
-
-//                                tim.setText(sHour + ":" + sMinute);
                                 tim.setText(hour_d+":"+minute_d);
                             }
                         }, hour, minutes, true);
@@ -276,10 +274,6 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
                 } else if (classsize.getSelectedItem().toString().equals("Select class size") || classsize.getSelectedItem().toString().equals("")){
                     Toast.makeText(CreateTutorialGroupOffline.this, "Select class size", Toast.LENGTH_SHORT).show();
                 }
-//                if(group_name.equals("") || date.equals("") || time.equals("") || description.equals("") || cat.getSelectedItem().toString().equals("") ||
-//                        uni.getSelectedItem().toString().equals("")){
-//                    Toast.makeText(getApplicationContext(), "One or more field is empty", Toast.LENGTH_LONG).show();
-//                }
                 else{
                     Intent i = new Intent(CreateTutorialGroupOffline.this, AlmostDoneOffline.class);
                     i.putExtra("group_name", group_name);
@@ -293,8 +287,6 @@ public class CreateTutorialGroupOffline extends AppCompatActivity {
                     i.putExtra("class_size", classsize.getSelectedItem().toString());
                     startActivity(i);
                 }
-
-
             }
         });
     }

@@ -83,8 +83,6 @@ public class OpenStax extends AppCompatActivity {
                             for (int i = 1; i<91; i++){
                                 // Get the first item from the booksArray (assuming it contains only one item)
                                 JSONObject bookObject = booksArray.getJSONObject(i);
-
-//                                System.out.println("Response = "+bookObject);
                                 //get the information per book
                                 String title = bookObject.getString("title");
                                 String cover_url = bookObject.getString("cover_url");
@@ -92,7 +90,6 @@ public class OpenStax extends AppCompatActivity {
                                 String salesforce_name = bookObject.getString("salesforce_name");
                                 JSONArray subjectsArray2 = bookObject.getJSONArray("subjects");
                                 String subject2 = subjectsArray2.getString(0);
-
 
                                 generalTitle.add(title);
                                 generalCoverUrl.add(cover_url);
@@ -121,34 +118,6 @@ public class OpenStax extends AppCompatActivity {
                             OpenStaxAdapter openStaxAdapter = new OpenStaxAdapter(OpenStax.this, generalTitle, generalCoverUrl, generalPdfUrl, generalSalesforceName, generalSubject, generalPosition);
                             gridView.setAdapter(openStaxAdapter);
 
-//
-//                            System.out.println("Unique = "+LibraryCategories);
-
-//                            for (String item : LibraryCategories) {
-//                                TabLayout.Tab tab = tabLayout.newTab();
-//                                tab.setText(item);
-//                                tabLayout.addTab(tab);
-//                            }
-//                            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//                                @Override
-//                                public void onTabSelected(TabLayout.Tab tab) {
-//                                    // Handle tab selection
-//                                }
-//
-//                                @Override
-//                                public void onTabUnselected(TabLayout.Tab tab) {
-//                                    // Handle tab unselection
-//                                }
-//
-//                                @Override
-//                                public void onTabReselected(TabLayout.Tab tab) {
-//                                    // Handle tab reselection
-//                                }
-//                            });
-
-
-
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -171,12 +140,5 @@ public class OpenStax extends AppCompatActivity {
                 requestQueue.getCache().clear();
             }
         });
-    }
-
-    public void getCategories() {
-
-        //GET CATEGORIES
-
-
     }
 }

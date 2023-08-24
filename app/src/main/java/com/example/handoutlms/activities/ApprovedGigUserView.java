@@ -392,8 +392,6 @@ public class ApprovedGigUserView extends AppCompatActivity {
                 myDialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 myDialog2.setCanceledOnTouchOutside(false);
                 myDialog2.show();
-
-
             }
         });
 

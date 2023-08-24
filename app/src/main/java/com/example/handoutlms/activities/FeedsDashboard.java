@@ -22,7 +22,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -32,6 +34,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.example.handoutlms.adapters.PagerAdapter;
 import com.example.handoutlms.fragments.ChatPage2;
 import com.example.handoutlms.fragments.FeedDashboardHome;
 import com.example.handoutlms.fragments.FeedDashboardNotification;
@@ -50,10 +53,10 @@ import com.example.handoutlms.fragments.gig_on_profile_others;
 import com.example.handoutlms.fragments.tutorial_on_profile;
 import com.example.handoutlms.fragments.tutorial_on_profile_others;
 import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+//import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.FirebaseUser;
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -92,13 +95,13 @@ public class FeedsDashboard extends AppCompatActivity implements
     ImageView plus, menu;
     String email, sent_from;
 
-    private FirebaseAuth mAuth;
-    FirebaseUser firebaseUser;
+//    private FirebaseAuth mAuth;
+//    FirebaseUser firebaseUser;
 
     SharedPreferences preferences;
     String got_email, fullname, pics;
     private View overlayView;
-
+    private PagerAdapter pagerAdapter;
 
 
     public static final String USER_PROFILE = "https://handoutng.com/handouts/handout_get_my_notifications";
@@ -119,8 +122,6 @@ public class FeedsDashboard extends AppCompatActivity implements
         email = j.getStringExtra("email");
         sent_from = j.getStringExtra("sent from");  //either "Login" or "Register"
 
-        mAuth = FirebaseAuth.getInstance();
-        firebaseUser = mAuth.getCurrentUser();
 
         Bundle args2 = new Bundle();
         args2.putString("email", email);
@@ -141,14 +142,16 @@ public class FeedsDashboard extends AppCompatActivity implements
         addTabs(viewPager);
         tabLayout = findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(viewPager);
+        setupTabIcons(0);
         checkNotificationCount();
-//        setupTabIcons();
+
+        pagerAdapter = new PagerAdapter(getSupportFragmentManager());
 
 
         if (sent_from.equals("justCreatedResources") || sent_from.equals("checking gigs")){
-            navigateFragment(4);
+            navigateFragment(3);
         }else if (sent_from.equals("task manager click")){
-            navigateFragment(2);
+            navigateFragment(1);
         }else if (sent_from.equals("clear error")){
             navigateFragment(0);
         }
@@ -162,35 +165,38 @@ public class FeedsDashboard extends AppCompatActivity implements
                     @Override
                     public void onTabSelected(TabLayout.Tab tab) {
                         if (tab.getPosition() == 1){
-//                            navigateFragment(0);
+                            checkNotificationCount();
                         }
                         else if(tab.getPosition() == 2){
-
+                            checkNotificationCount();
                         }
                         else if(tab.getPosition() == 0){
-                            Intent j = new Intent(getApplicationContext(), FeedsDashboard.class);
-                            j.putExtra("email", got_email);
-                            j.putExtra("sent from", "clear error");
-                            startActivity(j);
-                            finish();
+                            checkNotificationCount();
                         }
                         else if(tab.getPosition() == 3){
-
+                            checkNotificationCount();
                         }
-                        else if(tab.getPosition() == 4){
-
+                        else{
+                            checkNotificationCount();
                         }
                     }
 
                     @Override
                     public void onTabReselected(TabLayout.Tab tab) {
-//                        super.onTabReselected(tab);
-                        if(tab.getPosition() == 0){
-                            Intent j = new Intent(getApplicationContext(), FeedsDashboard.class);
-                            j.putExtra("email", got_email);
-                            j.putExtra("sent from", "clear error");
-                            startActivity(j);
-                            finish();
+                        if (tab.getPosition() == 1){
+                            checkNotificationCount();
+                        }
+                        else if(tab.getPosition() == 2){
+                            checkNotificationCount();
+                        }
+                        else if(tab.getPosition() == 0){
+                            checkNotificationCount();
+                        }
+                        else if(tab.getPosition() == 3){
+                            checkNotificationCount();
+                        }
+                        else{
+                            checkNotificationCount();
                         }
                     }
                 }
@@ -225,7 +231,6 @@ public class FeedsDashboard extends AppCompatActivity implements
             }
         });
 
-
         menu = findViewById(R.id.menu);
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -236,7 +241,7 @@ public class FeedsDashboard extends AppCompatActivity implements
 
     }
 
-    private void checkNotificationCount() {
+    public void checkNotificationCount() {
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, USER_PROFILE,
                 new Response.Listener<String>() {
@@ -296,38 +301,41 @@ public class FeedsDashboard extends AppCompatActivity implements
         });
     }
 
-    private void setupTabIcons(int unreadCount) {
+    private void setupTabIcons(int unreadCounts) {
 //        checkNotificationCount();
 
-        if (unreadCount == 0){
+        if (unreadCounts == 0){
             tabLayout.getTabAt(0).setIcon(R.drawable.ic33);
-            tabLayout.getTabAt(1).setIcon(R.drawable.ic31);
-            tabLayout.getTabAt(2).setIcon(R.drawable.ic99);
-            tabLayout.getTabAt(3).setIcon(R.drawable.bell);
-            tabLayout.getTabAt(4).setIcon(R.drawable.ic32);
+//            tabLayout.getTabAt(1).setIcon(R.drawable.ic31);
+            tabLayout.getTabAt(1).setIcon(R.drawable.ic99);
+            tabLayout.getTabAt(2).setIcon(R.drawable.bell);
+            tabLayout.getTabAt(3).setIcon(R.drawable.ic32);
         }else{
             tabLayout.getTabAt(0).setIcon(R.drawable.ic33);
-            tabLayout.getTabAt(1).setIcon(R.drawable.ic31);
-            tabLayout.getTabAt(2).setIcon(R.drawable.ic99);
-            tabLayout.getTabAt(3).setIcon(R.drawable.bell).getOrCreateBadge().setNumber(unreadCount);
-            tabLayout.getTabAt(4).setIcon(R.drawable.ic32);
+//            tabLayout.getTabAt(1).setIcon(R.drawable.ic31);
+            tabLayout.getTabAt(1).setIcon(R.drawable.ic99);
+            tabLayout.getTabAt(2).setIcon(R.drawable.bell).getOrCreateBadge().setNumber(unreadCounts);
+            tabLayout.getTabAt(3).setIcon(R.drawable.ic32);
         }
+
+
 
     }
 
     private void addTabs(ViewPager viewPager) {
+
         FeedsDashboard.ViewPagerAdapter adapter = new FeedsDashboard.ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new FeedDashboardHome(), "Home");
-        adapter.addFrag(new ChatPage2(), "Message");
-        adapter.addFrag(new TaskManager1(), "Task Manager");
-        adapter.addFrag(new FeedDashboardNotification(), "Notification");
-        adapter.addFrag(new Profile2(), "Profile");
+        adapter.addFrag(new FeedDashboardHome(), "Home", "home_fragment_tag");
+        adapter.addFrag(new TaskManager1(), "Task Manager", "task_manager_fragment_tag");
+        adapter.addFrag(new FeedDashboardNotification(), "Notification", "notification_fragment_tag");
+        adapter.addFrag(new Profile2(), "Profile", "profile_fragment_tag");
         viewPager.setAdapter(adapter);
     }
 
     public void navigateFragment(int position){
         viewPager.setCurrentItem(position);
     }
+
 
     private void createDrawerItem() {
         // Inflate the drawer item layout
@@ -505,10 +513,10 @@ public class FeedsDashboard extends AppCompatActivity implements
         // do nothing
     }
 
-
     public static class ViewPagerAdapter extends FragmentStatePagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
+        private final ArrayList<String> fragmentTagList = new ArrayList<>();
 
 
         public ViewPagerAdapter(FragmentManager fm) {
@@ -525,42 +533,21 @@ public class FeedsDashboard extends AppCompatActivity implements
             return mFragmentList.size();
         }
 
-        public void addFrag(Fragment fragment, String title){
+        public void addFrag(Fragment fragment, String title, String tag){
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
+            fragmentTagList.add(tag);
+        }
+
+        // Add a method to retrieve the fragment tag based on the position
+        public String getTag(int position) {
+            return fragmentTagList.get(position);
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
-    }
-
-    public String getSentFrom(){
-        return sent_from;
-    }
-    public String getSignupEmail(){
-        return email;
-    }
-
-    private void status(String status){
-        DatabaseReference reference = FirebaseDatabase.getInstance("https://handout-lms-default-rtdb.firebaseio.com/").getReference("Users").child(firebaseUser.getUid());
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("status", status);
-
-        reference.updateChildren(hashMap);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        status("online");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        status("offline");
     }
 
 

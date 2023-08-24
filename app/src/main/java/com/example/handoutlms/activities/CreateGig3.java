@@ -349,8 +349,4 @@ public class CreateGig3 extends AppCompatActivity {
         });
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        // do nothing
-//    }
 }

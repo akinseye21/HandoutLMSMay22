@@ -31,6 +31,7 @@ import com.bumptech.glide.Glide;
 import com.example.handoutlms.R;
 import com.example.handoutlms.adapters.OpenStaxAdapter;
 import com.example.handoutlms.adapters.VoucherListAdapter;
+import com.google.android.material.slider.Slider;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,6 +56,10 @@ public class PointsOverview extends AppCompatActivity {
     ImageView back;
     ListView voucherList;
     LinearLayout noVoucher;
+    LinearLayout noSlider;
+
+    LinearLayout tutorialLayoutSlider, gamesLayoutSlider, gigsLayoutSlider;
+    Slider tutorialSlider, gamesSlider, gigsSLider;
 
     SharedPreferences preferences;
     String myEmail, myFullname, myPic;
@@ -78,8 +83,6 @@ public class PointsOverview extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_points_overview);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-
     }
 
     public void showIncome(View view) {
@@ -111,6 +114,13 @@ public class PointsOverview extends AppCompatActivity {
         myFullname = preferences.getString("fullname", "not available");
         myPic = preferences.getString("pics", "not available");
 
+        tutorialLayoutSlider = findViewById(R.id.tutorialLayoutSlider);
+        gamesLayoutSlider = findViewById(R.id.gamesLayoutSlider);
+        gigsLayoutSlider = findViewById(R.id.gigsLayoutSlider);
+        tutorialSlider = findViewById(R.id.tutorialSlider);
+        gamesSlider = findViewById(R.id.gamesSlider);
+        gigsSLider = findViewById(R.id.gigsSlider);
+        noSlider = findViewById(R.id.noSlider);
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,17 +170,42 @@ public class PointsOverview extends AppCompatActivity {
                             totalpoints.setText(totalAccruedPoints);
                             usedpoints.setText(totalUsedPoints);
                             balancepoints.setText(String.valueOf(balancePoints));
-                            totalBalance.setText("N "+totalAccruedPoints);
-                            voucherBalance.setText("N "+totalAccruedPoints);
-                            voucherPoint.setText(totalAccruedPoints+" points");
+                            totalBalance.setText("N "+balancePoints);
+                            voucherBalance.setText("N "+balancePoints);
+                            voucherPoint.setText(balancePoints+" points");
 
                             JSONArray jsonArray = new JSONArray(group);
-                            for (int i=0; i< jsonArray.length(); i++){
-                                JSONObject jsonObject2 = jsonArray.getJSONObject(i);
-                                String category = jsonObject2.getString("category");
-                                String value = jsonObject2.getString("value");
-                                String percent = jsonObject2.getString("percent");
+                            if (jsonArray.length() < 1){
+                                //make all slider visibility gone
+                                noSlider.setVisibility(View.VISIBLE);
+                            }else{
+                                noSlider.setVisibility(View.GONE);
+                                for (int i=0; i< jsonArray.length(); i++){
+                                    JSONObject jsonObject2 = jsonArray.getJSONObject(i);
+                                    String category = jsonObject2.getString("category");
+                                    String value = jsonObject2.getString("value");
+                                    String percent = jsonObject2.getString("percent");
+
+                                    if (category.equals("Tutorials")){
+                                        //make tutorials slider visible
+                                        tutorialLayoutSlider.setVisibility(View.VISIBLE);
+                                        tutorialSlider.setValue(Float.parseFloat(percent));
+                                        tutorialSlider.setOnTouchListener((v, event) -> true);
+                                    }else if (category.equals("Games")){
+                                        //make games slider visible
+                                        gamesLayoutSlider.setVisibility(View.VISIBLE);
+                                        gamesSlider.setValue(Float.parseFloat(percent));
+                                        gamesSlider.setOnTouchListener((v, event) -> true);
+                                    }else if (category.equals("Gigs")){
+                                        //make gigs slider visible
+                                        gigsLayoutSlider.setVisibility(View.VISIBLE);
+                                        gigsSLider.setValue(Float.parseFloat(percent));
+                                        gigsSLider.setOnTouchListener((v, event) -> true);
+                                    }
+
+                                }
                             }
+
 
 
                         }
@@ -211,8 +246,7 @@ public class PointsOverview extends AppCompatActivity {
     }
 
     private void getVouchers() {
-        voucherCount.add("Select Voucher");
-        voucherCount.add("");
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GET_VOUCHERS,
                 new Response.Listener<String>() {
@@ -230,8 +264,11 @@ public class PointsOverview extends AppCompatActivity {
                                     // don't add anything to the spinner
                                     noVoucher.setVisibility(View.VISIBLE);
                                     voucherList.setVisibility(View.GONE);
+                                    voucherCount.add("You have no voucher");
                                 }else if (status.equals("unused")){
                                     //add the vouchers to the array for spinner
+                                    voucherCount.add("Select Voucher");
+                                    voucherCount.add("");
                                     String voucher = jsonObject2.getString("voucher");
                                     voucherCount.add(voucher);
 
@@ -316,7 +353,7 @@ public class PointsOverview extends AppCompatActivity {
 
     private void redeemVoucher(String code) {
         
-        if (code.equals("") || code.equals("Select Voucher")){
+        if (code.equals("") || code.equals("Select Voucher") || code.equals("You have no voucher")){
             Toast.makeText(this, "You have not selected a voucher", Toast.LENGTH_SHORT).show();
         }else{
 

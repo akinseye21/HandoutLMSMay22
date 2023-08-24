@@ -80,16 +80,10 @@ public class ShowCreatedGigs extends AppCompatActivity {
 
         startdate.setText(startDate);
         enddate.setText(endDate);
-//        depart = findViewById(R.id.dept_gig);
-//        school = findViewById(R.id.uni_gig);
         gigName = findViewById(R.id.gig_name);
-//        gigDescription = findViewById(R.id.gig_description);
-//        gigSkills = findViewById(R.id.skills);
         gigPaymentMode = findViewById(R.id.gig_category);
 
         gigName.setText(passedName);
-//        gigDescription.setText(passedDescription);
-//        gigSkills.setText(passedSkills);
         gigPaymentMode.setText(passedPrice);
 
 
@@ -102,15 +96,11 @@ public class ShowCreatedGigs extends AppCompatActivity {
 
                         try{
                             JSONObject profile = new JSONObject(response);
-//                                String got_email = profile.getString("email");
                             got_fullname = profile.getString("fullname");
                             got_institution = profile.getString("institution");
-//                            got_faculty = profile.getString("faculty");
                             got_dept = profile.getString("department");
 
                             fullname.setText(got_fullname);
-//                            depart.setText(got_dept);
-//                            school.setText(got_institution);
 
                         }
                         catch (JSONException e){

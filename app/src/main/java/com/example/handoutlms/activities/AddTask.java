@@ -149,23 +149,10 @@ public class AddTask extends AppCompatActivity {
         TodayTaskAdapter2 myAdapter=new TodayTaskAdapter2(getApplicationContext(),arr_task_name,arr_task_date,arr_task_category, arr_task_description, arr_task_time);
         listView.setAdapter(myAdapter);
 
-
-
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
-//        arr_task_name.clear();
-//        arr_task_date.clear();
-//        arr_task_category.clear();
-//        arr_task_description.clear();
-//        arr_task_time.clear();
-
-
-
-
     }
 }

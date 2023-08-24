@@ -554,9 +554,7 @@ public class ResourceViewerView2 extends AppCompatActivity {
                                             txtRecentlyAdded4.setText(Array_fileName3.get(3));
                                         }
 
-
                                     }
-
                                     else {
                                         Loading3.setVisibility(View.GONE);
                                         horizontalScrollView3.setVisibility(View.GONE);

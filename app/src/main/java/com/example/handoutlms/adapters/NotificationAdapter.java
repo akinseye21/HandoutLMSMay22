@@ -29,7 +29,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.example.handoutlms.R;
-import com.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.codec.binary.StringUtils;
+import com.example.handoutlms.activities.FeedsDashboard;
+//import com.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.codec.binary.StringUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -182,7 +183,11 @@ public class NotificationAdapter extends BaseAdapter {
                         not_title.setTextColor(Color.parseColor("#f2de39"));
                     }
                     Glide.with(context).load(notification_logo.get(i)).into(ico);
-                    not_message.setText(notification_message.get(i));
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                        not_message.setText(Html.fromHtml(notification_message.get(i), Html.FROM_HTML_MODE_LEGACY));
+                    } else {
+                        not_message.setText(Html.fromHtml(notification_message.get(i)));
+                    }
                     close.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -194,6 +199,7 @@ public class NotificationAdapter extends BaseAdapter {
                     myDialog.setCanceledOnTouchOutside(true);
                     myDialog.setCancelable(true);
                     myDialog.show();
+
                 }
                 else{
                     myDialog = new Dialog(context);
@@ -224,7 +230,11 @@ public class NotificationAdapter extends BaseAdapter {
                         not_title.setTextColor(Color.parseColor("#f2de39"));
                     }
                     Glide.with(context).load(notification_logo.get(i)).into(ico);
-                    not_message.setText(notification_message.get(i));
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                        not_message.setText(Html.fromHtml(notification_message.get(i), Html.FROM_HTML_MODE_LEGACY));
+                    } else {
+                        not_message.setText(Html.fromHtml(notification_message.get(i)));
+                    }
                     close.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {

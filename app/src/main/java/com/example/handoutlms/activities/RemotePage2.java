@@ -80,6 +80,14 @@ public class RemotePage2 extends AppCompatActivity {
 
         back = findViewById(R.id.back);
         plus = findViewById(R.id.plus);
+        plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(RemotePage2.this, AddOptions.class);
+                i.putExtra("email", email);
+                startActivity(i);
+            }
+        });
         pp = findViewById(R.id.pp);
         username = findViewById(R.id.username);
         useremail = findViewById(R.id.useremail);

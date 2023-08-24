@@ -162,9 +162,6 @@ public class ClickTutOnProfile extends AppCompatActivity {
                                 //update the size
                                 updateClass(new_size);
                             }
-
-
-
                         }
                     });
 
@@ -185,10 +182,6 @@ public class ClickTutOnProfile extends AppCompatActivity {
                     i.putExtra("email", got_email);
                     i.putExtra("sent from", from);
                     startActivity(i);
-
-//                    FeedsDashboard fd = new FeedsDashboard();
-//                    fd.navigateFragment(3);
-//                    FeedsDashboard.class.navigateFragment(4);
                 }else{
                     onBackPressed();
                 }
@@ -256,13 +249,6 @@ public class ClickTutOnProfile extends AppCompatActivity {
 
         groupName.setText(got_groupName);
         date.setText(got_date);
-
-        //get users already approved
-//        getApprovedUsers();
-        // get users who wants to join my tutorial
-//        getUsersToJoin();
-        // get top 4 views
-//        getTop4();
 
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -374,12 +360,9 @@ public class ClickTutOnProfile extends AppCompatActivity {
                                 String picture = jsonObject.getString("picture");
                                 size = jsonObject.getString("size");
 
-
                                 arr_email_approved.add(memberID);
                                 arr_name_approved.add(member);
                                 arr_picture_approved.add(picture);
-
-
                             }
 
                         }
@@ -449,8 +432,6 @@ public class ClickTutOnProfile extends AppCompatActivity {
                                     Array_thumbnail.add(thumbnail);
                                     Array_resID.add(resID);
                                 }
-
-
 
                                 loading.setVisibility(View.GONE);
                                 horizontalScrollView.setVisibility(View.VISIBLE);
@@ -524,8 +505,6 @@ public class ClickTutOnProfile extends AppCompatActivity {
                                     count4.setText(Array_totalHit.get(3));
                                 }
 
-
-
                             }else{
                                 loading.setVisibility(View.GONE);
                                 horizontalScrollView.setVisibility(View.GONE);
@@ -535,7 +514,6 @@ public class ClickTutOnProfile extends AppCompatActivity {
                         catch (JSONException e){
                             e.printStackTrace();
                         }
-
                     }
                 },
                 new Response.ErrorListener() {
@@ -556,7 +534,6 @@ public class ClickTutOnProfile extends AppCompatActivity {
         DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         stringRequest.setRetryPolicy(retryPolicy);
         requestQueue.add(stringRequest);
-
 
         //clear the array
         Array_fileDescription.clear();

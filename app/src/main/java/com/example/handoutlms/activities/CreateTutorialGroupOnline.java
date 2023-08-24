@@ -61,11 +61,6 @@ public class CreateTutorialGroupOnline extends AppCompatActivity {
         Intent j = getIntent();
         email = j.getStringExtra("email");
 
-//        String sub1 = "Select Subject";
-//        SpannableString spannableString = new SpannableString(sub1);
-//        ForegroundColorSpan gray = new ForegroundColorSpan(Color.GRAY);
-//        spannableString.setSpan(gray, 0, 14, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
         //GET CATEGORIES
         StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_CATEGORIES,
                 new Response.Listener<String>() {
@@ -211,7 +206,6 @@ public class CreateTutorialGroupOnline extends AppCompatActivity {
                                     dy = "0"+dayOfMonth;
                                 else dy = String.valueOf(dayOfMonth);
 
-//                                dte.setText(dy + "/" + mt + "/" + year);
                                 dte.setText(year + "-" + mt + "-" + dy);
                             }
                         }, mYear, mMonth, mDay);
@@ -241,8 +235,6 @@ public class CreateTutorialGroupOnline extends AppCompatActivity {
                                 }else{
                                     minute_d = String.valueOf(sMinute);
                                 }
-
-//                                tim.setText(sHour + ":" + sMinute);
                                 tim.setText(hour_d+":"+minute_d);
                             }
                         }, hour, minutes, true);
@@ -268,10 +260,6 @@ public class CreateTutorialGroupOnline extends AppCompatActivity {
                 } else if(description.equals("")){
                     descrip.setError("Description is empty");
                 }
-//                if(group_name.equals("") || date.equals("") || time.equals("") || description.equals("") || cat.getSelectedItem().toString().equals("") ||
-//                uni.getSelectedItem().toString().equals("")){
-//                    Toast.makeText(getApplicationContext(), "One or more field is empty", Toast.LENGTH_LONG).show();
-//                }
                 else{
                     Intent i = new Intent(CreateTutorialGroupOnline.this, AlmostDoneOnline.class);
                     i.putExtra("group_name", group_name);

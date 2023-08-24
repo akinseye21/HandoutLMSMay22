@@ -42,6 +42,7 @@
         <entry key="app/src/main/res/drawable/green_outline.xml" value="0.141" />
         <entry key="app/src/main/res/drawable/handout_chat.xml" value="0.1805" />
         <entry key="app/src/main/res/drawable/handout_icon.xml" value="0.1655" />
+        <entry key="app/src/main/res/drawable/ic90.xml" value="0.1405" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.171" />
         <entry key="app/src/main/res/drawable/icon_back_arrow.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/icon_dots.xml" value="0.1565" />
@@ -118,7 +119,7 @@
         <entry key="app/src/main/res/layout/activity_past_question.xml" value="0.22780797101449277" />
         <entry key="app/src/main/res/layout/activity_pending_list4_tutorial.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/activity_points_overview.xml" value="0.23988342285156253" />
-        <entry key="app/src/main/res/layout/activity_profile_others.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_profile_others.xml" value="0.2835549926757813" />
         <entry key="app/src/main/res/layout/activity_question1.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_question10.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_question2.xml" value="0.24682971014492755" />
@@ -155,8 +156,9 @@
         <entry key="app/src/main/res/layout/activity_view_joined_tutorial.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_view_offline_joined_tutorial.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_view_online_joined_tutorial.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_view_remote_jobs.xml" value="0.22780797101449277" />
         <entry key="app/src/main/res/layout/activity_view_tutor_created_group.xml" value="0.24682971014492755" />
-        <entry key="app/src/main/res/layout/activity_virtual_library.xml" value="0.22780797101449277" />
+        <entry key="app/src/main/res/layout/activity_virtual_library.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_watch_video.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/activity_welcome_page.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/card_add_task.xml" value="0.2125" />

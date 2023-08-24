@@ -56,7 +56,6 @@ public class CreateGig6 extends AppCompatActivity {
     String all_skills = "";
 
     TextView txt_prjname, txt_prjdesc, txt_projecttyp, txt_budgetcat;
-//    GridView mygrid;
     ProgressBar progressBar;
     LinearLayout next;
     SharedPreferences preferences;
@@ -97,7 +96,6 @@ public class CreateGig6 extends AppCompatActivity {
         txt_prjdesc = findViewById(R.id.project_desc);
         txt_projecttyp = findViewById(R.id.project_type);
         txt_budgetcat = findViewById(R.id.budget_category);
-//        mygrid = findViewById(R.id.mygrid);
         next = findViewById(R.id.next);
         progressBar = findViewById(R.id.progressBar);
 
@@ -112,14 +110,10 @@ public class CreateGig6 extends AppCompatActivity {
             }
         }
 
-//        Snackbar.make(findViewById(android.R.id.content), "Skills = "+sb, Snackbar.LENGTH_LONG).show();
-
         //populate values  of skill on the gridview
         madapter = new Adapter(Array_requiredSkills);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(madapter);
-//        SimpleGigSetAdapter simpleGigSetAdapter = new SimpleGigSetAdapter(getApplicationContext(), Array_requiredSkills);
-//        mygrid.setAdapter(simpleGigSetAdapter);
 
         txt_prjname.setText(projectName);
         txt_prjdesc.setText(projectDescription);
@@ -131,14 +125,6 @@ public class CreateGig6 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
-//                Intent i = new Intent(getApplicationContext(), CreateGig4.class);
-//                i.putExtra("Project name", projectName);
-//                i.putExtra("Project description", projectDescription);
-//                i.putStringArrayListExtra("Required skills", Array_requiredSkills);
-//                i.putExtra("Payment mode", paymentMode);
-//                i.putExtra("Budget category", budgetCategory );
-//                i.putExtra("Project type", projectType );
-//                startActivity(i);
             }
         });
 

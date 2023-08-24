@@ -144,11 +144,12 @@ public class ForgotPassword2 extends AppCompatActivity {
                             @Override
                             public void onResponse(String response) {
                                 JSONObject jsonObject;
+                                System.out.println("Reset Password response = "+response);
                                 try {
                                     jsonObject = new JSONObject(response);
                                     String status = jsonObject.getString("status");
 
-                                    if(status.equals("successful")){
+                                    if(status.equals("reset")){
                                         progressBar.setVisibility(View.GONE);
                                         //send to next
                                         Intent i = new Intent(getApplicationContext(), ForgotPassword3.class);

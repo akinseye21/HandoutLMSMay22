@@ -22,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.handoutlms.R;
+import com.example.handoutlms.activities.FeedsDashboard;
 import com.example.handoutlms.adapters.NotificationAdapter;
 
 import org.json.JSONArray;
@@ -188,6 +189,12 @@ public class FeedDashboardNotification extends Fragment {
                 DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
                 stringRequest.setRetryPolicy(retryPolicy);
                 requestQueue.add(stringRequest);
+                requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+                    @Override
+                    public void onRequestFinished(Request<Object> request) {
+                        requestQueue.getCache().clear();
+                    }
+                });
 
                 //clear array
                 arr_title.clear();
@@ -289,6 +296,12 @@ public class FeedDashboardNotification extends Fragment {
                 DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
                 stringRequest.setRetryPolicy(retryPolicy);
                 requestQueue.add(stringRequest);
+                requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+                    @Override
+                    public void onRequestFinished(Request<Object> request) {
+                        requestQueue.getCache().clear();
+                    }
+                });
 
                 //clear array
                 arr_title.clear();
@@ -313,6 +326,8 @@ public class FeedDashboardNotification extends Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
+                        System.out.println("Notifications = "+response);
 
                         try{
                             JSONObject profile = new JSONObject(response);
@@ -390,7 +405,12 @@ public class FeedDashboardNotification extends Fragment {
         DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         stringRequest.setRetryPolicy(retryPolicy);
         requestQueue.add(stringRequest);
-
+        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+            @Override
+            public void onRequestFinished(Request<Object> request) {
+                requestQueue.getCache().clear();
+            }
+        });
 
         //clear array
         arr_title.clear();

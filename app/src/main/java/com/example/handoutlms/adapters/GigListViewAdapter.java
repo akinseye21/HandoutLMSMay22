@@ -142,6 +142,7 @@ public class GigListViewAdapter extends BaseAdapter {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
+                                System.out.println("Response gig card clicked 2 = "+response);
 
                                 try{
                                     JSONArray jsonArray = new JSONArray(response);
@@ -264,6 +265,24 @@ public class GigListViewAdapter extends BaseAdapter {
                                         String stats = jsonObject.getString("status");
                                         if(stats.equals("no gig bids")){
                                             //show "no gig bidded"
+                                            bid.setEnabled(true);
+                                            bid.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    myDialog.dismiss();
+                                                    //move to the next gig page
+                                                    Intent i = new Intent(context, CardGigClick2.class);
+                                                    i.putExtra("name", created_by.get(position));
+                                                    i.putExtra("department", department.get(position));
+                                                    i.putExtra("school", institution.get(position));
+                                                    i.putExtra("gig_name", gigName.get(position));
+                                                    i.putExtra("picture", pp.get(position));
+                                                    i.putExtra("gig_description", gigDescription.get(position));
+                                                    i.putExtra("payment_structure", gigPrice.get(position));
+                                                    i.putExtra("id", gigId.get(position));
+                                                    context.startActivity(i);
+                                                }
+                                            });
                                         }
 
                                     } catch (JSONException ee) {

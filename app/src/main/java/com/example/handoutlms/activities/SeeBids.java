@@ -77,20 +77,12 @@ public class SeeBids extends AppCompatActivity {
         enddate = i.getStringExtra("endDate");
 
         fullname = findViewById(R.id.created_by_gig);
-//        depart = findViewById(R.id.dept_gig);
-//        school = findViewById(R.id.uni_gig);
         gigName = findViewById(R.id.gig_name);
         my_list = findViewById(R.id.my_list);
         notification_text = findViewById(R.id.notification_text);
         loading = findViewById(R.id.loading);
-//        bid_count = findViewById(R.id.bid_count);
-//        radioGroup = findViewById(R.id.radioGroup);
-//        inProgress = findViewById(R.id.inprogress);
-//        gigCompleted = findViewById(R.id.gigcompleted);
 
         fullname.setText(username);
-//        depart.setText(userdept);
-//        school.setText(userinstitution);
         gigName.setText(gigname);
     }
 

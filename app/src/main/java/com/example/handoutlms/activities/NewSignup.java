@@ -28,8 +28,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.handoutlms.R;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.database.DatabaseReference;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,11 +59,8 @@ public class NewSignup extends AppCompatActivity {
     public static final String SIGNUP = "https://handoutng.com/handouts/handout_registration";
     public static final String GET_UNIVERSITY = "https://handoutng.com/handouts/handout_get_universities";
 
-    FirebaseAuth auth;
-    DatabaseReference reference;
-
-//    OkHttpClient client = new OkHttpClient();
-
+//    FirebaseAuth auth;
+//    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,7 +131,12 @@ public class NewSignup extends AppCompatActivity {
         DefaultRetryPolicy retryPolicy2 = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         stringRequest2.setRetryPolicy(retryPolicy2);
         requestQueue2.add(stringRequest2);
-
+        requestQueue2.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+            @Override
+            public void onRequestFinished(Request<Object> request) {
+                requestQueue2.getCache().clear();
+            }
+        });
 
 
 
@@ -198,13 +200,12 @@ public class NewSignup extends AppCompatActivity {
 //
                                                                 myEdit.putString( "email", e_mail);
                                                                 myEdit.putString("fullname", name);
-//                                                                myEdit.putString("pics", pics);
                                                                 myEdit.putString("password", pass);
                                                                 myEdit.commit();
 
                                                                 myDialog.dismiss();
 
-                                                                Intent i = new Intent(getApplicationContext(), WelcomePage.class);
+                                                                Intent i = new Intent(NewSignup.this, WelcomePage.class);
                                                                 i.putExtra("fullname", name);
                                                                 i.putExtra("email", e_mail);
                                                                 i.putExtra("phone", phone);
@@ -212,13 +213,10 @@ public class NewSignup extends AppCompatActivity {
                                                                 i.putExtra("school", school);
                                                                 startActivity(i);
 
-
                                                             }else{
                                                                 myDialog.dismiss();
                                                                 Toast.makeText(NewSignup.this, "Signup failed, please try again", Toast.LENGTH_SHORT).show();
                                                             }
-
-
                                                         }
                                                         catch (JSONException e){
                                                             e.printStackTrace();
@@ -265,8 +263,12 @@ public class NewSignup extends AppCompatActivity {
                                         DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
                                         stringRequest.setRetryPolicy(retryPolicy);
                                         requestQueue.add(stringRequest);
-
-
+                                        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+                                            @Override
+                                            public void onRequestFinished(Request<Object> request) {
+                                                requestQueue.getCache().clear();
+                                            }
+                                        });
 
                                     }else{
                                         password.setError("Password must be greater than 5 characters");

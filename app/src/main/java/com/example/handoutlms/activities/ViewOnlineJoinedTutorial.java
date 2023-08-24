@@ -84,21 +84,7 @@ public class ViewOnlineJoinedTutorial extends AppCompatActivity {
 
                                     if(id.equals(g_id)){
                                         String mode = section1.getString("mode");
-//                                        if(mode.equals("online")){
-//                                            quiz.setVisibility(View.GONE);
-//                                            address.setVisibility(View.GONE);
-//                                            view5.setVisibility(View.GONE);
-//
-//                                        }
-//                                        else if(mode.equals("offline")){
-//                                            img.setImageResource(R.drawable.ic127);
-//                                            audio.setVisibility(View.GONE);
-//                                            view1.setVisibility(View.GONE);
-//                                        }
                                     }
-
-
-
                                 }
 
                             }else{

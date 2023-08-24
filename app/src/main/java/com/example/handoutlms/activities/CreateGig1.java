@@ -40,17 +40,10 @@ import java.util.stream.Stream;
 
 public class CreateGig1 extends AppCompatActivity {
 
-    String[] my_gig_list={"Android","Java","IOS","SQL","JDBC","Web services","Graphics","Python","Matlab","FORTRAN", "C++","C#","C#","CSO","Community Development",
-            "Programming","Mathematics","Physics","Biology","Chemistry","Data Analysis","Engineering","Farming","Geography","History","Judiciary","Kinetics",
-            "Luminous Science","Node JS","Oracle","Query","R","Statistics","Trigonometry","Universal Science","Vector","X-data","Communication","AI","C#","C++","Apache",
-    "COBOL","Dart","CMS","Fortran","Go","Google App Script","Haskel","Javascript","JavaFX","Kotlin","Kojo","Lua","MATLAB","Django","Flask","Node JS","Objective-C","Pascal",
-    "Prolog","PHP","Swift","SwiftUI","AWS","Rust","Spark","TypeScript","Unity","XQuery"};
-
     String[] emptySkillsArray = new String[0];
 
     MultiAutoCompleteTextView multiAutoCompleteTextView;
     LinearLayout next;
-    ArrayList<String> Array_category = new ArrayList<>();
     ArrayList<String> Array_passed = new ArrayList<>();
     LinearLayout skills_layout;
     ImageView back;

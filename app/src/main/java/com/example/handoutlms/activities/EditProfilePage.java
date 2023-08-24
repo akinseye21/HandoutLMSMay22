@@ -327,9 +327,6 @@ public class EditProfilePage extends AppCompatActivity {
                                                         }else{
                                                             Toast.makeText(EditProfilePage.this, "Failed!!! Please try again", Toast.LENGTH_SHORT).show();
                                                         }
-
-
-
                                                     }
                                                     catch (JSONException e){
                                                         e.printStackTrace();
@@ -365,13 +362,6 @@ public class EditProfilePage extends AppCompatActivity {
                         }
                     }
                 }
-
-//                if(s_fullname.equals("") || s_email.equals("") || s_phonenum.equals("") || !s_gen.equals("Male") || !s_gen.equals("Female") || s_dob.equals("")){
-//                    //do not send to database
-//                }else{
-//
-//
-//                }
 
             }
         });

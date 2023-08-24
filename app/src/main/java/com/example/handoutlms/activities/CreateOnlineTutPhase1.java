@@ -31,9 +31,6 @@ public class CreateOnlineTutPhase1 extends AppCompatActivity {
     String got_email;
     String got_name, got_category, got_description, got_mode, got_id, got_date;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,10 +40,8 @@ public class CreateOnlineTutPhase1 extends AppCompatActivity {
         preferences = getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
         got_email = preferences.getString("email", "not available");
 
-//        audio = findViewById(R.id.audio);
         video = findViewById(R.id.video);
         pdf = findViewById(R.id.pdf);
-//        quiz = findViewById(R.id.quiz);
         grpNAME = findViewById(R.id.groupNAME);
         view_resources = findViewById(R.id.view_resources);
         relBack = findViewById(R.id.rel1);
@@ -140,12 +135,6 @@ public class CreateOnlineTutPhase1 extends AppCompatActivity {
                 startActivity(i);
             }
         });
-//        quiz.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                name = "quiz";
-//            }
-//        });
     }
 
     @Override
@@ -157,26 +146,5 @@ public class CreateOnlineTutPhase1 extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        Dialog myDialog = new Dialog(CreateOnlineTutPhase1.this);
-        myDialog.setContentView(R.layout.custom_popup_giftupdate);
-        ImageView close = myDialog.findViewById(R.id.close);
-        TextView point = myDialog.findViewById(R.id.points);
-        point.setText("47");
-        Button ok = myDialog.findViewById(R.id.ok);
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                myDialog.dismiss();
-            }
-        });
-        ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                myDialog.dismiss();
-            }
-        });
-        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.GRAY));
-        myDialog.setCanceledOnTouchOutside(true);
-        myDialog.show();
     }
 }

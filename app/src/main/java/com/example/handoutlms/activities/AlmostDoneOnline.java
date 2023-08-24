@@ -147,7 +147,6 @@ public class AlmostDoneOnline extends AppCompatActivity {
                     }
                 });
 
-//                createTutorial();
             }
         });
     }
@@ -172,10 +171,6 @@ public class AlmostDoneOnline extends AppCompatActivity {
                                 System.out.println(response);
 
                                 if(status.equals("successful")){
-
-                                    //Add user point
-
-
                                     Toast.makeText(getApplicationContext(), "Online Group created successfully", Toast.LENGTH_LONG).show();
                                     System.out.println(jsonObject);
 
@@ -205,8 +200,6 @@ public class AlmostDoneOnline extends AppCompatActivity {
                                     myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                     myDialog.setCanceledOnTouchOutside(false);
                                     myDialog.show();
-
-
                                 }
                                 else{
                                     Toast.makeText(getApplicationContext(), "Group Creation failed.", Toast.LENGTH_LONG).show();
@@ -223,7 +216,6 @@ public class AlmostDoneOnline extends AppCompatActivity {
                         public void onErrorResponse(VolleyError volleyError) {
 
                             progressBar.setVisibility(View.GONE);
-//                                    Toast.makeText(getContext(),  volleyError.getMessage(), Toast.LENGTH_LONG).show();
                             System.out.println("Error = "+volleyError.getMessage());
                         }
                     }){
@@ -270,8 +262,6 @@ public class AlmostDoneOnline extends AppCompatActivity {
 
                             try{
                                 JSONObject jsonObject = new JSONObject(response);
-
-//                                        String signed_name = jsonObject.getString("fullname");
                                 String status = jsonObject.getString("status");
                                 notification = jsonObject.getString("notification");
                                 System.out.println(response);
@@ -305,9 +295,6 @@ public class AlmostDoneOnline extends AppCompatActivity {
                                     myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                     myDialog.setCanceledOnTouchOutside(false);
                                     myDialog.show();
-
-
-
                                 }
                                 else{
                                     Toast.makeText(getApplicationContext(), "Group Creation failed.", Toast.LENGTH_LONG).show();
@@ -324,7 +311,6 @@ public class AlmostDoneOnline extends AppCompatActivity {
                         public void onErrorResponse(VolleyError volleyError) {
 
                             progressBar.setVisibility(View.GONE);
-//                                    Toast.makeText(getContext(),  volleyError.getMessage(), Toast.LENGTH_LONG).show();
                             System.out.println("Error = "+volleyError.getMessage());
                         }
                     }){

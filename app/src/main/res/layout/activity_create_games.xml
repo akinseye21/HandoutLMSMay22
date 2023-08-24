@@ -39,7 +39,7 @@
         android:textColor="#ffffff"
         android:textStyle="bold"
         android:textSize="30dp"
-        android:fontFamily="@font/montserrat_black"
+        android:fontFamily="@font/poppins_black"
         android:layout_marginLeft="20dp" />
 
     <ScrollView
@@ -169,8 +169,8 @@
                 android:id="@+id/progressText"/>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
                 android:orientation="vertical"
                 android:gravity="center_horizontal"
                 android:layout_gravity="center_horizontal"
@@ -184,7 +184,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Create Game"
-                    android:textSize="17dp"
+                    android:textSize="15dp"
                     android:fontFamily="@font/poppins_bold"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"

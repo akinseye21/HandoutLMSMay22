@@ -1,6 +1,7 @@
 package com.example.handoutlms.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.handoutlms.R;
+import com.example.handoutlms.activities.ViewRemoteJobs;
 
 import java.util.ArrayList;
 
@@ -99,6 +101,16 @@ public class RemoteJobAdapter extends BaseAdapter {
             jobposition.setText(Html.fromHtml(arr_position.get(position)));
             description.setText(Html.fromHtml(arr_description.get(position)));
         }
+
+        apply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context, ViewRemoteJobs.class);
+                i.putExtra("url", arr_apply_url.get(position));
+                i.putExtra("name", arr_position.get(position));
+                context.startActivity(i);
+            }
+        });
 
         return convertView;
     }

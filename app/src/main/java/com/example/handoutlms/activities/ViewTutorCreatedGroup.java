@@ -34,7 +34,6 @@ public class ViewTutorCreatedGroup extends AppCompatActivity {
     String name, category, description, mode, g_id;
     ImageView img, back;
     LinearLayout audio, video, pdf, quiz, address, task, viewResources;
-//    View view1, view2, view3, view4, view5;
 SharedPreferences preferences;
     String got_email;
 
@@ -66,14 +65,6 @@ SharedPreferences preferences;
         viewResources = findViewById(R.id.view_resources);
         editTutorial = findViewById(R.id.editTutorial);
         address = findViewById(R.id.location);
-//        task = findViewById(R.id.addTask);
-
-//        view1 = findViewById(R.id.view1);
-//        view2 = findViewById(R.id.view2);
-//        view3 = findViewById(R.id.view3);
-//        view4 = findViewById(R.id.view4);
-//        view5 = findViewById(R.id.view5);
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,9 +129,6 @@ SharedPreferences preferences;
 //                                            view5.setVisibility(View.VISIBLE);
                                         }
                                     }
-
-
-
                                 }
 
                             }else{

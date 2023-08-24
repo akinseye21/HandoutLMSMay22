@@ -18,7 +18,7 @@ public class SubjectAdapter extends BaseAdapter {
 
     private Context context;
     private ArrayList<String> subject;
-    private  String category;
+    private String category;
 
 
 

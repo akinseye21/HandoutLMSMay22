@@ -79,7 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="XX"
                     android:textColor="#fff"
                     android:textSize="10sp"

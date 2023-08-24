@@ -28,13 +28,14 @@
 
     <Button
         android:id="@+id/home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/rounded_green"
         android:fontFamily="@font/poppins_bold"
         android:stateListAnimator="@null"
+        android:layout_gravity="center"
         android:text="Home"
         android:textAllCaps="false"
         android:textColor="#ffffff"

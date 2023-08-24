@@ -35,12 +35,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.handoutlms.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Logger;
+//import com.google.android.gms.tasks.OnCompleteListener;
+//import com.google.android.gms.tasks.Task;
+//import com.google.firebase.auth.AuthResult;
+//import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.database.FirebaseDatabase;
+//import com.google.firebase.database.Logger;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -65,7 +65,7 @@ public class Login extends AppCompatActivity {
 
     String CHANNEL_ID = "channelID";
 
-    FirebaseAuth auth;
+//    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,9 +73,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        auth = FirebaseAuth.getInstance();
-
-
+//        auth = FirebaseAuth.getInstance();
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,36 +143,35 @@ public class Login extends AppCompatActivity {
                                         myEdit.putString("password", gotten_pass);
                                         myEdit.commit();
 
-                                        auth.signInWithEmailAndPassword(gotten_email, gotten_pass)
-                                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        createNotificationChannel();
+                                        myDialog.dismiss();
+                                        Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
+                                        Intent i = new Intent(Login.this, FeedsDashboard.class);
+                                        i.putExtra("email", email);
+                                        i.putExtra("sent from", sent_from);
+                                        startActivity(i);
 
-                                                        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://handout-lms-default-rtdb.firebaseio.com/");
-                                                        firebaseDatabase.setLogLevel(Logger.Level.DEBUG);
-
-                                                        myDialog.dismiss();
-
-                                                        if(task.isSuccessful()){
-
-                                                            createNotificationChannel();
-
-                                                            Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
-                                                            Intent i = new Intent(Login.this, FeedsDashboard.class);
-                                                            i.putExtra("email", email);
-                                                            i.putExtra("sent from", sent_from);
-                                                            startActivity(i);
-                                                        }else{
-                                                            Toast.makeText(getApplicationContext(), "Login failed1. Please try again", Toast.LENGTH_LONG).show();
-                                                        }
-
-                                                    }
-                                                });
-
-
+//                                        auth.signInWithEmailAndPassword(gotten_email, gotten_pass)
+//                                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                                                    @Override
+//                                                    public void onComplete(@NonNull Task<AuthResult> task) {
+//
+//                                                        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://handout-lms-default-rtdb.firebaseio.com/");
+//                                                        firebaseDatabase.setLogLevel(Logger.Level.DEBUG);
+//
+//                                                        myDialog.dismiss();
+//
+//                                                        if(task.isSuccessful()){
+//
+//
+//                                                        }else{
+//                                                            Toast.makeText(getApplicationContext(), "Login failed1. Please try again", Toast.LENGTH_LONG).show();
+//                                                        }
+//
+//                                                    }
+//                                                });
                                     }else{
                                         myDialog.dismiss();
-
                                         Toast.makeText(getApplicationContext(), "Login failed2. Please try again", Toast.LENGTH_LONG).show();
                                     }
                                 }
@@ -183,7 +180,6 @@ public class Login extends AppCompatActivity {
                                     myDialog.dismiss();
                                     Toast.makeText(getApplicationContext(), "Login failed. Please try again", Toast.LENGTH_LONG).show();
                                 }
-
                             }
                         },
                         new Response.ErrorListener() {
@@ -193,13 +189,9 @@ public class Login extends AppCompatActivity {
                                 if(volleyError == null){
                                     return;
                                 }
-
-//                                progressBar.setVisibility(View.GONE);
                                 myDialog.dismiss();
                                 Toast.makeText(Login.this,  "Network Error", Toast.LENGTH_LONG).show();
                                 System.out.println("Network Error "+volleyError);
-//                                    NetworkResponse statusCode = volleyError.networkResponse;
-//                                    System.out.println("Codigo " + statusCode);
                             }
                         }){
                     @Override
@@ -215,6 +207,12 @@ public class Login extends AppCompatActivity {
                 DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
                 stringRequest.setRetryPolicy(retryPolicy);
                 requestQueue.add(stringRequest);
+                requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+                    @Override
+                    public void onRequestFinished(Request<Object> request) {
+                        requestQueue.getCache().clear();
+                    }
+                });
 
             }
         });

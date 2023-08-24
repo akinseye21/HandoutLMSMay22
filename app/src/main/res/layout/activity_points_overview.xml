@@ -105,14 +105,14 @@
             android:onClick="showIncome"
             android:layout_marginRight="10dp">
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:id="@+id/incomeimage"
                 android:onClick="showIncome"
                 android:src="@drawable/wallet1"/>
             <Button
                 android:layout_width="80dp"
-                android:layout_height="40dp"
+                android:layout_height="20dp"
                 android:text="Income"
                 android:id="@+id/incomebutton"
                 android:layout_gravity="center"
@@ -135,14 +135,14 @@
             android:onClick="showVoucher"
             android:layout_marginLeft="10dp">
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:onClick="showVoucher"
                 android:id="@+id/voucherimage"
                 android:src="@drawable/vou2"/>
             <Button
                 android:layout_width="90dp"
-                android:layout_height="40dp"
+                android:layout_height="20dp"
                 android:text="Vouchers"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -150,8 +150,7 @@
                 android:id="@+id/voucherbutton"
                 android:textAllCaps="false"
                 android:fontFamily="@font/poppins_bold"
-                android:background="@drawable/corner_voucher"
-                android:layout_marginLeft="10dp"/>
+                android:background="@drawable/corner_voucher"/>
 
         </LinearLayout>
 
@@ -161,7 +160,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/first"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:scrollbars="none">
 
         <LinearLayout
@@ -170,43 +169,51 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/linIncome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/linIncome"
                 android:visibility="visible">
+
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/openstax"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="10dp"
                     app:cardBackgroundColor="#344863"
                     app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp"
-                    android:id="@+id/openstax"
-                    android:layout_alignParentLeft="true">
+                    app:cardElevation="4dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_margin="20dp">
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@drawable/greenwallet"/>
+                            android:src="@drawable/greenwallet" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_bold"
                             android:layout_marginTop="20dp"
+                            android:fontFamily="@font/poppins_bold"
                             android:text="Balance"
                             android:textColor="#eeb601"
                             android:textSize="15dp" />
+
                         <TextView
+                            android:id="@+id/totalBalance"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_black"
-                            android:id="@+id/totalBalance"
+                            android:layout_marginTop="-15dp"
+                            android:layout_marginBottom="-15dp"
                             android:text="#0"
                             android:textColor="#ffff"
                             android:textSize="35dp" />
@@ -217,9 +224,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_gravity="center"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -229,13 +237,14 @@
                         android:text="Total Points: "
                         android:textColor="#eeb601"
                         android:textSize="12dp" />
+
                     <TextView
+                        android:id="@+id/txttotalpoint"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
                         android:fontFamily="@font/poppins_bolditalic"
-                        android:id="@+id/txttotalpoint"
                         android:text="5"
                         android:textColor="#ffff"
                         android:textSize="12dp" />
@@ -245,18 +254,19 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
+                        android:layout_marginLeft="20dp"
                         android:fontFamily="@font/poppins_bolditalic"
                         android:text="Used Points: "
                         android:textColor="#eeb601"
-                        android:layout_marginLeft="20dp"
                         android:textSize="12dp" />
+
                     <TextView
+                        android:id="@+id/txtusedpoints"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
                         android:fontFamily="@font/poppins_bolditalic"
-                        android:id="@+id/txtusedpoints"
                         android:text="5"
                         android:textColor="#ffff"
                         android:textSize="12dp" />
@@ -266,18 +276,19 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
+                        android:layout_marginLeft="20dp"
                         android:fontFamily="@font/poppins_bolditalic"
                         android:text="Balance: "
                         android:textColor="#eeb601"
-                        android:layout_marginLeft="20dp"
                         android:textSize="12dp" />
+
                     <TextView
+                        android:id="@+id/txtbalancepoint"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
                         android:fontFamily="@font/poppins_bolditalic"
-                        android:id="@+id/txtbalancepoint"
                         android:text="5"
                         android:textColor="#ffff"
                         android:textSize="12dp" />
@@ -288,24 +299,54 @@
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
                     android:layout_marginTop="10dp"
-                    android:background="#ffffff"/>
+                    android:background="#ffffff" />
 
                 <LinearLayout
+                    android:id="@+id/noSlider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/notification"
+                        app:tint="#fff" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="No category update"
+                        android:textColor="@color/lb_grey"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/tutorialLayoutSlider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginRight="30dp">
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/circle_green"
+                            android:background="@drawable/circle_red2"
                             android:gravity="center">
 
                             <ImageView
@@ -314,38 +355,51 @@
                                 android:padding="2dp"
                                 android:src="@drawable/home_ic11" />
                         </LinearLayout>
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="Tutorial"
                             android:textColor="#ffffff"
-                            android:textSize="12dp"
-                            android:fontFamily="@font/poppins_regular"/>
+                            android:textSize="12dp" />
                     </LinearLayout>
+
                     <com.google.android.material.slider.Slider
+                        android:id="@+id/tutorialSlider"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        app:trackColor="#494665"/>
+                        android:value="0"
+                        android:valueFrom="0"
+                        android:valueTo="100"
+                        app:thumbColor="#f05d72"
+                        app:thumbRadius="11dp"
+                        app:trackColor="#f05d72"
+                        app:trackHeight="6dp" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/gamesLayoutSlider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="30dp">
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/circle_green"
+                            android:background="@drawable/circle_orange"
                             android:gravity="center">
 
                             <ImageView
@@ -354,39 +408,52 @@
                                 android:padding="2dp"
                                 android:src="@drawable/home_ic10" />
                         </LinearLayout>
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="Games"
                             android:textColor="#ffffff"
-                            android:textSize="12dp"
-                            android:fontFamily="@font/poppins_regular"/>
+                            android:textSize="12dp" />
                     </LinearLayout>
+
                     <com.google.android.material.slider.Slider
+                        android:id="@+id/gamesSlider"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        app:trackColor="#494665"/>
+                        android:value="0"
+                        android:valueFrom="0"
+                        android:valueTo="100"
+                        app:thumbColor="#e69b12"
+                        app:thumbRadius="11dp"
+                        app:trackColor="#e69b12"
+                        app:trackHeight="6dp" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/gigsLayoutSlider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginRight="30dp"
                     android:layout_marginBottom="20dp"
-                    android:layout_marginRight="30dp">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/circle_green"
+                            android:background="@drawable/circle_dark_green"
                             android:gravity="center">
 
                             <ImageView
@@ -395,49 +462,58 @@
                                 android:padding="2dp"
                                 android:src="@drawable/home_ic9" />
                         </LinearLayout>
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Games"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Gigs"
                             android:textColor="#ffffff"
-                            android:textSize="12dp"
-                            android:fontFamily="@font/poppins_regular"/>
+                            android:textSize="12dp" />
                     </LinearLayout>
+
                     <com.google.android.material.slider.Slider
+                        android:id="@+id/gigsSlider"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        app:trackColor="#494665"/>
+                        android:value="0"
+                        android:valueFrom="0"
+                        android:valueTo="100"
+                        app:thumbColor="#4fc8e5"
+                        app:thumbRadius="11dp"
+                        app:trackColor="#4fc8e5"
+                        app:trackHeight="6dp" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
                     android:layout_marginTop="10dp"
-                    android:background="#ffffff"/>
+                    android:background="#ffffff" />
 
                 <ImageView
+                    android:id="@+id/img"
                     android:layout_width="100dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:id="@+id/img"
-                    android:src="@drawable/voucher_not"/>
+                    android:src="@drawable/voucher_not" />
 
                 <Button
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginBottom="30dp"
                     android:id="@+id/claim"
-                    android:text="Claim Rewards"
-                    android:textColor="#ffffff"
-                    android:textSize="20dp"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/corner_gigs"
                     android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:text="Claim Rewards"
                     android:textAllCaps="false"
-                    android:background="@drawable/corner_gigs"/>
+                    android:textColor="#ffffff"
+                    android:textSize="15dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -479,7 +555,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="50dp"
                     android:id="@+id/noVoucher"
                     android:visibility="gone"
                     android:gravity="center">

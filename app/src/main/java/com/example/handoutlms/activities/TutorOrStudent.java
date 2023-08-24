@@ -38,9 +38,7 @@ public class TutorOrStudent extends AppCompatActivity {
     String sent_from = "Register";
 
     Dialog myDialog;
-
-
-    public static final String UPDATE = "http://handoutng.com/handouts/handout_usertype";
+    public static final String UPDATE = "https://handoutng.com/handouts/handout_usertype";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,9 +91,6 @@ public class TutorOrStudent extends AppCompatActivity {
                                 public void onResponse(String response) {
 
                                     System.out.println("Response = "+response);
-//                                    Toast.makeText(getApplicationContext(), "Response = "+response, Toast.LENGTH_LONG).show();
-
-
 
                                     try{
                                         JSONObject jsonObject = new JSONObject(response);

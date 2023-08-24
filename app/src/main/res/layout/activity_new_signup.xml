@@ -274,7 +274,7 @@
                     android:gravity="center_vertical"
                     android:id="@+id/spinnerinstitution"
                     android:background="@drawable/rounded_purple_register2_dropdown"
-                    android:spinnerMode="dialog"/>
+                    android:spinnerMode="dropdown"/>
             </LinearLayout>
 
             <ProgressBar
@@ -288,8 +288,8 @@
 
             <Button
                 android:id="@+id/signup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="20dp"
@@ -297,7 +297,7 @@
                 android:background="@drawable/rounded_orange"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Sign up"
-                android:textSize="17dp"
+                android:textSize="15dp"
                 android:textAllCaps="false"
                 android:textColor="#ffffff"
                 android:textStyle="bold" />

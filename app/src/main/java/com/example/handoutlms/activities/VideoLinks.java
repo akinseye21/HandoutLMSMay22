@@ -40,8 +40,6 @@ import java.util.Map;
 public class VideoLinks extends AppCompatActivity {
 
     ImageView back;
-//    LinearLayout addlink;
-//    ListView listView;
     String group_name, email;
     Button submit;
     Dialog myDialog, myDialog2;
@@ -51,9 +49,6 @@ public class VideoLinks extends AppCompatActivity {
     String data = "";
     String got_name, got_category, got_description, got_mode, got_id, got_date;
     String CHANNEL_ID = "channelID4";
-
-//    int counter = 1;
-
 
     public static final String VIDEO_LINK = "https://handoutng.com/handouts/handout_update_tutorial_group_resource";
 

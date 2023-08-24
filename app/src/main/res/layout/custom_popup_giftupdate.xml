@@ -4,9 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="350dp"
+    android:layout_margin="20dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="#344863">
+    android:background="@drawable/new_login2">
 
     <ImageView
         android:id="@+id/close"
@@ -24,59 +25,69 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
+
         <ImageView
+            android:id="@+id/img"
             android:layout_width="wrap_content"
             android:layout_height="110dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:id="@+id/img"
-            android:src="@drawable/voucher_not"/>
+            android:src="@drawable/voucher_not" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:fontFamily="@font/poppins_bolditalic"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:textSize="13dp"
-            android:text="Keep pursuing additional tasks and activities to secure even more incredible rewards"
-            android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
-            android:textColor="#ffffff"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppins_bolditalic"
+            android:gravity="center"
+            android:text="Keep pursuing additional tasks and activities to secure even more incredible rewards"
+            android:textColor="#ffffff"
+            android:textSize="13dp" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:background="@drawable/new_login"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_margin="20dp"
-            android:gravity="center_vertical">
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp"
+            android:background="#344863"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
             <Spinner
+                android:id="@+id/voucherSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:id="@+id/voucherSpinner"
-                android:background="@drawable/rounded_purple_register2_dropdown"/>
-        </LinearLayout>
+                android:layout_centerVertical="true"
+                android:background="@drawable/rounded_purple_register2_dropdown" />
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@android:drawable/arrow_down_float"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="15dp"/>
+        </RelativeLayout>
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:id="@+id/redeem"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
             android:layout_margin="20dp"
+            android:layout_gravity="center"
             android:background="@drawable/corner_income"
+            android:fontFamily="@font/poppins_bold"
             android:text="Redeem Voucher"
             android:textAllCaps="false"
-            android:fontFamily="@font/poppins_bold"
             android:textColor="#ffffff"
-            android:textSize="20dp"
-            android:id="@+id/redeem"/>
+            android:textSize="13dp" />
 
     </LinearLayout>
 

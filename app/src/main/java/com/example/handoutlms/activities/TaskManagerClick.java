@@ -198,12 +198,6 @@ public class TaskManagerClick extends AppCompatActivity {
         i.putExtra("email", email);
         i.putExtra("sent from", "task manager click");
         startActivity(i);
-//        TaskManager1 taskManager1 = new TaskManager1();
-////        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        transaction.replace(R.id.frame_taskManager, taskManager1);
-//        transaction.commit();
-
     }
 
     public interface OnFragmentInteractionListener {

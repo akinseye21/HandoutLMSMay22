@@ -149,7 +149,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="10dp"
-                    android:background="#344863"
                     android:gravity="center_vertical">
                     <ImageView
                         android:layout_width="20dp"
@@ -165,6 +164,11 @@
                         android:paddingLeft="20dp"
                         android:fontFamily="@font/poppins_bold"/>
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#ffffff"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -215,7 +219,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="10dp"
-                    android:background="#344863"
                     android:layout_marginTop="20dp"
                     android:gravity="center_vertical">
                     <ImageView
@@ -232,6 +235,12 @@
                         android:paddingLeft="20dp"
                         android:fontFamily="@font/poppins_bold"/>
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#ffffff"/>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -283,7 +292,6 @@
                     android:orientation="horizontal"
                     android:padding="10dp"
                     android:id="@+id/remote_jobs"
-                    android:background="#344863"
                     android:layout_marginTop="10dp"
                     android:gravity="center_vertical">
                     <ImageView
@@ -301,12 +309,17 @@
                         android:fontFamily="@font/poppins_bold"/>
                 </LinearLayout>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#ffffff"/>
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="10dp"
-                    android:background="#344863"
                     android:layout_marginTop="20dp"
                     android:gravity="center_vertical">
                     <ImageView
@@ -323,6 +336,12 @@
                         android:paddingLeft="20dp"
                         android:fontFamily="@font/poppins_bold"/>
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#ffffff"/>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -373,7 +392,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="10dp"
-                    android:background="#344863"
                     android:layout_marginTop="20dp"
                     android:gravity="center_vertical">
                     <ImageView
@@ -390,6 +408,12 @@
                         android:paddingLeft="20dp"
                         android:fontFamily="@font/poppins_bold"/>
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#ffffff"/>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"

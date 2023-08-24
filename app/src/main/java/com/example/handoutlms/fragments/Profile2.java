@@ -195,7 +195,7 @@ public class Profile2 extends Fragment {
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), EditProfilePage.class);
+                Intent i = new Intent(getContext(), EditProfilePage.class);
                 i.putExtra("email", got_email);
                 i.putExtra("pics", got_pics);
                 i.putExtra("usertype", got_usertype);
@@ -204,6 +204,12 @@ public class Profile2 extends Fragment {
         });
 
         //get user profile
+        getProfile();
+
+        return v;
+    }
+
+    private void getProfile() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, USER_PROFILE,
                 new Response.Listener<String>() {
                     @Override
@@ -230,11 +236,11 @@ public class Profile2 extends Fragment {
                             if(got_pics.equals("")){
                                 //do nothing
                             }else{
-                                if (getActivity() == null) {
+                                if (getContext() == null) {
                                     return;
                                 }
                                 Glide
-                                        .with(getActivity())
+                                        .with(getContext())
                                         .load(got_pics)
                                         .override(600,200)
                                         .fitCenter()
@@ -273,8 +279,6 @@ public class Profile2 extends Fragment {
                 requestQueue.getCache().clear();
             }
         });
-
-        return v;
     }
 
     private void addTabs(ViewPager viewPager) {
@@ -299,7 +303,7 @@ public class Profile2 extends Fragment {
             if (uriString.startsWith("content://")) {
                 Cursor cursor = null;
                 try {
-                    cursor = getActivity().getContentResolver().query(uri, null, null, null, null);
+                    cursor = getContext().getContentResolver().query(uri, null, null, null, null);
                     if (cursor != null && cursor.moveToFirst()) {
                         displayName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
                         Log.d("nameeeee>>>>  ",displayName);
@@ -325,7 +329,7 @@ public class Profile2 extends Fragment {
         InputStream iStream = null;
         try {
 
-            iStream = getActivity().getContentResolver().openInputStream(pdffile);
+            iStream = getContext().getContentResolver().openInputStream(pdffile);
             final byte[] inputData = getBytes(iStream);
 
 
@@ -334,7 +338,7 @@ public class Profile2 extends Fragment {
                         @Override
                         public void onResponse(NetworkResponse response) {
                             System.out.println("Upload Updated "+response);
-                            Toast.makeText(getActivity(), "Upload Update "+response, Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getActivity(), "Upload Update "+response, Toast.LENGTH_SHORT).show();
                             Log.d("ressssssoo",new String(response.data));
                             rQueue.getCache().clear();
                             try {
@@ -343,28 +347,36 @@ public class Profile2 extends Fragment {
                                 String pics = jsonObject.getString("pics");
 
                                 if(status.equals("update successful")){
-                                    Toast.makeText(getActivity(), "File Uploaded successfully ", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getContext(), "File Uploaded successfully ", Toast.LENGTH_LONG).show();
                                     System.out.println("Status = "+status);
 
-                                    Glide.with(getActivity()).load(pics).into(profilePic);
+//                                    Glide.with(getContext()).load(pics).into(profilePic);
+                                    SharedPreferences.Editor myEdit = preferences.edit();
+                                    myEdit.putString("pics", pics);
+                                    myEdit.commit();
 
-//                                    progressBar.setVisibility(View.GONE);
-//                                    upload_text.setVisibility(View.GONE);
+                                    getProfile();
+
+//                                    Glide
+//                                            .with(getContext())
+//                                            .load(pics)
+//                                            .override(600,200)
+//                                            .fitCenter()
+//                                            .into(profilePic);
+
                                 }
 
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
 
-//                                progressBar.setVisibility(View.GONE);
-//                                upload_text.setVisibility(View.GONE);
                             }
                         }
                     },
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
 
                         }
                     }) {
