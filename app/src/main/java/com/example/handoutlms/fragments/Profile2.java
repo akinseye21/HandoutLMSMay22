@@ -1,10 +1,13 @@
 package com.example.handoutlms.fragments;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -18,6 +21,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +39,8 @@ import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.example.handoutlms.R;
 import com.example.handoutlms.VolleyMultipartRequest;
+import com.example.handoutlms.activities.AlmostDoneOffline;
+import com.example.handoutlms.activities.CreateOnlineTutPhase1;
 import com.example.handoutlms.activities.EditProfilePage;
 import com.google.android.material.tabs.TabLayout;
 
@@ -74,13 +81,14 @@ public class Profile2 extends Fragment {
 
     TabLayout tabLayout;
     ViewPager viewPager;
-    LinearLayout lintut, linpost, lingame, lingig, editProfile;
+    LinearLayout lintut, linhandout, lingame, lingig, editProfile;
     TextView email, username, dept, school, location, date, edit;
     String got_fullname, got_dept, got_institution, got_dob, got_usertype;
     SharedPreferences preferences;
     String got_email, got_pics;
     String signup_email, sent_from;
     CircleImageView profilePic;
+
 
     public static final String USER_PROFILE = "https://handoutng.com/handouts/handout_get_user_profile";
     private static final String ROOT_URL = "https://handoutng.com/handouts/handout_update_user_profile_pic";
@@ -128,6 +136,7 @@ public class Profile2 extends Fragment {
         viewPager =v.findViewById(R.id.viewpager2);
         tabLayout = v.findViewById(R.id.tabs);
 
+        linhandout = v.findViewById(R.id.linhandout);
         lintut = v.findViewById(R.id.lintut);
         lingame = v.findViewById(R.id.lingame);
         lingig = v.findViewById(R.id.lingig);
@@ -146,6 +155,9 @@ public class Profile2 extends Fragment {
 //        FeedsDashboard feedsDashboard = (FeedsDashboard) getActivity();
 //        sent_from = feedsDashboard.getSentFrom();
 //        signup_email = feedsDashboard.getSignupEmail();
+
+
+
 
         profilePic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,16 +181,25 @@ public class Profile2 extends Fragment {
                     @Override
                     public void onTabSelected(TabLayout.Tab tab) {
                         if (tab.getPosition() == 0){
-                            lintut.setVisibility(View.VISIBLE);
+                            linhandout.setVisibility(View.VISIBLE);
+                            lintut.setVisibility(View.GONE);
                             lingame.setVisibility(View.GONE);
                             lingig.setVisibility(View.GONE);
                         }
                         else if(tab.getPosition() == 1){
+                            lintut.setVisibility(View.VISIBLE);
+                            linhandout.setVisibility(View.GONE);
+                            lingame.setVisibility(View.GONE);
+                            lingig.setVisibility(View.GONE);
+                        }
+                        else if(tab.getPosition() == 2){
+                            linhandout.setVisibility(View.GONE);
                             lintut.setVisibility(View.GONE);
                             lingame.setVisibility(View.VISIBLE);
                             lingig.setVisibility(View.GONE);
                         }
-                        else if(tab.getPosition() == 2){
+                        else if(tab.getPosition() == 3){
+                            linhandout.setVisibility(View.GONE);
                             lintut.setVisibility(View.GONE);
                             lingame.setVisibility(View.GONE);
                             lingig.setVisibility(View.VISIBLE);
@@ -283,6 +304,7 @@ public class Profile2 extends Fragment {
 
     private void addTabs(ViewPager viewPager) {
         Profile2.ViewPagerAdapter adapter = new Profile2.ViewPagerAdapter(getChildFragmentManager());
+        adapter.addFrag(new FragmentHandout(), "");
         adapter.addFrag(new tutorial_on_profile(), "");
 //        adapter.addFrag(new post_on_profile(), "");
         adapter.addFrag(new GamesProfile(), "");

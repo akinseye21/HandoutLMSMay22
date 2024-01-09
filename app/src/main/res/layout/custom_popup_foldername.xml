@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="400dp"
+    android:layout_height="600dp"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="#99293241"
+    android:padding="30dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Folder Name:"
+            android:textColor="#fff"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="13dp"
+            android:layout_marginRight="5dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textColor="#000"
+            android:textSize="13dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:id="@+id/edtfoldername"
+            android:background="@drawable/corner_white2"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:text="Save"
+        android:textColor="#fff"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_gravity="end"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:id="@+id/btnsave"
+        android:background="@drawable/rounded_red"/>
+
+</LinearLayout>

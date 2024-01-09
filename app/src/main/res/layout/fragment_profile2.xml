@@ -220,6 +220,34 @@
                <LinearLayout
                    android:layout_width="80dp"
                    android:layout_height="20dp"
+                   android:background="@drawable/rounded_handout"
+                   android:gravity="center">
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:fontFamily="@font/poppins_light"
+                       android:paddingLeft="5dp"
+                       android:paddingRight="5dp"
+                       android:text="Handouts"
+                       android:textColor="#ffffff"
+                       android:textSize="10dp" />
+               </LinearLayout>
+
+
+           </LinearLayout>
+
+
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="5dp"
+               android:layout_marginRight="5dp"
+               android:orientation="vertical">
+
+               <LinearLayout
+                   android:layout_width="80dp"
+                   android:layout_height="20dp"
                    android:background="@drawable/rounded_pink2"
                    android:gravity="center">
 
@@ -236,7 +264,6 @@
 
 
            </LinearLayout>
-
 
 
            <LinearLayout
@@ -310,10 +337,19 @@
                android:orientation="horizontal">
 
            <LinearLayout
+               android:layout_width="80dp"
+               android:layout_height="2dp"
+               android:id="@+id/linhandout"
+               android:visibility="visible"
+               android:background="#ff8e01"
+               android:orientation="horizontal" />
+
+           <LinearLayout
                    android:layout_width="80dp"
                    android:layout_height="2dp"
                    android:id="@+id/lintut"
-                   android:visibility="visible"
+                   android:visibility="gone"
+               android:layout_marginLeft="90dp"
                    android:background="#f05d72"
                    android:orientation="horizontal" />
 
@@ -322,7 +358,7 @@
                    android:layout_height="2dp"
                    android:id="@+id/lingame"
                    android:visibility="gone"
-                   android:layout_marginLeft="90dp"
+                   android:layout_marginLeft="180dp"
                    android:background="#8b3894"
                    android:orientation="horizontal" />
 
@@ -331,7 +367,7 @@
                    android:layout_height="2dp"
                    android:id="@+id/lingig"
                    android:visibility="gone"
-                   android:layout_marginLeft="180dp"
+                   android:layout_marginLeft="270dp"
                    android:background="#00adee"
                    android:orientation="horizontal" />
 

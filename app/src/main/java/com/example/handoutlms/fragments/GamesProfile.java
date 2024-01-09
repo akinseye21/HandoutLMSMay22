@@ -23,8 +23,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.handoutlms.R;
 import com.example.handoutlms.activities.HandoutTrivia;
+import com.example.handoutlms.activities.NigerianUniversities;
 import com.example.handoutlms.activities.PastQuestion;
 import com.example.handoutlms.adapters.GameAdapter;
+import com.example.handoutlms.uniabuja.GetStarted;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,14 +37,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link GamesProfile.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link GamesProfile#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class GamesProfile extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -54,7 +48,7 @@ public class GamesProfile extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    RelativeLayout trivia_layout, pastQuestion;
+    RelativeLayout trivia_layout, pastQuestion, abj_trivia;
     ProgressBar progressBar;
     ListView listView;
     ArrayList<String> arr_gamename = new ArrayList<>();
@@ -94,6 +88,14 @@ public class GamesProfile extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), PastQuestion.class);
+                startActivity(i);
+            }
+        });
+        abj_trivia = v.findViewById(R.id.abj_trivia);
+        abj_trivia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), NigerianUniversities.class);
                 startActivity(i);
             }
         });

@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -136,51 +137,58 @@ public class TriviaInstruction extends AppCompatActivity {
                         @Override
                         public void onResponse(String response) {
                             System.out.println("Response = "+response);
+                            System.out.println("Category = "+Text);
                             //save the random questions in an array and respective answers
                             try {
-                                JSONArray jsonArray = new JSONArray(response);
+                                if (response.length() == 0) {
+                                    // Handle empty response
+                                    // You can log a message or perform some other action
+                                    myDialog.dismiss();
+                                    System.out.println("Response is empty");
+                                }else{
+                                    JSONArray jsonArray = new JSONArray(response);
+                                    for (int i = 0; i < jsonArray.length(); i++) {
+                                        //saving questions, options and answers
+                                        JSONObject section1 = jsonArray.getJSONObject(i);
+                                        String question = section1.getString("question");
+                                        String option1 = section1.getString("optionA");
+                                        String option2 = section1.getString("optionB");
+                                        String option3 = section1.getString("optionC");
+                                        String option4 = section1.getString("optionD");
+                                        String correct_option = section1.getString("correct_response");
 
-                                for (int i = 0; i < jsonArray.length(); i++) {
-                                    //saving questions, options and answers
-                                    JSONObject section1 = jsonArray.getJSONObject(i);
-                                    String question = section1.getString("question");
-                                    String option1 = section1.getString("optionA");
-                                    String option2 = section1.getString("optionB");
-                                    String option3 = section1.getString("optionC");
-                                    String option4 = section1.getString("optionD");
-                                    String correct_option = section1.getString("correct_response");
 
-
-                                    question_list.add(question);
-                                    optionA_list.add(option1);
-                                    optionB_list.add(option2);
-                                    optionC_list.add(option3);
-                                    optionD_list.add(option4);
-                                    examType_list.add("");
-                                    examYear_list.add("");
-                                    correct_option_list.add(correct_option);
-                                }
-
-                                myDialog.dismiss();
-
-                                begin.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        Intent j = new Intent(TriviaInstruction.this, Question1.class);
-                                        j.putStringArrayListExtra("question_list", question_list);
-                                        j.putStringArrayListExtra("optionA_list", optionA_list);
-                                        j.putStringArrayListExtra("optionB_list", optionB_list);
-                                        j.putStringArrayListExtra("optionC_list", optionC_list);
-                                        j.putStringArrayListExtra("optionD_list", optionD_list);
-                                        j.putStringArrayListExtra("examType_list", examType_list);
-                                        j.putStringArrayListExtra("examYear_list", examYear_list);
-                                        j.putStringArrayListExtra("correct_option_list", correct_option_list);
-                                        //pass category name also
-                                        j.putExtra("category", Text);
-                                        j.putExtra("From", "normal");
-                                        startActivity(j);
+                                        question_list.add(question);
+                                        optionA_list.add(option1);
+                                        optionB_list.add(option2);
+                                        optionC_list.add(option3);
+                                        optionD_list.add(option4);
+                                        examType_list.add("");
+                                        examYear_list.add("");
+                                        correct_option_list.add(correct_option);
                                     }
-                                });
+
+                                    myDialog.dismiss();
+
+                                    begin.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            Intent j = new Intent(TriviaInstruction.this, Question1.class);
+                                            j.putStringArrayListExtra("question_list", question_list);
+                                            j.putStringArrayListExtra("optionA_list", optionA_list);
+                                            j.putStringArrayListExtra("optionB_list", optionB_list);
+                                            j.putStringArrayListExtra("optionC_list", optionC_list);
+                                            j.putStringArrayListExtra("optionD_list", optionD_list);
+                                            j.putStringArrayListExtra("examType_list", examType_list);
+                                            j.putStringArrayListExtra("examYear_list", examYear_list);
+                                            j.putStringArrayListExtra("correct_option_list", correct_option_list);
+                                            //pass category name also
+                                            j.putExtra("category", Text);
+                                            j.putExtra("From", "normal");
+                                            startActivity(j);
+                                        }
+                                    });
+                                }
 
 
                             } catch (JSONException e) {
@@ -222,7 +230,15 @@ public class TriviaInstruction extends AppCompatActivity {
             };
 
             RequestQueue requestQueue = Volley.newRequestQueue(TriviaInstruction.this);
+            DefaultRetryPolicy retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+            stringRequest.setRetryPolicy(retryPolicy);
             requestQueue.add(stringRequest);
+            requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+                @Override
+                public void onRequestFinished(Request<Object> request) {
+                    requestQueue.getCache().clear();
+                }
+            });
 
 
 

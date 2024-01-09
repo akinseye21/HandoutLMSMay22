@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#293241"
+    tools:context=".fragments.FeedDashboardHandout">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_white2"
+        android:padding="10dp"
+        android:id="@+id/loading"
+        android:layout_gravity="center">
+
+        <ProgressBar
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center"
+            android:text="Loading public handouts..."
+            android:textColor="#f4000000"
+            android:textSize="12dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/corner_white2">
+
+            <AutoCompleteTextView
+                android:id="@+id/autocomplete"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/corner_white2"
+                android:fontFamily="@font/poppins_bold"
+                android:hint="Search..."
+                android:paddingLeft="45dp"
+                android:paddingRight="5dp"
+                android:textColorHint="#838483"
+                android:textSize="15dp" />
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/search"
+                android:layout_marginLeft="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Public Post"
+            android:textColor="#fff"
+            android:textSize="15dp"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/swiperefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:divider="#fff"
+                android:dividerHeight="0.1dp"
+                android:id="@+id/listHandouts"/>
+
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -60,27 +60,6 @@
                     android:textSize="10dp"
                     android:textColor="#fff"
                     android:fontFamily="@font/poppins_regular"/>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:layout_marginTop="5dp"
-                    android:id="@+id/viewPoints"
-                    android:background="@drawable/corner_income">
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/coin"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="View Points"
-                        android:textSize="13dp"
-                        android:textColor="#fff"
-                        android:fontFamily="@font/poppins_bold"/>
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -122,27 +101,29 @@
                         android:fontFamily="@font/poppins_bold"/>
                 </LinearLayout>
 
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="10dp"
-                    android:id="@+id/virtual_library"
+                    android:id="@+id/viewPoints"
                     android:gravity="center_vertical">
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginLeft="10dp"
-                        android:src="@drawable/virtual_lib"/>
+                        android:src="@drawable/coin"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Virtual Library"
+                        android:text="View Points"
                         android:textSize="12dp"
                         android:textColor="#fff"
                         android:paddingLeft="20dp"
                         android:fontFamily="@font/poppins_bold"/>
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"

@@ -151,25 +151,6 @@ public class Login extends AppCompatActivity {
                                         i.putExtra("sent from", sent_from);
                                         startActivity(i);
 
-//                                        auth.signInWithEmailAndPassword(gotten_email, gotten_pass)
-//                                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                                                    @Override
-//                                                    public void onComplete(@NonNull Task<AuthResult> task) {
-//
-//                                                        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://handout-lms-default-rtdb.firebaseio.com/");
-//                                                        firebaseDatabase.setLogLevel(Logger.Level.DEBUG);
-//
-//                                                        myDialog.dismiss();
-//
-//                                                        if(task.isSuccessful()){
-//
-//
-//                                                        }else{
-//                                                            Toast.makeText(getApplicationContext(), "Login failed1. Please try again", Toast.LENGTH_LONG).show();
-//                                                        }
-//
-//                                                    }
-//                                                });
                                     }else{
                                         myDialog.dismiss();
                                         Toast.makeText(getApplicationContext(), "Login failed2. Please try again", Toast.LENGTH_LONG).show();

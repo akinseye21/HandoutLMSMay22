@@ -1,18 +1,5 @@
 package com.example.handoutlms.ChatNotification;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import android.media.RingtoneManager;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-
-import androidx.core.app.NotificationCompat;
-
-import com.example.handoutlms.activities.ChatMessagingPage;
 //import com.google.firebase.auth.FirebaseAuth;
 //import com.google.firebase.auth.FirebaseUser;
 //import com.google.firebase.messaging.FirebaseMessagingService;

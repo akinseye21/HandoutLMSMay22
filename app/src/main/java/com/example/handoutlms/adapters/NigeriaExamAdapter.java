@@ -2,6 +2,7 @@ package com.example.handoutlms.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,13 +19,15 @@ import java.util.ArrayList;
 public class NigeriaExamAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<String> examType;
+    private ArrayList<Drawable> images;
 
 
 
-    public NigeriaExamAdapter(Context context, ArrayList<String> examType){
+    public NigeriaExamAdapter(Context context, ArrayList<String> examType, ArrayList<Drawable> images){
         //Getting all the values
         this.context = context;
         this.examType = examType;
+        this.images = images;
     }
 
     @Override
@@ -55,6 +58,7 @@ public class NigeriaExamAdapter extends BaseAdapter {
         ImageView img = convertView.findViewById(R.id.image);
 
         name.setText(examType.get(i));
+        img.setImageDrawable(images.get(i));
 
         exam.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -86,6 +86,7 @@
                     android:layout_width="110dp"
                     android:layout_height="128dp"
                     android:elevation="5dp"
+                    android:id="@+id/abj_trivia"
                     android:background="@drawable/game8">
 
                     <RelativeLayout
@@ -99,7 +100,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_centerVertical="true"
                             android:fontFamily="@font/poppins_light"
-                            android:text="Ludo Game"
+                            android:text="University Trivia"
                             android:textColor="#ffffff"
                             android:textSize="6dp" />
 
@@ -118,9 +119,8 @@
                         android:id="@+id/img2"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/game6"
-                        android:layout_centerVertical="true"
-                        android:layout_centerHorizontal="true"/>
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/uni_trivia" />
 
 
                 </RelativeLayout>

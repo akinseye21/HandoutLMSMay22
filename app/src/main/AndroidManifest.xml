@@ -33,37 +33,77 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.UploadFile"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.FolderFilePage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.NigerianUniversities"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".uniabuja.UploadQuestions"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".uniabuja.Page5"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".uniabuja.Page4"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".uniabuja.Page3"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".uniabuja.Page2"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".uniabuja.Page1"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".uniabuja.GetStarted"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activities.ViewRemoteJobs"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.PointsOverview"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.PastQuestion"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.OpenStax"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.VirtualLibrary"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.RemotePage2"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.RemotePage"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ApprovedGigView"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ApprovedGigUserView"
             android:exported="false"
@@ -72,11 +112,11 @@
         <activity
             android:name=".activities.ResourceViewerView2"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ResourceViewerView"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.PendingList4Tutorial"
             android:exported="false"
@@ -118,14 +158,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ViewTutorCreatedGroup"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.ChatMessagingPage"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.ChatPage"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

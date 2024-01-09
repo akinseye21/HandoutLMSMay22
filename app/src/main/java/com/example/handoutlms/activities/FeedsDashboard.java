@@ -22,9 +22,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -35,7 +33,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.example.handoutlms.adapters.PagerAdapter;
-import com.example.handoutlms.fragments.ChatPage2;
+import com.example.handoutlms.fragments.FeedDashboardHandout;
 import com.example.handoutlms.fragments.FeedDashboardHome;
 import com.example.handoutlms.fragments.FeedDashboardNotification;
 import com.example.handoutlms.fragments.FeedDashboardProfie;
@@ -71,7 +69,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FeedsDashboard extends AppCompatActivity implements
         FeedDashboardHome.OnFragmentInteractionListener,
-        ChatPage2.OnFragmentInteractionListener,
         FeedDashboardTaskManager.OnFragmentInteractionListener,
         FeedDashboardNotification.OnFragmentInteractionListener,
         FeedDashboardProfie.OnFragmentInteractionListener,
@@ -117,11 +114,11 @@ public class FeedsDashboard extends AppCompatActivity implements
         got_email = preferences.getString("email", "not available");
         fullname = preferences.getString("fullname", "not available");
         pics = preferences.getString("pics", "not available");
+        System.out.println("Picture = "+pics);
 
         Intent j = getIntent();
         email = j.getStringExtra("email");
         sent_from = j.getStringExtra("sent from");  //either "Login" or "Register"
-
 
         Bundle args2 = new Bundle();
         args2.putString("email", email);
@@ -148,7 +145,7 @@ public class FeedsDashboard extends AppCompatActivity implements
         pagerAdapter = new PagerAdapter(getSupportFragmentManager());
 
 
-        if (sent_from.equals("justCreatedResources") || sent_from.equals("checking gigs")){
+        if (sent_from.equals("justCreatedResources") || sent_from.equals("checking gigs") || sent_from.equals("folder file")){
             navigateFragment(3);
         }else if (sent_from.equals("task manager click")){
             navigateFragment(1);
@@ -326,7 +323,8 @@ public class FeedsDashboard extends AppCompatActivity implements
 
         FeedsDashboard.ViewPagerAdapter adapter = new FeedsDashboard.ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new FeedDashboardHome(), "Home", "home_fragment_tag");
-        adapter.addFrag(new TaskManager1(), "Task Manager", "task_manager_fragment_tag");
+        adapter.addFrag(new FeedDashboardHandout(), "Handouts", "handout_fragment_tag");
+//        adapter.addFrag(new TaskManager1(), "Task Manager", "task_manager_fragment_tag");
         adapter.addFrag(new FeedDashboardNotification(), "Notification", "notification_fragment_tag");
         adapter.addFrag(new Profile2(), "Profile", "profile_fragment_tag");
         viewPager.setAdapter(adapter);
@@ -345,7 +343,6 @@ public class FeedsDashboard extends AppCompatActivity implements
         LinearLayout viewPoints = drawerItem.findViewById(R.id.viewPoints);
         LinearLayout dashboard = drawerItem.findViewById(R.id.dashboard);
         LinearLayout remote = drawerItem.findViewById(R.id.remote_jobs);
-        LinearLayout virtualLibrary = drawerItem.findViewById(R.id.virtual_library);
         LinearLayout createTutorial = drawerItem.findViewById(R.id.createTutorial);
         LinearLayout viewTutorial = drawerItem.findViewById(R.id.viewTutorial);
         LinearLayout createGig = drawerItem.findViewById(R.id.createGigs);
@@ -361,14 +358,6 @@ public class FeedsDashboard extends AppCompatActivity implements
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(FeedsDashboard.this, PointsOverview.class);
-                startActivity(i);
-            }
-        });
-        virtualLibrary.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(FeedsDashboard.this, VirtualLibrary.class);
-                i.putExtra("email", email);
                 startActivity(i);
             }
         });
@@ -425,6 +414,7 @@ public class FeedsDashboard extends AppCompatActivity implements
             @Override
             public void onClick(View view) {
                 drawerLayout.closeDrawer(GravityCompat.START);
+                navigateFragment(0);
             }
         });
         viewTutorial.setOnClickListener(new View.OnClickListener() {

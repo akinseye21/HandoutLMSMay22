@@ -304,6 +304,7 @@ public class VideoLinkAdapter extends BaseAdapter {
                 Intent intent = new Intent(context, WatchVideo.class);
                 intent.putExtra("name", arr_fileName.get(i));
                 intent.putExtra("link", arr_fileUrl.get(i));
+                intent.putExtra("from", "others");
                 context.startActivity(intent);
 
                 // increase the count of resource view by 1

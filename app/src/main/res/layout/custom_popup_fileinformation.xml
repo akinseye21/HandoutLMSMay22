@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/round_popup">
+
+    <TextView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="X"
+        android:textColor="#FF0000"
+        android:textSize="15dp"
+        android:fontFamily="@font/poppins_bold"
+        android:textStyle="normal"
+        android:padding="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:id="@+id/close"
+        android:background="@drawable/round_white"
+        android:layout_alignParentEnd="true"/>
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/close"
+        android:layout_margin="20dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:id="@+id/thumbnail"
+            android:background="@drawable/corner_white2"
+            android:src="@drawable/pdf"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/filename"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="15dp"
+            android:text="File name"
+            android:textColor="#fff"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="File description:"
+            android:fontFamily="@font/poppins_regular"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:textSize="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="File description"
+            android:id="@+id/filedescription"
+            android:fontFamily="@font/poppins_italic"
+            android:textColor="#fff"
+            android:textSize="12dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:padding="3dp"
+            android:background="@drawable/rounded_grey2">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/logo2"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Uploaded by: Akinseye Abayomi"
+                android:id="@+id/uploadedby"
+                android:fontFamily="@font/poppins_italic"
+                android:textColor="#000"
+                android:textSize="10dp"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

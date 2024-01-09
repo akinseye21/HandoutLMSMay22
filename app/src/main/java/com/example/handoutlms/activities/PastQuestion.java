@@ -1,9 +1,11 @@
 package com.example.handoutlms.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -36,6 +38,7 @@ public class PastQuestion extends AppCompatActivity {
     ArrayList<String> Array_examType = new ArrayList<>();
     ProgressBar progressBar;
     ImageView back;
+    ArrayList<Drawable> Array_images = new ArrayList<>();
 
     public static final String NIGERIA_EXAMS = "https://handoutng.com/handouts/handout_examtype";
 
@@ -48,6 +51,12 @@ public class PastQuestion extends AppCompatActivity {
         //get sharedpreference
         SharedPreferences sp = getSharedPreferences("LoginDetails", MODE_PRIVATE);
         final String email = sp.getString("email", "");
+
+        // Add your ImageDrawables to the list
+        Array_images.add(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.exam1));
+        Array_images.add(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.exam2));
+        Array_images.add(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.exam3));
+        Array_images.add(AppCompatResources.getDrawable(getApplicationContext(), R.drawable.exam4));
 
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +89,7 @@ public class PastQuestion extends AppCompatActivity {
 
 
                             //populate values on the gridview
-                            NigeriaExamAdapter nigeriaExamAdapter = new NigeriaExamAdapter(getApplicationContext(), Array_examType);
+                            NigeriaExamAdapter nigeriaExamAdapter = new NigeriaExamAdapter(getApplicationContext(), Array_examType, Array_images);
                             gridView.setAdapter(nigeriaExamAdapter);
 
                             progressBar.setVisibility(View.GONE);

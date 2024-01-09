@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#293241"
+    android:padding="20dp"
+    tools:context=".uniabuja.GetStarted">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_arrow_left" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/one"
+            android:layout_below="@+id/back">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Handout"
+                android:textColor="#ffffff"
+                android:textSize="25dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:id="@+id/school_name1"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="Uni Abuja"
+                android:textColor="#ffffff"
+                android:textSize="25dp"
+                android:layout_marginTop="-10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Trivia Challenge"
+                android:textColor="#ffffff"
+                android:textSize="25dp"
+                android:layout_marginTop="-10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_below="@+id/one"
+            android:layout_centerInParent="true">
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:src="@drawable/ic_abj"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Welcome to Handout "
+                    android:textColor="#ffffff"
+                    android:textSize="13dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:id="@+id/school_name2"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="Uni Abuja! "
+                    android:textColor="#f8931f"
+                    android:textStyle="italic"
+                    android:textSize="13dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Let's dive into the trivia challenge!, stay sharp, have fun and conquer the quest for knowledge"
+                    android:textColor="#ffffff"
+                    android:textSize="13dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/getstarted"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:background="@drawable/rounded_orange"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:text="Get started"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="15dp"/>
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
